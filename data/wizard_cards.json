@@ -1,0 +1,630 @@
+{
+ "statuses": [
+  "AvailableInLevel",
+  "AvailableToVendors",
+  "AvailableInAdventureLevel",
+  "AvailableToFnGShop",
+  "SpecialLastCard",
+  "OwnedByPlayer",
+  "OwnedByVendor"
+ ],
+ "currencies": [
+  "Jellybeans",
+  "CauldronCakes",
+  "PumpkinPasties"
+ ],
+ "cards": [
+  {
+   "CardClass": "WC_AlgufftheAwful",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_AmarilloLestoat",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Babayaga",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_BeatrixBloxam",
+   "Status": 1,
+   "GameStateAvailable": 10,
+   "cost": 25,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Billywig",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_BlodwynBludd",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_BowmanWright",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Bowtruckle",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_BrantheBloodthirsty",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_CarlottaPinkstone",
+   "Status": 1,
+   "GameStateAvailable": 10,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Cliodne",
+   "Status": 1,
+   "GameStateAvailable": 60,
+   "cost": 30,
+   "Currency": 2
+  },
+  {
+   "CardClass": "WC_CommonWelshGreenDragon",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_CordeliaMisericordia",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_CountVladDrakul",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_CrispinCronk",
+   "Status": 1,
+   "GameStateAvailable": 10,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Cyclops",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_CyprianYoudle",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_DorcasWellbeloved",
+   "Status": 1,
+   "GameStateAvailable": 70,
+   "cost": 175,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_DoubleEndedNewt",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Doxy",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Dumbledore",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_DymphnaFurmage",
+   "Status": 1,
+   "GameStateAvailable": 10,
+   "cost": 50,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_EargittheUgly",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_EdgarStroulger",
+   "Status": 1,
+   "GameStateAvailable": 60,
+   "cost": 150,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_ElfridaClagg",
+   "Status": 1,
+   "GameStateAvailable": 60,
+   "cost": 125,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_EthelredTheEverReady",
+   "Status": 1,
+   "GameStateAvailable": 70,
+   "cost": 80,
+   "Currency": 2
+  },
+  {
+   "CardClass": "WC_FalcoAesalon",
+   "Status": 2,
+   "GameStateAvailable": 70,
+   "cost": 175,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_FulberttheFearful",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_GiantPurpleToad",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_GiantSquid",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_GlanmorePeakes",
+   "Status": 1,
+   "GameStateAvailable": 70,
+   "cost": 60,
+   "Currency": 2
+  },
+  {
+   "CardClass": "WC_Gnome",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_GodricGryffindor",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Goliath",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Gringott",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_GroganStump",
+   "Status": 3,
+   "GameStateAvailable": 10,
+   "cost": 25,
+   "Currency": 2
+  },
+  {
+   "CardClass": "WC_GunhildaOfGorsemoor",
+   "Status": 3,
+   "GameStateAvailable": 10,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_GwenogJones",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Gytrash",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_HarryPotter",
+   "Status": 4,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_HebrideanBlackDragon",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_HelgaHufflepuff",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_HengistofUpperBarnton",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_HesperStarkey",
+   "Status": 3,
+   "GameStateAvailable": 10,
+   "cost": 125,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_HonoriaNutcombe",
+   "Status": 2,
+   "GameStateAvailable": 70,
+   "cost": 175,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_HungarianHorntailDragon",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_IgnatiaWildsmith",
+   "Status": 1,
+   "GameStateAvailable": 60,
+   "cost": 10,
+   "Currency": 2
+  },
+  {
+   "CardClass": "WC_Imp",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_JocundaSykes",
+   "Status": 1,
+   "GameStateAvailable": 70,
+   "cost": 200,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_JoscelindWadcock",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Kelpie",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_LadyCarmillaSanguina",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_LeticiaSomnolens",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_MalodoraGrymm",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Manticore",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_MirabellaPlunkett",
+   "Status": 3,
+   "GameStateAvailable": 10,
+   "cost": 25,
+   "Currency": 2
+  },
+  {
+   "CardClass": "WC_MorganLeFay",
+   "Status": 1,
+   "GameStateAvailable": 70,
+   "cost": 50,
+   "Currency": 2
+  },
+  {
+   "CardClass": "WC_Morholt",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_MountainTroll",
+   "Status": 3,
+   "GameStateAvailable": 10,
+   "cost": 150,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_MungoBonham",
+   "Status": 1,
+   "GameStateAvailable": 10,
+   "cost": 50,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_NorvelTwonk",
+   "Status": 1,
+   "GameStateAvailable": 60,
+   "cost": 125,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_NorwegianRidgebackDragon",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_OldMotherHubbard",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_OswaldBeamish",
+   "Status": 1,
+   "GameStateAvailable": 70,
+   "cost": 225,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Phoenix",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_ProfessorAmandoDippet",
+   "Status": 2,
+   "GameStateAvailable": 90,
+   "cost": 250,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_RoderickPlumpton",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_RomanianLonghornDragon",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_RowenaRavenclaw",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_SacharissaTugwood",
+   "Status": 2,
+   "GameStateAvailable": 90,
+   "cost": 200,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_SalazarSlytherin",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_SirHerbertVarney",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Streeler",
+   "Status": 3,
+   "GameStateAvailable": 10,
+   "cost": 200,
+   "Currency": 0
+  },
+  {
+   "CardClass": "wc_ThaddeusThurkell",
+   "Status": 1,
+   "GameStateAvailable": 70,
+   "cost": 70,
+   "Currency": 2
+  },
+  {
+   "CardClass": "WC_UgtheUnreliable",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_Unicorn",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_UrgtheUnclean",
+   "Status": 0,
+   "GameStateAvailable": 0,
+   "cost": 100,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_WendelintheWeird",
+   "Status": 1,
+   "GameStateAvailable": 10,
+   "cost": 75,
+   "Currency": 0
+  },
+  {
+   "CardClass": "WC_WilfredElphick",
+   "Status": 1,
+   "GameStateAvailable": 60,
+   "cost": 40,
+   "Currency": 2
+  },
+  {
+   "CardClass": "WC_ZouYen",
+   "Status": 1,
+   "GameStateAvailable": 60,
+   "cost": 20,
+   "Currency": 2
+  }
+ ],
+ "card_sets": [
+  {
+   "DialogTag": "WizardMenu_104",
+   "PrefixID": "WZ",
+   "NumCards": 15
+  },
+  {
+   "DialogTag": "WizardMenu_105",
+   "PrefixID": "WI",
+   "NumCards": 15
+  },
+  {
+   "DialogTag": "WizardMenu_118",
+   "PrefixID": "QU",
+   "NumCards": 5
+  },
+  {
+   "DialogTag": "WizardMenu_107",
+   "PrefixID": "VP",
+   "NumCards": 5
+  },
+  {
+   "DialogTag": "WizardMenu_109",
+   "PrefixID": "HG",
+   "NumCards": 5
+  },
+  {
+   "DialogTag": "WizardMenu_111",
+   "PrefixID": "GI",
+   "NumCards": 5
+  },
+  {
+   "DialogTag": "WizardMenu_108",
+   "PrefixID": "GB",
+   "NumCards": 5
+  },
+  {
+   "DialogTag": "WizardMenu_110",
+   "PrefixID": "DR",
+   "NumCards": 5
+  },
+  {
+   "DialogTag": "WizardMenu_112",
+   "PrefixID": "BE",
+   "NumCards": 15
+  },
+  {
+   "DialogTag": "WizardMenu_113",
+   "PrefixID": "BO",
+   "NumCards": 5
+  }
+ ]
+}
