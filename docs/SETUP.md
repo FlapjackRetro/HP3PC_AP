@@ -1,6 +1,6 @@
 # Setup
 
-This is the setup that's been tested: Windows 11, retail US disc (v1.0), HP3-UHDE core files and the 60 fps patch.
+This is the setup that's been tested on Windows: retail US disc (v1.0), HP3-UHDE core files and the 60 fps patch.
 It boots to the main menu, starts a new game and plays normally, windowed or fullscreen (Alt+Enter toggles).
 
 ## 1. Install the base game
