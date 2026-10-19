@@ -1,0 +1,20 @@
+# Game files and anything derived from them that is EA/Epic code. Never commit these.
+*.u
+*.unr
+*.utx
+*.usx
+*.ukx
+*.uax
+*.umx
+*.usa
+*.dll
+*.exe
+*.asi
+*.int
+decompiled/
+_embedded_source/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
