@@ -1,0 +1,249 @@
+/*
+ * HP3 MapTracker - Ultimate ASI Loader plugin (plugins\HP3MapTracker.asi)
+ *
+ * Shows the current map and story game state in the game window's title bar and
+ * appends every change to Documents\Harry Potter and the Prisoner of Azkaban\HP3_MapLog.txt.
+ * Press F11 (with the game focused) to write a MARK line with the player's position.
+ *
+ * Read-only: it never writes game memory. All reads go through ReadProcessMemory on our own
+ * process, so a stale pointer during a level change just fails instead of crashing.
+ *
+ * Engine layout (verified from Core.dll exports of the retail HP3 build):
+ *   UObject: +0x18 Outer, +0x20 Name (FName index), +0x24 Class
+ *   UStruct: +0x2C SuperField          FNameEntry: +0x0C wide-char name
+ *   UProperty: +0x4C Offset            FString: { wchar_t* Data; int Num; int Max; }
+ * No CRT; built with clang + lld-link (see build.sh).
+ */
+typedef unsigned short wchar;
+typedef unsigned int   u32;
+typedef int            BOOL;
+typedef void*          HANDLE;
+typedef void*          HWND;
+#define WINAPI __stdcall
+#define IMP __declspec(dllimport)
+
+typedef struct { unsigned short wYear, wMonth, wDayOfWeek, wDay, wHour, wMinute, wSecond, wMs; } SYSTEMTIME;
+IMP HANDLE WINAPI GetModuleHandleW(const wchar*);
+IMP void*  WINAPI GetProcAddress(HANDLE, const char*);
+IMP HANDLE WINAPI CreateThread(void*, u32, u32 (WINAPI*)(void*), void*, u32, u32*);
+IMP void   WINAPI Sleep(u32);
+IMP BOOL   WINAPI ReadProcessMemory(HANDLE, const void*, void*, u32, u32*);
+IMP HANDLE WINAPI GetCurrentProcess(void);
+IMP u32    WINAPI GetCurrentProcessId(void);
+IMP BOOL   WINAPI DisableThreadLibraryCalls(HANDLE);
+IMP HANDLE WINAPI CreateFileW(const wchar*, u32, u32, void*, u32, u32, HANDLE);
+IMP BOOL   WINAPI WriteFile(HANDLE, const void*, u32, u32*, void*);
+IMP BOOL   WINAPI CloseHandle(HANDLE);
+IMP void   WINAPI GetLocalTime(SYSTEMTIME*);
+IMP int    WINAPI WideCharToMultiByte(u32, u32, const wchar*, int, char*, int, const char*, BOOL*);
+IMP BOOL   WINAPI EnumWindows(BOOL (WINAPI*)(HWND, long), long);
+IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
+IMP BOOL   WINAPI IsWindowVisible(HWND);
+IMP int    WINAPI GetWindowTextW(HWND, wchar*, int);
+IMP long   WINAPI SendMessageTimeoutW(HWND, u32, u32, long, u32, u32, u32*);
+IMP HWND   WINAPI GetForegroundWindow(void);
+IMP short  WINAPI GetAsyncKeyState(int);
+IMP int    __cdecl wsprintfW(wchar*, const wchar*, ...);
+IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
+
+#define WM_SETTEXT 0x000C
+#define SMTO_ABORTIFHUNG 0x0002
+#define VK_F11 0x7A
+
+/* minimal CRT shims (no C runtime is linked) */
+int _fltused = 0;
+void *memset(void *d, int c, unsigned n) { volatile unsigned char *p = (volatile unsigned char *)d; while (n--) *p++ = (unsigned char)c; return d; }
+
+static HANDLE gProc;
+static u32 *gObjs;     /* &GObjObjects : { UObject** Data; int Num; int Max } */
+static u32 *gNames;    /* &FName::Names : { FNameEntry** Data; int Num; int Max } */
+
+static int rd(u32 addr, void *out, u32 n) { u32 got = 0; return addr && ReadProcessMemory(gProc, (void*)addr, out, n, &got) && got == n; }
+static u32 rd32(u32 addr) { u32 v = 0; rd(addr, &v, 4); return v; }
+
+static int weq(const wchar *a, const wchar *b) { while (*a && *a == *b) { a++; b++; } return *a == *b; }
+static void wcpy(wchar *d, const wchar *s, int max) { int i = 0; for (; s[i] && i < max - 1; i++) d[i] = s[i]; d[i] = 0; }
+
+/* name of FName index into buf; tries shrinking reads so we never fail on a page boundary */
+static int name_of(int idx, wchar *buf, int max) {
+    u32 data = rd32((u32)gNames), num = rd32((u32)gNames + 4), e; int n;
+    if (idx < 0 || (u32)idx >= num) return 0;
+    e = rd32(data + idx * 4);
+    if (!e) return 0;
+    for (n = max - 1; n >= 8; n /= 2) if (rd(e + 0x0C, buf, n * 2)) { buf[n] = 0; return 1; }
+    return 0;
+}
+/* FName index of a string (scan of the name table; names never move) */
+static int name_index(const wchar *want) {
+    u32 num = rd32((u32)gNames + 4), i; wchar b[64];
+    for (i = 0; i < num; i++) if (name_of((int)i, b, 64) && weq(b, want)) return (int)i;
+    return -1;
+}
+
+/* walk every object, 1024 pointers per read, 8 bytes (Name, Class) per object */
+typedef int (*visit_fn)(u32 obj, int name, u32 cls, void *ctx);   /* return 1 to stop */
+static void for_each_object(visit_fn fn, void *ctx) {
+    static u32 ptrs[1024];   /* only the worker thread uses this */
+    u32 data = rd32((u32)gObjs), num = rd32((u32)gObjs + 4), i, j, chunk, nc[2];
+    for (i = 0; i < num; i += 1024) {
+        chunk = num - i < 1024 ? num - i : 1024;
+        if (!rd(data + i * 4, ptrs, chunk * 4)) continue;
+        for (j = 0; j < chunk; j++) {
+            if (!ptrs[j] || !rd(ptrs[j] + 0x20, nc, 8)) continue;
+            if (fn(ptrs[j], (int)nc[0], nc[1], ctx)) return;
+        }
+    }
+}
+
+static int N_Class, N_Level, N_MyLevel, N_Entry;
+struct findcls { int name; u32 found; };
+static int v_findcls(u32 o, int name, u32 cls, void *c) {
+    struct findcls *f = c;
+    if (name == f->name && cls && (int)rd32(cls + 0x20) == N_Class) { f->found = o; return 1; }
+    return 0;
+}
+static u32 find_class(const wchar *cname) {
+    struct findcls f; f.name = name_index(cname); f.found = 0;
+    if (f.name >= 0) for_each_object(v_findcls, &f);
+    return f.found;
+}
+struct findprop { int prop, cls; int off; };
+static int v_findprop(u32 o, int name, u32 cls, void *c) {
+    struct findprop *f = c; (void)cls;
+    if (name == f->prop && (int)rd32(rd32(o + 0x18) + 0x20) == f->cls) { f->off = (int)rd32(o + 0x4C); return 1; }
+    return 0;
+}
+/* byte offset of property `prop` declared in class `cls` (-1 if not found) */
+static int prop_offset(const wchar *cls, const wchar *prop) {
+    struct findprop f; f.prop = name_index(prop); f.cls = name_index(cls); f.off = -1;
+    if (f.prop >= 0 && f.cls >= 0) for_each_object(v_findprop, &f);
+    return f.off;
+}
+static int is_a_cls(u32 c, u32 want) { int guard = 64; while (c && guard--) { if (c == want) return 1; c = rd32(c + 0x2C); } return 0; }
+
+/* one pass: Level packages (non-Entry) + first KWGame and PlayerController instances */
+struct scan { u32 clsGame, clsPC, clsClass; u32 levels[8]; int nlev; u32 game, pc; u32 known[512]; int nknown; };
+static int v_scan(u32 o, int name, u32 cls, void *c) {
+    struct scan *s = c; int k;
+    if (name == N_MyLevel && cls && (int)rd32(cls + 0x20) == N_Level) {
+        u32 pkg = rd32(o + 0x18);
+        if (pkg && (int)rd32(pkg + 0x20) != N_Entry && s->nlev < 8) s->levels[s->nlev++] = pkg;
+        return 0;
+    }
+    if (!cls || cls == s->clsClass || (s->game && s->pc)) return 0;
+    for (k = 0; k < s->nknown; k++) if (s->known[k] == cls) return 0;   /* class already known not to match */
+    if (!s->game && s->clsGame && is_a_cls(cls, s->clsGame)) { s->game = o; return 0; }
+    if (!s->pc && s->clsPC && is_a_cls(cls, s->clsPC)) { s->pc = o; return 0; }
+    if (s->nknown < 512) s->known[s->nknown++] = cls;
+    return 0;
+}
+static int read_fstring(u32 addr, wchar *buf, int max) {
+    u32 p = rd32(addr); int n = (int)rd32(addr + 4);
+    buf[0] = 0;
+    if (!p || n <= 0) return 0;
+    if (n > max) n = max;
+    if (!rd(p, buf, n * 2)) { buf[0] = 0; return 0; }
+    buf[n - 1] = 0; return 1;
+}
+
+/* ---- output ---- */
+static wchar gLogPath[600];
+static void log_line(const wchar *w) {
+    char u8[1200]; u32 wr; SYSTEMTIME t; wchar line[700]; int n; HANDLE f;
+    GetLocalTime(&t);
+    wsprintfW(line, L"%04d-%02d-%02d %02d:%02d:%02d  %s\r\n", t.wYear, t.wMonth, t.wDay, t.wHour, t.wMinute, t.wSecond, w);
+    n = WideCharToMultiByte(65001, 0, line, -1, u8, sizeof u8, 0, 0);
+    f = CreateFileW(gLogPath, 0x0004 /*FILE_APPEND_DATA*/, 1 | 2, 0, 4 /*OPEN_ALWAYS*/, 0x80, 0);
+    if (f == (HANDLE)-1) return;
+    if (n > 1) WriteFile(f, u8, n - 1, &wr, 0);
+    CloseHandle(f);
+}
+static HWND gWnd; static wchar gOrigTitle[256];
+static BOOL WINAPI enum_cb(HWND h, long lp) {
+    u32 pid = 0; wchar t[8]; (void)lp;
+    GetWindowThreadProcessId(h, &pid);
+    if (pid == GetCurrentProcessId() && IsWindowVisible(h) && GetWindowTextW(h, t, 8) > 0) { gWnd = h; return 0; }
+    return 1;
+}
+static void set_title(const wchar *s) {
+    u32 res;
+    if (!gWnd) { EnumWindows(enum_cb, 0); if (gWnd) GetWindowTextW(gWnd, gOrigTitle, 256); }
+    if (gWnd) SendMessageTimeoutW(gWnd, WM_SETTEXT, 0, (long)s, SMTO_ABORTIFHUNG, 500, &res);
+}
+
+static u32 WINAPI worker(void *arg) {
+    HANDLE core; wchar map[64] = {0}, lastMap[64] = {0}, gs[32] = {0}, lastGs[32] = {0}, buf[400];
+    int offGS = -1, offPawn = -1, offLoc = -1, f11prev = 0, i; u32 tick = 0, pc = 0;
+    static struct scan sc;   /* 2 KB+, keep it off the stack */
+    (void)arg;
+    gProc = GetCurrentProcess();
+    while (!(core = GetModuleHandleW(L"Core.dll"))) Sleep(500);
+    gObjs  = (u32*)GetProcAddress(core, "?GObjObjects@UObject@@0V?$TArray@PAVUObject@@@@A");
+    gNames = (u32*)GetProcAddress(core, "?Names@FName@@0V?$TArray@PAUFNameEntry@@@@A");
+    if (!gObjs || !gNames) return 1;
+    {   wchar docs[520];
+        if (SHGetFolderPathW(0, 5 /*CSIDL_PERSONAL*/, 0, 0, docs) == 0)
+            wsprintfW(gLogPath, L"%s\\Harry Potter and the Prisoner of Azkaban\\HP3_MapLog.txt", docs);
+        else wcpy(gLogPath, L"HP3_MapLog.txt", 600);
+    }
+    /* wait for the engine to load Entry, then cache name indices, classes and property offsets */
+    for (;;) {
+        Sleep(1000);
+        if (rd32((u32)gObjs + 4) < 1000) continue;
+        N_Class = name_index(L"Class"); N_Level = name_index(L"Level");
+        N_MyLevel = name_index(L"MyLevel"); N_Entry = name_index(L"Entry");
+        if (N_Class >= 0 && N_Level >= 0 && N_MyLevel >= 0 && N_Entry >= 0) break;
+    }
+    sc.clsGame = find_class(L"KWGame");
+    sc.clsPC = find_class(L"PlayerController");
+    sc.clsClass = sc.clsGame ? rd32(sc.clsGame + 0x24) : 0;   /* the 'Class' class */
+    offGS = prop_offset(L"KWGame", L"CurrentGameState");
+    offPawn = prop_offset(L"Controller", L"Pawn");
+    offLoc = prop_offset(L"Actor", L"Location");
+    wsprintfW(buf, L"---- HP3 MapTracker started (KWGame %s, PlayerController %s, offsets gs=%d pawn=%d loc=%d) ----",
+              sc.clsGame ? L"ok" : L"MISSING", sc.clsPC ? L"ok" : L"MISSING", offGS, offPawn, offLoc);
+    log_line(buf);
+    for (;;) {
+        /* F11 marker, polled fast */
+        int down = (GetAsyncKeyState(VK_F11) & 0x8000) != 0;
+        if (down && !f11prev && gWnd && GetForegroundWindow() == gWnd) {
+            u32 pawn; float loc[3] = {0, 0, 0};
+            pawn = (pc && offPawn >= 0) ? rd32(pc + offPawn) : 0;
+            if (pawn && offLoc >= 0) rd(pawn + offLoc, loc, 12);
+            wsprintfW(buf, L"MARK  map=%s  state=%s  pos=(%d, %d, %d)", map[0] ? map : L"?", gs[0] ? gs : L"?",
+                      (int)loc[0], (int)loc[1], (int)loc[2]);
+            log_line(buf);
+        }
+        f11prev = down;
+        /* map/state poll about once a second */
+        if (tick++ % 20 == 0) {
+            sc.nlev = 0; sc.game = 0; sc.pc = 0; sc.nknown = 0;
+            for_each_object(v_scan, &sc);
+            pc = sc.pc;
+            /* during travel two levels can exist: prefer one that isn't the map we were already on */
+            map[0] = 0;
+            for (i = 0; i < sc.nlev; i++) {
+                wchar nm[64];
+                if (!name_of((int)rd32(sc.levels[i] + 0x20), nm, 64)) continue;
+                if (!map[0] || weq(map, lastMap)) wcpy(map, nm, 64);
+            }
+            gs[0] = 0;
+            if (sc.game && offGS >= 0) read_fstring(sc.game + offGS, gs, 32);
+            if (!weq(map, lastMap) || !weq(gs, lastGs)) {
+                wsprintfW(buf, L"MAP %s  state=%s", map[0] ? map : L"(none)", gs[0] ? gs : L"(none)");
+                log_line(buf);
+                wcpy(lastMap, map, 64); wcpy(lastGs, gs, 32);
+                gWnd = 0;  /* re-find the window after loads */
+                wsprintfW(buf, L"HP3  |  %s  |  %s  |  F11 = mark", map[0] ? map : L"...", gs[0] ? gs : L"-");
+                set_title(buf);
+            }
+        }
+        Sleep(50);
+    }
+}
+
+BOOL WINAPI DllMain(HANDLE inst, u32 reason, void *res) {
+    (void)res;
+    if (reason == 1) { DisableThreadLibraryCalls(inst); CreateThread(0, 0, worker, 0, 0, 0); }
+    return 1;
+}
