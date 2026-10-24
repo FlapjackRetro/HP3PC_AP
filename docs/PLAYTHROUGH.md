@@ -139,3 +139,24 @@ challenge needs a single entrance (the side-room door) and a single exit back to
 halves. Catalogue for this half: cards *Blodwyn Bludd* (`KnightSpawner21`, a Depulso knight) and *Lady Carmilla
 Sanguina* (`ChestSpawner13`), secret areas `SecretAreaMarker3`/`4`, 4 challenge stars, and a bean bonus game.
 Spell actors: 11 Spongify pads, 9 Retractum targets, Lumos sparkles, 2 Alohomora triggers.
+
+### End of the challenge: bean bonus room
+
+Confirmed: finishing the challenge leads into the **bean bonus room**. It isn't the separate HP3_BeanBonus map
+(that one is entered from InsideHub, `ChangeLevelTrigger14`). It's built into the challenge: `BeanBonusGame0` in
+HP3_Ch1CarpeRetractumB at (5972, 3560, −1004), group `Beanbonus`, with a 120-second timer (`TimeLimit`). Ch2B and
+Ch3B each have their own.
+
+Sequence from the data:
+1. `EndChallengeTrigger0` (4737, 7075, 2209): win → `0697Ch1FinalStarALL`, lose → `0696Ch1FinalStrFail`, replay →
+   `0700Ch1ChalChReplay`.
+2. Bean bonus round (120 s).
+3. `0698BeanBonusRonEXIT` → `Trigger ChalChamber_CS`: the challenge chamber, the room with doors to Ch1/Ch2/Ch3
+   (`ChangeLevelTrigger9`/`10`/`11`).
+4. In `GState000`, `0700Ch1Chal_CRDoor` loads HP3_Ch1CarpeRetractum and sets `GState010`.
+
+MapTracker logged a change from Ch1B to HP3_Ch1CarpeRetractum at 11:47:25, around when the bonus room was reached.
+*(Which map the bonus room is on, and where the player goes after the timer: to confirm.)*
+
+**Open Castle:** the bean bonus is beans only (no check). The challenge win (`EndChallengeTrigger`, `_bAlreadyWon`)
+and its stars are candidate checks.
