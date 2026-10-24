@@ -708,3 +708,22 @@ Banners (`BannerSpwn`) are Depulso targets hung high on walls; marks from the fl
 
 Nearby: secret area `SecretAreaMarker0` (−9060, 2105, 1711), about 550 units west; `ChestSpawner30` (−9260, 3106, 1596),
 3 pasties + 15 beans.
+
+### End of the Glacius challenge (confirmed)
+
+Same pattern as the other two: after the challenge the player is in the duplicate challenge chamber inside
+HP3_Ch3GlaciusB, and the state becomes **`GState075`** (18:17:26). Leaving it plays a cutscene
+(`GlaciustoBuckBeakExc`, active in `070`/`075`) that loads **HP3_BuckyExecuted** (18:17:34).
+
+## 21. HP3_BuckyExecuted: Buckbeak's execution (`GState075`)
+
+| | |
+| --- | --- |
+| Level ID | `bex` |
+| State | `GState075` |
+| Entered from | the Ch3B challenge chamber, `GlaciustoBuckBeakExc` (confirmed). In vanilla also from Ch1/Ch1B (`0700Ch1Chal_BuckyEx`) and Ch2B (`DracLoadBuckyExec`) when the state is `075` |
+| Leaves to | HP3_Adv5Shack (`8180BuckExecuted` / `8180BuckExecuted_02Temp`), setting the state written as **`GSate085`** in the cutscene file (sic: a typo for `GState085`, *check what the game does with it*) |
+| Checks (catalogue) | **none**: six pumpkins and a scarecrow, all beans only |
+
+**Open Castle:** no checks, so this map can be dropped (beans only). SCENES.md and OPEN_CASTLE.md listed it as having
+chests with checks; they don't (beans). *(Whether there's any player control here: to confirm.)*
