@@ -286,3 +286,9 @@ use the normal exit to GroundsHub *(verify)*.
 ## 8. HP3_InsideHub, `GState060`
 
 Arrived in the shortcuts room straight from the COMC win cutscene (confirmed, 12:17:36).
+
+## 9. HP3_GroundsHub, `GState060`: candidate entrances
+
+- **Hagrid's hut door:** a closed wooden door with no loading zone in vanilla (GroundsHub, `GState060`, screenshot
+  12:25). Candidate spot for an Open Castle entrance to a grounds story map (Adv6Paddock / BuckyExecuted are set at
+  Hagrid's). Position: *(F11 mark pending; MapTracker v9 fixes F11)*.
