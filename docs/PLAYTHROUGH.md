@@ -745,7 +745,7 @@ chests with checks; they don't (beans).
 | --- | --- | --- | --- |
 | 2 pasties | `CauldronSpwn2` (−5522, −1420, −980), a cauldron; marked at (−5537, −1372, −973) | **Depulso**, confirmed | **found** |
 | 2 pasties | `CauldronSpwn1` (1954, −4330, −856), a cauldron; marked at (1964, −4281, −853) | **Depulso**, confirmed | **found** |
-| 4 pasties (+ 2 chocolate frogs) | `ChestCompanionSpawner0` (3240, −3773, −999), a "companion" chest with **two Alohomora padlocks** on it (`AlohomoraPadLock0`/`1`); marked at (3232, −3819, −981) | **Alohomora**, confirmed *(two padlocks: does a companion cast on one?)* | **found** |
+| 4 pasties (+ 2 chocolate frogs) | `ChestCompanionSpawner0` (3240, −3773, −999), a "companion" chest with **two Alohomora padlocks** on it (`AlohomoraPadLock0`/`1`); marked at (3232, −3819, −981) | **Alohomora**, cast by **Harry and Hermione together** (one padlock each), confirmed | **found** |
 | 2 pasties (+ 1 chocolate frog) | `ChestSpawner7` (−4582, −2857, −899); marked at (−4590, −2898, −917) | **Alohomora**, confirmed | **found** |
 | Pasty (placed) | `PumpkinPasty3` (−1761, −3577, −880); marked at (−1760, −3584, −853). A padlocked door (`AlohomoraPadLock4`/`5`) is ~315 units west | *(none stated)* | **found** |
 | Cake (placed) | `CauldronCake4` (−707, −5223, −48), high up; marked at (−736, −5227, −116) | **dragon form** (Draconifors statue `DraconisforsStatue1` at (−1319, −3403, −811)), confirmed | **found** |
@@ -755,6 +755,11 @@ chests with checks; they don't (beans).
 | Pasty (placed) | `PumpkinPasty5` (824, −2044, −1048); marked at (808, −2038, −1013) | *(none stated)* | **found** (all 3 placed pasties done) |
 | Pasty (placed) | `PumpkinPasty0` (467, −2404, −2895); marked at (447, −2410, −2893) | *(none stated)* | **found** |
 | 2 cakes | `ChestSpawner12` (−3235, −3979, −770), in secret area `SecretAreaMarker1` (−3310, −3971, −760); marked at (−3203, −3942, −757) | **Alohomora**, confirmed | **found** |
+
+**Companion chests** (`ChestCompanionSpawner*`): two padlocks that two characters must open together. Here Harry
+and Hermione are both in the party, since this level puts both of them in it (assumed; Ron is the injured one in
+the story at this point). Logic: no extra requirement in this map, as long as the level always loads with that
+party. *(Check that it does when entered from an Open Castle entrance rather than the story chain.)*
 
 **Open Castle:** keeps its checks (secrets and snacks). It needs an entrance: a spare door, or the Whomping Willow
 trigger on the grounds planned in [OPEN_CASTLE.md](OPEN_CASTLE.md) §6.
