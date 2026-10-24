@@ -100,6 +100,23 @@ Depends on Open Castle working without heavy changes to Hogwarts. Candidate item
 | (spare) | Locked door, InsideHub 7th floor east (1427, −960, 2154): static door + lock-bar meshes | any story map (§18) |
 | (spare) | Two locked dungeon doors, DungeonHUB (−481, 2805, −341) and (−473, 4107, −341): static door + lock-bar meshes | any story map (§11) |
 
+**Spare-door checklist** (every `DoorLockBar_SM` in the game: 9. A door counts as usable once it's been marked in play,
+which proves it's reachable.)
+
+| Map | Lock bar | Position | Area | In play |
+| --- | --- | --- | --- | --- |
+| InsideHub | `StaticMeshActor50` | (732, 373, 91) | entrance hall | confirmed |
+| InsideHub | `StaticMeshActor42` | (736, 1635, 91) | entrance hall | confirmed |
+| InsideHub | `StaticMeshActor9` | (−168, 1272, 1520) | 4th floor | confirmed |
+| InsideHub | `StaticMeshActor292` | (−103, −1084, 2172) | 7th floor | confirmed |
+| InsideHub | `StaticMeshActor228` | (1447, −956, 2171) | 7th floor | confirmed |
+| InsideHub | `StaticMeshActor227` | (669, −2116, 1341) | ? (near DADA, 2nd floor) | *not yet* |
+| DungeonHUB | `StaticMeshActor315` | (−480, 2786, −318) | dungeon | confirmed |
+| DungeonHUB | `StaticMeshActor95` | (−480, 4126, −318) | dungeon | confirmed |
+| GroundsDada | `StaticMeshActor227` | (11885, −11669, 1403) | ? | *not yet* (the GroundsDada visits so far were cutscene only) |
+
+Hagrid's hut door (GroundsHub) is a different kind of door, but it's also confirmed reachable.
+
 That's about 20 items, enough to cover every story-only map with checks. The castle side has plenty of doors. The
 grounds have no door with a loading zone (GroundsHub's only exits are COMC and the castle), but Hagrid's hut door
 is a natural place for a new trigger.
