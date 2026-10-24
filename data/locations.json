@@ -3525,6 +3525,74 @@
  {
   "map": "HP3_Ch1CarpeRetractum",
   "level_id": "cr",
+  "actor": "HPSpawnThingy3",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   1315,
+   2522,
+   1209
+  ],
+  "tag": "SpawnCauldronCake",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "SpawnCauldronCake"
+ },
+ {
+  "map": "HP3_Ch1CarpeRetractum",
+  "level_id": "cr",
+  "actor": "HPSpawnThingy4",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   1284,
+   2109,
+   864
+  ],
+  "tag": "SpawnPasties2",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "SpawnPasties2"
+ },
+ {
+  "map": "HP3_Ch1CarpeRetractum",
+  "level_id": "cr",
+  "actor": "HPSpawnThingy6",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   1357,
+   2132,
+   864
+  ],
+  "tag": "SpawnPasties3",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "SpawnPasties3"
+ },
+ {
+  "map": "HP3_Ch1CarpeRetractum",
+  "level_id": "cr",
+  "actor": "HPSpawnThingy8",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   1292,
+   2177,
+   864
+  ],
+  "tag": "SpawnPasties1",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "SpawnPasties1"
+ },
+ {
+  "map": "HP3_Ch1CarpeRetractum",
+  "level_id": "cr",
   "actor": "ChallengeStar11",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -11896,6 +11964,448 @@
  {
   "map": "HP3_DungeonHUB",
   "level_id": "dung",
+  "actor": "HPSpawnThingy74",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2206,
+   4095,
+   -341
+  ],
+  "tag": "Bs22",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs22"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy7",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   109,
+   2113,
+   -597
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy12",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   289,
+   1630,
+   -473
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy20",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   34,
+   962,
+   -394
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy68",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2208,
+   3569,
+   -341
+  ],
+  "tag": "Bs16",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs16"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy27",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -864,
+   1140,
+   -517
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy23",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -479,
+   962,
+   -486
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy14",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   291,
+   1375,
+   -412
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy16",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   291,
+   1120,
+   -509
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy66",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2207,
+   3380,
+   -341
+  ],
+  "tag": "Bs14",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs14"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy58",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2208,
+   2374,
+   -341
+  ],
+  "tag": "Bs6",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs6"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy60",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2207,
+   2582,
+   -341
+  ],
+  "tag": "Bs8",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs8"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy5",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -158,
+   2113,
+   -293
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy19",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -865,
+   1410,
+   -339
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy3",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -416,
+   2113,
+   -207
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy56",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2208,
+   2182,
+   -341
+  ],
+  "tag": "Bs4",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs4"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy21",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -226,
+   962,
+   -383
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy26",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -865,
+   1050,
+   -744
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy25",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -739,
+   961,
+   -698
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy70",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2206,
+   3761,
+   -341
+  ],
+  "tag": "Bs18",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs18"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy72",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2207,
+   3956,
+   -341
+  ],
+  "tag": "Bs20",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs20"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy54",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2131,
+   2082,
+   -341
+  ],
+  "tag": "Bs2",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs2"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy28",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -863,
+   1191,
+   -382
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy11",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   288,
+   1884,
+   -619
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy30",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -862,
+   1340,
+   -297
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy29",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -864,
+   1254,
+   -297
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
   "actor": "ChestSpawner3",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -16221,6 +16731,176 @@
  {
   "map": "HP3_InsideHub",
   "level_id": "ihub",
+  "actor": "HPSpawnThingy14",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -3557,
+   701,
+   488
+  ],
+  "tag": "peeves2_Spwn_Pastie_01",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "peeves2_Spwn_Pastie_01"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy23",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   448,
+   951,
+   72
+  ],
+  "tag": "Peeves3_Spwn_Cake_01",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Peeves3_Spwn_Cake_01"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy22",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   447,
+   1050,
+   72
+  ],
+  "tag": "Peeves3_Spwn_Cake_03",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Peeves3_Spwn_Cake_03"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy2",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -546,
+   637,
+   1657
+  ],
+  "tag": "4thFlr_SecretSpong_Spwn_01",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "4thFlr_SecretSpong_Spwn_01"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy1",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -545,
+   637,
+   1842
+  ],
+  "tag": "4thFlr_SecretSpong_Spwn_03",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "4thFlr_SecretSpong_Spwn_03"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy4",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -545,
+   639,
+   1742
+  ],
+  "tag": "4thFlr_SecretSpong_Spwn_02",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "4thFlr_SecretSpong_Spwn_02"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy13",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -3554,
+   851,
+   488
+  ],
+  "tag": "peeves2_Spwn_Pastie_04",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "peeves2_Spwn_Pastie_04"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy18",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -3587,
+   807,
+   488
+  ],
+  "tag": "peeves2_Spwn_Pastie_03",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "peeves2_Spwn_Pastie_03"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy16",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -3592,
+   749,
+   488
+  ],
+  "tag": "peeves2_Spwn_Pastie_02",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "peeves2_Spwn_Pastie_02"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy25",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   409,
+   998,
+   72
+  ],
+  "tag": "Peeves3_Spwn_Cake_02",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Peeves3_Spwn_Cake_02"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
   "actor": "AlohomoraPadLock14",
   "cls": "AlohomoraPadLock",
   "category": "KWGenericSpawner",
@@ -18813,6 +19493,74 @@
   "contents": [],
   "persist_key": "ppbCauldronCake8_PU",
   "awarded_by": null
+ },
+ {
+  "map": "HP3_PortraitPassword_C",
+  "level_id": "ppc",
+  "actor": "HPSpawnThingy8",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -3919,
+   -1596,
+   1898
+  ],
+  "tag": "Cspongyplate3",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Cspongyplate3"
+ },
+ {
+  "map": "HP3_PortraitPassword_C",
+  "level_id": "ppc",
+  "actor": "HPSpawnThingy1",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -3959,
+   -1596,
+   1926
+  ],
+  "tag": "Cspongyplate3",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Cspongyplate3"
+ },
+ {
+  "map": "HP3_PortraitPassword_C",
+  "level_id": "ppc",
+  "actor": "HPSpawnThingy4",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -3845,
+   -1597,
+   1611
+  ],
+  "tag": "Cspongyplate3",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Cspongyplate3"
+ },
+ {
+  "map": "HP3_PortraitPassword_C",
+  "level_id": "ppc",
+  "actor": "HPSpawnThingy6",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -3883,
+   -1596,
+   1800
+  ],
+  "tag": "Cspongyplate3",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Cspongyplate3"
  },
  {
   "map": "HP3_PortraitPassword_C",
