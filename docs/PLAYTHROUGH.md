@@ -110,6 +110,10 @@ tag: 32 pasties and 12 cakes across all maps.
 | Card *Lady Carmilla Sanguina* | `ChestSpawner13` (−1762, 5868, 2258), with 25 beans and 6 pasties (pasties confirmed); beside secret area `SecretAreaMarker3` (−1769, 5968, 2288) | **found** (in a chest) |
 | Card *Blodwyn Bludd* | `KnightSpawner21` (1713, 5812, 1797), Depulso knight, with 5 pasties | |
 | Secret areas | `SecretAreaMarker3`, `SecretAreaMarker4` (2264, 7105, 1480) | |
+| Cauldron cake | `KnightSpawner11` (1646, 6681, 1792), Depulso knight, with 20 beans | **found** |
+| Cauldron cake | `BannerSpwn1` (−1137, 4734, 1429), a banner | |
+
+**Requires** Depulso as well (confirmed, knights).
 
 Chest pasties come out as a burst, not as placed pickups, so under the current plan they're filler, not checks.
 
