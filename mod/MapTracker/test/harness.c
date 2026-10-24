@@ -47,7 +47,7 @@ int main(void) {
     int nNone = addname("None"), nClass = addname("Class"), nObject = addname("Object"), nActor = addname("Actor"),
         nInfo = addname("Info"), nGameInfo = addname("GameInfo"), nKWGame = addname("KWGame"), nHGame = addname("HGame"),
         nController = addname("Controller"), nPC = addname("PlayerController"), nHPHC = addname("HPHeroController"),
-        nLevel = addname("Level"), nMyLevel = addname("MyLevel"), nEntry = addname("Entry"),
+        nLevel = addname("Level"), nMyLevel = addname("myLevel"), nEntry = addname("Entry"),
         nInside = addname("HP3_InsideHub"), nGrounds = addname("HP3_GroundsHub"), nCGS = addname("CurrentGameState"),
         nPawn = addname("Pawn"), nLoc = addname("Location"), nPkg = addname("Package"), nStrProp = addname("StrProperty"),
         nHGame0 = addname("HGame0"), nPC0 = addname("HPHeroController0");
