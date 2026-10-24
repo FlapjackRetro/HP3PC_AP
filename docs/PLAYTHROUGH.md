@@ -639,3 +639,7 @@ the library's entrance. The "Library" area unlock in [OPEN_CASTLE.md](OPEN_CASTL
 [OPEN_CASTLE.md](OPEN_CASTLE.md) §3, now located: raise `DADA_PortToExpecto_Mvr` / open `DADA_DoorToExpecto_Mvr` when
 the item is received, with a new `ChangeLevelTrigger` behind them to HP3_Adv2ExpPatronum. Like the Library door, it's
 built the same way (portcullis + `TudorDoor1U`/`2U` pair, in the `Persistant_Movers` group).
+
+**Spare locked door, 4th floor** (marked at (−187, 1274, 1498), 17:46:13): the same decorative set as the
+entrance-hall pair, a static `TudorDoorL_SM` door with a `DoorLockBar_SM` bar in a `DoorArchTudorQuad_SM` arch, plus
+`PopupTrigger15`. No mover, nothing behind it. Free for an Open Castle entrance.
