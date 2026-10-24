@@ -497,6 +497,21 @@ to the exam (FA2) and uses the side-room door (`ChangeLevelTrigger10`) for the c
 its goodie), and `ChestSpawner19` (3296, 5513, 645) holds the card *Romanian Longhorn Dragon*, by secret area
 `SecretAreaMarker6`. So at least one shield in this challenge comes out of a chest.
 
+**Grass patch** (rabbit; marked centre (4518, 4282, 306)): eight tufts, `Lsecretgrass1`–`8`, in a ring around
+(4515, 4340, 343).
+
+| Grass | Tag | Drop |
+| --- | --- | --- |
+| `KnightSpawner31` | `Lsecretgrass7` | 1 pasty |
+| `KnightSpawner27` | `Lsecretgrass3` | 1 pasty |
+| `KnightSpawner29` | `Lsecretgrass5` | 1 cake |
+| `KnightSpawner17`/`25`/`26`/`28`/`30` | `Lsecretgrass8`/`1`/`2`/`4`/`6` | 2 beans each |
+
+Requirement: **rabbit form**, confirmed. *(Which drops were collected: the mark is the patch, not each tuft.)*
+
+**Knight hall** (not visited yet), far west around (−9250 to −7240, −1540 to 513), z −960 and −417: nine suits of
+armour (tags `khall1`–`6`, `k1`, `k2`, `kside1`), each with **10 beans + 2 pasties**, so 18 pasties from knights.
+
 **Bundimuns (pasty creatures).** Stun one with Rictusempra, then jump on it, and it drops pasties. The drops are
 **guaranteed**: `BundimunController.DoGoodieSpawning()` spawns exactly `GoodieCount` × `GoodieToSpawn`, and only
 the direction the pickups fly is random. (Class default: 3 beans; maps override it.) There's no save flag, so a
