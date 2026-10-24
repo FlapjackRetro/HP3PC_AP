@@ -374,5 +374,13 @@ Catalogue, both halves:
 - 12 challenge stars (Ch2 8, Ch2B 4), so probably ~10 shields once overlaps are removed, as in Ch1; 12 creature
   statues (Draconifors/Lapifors targets).
 
+Found so far:
+
+| Check | Where | Requires | Status |
+| --- | --- | --- | --- |
+| Pasty near the start | probably `PumpkinPasty2` (−2830, 1431, −217), the closest placed pasty to the start (~1400 units from `SmartStart0` (−4228, 1272, −144)) | **rabbit form (Lapifors)**, confirmed | **found** |
+
+The start plays `Cut_6500SP2LapIntro_Start` (`PlayerStart2`), the Lapifors introduction.
+
 **Open Castle:** in vanilla this challenge is reached from the classroom cutscene. The plan sends the classroom door
 to the exam (FA2) and uses the side-room door (`ChangeLevelTrigger10`) for the challenge.
