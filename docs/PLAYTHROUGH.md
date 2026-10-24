@@ -616,3 +616,17 @@ Spawners (all Depulso targets):
 
 **Open Castle:** needs an entrance (the planned Library door `Library_Door_Mvr` / `Library_Port_Mvr`) and keeps its
 exit to InsideHub.
+
+## 18. HP3_InsideHub, `GState070`: back from the library
+
+The library level ends with `7170Library_Exit`, which returns the player to InsideHub, second floor (MapTracker
+17:36:58, `GState070`).
+
+| Check / place | Where | Requires | Status |
+| --- | --- | --- | --- |
+| Pasty chest (10 beans + 3 pasties) after the flying-book fight | `ChestSpawner14` (−51, −1682, 632), tag `2ndFlr_BookBtlBkCs_Chest_02`, opened by `AlohomoraTrigger8`; marked at (−48, −1634, 650) | **Depulso** (flying books: `FlyingBook.vulnerableToClass=DepulsoSpell`; they're a `Poxie` subclass, but doxies themselves need Rictusempra) + **Alohomora** | **found** |
+| **Library exit / entrance** | Portcullis `KWMover53` (tag `Library_Port_Mvr`, (−704, −1368, 732)) in front of the double doors `KWMover52`/`KWMover13` (tag `Library_Door_Mvr`), 2nd floor; `Door3` and `PopupTrigger20` there too; marked at (−710, −1349, 778) | — | confirmed: this is where the library level comes out |
+
+**Open Castle:** confirmed, the 2nd-floor Library door (portcullis + doors) is where Adv3Library exits, so it works as
+the library's entrance. The "Library" area unlock in [OPEN_CASTLE.md](OPEN_CASTLE.md) §3 uses it: raise
+`Library_Port_Mvr` / open `Library_Door_Mvr` once the item is received, plus a `ChangeLevelTrigger` to HP3_Adv3Library.
