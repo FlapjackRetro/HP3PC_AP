@@ -644,3 +644,8 @@ built the same way (portcullis + `TudorDoor1U`/`2U` pair, in the `Persistant_Mov
 **Spare locked door, 4th floor** (marked at (−187, 1274, 1498), 17:46:13): the same decorative set as the
 entrance-hall pair, a static `TudorDoorL_SM` door with a `DoorLockBar_SM` bar in a `DoorArchTudorQuad_SM` arch, plus
 `PopupTrigger15`. No mover, nothing behind it. Free for an Open Castle entrance.
+
+**Spare locked door, 7th floor** (marked at (−84, −1081, 2154), 17:49:35): the same static set, `TudorDoorL_SM`
+door + `DoorLockBar_SM` bar in a `DoorArchTudorQuad_SM` arch (`StaticMeshActor348`/`292`/`1144`). No mover. Close
+to `CutSceneTrigger4` (`1080PortShort`, `GState010`), the Peeves shortcut-password scene. Free for an Open Castle
+entrance.
