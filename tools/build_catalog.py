@@ -75,8 +75,9 @@ def main():
                 if pr.get('bTeleportThingy') and pr.get('TeleportActorTag'):
                     teleported[str(pr['TeleportActorTag']).lower()] = pr.get('Tag')
                 sc = str(pr.get('SpawnClass') or '').split('.')[-1]
-                if isa(sc, 'WizardCard'):   # card created on the spot by a quest reward
-                    rows.append(dict(map=mp, level_id=lid or '', actor=e['name'], cls=sc, category='WizardCard',
+                sbase = next((b for b in ('WizardCard', 'PumpkinPasty', 'CauldronCake') if isa(sc, b)), None)
+                if sbase:   # card or snack created on the spot when an event fires (quest reward, fight won, ...)
+                    rows.append(dict(map=mp, level_id=lid or '', actor=e['name'], cls=sc, category=sbase,
                                      loc=vec(pr.get('Location')), tag=pr.get('Tag'), event=None, contents=[],
                                      persist_key=None, awarded_by=pr.get('Tag')))
         for e in p.exports:
