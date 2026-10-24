@@ -658,3 +658,29 @@ entrance.
 behind the balcony. It's **unreachable**: the player can't get up there (confirmed; marked from the floor below at
 (700, −2026, 1194)). Not usable as an entrance unless a way up is added; an Open Castle option adds a Spongify pad for this
 ([OPEN_CASTLE.md](OPEN_CASTLE.md), spare-door checklist).
+
+## 19. HP3_Ch3Glacius: Glacius challenge (Harry), first visit (`GState070`)
+
+| | |
+| --- | --- |
+| Level ID | `gl` (second half `glb`) |
+| State | `GState070` (MapTracker 18:00:27) |
+| Entered from | InsideHub *(which entrance: to confirm; in `GState070` the Charms classroom plays `7250CharmsIntro`)* |
+| Requires | **Glacius for the whole map**: it's needed immediately to proceed (confirmed), so every check here is behind Glacius |
+
+| Check | Where | Requires | Status |
+| --- | --- | --- | --- |
+| Card *Eargit the Ugly* (+ 15 beans) | `ChestSpawner12` (9464, −4524, 14248), by secret area `SecretAreaMarker3` (9189, −4540, 14317); marked at (9415, −4526, 14266) | Glacius + **Alohomora**, confirmed | **found** |
+
+Catalogue, both halves:
+- **Cards (5):** Ch3 has *Eargit the Ugly* (found), *Ug the Unreliable* (`ChestSpawner35` (−4594, −2707, 4691), by
+  `SecretAreaMarker2`) and *Alguff the Awful* (`ChestSpawner31` (3524, −3817, 10968), by `SecretAreaMarker1`). Ch3B has
+  *Urg the Unclean* (`ChestSpawner33` (−9258, −1012, 1596)) and *Gringott*, placed (`WC_Gringott0`
+  (−10632, −2334, −3977)).
+- **Secret areas (5):** Ch3 `1`/`2`/`3` (each with a card chest); Ch3B `0`/`4`.
+- **Snacks (placed):** Ch3 has 39 pasties and 10 cakes; Ch3B has 32 and 7. The most of any challenge.
+- 22 challenge stars in the data (Ch3 12, Ch3B 10).
+
+**Open Castle:** in logic, Glacius gates the entire challenge, so the challenge entrance effectively requires
+Glacius (with `split_challenge_spells` off, the Glacius item opens both). Ch3 and Ch3B will be one region, like the
+other two challenges.
