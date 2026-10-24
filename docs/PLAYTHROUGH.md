@@ -112,6 +112,9 @@ tag: 32 pasties and 12 cakes across all maps.
 | Secret areas | `SecretAreaMarker3`, `SecretAreaMarker4` (2264, 7105, 1480) | |
 | Cauldron cake | `KnightSpawner11` (1646, 6681, 1792), Depulso knight, with 20 beans | **found** |
 | Cauldron cake | `BannerSpwn1` (−1137, 4734, 1429), a banner | |
+| 2 pasties | `KnightSpawner15` (1585, 5813, 1798), Depulso knight, with 15 beans; next to the Blodwyn Bludd knight | **found** |
+| 4 pasties | `ChestSpawner19` (2260, 7300, 1465), beside secret area `SecretAreaMarker4` | |
+| pasties | `ChestSpawner12` (1662, 5275, 1737) | |
 
 **Requires** Depulso as well (confirmed, knights).
 
