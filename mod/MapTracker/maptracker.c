@@ -42,6 +42,7 @@ IMP BOOL   WINAPI IsWindowVisible(HWND);
 typedef struct { long left, top, right, bottom; } RECT;
 IMP BOOL   WINAPI GetWindowRect(HWND, RECT*);
 IMP int    WINAPI GetWindowTextW(HWND, wchar*, int);
+IMP int    WINAPI GetClassNameW(HWND, wchar*, int);
 IMP long   WINAPI SendMessageTimeoutW(HWND, u32, u32, long, u32, u32, u32*);
 IMP HWND   WINAPI GetForegroundWindow(void);
 IMP short  WINAPI GetAsyncKeyState(int);
@@ -52,7 +53,7 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 #define WM_GETTEXT 0x000D
 #define SMTO_ABORTIFHUNG 0x0002
 #define VK_F11 0x7A
-#define MT_VERSION L"v7"
+#define MT_VERSION L"v8"
 
 /* minimal CRT shims (no C runtime is linked) */
 int _fltused = 0;
@@ -179,26 +180,46 @@ static void log_line(const wchar *w) {
     if (n > 1) WriteFile(f, u8, n - 1, &wr, 0);
     CloseHandle(f);
 }
-/* the game's main window: the largest visible top-level window of this process */
-static HWND gWnd; static long gBestArea; static wchar gTitle[256];
+/* The game's main window. Picked once as the largest visible window of this process that has a title, then
+   followed by its window class, since overlays and helper windows can be visible in the same process. */
+static HWND gWnd; static long gBestArea; static wchar gTitle[256], gClass[128];
 static BOOL WINAPI enum_cb(HWND h, long lp) {
-    u32 pid = 0; RECT r; long a; (void)lp;
+    u32 pid = 0; RECT r; long a; wchar t[16], c[128]; (void)lp;
     GetWindowThreadProcessId(h, &pid);
     if (pid != GetCurrentProcessId() || !IsWindowVisible(h) || !GetWindowRect(h, &r)) return 1;
+    if (gClass[0]) { if (!GetClassNameW(h, c, 128) || !weq(c, gClass)) return 1; }
+    else {   /* first pick: the game's own title or ours */
+        t[0] = 0; GetWindowTextW(h, t, 16);
+        if (!(t[0] == 'H' && t[1] == 'a' && t[2] == 'r' && t[3] == 'r') && !(t[0] == 'H' && t[1] == 'P' && t[2] == '3')) return 1;
+    }
     a = (r.right - r.left) * (r.bottom - r.top);
     if (a > gBestArea) { gBestArea = a; gWnd = h; }
     return 1;
 }
 static void set_title(const wchar *s) { wcpy(gTitle, s, 256); }
 /* called about once a second: the game rewrites its title (pause menu, focus changes), so keep putting ours back */
+static int gRestores, gGetFails;
 static void keep_title(void) {
-    u32 res; wchar cur[256];
+    u32 res; wchar cur[256], buf[400];
     if (!gTitle[0]) return;
     gWnd = 0; gBestArea = 0; EnumWindows(enum_cb, 0);
+    if (!gWnd && gClass[0]) { gClass[0] = 0; gBestArea = 0; EnumWindows(enum_cb, 0); }   /* window class changed */
     if (!gWnd) return;
+    if (!gClass[0]) {
+        GetClassNameW(gWnd, gClass, 128);
+        wsprintfW(buf, L"title: game window class \"%s\"", gClass); log_line(buf);
+    }
     cur[0] = 0;
-    if (!SendMessageTimeoutW(gWnd, WM_GETTEXT, 256, (long)cur, SMTO_ABORTIFHUNG, 200, &res)) return;
-    if (!weq(cur, gTitle)) SendMessageTimeoutW(gWnd, WM_SETTEXT, 0, (long)gTitle, SMTO_ABORTIFHUNG, 500, &res);
+    if (!SendMessageTimeoutW(gWnd, WM_GETTEXT, 256, (long)cur, SMTO_ABORTIFHUNG, 1000, &res)) {
+        if (gGetFails++ < 5) log_line(L"title: window didn't answer WM_GETTEXT");
+        /* set it anyway; a busy window still applies it once it pumps messages */
+        SendMessageTimeoutW(gWnd, WM_SETTEXT, 0, (long)gTitle, SMTO_ABORTIFHUNG, 1000, &res);
+        return;
+    }
+    if (!weq(cur, gTitle)) {
+        SendMessageTimeoutW(gWnd, WM_SETTEXT, 0, (long)gTitle, SMTO_ABORTIFHUNG, 1000, &res);
+        if (gRestores++ < 10) { wsprintfW(buf, L"title: restored (game had set \"%s\")", cur); log_line(buf); }
+    }
 }
 
 /* F11 counts when any window of this process has focus (the window we retitle isn't always the one focused) */

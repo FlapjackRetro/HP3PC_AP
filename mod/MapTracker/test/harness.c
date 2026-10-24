@@ -23,7 +23,7 @@ HANDLE CreateFileW(const wchar*a,u32 b,u32 c,void*d,u32 e,u32 f,HANDLE g){(void)
 BOOL WriteFile(HANDLE a,const void*b,u32 c,u32*d,void*e){(void)a;(void)b;(void)c;(void)d;(void)e;return 1;} BOOL CloseHandle(HANDLE a){(void)a;return 1;}
 void GetLocalTime(SYSTEMTIME*t){memset(t,0,sizeof*t);} int WideCharToMultiByte(u32 a,u32 b,const wchar*c,int d,char*e,int f,const char*g,BOOL*h){(void)a;(void)b;(void)c;(void)d;(void)e;(void)f;(void)g;(void)h;return 0;}
 BOOL EnumWindows(BOOL(*a)(HWND,long),long b){(void)a;(void)b;return 1;} u32 GetWindowThreadProcessId(HWND a,u32*b){(void)a;(void)b;return 0;} BOOL IsWindowVisible(HWND a){(void)a;return 0;}
-BOOL GetWindowRect(HWND a,RECT*b){(void)a;(void)b;return 0;} int GetWindowTextW(HWND a,wchar*b,int c){(void)a;(void)b;(void)c;return 0;} long SendMessageTimeoutW(HWND a,u32 b,u32 c,long d,u32 e,u32 f,u32*g){(void)a;(void)b;(void)c;(void)d;(void)e;(void)f;(void)g;return 0;}
+int GetClassNameW(HWND a,wchar*b,int c){(void)a;(void)b;(void)c;return 0;} BOOL GetWindowRect(HWND a,RECT*b){(void)a;(void)b;return 0;} int GetWindowTextW(HWND a,wchar*b,int c){(void)a;(void)b;(void)c;return 0;} long SendMessageTimeoutW(HWND a,u32 b,u32 c,long d,u32 e,u32 f,u32*g){(void)a;(void)b;(void)c;(void)d;(void)e;(void)f;(void)g;return 0;}
 HWND GetForegroundWindow(void){return 0;} short GetAsyncKeyState(int k){(void)k;return 0;} int wsprintfW(wchar*a,const wchar*b,...){(void)a;(void)b;return 0;} long SHGetFolderPathW(HWND a,int b,HANDLE c,u32 d,wchar*e){(void)a;(void)b;(void)c;(void)d;(void)e;return 1;}
 
 /* ---- build fake engine state ---- */
