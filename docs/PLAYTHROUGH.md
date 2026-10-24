@@ -388,6 +388,7 @@ Found so far:
 | Pasty | `PumpkinPasty10` (−1269, −1030, −58); marked at (−1284, −1033, −44) | **rabbit form**, confirmed | **found** |
 | Pasty | `PumpkinPasty11` (433, −382, 239); marked at (416, −378, 259) | **dragon form (Draconifors)**, confirmed | **found** |
 | Pasty spawner (a pumpkin) | `Pumpkin6` (−6, −1084, −439); marked at (−10, −1068, −416). Pasties, count from the class default | **Depulso**, confirmed | **found** |
+| Cake chest (2 cakes) | `ChestSpawner21` (522, −383, −456); marked at (474, −391, −437), inside secret area `SecretAreaMarker2` (454, −387, −417) | **Alohomora**, confirmed | **found** |
 
 Pumpkins, like knights and chests, are `KWGenericSpawner`s: their pasties burst out and aren't individual checks under the current plan (see the chest-check option).
 
