@@ -163,7 +163,10 @@ Sequence:
    room with the three challenge entrances. Confirmed with MapTracker v7: the chamber and the shortcuts room it
    opens onto are both part of **HP3_InsideHub** (its `ChangeLevelTrigger9`/`10`/`11`). Ch1B also contains a copy of
    the chamber (group `ChallengeChamber`, same three triggers). The earlier log line showing Ch1B in `GState010`
-   came from v5's stale-controller bug, so it doesn't say which copy the bonus exit uses *(to confirm)*.
+   came from v5's stale-controller bug. **Settled by Ch2 (MapTracker v12, 17:21:29):** after the end of a challenge the
+   player stands in the copy of the chamber inside the challenge's `B` map (`HP3_Ch2DraconiforsB`), not InsideHub.
+   Walking out of that copy triggers the next story transition. Entered normally from the castle, the chamber is
+   InsideHub's own.
 4. Leaving the chamber leads into InsideHub (next entry).
 
 **Open Castle:** the bean bonus is beans only (no check). Candidate checks: the challenge win (`EndChallengeTrigger`,
@@ -544,3 +547,23 @@ Catalogue for this half: cards *Norwegian Ridgeback* (`ChestSpawner12` (4875, 46
 `SecretAreaMarker1`), *Romanian Longhorn* (`ChestSpawner19` (3296, 5513, 645), by `SecretAreaMarker6`),
 *Hungarian Horntail* (`ChestSpawner13` (2657, 857, 346)); secret areas `SecretAreaMarker1`/`5`/`6`/`7`; 12 placed
 pasties and 14 placed cakes; 4 challenge stars; a bean bonus game; the end trigger.
+
+### End of the Draconifors challenge (confirmed)
+
+The challenge was finished, and the player came out in the challenge chamber, which is the copy inside
+HP3_Ch2DraconiforsB, as the state changed to **`GState065`** (17:21:29). Trying to leave the chamber hit a cutscene
+trigger, `DracLoadQuidditch` (active outside `070/075/090/100`), which loads **HP3_Quidditch** and sets
+**`GState070`** (17:21:32). Still cutscene, no control.
+
+## 15. HP3_Quidditch: cutscene only (`GState070`)
+
+| | |
+| --- | --- |
+| Level ID | `quid` |
+| State | `GState070` |
+| Entered from | Ch2B challenge chamber, `DracLoadQuidditch` (vanilla also: from Ch1 `0700Ch1Chal_QuidDem_070` in `GState065`, Ch3B `GlaciustoQuidditch` in `GState065`) |
+| Leaves to | `7010QuidDem_ALL` → GroundsDada, or `7010QuidDem_SpinFallShot` → Adv2ExpPatronum (both set `GState070`) |
+| Checks | none in the catalogue |
+
+So far it's all cutscene (the Quidditch match and the Dementor attack). **Open Castle:** drop it (no checks, no
+player control), as planned. *(Where the vanilla chain goes next: following.)*
