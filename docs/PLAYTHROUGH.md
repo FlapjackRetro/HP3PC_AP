@@ -485,6 +485,7 @@ to the exam (FA2) and uses the side-room door (`ChangeLevelTrigger10`) for the c
 | Pasty | `PumpkinPasty5` (3808, 2643, 294); marked at (3823, 2623, 307) | **rabbit form**, confirmed | **found** |
 | Pasty | `PumpkinPasty25` (3048, 2649, 294); marked at (3026, 2645, 307) | **rabbit form**, confirmed | **found** |
 | Pasty | `PumpkinPasty26` (2764, 2372, 294); marked at (2771, 2387, 307) | **rabbit form**, confirmed | **found** |
+| Pasty | `PumpkinPasty19` (4416, 1977, 294), inside secret area `SecretAreaMarker5` (4369, 1979, 351); marked at (4381, 1985, 307) | **rabbit form**, confirmed | **found** |
 
 **Bundimuns (pasty creatures).** Stun one with Rictusempra, then jump on it, and it drops pasties. The drops are
 **guaranteed**: `BundimunController.DoGoodieSpawning()` spawns exactly `GoodieCount` × `GoodieToSpawn`, and only
