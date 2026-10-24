@@ -49,7 +49,7 @@ from Quidditch (`7010QuidDem_ALL`, `GState070`) *(to confirm)*.
 | Level ID | `cr` |
 | State | `GState000` on arrival |
 | Role | Ron's Carpe Retractum challenge, the first playable level after the prologue |
-| Requires | Carpe Retractum, **Spongify** (confirmed) |
+| Requires | Carpe Retractum, **Spongify**, **Rictusempra** (confirmed) |
 | Checks | *(in progress)*; one wizard card found so far |
 
 Spell actors in the map: 21 Retractum targets, 2 Spongify pads, 4 Alohomora triggers and 2 padlocks, 17 other
@@ -71,8 +71,17 @@ All three cards are in chests inside secret areas.
 **Pumpkin pasties:** 3, confirmed. They aren't placed in the level. They appear on top of a Spongify pad
 (`SpongifyPad3`, around (1313, 2141, 812)) once the imps are beaten by throwing their wizard crackers back at them.
 `ImpCombatManager` sends its done-event, and three `HPSpawnThingy` spawners fire (`SpawnPasties1`/`2`/`3`, actors
-`HPSpawnThingy8`/`4`/`6`). A fourth spawner, `SpawnCauldronCake` (`HPSpawnThingy3`, (1315, 2522, 1209)),
-creates one Cauldron Cake the same way *(trigger to confirm)*.
+`HPSpawnThingy8`/`4`/`6`). The chain is imp fight → `ImpCombatManager1` → `CRDoorTrigger_CS`, and the
+`SpawnPastiesImp` dispatcher fires the three spawners.
+
+**Doxy room** (right after that Spongify pad; group `RoomD_E_F`): requires **Rictusempra**, confirmed. Two waves of
+three doxies (`Poxie`, the game's name for doxies). Wave 1 (`poxiegroup1`) counts down `poxtowercounter1`, which
+starts wave 2 (`poxiegroup2`). Wave 2 counts down `poxtowercounter2` (3), which fires `cutpoxdoor`, the
+`6045Ch1BeatPixiesQC` cutscene. The reward is **one Cauldron Cake**, confirmed, from spawner `SpawnCauldronCake`
+(`HPSpawnThingy3`, (1315, 2522, 1209)).
+
+Logic so far for these rewards: imp pasties need Carpe Retractum to reach the imps *(verify)*; the doxy cake needs
+Spongify (to get in) and Rictusempra.
 
 Spawned snacks have no placed actor, so they get no `_PU` save key. As checks they'd be detected by the spawn event
 (or by the pickup of a spawned `PumpkinPasty`). The catalogue now lists them with `awarded_by` = the spawner's
