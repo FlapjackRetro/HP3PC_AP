@@ -649,3 +649,6 @@ entrance-hall pair, a static `TudorDoorL_SM` door with a `DoorLockBar_SM` bar in
 door + `DoorLockBar_SM` bar in a `DoorArchTudorQuad_SM` arch (`StaticMeshActor348`/`292`/`1144`). No mover. Close
 to `CutSceneTrigger4` (`1080PortShort`, `GState010`), the Peeves shortcut-password scene. Free for an Open Castle
 entrance.
+
+**Spare locked door, 7th floor (east)** (marked at (1427, −960, 2154), 17:50:23): the same static door + lock-bar set
+(`StaticMeshActor166`/`228`/`488`). No mover. Free for an Open Castle entrance.
