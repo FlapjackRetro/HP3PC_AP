@@ -399,6 +399,7 @@ Found so far:
 | Pasty spawner (a pumpkin, 1 pasty) | `Pumpkin7` (1783, −381, −729), east arm; marked at (1764, −382, −705) | **Depulso**, confirmed | **found** |
 | Pasty spawner (a pumpkin, **2 pasties**) | `Pumpkin3` (1343, 21, −728), north arm; marked at (1360, 16, −704) | **Depulso**, confirmed | **found** |
 | Pasty spawner (a pumpkin, 2 pasties) | `Pumpkin0` (3022, −596, 77); marked at (3022, −580, 95) | **Depulso**, confirmed | **found** |
+| Pasty spawner (a pumpkin, 2 pasties) | `Pumpkin12` (3018, −913, 78); marked at (3025, −910, 95) | **Depulso**, confirmed | **found** |
 | Cake chest (2 cakes) | `ChestSpawner21` (522, −383, −456); marked at (474, −391, −437), inside secret area `SecretAreaMarker2` (454, −387, −417) | **Alohomora**, confirmed | **found** |
 
 **Softlock: the pumpkin room needs Spongify to leave** (confirmed). It's a pit (floor ≈ −725) that the player drops
