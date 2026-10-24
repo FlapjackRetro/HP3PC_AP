@@ -379,6 +379,7 @@ Found so far:
 | Check | Where | Requires | Status |
 | --- | --- | --- | --- |
 | Pasty near the start | probably `PumpkinPasty2` (−2830, 1431, −217), the closest placed pasty to the start (~1400 units from `SmartStart0` (−4228, 1272, −144)) | **rabbit form (Lapifors)**, confirmed | **found** |
+| Card *Common Welsh Green Dragon* | `KnightSpawner2` (−3462, 624, −139), suit of armour in the room after the first | **Depulso**, confirmed | **found** |
 
 The start plays `Cut_6500SP2LapIntro_Start` (`PlayerStart2`), the Lapifors introduction.
 
