@@ -46,6 +46,11 @@ IMP int    WINAPI GetClassNameW(HWND, wchar*, int);
 IMP long   WINAPI SendMessageTimeoutW(HWND, u32, u32, long, u32, u32, u32*);
 IMP HWND   WINAPI GetForegroundWindow(void);
 IMP short  WINAPI GetAsyncKeyState(int);
+typedef struct { u32 vkCode, scanCode, flags, time; u32 dwExtraInfo; } KBDLLHOOKSTRUCT;
+typedef struct { HWND hwnd; u32 message, wParam; long lParam; u32 time; long pt[2]; } MSG;
+IMP HANDLE WINAPI SetWindowsHookExW(int, long (WINAPI*)(int, u32, long), HANDLE, u32);
+IMP long   WINAPI CallNextHookEx(HANDLE, int, u32, long);
+IMP BOOL   WINAPI GetMessageW(MSG*, HWND, u32, u32);
 IMP int    __cdecl wsprintfW(wchar*, const wchar*, ...);
 IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 
@@ -53,13 +58,15 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 #define WM_GETTEXT 0x000D
 #define SMTO_ABORTIFHUNG 0x0002
 #define VK_F11 0x7A
-#define MT_VERSION L"v8"
+#define MT_VERSION L"v9"
 
 /* minimal CRT shims (no C runtime is linked) */
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile unsigned char *p = (volatile unsigned char *)d; while (n--) *p++ = (unsigned char)c; return d; }
 
 static HANDLE gProc;
+static volatile int gMarkRequests, gHookOk;   /* set by the keyboard hook thread */
+static HANDLE gInst;
 static u32 *gObjs;     /* &GObjObjects : { UObject** Data; int Num; int Max } */
 static u32 *gNames;    /* &FName::Names : { FNameEntry** Data; int Num; int Max } */
 
@@ -245,7 +252,7 @@ static void lookup_offsets(void) {
 
 static u32 WINAPI worker(void *arg) {
     HANDLE core; wchar map[64] = {0}, lastMap[64] = {0}, gs[32] = {0}, lastGs[32] = {0}, buf[400], id[32], pkg[64];
-    int f11prev = 0, i, reported = 0; u32 tick = 0, pc = 0, pawn = 0;
+    int f11prev = 0, marksSeen = 0, i, reported = 0; u32 tick = 0, pc = 0, pawn = 0;
     static struct scan sc;   /* 2 KB+, keep it off the stack */
     (void)arg;
     gProc = GetCurrentProcess();
@@ -274,15 +281,15 @@ static u32 WINAPI worker(void *arg) {
     }
     for (;;) {
         /* F11 marker, polled fast */
-        int down = (GetAsyncKeyState(VK_F11) & 0x8000) != 0;
-        if (down && !f11prev && fg_is_ours()) {
+        int down = (GetAsyncKeyState(VK_F11) & 0x8000) != 0, req = gMarkRequests;
+        if ((gHookOk ? req != marksSeen : (down && !f11prev)) && fg_is_ours()) {
             float loc[3] = {0, 0, 0};
             if (pawn && offLoc >= 0) rd(pawn + offLoc, loc, 12);
             wsprintfW(buf, L"MARK  map=%s  state=%s  pos=(%d, %d, %d)", map[0] ? map : L"?", gs[0] ? gs : L"?",
                       (int)loc[0], (int)loc[1], (int)loc[2]);
             log_line(buf);
         }
-        f11prev = down;
+        f11prev = down; marksSeen = req;
         if (tick % 20 == 10) keep_title();
         if (tick++ % 20 == 0) {   /* about once a second */
             u32 li = 0, lvl, game;
@@ -293,6 +300,7 @@ static u32 WINAPI worker(void *arg) {
                 wsprintfW(buf, L"ready: offsets player.actor=%d pawn=%d loc=%d level=%d xlevel=%d id=%d game=%d gamestate=%d",
                           offPlayerActor, offPawn, offLoc, offLevel, offXLevel, offID, offGame, offGS);
                 log_line(buf); reported = 1;
+                log_line(gHookOk ? L"F11: keyboard hook installed" : L"F11: keyboard hook FAILED, falling back to key polling");
             }
             /* The live controller is the viewport's: Player.Actor. Controllers from previous levels linger until
                garbage collection (with their old pawns), so scanning controllers alone can pick a stale one. */
@@ -326,8 +334,29 @@ static u32 WINAPI worker(void *arg) {
     }
 }
 
+/* F11 through a low-level keyboard hook: the game reads the keyboard with DirectInput, so GetAsyncKeyState
+   doesn't always see keys while it has focus. The hook sees them first and never swallows them. */
+static long WINAPI kb_hook(int code, u32 wp, long lp) {
+    if (code == 0 && (wp == 0x0100 /*WM_KEYDOWN*/ || wp == 0x0104 /*WM_SYSKEYDOWN*/)) {
+        KBDLLHOOKSTRUCT *k = (KBDLLHOOKSTRUCT*)lp;
+        if (k->vkCode == VK_F11 && !(k->flags & 0x80)) gMarkRequests++;
+    }
+    return CallNextHookEx(0, code, wp, lp);
+}
+static u32 WINAPI hook_thread(void *arg) {
+    MSG m; (void)arg;
+    if (!SetWindowsHookExW(13 /*WH_KEYBOARD_LL*/, kb_hook, gInst, 0)) return 1;
+    gHookOk = 1;
+    while (GetMessageW(&m, 0, 0, 0) > 0) { }
+    return 0;
+}
+
 BOOL WINAPI DllMain(HANDLE inst, u32 reason, void *res) {
     (void)res;
-    if (reason == 1) { DisableThreadLibraryCalls(inst); CreateThread(0, 0, worker, 0, 0, 0); }
+    if (reason == 1) {
+        DisableThreadLibraryCalls(inst); gInst = inst;
+        CreateThread(0, 0, worker, 0, 0, 0);
+        CreateThread(0, 0, hook_thread, 0, 0, 0);
+    }
     return 1;
 }
