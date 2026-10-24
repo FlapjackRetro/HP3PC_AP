@@ -607,7 +607,7 @@ Spawners (all Depulso targets):
 | Entered from | end of Adv2ExpPatronum: its ending cutscene (`7090PatronusExit`) carries straight into this map (confirmed) |
 | Leaves to | InsideHub (`7170Library_Exit`) |
 | Checks (catalogue) | cards *Falco Aesalon* (`ChestSpawner1` (−3863, −671, 281), with 5 pasties) and *Double-Ended Newt* (placed, `WC_DoubleEndedNewt0` (−8216, −7269, 1357)); 4 secret areas (`SecretAreaMarker2`/`4`/`5`/`6`, around x −8200 to −12300); a cake chest (`ChestSpawner2`, 4 cakes); one Draconifors statue |
-| Requires | Draconifors (statue), Carpe Retractum (per the plan) *(to confirm)* |
+| Requires | **Depulso** (confirmed); Draconifors (statue), Carpe Retractum (per the plan) *(to confirm)* |
 
 **Open Castle:** needs an entrance (the planned Library door `Library_Door_Mvr` / `Library_Port_Mvr`) and keeps its
 exit to InsideHub.
