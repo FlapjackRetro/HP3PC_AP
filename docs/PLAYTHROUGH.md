@@ -722,8 +722,24 @@ HP3_Ch3GlaciusB, and the state becomes **`GState075`** (18:17:26). Leaving it pl
 | Level ID | `bex` |
 | State | `GState075` |
 | Entered from | the Ch3B challenge chamber, `GlaciustoBuckBeakExc` (confirmed). In vanilla also from Ch1/Ch1B (`0700Ch1Chal_BuckyEx`) and Ch2B (`DracLoadBuckyExec`) when the state is `075` |
-| Leaves to | HP3_Adv5Shack (`8180BuckExecuted` / `8180BuckExecuted_02Temp`), setting the state written as **`GSate085`** in the cutscene file (sic: a typo for `GState085`, *check what the game does with it*) |
+| Leaves to | HP3_Adv5Shack (`8180BuckExecuted` / `8180BuckExecuted_02Temp`), with a cutscene that sets the state written as **`GSate085`** (sic: a typo for `GState085`). **Confirmed: the typo has no effect**: the player arrives in Adv5Shack still in `GState075` (MapTracker 18:19:20). |
 | Checks (catalogue) | **none**: six pumpkins and a scarecrow, all beans only |
 
+It's cutscene only: the execution cutscene runs straight on into HP3_Adv5Shack (confirmed).
+
 **Open Castle:** no checks, so this map can be dropped (beans only). SCENES.md and OPEN_CASTLE.md listed it as having
-chests with checks; they don't (beans). *(Whether there's any player control here: to confirm.)*
+chests with checks; they don't (beans).
+
+## 22. HP3_Adv5Shack: the Shrieking Shack adventure (`GState075`)
+
+| | |
+| --- | --- |
+| Level ID | `ADV5Shack` |
+| State | **`GState075`** on arrival (the `GSate085` typo is ignored; the map's own default is `GState085`) |
+| Entered from | the BuckyExecuted cutscene (`8180BuckExecuted`), confirmed |
+| Leaves to | HP3_WhompingWillow (`ChangeLevelTrigger0` or `8700ADV5AtShack`), setting `GState085` |
+| Checks (catalogue) | **no cards**; 5 secret areas (`SecretAreaMarker0`–`4`); 3 placed pasties and 1 placed cake; 12 snack spawners (chests, skull shelves, cauldrons, 2 "companion" chests) with about 25 pasties and 8 cakes; one Draconifors statue |
+| Requires | Draconifors, Glacius (per the plan) *(to confirm in play)* |
+
+**Open Castle:** keeps its checks (secrets and snacks). It needs an entrance: a spare door, or the Whomping Willow
+trigger on the grounds planned in [OPEN_CASTLE.md](OPEN_CASTLE.md) §6.
