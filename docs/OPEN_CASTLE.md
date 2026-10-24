@@ -117,6 +117,16 @@ which proves it's reachable.)
 
 Hagrid's hut door (GroundsHub) is a different kind of door, but it's also confirmed reachable.
 
+**Option: Lupin's office door via a Spongify pad.** The balcony door in the DADA classroom (above) can become a usable
+entrance if the mod spawns a `SpongifyPad` on the classroom floor below the balcony (near the mark at
+(700, −2026, 1194)), with a `SpongifyTarget` on the balcony (around (700, −2090, 1290), *to measure*). Then:
+- the entrance needs **Spongify** (logic) on top of whatever area item opens it;
+- the lock bar (`StaticMeshActor227`) can be hidden when the area item is received, as with the other spare doors;
+- a `ChangeLevelTrigger` at the door (`StaticMeshActor195`, (722, −2085, 1281)) sends the player to the chosen map.
+
+It fits a story map tied to Lupin, such as Adv5Shack (the Shrieking Shack, where Lupin turns) or Adv6Paddock. Pad and
+target are runtime spawns like the other Open Castle triggers; no `.unr` edits.
+
 That's about 20 items, enough to cover every story-only map with checks. The castle side has plenty of doors. The
 grounds have no door with a loading zone (GroundsHub's only exits are COMC and the castle), but Hagrid's hut door
 is a natural place for a new trigger.

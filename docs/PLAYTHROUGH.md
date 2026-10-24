@@ -656,4 +656,5 @@ entrance.
 **Lupin's office door (DADA classroom balcony):** the ninth lock-bar door (`StaticMeshActor227` bar at
 (669, −2116, 1341), door `StaticMeshActor195` at (722, −2085, 1281)) is the office door at the top of the classroom,
 behind the balcony. It's **unreachable**: the player can't get up there (confirmed; marked from the floor below at
-(700, −2026, 1194)). Not usable as an entrance unless a way up is added.
+(700, −2026, 1194)). Not usable as an entrance unless a way up is added; an Open Castle option adds a Spongify pad for this
+([OPEN_CASTLE.md](OPEN_CASTLE.md), spare-door checklist).
