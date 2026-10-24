@@ -672,6 +672,8 @@ behind the balcony. It's **unreachable**: the player can't get up there (confirm
 | --- | --- | --- | --- |
 | Card *Eargit the Ugly* (+ 15 beans) | `ChestSpawner12` (9464, −4524, 14248), by secret area `SecretAreaMarker3` (9189, −4540, 14317); marked at (9415, −4526, 14266) | Glacius + **Alohomora**, confirmed | **found** |
 | Card *Ug the Unreliable* (+ 15 beans, 2 cakes) | `ChestSpawner35` (−4594, −2707, 4691), by secret area `SecretAreaMarker2` (−4895, −2715, 4745); marked at (−4636, −2684, 4706). A second chest, `ChestSpawner13`, sits almost exactly on the same spot (−4589, −2707, 4688) with no contents set *(a leftover duplicate? check whether two chests are visible)* | Glacius + **Alohomora**, confirmed | **found** |
+| 3 pasties (+ 15 beans) | `KnightSpawner39` (−8631, −2496, 4580), suit of armour; marked at (−8659, −2538, 4538) | Glacius + **Depulso**, confirmed | **found** |
+| 3 pasties (+ 18 beans) | `KnightSpawner38` (−8621, −3036, 4580), suit of armour; marked at (−8628, −2987, 4538) | Glacius + **Depulso**, confirmed | **found** |
 | Card *Alguff the Awful* (+ 10 beans, 2 chocolate frogs) | `ChestSpawner31` (3524, −3817, 10968), by secret area `SecretAreaMarker1` (3522, −3993, 11026); marked at (3533, −3862, 10986) | Glacius + **Alohomora**, confirmed | **found** |
 
 Catalogue, both halves:
