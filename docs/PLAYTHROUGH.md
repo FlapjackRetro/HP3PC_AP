@@ -68,8 +68,12 @@ Catalogue checks (first half):
 
 All three cards are in chests inside secret areas.
 
-**Pumpkin pasties:** 3 found (confirmed). The catalogue has no pasties placed in this half; all 3 come out of
-`ChestSpawner11`, the same chest as *Amarillo Lestoat*. Chest drops aren't tracked one by one, so with the current
-plan (placed pasties only) they aren't checks. Options: make each chest one check (keyed by the spawner's
-`_lives` save key), or count chest pasties as part of the chest's check. *(open question, see
-[OPEN_CASTLE.md](OPEN_CASTLE.md) §2 notes)*
+**Pumpkin pasties:** 3, confirmed. They aren't placed in the level. They appear on top of a Spongify pad
+(`SpongifyPad3`, around (1313, 2141, 812)) once the imps are beaten by throwing their wizard crackers back at them.
+`ImpCombatManager` sends its done-event, and three `HPSpawnThingy` spawners fire (`SpawnPasties1`/`2`/`3`, actors
+`HPSpawnThingy8`/`4`/`6`). A fourth spawner, `SpawnCauldronCake` (`HPSpawnThingy3`, (1315, 2522, 1209)),
+creates one Cauldron Cake the same way *(trigger to confirm)*.
+
+Spawned snacks have no placed actor, so they get no `_PU` save key. As checks they'd be detected by the spawn event
+(or by the pickup of a spawned `PumpkinPasty`). The catalogue now lists them with `awarded_by` = the spawner's
+tag: 32 pasties and 12 cakes across all maps.
