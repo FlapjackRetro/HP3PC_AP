@@ -294,3 +294,16 @@ Arrived in the shortcuts room straight from the COMC win cutscene (confirmed, 12
   Hagrid's). Marked at **(813, −1121, 696)** (MapTracker v12, End key, 13:03:43). Nothing
   is placed within ~450 units except an ambient-sound trigger, so a new trigger volume can go at the door without
   clashing with existing actors.
+
+## 10. HP3_InsideHub, `GState060`: candidate entrances
+
+- **Barred doors either side of the entrance hall** (ground floor, flanking the main doors at x ≈ 1360). Marked at
+  **(733, 392, 74)** and **(731, 1615, 74)** (13:06:00 and 13:06:35). They're decoration: each is a static
+  `TudorDoorL_SM` door mesh with a static `DoorLockBar_SM` bar across it in a `DoorArchTudorQuad_SM` arch, plus a
+  `PopupTrigger` in front (`PopupTrigger21` / `PopupTrigger7`, probably the "it's locked" hint). There's no mover and
+  no trigger, so nothing in vanilla opens them.
+
+  **Open Castle:** good reusable entrances. A spawned `ChangeLevelTrigger` (or a use trigger replacing the popup)
+  can send the player to a story-only map, and the lock bar can be hidden once the matching area item is received
+  (a visible "unlocked" cue). Both sit next to the grounds exit, which suits grounds story maps (e.g. Adv5Shack,
+  Adv6Paddock, BuckyExecuted) or the Hogwarts Express prologue.

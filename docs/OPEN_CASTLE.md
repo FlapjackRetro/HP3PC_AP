@@ -91,10 +91,12 @@ Depends on Open Castle working without heavy changes to Hogwarts. Candidate item
 | Portrait Passwords B–F | built-in password system, `pp_<n>` | PortraitPassword_B–F |
 | Grounds adventures | new trigger volumes at landmarks (Whomping Willow, Hagrid's hut, viaduct) | Adv5Shack, Adv6Paddock, BuckyExecuted *(verify)* |
 | Final Day | `FinalDayDoor` (GroundsHub) | HP3_Final, as the goal gate |
+| (spare) | Entrance-hall barred doors at (733, 392, 74) and (731, 1615, 74): static door + lock-bar meshes with a `PopupTrigger`, no mover | any story map; see [PLAYTHROUGH.md](PLAYTHROUGH.md) §10 |
+| (spare) | Hagrid's hut door, GroundsHub (813, −1121, 696): no trigger nearby | a grounds story map (§9) |
 
 That's about 20 items, enough to cover every story-only map with checks. The castle side has plenty of doors. The
-grounds have no reusable door at all (GroundsHub's only exits are COMC and the castle), so grounds adventures need
-new triggers and a visible marker.
+grounds have no door with a loading zone (GroundsHub's only exits are COMC and the castle), but Hagrid's hut door
+is a natural place for a new trigger.
 
 ### Shortcut Passwords: `shortcut_passwords`
 
