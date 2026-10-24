@@ -47,8 +47,9 @@ Everything persistent goes through `kwGame.PersistentStore`, a string key/value 
 | Vendor stock | `NumCakesForSale`, `NumPastiesForSale`, `<LevelID><Name>` (card class) | `VendorManager`, `VI_WizardCard` |
 | Spawner lives, movers, triggers | `<LevelID><Name>_lives`, `_KeyNum`, `_bTOO`, … | `KWGenericSpawner`, `KWMover`, `KWTrigger` |
 
-`<LevelID>` is `LevelInfo.ID`, a KnowWonder addition. Several maps have no `ID` set (Adv1Express, the three
-`Ch*` challenges and their `B` halves, Final, PortraitPassword_F); how their keys come out needs checking in-game.
+`<LevelID>` is `LevelInfo.ID`, a KnowWonder addition. Every map sets one. Maps contain several `LevelInfo` exports,
+and only the first (`LevelInfo0`) is the live one, so tools must read that one; the others are editor leftovers,
+often with an empty `ID`.
 
 ## Items (what Archipelago could give)
 
@@ -67,17 +68,17 @@ The game already has debug commands that grant these (`HPHeroController`): `Give
 
 ## Locations
 
-[`data/hp3_location_catalog.csv`](../data/hp3_location_catalog.csv) (983 rows, all 34 maps) lists every actor that could
+[`data/hp3_location_catalog.csv`](../data/hp3_location_catalog.csv) (1031 rows, all 34 maps) lists every actor that could
 be a check, with its map, Level ID, actor name, class, position, tag/event, chest contents and the `_PU` save key for pickups:
 
 | Category | Count | Notes |
 | --- | --- | --- |
 | Chests and other spawners (`KWGenericSpawner`) | 486 | Contents from `GoodieToSpawn[8]`/`GoodiesNumber[8]`. 23 hold a specific wizard card and 1 a challenge star; most hold beans, cakes or pasties |
-| Pumpkin Pasties / Cauldron Cakes (placed) | 180 / 71 | Probably filler |
+| Pumpkin Pasties / Cauldron Cakes | 215 / 83 | 180 / 71 placed, plus 35 / 12 created by events (`SpawnThingy`/`HPSpawnThingy`, marked `awarded_by`): fights won, puzzles solved |
 | Challenge stars | 63 | Almost all in the classroom challenges and final exams |
 | Save books | 45 | |
 | Secret areas | 41 | |
-| Wizard cards | 36 | 29 placed (including five in the Bean Bonus room) + 7 created by quest rewards. 17 are quest/event rewards, marked `awarded_by` (see [OPEN_CASTLE.md](OPEN_CASTLE.md#5-story-granted-items-and-side-quests)) |
+| Wizard cards | 37 | 29 placed (including five in the Bean Bonus room) + 8 created by events (quest rewards, fights won: e.g. *Sacharissa Tugwood* in Adv5Shack after the Room G skeleton fight). 18 are quest/event rewards, marked `awarded_by` (see [OPEN_CASTLE.md](OPEN_CASTLE.md#5-story-granted-items-and-side-quests)) |
 | Vendor items | 22 | All in InsideHub: cards, cakes, pasties, chocolate frogs, portrait passwords, the final card |
 | Creature statues | 18 | Draconifors/Lapifors spell targets |
 | Challenge completions | 7 | `EndChallengeTrigger` |
