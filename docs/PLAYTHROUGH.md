@@ -194,8 +194,10 @@ needs a new trigger, or the map is simply placed at that spot.
    at (−3730, −3790, 435), `peeves2` at (−3597, 1059, 742)); a beaten Peeves saves `<LevelID><Name>_bD`. Which one
    this fight uses: *to confirm*.
 3. **Take a shortcut down to the shortcut chamber** (now unlocked by the passwords).
-4. **Neville's cutscene in the shortcut chamber:** he offers to guide the trio to Care of Magical Creatures. Next
-   map: HP3_COMC or GroundsHub *(next entry)*.
+4. **Neville's cutscene in the shortcut chamber:** he offers to guide the trio to Care of Magical Creatures.
+5. **Neville leads them out through the main doors** into HP3_GroundsHub (confirmed). In `GState010` the exit is the
+   `LevelLoadGrounds010` cutscene, which sets **`GState040`** (MapTracker 12:08:27: `HP3_GroundsHub  state=GState040`).
+   In other states the plain `LevelLoadGrounds` is used and the state is kept.
 
 These scenes have no `.int` cutscene file of their own (only the shop and Marauder's Map scenes do), so they're
 probably scripted in the map (`HPScriptedSequence` / `CutSceneTrigger` actors).
@@ -207,3 +209,18 @@ probably scripted in the map (`HPScriptedSequence` / `CutSceneTrigger` actors).
   `pp_8`–`pp_21`).
 - The Peeves fight needs Rictusempra. Beating Peeves could be a check (`_bD` key; 3 Peeves in InsideHub).
 - These story cutscenes don't play in the Open Castle base state, so nothing else is lost.
+
+## 6. HP3_GroundsHub: first visit (`GState040`)
+
+| | |
+| --- | --- |
+| Level ID | `ghub` |
+| State | `GState040` (set on the way out of InsideHub) |
+| Entered from | InsideHub main doors, led by Neville (`LevelLoadGrounds010`) |
+| Checks | *(in progress)* |
+
+**Optional side area: the pixie-infested well** (the doxy well side quest; the game's creatures are `Poxie`). Five
+stages, run by `RoundRobin1` "PixieBattleRoundRobin" (battles) and `RoundRobin0` (exit cutscenes), saved as
+`ghubRoundRobin1_iOEI` / `ghubRoundRobin0_iOEI`. Stage rewards are wizard cards: Bran the Bloodthirsty, Cyclops,
+Goliath, Morholt, Hengist of Upper Barnton (teleported to the player by `HPSpawnThingy`). The playthrough is about to
+enter it; *(whether it's a map change or an area of GroundsHub: to confirm)*.
