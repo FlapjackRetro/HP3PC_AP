@@ -701,6 +701,7 @@ other challenges.
 | Card *Urg the Unclean* (+ 15 beans) | `ChestSpawner33` (−9258, −1012, 1596); marked at (−9295, −982, 1614) | Glacius + **Alohomora**, confirmed | **found** |
 | 10 pasties + 2 cakes (+ 5 beans) | `ChestSpawner10` (−11503, 1889, 1463), ~290 units from secret area `SecretAreaMarker4` (−11459, 1606, 1648); marked at (−11488, 1843, 1482) | Glacius + **Alohomora**, confirmed | **found** |
 | 5 pasties (+ 20 beans) | `ChestSpawner11` (−11540, 920, 1604); marked at (−11501, 947, 1622) | Glacius + **Alohomora**, confirmed | **found** |
+| 4 pasties + 1 cake (+ 15 beans) | `BannerSpwn2` (−11762, 1253, 1819), a banner; marked from below at (−11768, 1224, 1622), 30 units across | Glacius + **Depulso** | **found** |
 | 5 pasties + 2 cakes | `BannerSpwn0` (−9173, −407, 1817), a banner (flag) ~210 units up; marked from below at (−9185, −426, 1606) | Glacius + **Depulso**, confirmed | **found** |
 
 Banners (`BannerSpwn`) are Depulso targets hung high on walls; marks from the floor sit ~200 units below them.
