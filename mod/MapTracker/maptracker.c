@@ -39,6 +39,8 @@ IMP int    WINAPI WideCharToMultiByte(u32, u32, const wchar*, int, char*, int, c
 IMP BOOL   WINAPI EnumWindows(BOOL (WINAPI*)(HWND, long), long);
 IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP BOOL   WINAPI IsWindowVisible(HWND);
+typedef struct { long left, top, right, bottom; } RECT;
+IMP BOOL   WINAPI GetWindowRect(HWND, RECT*);
 IMP int    WINAPI GetWindowTextW(HWND, wchar*, int);
 IMP long   WINAPI SendMessageTimeoutW(HWND, u32, u32, long, u32, u32, u32*);
 IMP HWND   WINAPI GetForegroundWindow(void);
@@ -47,9 +49,10 @@ IMP int    __cdecl wsprintfW(wchar*, const wchar*, ...);
 IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 
 #define WM_SETTEXT 0x000C
+#define WM_GETTEXT 0x000D
 #define SMTO_ABORTIFHUNG 0x0002
 #define VK_F11 0x7A
-#define MT_VERSION L"v6"
+#define MT_VERSION L"v7"
 
 /* minimal CRT shims (no C runtime is linked) */
 int _fltused = 0;
@@ -125,13 +128,14 @@ static int prop_offset(const wchar *cls, const wchar *prop) {
 }
 static int is_a_cls(u32 c, u32 want) { int guard = 64; while (c && guard--) { if (c == want) return 1; c = rd32(c + 0x2C); } return 0; }
 
-/* one pass: every PlayerController instance (the live one is picked by the caller) */
-struct scan { u32 clsPC, clsClass; u32 pcs[16]; int npc; u32 known[512]; int nknown; };
+/* one pass: every PlayerController and every Player (viewport). Player.Actor is the live controller. */
+struct scan { u32 clsPC, clsPlayer, clsClass; u32 pcs[16]; int npc; u32 players[4]; int nplayers; u32 known[512]; int nknown; };
 static int v_scan(u32 o, int name, u32 cls, void *c) {
     struct scan *s = c; int k; (void)name;
     if (!cls || cls == s->clsClass || !s->clsPC) return 0;
     for (k = 0; k < s->nknown; k++) if (s->known[k] == cls) return 0;   /* class already known not to match */
     if (is_a_cls(cls, s->clsPC)) { if (s->npc < 16) s->pcs[s->npc++] = o; return 0; }
+    if (s->clsPlayer && is_a_cls(cls, s->clsPlayer)) { if (s->nplayers < 4) s->players[s->nplayers++] = o; return 0; }
     if (s->nknown < 512) s->known[s->nknown++] = cls;
     return 0;
 }
@@ -175,17 +179,26 @@ static void log_line(const wchar *w) {
     if (n > 1) WriteFile(f, u8, n - 1, &wr, 0);
     CloseHandle(f);
 }
-static HWND gWnd; static wchar gOrigTitle[256];
+/* the game's main window: the largest visible top-level window of this process */
+static HWND gWnd; static long gBestArea; static wchar gTitle[256];
 static BOOL WINAPI enum_cb(HWND h, long lp) {
-    u32 pid = 0; wchar t[8]; (void)lp;
+    u32 pid = 0; RECT r; long a; (void)lp;
     GetWindowThreadProcessId(h, &pid);
-    if (pid == GetCurrentProcessId() && IsWindowVisible(h) && GetWindowTextW(h, t, 8) > 0) { gWnd = h; return 0; }
+    if (pid != GetCurrentProcessId() || !IsWindowVisible(h) || !GetWindowRect(h, &r)) return 1;
+    a = (r.right - r.left) * (r.bottom - r.top);
+    if (a > gBestArea) { gBestArea = a; gWnd = h; }
     return 1;
 }
-static void set_title(const wchar *s) {
-    u32 res;
-    if (!gWnd) { EnumWindows(enum_cb, 0); if (gWnd) GetWindowTextW(gWnd, gOrigTitle, 256); }
-    if (gWnd) SendMessageTimeoutW(gWnd, WM_SETTEXT, 0, (long)s, SMTO_ABORTIFHUNG, 500, &res);
+static void set_title(const wchar *s) { wcpy(gTitle, s, 256); }
+/* called about once a second: the game rewrites its title (pause menu, focus changes), so keep putting ours back */
+static void keep_title(void) {
+    u32 res; wchar cur[256];
+    if (!gTitle[0]) return;
+    gWnd = 0; gBestArea = 0; EnumWindows(enum_cb, 0);
+    if (!gWnd) return;
+    cur[0] = 0;
+    if (!SendMessageTimeoutW(gWnd, WM_GETTEXT, 256, (long)cur, SMTO_ABORTIFHUNG, 200, &res)) return;
+    if (!weq(cur, gTitle)) SendMessageTimeoutW(gWnd, WM_SETTEXT, 0, (long)gTitle, SMTO_ABORTIFHUNG, 500, &res);
 }
 
 /* F11 counts when any window of this process has focus (the window we retitle isn't always the one focused) */
@@ -197,9 +210,10 @@ static int fg_is_ours(void) {
 }
 
 /* property offsets, looked up lazily (kwGame.u loads after the engine starts) */
-static int offGS = -1, offPawn = -1, offLoc = -1, offLevel = -1, offXLevel = -1, offID = -1, offGame = -1;
+static int offPlayerActor = -1, offGS = -1, offPawn = -1, offLoc = -1, offLevel = -1, offXLevel = -1, offID = -1, offGame = -1;
 static void lookup_offsets(void) {
     if (offPawn < 0)   offPawn   = prop_offset(L"Controller", L"Pawn");
+    if (offPlayerActor < 0) offPlayerActor = prop_offset(L"Player", L"Actor");
     if (offLoc < 0)    offLoc    = prop_offset(L"Actor", L"Location");
     if (offLevel < 0)  offLevel  = prop_offset(L"Actor", L"Level");
     if (offXLevel < 0) offXLevel = prop_offset(L"Actor", L"XLevel");
@@ -248,23 +262,27 @@ static u32 WINAPI worker(void *arg) {
             log_line(buf);
         }
         f11prev = down;
+        if (tick % 20 == 10) keep_title();
         if (tick++ % 20 == 0) {   /* about once a second */
             u32 li = 0, lvl, game;
             if (!sc.clsPC) { sc.clsPC = find_class(L"PlayerController"); sc.clsClass = sc.clsPC ? rd32(sc.clsPC + 0x24) : 0; }
+            if (!sc.clsPlayer) sc.clsPlayer = find_class(L"Player");
             lookup_offsets();
             if (!reported && offGS >= 0) {
-                wsprintfW(buf, L"ready: offsets pawn=%d loc=%d level=%d xlevel=%d id=%d game=%d gamestate=%d",
-                          offPawn, offLoc, offLevel, offXLevel, offID, offGame, offGS);
+                wsprintfW(buf, L"ready: offsets player.actor=%d pawn=%d loc=%d level=%d xlevel=%d id=%d game=%d gamestate=%d",
+                          offPlayerActor, offPawn, offLoc, offLevel, offXLevel, offID, offGame, offGS);
                 log_line(buf); reported = 1;
             }
-            /* the live controller is the one with a pawn (menu/old-level controllers have none); newest wins */
-            sc.npc = 0; sc.nknown = 0; pc = 0; pawn = 0;
-            if (sc.clsPC && offPawn >= 0) {
-                for_each_object(v_scan, &sc);
+            /* The live controller is the viewport's: Player.Actor. Controllers from previous levels linger until
+               garbage collection (with their old pawns), so scanning controllers alone can pick a stale one. */
+            sc.npc = 0; sc.nplayers = 0; sc.nknown = 0; pc = 0; pawn = 0;
+            if (sc.clsPC) for_each_object(v_scan, &sc);
+            if (offPlayerActor >= 0) for (i = 0; i < sc.nplayers && !pc; i++) pc = rd32(sc.players[i] + offPlayerActor);
+            if (pc) { if (offPawn >= 0) pawn = rd32(pc + offPawn); }
+            else if (offPawn >= 0) {   /* fallback: a controller with a pawn, newest wins */
                 for (i = 0; i < sc.npc; i++) { u32 p = rd32(sc.pcs[i] + offPawn); if (p) { pc = sc.pcs[i]; pawn = p; } }
             }
-            /* no possessed pawn (cutscene, level load): keep the last map. Older controllers can still point
-               at a previous level (the prologue's stays around), so they can't be trusted here. */
+            /* nothing usable (level load): keep the last map */
             if (!pc) { Sleep(50); continue; }
             map[0] = 0; gs[0] = 0; id[0] = 0; pkg[0] = 0;
             if (pc && offLevel >= 0) li = rd32(pc + offLevel);
@@ -279,7 +297,6 @@ static u32 WINAPI worker(void *arg) {
                           id[0] ? id : L"-", pkg[0] ? pkg : L"-");
                 log_line(buf);
                 wcpy(lastMap, map, 64); wcpy(lastGs, gs, 32);
-                gWnd = 0;  /* re-find the window after loads */
                 wsprintfW(buf, L"HP3  |  %s  |  %s  |  F11 = mark", map[0] ? map : L"...", gs[0] ? gs : L"-");
                 set_title(buf);
             }

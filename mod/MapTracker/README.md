@@ -2,7 +2,7 @@
 
 A tiny Ultimate ASI Loader plugin for documenting the game. It's read-only and never changes game memory.
 
-- **Title bar:** `HP3 | <map> | <GState> | F11 = mark`, updated on every map or state change (visible when windowed).
+- **Title bar:** `HP3 | <map> | <GState> | F11 = mark`, reapplied every second, because the game rewrites its own title (visible when windowed).
 - **Log:** every change is appended to `Documents\Harry Potter and the Prisoner of Azkaban\HP3_MapLog.txt`:
   ```
   2026-10-24 09:02:11  MAP HP3_InsideHub  state=GState010  (id=ihub package=Save100)
@@ -21,7 +21,8 @@ Requires HP3-UHDE's `d3d9.dll` (Ultimate ASI Loader). Copy `HP3MapTracker.asi` t
 
 A background thread polls about once a second. It reads Core.dll's exported `UObject::GObjObjects` and
 `FName::Names` and looks for:
-- the `PlayerController` that has a `Pawn` (the live player);
+- the live `PlayerController`: the viewport's `Player.Actor`. Controllers from earlier levels linger until garbage
+  collection, still holding their pawns, so picking one by "has a pawn" can return a stale level;
 - its `Level` (the map's `LevelInfo`) → `ID`, mapped back to the map file name (`ihub` → `HP3_InsideHub`). The
   package name isn't used directly, because a map loaded from a save is named after the save (`Save100`), and
   `HP_Preamble` stays loaded alongside it;
@@ -41,4 +42,4 @@ test/harness.c        # host-side test against a fake engine memory layout:
 gcc -O1 -w -fshort-wchar -U_FORTIFY_SOURCE -o test/harness test/harness.c && ./test/harness
 ```
 
-There's no C runtime: imports are kernel32, user32 and shell32 only, and the output is about 13 KB.
+There's no C runtime: imports are kernel32, user32 and shell32 only, and the output is about 14 KB.

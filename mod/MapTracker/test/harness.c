@@ -23,7 +23,7 @@ HANDLE CreateFileW(const wchar*a,u32 b,u32 c,void*d,u32 e,u32 f,HANDLE g){(void)
 BOOL WriteFile(HANDLE a,const void*b,u32 c,u32*d,void*e){(void)a;(void)b;(void)c;(void)d;(void)e;return 1;} BOOL CloseHandle(HANDLE a){(void)a;return 1;}
 void GetLocalTime(SYSTEMTIME*t){memset(t,0,sizeof*t);} int WideCharToMultiByte(u32 a,u32 b,const wchar*c,int d,char*e,int f,const char*g,BOOL*h){(void)a;(void)b;(void)c;(void)d;(void)e;(void)f;(void)g;(void)h;return 0;}
 BOOL EnumWindows(BOOL(*a)(HWND,long),long b){(void)a;(void)b;return 1;} u32 GetWindowThreadProcessId(HWND a,u32*b){(void)a;(void)b;return 0;} BOOL IsWindowVisible(HWND a){(void)a;return 0;}
-int GetWindowTextW(HWND a,wchar*b,int c){(void)a;(void)b;(void)c;return 0;} long SendMessageTimeoutW(HWND a,u32 b,u32 c,long d,u32 e,u32 f,u32*g){(void)a;(void)b;(void)c;(void)d;(void)e;(void)f;(void)g;return 0;}
+BOOL GetWindowRect(HWND a,RECT*b){(void)a;(void)b;return 0;} int GetWindowTextW(HWND a,wchar*b,int c){(void)a;(void)b;(void)c;return 0;} long SendMessageTimeoutW(HWND a,u32 b,u32 c,long d,u32 e,u32 f,u32*g){(void)a;(void)b;(void)c;(void)d;(void)e;(void)f;(void)g;return 0;}
 HWND GetForegroundWindow(void){return 0;} short GetAsyncKeyState(int k){(void)k;return 0;} int wsprintfW(wchar*a,const wchar*b,...){(void)a;(void)b;return 0;} long SHGetFolderPathW(HWND a,int b,HANDLE c,u32 d,wchar*e){(void)a;(void)b;(void)c;(void)d;(void)e;return 1;}
 
 /* ---- build fake engine state ---- */
@@ -123,6 +123,24 @@ int main(void) {
       for (k = 0; s[k]; k++) MEM[edge + 0x0C + 2*k] = (unsigned char)s[k]; }
     put32(namesArr + 4 * nNames, edge); put32(gNamesVar + 4, nNames + 1); wchar e2[64];
     CHECK(name_of((int)nNames, e2, 64) && weq(e2, L"EdgeName"), "name read at a memory boundary");
+    /* viewport: Player.Actor names the live controller even when a stale one from the previous level still has a pawn */
+    {
+        nNames++;   /* keep the EdgeName entry */
+        int nPlayer = addname("Player"), nActorP = nActor, nVP = addname("WindowsViewport0"), nOldPC = addname("OldController0");
+        unsigned cPlayer = mkobj(nPlayer, cClass, 0); put32(cPlayer + 0x2C, cObject);
+        unsigned pPA = mkobj(nActorP, cStr, cPlayer); put32(pPA + 0x4C, 0x34);
+        unsigned oldPawn = alloc(0x400);
+        unsigned oldPC = mkobj(nOldPC, cHPHC, kInside); put32(oldPC + 0x2B0, oldPawn);   /* newer object, stale pawn */
+        unsigned vp = mkobj(nVP, cPlayer, 0); put32(vp + 0x34, pc);
+        put32(gNamesVar + 4, nNames); put32(gObjsVar + 4, nObjs);   /* publish the new names and objects */
+        offPlayerActor = -1; lookup_offsets();
+        CHECK(offPlayerActor == 0x34, "prop_offset Player.Actor");
+        memset(&sc, 0, sizeof sc); sc.clsPC = cPC; sc.clsClass = cClass; sc.clsPlayer = find_class(L"Player");
+        for_each_object(v_scan, &sc);
+        unsigned newest = 0; for (i = 0; i < sc.npc; i++) if (rd32(sc.pcs[i] + offPawn)) newest = sc.pcs[i];
+        CHECK(newest == oldPC, "(setup) newest-with-pawn would pick the stale controller");
+        CHECK(sc.nplayers == 1 && rd32(sc.players[0] + offPlayerActor) == pc, "viewport's Player.Actor is the live controller");
+    }
     printf(fails ? "\n%d FAILED\n" : "\nALL PASSED\n", fails);
     return fails != 0;
 }
