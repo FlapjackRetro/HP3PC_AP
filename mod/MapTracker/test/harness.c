@@ -1,0 +1,111 @@
+/* Host-side test: fake 32-bit address space laid out like HP3's engine, MapTracker logic compiled against it. */
+#include <stdio.h>
+#include <string.h>
+#include <stdint.h>
+#define __declspec(x)
+#define __stdcall
+#define __cdecl
+#define wsprintfW wsprintfW_unused
+#define main_dll DllMain
+static unsigned char MEM[1 << 22]; static unsigned top = 0x1000;
+static unsigned alloc(unsigned n) { unsigned a = top; top += (n + 15) & ~15u; return a; }
+static void put32(unsigned a, unsigned v) { memcpy(MEM + a, &v, 4); }
+#define memset mt_memset
+#include "../maptracker.c"
+#undef memset
+#undef wsprintfW
+/* imported functions used by the code under test */
+BOOL ReadProcessMemory(HANDLE h, const void *a, void *o, u32 n, u32 *got) { (void)h; uintptr_t ad=(uintptr_t)a; if (!ad || ad + n > sizeof MEM) { *got = 0; return 0; } memcpy(o, MEM + ad, n); *got = n; return 1; }
+HANDLE GetCurrentProcess(void){return 0;} HANDLE GetModuleHandleW(const wchar*w){(void)w;return 0;} void*GetProcAddress(HANDLE h,const char*c){(void)h;(void)c;return 0;}
+HANDLE CreateThread(void*a,u32 b,u32(*c)(void*),void*d,u32 e,u32*f){(void)a;(void)b;(void)c;(void)d;(void)e;(void)f;return 0;} void Sleep(u32 x){(void)x;}
+u32 GetCurrentProcessId(void){return 1;} BOOL DisableThreadLibraryCalls(HANDLE h){(void)h;return 1;}
+HANDLE CreateFileW(const wchar*a,u32 b,u32 c,void*d,u32 e,u32 f,HANDLE g){(void)a;(void)b;(void)c;(void)d;(void)e;(void)f;(void)g;return (HANDLE)-1;}
+BOOL WriteFile(HANDLE a,const void*b,u32 c,u32*d,void*e){(void)a;(void)b;(void)c;(void)d;(void)e;return 1;} BOOL CloseHandle(HANDLE a){(void)a;return 1;}
+void GetLocalTime(SYSTEMTIME*t){memset(t,0,sizeof*t);} int WideCharToMultiByte(u32 a,u32 b,const wchar*c,int d,char*e,int f,const char*g,BOOL*h){(void)a;(void)b;(void)c;(void)d;(void)e;(void)f;(void)g;(void)h;return 0;}
+BOOL EnumWindows(BOOL(*a)(HWND,long),long b){(void)a;(void)b;return 1;} u32 GetWindowThreadProcessId(HWND a,u32*b){(void)a;(void)b;return 0;} BOOL IsWindowVisible(HWND a){(void)a;return 0;}
+int GetWindowTextW(HWND a,wchar*b,int c){(void)a;(void)b;(void)c;return 0;} long SendMessageTimeoutW(HWND a,u32 b,u32 c,long d,u32 e,u32 f,u32*g){(void)a;(void)b;(void)c;(void)d;(void)e;(void)f;(void)g;return 0;}
+HWND GetForegroundWindow(void){return 0;} short GetAsyncKeyState(int k){(void)k;return 0;} int wsprintfW(wchar*a,const wchar*b,...){(void)a;(void)b;return 0;} long SHGetFolderPathW(HWND a,int b,HANDLE c,u32 d,wchar*e){(void)a;(void)b;(void)c;(void)d;(void)e;return 1;}
+
+/* ---- build fake engine state ---- */
+static unsigned namesArr, nNames, objsArr, nObjs;
+static int addname(const char *s) {
+    unsigned e = alloc(0x0C + 2 * 64); unsigned i;
+    for (i = 0; s[i]; i++) { MEM[e + 0x0C + 2*i] = (unsigned char)s[i]; MEM[e + 0x0C + 2*i + 1] = 0; }
+    put32(namesArr + 4 * nNames, e); return (int)nNames++;
+}
+static unsigned mkobj(int name, unsigned cls, unsigned outer) {
+    unsigned o = alloc(0x100); put32(o + 0x18, outer); put32(o + 0x20, (unsigned)name); put32(o + 0x24, cls);
+    put32(objsArr + 4 * nObjs++, o); return o;
+}
+static unsigned wstr(const char *s) { unsigned a = alloc(64), i; for (i = 0; s[i]; i++) MEM[a + 2*i] = (unsigned char)s[i]; return a; }
+#define CHECK(c, msg) do { if (c) printf("PASS  %s\n", msg); else { printf("FAIL  %s\n", msg); fails++; } } while (0)
+int main(void) {
+    int fails = 0; unsigned gNamesVar = alloc(12), gObjsVar = alloc(12);
+    namesArr = alloc(4 * 4096); objsArr = alloc(4 * 3000);
+    put32(gNamesVar, namesArr); put32(gObjsVar, objsArr);
+    gNames = (u32*)(uintptr_t)gNamesVar; gObjs = (u32*)(uintptr_t)gObjsVar;
+    int nNone = addname("None"), nClass = addname("Class"), nObject = addname("Object"), nActor = addname("Actor"),
+        nInfo = addname("Info"), nGameInfo = addname("GameInfo"), nKWGame = addname("KWGame"), nHGame = addname("HGame"),
+        nController = addname("Controller"), nPC = addname("PlayerController"), nHPHC = addname("HPHeroController"),
+        nLevel = addname("Level"), nMyLevel = addname("MyLevel"), nEntry = addname("Entry"),
+        nInside = addname("HP3_InsideHub"), nGrounds = addname("HP3_GroundsHub"), nCGS = addname("CurrentGameState"),
+        nPawn = addname("Pawn"), nLoc = addname("Location"), nPkg = addname("Package"), nStrProp = addname("StrProperty"),
+        nHGame0 = addname("HGame0"), nPC0 = addname("HPHeroController0");
+    (void)nNone;
+    /* classes: Class object is its own class */
+    unsigned cClass = mkobj(nClass, 0, 0); put32(cClass + 0x24, cClass);
+    unsigned cObject = mkobj(nObject, cClass, 0), cActor = mkobj(nActor, cClass, 0), cInfo = mkobj(nInfo, cClass, 0),
+             cGameInfo = mkobj(nGameInfo, cClass, 0), cKWGame = mkobj(nKWGame, cClass, 0), cHGame = mkobj(nHGame, cClass, 0),
+             cController = mkobj(nController, cClass, 0), cPC = mkobj(nPC, cClass, 0), cHPHC = mkobj(nHPHC, cClass, 0),
+             cLevel = mkobj(nLevel, cClass, 0), cPkg = mkobj(nPkg, cClass, 0), cStr = mkobj(nStrProp, cClass, 0);
+    put32(cActor+0x2C,cObject); put32(cInfo+0x2C,cActor); put32(cGameInfo+0x2C,cInfo); put32(cKWGame+0x2C,cGameInfo);
+    put32(cHGame+0x2C,cKWGame); put32(cController+0x2C,cActor); put32(cPC+0x2C,cController); put32(cHPHC+0x2C,cPC);
+    /* properties (outer = declaring class, offset at +0x4C); decoys with same names elsewhere */
+    unsigned pDecoy = mkobj(nPawn, cStr, cHGame); put32(pDecoy + 0x4C, 999);
+    unsigned pCGS = mkobj(nCGS, cStr, cKWGame); put32(pCGS + 0x4C, 0x3A0);
+    unsigned pPawn = mkobj(nPawn, cStr, cController); put32(pPawn + 0x4C, 0x2B0);
+    unsigned pLoc = mkobj(nLoc, cStr, cActor); put32(pLoc + 0x4C, 0x150);
+    /* packages + levels */
+    unsigned kEntry = mkobj(nEntry, cPkg, 0), kInside = mkobj(nInside, cPkg, 0);
+    mkobj(nMyLevel, cLevel, kEntry); unsigned lvInside = mkobj(nMyLevel, cLevel, kInside); (void)lvInside;
+    /* instances: HGame0 with FString state; controller -> pawn with location */
+    unsigned game = mkobj(nHGame0, cHGame, kInside);
+    unsigned st = wstr("GState070"); put32(game + 0x3A0, st); put32(game + 0x3A4, 10); put32(game + 0x3A8, 10);
+    unsigned pawn = alloc(0x400); float L[3] = {1234.5f, -567.0f, 89.9f}; memcpy(MEM + pawn + 0x150, L, 12);
+    unsigned pc = mkobj(nPC0, cHPHC, kInside); put32(pc + 0x2B0, pawn);
+    put32(objsArr + 4 * nObjs++, 0); /* a null slot */
+    put32(gObjsVar + 4, nObjs); put32(gNamesVar + 4, nNames);
+
+    N_Class = name_index(L"Class"); N_Level = name_index(L"Level"); N_MyLevel = name_index(L"MyLevel"); N_Entry = name_index(L"Entry");
+    CHECK(N_Class == nClass && N_Level == nLevel && N_MyLevel == nMyLevel && N_Entry == nEntry, "name_index finds cached names");
+    CHECK(find_class(L"KWGame") == cKWGame && find_class(L"PlayerController") == cPC, "find_class returns class objects");
+    CHECK(find_class(L"HGame0") == 0, "find_class ignores non-class objects");
+    CHECK(prop_offset(L"KWGame", L"CurrentGameState") == 0x3A0, "prop_offset CurrentGameState");
+    CHECK(prop_offset(L"Controller", L"Pawn") == 0x2B0, "prop_offset ignores same-named property in another class");
+    CHECK(prop_offset(L"Actor", L"Location") == 0x150, "prop_offset Location");
+
+    static struct scan sc; memset(&sc, 0, sizeof sc); sc.clsGame = cKWGame; sc.clsPC = cPC; sc.clsClass = cClass;
+    for_each_object(v_scan, &sc);
+    wchar nm[64] = {0}; if (sc.nlev) name_of((int)rd32(sc.levels[0] + 0x20), nm, 64);
+    CHECK(sc.nlev == 1 && weq(nm, L"HP3_InsideHub"), "scan finds the non-Entry level");
+    CHECK(sc.game == game, "scan finds the HGame instance via KWGame superclass");
+    CHECK(sc.pc == pc, "scan finds the HPHeroController via PlayerController superclass");
+    wchar gs[32]; read_fstring(sc.game + 0x3A0, gs, 32);
+    CHECK(weq(gs, L"GState070"), "reads CurrentGameState FString");
+    float got[3]; rd(rd32(sc.pc + 0x2B0) + 0x150, got, 12);
+    CHECK((int)got[0] == 1234 && (int)got[1] == -567 && (int)got[2] == 89, "reads pawn location");
+
+    /* travel: a second level appears; selection must prefer the new one */
+    unsigned kGrounds = mkobj(nGrounds, cPkg, 0); mkobj(nMyLevel, cLevel, kGrounds); put32(gObjsVar + 4, nObjs);
+    memset(&sc, 0, sizeof sc); sc.clsGame = cKWGame; sc.clsPC = cPC; sc.clsClass = cClass; for_each_object(v_scan, &sc);
+    wchar map[64] = {0}, lastMap[64]; wcpy(lastMap, L"HP3_InsideHub", 64); int i;
+    for (i = 0; i < sc.nlev; i++) { wchar n2[64]; if (!name_of((int)rd32(sc.levels[i] + 0x20), n2, 64)) continue; if (!map[0] || weq(map, lastMap)) wcpy(map, n2, 64); }
+    CHECK(sc.nlev == 2 && weq(map, L"HP3_GroundsHub"), "during travel, picks the newly loaded level");
+    /* name read near the end of mapped memory must still succeed (shrinking reads) */
+    unsigned edge = sizeof MEM - (0x0C + 2 * 20); { unsigned k; const char *s = "EdgeName"; memset(MEM + edge, 0, 0x0C + 40);
+      for (k = 0; s[k]; k++) MEM[edge + 0x0C + 2*k] = (unsigned char)s[k]; }
+    put32(namesArr + 4 * nNames, edge); put32(gNamesVar + 4, nNames + 1); wchar e2[64];
+    CHECK(name_of((int)nNames, e2, 64) && weq(e2, L"EdgeName"), "name read at a memory boundary");
+    printf(fails ? "\n%d FAILED\n" : "\nALL PASSED\n", fails);
+    return fails != 0;
+}

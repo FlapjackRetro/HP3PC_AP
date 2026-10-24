@@ -41,6 +41,9 @@ Research stage. Done so far:
 - A first catalogue of potential check locations across all 34 maps: [`data/hp3_location_catalog.csv`](data/hp3_location_catalog.csv).
 - The Wizard Card table and the story game-state list, pulled from the game's defaults.
 - Notes on how items, saves and progression work: [docs/FINDINGS.md](docs/FINDINGS.md).
+- How maps, story game states and level loading work, and every map's entrances: [docs/SCENES.md](docs/SCENES.md), [`data/map_entrances.json`](data/map_entrances.json).
+- The Open Castle design (checks, items, area unlocks, entrance layout, draft YAML): [docs/OPEN_CASTLE.md](docs/OPEN_CASTLE.md).
+- [MapTracker](mod/MapTracker/README.md): a small plugin that shows the current map and story state in the title bar and logs them, for documenting a playthrough.
 
 ## To do
 
@@ -63,8 +66,11 @@ Research stage. Done so far:
 | --- | --- |
 | `docs/FINDINGS.md` | What's known so far about the engine, save keys, items, locations and hooks |
 | `docs/SETUP.md` | Installing the base game, HP3-UHDE and the framerate fix |
-| `data/` | Generated tables: location catalogue (CSV and JSON), wizard cards, game states |
-| `tools/` | Python tools: package reader/decompiler, catalogue builder, framerate patcher |
+| `docs/SCENES.md` | Maps vs. game states, how levels load, story chains, challenge/exam entrances |
+| `docs/OPEN_CASTLE.md` | Open Castle design: checks, items, area unlocks, entrance plan, draft options |
+| `mod/MapTracker/` | Map/state tracker plugin (C, built with clang; no game code) |
+| `data/` | Generated tables: location catalogue (CSV and JSON), map entrances, wizard cards, game states |
+| `tools/` | Python tools: package reader/decompiler, catalogue and entrance-graph builders, framerate patcher |
 
 Nothing derived from the game's own code or binaries is committed. Run the tools against your own install to
 regenerate the decompiled scripts locally ([docs/FINDINGS.md](docs/FINDINGS.md#tools)).
