@@ -765,3 +765,21 @@ party. *(Check that it does when entered from an Open Castle entrance rather tha
 
 **Open Castle:** keeps its checks (secrets and snacks). It needs an entrance: a spare door, or the Whomping Willow
 trigger on the grounds planned in [OPEN_CASTLE.md](OPEN_CASTLE.md) §6.
+
+## 23. HP3_WhompingWillow: cutscene only (`GState085`)
+
+The end of the tunnel level runs into cutscenes; the player arrives in HP3_WhompingWillow with the state now
+**`GState085`** (MapTracker 18:35:55). No control (confirmed: "in cutscenes now"), and nothing in the catalogue.
+**Open Castle:** drop.
+
+## 24. HP3_DementorBattle, first visit (`GState085`)
+
+| | |
+| --- | --- |
+| Level ID | `dembtl` |
+| State | `GState085` (MapTracker 18:37:50, via `Entry`) |
+| Entered from | WhompingWillow cutscenes |
+| Leaves to | in `GState085`: Infirmary (`8730DemEncAExitPARTONE`, sets `GState090`); in `GState090`: DarkTower (`9120DemEncBExit`) |
+| Checks | **none** (catalogue is empty), as expected |
+
+**Open Castle:** no checks, so drop it (or keep it as a boss/goal candidate needing Expecto Patronum).
