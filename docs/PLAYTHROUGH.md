@@ -783,3 +783,22 @@ The end of the tunnel level runs into cutscenes; the player arrives in HP3_Whomp
 | Checks | **none** (catalogue is empty), as expected |
 
 **Open Castle:** no checks, so drop it (or keep it as a boss/goal candidate needing Expecto Patronum).
+
+## 25. HP3_Infirmary: cutscene only (`GState090`)
+
+After the Dementor battle the state becomes **`GState090`** and the player passes through HP3_Infirmary
+(MapTracker 18:39:20), all cutscene, nothing in the catalogue. **Open Castle:** drop.
+
+## 26. HP3_Adv6Paddock: freeing Buckbeak (`GState090`), **playable**
+
+| | |
+| --- | --- |
+| Level ID | `adv6` |
+| State | `GState090` (MapTracker 18:40:33; also the map's default) |
+| Entered from | the Infirmary cutscene (`8730DemEncAExit_Infirmary`), confirmed |
+| Leaves to | HP3_DementorBattle again (`9080Adv6Flyaway`), the second Dementor fight |
+| Checks (catalogue) | card *Professor Armando Dippet* (`CauldronSpwn0` (−1290, 459, 452), a cauldron); 6 placed pasties and 3 placed cakes; 5 snack containers (crate, 2 chests, 2 cauldrons) with about 21 pasties and 3 cakes; no secret areas |
+| Requires | Lapifors and Draconifors statues present (`LapiforsStatue0`, `DraconisforsStatue0`) *(to confirm in play)* |
+
+**Open Castle:** a playable level with a card, so it stays. It needs an entrance (Hagrid's hut door is the natural
+spot, [OPEN_CASTLE.md](OPEN_CASTLE.md) spare doors) and an exit back to GroundsHub instead of `9080Adv6Flyaway`.
