@@ -744,6 +744,7 @@ chests with checks; they don't (beans).
 | Check | Where | Requires | Status |
 | --- | --- | --- | --- |
 | 2 pasties | `CauldronSpwn2` (−5522, −1420, −980), a cauldron; marked at (−5537, −1372, −973) | **Depulso**, confirmed | **found** |
+| 2 pasties (+ 1 chocolate frog) | `ChestSpawner7` (−4582, −2857, −899); marked at (−4590, −2898, −917) | **Alohomora**, confirmed | **found** |
 
 **Open Castle:** keeps its checks (secrets and snacks). It needs an entrance: a spare door, or the Whomping Willow
 trigger on the grounds planned in [OPEN_CASTLE.md](OPEN_CASTLE.md) §6.
