@@ -569,3 +569,22 @@ All cutscene (confirmed): the Quidditch match and the Dementor attack. The cutsc
 **HP3_GroundsDada** (via `7010QuidDem_ALL`, confirmed), still without player control. The GroundsDada stretch is cutscene only too; it continues into **HP3_Adv2ExpPatronum**
 (`7020PatronusIntro_Start`, confirmed). **Open Castle:** drop it (no checks, no
 player control), as planned. *(Where the vanilla chain goes next: following.)*
+
+## 16. HP3_Adv2ExpPatronum: Expecto Patronum adventure (`GState070`)
+
+| | |
+| --- | --- |
+| Level ID | `adv2` |
+| State | `GState070` (MapTracker 17:24:07) |
+| Entered from | the Quidditch → GroundsDada cutscene chain, `7020PatronusIntro_Start` (confirmed; no control until here) |
+| Leaves to | HP3_Adv3Library (`7090PatronusExit`) |
+| Checks (catalogue) | card *Honoria Nutcombe*, spawned when the second wave is destroyed (`SecondWaveDestroyedWC`); no placed snacks or secrets |
+
+Spawners (all Depulso targets):
+
+| Spawner | Position | Drop | Status |
+| --- | --- | --- | --- |
+| `SkullShelfSpwn0` (skull shelf) | (3058, 1671, −362) | 3 pasties | **found**: Depulso, confirmed; marked at (3028, 1659, −337) |
+| `SkullShelfSpwn1` | (3040, 2352, −320) | 3 pasties | |
+| `SkullShelfSpwn2` | (2112, 1545, −362) | 3 cakes | |
+| `TapestrySpwn6`, `ArmoireSpwn0`, `KnightSpawner0`, `ChestSpawner1` | around (2200–3130, 1100–2090) | beans | |
