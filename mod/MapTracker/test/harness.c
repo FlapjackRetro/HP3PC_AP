@@ -76,31 +76,48 @@ int main(void) {
     put32(objsArr + 4 * nObjs++, 0); /* a null slot */
     put32(gObjsVar + 4, nObjs); put32(gNamesVar + 4, nNames);
 
-    N_Class = name_index(L"Class"); N_Level = name_index(L"Level"); N_MyLevel = name_index(L"MyLevel"); N_Entry = name_index(L"Entry");
-    CHECK(N_Class == nClass && N_Level == nLevel && N_MyLevel == nMyLevel && N_Entry == nEntry, "name_index finds cached names");
+    N_Class = name_index(L"Class");
+    CHECK(N_Class == nClass, "name_index finds Class");
+    CHECK(name_index(L"MYLEVEL") == nMyLevel, "name_index is case-insensitive (myLevel)");
     CHECK(find_class(L"KWGame") == cKWGame && find_class(L"PlayerController") == cPC, "find_class returns class objects");
     CHECK(find_class(L"HGame0") == 0, "find_class ignores non-class objects");
     CHECK(prop_offset(L"KWGame", L"CurrentGameState") == 0x3A0, "prop_offset CurrentGameState");
     CHECK(prop_offset(L"Controller", L"Pawn") == 0x2B0, "prop_offset ignores same-named property in another class");
     CHECK(prop_offset(L"Actor", L"Location") == 0x150, "prop_offset Location");
 
-    static struct scan sc; memset(&sc, 0, sizeof sc); sc.clsGame = cKWGame; sc.clsPC = cPC; sc.clsClass = cClass;
+    /* live chain: PC.Level -> LevelInfo (ID, Game) ; PC.XLevel -> Level -> package */
+    int nLevelInfo = addname("LevelInfo"), nID = addname("ID"), nGame = addname("Game"), nLevelP = nLevel,
+        nXLevel = addname("XLevel"), nSave = addname("Save100"), nPC1 = addname("MenuController0");
+    unsigned cLI = mkobj(nLevelInfo, cClass, 0); put32(cLI + 0x2C, cInfo);
+    unsigned pID = mkobj(nID, cStr, cLI); put32(pID + 0x4C, 0x500);
+    unsigned pGame = mkobj(nGame, cStr, cLI); put32(pGame + 0x4C, 0x504);
+    unsigned pLevel = mkobj(nLevelP, cStr, cActor); put32(pLevel + 0x4C, 0x9C);
+    unsigned pXL = mkobj(nXLevel, cStr, cActor); put32(pXL + 0x4C, 0xA0);
+    unsigned kSave = mkobj(nSave, cPkg, 0), lvSave = mkobj(nMyLevel, cLevel, kSave);
+    unsigned li = mkobj(nLevelInfo, cLI, kSave); unsigned idstr = wstr("adv1");
+    put32(li + 0x500, idstr); put32(li + 0x504, game); put32(li + 0x508, 5);  /* FString ID {data,num=5} then Game */
+    put32(li + 0x504 - 4 + 4, 5); /* num already set via 0x504? keep layout explicit below */
+    /* explicit layout: ID FString at 0x500 {ptr, num, max}; Game pointer at 0x510 */
+    put32(li + 0x500, idstr); put32(li + 0x504, 5); put32(li + 0x508, 5); put32(li + 0x510, game); put32(pGame + 0x4C, 0x510);
+    put32(pc + 0x9C, li); put32(pc + 0xA0, lvSave);
+    unsigned menuPC = mkobj(nPC1, cHPHC, kInside); put32(menuPC + 0x2B0, 0);   /* stale controller without a pawn */
+    put32(gObjsVar + 4, nObjs); put32(gNamesVar + 4, nNames);
+    lookup_offsets();
+    CHECK(offLevel == 0x9C && offXLevel == 0xA0 && offID == 0x500 && offGame == 0x510 && offGS == 0x3A0, "lazy offset lookup");
+    static struct scan sc; memset(&sc, 0, sizeof sc); sc.clsPC = cPC; sc.clsClass = cClass;
     for_each_object(v_scan, &sc);
-    wchar nm[64] = {0}; if (sc.nlev) name_of((int)rd32(sc.levels[0] + 0x20), nm, 64);
-    CHECK(sc.nlev == 1 && weq(nm, L"HP3_InsideHub"), "scan finds the non-Entry level");
-    CHECK(sc.game == game, "scan finds the HGame instance via KWGame superclass");
-    CHECK(sc.pc == pc, "scan finds the HPHeroController via PlayerController superclass");
-    wchar gs[32]; read_fstring(sc.game + 0x3A0, gs, 32);
-    CHECK(weq(gs, L"GState070"), "reads CurrentGameState FString");
-    float got[3]; rd(rd32(sc.pc + 0x2B0) + 0x150, got, 12);
+    unsigned live = 0; int i; for (i = 0; i < sc.npc; i++) if (rd32(sc.pcs[i] + offPawn)) live = sc.pcs[i];
+    CHECK(sc.npc == 2 && live == pc, "picks the controller that has a pawn");
+    wchar id[32], gs[32], pk[64];
+    read_fstring(rd32(live + offLevel) + offID, id, 32);
+    CHECK(weq(id, L"adv1") && weq(map_for_id(id), L"HP3_Adv1Express"), "LevelInfo.ID maps to the map name");
+    CHECK(map_for_id(L"ADV5SHACK") && weq(map_for_id(L"ADV5SHACK"), L"HP3_Adv5Shack"), "ID lookup is case-insensitive");
+    name_of((int)rd32(rd32(rd32(live + offXLevel) + 0x18) + 0x20), pk, 64);
+    CHECK(weq(pk, L"Save100"), "XLevel package is the save (why the ID is needed)");
+    read_fstring(rd32(rd32(live + offLevel) + offGame) + offGS, gs, 32);
+    CHECK(weq(gs, L"GState070"), "Level.Game.CurrentGameState");
+    float got[3]; rd(rd32(live + offPawn) + offLoc, got, 12);
     CHECK((int)got[0] == 1234 && (int)got[1] == -567 && (int)got[2] == 89, "reads pawn location");
-
-    /* travel: a second level appears; selection must prefer the new one */
-    unsigned kGrounds = mkobj(nGrounds, cPkg, 0); mkobj(nMyLevel, cLevel, kGrounds); put32(gObjsVar + 4, nObjs);
-    memset(&sc, 0, sizeof sc); sc.clsGame = cKWGame; sc.clsPC = cPC; sc.clsClass = cClass; for_each_object(v_scan, &sc);
-    wchar map[64] = {0}, lastMap[64]; wcpy(lastMap, L"HP3_InsideHub", 64); int i;
-    for (i = 0; i < sc.nlev; i++) { wchar n2[64]; if (!name_of((int)rd32(sc.levels[i] + 0x20), n2, 64)) continue; if (!map[0] || weq(map, lastMap)) wcpy(map, n2, 64); }
-    CHECK(sc.nlev == 2 && weq(map, L"HP3_GroundsHub"), "during travel, picks the newly loaded level");
     /* name read near the end of mapped memory must still succeed (shrinking reads) */
     unsigned edge = sizeof MEM - (0x0C + 2 * 20); { unsigned k; const char *s = "EdgeName"; memset(MEM + edge, 0, 0x0C + 40);
       for (k = 0; s[k]; k++) MEM[edge + 0x0C + 2*k] = (unsigned char)s[k]; }

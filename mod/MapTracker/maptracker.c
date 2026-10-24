@@ -49,7 +49,7 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 #define WM_SETTEXT 0x000C
 #define SMTO_ABORTIFHUNG 0x0002
 #define VK_F11 0x7A
-#define MT_VERSION L"v3"
+#define MT_VERSION L"v4"
 
 /* minimal CRT shims (no C runtime is linked) */
 int _fltused = 0;
@@ -99,7 +99,7 @@ static void for_each_object(visit_fn fn, void *ctx) {
     }
 }
 
-static int N_Class = -1, N_Level = -1, N_MyLevel = -1, N_Entry = -1;
+static int N_Class = -1;
 struct findcls { int name; u32 found; };
 static int v_findcls(u32 o, int name, u32 cls, void *c) {
     struct findcls *f = c;
@@ -125,22 +125,35 @@ static int prop_offset(const wchar *cls, const wchar *prop) {
 }
 static int is_a_cls(u32 c, u32 want) { int guard = 64; while (c && guard--) { if (c == want) return 1; c = rd32(c + 0x2C); } return 0; }
 
-/* one pass: Level packages (non-Entry) + first KWGame and PlayerController instances */
-struct scan { u32 clsGame, clsPC, clsClass; u32 levels[8]; int nlev; u32 game, pc; u32 known[512]; int nknown; };
+/* one pass: every PlayerController instance (the live one is picked by the caller) */
+struct scan { u32 clsPC, clsClass; u32 pcs[16]; int npc; u32 known[512]; int nknown; };
 static int v_scan(u32 o, int name, u32 cls, void *c) {
-    struct scan *s = c; int k;
-    if (name == N_MyLevel && cls && (int)rd32(cls + 0x20) == N_Level) {
-        u32 pkg = rd32(o + 0x18);
-        if (pkg && (int)rd32(pkg + 0x20) != N_Entry && s->nlev < 8) s->levels[s->nlev++] = pkg;
-        return 0;
-    }
-    if (!cls || cls == s->clsClass || (s->game && s->pc)) return 0;
+    struct scan *s = c; int k; (void)name;
+    if (!cls || cls == s->clsClass || !s->clsPC) return 0;
     for (k = 0; k < s->nknown; k++) if (s->known[k] == cls) return 0;   /* class already known not to match */
-    if (!s->game && s->clsGame && is_a_cls(cls, s->clsGame)) { s->game = o; return 0; }
-    if (!s->pc && s->clsPC && is_a_cls(cls, s->clsPC)) { s->pc = o; return 0; }
+    if (is_a_cls(cls, s->clsPC)) { if (s->npc < 16) s->pcs[s->npc++] = o; return 0; }
     if (s->nknown < 512) s->known[s->nknown++] = cls;
     return 0;
 }
+
+/* LevelInfo.ID -> map file (taken from each map's LevelInfo0; IDs are case-insensitive) */
+static const wchar *MAP_IDS[][2] = {
+    {L"ent", L"Entry"}, {L"pre", L"HP_Preamble"}, {L"adv1", L"HP3_Adv1Express"}, {L"adv2", L"HP3_Adv2ExpPatronum"},
+    {L"adv3", L"HP3_Adv3Library"}, {L"adv5shack", L"HP3_Adv5Shack"}, {L"adv6", L"HP3_Adv6Paddock"}, {L"bb", L"HP3_BeanBonus"},
+    {L"bex", L"HP3_BuckyExecuted"}, {L"comc", L"HP3_COMC"}, {L"cr", L"HP3_Ch1CarpeRetractum"}, {L"crb", L"HP3_Ch1CarpeRetractumB"},
+    {L"dl", L"HP3_Ch2Draconifors"}, {L"dlb", L"HP3_Ch2DraconiforsB"}, {L"gl", L"HP3_Ch3Glacius"}, {L"glb", L"HP3_Ch3GlaciusB"},
+    {L"tower", L"HP3_DarkTower"}, {L"dembtl", L"HP3_DementorBattle"}, {L"dung", L"HP3_DungeonHUB"}, {L"rf", L"HP3_FA1Ron"},
+    {L"hf", L"HP3_FA2Hermione"}, {L"hfe", L"HP3_FA3Harry"}, {L"hp3final", L"HP3_Final"}, {L"grounddada", L"HP3_GroundsDada"},
+    {L"ghub", L"HP3_GroundsHub"}, {L"inf", L"HP3_Infirmary"}, {L"ihub", L"HP3_InsideHub"}, {L"ppb", L"HP3_PortraitPassword_B"},
+    {L"ppc", L"HP3_PortraitPassword_C"}, {L"ppd", L"HP3_PortraitPassword_D"}, {L"ppe", L"HP3_PortraitPassword_E"},
+    {L"ppf", L"HP3_PortraitPassword_F"}, {L"quid", L"HP3_Quidditch"}, {L"whompingwillow", L"HP3_WhompingWillow"},
+};
+static const wchar *map_for_id(const wchar *id) {
+    unsigned k;
+    for (k = 0; k < sizeof MAP_IDS / sizeof MAP_IDS[0]; k++) if (wieq(id, MAP_IDS[k][0])) return MAP_IDS[k][1];
+    return 0;
+}
+
 static int read_fstring(u32 addr, wchar *buf, int max) {
     u32 p = rd32(addr); int n = (int)rd32(addr + 4);
     buf[0] = 0;
@@ -175,9 +188,21 @@ static void set_title(const wchar *s) {
     if (gWnd) SendMessageTimeoutW(gWnd, WM_SETTEXT, 0, (long)s, SMTO_ABORTIFHUNG, 500, &res);
 }
 
+/* property offsets, looked up lazily (kwGame.u loads after the engine starts) */
+static int offGS = -1, offPawn = -1, offLoc = -1, offLevel = -1, offXLevel = -1, offID = -1, offGame = -1;
+static void lookup_offsets(void) {
+    if (offPawn < 0)   offPawn   = prop_offset(L"Controller", L"Pawn");
+    if (offLoc < 0)    offLoc    = prop_offset(L"Actor", L"Location");
+    if (offLevel < 0)  offLevel  = prop_offset(L"Actor", L"Level");
+    if (offXLevel < 0) offXLevel = prop_offset(L"Actor", L"XLevel");
+    if (offID < 0)     offID     = prop_offset(L"LevelInfo", L"ID");
+    if (offGame < 0)   offGame   = prop_offset(L"LevelInfo", L"Game");
+    if (offGS < 0)     offGS     = prop_offset(L"KWGame", L"CurrentGameState");
+}
+
 static u32 WINAPI worker(void *arg) {
-    HANDLE core; wchar map[64] = {0}, lastMap[64] = {0}, gs[32] = {0}, lastGs[32] = {0}, buf[400];
-    int offGS = -1, offPawn = -1, offLoc = -1, f11prev = 0, i; u32 tick = 0, pc = 0;
+    HANDLE core; wchar map[64] = {0}, lastMap[64] = {0}, gs[32] = {0}, lastGs[32] = {0}, buf[400], id[32], pkg[64];
+    int f11prev = 0, i, reported = 0; u32 tick = 0, pc = 0, pawn = 0;
     static struct scan sc;   /* 2 KB+, keep it off the stack */
     (void)arg;
     gProc = GetCurrentProcess();
@@ -197,63 +222,49 @@ static u32 WINAPI worker(void *arg) {
     wsprintfW(buf, L"Core.dll exports: GObjObjects %s, FName::Names %s", gObjs ? L"ok" : L"MISSING", gNames ? L"ok" : L"MISSING");
     log_line(buf);
     if (!gObjs || !gNames) return 1;
-    /* wait for the engine to load Entry, then cache name indices, classes and property offsets */
     for (i = 0;; i++) {
-        u32 nobj, nname;
         Sleep(1000);
-        nobj = rd32((u32)gObjs + 4); nname = rd32((u32)gNames + 4);
-        if (nobj >= 1000) {
-            N_Class = name_index(L"Class"); N_Level = name_index(L"Level");
-            N_MyLevel = name_index(L"MyLevel"); N_Entry = name_index(L"Entry");
-            if (N_Class >= 0 && N_Level >= 0 && N_MyLevel >= 0 && N_Entry >= 0) {
-                wsprintfW(buf, L"engine ready: %d objects, %d names", (int)nobj, (int)nname);
-                log_line(buf);
-                break;
-            }
-        }
-        if (i % 10 == 0) {
-            wsprintfW(buf, L"waiting for engine: %d objects, %d names (Class=%d Level=%d MyLevel=%d Entry=%d)",
-                      (int)nobj, (int)nname, N_Class, N_Level, N_MyLevel, N_Entry);
-            log_line(buf);
-        }
+        if (rd32((u32)gObjs + 4) < 1000) continue;
+        N_Class = name_index(L"Class");
+        if (N_Class >= 0) break;
+        if (i % 10 == 0) log_line(L"waiting for engine names ...");
     }
-    sc.clsGame = find_class(L"KWGame");
-    sc.clsPC = find_class(L"PlayerController");
-    sc.clsClass = sc.clsGame ? rd32(sc.clsGame + 0x24) : 0;   /* the 'Class' class */
-    offGS = prop_offset(L"KWGame", L"CurrentGameState");
-    offPawn = prop_offset(L"Controller", L"Pawn");
-    offLoc = prop_offset(L"Actor", L"Location");
-    wsprintfW(buf, L"---- HP3 MapTracker started (KWGame %s, PlayerController %s, offsets gs=%d pawn=%d loc=%d) ----",
-              sc.clsGame ? L"ok" : L"MISSING", sc.clsPC ? L"ok" : L"MISSING", offGS, offPawn, offLoc);
-    log_line(buf);
     for (;;) {
         /* F11 marker, polled fast */
         int down = (GetAsyncKeyState(VK_F11) & 0x8000) != 0;
         if (down && !f11prev && gWnd && GetForegroundWindow() == gWnd) {
-            u32 pawn; float loc[3] = {0, 0, 0};
-            pawn = (pc && offPawn >= 0) ? rd32(pc + offPawn) : 0;
+            float loc[3] = {0, 0, 0};
             if (pawn && offLoc >= 0) rd(pawn + offLoc, loc, 12);
             wsprintfW(buf, L"MARK  map=%s  state=%s  pos=(%d, %d, %d)", map[0] ? map : L"?", gs[0] ? gs : L"?",
                       (int)loc[0], (int)loc[1], (int)loc[2]);
             log_line(buf);
         }
         f11prev = down;
-        /* map/state poll about once a second */
-        if (tick++ % 20 == 0) {
-            sc.nlev = 0; sc.game = 0; sc.pc = 0; sc.nknown = 0;
-            for_each_object(v_scan, &sc);
-            pc = sc.pc;
-            /* during travel two levels can exist: prefer one that isn't the map we were already on */
-            map[0] = 0;
-            for (i = 0; i < sc.nlev; i++) {
-                wchar nm[64];
-                if (!name_of((int)rd32(sc.levels[i] + 0x20), nm, 64)) continue;
-                if (!map[0] || weq(map, lastMap)) wcpy(map, nm, 64);
+        if (tick++ % 20 == 0) {   /* about once a second */
+            u32 li = 0, lvl, game;
+            if (!sc.clsPC) { sc.clsPC = find_class(L"PlayerController"); sc.clsClass = sc.clsPC ? rd32(sc.clsPC + 0x24) : 0; }
+            lookup_offsets();
+            if (!reported && offGS >= 0) {
+                wsprintfW(buf, L"ready: offsets pawn=%d loc=%d level=%d xlevel=%d id=%d game=%d gamestate=%d",
+                          offPawn, offLoc, offLevel, offXLevel, offID, offGame, offGS);
+                log_line(buf); reported = 1;
             }
-            gs[0] = 0;
-            if (sc.game && offGS >= 0) read_fstring(sc.game + offGS, gs, 32);
+            /* the live controller is the one with a pawn (menu/old-level controllers have none); newest wins */
+            sc.npc = 0; sc.nknown = 0; pc = 0; pawn = 0;
+            if (sc.clsPC && offPawn >= 0) {
+                for_each_object(v_scan, &sc);
+                for (i = 0; i < sc.npc; i++) { u32 p = rd32(sc.pcs[i] + offPawn); if (p) { pc = sc.pcs[i]; pawn = p; } }
+            }
+            map[0] = 0; gs[0] = 0; id[0] = 0; pkg[0] = 0;
+            if (pc && offLevel >= 0) li = rd32(pc + offLevel);
+            if (li && offID >= 0) read_fstring(li + offID, id, 32);
+            if (pc && offXLevel >= 0 && (lvl = rd32(pc + offXLevel)) != 0) name_of((int)rd32(rd32(lvl + 0x18) + 0x20), pkg, 64);
+            if (id[0] && map_for_id(id)) wcpy(map, map_for_id(id), 64);
+            else if (pkg[0]) wcpy(map, pkg, 64);
+            if (li && offGame >= 0 && offGS >= 0 && (game = rd32(li + offGame)) != 0) read_fstring(game + offGS, gs, 32);
             if (!weq(map, lastMap) || !weq(gs, lastGs)) {
-                wsprintfW(buf, L"MAP %s  state=%s", map[0] ? map : L"(none)", gs[0] ? gs : L"(none)");
+                wsprintfW(buf, L"MAP %s  state=%s  (id=%s package=%s)", map[0] ? map : L"(none)", gs[0] ? gs : L"(none)",
+                          id[0] ? id : L"-", pkg[0] ? pkg : L"-");
                 log_line(buf);
                 wcpy(lastMap, map, 64); wcpy(lastGs, gs, 32);
                 gWnd = 0;  /* re-find the window after loads */
