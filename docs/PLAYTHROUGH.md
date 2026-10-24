@@ -334,3 +334,23 @@ requirements are *(to confirm)*; the Bowtruckle card depends on it.
 
 **Open Castle:** in `GState060` the dungeon door is already open, so the planned "Dungeon" area unlock
 (`Dungeon_Door_Mvr`) would have to close it in the base state *(check whether the door is shut in `090`/`100`)*.
+
+## 12. HP3_InsideHub, `GState060`: second Peeves fight (by the Transfiguration classroom)
+
+Confirmed: on the first floor, in the room next to the Transfiguration classroom, a cutscene brings Peeves in. The
+scripted fight has **Ron use Carpe Retractum to pull Peeves's armour off**, and a closing cutscene drops
+**4–5 pasties**.
+
+The data says **4**: `peeves2` (−3597, 1059, 742), group `GState060`, `EventToSendWhenDefeated` `Peeves2Done`, with
+four spawners `peeves2_Spwn_Pastie_01`–`04` (`HPSpawnThingy13`/`14`/`16`/`18`, around (−3570, 780, 488)).
+
+The three Peeves fights in InsideHub, one per story state:
+
+| Fight | Actor | State | Needs | Reward |
+| --- | --- | --- | --- | --- |
+| 1, outside the twins' shop | `peeves1` (−3730, −3790, 435) | `GState010` | (Rictusempra?) | **Shortcut Passwords** (`EventToSendWhenDefeated` `PortShort`) |
+| 2, by Transfiguration | `peeves2` (−3597, 1059, 742) | `GState060` | **Carpe Retractum** (Ron) | 4 pasties |
+| 3, entrance hall | `Peeves0` tag `Peeves3` (−126, 1392, 417); cutscenes `9225ADV4PeevesIntro` / `9227ADV4PeevesExit` | `GState100` | *(to confirm)* | 3 cakes (`Peeves3_Spwn_Cake_01`–`03`, around (435, 1000, 72)) |
+
+**Open Castle:** each fight is filtered to one story state, so only one (or none) is present in the base state.
+They'd need spawning or un-filtering to be playable; their rewards (and the `_bD` defeat flag) are candidate checks.
