@@ -225,3 +225,11 @@ stages, run by `RoundRobin1` "PixieBattleRoundRobin" (battles) and `RoundRobin0`
 Goliath, Morholt, Hengist of Upper Barnton (teleported to the player by `HPSpawnThingy`). Confirmed: entering it is a
 short fade to black that moves the player next to the well, still in HP3_GroundsHub, not a map change. In Open
 Castle the well quest needs no entrance of its own: it's part of GroundsHub.
+
+| Well stage | Reward | Status |
+| --- | --- | --- |
+| 1 | Bran the Bloodthirsty | **found** (first visit, `GState040`) |
+| 2 | Cyclops | |
+| 3 | Goliath | |
+| 4 | Morholt | |
+| 5 | Hengist of Upper Barnton | |
