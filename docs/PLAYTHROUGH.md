@@ -49,4 +49,21 @@ from Quidditch (`7010QuidDem_ALL`, `GState070`) *(to confirm)*.
 | Level ID | `cr` |
 | State | `GState000` on arrival |
 | Role | Ron's Carpe Retractum challenge, the first playable level after the prologue |
-| Checks | *(in progress)* |
+| Requires | Carpe Retractum, **Spongify** (confirmed) |
+| Checks | *(in progress)*; one wizard card found so far |
+
+Spell actors in the map: 21 Retractum targets, 2 Spongify pads, 4 Alohomora triggers and 2 padlocks, 17 other
+spell triggers. Its second half, HP3_Ch1CarpeRetractumB, has 11 Spongify pads, Lumos sparkles and a Depulso knight.
+
+Catalogue checks (first half):
+
+| Check | Where | Note |
+| --- | --- | --- |
+| Card *Amarillo Lestoat* | `ChestSpawner11` (1314, 4086, 1177) | chest beside secret area `SecretAreaMarker1` |
+| Card *Sir Herbert Varney* | `ChestSpawner18` (2736, 1140, 608) | chest beside secret area `SecretAreaMarker0` |
+| Card *Count Vlad Drakul* | `ChestSpawner22` (−3479, 3391, 1336) | chest beside secret area `SecretAreaMarker2` |
+| 3 secret areas | `SecretAreaMarker0`–`2` | each with its card chest |
+| Challenge win | `EndChallengeTrigger0` | candidate check |
+| 9 challenge stars | | candidate checks |
+
+All three cards are in chests inside secret areas.
