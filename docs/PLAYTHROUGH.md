@@ -401,6 +401,7 @@ Found so far:
 | Pasty spawner (a pumpkin, **2 pasties**) | `Pumpkin3` (1343, 21, −728), north arm; marked at (1360, 16, −704) | **Depulso**, confirmed | **found** |
 | Pasty spawner (a pumpkin, 2 pasties) | `Pumpkin0` (3022, −596, 77); marked at (3022, −580, 95) | **Depulso**, confirmed | **found** |
 | Pasty spawner (a pumpkin, 2 pasties) | `Pumpkin12` (3018, −913, 78); marked at (3025, −910, 95) | **Depulso**, confirmed | **found** |
+| Pasty spawner (**edible grass**, 1 pasty) | `KnightSpawner0` (2672, −1704, 78); marked at (2691, −1704, 51) | **rabbit form** (eaten), confirmed | **found** |
 | Cake chest (2 cakes) | `ChestSpawner21` (522, −383, −456); marked at (474, −391, −437), inside secret area `SecretAreaMarker2` (454, −387, −417) | **Alohomora**, confirmed | **found** |
 
 **Softlock: the pumpkin room needs Spongify to leave** (confirmed). It's a pit (floor ≈ −725) that the player drops
@@ -424,6 +425,12 @@ softlock list in [OPEN_CASTLE.md](OPEN_CASTLE.md).
 (3559, −1098, 343); cakes `CauldronCake6` (−3288, −801, −215), `CauldronCake12` (4496, −1250, −213),
 `CauldronCake3` (4550, −511, −213). So far 12 of 16 placed pasties and 1 of 4 placed cakes (the start pasty
 `PumpkinPasty2` is inferred).
+
+**Class names can mislead:** the grass tufts the rabbit eats here are `KnightSpawner` actors (`KnightSpawner0`/`18`/
+`19`/`21`/`22`/`24`, around (2670–2840, −1560 to −1770)), with a grass mesh instead of a suit of armour. In the
+catalogue a "knight" can be an armour (Depulso) or grass (rabbit), so the requirement has to come from the mesh or
+from play. Grass row: `KnightSpawner0` 1 pasty (found), `KnightSpawner19`/`22` 1 pasty each, `KnightSpawner21`
+1 cake, `KnightSpawner18`/`24` 2 beans each *(the others: mesh to confirm)*.
 
 **Pumpkin default:** `Pumpkin3` sets no count and gave **2 pasties** (confirmed), so the `Pumpkin` class default is 2. That also applies to `Pumpkin5` and `Pumpkin6`, and to the catalogue's other pumpkins with no count.
 
