@@ -2,13 +2,13 @@
 
 A tiny Ultimate ASI Loader plugin for documenting the game. It's read-only and never changes game memory.
 
-- **Title bar:** `HP3 | <map> | <GState> | F11 = mark`, reapplied every second, because the game rewrites its own title (visible when windowed).
+- **Title bar:** `HP3 | <map> | <GState> | End = mark`, reapplied every second, because the game rewrites its own title (visible when windowed).
 - **Log:** every change is appended to `Documents\Harry Potter and the Prisoner of Azkaban\HP3_MapLog.txt`:
   ```
   2026-10-24 09:02:11  MAP HP3_InsideHub  state=GState010  (id=ihub package=Save100)
   2026-10-24 09:05:40  MARK  map=HP3_InsideHub  state=GState010  pos=(-2412, -1100, 768)
   ```
-- **F11**, **Scroll Lock** or **Pause** (game focused): writes a `MARK` line with the player's position, for locked
+- **End** (also F11, Scroll Lock or Pause; game focused): writes a `MARK` line with the player's position, for locked
   doors and points of interest. Keys are caught with a low-level keyboard hook, because the game reads the keyboard
   through DirectInput. The log notes when the hook starts receiving keys, which F-keys arrive, and presses ignored
   because another window had focus.
