@@ -96,6 +96,22 @@ That's about 20 items, enough to cover every story-only map with checks. The cas
 grounds have no reusable door at all (GroundsHub's only exits are COMC and the castle), so grounds adventures need
 new triggers and a visible marker.
 
+### Shortcut Passwords: `shortcut_passwords`
+
+In vanilla, beating Peeves outside the twins' shop (`GState010`) gives the shortcut passwords. They open the castle's
+shortcut passages (the shortcut chamber network). Optional progression item:
+
+- **`item`:** "Shortcut Passwords" is a progression item. Until it's received, the shortcuts stay locked and logic
+  routes around them.
+- **`start_unlocked`:** unlocked from the start.
+
+Mechanism: `HGame.PortraitPasswordManager` keeps 22 password entries (`PortraitPasswords[i].Owned`, saved as
+`pp_<i>`). Entries 0–7 are the portrait passwords (vendor-bought, for PortraitPassword_B–F). Entries 8–21 are the
+14 shortcut passwords. Vanilla grants them all at once with the scripted action `HPAction_GivePortShortcuts`, which
+calls `EnablePortraitShortcuts()` and sets entries 8+ to owned. The mod grants the item the same way (or writes
+`pp_8`–`pp_21`), and suppresses the vanilla grant from the Peeves fight. A split option (one item per shortcut or
+per area) is possible later, since each entry is separate.
+
 ### Filler
 
 Beans, cakes and pasties as currency; chocolate frogs; possibly traps later.
@@ -178,6 +194,7 @@ Harry Potter 3 PC:
   starting_spells: []          # spells precollected
   split_challenge_spells: false
   area_unlocks: true
+  shortcut_passwords: item      # item | start_unlocked
 ```
 
 ## 8. To verify in the playthrough

@@ -201,7 +201,9 @@ These scenes have no `.int` cutscene file of their own (only the shop and Maraud
 probably scripted in the map (`HPScriptedSequence` / `CutSceneTrigger` actors).
 
 **Open Castle:**
-- The shortcut passwords are a story-granted unlock. They should be open from the start, or become a
-  progression item ("Shortcut Passwords"), since the shortcuts connect large parts of the castle.
+- The shortcut passwords are a story-granted unlock. Decision: an optional progression item, "Shortcut
+  Passwords" (option `shortcut_passwords: item | start_unlocked`); see [OPEN_CASTLE.md](OPEN_CASTLE.md) §3.
+  Vanilla grants them with `HPAction_GivePortShortcuts` (entries 8–21 of `PortraitPasswordManager`, keys
+  `pp_8`–`pp_21`).
 - The Peeves fight needs Rictusempra. Beating Peeves could be a check (`_bD` key; 3 Peeves in InsideHub).
 - These story cutscenes don't play in the Open Castle base state, so nothing else is lost.
