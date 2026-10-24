@@ -105,6 +105,12 @@ tag: 32 pasties and 12 cakes across all maps.
 | Leaves to | InsideHub, through the end-of-challenge cutscenes (`0700Ch1Chal_InsHubDoor`, or `_010` in `GState000`, which sets `GState010`) |
 | Checks | *(in progress)* |
 
+| Check | Where | Status |
+| --- | --- | --- |
+| Card *Lady Carmilla Sanguina* | `ChestSpawner13` (−1762, 5868, 2258), with 25 beans and 6 pasties; beside secret area `SecretAreaMarker3` (−1769, 5968, 2288) | **found** (in a chest) |
+| Card *Blodwyn Bludd* | `KnightSpawner21` (1713, 5812, 1797), Depulso knight, with 5 pasties | |
+| Secret areas | `SecretAreaMarker3`, `SecretAreaMarker4` (2264, 7105, 1480) | |
+
 **Open Castle:** Ch1 and Ch1B are one region. The two halves are connected only to each other, so the whole
 challenge needs a single entrance (the side-room door) and a single exit back to InsideHub. Its logic combines both
 halves. Catalogue for this half: cards *Blodwyn Bludd* (`KnightSpawner21`, a Depulso knight) and *Lady Carmilla
