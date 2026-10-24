@@ -291,4 +291,6 @@ Arrived in the shortcuts room straight from the COMC win cutscene (confirmed, 12
 
 - **Hagrid's hut door:** a closed wooden door with no loading zone in vanilla (GroundsHub, `GState060`, screenshot
   12:25). Candidate spot for an Open Castle entrance to a grounds story map (Adv6Paddock / BuckyExecuted are set at
-  Hagrid's). Position: *(F11 mark pending; MapTracker v9 fixes F11)*.
+  Hagrid's). Marked at **(813, −1121, 696)** (MapTracker v12, End key, 13:03:43). Nothing
+  is placed within ~450 units except an ambient-sound trigger, so a new trigger volume can go at the door without
+  clashing with existing actors.
