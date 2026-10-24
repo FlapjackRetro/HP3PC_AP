@@ -222,5 +222,6 @@ probably scripted in the map (`HPScriptedSequence` / `CutSceneTrigger` actors).
 **Optional side area: the pixie-infested well** (the doxy well side quest; the game's creatures are `Poxie`). Five
 stages, run by `RoundRobin1` "PixieBattleRoundRobin" (battles) and `RoundRobin0` (exit cutscenes), saved as
 `ghubRoundRobin1_iOEI` / `ghubRoundRobin0_iOEI`. Stage rewards are wizard cards: Bran the Bloodthirsty, Cyclops,
-Goliath, Morholt, Hengist of Upper Barnton (teleported to the player by `HPSpawnThingy`). The playthrough is about to
-enter it; *(whether it's a map change or an area of GroundsHub: to confirm)*.
+Goliath, Morholt, Hengist of Upper Barnton (teleported to the player by `HPSpawnThingy`). Confirmed: entering it is a
+short fade to black that moves the player next to the well, still in HP3_GroundsHub, not a map change. In Open
+Castle the well quest needs no entrance of its own: it's part of GroundsHub.
