@@ -70,7 +70,7 @@ def main():
             c = p.objclass(e['idx'])
             if c == 'LevelInfo' and lid is None:   # the first LevelInfo (LevelInfo0) is the live one; later ones are leftovers
                 lid = {n: v for n, i, t, v in load(p, e['idx'])['props']}.get('ID', '')
-            elif c == 'HPSpawnThingy':
+            elif isa(c, 'SpawnThingy'):   # HPSpawnThingy and plain SpawnThingy both create things on an event
                 pr = {n: v for n, i, t, v in load(p, e['idx'])['props']}
                 if pr.get('bTeleportThingy') and pr.get('TeleportActorTag'):
                     teleported[str(pr['TeleportActorTag']).lower()] = pr.get('Tag')
