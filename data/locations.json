@@ -18,7 +18,7 @@
  },
  {
   "map": "HP3_Adv1Express",
-  "level_id": "",
+  "level_id": "adv1",
   "actor": "AlohomoraPadLock3",
   "cls": "AlohomoraPadLock",
   "category": "KWGenericSpawner",
@@ -35,7 +35,7 @@
  },
  {
   "map": "HP3_Adv1Express",
-  "level_id": "",
+  "level_id": "adv1",
   "actor": "AlohomoraPadLock5",
   "cls": "AlohomoraPadLock",
   "category": "KWGenericSpawner",
@@ -52,7 +52,7 @@
  },
  {
   "map": "HP3_Adv1Express",
-  "level_id": "",
+  "level_id": "adv1",
   "actor": "AlohomoraPadLock0",
   "cls": "AlohomoraPadLock",
   "category": "KWGenericSpawner",
@@ -69,7 +69,7 @@
  },
  {
   "map": "HP3_Adv1Express",
-  "level_id": "",
+  "level_id": "adv1",
   "actor": "SaveBook4",
   "cls": "SaveBook",
   "category": "SavePoint",
@@ -86,7 +86,7 @@
  },
  {
   "map": "HP3_Adv1Express",
-  "level_id": "",
+  "level_id": "adv1",
   "actor": "HPGenericSpawner5",
   "cls": "Hpgenericspawner",
   "category": "KWGenericSpawner",
@@ -108,7 +108,7 @@
  },
  {
   "map": "HP3_Adv1Express",
-  "level_id": "",
+  "level_id": "adv1",
   "actor": "HPGenericSpawner1",
   "cls": "Hpgenericspawner",
   "category": "KWGenericSpawner",
@@ -130,7 +130,7 @@
  },
  {
   "map": "HP3_Adv1Express",
-  "level_id": "",
+  "level_id": "adv1",
   "actor": "HPGenericSpawner4",
   "cls": "Hpgenericspawner",
   "category": "KWGenericSpawner",
@@ -152,7 +152,7 @@
  },
  {
   "map": "HP3_Adv1Express",
-  "level_id": "",
+  "level_id": "adv1",
   "actor": "Hpgenericspawner6",
   "cls": "Hpgenericspawner",
   "category": "KWGenericSpawner",
@@ -174,7 +174,7 @@
  },
  {
   "map": "HP3_Adv1Express",
-  "level_id": "",
+  "level_id": "adv1",
   "actor": "HPGenericSpawner3",
   "cls": "Hpgenericspawner",
   "category": "KWGenericSpawner",
@@ -196,7 +196,7 @@
  },
  {
   "map": "HP3_Adv1Express",
-  "level_id": "",
+  "level_id": "adv1",
   "actor": "HPGenericSpawner0",
   "cls": "Hpgenericspawner",
   "category": "KWGenericSpawner",
@@ -780,6 +780,23 @@
   "contents": [],
   "persist_key": null,
   "awarded_by": null
+ },
+ {
+  "map": "HP3_Adv5Shack",
+  "level_id": "ADV5Shack",
+  "actor": "SpawnThingy10",
+  "cls": "WC_SacharissaTugwood",
+  "category": "WizardCard",
+  "loc": [
+   5426,
+   -3913,
+   -705
+  ],
+  "tag": "RmG_Win_SpawnThing_Card",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "RmG_Win_SpawnThing_Card"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -3524,7 +3541,75 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
+  "actor": "HPSpawnThingy3",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   1315,
+   2522,
+   1209
+  ],
+  "tag": "SpawnCauldronCake",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "SpawnCauldronCake"
+ },
+ {
+  "map": "HP3_Ch1CarpeRetractum",
+  "level_id": "cr",
+  "actor": "HPSpawnThingy4",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   1284,
+   2109,
+   864
+  ],
+  "tag": "SpawnPasties2",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "SpawnPasties2"
+ },
+ {
+  "map": "HP3_Ch1CarpeRetractum",
+  "level_id": "cr",
+  "actor": "HPSpawnThingy6",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   1357,
+   2132,
+   864
+  ],
+  "tag": "SpawnPasties3",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "SpawnPasties3"
+ },
+ {
+  "map": "HP3_Ch1CarpeRetractum",
+  "level_id": "cr",
+  "actor": "HPSpawnThingy8",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   1292,
+   2177,
+   864
+  ],
+  "tag": "SpawnPasties1",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "SpawnPasties1"
+ },
+ {
+  "map": "HP3_Ch1CarpeRetractum",
+  "level_id": "cr",
   "actor": "ChallengeStar11",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -3536,12 +3621,12 @@
   "tag": "CRS04",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar11_PU",
+  "persist_key": "crChallengeStar11_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChallengeStar2",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -3553,12 +3638,12 @@
   "tag": "CRS01",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar2_PU",
+  "persist_key": "crChallengeStar2_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChallengeStar8",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -3570,12 +3655,12 @@
   "tag": "CRS03",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar8_PU",
+  "persist_key": "crChallengeStar8_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "SecretAreaMarker1",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -3592,7 +3677,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "AlohomoraPadLock1",
   "cls": "AlohomoraPadLock",
   "category": "KWGenericSpawner",
@@ -3618,7 +3703,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChestSpawner11",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -3644,7 +3729,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "AlohomoraPadLock2",
   "cls": "AlohomoraPadLock",
   "category": "KWGenericSpawner",
@@ -3670,7 +3755,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChestSpawner22",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -3700,7 +3785,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "EndChallengeTrigger0",
   "cls": "EndChallengeTrigger",
   "category": "EndChallengeTrigger",
@@ -3717,7 +3802,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChestSpawner15",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -3743,7 +3828,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChallengeStar0",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -3755,12 +3840,12 @@
   "tag": "CRS06",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar0_PU",
+  "persist_key": "crChallengeStar0_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "SecretAreaMarker2",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -3777,7 +3862,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ArmoireSpwn1",
   "cls": "ArmoireSpwn",
   "category": "KWGenericSpawner",
@@ -3803,7 +3888,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ArmoireSpwn0",
   "cls": "ArmoireSpwn",
   "category": "KWGenericSpawner",
@@ -3829,7 +3914,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "SaveBook0",
   "cls": "SaveBook",
   "category": "SavePoint",
@@ -3846,7 +3931,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "SaveBook1",
   "cls": "SaveBook",
   "category": "SavePoint",
@@ -3863,7 +3948,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "SaveBook2",
   "cls": "SaveBook",
   "category": "SavePoint",
@@ -3880,7 +3965,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "SecretAreaMarker0",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -3897,7 +3982,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChestSpawner17",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -3923,7 +4008,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChallengeStar9",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -3935,12 +4020,12 @@
   "tag": "CRS05",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar9_PU",
+  "persist_key": "crChallengeStar9_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChestSpawner14",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -3962,7 +4047,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "KnightSpawner17",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -3984,7 +4069,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "KnightSpawner31",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4006,7 +4091,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "KnightSpawner30",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4028,7 +4113,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "KnightSpawner29",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4050,7 +4135,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "KnightSpawner28",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4072,7 +4157,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "KnightSpawner27",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4094,7 +4179,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "KnightSpawner25",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4116,7 +4201,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChallengeStar6",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -4128,12 +4213,12 @@
   "tag": null,
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar6_PU",
+  "persist_key": "crChallengeStar6_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "KnightSpawner9",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4155,7 +4240,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChestSpawner18",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -4181,7 +4266,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "KnightSpawner32",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4203,7 +4288,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "KnightSpawner22",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4225,7 +4310,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "KnightSpawner18",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4247,7 +4332,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "KnightSpawner10",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4269,7 +4354,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChestSpawner20",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -4291,7 +4376,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChallengeStar10",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -4303,12 +4388,12 @@
   "tag": "CRS02",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar10_PU",
+  "persist_key": "crChallengeStar10_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChallengeStar4",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -4320,12 +4405,12 @@
   "tag": "ChallengeStar",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar4_PU",
+  "persist_key": "crChallengeStar4_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
-  "level_id": "",
+  "level_id": "cr",
   "actor": "ChallengeStar3",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -4337,12 +4422,12 @@
   "tag": "CRS07",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar3_PU",
+  "persist_key": "crChallengeStar3_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner23",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4364,7 +4449,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner6",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -4386,7 +4471,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner9",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -4408,7 +4493,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner7",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -4430,7 +4515,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner8",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -4452,7 +4537,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner5",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -4474,7 +4559,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner6",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4496,7 +4581,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner4",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -4518,7 +4603,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner2",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4540,7 +4625,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner1",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4562,7 +4647,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner0",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -4584,7 +4669,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner3",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -4606,7 +4691,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner16",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4628,7 +4713,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner14",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4650,7 +4735,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner13",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4672,7 +4757,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner1",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -4694,7 +4779,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner2",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -4716,7 +4801,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner3",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4738,7 +4823,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner7",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4760,7 +4845,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner8",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4782,7 +4867,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner12",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4804,7 +4889,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner11",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4830,7 +4915,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner15",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4856,7 +4941,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner21",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4882,7 +4967,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner4",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4899,7 +4984,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner0",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4921,7 +5006,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "EndChallengeTrigger0",
   "cls": "EndChallengeTrigger",
   "category": "EndChallengeTrigger",
@@ -4938,7 +5023,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner19",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -4960,7 +5045,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "SecretAreaMarker3",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -4977,7 +5062,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner5",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -4999,7 +5084,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner23",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -5021,7 +5106,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner13",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -5051,7 +5136,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "SecretAreaMarker4",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -5068,7 +5153,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner16",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -5090,7 +5175,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner19",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -5112,7 +5197,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner24",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -5138,7 +5223,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "BannerSpwn1",
   "cls": "BannerSpwn",
   "category": "KWGenericSpawner",
@@ -5160,7 +5245,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChallengeStar1",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -5172,12 +5257,12 @@
   "tag": "CRBS03",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar1_PU",
+  "persist_key": "crbChallengeStar1_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner21",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -5199,7 +5284,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChallengeStar7",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -5211,12 +5296,12 @@
   "tag": "CRBS02",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar7_PU",
+  "persist_key": "crbChallengeStar7_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "SaveBook4",
   "cls": "SaveBook",
   "category": "SavePoint",
@@ -5233,7 +5318,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "BeanBonusGame0",
   "cls": "BeanBonusGame",
   "category": "BeanBonusGame",
@@ -5250,7 +5335,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner10",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -5272,7 +5357,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChallengeStar3",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -5284,12 +5369,12 @@
   "tag": "CRBS01",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar3_PU",
+  "persist_key": "crbChallengeStar3_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChallengeStar6",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -5301,12 +5386,12 @@
   "tag": "CRBS04",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar6_PU",
+  "persist_key": "crbChallengeStar6_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "ChestSpawner12",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -5328,7 +5413,7 @@
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
-  "level_id": "",
+  "level_id": "crb",
   "actor": "KnightSpawner9",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -5350,7 +5435,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChestSpawner29",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -5372,7 +5457,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "LapiforsStatue2",
   "cls": "LapiforsStatue",
   "category": "CreatureStatue",
@@ -5389,7 +5474,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "LapiforsStatue1",
   "cls": "LapiforsStatue",
   "category": "CreatureStatue",
@@ -5406,7 +5491,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "LapiforsStatue5",
   "cls": "LapiforsStatue",
   "category": "CreatureStatue",
@@ -5423,7 +5508,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "SecretAreaMarker2",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -5440,7 +5525,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "SecretAreaMarker0",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -5457,7 +5542,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChestSpawner15",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -5479,7 +5564,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChestSpawner21",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -5501,7 +5586,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "Pumpkin3",
   "cls": "Pumpkin",
   "category": "KWGenericSpawner",
@@ -5523,7 +5608,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "Pumpkin8",
   "cls": "Pumpkin",
   "category": "KWGenericSpawner",
@@ -5545,7 +5630,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "Pumpkin9",
   "cls": "Pumpkin",
   "category": "KWGenericSpawner",
@@ -5567,7 +5652,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "Pumpkin7",
   "cls": "Pumpkin",
   "category": "KWGenericSpawner",
@@ -5589,7 +5674,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "Pumpkin2",
   "cls": "Pumpkin",
   "category": "KWGenericSpawner",
@@ -5611,7 +5696,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "DraconisforsStatue1",
   "cls": "DraconisForsStatue",
   "category": "CreatureStatue",
@@ -5628,7 +5713,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "Pumpkin6",
   "cls": "Pumpkin",
   "category": "KWGenericSpawner",
@@ -5650,7 +5735,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "Pumpkin5",
   "cls": "Pumpkin",
   "category": "KWGenericSpawner",
@@ -5672,7 +5757,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "Pumpkin0",
   "cls": "Pumpkin",
   "category": "KWGenericSpawner",
@@ -5694,7 +5779,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "SecretAreaMarker4",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -5711,7 +5796,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "LapiforsStatue0",
   "cls": "LapiforsStatue",
   "category": "CreatureStatue",
@@ -5728,7 +5813,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChallengeStar2",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -5740,12 +5825,12 @@
   "tag": "DLS02",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar2_PU",
+  "persist_key": "dlChallengeStar2_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "KnightSpawner10",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -5767,7 +5852,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "KnightSpawner22",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -5789,7 +5874,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "KnightSpawner18",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -5811,7 +5896,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChestSpawner20",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -5833,7 +5918,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChestSpawner17",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -5855,7 +5940,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChallengeStar4",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -5867,12 +5952,12 @@
   "tag": "DLS01",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar4_PU",
+  "persist_key": "dlChallengeStar4_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChallengeStar11",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -5884,12 +5969,12 @@
   "tag": "DLS05",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar11_PU",
+  "persist_key": "dlChallengeStar11_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChallengeStar3",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -5901,12 +5986,12 @@
   "tag": "DLS08",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar3_PU",
+  "persist_key": "dlChallengeStar3_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "KnightSpawner9",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -5928,7 +6013,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChallengeStar6",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -5940,12 +6025,12 @@
   "tag": "DLS06",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar6_PU",
+  "persist_key": "dlChallengeStar6_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChallengeStar0",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -5957,12 +6042,12 @@
   "tag": "DLS04",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar0_PU",
+  "persist_key": "dlChallengeStar0_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChestSpawner16",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -5984,7 +6069,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "KnightSpawner19",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -6006,7 +6091,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "KnightSpawner24",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -6028,7 +6113,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChallengeStar1",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -6040,12 +6125,12 @@
   "tag": "DLS09",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar1_PU",
+  "persist_key": "dlChallengeStar1_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "SecretAreaMarker3",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -6062,7 +6147,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "KnightSpawner0",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -6084,7 +6169,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "KnightSpawner21",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -6106,7 +6191,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "KnightSpawner2",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -6128,7 +6213,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "KnightSpawner1",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -6150,7 +6235,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "KnightSpawner11",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -6172,7 +6257,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "KnightSpawner16",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -6194,7 +6279,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "KnightSpawner23",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -6216,7 +6301,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty1",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6228,12 +6313,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty1_PU",
+  "persist_key": "dlPumpkinPasty1_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChallengeStar5",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -6245,12 +6330,12 @@
   "tag": "DLS03",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar5_PU",
+  "persist_key": "dlChallengeStar5_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "CauldronCake6",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -6262,12 +6347,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake6_PU",
+  "persist_key": "dlCauldronCake6_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "CauldronCake8",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -6279,12 +6364,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake8_PU",
+  "persist_key": "dlCauldronCake8_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChestSpawner30",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -6306,7 +6391,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty0",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6318,12 +6403,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty0_PU",
+  "persist_key": "dlPumpkinPasty0_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty3",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6335,12 +6420,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty3_PU",
+  "persist_key": "dlPumpkinPasty3_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty4",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6352,12 +6437,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty4_PU",
+  "persist_key": "dlPumpkinPasty4_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty10",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6369,12 +6454,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty10_PU",
+  "persist_key": "dlPumpkinPasty10_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty11",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6386,12 +6471,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty11_PU",
+  "persist_key": "dlPumpkinPasty11_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty12",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6403,12 +6488,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty12_PU",
+  "persist_key": "dlPumpkinPasty12_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty13",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6420,12 +6505,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty13_PU",
+  "persist_key": "dlPumpkinPasty13_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty22",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6437,12 +6522,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty22_PU",
+  "persist_key": "dlPumpkinPasty22_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty17",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6454,12 +6539,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty17_PU",
+  "persist_key": "dlPumpkinPasty17_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty18",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6471,12 +6556,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty18_PU",
+  "persist_key": "dlPumpkinPasty18_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty15",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6488,12 +6573,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty15_PU",
+  "persist_key": "dlPumpkinPasty15_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty2",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6505,12 +6590,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty2_PU",
+  "persist_key": "dlPumpkinPasty2_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "SaveBook3",
   "cls": "SaveBook",
   "category": "SavePoint",
@@ -6527,7 +6612,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty9",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6539,12 +6624,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty9_PU",
+  "persist_key": "dlPumpkinPasty9_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty21",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6556,12 +6641,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty21_PU",
+  "persist_key": "dlPumpkinPasty21_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "PumpkinPasty20",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -6573,12 +6658,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty20_PU",
+  "persist_key": "dlPumpkinPasty20_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "TapestrySpwn1",
   "cls": "TapestrySpwn",
   "category": "KWGenericSpawner",
@@ -6600,7 +6685,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "DraconisForsStatue0",
   "cls": "DraconisForsStatue",
   "category": "CreatureStatue",
@@ -6617,7 +6702,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "CauldronCake12",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -6629,12 +6714,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake12_PU",
+  "persist_key": "dlCauldronCake12_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "DraconisforsStatue2",
   "cls": "DraconisForsStatue",
   "category": "CreatureStatue",
@@ -6651,7 +6736,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "Pumpkin12",
   "cls": "Pumpkin",
   "category": "KWGenericSpawner",
@@ -6673,7 +6758,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "CauldronCake3",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -6685,12 +6770,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake3_PU",
+  "persist_key": "dlCauldronCake3_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "SaveBook5",
   "cls": "SaveBook",
   "category": "SavePoint",
@@ -6707,7 +6792,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "KnightSpawner20",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -6729,7 +6814,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChestSpawner22",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -6751,7 +6836,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "TapestrySpwn2",
   "cls": "TapestrySpwn",
   "category": "KWGenericSpawner",
@@ -6773,7 +6858,7 @@
  },
  {
   "map": "HP3_Ch2Draconifors",
-  "level_id": "",
+  "level_id": "dl",
   "actor": "ChestSpawner25",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -6795,7 +6880,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner7",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -6825,7 +6910,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner4",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -6855,7 +6940,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner9",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -6885,7 +6970,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner5",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -6915,7 +7000,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "SecretAreaMarker7",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -6932,7 +7017,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner8",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -6962,7 +7047,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner6",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -6992,7 +7077,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner12",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -7018,7 +7103,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner8",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -7044,7 +7129,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner7",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -7070,7 +7155,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner3",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -7096,7 +7181,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner2",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -7126,7 +7211,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner1",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -7156,7 +7241,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner13",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -7182,7 +7267,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner14",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -7208,7 +7293,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner3",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -7234,7 +7319,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner0",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -7260,7 +7345,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner1",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -7286,7 +7371,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner2",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -7312,7 +7397,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner6",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -7338,7 +7423,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChallengeStar3",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -7350,12 +7435,12 @@
   "tag": "DLBS02",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar3_PU",
+  "persist_key": "dlbChallengeStar3_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "SecretAreaMarker1",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -7372,7 +7457,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner14",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -7394,7 +7479,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "LapiforsStatue3",
   "cls": "LapiforsStatue",
   "category": "CreatureStatue",
@@ -7411,7 +7496,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChallengeStar4",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -7423,12 +7508,12 @@
   "tag": "DLBS04",
   "event": "FinalCutScene",
   "contents": [],
-  "persist_key": "ChallengeStar4_PU",
+  "persist_key": "dlbChallengeStar4_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner23",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -7450,7 +7535,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "TopiaryBadgerSpwn0",
   "cls": "TopiaryBadgerSpwn",
   "category": "KWGenericSpawner",
@@ -7472,7 +7557,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "TopiarySnakeSpwn0",
   "cls": "TopiarySnakeSpwn",
   "category": "KWGenericSpawner",
@@ -7494,7 +7579,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "LapiforsStatue4",
   "cls": "LapiforsStatue",
   "category": "CreatureStatue",
@@ -7511,7 +7596,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner12",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -7537,7 +7622,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "DraconisForsStatue4",
   "cls": "DraconisForsStatue",
   "category": "CreatureStatue",
@@ -7554,7 +7639,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "TopiaryLionSpwn0",
   "cls": "TopiaryLionSpwn",
   "category": "KWGenericSpawner",
@@ -7576,7 +7661,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner26",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -7598,7 +7683,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronCake5",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -7610,12 +7695,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake5_PU",
+  "persist_key": "dlbCauldronCake5_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner5",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -7637,7 +7722,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner19",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -7659,7 +7744,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "EndChallengeTrigger0",
   "cls": "EndChallengeTrigger",
   "category": "EndChallengeTrigger",
@@ -7676,7 +7761,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner4",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -7693,7 +7778,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner15",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -7715,7 +7800,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronSpwn0",
   "cls": "CauldronSpwn",
   "category": "KWGenericSpawner",
@@ -7737,7 +7822,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronCake1",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -7749,12 +7834,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake1_PU",
+  "persist_key": "dlbCauldronCake1_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner10",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -7776,7 +7861,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "BeanBonusGame0",
   "cls": "BeanBonusGame",
   "category": "BeanBonusGame",
@@ -7793,7 +7878,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChallengeStar1",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -7805,12 +7890,12 @@
   "tag": "DLBS03",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar1_PU",
+  "persist_key": "dlbChallengeStar1_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner13",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -7832,7 +7917,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "PumpkinPasty23",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -7844,12 +7929,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty23_PU",
+  "persist_key": "dlbPumpkinPasty23_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "PumpkinPasty24",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -7861,12 +7946,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty24_PU",
+  "persist_key": "dlbPumpkinPasty24_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronSpwn1",
   "cls": "CauldronSpwn",
   "category": "KWGenericSpawner",
@@ -7888,7 +7973,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner11",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -7910,7 +7995,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronSpwn2",
   "cls": "CauldronSpwn",
   "category": "KWGenericSpawner",
@@ -7932,7 +8017,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "SaveBook2",
   "cls": "SaveBook",
   "category": "SavePoint",
@@ -7949,7 +8034,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronCake2",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -7961,12 +8046,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake2_PU",
+  "persist_key": "dlbCauldronCake2_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronCake4",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -7978,12 +8063,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake4_PU",
+  "persist_key": "dlbCauldronCake4_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronCake0",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -7995,12 +8080,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake0_PU",
+  "persist_key": "dlbCauldronCake0_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner32",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -8022,7 +8107,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronCake16",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -8034,12 +8119,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake16_PU",
+  "persist_key": "dlbCauldronCake16_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronCake18",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -8051,12 +8136,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake18_PU",
+  "persist_key": "dlbCauldronCake18_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronCake19",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -8068,12 +8153,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake19_PU",
+  "persist_key": "dlbCauldronCake19_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "PumpkinPasty19",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -8085,12 +8170,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty19_PU",
+  "persist_key": "dlbPumpkinPasty19_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "PumpkinPasty33",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -8102,12 +8187,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty33_PU",
+  "persist_key": "dlbPumpkinPasty33_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "PumpkinPasty5",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -8119,12 +8204,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty5_PU",
+  "persist_key": "dlbPumpkinPasty5_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChallengeStar8",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -8136,12 +8221,12 @@
   "tag": "DLBS01",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar8_PU",
+  "persist_key": "dlbChallengeStar8_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronCake9",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -8153,12 +8238,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake9_PU",
+  "persist_key": "dlbCauldronCake9_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner17",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -8180,7 +8265,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner31",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -8202,7 +8287,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner30",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -8224,7 +8309,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner29",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -8246,7 +8331,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner28",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -8268,7 +8353,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner27",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -8290,7 +8375,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner26",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -8312,7 +8397,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "KnightSpawner25",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -8334,7 +8419,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner28",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -8356,7 +8441,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronCake7",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -8368,12 +8453,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake7_PU",
+  "persist_key": "dlbCauldronCake7_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "SaveBook7",
   "cls": "SaveBook",
   "category": "SavePoint",
@@ -8390,7 +8475,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronCake25",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -8402,12 +8487,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake25_PU",
+  "persist_key": "dlbCauldronCake25_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "TopiaryRavenSpwn0",
   "cls": "TopiaryRavenSpwn",
   "category": "KWGenericSpawner",
@@ -8429,7 +8514,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner27",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -8451,7 +8536,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner31",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -8473,7 +8558,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "SecretAreaMarker5",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -8490,7 +8575,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "SecretAreaMarker6",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -8507,7 +8592,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "SaveBook10",
   "cls": "SaveBook",
   "category": "SavePoint",
@@ -8524,7 +8609,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner24",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -8546,7 +8631,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronCake15",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -8558,12 +8643,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake15_PU",
+  "persist_key": "dlbCauldronCake15_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronCake20",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -8575,12 +8660,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake20_PU",
+  "persist_key": "dlbCauldronCake20_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "AlohomoraPadLock2",
   "cls": "AlohomoraPadLock",
   "category": "KWGenericSpawner",
@@ -8602,7 +8687,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "PumpkinPasty25",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -8614,12 +8699,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty25_PU",
+  "persist_key": "dlbPumpkinPasty25_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "CauldronCake21",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -8631,12 +8716,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake21_PU",
+  "persist_key": "dlbCauldronCake21_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "PumpkinPasty26",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -8648,12 +8733,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty26_PU",
+  "persist_key": "dlbPumpkinPasty26_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "PumpkinPasty28",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -8665,12 +8750,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty28_PU",
+  "persist_key": "dlbPumpkinPasty28_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "PumpkinPasty29",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -8682,12 +8767,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty29_PU",
+  "persist_key": "dlbPumpkinPasty29_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "PumpkinPasty31",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -8699,12 +8784,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty31_PU",
+  "persist_key": "dlbPumpkinPasty31_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "PumpkinPasty30",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -8716,12 +8801,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty30_PU",
+  "persist_key": "dlbPumpkinPasty30_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "PumpkinPasty32",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -8733,12 +8818,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty32_PU",
+  "persist_key": "dlbPumpkinPasty32_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "LapiforsStatue2",
   "cls": "LapiforsStatue",
   "category": "CreatureStatue",
@@ -8755,7 +8840,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "LapiforsStatue1",
   "cls": "LapiforsStatue",
   "category": "CreatureStatue",
@@ -8772,7 +8857,7 @@
  },
  {
   "map": "HP3_Ch2DraconiforsB",
-  "level_id": "",
+  "level_id": "dlb",
   "actor": "ChestSpawner22",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -8794,7 +8879,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChallengeStar10",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -8806,12 +8891,12 @@
   "tag": "GLS04",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar10_PU",
+  "persist_key": "glChallengeStar10_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChallengeStar1",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -8823,12 +8908,12 @@
   "tag": "GLS06",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar1_PU",
+  "persist_key": "glChallengeStar1_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChallengeStar3",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -8840,12 +8925,12 @@
   "tag": "GLS02",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar3_PU",
+  "persist_key": "glChallengeStar3_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChallengeStar4",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -8857,12 +8942,12 @@
   "tag": "GLS03",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar4_PU",
+  "persist_key": "glChallengeStar4_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty11",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -8874,12 +8959,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty11_PU",
+  "persist_key": "glPumpkinPasty11_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "CauldronCake13",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -8891,12 +8976,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake13_PU",
+  "persist_key": "glCauldronCake13_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "KnightSpawner39",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -8922,7 +9007,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "KnightSpawner38",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -8948,7 +9033,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChallengeStar9",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -8960,12 +9045,12 @@
   "tag": "GLS05",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar9_PU",
+  "persist_key": "glChallengeStar9_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "CauldronCake12",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -8977,12 +9062,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake12_PU",
+  "persist_key": "glCauldronCake12_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty15",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -8994,12 +9079,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty15_PU",
+  "persist_key": "glPumpkinPasty15_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty14",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9011,12 +9096,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty14_PU",
+  "persist_key": "glPumpkinPasty14_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty27",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9028,12 +9113,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty27_PU",
+  "persist_key": "glPumpkinPasty27_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChallengeStar12",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -9045,12 +9130,12 @@
   "tag": "GLS01",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar12_PU",
+  "persist_key": "glChallengeStar12_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "CauldronSpwn1",
   "cls": "CauldronSpwn",
   "category": "KWGenericSpawner",
@@ -9072,7 +9157,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "SecretAreaMarker1",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -9089,7 +9174,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "AlohomoraPadLock12",
   "cls": "AlohomoraPadLock",
   "category": "KWGenericSpawner",
@@ -9111,7 +9196,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "CauldronCake11",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -9123,12 +9208,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake11_PU",
+  "persist_key": "glCauldronCake11_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty37",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9140,12 +9225,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty37_PU",
+  "persist_key": "glPumpkinPasty37_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "CauldronCake10",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -9157,12 +9242,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake10_PU",
+  "persist_key": "glCauldronCake10_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty28",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9174,12 +9259,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty28_PU",
+  "persist_key": "glPumpkinPasty28_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty26",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9191,12 +9276,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty26_PU",
+  "persist_key": "glPumpkinPasty26_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChestSpawner35",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -9226,7 +9311,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty32",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9238,12 +9323,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty32_PU",
+  "persist_key": "glPumpkinPasty32_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty30",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9255,12 +9340,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty30_PU",
+  "persist_key": "glPumpkinPasty30_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "CauldronCake8",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -9272,12 +9357,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake8_PU",
+  "persist_key": "glCauldronCake8_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChestSpawner13",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -9294,7 +9379,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChestSpawner31",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -9324,7 +9409,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty13",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9336,12 +9421,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty13_PU",
+  "persist_key": "glPumpkinPasty13_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "CauldronCake5",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -9353,12 +9438,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake5_PU",
+  "persist_key": "glCauldronCake5_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty29",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9370,12 +9455,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty29_PU",
+  "persist_key": "glPumpkinPasty29_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty41",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9387,12 +9472,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty41_PU",
+  "persist_key": "glPumpkinPasty41_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty42",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9404,12 +9489,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty42_PU",
+  "persist_key": "glPumpkinPasty42_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty43",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9421,12 +9506,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty43_PU",
+  "persist_key": "glPumpkinPasty43_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty44",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9438,12 +9523,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty44_PU",
+  "persist_key": "glPumpkinPasty44_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty25",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9455,12 +9540,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty25_PU",
+  "persist_key": "glPumpkinPasty25_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "CauldronCake6",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -9472,12 +9557,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake6_PU",
+  "persist_key": "glCauldronCake6_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty31",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9489,12 +9574,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty31_PU",
+  "persist_key": "glPumpkinPasty31_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "CauldronCake15",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -9506,12 +9591,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake15_PU",
+  "persist_key": "glCauldronCake15_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "SaveBook0",
   "cls": "SaveBook",
   "category": "SavePoint",
@@ -9528,7 +9613,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "SaveBook1",
   "cls": "SaveBook",
   "category": "SavePoint",
@@ -9545,7 +9630,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "SecretAreaMarker2",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -9562,7 +9647,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "SecretAreaMarker3",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -9579,7 +9664,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChestSpawner12",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -9605,7 +9690,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "CauldronCake14",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -9617,12 +9702,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake14_PU",
+  "persist_key": "glCauldronCake14_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "CauldronCake3",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -9634,12 +9719,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake3_PU",
+  "persist_key": "glCauldronCake3_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty38",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9651,12 +9736,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty38_PU",
+  "persist_key": "glPumpkinPasty38_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty5",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9668,12 +9753,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty5_PU",
+  "persist_key": "glPumpkinPasty5_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChallengeStar5",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -9685,12 +9770,12 @@
   "tag": "ChallengeStar",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar5_PU",
+  "persist_key": "glChallengeStar5_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty24",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9702,12 +9787,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty24_PU",
+  "persist_key": "glPumpkinPasty24_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty12",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9719,12 +9804,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty12_PU",
+  "persist_key": "glPumpkinPasty12_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty23",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9736,12 +9821,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty23_PU",
+  "persist_key": "glPumpkinPasty23_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChallengeStar6",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -9753,12 +9838,12 @@
   "tag": "ChallengeStar",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar6_PU",
+  "persist_key": "glChallengeStar6_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChallengeStar0",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -9770,12 +9855,12 @@
   "tag": "ChallengeStar",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar0_PU",
+  "persist_key": "glChallengeStar0_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty19",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9787,12 +9872,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty19_PU",
+  "persist_key": "glPumpkinPasty19_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty18",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9804,12 +9889,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty18_PU",
+  "persist_key": "glPumpkinPasty18_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty45",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9821,12 +9906,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty45_PU",
+  "persist_key": "glPumpkinPasty45_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty7",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9838,12 +9923,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty7_PU",
+  "persist_key": "glPumpkinPasty7_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty49",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9855,12 +9940,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty49_PU",
+  "persist_key": "glPumpkinPasty49_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty34",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9872,12 +9957,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty34_PU",
+  "persist_key": "glPumpkinPasty34_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty33",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9889,12 +9974,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty33_PU",
+  "persist_key": "glPumpkinPasty33_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty17",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9906,12 +9991,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty17_PU",
+  "persist_key": "glPumpkinPasty17_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty22",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9923,12 +10008,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty22_PU",
+  "persist_key": "glPumpkinPasty22_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty20",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9940,12 +10025,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty20_PU",
+  "persist_key": "glPumpkinPasty20_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty50",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9957,12 +10042,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty50_PU",
+  "persist_key": "glPumpkinPasty50_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty9",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9974,12 +10059,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty9_PU",
+  "persist_key": "glPumpkinPasty9_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty10",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -9991,12 +10076,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty10_PU",
+  "persist_key": "glPumpkinPasty10_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChallengeStar8",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -10008,12 +10093,12 @@
   "tag": "GLS08",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar8_PU",
+  "persist_key": "glChallengeStar8_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChallengeStar7",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -10025,12 +10110,12 @@
   "tag": "GLS10",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar7_PU",
+  "persist_key": "glChallengeStar7_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "KnightSpawner4",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -10047,7 +10132,7 @@
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty35",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10059,12 +10144,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty35_PU",
+  "persist_key": "glPumpkinPasty35_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty1",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10076,12 +10161,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty1_PU",
+  "persist_key": "glPumpkinPasty1_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "ChallengeStar2",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -10093,12 +10178,12 @@
   "tag": "GLS09",
   "event": "RmJ_LoopStar_Emit",
   "contents": [],
-  "persist_key": "ChallengeStar2_PU",
+  "persist_key": "glChallengeStar2_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty6",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10110,12 +10195,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty6_PU",
+  "persist_key": "glPumpkinPasty6_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3Glacius",
-  "level_id": "",
+  "level_id": "gl",
   "actor": "PumpkinPasty36",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10127,12 +10212,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty36_PU",
+  "persist_key": "glPumpkinPasty36_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner4",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -10154,7 +10239,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner6",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -10176,7 +10261,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner8",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -10198,7 +10283,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner7",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -10228,7 +10313,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner5",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -10250,7 +10335,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner9",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -10272,7 +10357,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "KnightSpawner7",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -10298,7 +10383,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "KnightSpawner6",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -10324,7 +10409,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "KnightSpawner8",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -10350,7 +10435,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner2",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -10376,7 +10461,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner3",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -10402,7 +10487,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "KnightSpawner12",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -10428,7 +10513,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "KnightSpawner13",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -10454,7 +10539,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "KnightSpawner3",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -10480,7 +10565,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty35",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10492,12 +10577,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty35_PU",
+  "persist_key": "glbPumpkinPasty35_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "KnightSpawner2",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -10523,7 +10608,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "KnightSpawner14",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -10549,7 +10634,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "KnightSpawner1",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -10575,7 +10660,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner1",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -10601,7 +10686,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner0",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -10627,7 +10712,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "KnightSpawner4",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -10644,7 +10729,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChallengeStar2",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -10656,12 +10741,12 @@
   "tag": "GLBS03",
   "event": "RmJ_LoopStar_Emit",
   "contents": [],
-  "persist_key": "ChallengeStar2_PU",
+  "persist_key": "glbChallengeStar2_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChallengeStar7",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -10673,12 +10758,12 @@
   "tag": "GLBS04",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar7_PU",
+  "persist_key": "glbChallengeStar7_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChallengeStar8",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -10690,12 +10775,12 @@
   "tag": "GLBS02",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar8_PU",
+  "persist_key": "glbChallengeStar8_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "KnightSpawner5",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -10717,7 +10802,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "WC_Gringott0",
   "cls": "WC_Gringott",
   "category": "WizardCard",
@@ -10729,12 +10814,12 @@
   "tag": "WC_Gringott",
   "event": null,
   "contents": [],
-  "persist_key": "WC_Gringott0_PU",
+  "persist_key": "glbWC_Gringott0_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty19",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10746,12 +10831,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty19_PU",
+  "persist_key": "glbPumpkinPasty19_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty18",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10763,12 +10848,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty18_PU",
+  "persist_key": "glbPumpkinPasty18_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty45",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10780,12 +10865,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty45_PU",
+  "persist_key": "glbPumpkinPasty45_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty7",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10797,12 +10882,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty7_PU",
+  "persist_key": "glbPumpkinPasty7_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty49",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10814,12 +10899,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty49_PU",
+  "persist_key": "glbPumpkinPasty49_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty34",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10831,12 +10916,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty34_PU",
+  "persist_key": "glbPumpkinPasty34_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty33",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10848,12 +10933,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty33_PU",
+  "persist_key": "glbPumpkinPasty33_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty17",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10865,12 +10950,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty17_PU",
+  "persist_key": "glbPumpkinPasty17_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty22",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10882,12 +10967,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty22_PU",
+  "persist_key": "glbPumpkinPasty22_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty20",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10899,12 +10984,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty20_PU",
+  "persist_key": "glbPumpkinPasty20_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty50",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10916,12 +11001,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty50_PU",
+  "persist_key": "glbPumpkinPasty50_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty9",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10933,12 +11018,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty9_PU",
+  "persist_key": "glbPumpkinPasty9_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty10",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10950,12 +11035,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty10_PU",
+  "persist_key": "glbPumpkinPasty10_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty1",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10967,12 +11052,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty1_PU",
+  "persist_key": "glbPumpkinPasty1_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty5",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -10984,12 +11069,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty5_PU",
+  "persist_key": "glbPumpkinPasty5_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "KnightSpawner0",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -11011,7 +11096,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "SaveBook3",
   "cls": "SaveBook",
   "category": "SavePoint",
@@ -11028,7 +11113,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner30",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -11054,7 +11139,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner33",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -11080,7 +11165,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChallengeStar11",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -11092,12 +11177,12 @@
   "tag": "GLBS01",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar11_PU",
+  "persist_key": "glbChallengeStar11_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "TapestrySpwn0",
   "cls": "TapestrySpwn",
   "category": "KWGenericSpawner",
@@ -11119,7 +11204,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty21",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11131,12 +11216,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty21_PU",
+  "persist_key": "glbPumpkinPasty21_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "BannerSpwn2",
   "cls": "BannerSpwn",
   "category": "KWGenericSpawner",
@@ -11166,7 +11251,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty46",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11178,12 +11263,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty46_PU",
+  "persist_key": "glbPumpkinPasty46_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty47",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11195,12 +11280,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty47_PU",
+  "persist_key": "glbPumpkinPasty47_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty48",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11212,12 +11297,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty48_PU",
+  "persist_key": "glbPumpkinPasty48_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty51",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11229,12 +11314,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty51_PU",
+  "persist_key": "glbPumpkinPasty51_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "CauldronCake17",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -11246,12 +11331,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake17_PU",
+  "persist_key": "glbCauldronCake17_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty16",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11263,12 +11348,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty16_PU",
+  "persist_key": "glbPumpkinPasty16_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty8",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11280,12 +11365,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty8_PU",
+  "persist_key": "glbPumpkinPasty8_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "CauldronCake2",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -11297,12 +11382,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake2_PU",
+  "persist_key": "glbCauldronCake2_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "CauldronCake0",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -11314,12 +11399,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake0_PU",
+  "persist_key": "glbCauldronCake0_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner32",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -11349,7 +11434,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "CauldronCake16",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -11361,12 +11446,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake16_PU",
+  "persist_key": "glbCauldronCake16_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "CauldronCake18",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -11378,12 +11463,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake18_PU",
+  "persist_key": "glbCauldronCake18_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "CauldronCake19",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -11395,12 +11480,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake19_PU",
+  "persist_key": "glbCauldronCake19_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "SaveBook2",
   "cls": "SaveBook",
   "category": "SavePoint",
@@ -11417,7 +11502,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner11",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -11443,7 +11528,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "SecretAreaMarker4",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -11460,7 +11545,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "CauldronCake4",
   "cls": "CauldronCake",
   "category": "CauldronCake",
@@ -11472,12 +11557,12 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "CauldronCake4_PU",
+  "persist_key": "glbCauldronCake4_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "SecretAreaMarker0",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -11494,7 +11579,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "EndChallengeTrigger0",
   "cls": "EndChallengeTrigger",
   "category": "EndChallengeTrigger",
@@ -11511,7 +11596,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "BeanBonusGame0",
   "cls": "BeanBonusGame",
   "category": "BeanBonusGame",
@@ -11528,7 +11613,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChestSpawner10",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -11558,7 +11643,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "BannerSpwn0",
   "cls": "BannerSpwn",
   "category": "KWGenericSpawner",
@@ -11584,7 +11669,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "BannerSpwn1",
   "cls": "BannerSpwn",
   "category": "KWGenericSpawner",
@@ -11606,7 +11691,7 @@
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChallengeStar12",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -11618,12 +11703,12 @@
   "tag": "GLS01",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar12_PU",
+  "persist_key": "glbChallengeStar12_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty15",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11635,12 +11720,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty15_PU",
+  "persist_key": "glbPumpkinPasty15_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty14",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11652,12 +11737,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty14_PU",
+  "persist_key": "glbPumpkinPasty14_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChallengeStar3",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -11669,12 +11754,12 @@
   "tag": "GLS02",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar3_PU",
+  "persist_key": "glbChallengeStar3_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChallengeStar4",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -11686,12 +11771,12 @@
   "tag": "GLS03",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar4_PU",
+  "persist_key": "glbChallengeStar4_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty11",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11703,12 +11788,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty11_PU",
+  "persist_key": "glbPumpkinPasty11_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChallengeStar0",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -11720,12 +11805,12 @@
   "tag": "ChallengeStar",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar0_PU",
+  "persist_key": "glbChallengeStar0_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChallengeStar6",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -11737,12 +11822,12 @@
   "tag": "ChallengeStar",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar6_PU",
+  "persist_key": "glbChallengeStar6_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty23",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11754,12 +11839,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty23_PU",
+  "persist_key": "glbPumpkinPasty23_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty12",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11771,12 +11856,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty12_PU",
+  "persist_key": "glbPumpkinPasty12_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty24",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11788,12 +11873,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty24_PU",
+  "persist_key": "glbPumpkinPasty24_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "ChallengeStar5",
   "cls": "ChallengeStar",
   "category": "ChallengeStar",
@@ -11805,12 +11890,12 @@
   "tag": "ChallengeStar",
   "event": null,
   "contents": [],
-  "persist_key": "ChallengeStar5_PU",
+  "persist_key": "glbChallengeStar5_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty38",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11822,12 +11907,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty38_PU",
+  "persist_key": "glbPumpkinPasty38_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty6",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11839,12 +11924,12 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty6_PU",
+  "persist_key": "glbPumpkinPasty6_PU",
   "awarded_by": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
-  "level_id": "",
+  "level_id": "glb",
   "actor": "PumpkinPasty36",
   "cls": "PumpkinPasty",
   "category": "PumpkinPasty",
@@ -11856,7 +11941,7 @@
   "tag": "PumpkinPasty",
   "event": null,
   "contents": [],
-  "persist_key": "PumpkinPasty36_PU",
+  "persist_key": "glbPumpkinPasty36_PU",
   "awarded_by": null
  },
  {
@@ -11892,6 +11977,448 @@
   "contents": [],
   "persist_key": null,
   "awarded_by": null
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy74",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2206,
+   4095,
+   -341
+  ],
+  "tag": "Bs22",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs22"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy7",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   109,
+   2113,
+   -597
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy12",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   289,
+   1630,
+   -473
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy20",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   34,
+   962,
+   -394
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy68",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2208,
+   3569,
+   -341
+  ],
+  "tag": "Bs16",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs16"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy27",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -864,
+   1140,
+   -517
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy23",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -479,
+   962,
+   -486
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy14",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   291,
+   1375,
+   -412
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy16",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   291,
+   1120,
+   -509
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy66",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2207,
+   3380,
+   -341
+  ],
+  "tag": "Bs14",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs14"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy58",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2208,
+   2374,
+   -341
+  ],
+  "tag": "Bs6",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs6"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy60",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2207,
+   2582,
+   -341
+  ],
+  "tag": "Bs8",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs8"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy5",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -158,
+   2113,
+   -293
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy19",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -865,
+   1410,
+   -339
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy3",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -416,
+   2113,
+   -207
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy56",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2208,
+   2182,
+   -341
+  ],
+  "tag": "Bs4",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs4"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy21",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -226,
+   962,
+   -383
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy26",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -865,
+   1050,
+   -744
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy25",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -739,
+   961,
+   -698
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy70",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2206,
+   3761,
+   -341
+  ],
+  "tag": "Bs18",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs18"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy72",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2207,
+   3956,
+   -341
+  ],
+  "tag": "Bs20",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs20"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy54",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -2131,
+   2082,
+   -341
+  ],
+  "tag": "Bs2",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Bs2"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy28",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -863,
+   1191,
+   -382
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy11",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   288,
+   1884,
+   -619
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy30",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -862,
+   1340,
+   -297
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
+ },
+ {
+  "map": "HP3_DungeonHUB",
+  "level_id": "dung",
+  "actor": "HPSpawnThingy29",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -864,
+   1254,
+   -297
+  ],
+  "tag": "Aspawnbeans",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Aspawnbeans"
  },
  {
   "map": "HP3_DungeonHUB",
@@ -14836,7 +15363,7 @@
  },
  {
   "map": "HP3_Final",
-  "level_id": "",
+  "level_id": "HP3Final",
   "actor": "AlohomoraPadLock3",
   "cls": "AlohomoraPadLock",
   "category": "KWGenericSpawner",
@@ -14853,7 +15380,7 @@
  },
  {
   "map": "HP3_Final",
-  "level_id": "",
+  "level_id": "HP3Final",
   "actor": "HPGenericSpawner0",
   "cls": "Hpgenericspawner",
   "category": "KWGenericSpawner",
@@ -16217,6 +16744,176 @@
   "contents": [],
   "persist_key": "ghubCauldronCake0_PU",
   "awarded_by": null
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy14",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -3557,
+   701,
+   488
+  ],
+  "tag": "peeves2_Spwn_Pastie_01",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "peeves2_Spwn_Pastie_01"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy23",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   448,
+   951,
+   72
+  ],
+  "tag": "Peeves3_Spwn_Cake_01",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Peeves3_Spwn_Cake_01"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy22",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   447,
+   1050,
+   72
+  ],
+  "tag": "Peeves3_Spwn_Cake_03",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Peeves3_Spwn_Cake_03"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy2",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -546,
+   637,
+   1657
+  ],
+  "tag": "4thFlr_SecretSpong_Spwn_01",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "4thFlr_SecretSpong_Spwn_01"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy1",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -545,
+   637,
+   1842
+  ],
+  "tag": "4thFlr_SecretSpong_Spwn_03",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "4thFlr_SecretSpong_Spwn_03"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy4",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -545,
+   639,
+   1742
+  ],
+  "tag": "4thFlr_SecretSpong_Spwn_02",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "4thFlr_SecretSpong_Spwn_02"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy13",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -3554,
+   851,
+   488
+  ],
+  "tag": "peeves2_Spwn_Pastie_04",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "peeves2_Spwn_Pastie_04"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy18",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -3587,
+   807,
+   488
+  ],
+  "tag": "peeves2_Spwn_Pastie_03",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "peeves2_Spwn_Pastie_03"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy16",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -3592,
+   749,
+   488
+  ],
+  "tag": "peeves2_Spwn_Pastie_02",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "peeves2_Spwn_Pastie_02"
+ },
+ {
+  "map": "HP3_InsideHub",
+  "level_id": "ihub",
+  "actor": "HPSpawnThingy25",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   409,
+   998,
+   72
+  ],
+  "tag": "Peeves3_Spwn_Cake_02",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Peeves3_Spwn_Cake_02"
  },
  {
   "map": "HP3_InsideHub",
@@ -18419,6 +19116,57 @@
  {
   "map": "HP3_PortraitPassword_B",
   "level_id": "ppb",
+  "actor": "SpawnThingy0",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -862,
+   -3443,
+   224
+  ],
+  "tag": "BsecJelly",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "BsecJelly"
+ },
+ {
+  "map": "HP3_PortraitPassword_B",
+  "level_id": "ppb",
+  "actor": "SpawnThingy3",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -872,
+   -3489,
+   224
+  ],
+  "tag": "BsecJelly",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "BsecJelly"
+ },
+ {
+  "map": "HP3_PortraitPassword_B",
+  "level_id": "ppb",
+  "actor": "SpawnThingy2",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -913,
+   -3452,
+   224
+  ],
+  "tag": "BsecJelly",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "BsecJelly"
+ },
+ {
+  "map": "HP3_PortraitPassword_B",
+  "level_id": "ppb",
   "actor": "KnightShieldSpawner1",
   "cls": "KnightShieldSpawner",
   "category": "KWGenericSpawner",
@@ -18813,6 +19561,74 @@
   "contents": [],
   "persist_key": "ppbCauldronCake8_PU",
   "awarded_by": null
+ },
+ {
+  "map": "HP3_PortraitPassword_C",
+  "level_id": "ppc",
+  "actor": "HPSpawnThingy8",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -3919,
+   -1596,
+   1898
+  ],
+  "tag": "Cspongyplate3",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Cspongyplate3"
+ },
+ {
+  "map": "HP3_PortraitPassword_C",
+  "level_id": "ppc",
+  "actor": "HPSpawnThingy1",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -3959,
+   -1596,
+   1926
+  ],
+  "tag": "Cspongyplate3",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Cspongyplate3"
+ },
+ {
+  "map": "HP3_PortraitPassword_C",
+  "level_id": "ppc",
+  "actor": "HPSpawnThingy4",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -3845,
+   -1597,
+   1611
+  ],
+  "tag": "Cspongyplate3",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Cspongyplate3"
+ },
+ {
+  "map": "HP3_PortraitPassword_C",
+  "level_id": "ppc",
+  "actor": "HPSpawnThingy6",
+  "cls": "CauldronCake",
+  "category": "CauldronCake",
+  "loc": [
+   -3883,
+   -1596,
+   1800
+  ],
+  "tag": "Cspongyplate3",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "Cspongyplate3"
  },
  {
   "map": "HP3_PortraitPassword_C",
@@ -19497,7 +20313,7 @@
  },
  {
   "map": "HP3_PortraitPassword_F",
-  "level_id": "",
+  "level_id": "ppf",
   "actor": "SecretAreaMarker0",
   "cls": "SecretAreaMarker",
   "category": "SecretAreaMarker",
@@ -19514,7 +20330,7 @@
  },
  {
   "map": "HP3_PortraitPassword_F",
-  "level_id": "",
+  "level_id": "ppf",
   "actor": "CauldronSpwn5",
   "cls": "CauldronSpwn",
   "category": "KWGenericSpawner",
@@ -19536,7 +20352,7 @@
  },
  {
   "map": "HP3_PortraitPassword_F",
-  "level_id": "",
+  "level_id": "ppf",
   "actor": "ChestSpawner34",
   "cls": "ChestSpawner",
   "category": "KWGenericSpawner",
@@ -19562,7 +20378,7 @@
  },
  {
   "map": "HP3_PortraitPassword_F",
-  "level_id": "",
+  "level_id": "ppf",
   "actor": "KnightSpawner8",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
@@ -19584,7 +20400,7 @@
  },
  {
   "map": "HP3_PortraitPassword_F",
-  "level_id": "",
+  "level_id": "ppf",
   "actor": "BannerSpwn1",
   "cls": "BannerSpwn",
   "category": "KWGenericSpawner",
@@ -19606,7 +20422,7 @@
  },
  {
   "map": "HP3_PortraitPassword_F",
-  "level_id": "",
+  "level_id": "ppf",
   "actor": "BannerSpwn0",
   "cls": "BannerSpwn",
   "category": "KWGenericSpawner",
@@ -19628,7 +20444,7 @@
  },
  {
   "map": "HP3_PortraitPassword_F",
-  "level_id": "",
+  "level_id": "ppf",
   "actor": "KnightSpawner7",
   "cls": "KnightSpawner",
   "category": "KWGenericSpawner",
