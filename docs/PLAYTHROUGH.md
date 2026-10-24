@@ -386,6 +386,7 @@ Found so far:
 | Pasty | `PumpkinPasty13` (−1855, −1519, −203); marked at (−1848, −1511, −204) | **rabbit form**, confirmed | **found** |
 | Pasty | `PumpkinPasty3` (−1533, −1464, −49); marked at (−1537, −1467, −49) | **rabbit form**, confirmed | **found** |
 | Pasty | `PumpkinPasty10` (−1269, −1030, −58); marked at (−1284, −1033, −44) | **rabbit form**, confirmed | **found** |
+| Pasty | `PumpkinPasty11` (433, −382, 239); marked at (416, −378, 259) | **dragon form (Draconifors)**, confirmed | **found** |
 
 The start plays `Cut_6500SP2LapIntro_Start` (`PlayerStart2`), the Lapifors introduction.
 
