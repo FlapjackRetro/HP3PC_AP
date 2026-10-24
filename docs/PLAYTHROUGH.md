@@ -739,7 +739,7 @@ chests with checks; they don't (beans).
 | Entered from | the BuckyExecuted cutscene (`8180BuckExecuted`), confirmed |
 | Leaves to | HP3_WhompingWillow (`ChangeLevelTrigger0` or `8700ADV5AtShack`), setting `GState085` |
 | Checks (catalogue) | **no cards**; 5 secret areas (`SecretAreaMarker0`–`4`); 3 placed pasties and 1 placed cake; 12 snack spawners (chests, skull shelves, cauldrons, 2 "companion" chests) with about 25 pasties and 8 cakes; one Draconifors statue |
-| Requires | **Draconifors** (dragon form, confirmed), Alohomora, Depulso; Glacius (per the plan) *(to confirm)* |
+| Requires | **Draconifors** (dragon form), **Alohomora**, **Depulso**, **Spongify** (all confirmed); Glacius (per the plan) *(to confirm)* |
 
 | Check | Where | Requires | Status |
 | --- | --- | --- | --- |
@@ -748,7 +748,8 @@ chests with checks; they don't (beans).
 | Pasty (placed) | `PumpkinPasty3` (−1761, −3577, −880); marked at (−1760, −3584, −853). A padlocked door (`AlohomoraPadLock4`/`5`) is ~315 units west | *(none stated)* | **found** |
 | Cake (placed) | `CauldronCake4` (−707, −5223, −48), high up; marked at (−736, −5227, −116) | **dragon form** (Draconifors statue `DraconisforsStatue1` at (−1319, −3403, −811)), confirmed | **found** |
 | 2 pasties (+ beans) | `SkullShelfSpwn2` (−2096, −2492, −1488), a skull shelf on the lower level; marked at (−2074, −2469, −1461) | **Depulso**, confirmed | **found** |
-| 3 pasties (+ beans) | `ChestSpawner2` (964, −2395, −3975), at the bottom of the map (height ≈ −3975); marked at (917, −2403, −3957) | **Alohomora**, confirmed | **found** |
+| 3 pasties (+ beans) | `ChestSpawner2` (964, −2395, −3975), at the bottom of the map (height ≈ −3975); marked at (917, −2403, −3957) | **Spongify** + **Alohomora**, confirmed | **found** |
+| 3 cakes | `ChestSpawner5` (785, −3349, −2016), ~350 units from secret area `SecretAreaMarker3` (802, −2960, −1904); marked at (786, −3300, −1997) | **Spongify** + **Alohomora**, confirmed | **found** |
 | Pasty (placed) | `PumpkinPasty0` (467, −2404, −2895); marked at (447, −2410, −2893) | *(none stated)* | **found** |
 | 2 cakes | `ChestSpawner12` (−3235, −3979, −770), in secret area `SecretAreaMarker1` (−3310, −3971, −760); marked at (−3203, −3942, −757) | **Alohomora**, confirmed | **found** |
 
