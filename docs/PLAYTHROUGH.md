@@ -629,6 +629,13 @@ The library level ends with `7170Library_Exit`, which returns the player to Insi
 | Pasty skull (5 beans + 2 pasties) | `SkullFloatSpwn7` (−1773, −927, 894), a floating skull; marked at (−1777, −987, 842) | **Alohomora** (to reach it) + **Depulso**, confirmed | **found** |
 | **Library exit / entrance** | Portcullis `KWMover53` (tag `Library_Port_Mvr`, (−704, −1368, 732)) in front of the double doors `KWMover52`/`KWMover13` (tag `Library_Door_Mvr`), 2nd floor; `Door3` and `PopupTrigger20` there too; marked at (−710, −1349, 778) | — | confirmed: this is where the library level comes out |
 
+| **DADA → Expecto door** | Portcullis `KWMover27` (tag `DADA_PortToExpecto_Mvr`, (856, −1844, 1152)) in front of double doors `KWMover66`/`KWMover67` (tag `DADA_DoorToExpecto_Mvr`), in the DADA classroom, with `PopupTrigger11`; marked at (838, −1844, 1194) | — | confirmed: closed portcullis + door pair, reusable |
+
 **Open Castle:** confirmed, the 2nd-floor Library door (portcullis + doors) is where Adv3Library exits, so it works as
 the library's entrance. The "Library" area unlock in [OPEN_CASTLE.md](OPEN_CASTLE.md) §3 uses it: raise
 `Library_Port_Mvr` / open `Library_Door_Mvr` once the item is received, plus a `ChangeLevelTrigger` to HP3_Adv3Library.
+
+**Open Castle:** the DADA classroom's portcullis + doors are the "Expecto Patronum" area unlock from
+[OPEN_CASTLE.md](OPEN_CASTLE.md) §3, now located: raise `DADA_PortToExpecto_Mvr` / open `DADA_DoorToExpecto_Mvr` when
+the item is received, with a new `ChangeLevelTrigger` behind them to HP3_Adv2ExpPatronum. Like the Library door, it's
+built the same way (portcullis + `TudorDoor1U`/`2U` pair, in the `Persistant_Movers` group).
