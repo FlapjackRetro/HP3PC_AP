@@ -566,5 +566,6 @@ trigger, `DracLoadQuidditch` (active outside `070/075/090/100`), which loads **H
 | Checks | none in the catalogue |
 
 All cutscene (confirmed): the Quidditch match and the Dementor attack. The cutscene keeps running into
-**HP3_GroundsDada** (via `7010QuidDem_ALL`, confirmed), still without player control. **Open Castle:** drop it (no checks, no
+**HP3_GroundsDada** (via `7010QuidDem_ALL`, confirmed), still without player control. The GroundsDada stretch is cutscene only too; it continues into **HP3_Adv2ExpPatronum**
+(`7020PatronusIntro_Start`, confirmed). **Open Castle:** drop it (no checks, no
 player control), as planned. *(Where the vanilla chain goes next: following.)*
