@@ -511,7 +511,7 @@ All 12 in the game:
 | Ch2B | `Bundimun0` | (5316, 4360, 308) | 1 pasty (**marked**) |
 | Ch2B | `Bundimun5` | (4690, 4687, 301) | 1 pasty (**marked**) |
 | Ch2B | `Bundimun3` | (4475, 4953, 296) | 1 pasty |
-| Ch2B | `Bundimun14` | (4633, 5289, 308) | 2 pasties |
+| Ch2B | `Bundimun14` | (4633, 5289, 308) | 2 pasties (**marked**) |
 | Ch2B | `Bundimun2` | (5488, 5178, 308) | 1 pasty (**marked**) |
 | FA2Hermione | `Bundimun4`/`6`/`8` | around (340, −1600, 1102) | pasties, count from the class default *(check)* |
 
