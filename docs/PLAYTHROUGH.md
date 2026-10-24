@@ -238,3 +238,28 @@ Stage 2 is available right after stage 1 (confirmed). The data backs this up for
 (`PBattle1Dispatch`–`PBattle5Dispatch`, picked in turn by `RoundRobin1`) and their `PoxieManager`s carry no game-state
 group or exclusion. So all five stages can be played back to back, in any story state where the well is reachable.
 Logic: the five cards need only GroundsHub access (plus whatever spell the doxy fights take, presumably Rictusempra).
+
+## 7. HP3_COMC: Care of Magical Creatures, hippogriff riding (first visit, `GState040`)
+
+| | |
+| --- | --- |
+| Level ID | `comc` |
+| State | `Gstate040` (written with that casing by the transition cutscene) |
+| Entered from | GroundsHub, following Neville. In `GState040` this is the `ChangeLevelCOMC` cutscene (MapTracker 12:14:01). Later visits use `ChangeLevel_COMC_MINIGAME` or `ChangeLevelTrigger1`. |
+| Checks | **5**, all hippogriff-riding rewards; nothing placed (no pasties, cakes, secrets or chests) |
+
+| Track | Pass score | Reward (`HPSpawnThingy`, tag) | Status |
+| --- | --- | --- | --- |
+| 1 (tutorial) | 1500 | Joscelind Wadcock (`WizCard1`) | in progress |
+| 2 | 2800 | Gwenog Jones (`WizCard2`) | |
+| 3 | 4000 | Cyprian Youdle (`WizCard3`) | |
+| 4 | 4900 | Roderick Plumpton (`WizCard4`) | |
+| 5 | 5600 | Bowman Wright (`WizCard5`) | |
+
+Progress is saved by `HippoFlyGame` (`hfg_n` tracks completed, `hfg_h<i>`/`hfg_l<i>` scores). Win cutscenes:
+`COMCWin_WizCard2`–`5`, `COMCWin_2ndTimeonTrack`; loss: `COMCTutorialLose`, `COMCLose_AllTracks`.
+
+Exit note: GroundsHub `ChangeLevelTrigger3` is active only in `GSTATE040` and sets `GState050`, so leaving after the
+class probably advances the story *(to confirm)*.
+
+**Open Castle:** COMC is a separate map with its own entrance from GroundsHub; all five checks are here.
