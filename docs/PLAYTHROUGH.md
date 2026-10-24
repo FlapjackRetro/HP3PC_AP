@@ -259,7 +259,7 @@ Logic: the five cards need only GroundsHub access (plus whatever spell the doxy 
 Progress is saved by `HippoFlyGame` (`hfg_n` tracks completed, `hfg_h<i>`/`hfg_l<i>` scores). Win cutscenes:
 `COMCWin_WizCard2`–`5`, `COMCWin_2ndTimeonTrack`; loss: `COMCTutorialLose`, `COMCLose_AllTracks`.
 
-Exit note: GroundsHub `ChangeLevelTrigger3` is active only in `GSTATE040` and sets `GState050`, so leaving after the
-class probably advances the story *(to confirm)*.
+State note: GroundsHub also has a walk-in entrance to COMC, `ChangeLevelTrigger3`, active only in `GSTATE040`, which
+sets `GState050` on the way in. The Neville cutscene keeps `040`. When `050` takes over: *(to confirm)*.
 
 **Open Castle:** COMC is a separate map with its own entrance from GroundsHub; all five checks are here.
