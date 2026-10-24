@@ -18,3 +18,7 @@ _embedded_source/
 __pycache__/
 *.pyc
 .venv/
+
+# Build outputs
+mod/**/build/
+mod/**/test/harness
