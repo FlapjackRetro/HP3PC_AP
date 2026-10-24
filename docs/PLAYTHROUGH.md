@@ -388,6 +388,8 @@ Found so far:
 | Pasty | `PumpkinPasty10` (−1269, −1030, −58); marked at (−1284, −1033, −44) | **rabbit form**, confirmed | **found** |
 | Pasty | `PumpkinPasty11` (433, −382, 239); marked at (416, −378, 259) | **dragon form (Draconifors)**, confirmed | **found** |
 | Pasty | `PumpkinPasty20` (1349, 96, −72); marked at (1338, 104, −51) | **dragon form**, confirmed | **found** |
+| Pasty | `PumpkinPasty9` (1277, −392, 252), in midair above the pumpkin pit; marked at (1288, −368, 244) | **dragon form**, confirmed | **found** |
+| Pasty | `PumpkinPasty12` (1428, −400, 252), in midair; marked at (1418, −446, 234) | **dragon form**, confirmed | **found** |
 | Pasty spawner (a pumpkin) | `Pumpkin6` (−6, −1084, −439); marked at (−10, −1068, −416). Pasties, class-default count (2, see below) | **Depulso**, confirmed | **found** |
 | Pasty spawner (a pumpkin) | `Pumpkin5` (−255, 297, −437); marked at (−250, 299, −416). Pasties, class-default count (2, see below) | **Depulso**, confirmed | **found** |
 | Pasty spawner (a pumpkin, 1 pasty) | `Pumpkin9` (944, −383, −725); marked at (944, −377, −704) | **Depulso**, confirmed | **found** |
