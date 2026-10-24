@@ -207,7 +207,7 @@ The well and Monster Book cards are placed out of reach ("Green Room DON'T HIDE"
 | GroundsDada | yes | entrance needed |
 | Adv2ExpPatronum | yes | DADA → Expecto door *(verify)* |
 | Adv3Library | yes | Library door *(verify)* |
-| BuckyExecuted | yes (chests) | grounds trigger, or grant its items |
+| BuckyExecuted | no (6 pumpkins + a scarecrow, beans only) | drop it |
 | Adv5Shack | yes | Whomping Willow trigger on the grounds |
 | Adv6Paddock (freeing Buckbeak) | yes | grounds trigger |
 | FA1 / FA2 / FA3 | yes | classroom doors (§4) |
