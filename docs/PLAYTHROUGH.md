@@ -94,3 +94,19 @@ Spongify (to get in) and Rictusempra.
 Spawned snacks have no placed actor, so they get no `_PU` save key. As checks they'd be detected by the spawn event
 (or by the pickup of a spawned `PumpkinPasty`). The catalogue now lists them with `awarded_by` = the spawner's
 tag: 32 pasties and 12 cakes across all maps.
+
+## 4. HP3_Ch1CarpeRetractumB: second half of the Carpe Retractum challenge
+
+| | |
+| --- | --- |
+| Level ID | `crb` |
+| State | `GState000` |
+| Entered from | HP3_Ch1CarpeRetractum, `ChangeLevelTrigger1`, partway through the challenge (confirmed) |
+| Leaves to | InsideHub, through the end-of-challenge cutscenes (`0700Ch1Chal_InsHubDoor`, or `_010` in `GState000`, which sets `GState010`) |
+| Checks | *(in progress)* |
+
+**Open Castle:** Ch1 and Ch1B are one region. The two halves are connected only to each other, so the whole
+challenge needs a single entrance (the side-room door) and a single exit back to InsideHub. Its logic combines both
+halves. Catalogue for this half: cards *Blodwyn Bludd* (`KnightSpawner21`, a Depulso knight) and *Lady Carmilla
+Sanguina* (`ChestSpawner13`), secret areas `SecretAreaMarker3`/`4`, 4 challenge stars, and a bean bonus game.
+Spell actors: 11 Spongify pads, 9 Retractum targets, Lumos sparkles, 2 Alohomora triggers.
