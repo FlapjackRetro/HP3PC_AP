@@ -152,7 +152,7 @@ The well and Monster Book cards are placed out of reach ("Green Room DON'T HIDE"
 
 | Map | Has checks | Plan |
 | --- | --- | --- |
-| Adv1Express (Hogwarts Express) | yes | entrance needed (no hub door exists; e.g. a new trigger or start-of-game) |
+| Adv1Express (Hogwarts Express, prologue) | 1: Fulbert the Fearful card (confirmed, [PLAYTHROUGH.md](PLAYTHROUGH.md)) | drop it and put the card in the pool, or keep it as the opening (no hub door exists) |
 | GroundsDada | yes | entrance needed |
 | Adv2ExpPatronum | yes | DADA → Expecto door *(verify)* |
 | Adv3Library | yes | Library door *(verify)* |
