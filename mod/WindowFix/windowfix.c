@@ -55,6 +55,7 @@ IMP HANDLE WINAPI MonitorFromWindow(HWND, u32);
 IMP HANDLE WINAPI MonitorFromRect(const RECT*, u32);
 IMP BOOL   WINAPI GetMonitorInfoW(HANDLE, MONITORINFO*);
 IMP HWND   WINAPI GetForegroundWindow(void);
+IMP short  WINAPI GetAsyncKeyState(int);
 IMP void   WINAPI keybd_event(unsigned char, unsigned char, u32, u32);
 IMP int    __cdecl wsprintfW(wchar*, const wchar*, ...);
 IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
@@ -71,7 +72,7 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 #define INVALID_FILE_ATTRIBUTES 0xFFFFFFFFu
 #define MONITOR_DEFAULTTONULL 0
 #define NOPOS (-32000)
-#define WF_VERSION L"v2"
+#define WF_VERSION L"v3"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile unsigned char *p = (volatile unsigned char *)d; while (n--) *p++ = (unsigned char)c; return d; }
@@ -132,7 +133,7 @@ static int restore_pos(HWND h) {
     bar.left = x; bar.top = y; bar.right = x + (r.right - r.left); bar.bottom = y + 30;
     if (!MonitorFromRect(&bar, MONITOR_DEFAULTTONULL)) return 0;
     SetWindowPos(h, 0, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
-    wsprintfW(buf, L"restored window to (%d, %d)", (int)x, (int)y);
+    wsprintfW(buf, L"restored %dx%d window to (%d, %d)", (int)(r.right - r.left), (int)(r.bottom - r.top), (int)x, (int)y);
     log_line(buf);
     return 1;
 }
@@ -164,8 +165,8 @@ static int same_rect(const RECT *a, const RECT *b) {
 }
 
 static u32 WINAPI worker(void *arg) {
-    HWND h = 0; RECT r, last = {0, 0, 0, 0}; int stable = 0, placed = 0, fs, wantWindowed, fallbackDone = 0, centerPending = 0;
-    long placed_x = 0, placed_y = 0; u32 ticks = 0; wchar buf[700], val[16];
+    HWND h = 0; RECT r, last = {0, 0, 0, 0}; int stable = 0, placed = 0, dragged = 0, fs, wantWindowed, fallbackDone = 0, centerPending = 0;
+    long placed_x = 0, placed_y = 0, placed_w = 0, placed_h = 0; u32 ticks = 0; wchar buf[700], val[16];
     (void)arg;
 
     /* the game keeps its ini in Documents\<game>\hppoa.ini; fall back to system\hppoa.ini next to the exe */
@@ -196,7 +197,11 @@ static u32 WINAPI worker(void *arg) {
         if (!h || !IsWindow(h)) { h = find_game_window(); stable = 0; if (!h) continue; }
         if (IsIconic(h) || !GetWindowRect(h, &r)) continue;
         /* wait until the window has stopped changing for ~0.75 s (mode switches resize it in steps) */
-        if (!same_rect(&r, &last)) { last = r; stable = 0; continue; }
+        if (!same_rect(&r, &last)) {
+            last = r; stable = 0;
+            if ((GetAsyncKeyState(1) | GetAsyncKeyState(2)) & 0x8000) dragged = 1;   /* mouse held while it moved */
+            continue;
+        }
         if (++stable < 3) continue;
 
         fs = is_fullscreen(h);
@@ -216,16 +221,31 @@ static u32 WINAPI worker(void *arg) {
                 press_alt_enter();
             }
         }
-        if (centerPending && !fs) {
+        if (fs) continue;
+        /* The game resizes the window after creating it (640x480 first, then the configured size) and
+           moves it to its own default spot when it does. So any size change is the game's doing: put the
+           window back. A move without a resize is the user dragging it: remember that. */
+        if (centerPending || !placed || r.right - r.left != placed_w || r.bottom - r.top != placed_h) {
             centerPending = 0;
             if (!restore_pos(h)) center(h);
-            last.left = -99999;   /* let the move settle before treating the position as the user's */
+            GetWindowRect(h, &r);
+            placed = 1; placed_x = r.left; placed_y = r.top; placed_w = r.right - r.left; placed_h = r.bottom - r.top;
+            last = r; stable = 0; dragged = 0;
             continue;
         }
-        /* windowed and settled: remember where it is (catches the user dragging it) */
-        if (!fs && (!placed || r.left != placed_x || r.top != placed_y)) {
-            placed = 1; placed_x = r.left; placed_y = r.top;
+        if (r.left != placed_x || r.top != placed_y) {
+            if (!dragged) {   /* the game moved it, not the user: put it back */
+                wsprintfW(buf, L"game moved the window to (%d, %d); moving it back", (int)r.left, (int)r.top);
+                log_line(buf);
+                SetWindowPos(h, 0, placed_x, placed_y, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
+                last.left = -99999; stable = 0;
+                continue;
+            }
+            dragged = 0;
+            placed_x = r.left; placed_y = r.top;
             save_pos(r.left, r.top);
+            wsprintfW(buf, L"window moved to (%d, %d), saved", (int)r.left, (int)r.top);
+            log_line(buf);
         }
     }
 }
