@@ -49,7 +49,7 @@ from Quidditch (`7010QuidDem_ALL`, `GState070`) *(to confirm)*.
 | Level ID | `cr` |
 | State | `GState000` on arrival |
 | Role | Ron's Carpe Retractum challenge, the first playable level after the prologue |
-| Requires | Carpe Retractum, **Spongify**, **Rictusempra** (confirmed) |
+| Requires | Carpe Retractum, **Spongify**, **Rictusempra**, **Alohomora** (confirmed) |
 | Checks | *(in progress)*; one wizard card found so far |
 
 Spell actors in the map: 21 Retractum targets, 2 Spongify pads, 4 Alohomora triggers and 2 padlocks, 17 other
@@ -79,6 +79,14 @@ three doxies (`Poxie`, the game's name for doxies). Wave 1 (`poxiegroup1`) count
 starts wave 2 (`poxiegroup2`). Wave 2 counts down `poxtowercounter2` (3), which fires `cutpoxdoor`, the
 `6045Ch1BeatPixiesQC` cutscene. The reward is **one Cauldron Cake**, confirmed, from spawner `SpawnCauldronCake`
 (`HPSpawnThingy3`, (1315, 2522, 1209)).
+
+**Alohomora** is used in this half, confirmed. Its targets in the map:
+- Room C: `AlohomoraTrigger5` (3101, 391, 702), event `SecretZ1aa`, and `AlohomoraTrigger2` (3232, 519, 671),
+  event `Z1flipDis`. These look like the way into secret area `SecretAreaMarker0` and the *Sir Herbert Varney* chest.
+- Rooms K–M (fire crabs): padlocks `ALpadlock25` (−3232, 4482, 972) and `ALpadlock2` (−2233, 5393, 762), which
+  start the fire-crab fights (`FireCrabroomfirstDis`, `CVActivateFCs`).
+
+*(which one was required for progress: to confirm)*
 
 Logic so far for these rewards: imp pasties need Carpe Retractum to reach the imps *(verify)*; the doxy cake needs
 Spongify (to get in) and Rictusempra.
