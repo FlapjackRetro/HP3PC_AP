@@ -60,7 +60,7 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 #define WM_GETTEXT 0x000D
 #define SMTO_ABORTIFHUNG 0x0002
 #define VK_F11 0x7A
-#define MT_VERSION L"v11"
+#define MT_VERSION L"v12"
 
 /* minimal CRT shims (no C runtime is linked) */
 int _fltused = 0;
@@ -338,7 +338,7 @@ static u32 WINAPI worker(void *arg) {
                           id[0] ? id : L"-", pkg[0] ? pkg : L"-");
                 log_line(buf);
                 wcpy(lastMap, map, 64); wcpy(lastGs, gs, 32);
-                wsprintfW(buf, L"HP3  |  %s  |  %s  |  F11 = mark", map[0] ? map : L"...", gs[0] ? gs : L"-");
+                wsprintfW(buf, L"HP3  |  %s  |  %s  |  End = mark", map[0] ? map : L"...", gs[0] ? gs : L"-");
                 set_title(buf);
             }
         }
@@ -353,8 +353,8 @@ static long WINAPI kb_hook(int code, u32 wp, long lp) {
         KBDLLHOOKSTRUCT *k = (KBDLLHOOKSTRUCT*)lp;
         gKeyEvents++;
         if (k->vkCode >= 0x70 && k->vkCode <= 0x87) gLastFKey = (int)k->vkCode;   /* F1..F24, for the diagnostic */
-        /* mark keys: F11, Scroll Lock, Pause (in case F11 is taken or sends something else) */
-        if ((k->vkCode == VK_F11 || k->vkCode == 0x91 || k->vkCode == 0x13) && !(k->flags & 0x80)) {
+        /* mark keys: F11, End, Scroll Lock, Pause (in case F11 is taken or sends something else) */
+        if ((k->vkCode == VK_F11 || k->vkCode == 0x23 || k->vkCode == 0x91 || k->vkCode == 0x13) && !(k->flags & 0x80)) {
             if (fg_is_ours()) gMarkRequests++; else gMarkElsewhere++;
         }
     }
