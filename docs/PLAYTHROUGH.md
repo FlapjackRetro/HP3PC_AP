@@ -475,6 +475,10 @@ to the exam (FA2) and uses the side-room door (`ChangeLevelTrigger10`) for the c
 | Entered from | HP3_Ch2Draconifors, `ChangeLevelTrigger1`, a door just past the end of the dragon section (confirmed) |
 | Checks | *(in progress)* |
 
+| Check | Where | Requires | Status |
+| --- | --- | --- | --- |
+| Card *Hungarian Horntail* | `ChestSpawner13` (2657, 857, 346), an Alohomora chest; marked at (2656, 809, 360) | **Alohomora** (chest) + **Depulso** (to reach it), confirmed | **found** |
+
 **Open Castle:** Ch2 and Ch2B are one region, like Ch1/Ch1B (confirmed). The whole challenge needs one entrance
 (the side-room door `ChangeLevelTrigger10`) and one exit back to InsideHub.
 
