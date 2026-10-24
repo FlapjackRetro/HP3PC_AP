@@ -612,6 +612,7 @@ Spawners (all Depulso targets):
 | Check | Where | Requires | Status |
 | --- | --- | --- | --- |
 | Card *Falco Aesalon* (+ 5 pasties) | `ChestSpawner1` (−3863, −671, 281); marked at (−3815, −680, 298) | **Alohomora**, confirmed | **found** |
+| Cake chest (4 cakes) | `ChestSpawner2` (−4278, −3137, 281); marked at (−4230, −3144, 298) | **Alohomora**, confirmed | **found** |
 
 **Open Castle:** needs an entrance (the planned Library door `Library_Door_Mvr` / `Library_Port_Mvr`) and keeps its
 exit to InsideHub.
