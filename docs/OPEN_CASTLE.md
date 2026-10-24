@@ -209,6 +209,13 @@ Each one needs a blocker, an escape trigger, or a guaranteed spell. Found so far
 | --- | --- | --- | --- | --- |
 | Ch2Draconifors | Pumpkin pit around (1343, −388, −725): card *Hebridean Black Dragon*, 5 pumpkins, secret area 0 | drop down | **Spongify** (`SpongifyPad3` → `SpongifyTarget5`) | [PLAYTHROUGH.md](PLAYTHROUGH.md) §13 |
 
+**Missable checks (not softlocks):** places the player can leave for good during a challenge run, so the checks
+there need a replay.
+
+| Map | Checks | Cause |
+| --- | --- | --- |
+| Ch2Draconifors | cakes `CauldronCake12`, `CauldronCake3` (ground level near (4520, −880, −213)) | scripted end of the dragon section; no way back |
+
 A systematic pass is possible from the data: find every Spongify pad, Retractum target and Lumos platform whose
 target is higher than its pad (one-way up), and check whether the area below has another exit.
 
