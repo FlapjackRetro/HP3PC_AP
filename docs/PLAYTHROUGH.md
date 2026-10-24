@@ -396,6 +396,22 @@ Found so far:
 | Pasty spawner (a pumpkin, **2 pasties**) | `Pumpkin3` (1343, 21, −728), north arm; marked at (1360, 16, −704) | **Depulso**, confirmed | **found** |
 | Cake chest (2 cakes) | `ChestSpawner21` (522, −383, −456); marked at (474, −391, −437), inside secret area `SecretAreaMarker2` (454, −387, −417) | **Alohomora**, confirmed | **found** |
 
+**Softlock: the pumpkin room needs Spongify to leave** (confirmed). It's a pit (floor ≈ −725) that the player drops
+into. The only way out is `SpongifyPad3` (1168, −551, −780), tag `Fspongyplat`, which bounces up to
+`SpongifyTarget5` (1339, −381, −191). The pad is `bEnableOnEvent`, so something enables it first *(what: to
+confirm)*. Without Spongify, a player who drops in is stuck.
+
+Open Castle must not let that happen. Options:
+1. **Logic:** treat the pit and everything in it (card *Hebridean Black Dragon*, 5 pumpkins, secret area
+   `SecretAreaMarker0`) as requiring Spongify. That isn't enough on its own, since the player can still drop in
+   early.
+2. **Block the drop** with a blocking volume until Spongify is received.
+3. **Escape hatch:** a trigger in the pit that teleports the player out (or returns them to the last save) when
+   they don't have Spongify.
+
+2 or 3 is needed, with 1 for the logic. The same check applies to every drop-down area in the game; see the
+softlock list in [OPEN_CASTLE.md](OPEN_CASTLE.md).
+
 **Pumpkin default:** `Pumpkin3` sets no count and gave **2 pasties** (confirmed), so the `Pumpkin` class default is 2. That also applies to `Pumpkin5` and `Pumpkin6`, and to the catalogue's other pumpkins with no count.
 
 The pumpkin room around (1343, −388, −725) is laid out as a cross: the card pumpkin `Pumpkin2` (Hebridean Black
