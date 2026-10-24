@@ -97,6 +97,7 @@ Depends on Open Castle working without heavy changes to Hogwarts. Candidate item
 | (spare) | Hagrid's hut door, GroundsHub (813, −1121, 696): no trigger nearby | a grounds story map (§9) |
 | (spare) | Locked door, InsideHub 4th floor (−187, 1274, 1498): static door + lock-bar meshes with a `PopupTrigger` | any story map (§18) |
 | (spare) | Locked door, InsideHub 7th floor (−84, −1081, 2154): static door + lock-bar meshes | any story map (§18) |
+| (spare) | Locked door, InsideHub 7th floor east (1427, −960, 2154): static door + lock-bar meshes | any story map (§18) |
 | (spare) | Two locked dungeon doors, DungeonHUB (−481, 2805, −341) and (−473, 4107, −341): static door + lock-bar meshes | any story map (§11) |
 
 That's about 20 items, enough to cover every story-only map with checks. The castle side has plenty of doors. The
