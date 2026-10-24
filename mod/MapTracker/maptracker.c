@@ -49,6 +49,7 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 #define WM_SETTEXT 0x000C
 #define SMTO_ABORTIFHUNG 0x0002
 #define VK_F11 0x7A
+#define MT_VERSION L"v2"
 
 /* minimal CRT shims (no C runtime is linked) */
 int _fltused = 0;
@@ -95,7 +96,7 @@ static void for_each_object(visit_fn fn, void *ctx) {
     }
 }
 
-static int N_Class, N_Level, N_MyLevel, N_Entry;
+static int N_Class = -1, N_Level = -1, N_MyLevel = -1, N_Entry = -1;
 struct findcls { int name; u32 found; };
 static int v_findcls(u32 o, int name, u32 cls, void *c) {
     struct findcls *f = c;
@@ -177,22 +178,41 @@ static u32 WINAPI worker(void *arg) {
     static struct scan sc;   /* 2 KB+, keep it off the stack */
     (void)arg;
     gProc = GetCurrentProcess();
-    while (!(core = GetModuleHandleW(L"Core.dll"))) Sleep(500);
-    gObjs  = (u32*)GetProcAddress(core, "?GObjObjects@UObject@@0V?$TArray@PAVUObject@@@@A");
-    gNames = (u32*)GetProcAddress(core, "?Names@FName@@0V?$TArray@PAUFNameEntry@@@@A");
-    if (!gObjs || !gNames) return 1;
+    /* log path first, so every startup stage is visible even if a later one stalls */
     {   wchar docs[520];
         if (SHGetFolderPathW(0, 5 /*CSIDL_PERSONAL*/, 0, 0, docs) == 0)
             wsprintfW(gLogPath, L"%s\\Harry Potter and the Prisoner of Azkaban\\HP3_MapLog.txt", docs);
         else wcpy(gLogPath, L"HP3_MapLog.txt", 600);
     }
+    log_line(L"---- HP3 MapTracker " MT_VERSION L" loaded ----");
+    for (i = 0; !(core = GetModuleHandleW(L"Core.dll")); i++) {
+        if (i == 20) log_line(L"waiting for Core.dll ...");
+        Sleep(500);
+    }
+    gObjs  = (u32*)GetProcAddress(core, "?GObjObjects@UObject@@0V?$TArray@PAVUObject@@@@A");
+    gNames = (u32*)GetProcAddress(core, "?Names@FName@@0V?$TArray@PAUFNameEntry@@@@A");
+    wsprintfW(buf, L"Core.dll exports: GObjObjects %s, FName::Names %s", gObjs ? L"ok" : L"MISSING", gNames ? L"ok" : L"MISSING");
+    log_line(buf);
+    if (!gObjs || !gNames) return 1;
     /* wait for the engine to load Entry, then cache name indices, classes and property offsets */
-    for (;;) {
+    for (i = 0;; i++) {
+        u32 nobj, nname;
         Sleep(1000);
-        if (rd32((u32)gObjs + 4) < 1000) continue;
-        N_Class = name_index(L"Class"); N_Level = name_index(L"Level");
-        N_MyLevel = name_index(L"MyLevel"); N_Entry = name_index(L"Entry");
-        if (N_Class >= 0 && N_Level >= 0 && N_MyLevel >= 0 && N_Entry >= 0) break;
+        nobj = rd32((u32)gObjs + 4); nname = rd32((u32)gNames + 4);
+        if (nobj >= 1000) {
+            N_Class = name_index(L"Class"); N_Level = name_index(L"Level");
+            N_MyLevel = name_index(L"MyLevel"); N_Entry = name_index(L"Entry");
+            if (N_Class >= 0 && N_Level >= 0 && N_MyLevel >= 0 && N_Entry >= 0) {
+                wsprintfW(buf, L"engine ready: %d objects, %d names", (int)nobj, (int)nname);
+                log_line(buf);
+                break;
+            }
+        }
+        if (i % 10 == 0) {
+            wsprintfW(buf, L"waiting for engine: %d objects, %d names (Class=%d Level=%d MyLevel=%d Entry=%d)",
+                      (int)nobj, (int)nname, N_Class, N_Level, N_MyLevel, N_Entry);
+            log_line(buf);
+        }
     }
     sc.clsGame = find_class(L"KWGame");
     sc.clsPC = find_class(L"PlayerController");
