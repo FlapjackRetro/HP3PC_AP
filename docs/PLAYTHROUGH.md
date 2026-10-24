@@ -387,17 +387,21 @@ Found so far:
 | Pasty | `PumpkinPasty3` (−1533, −1464, −49); marked at (−1537, −1467, −49) | **rabbit form**, confirmed | **found** |
 | Pasty | `PumpkinPasty10` (−1269, −1030, −58); marked at (−1284, −1033, −44) | **rabbit form**, confirmed | **found** |
 | Pasty | `PumpkinPasty11` (433, −382, 239); marked at (416, −378, 259) | **dragon form (Draconifors)**, confirmed | **found** |
-| Pasty spawner (a pumpkin) | `Pumpkin6` (−6, −1084, −439); marked at (−10, −1068, −416). Pasties, count from the class default | **Depulso**, confirmed | **found** |
-| Pasty spawner (a pumpkin) | `Pumpkin5` (−255, 297, −437); marked at (−250, 299, −416). Pasties, class-default count | **Depulso**, confirmed | **found** |
+| Pasty spawner (a pumpkin) | `Pumpkin6` (−6, −1084, −439); marked at (−10, −1068, −416). Pasties, class-default count (2, see below) | **Depulso**, confirmed | **found** |
+| Pasty spawner (a pumpkin) | `Pumpkin5` (−255, 297, −437); marked at (−250, 299, −416). Pasties, class-default count (2, see below) | **Depulso**, confirmed | **found** |
 | Pasty spawner (a pumpkin, 1 pasty) | `Pumpkin9` (944, −383, −725); marked at (944, −377, −704) | **Depulso**, confirmed | **found** |
 | Pasty spawner (a pumpkin, 1 pasty) | `Pumpkin8` (1343, −795, −730); marked at (1339, −791, −706) | **Depulso**, confirmed | **found** |
 | Card *Hebridean Black Dragon* | `Pumpkin2` (1343, −388, −716), the large pumpkin in the middle of the pumpkin room; marked at (1329, −387, −704). Secret area `SecretAreaMarker0` is on the same spot | **Depulso**, confirmed | **found** |
+| Pasty spawner (a pumpkin, 1 pasty) | `Pumpkin7` (1783, −381, −729), east arm; marked at (1764, −382, −705) | **Depulso**, confirmed | **found** |
+| Pasty spawner (a pumpkin, **2 pasties**) | `Pumpkin3` (1343, 21, −728), north arm; marked at (1360, 16, −704) | **Depulso**, confirmed | **found** |
 | Cake chest (2 cakes) | `ChestSpawner21` (522, −383, −456); marked at (474, −391, −437), inside secret area `SecretAreaMarker2` (454, −387, −417) | **Alohomora**, confirmed | **found** |
+
+**Pumpkin default:** `Pumpkin3` sets no count and gave **2 pasties** (confirmed), so the `Pumpkin` class default is 2. That also applies to `Pumpkin5` and `Pumpkin6`, and to the catalogue's other pumpkins with no count.
 
 The pumpkin room around (1343, −388, −725) is laid out as a cross: the card pumpkin `Pumpkin2` (Hebridean Black
 Dragon) sits in the middle, beside secret area `SecretAreaMarker0`, with four 1-pasty pumpkins about 400 units out:
-`Pumpkin9` (west, found), `Pumpkin3` (north, (1343, 21)), `Pumpkin8` (south, (1343, −795), found) and `Pumpkin7`
-(east, (1783, −381)).
+`Pumpkin9` (west, found), `Pumpkin3` (north, (1343, 21), found), `Pumpkin8` (south, (1343, −795), found) and `Pumpkin7`
+(east, (1783, −381), found).
 
 Pumpkins, like knights and chests, are `KWGenericSpawner`s: their pasties burst out and aren't individual checks under the current plan (see the chest-check option).
 
