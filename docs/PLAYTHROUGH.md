@@ -354,3 +354,25 @@ The three Peeves fights in InsideHub, one per story state:
 
 **Open Castle:** each fight is filtered to one story state, so only one (or none) is present in the base state.
 They'd need spawning or un-filtering to be playable; their rewards (and the `_bD` defeat flag) are candidate checks.
+
+## 13. HP3_Ch2Draconifors: Draconifors challenge (Hermione), first visit
+
+| | |
+| --- | --- |
+| Level ID | `dl` (second half `dlb`) |
+| State | `GState060` (MapTracker 13:17:49) |
+| Entered from | InsideHub, Transfiguration classroom: walking in plays the class cutscene (`6180TransIntro`, `GState060` only), which loads the challenge with **Hermione** as the player character (confirmed) |
+| Checks | *(in progress)* |
+
+Catalogue, both halves:
+- **Cards (5):** *Hebridean Black Dragon* (`Pumpkin2` (1343, −388, −716), a pumpkin, beside secret area
+  `SecretAreaMarker0`); *Common Welsh Green Dragon* (`KnightSpawner2` (−3462, 624, −139), a Depulso knight); and in
+  Ch2B *Norwegian Ridgeback* (`ChestSpawner12`, by secret area `SecretAreaMarker1`), *Romanian Longhorn*
+  (`ChestSpawner19`, by `SecretAreaMarker6`), *Hungarian Horntail* (`ChestSpawner13` (2657, 857, 346)).
+- **Secret areas (8):** Ch2 `SecretAreaMarker0`/`2`/`3`/`4`; Ch2B `SecretAreaMarker1`/`5`/`6`/`7`.
+- **Pasties/cakes:** Ch2 has 16 placed pasties and 4 placed cakes; Ch2B has 12 and 14.
+- 12 challenge stars (Ch2 8, Ch2B 4), so probably ~10 shields once overlaps are removed, as in Ch1; 12 creature
+  statues (Draconifors/Lapifors targets).
+
+**Open Castle:** in vanilla this challenge is reached from the classroom cutscene. The plan sends the classroom door
+to the exam (FA2) and uses the side-room door (`ChangeLevelTrigger10`) for the challenge.
