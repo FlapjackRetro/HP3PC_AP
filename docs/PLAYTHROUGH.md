@@ -749,6 +749,7 @@ chests with checks; they don't (beans).
 | Cake (placed) | `CauldronCake4` (−707, −5223, −48), high up; marked at (−736, −5227, −116) | **dragon form** (Draconifors statue `DraconisforsStatue1` at (−1319, −3403, −811)), confirmed | **found** |
 | 2 pasties (+ beans) | `SkullShelfSpwn2` (−2096, −2492, −1488), a skull shelf on the lower level; marked at (−2074, −2469, −1461) | **Depulso**, confirmed | **found** |
 | 3 pasties (+ beans) | `ChestSpawner2` (964, −2395, −3975), at the bottom of the map (height ≈ −3975); marked at (917, −2403, −3957) | **Alohomora**, confirmed | **found** |
+| Pasty (placed) | `PumpkinPasty0` (467, −2404, −2895); marked at (447, −2410, −2893) | *(none stated)* | **found** |
 | 2 cakes | `ChestSpawner12` (−3235, −3979, −770), in secret area `SecretAreaMarker1` (−3310, −3971, −760); marked at (−3203, −3942, −757) | **Alohomora**, confirmed | **found** |
 
 **Open Castle:** keeps its checks (secrets and snacks). It needs an entrance: a spare door, or the Whomping Willow
