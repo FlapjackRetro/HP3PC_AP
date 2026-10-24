@@ -490,9 +490,9 @@ All 12 in the game:
 | Map | Bundimun | Position | Drop |
 | --- | --- | --- | --- |
 | Ch2B | `Bundimun6` | (3413, 673, 305) | 2 pasties (**found**) |
-| Ch2B | `Bundimun13` | (3080, 1626, 304) | 1 pasty |
-| Ch2B | `Bundimun11` | (3069, 2331, 304) | 1 pasty |
-| Ch2B | `Bundimun4` | (3893, 1985, 304) | 1 pasty |
+| Ch2B | `Bundimun13` | (3080, 1626, 304) | 1 pasty (**marked**) |
+| Ch2B | `Bundimun11` | (3069, 2331, 304) | 1 pasty (**marked**) |
+| Ch2B | `Bundimun4` | (3893, 1985, 304) | 1 pasty (**marked**) |
 | Ch2B | `Bundimun0` | (5316, 4360, 308) | 1 pasty |
 | Ch2B | `Bundimun5` | (4690, 4687, 301) | 1 pasty |
 | Ch2B | `Bundimun3` | (4475, 4953, 296) | 1 pasty |
