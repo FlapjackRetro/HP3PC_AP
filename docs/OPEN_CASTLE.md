@@ -95,6 +95,7 @@ Depends on Open Castle working without heavy changes to Hogwarts. Candidate item
 | Final Day | `FinalDayDoor` (GroundsHub) | HP3_Final, as the goal gate |
 | (spare) | Entrance-hall barred doors at (733, 392, 74) and (731, 1615, 74): static door + lock-bar meshes with a `PopupTrigger`, no mover | any story map; see [PLAYTHROUGH.md](PLAYTHROUGH.md) §10 |
 | (spare) | Hagrid's hut door, GroundsHub (813, −1121, 696): no trigger nearby | a grounds story map (§9) |
+| (spare) | Locked door, InsideHub 4th floor (−187, 1274, 1498): static door + lock-bar meshes with a `PopupTrigger` | any story map (§18) |
 | (spare) | Two locked dungeon doors, DungeonHUB (−481, 2805, −341) and (−473, 4107, −341): static door + lock-bar meshes | any story map (§11) |
 
 That's about 20 items, enough to cover every story-only map with checks. The castle side has plenty of doors. The
