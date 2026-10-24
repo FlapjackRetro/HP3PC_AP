@@ -65,9 +65,20 @@ def main():
     rows = []
     for f in sorted(glob.glob(os.path.join(game, 'maps', '*.unr'))):
         p = Package(f); mp = os.path.splitext(os.path.basename(f))[0]; lid = ''
+        teleported = {}   # card actor Tag -> event tag of the HPSpawnThingy that hands it to the player
         for e in p.exports:
-            if p.objclass(e['idx']) == 'LevelInfo':
+            c = p.objclass(e['idx'])
+            if c == 'LevelInfo':
                 lid = {n: v for n, i, t, v in load(p, e['idx'])['props']}.get('ID', '')
+            elif c == 'HPSpawnThingy':
+                pr = {n: v for n, i, t, v in load(p, e['idx'])['props']}
+                if pr.get('bTeleportThingy') and pr.get('TeleportActorTag'):
+                    teleported[str(pr['TeleportActorTag']).lower()] = pr.get('Tag')
+                sc = str(pr.get('SpawnClass') or '').split('.')[-1]
+                if isa(sc, 'WizardCard'):   # card created on the spot by a quest reward
+                    rows.append(dict(map=mp, level_id=lid, actor=e['name'], cls=sc, category='WizardCard',
+                                     loc=vec(pr.get('Location')), tag=pr.get('Tag'), event=None, contents=[],
+                                     persist_key=None, awarded_by=pr.get('Tag')))
         for e in p.exports:
             c = p.objclass(e['idx']); base = next((b for b in CHECK_BASES if isa(c, b)), None)
             if not base: continue
@@ -86,14 +97,16 @@ def main():
             rows.append(dict(map=mp, level_id=lid, actor=e['name'], cls=c, category=base,
                              loc=vec(pr.get('Location')), tag=pr.get('Tag'), event=pr.get('Event'),
                              contents=contents,
-                             persist_key=f"{lid}{e['name']}_PU" if isa(c, 'KWPickup') else None))
+                             persist_key=f"{lid}{e['name']}_PU" if isa(c, 'KWPickup') else None,
+                             awarded_by=teleported.get(str(pr.get('Tag')).lower()) if base == 'WizardCard' else None))
     json.dump(rows, open(os.path.join(out, 'locations.json'), 'w'), indent=1)
     with open(os.path.join(out, 'hp3_location_catalog.csv'), 'w', newline='') as fh:
         w = csv.writer(fh)
-        w.writerow(['map', 'level_id', 'actor', 'class', 'category', 'x', 'y', 'z', 'tag', 'event', 'contents', 'persist_key'])
+        w.writerow(['map', 'level_id', 'actor', 'class', 'category', 'x', 'y', 'z', 'tag', 'event', 'contents', 'persist_key', 'awarded_by'])
         for r in rows:
             w.writerow([r['map'], r['level_id'], r['actor'], r['cls'], r['category'], *(r['loc'] or ['', '', '']),
-                        r['tag'] or '', r['event'] or '', ';'.join(f'{a}x{b}' for a, b in r['contents']), r['persist_key'] or ''])
+                        r['tag'] or '', r['event'] or '', ';'.join(f'{a}x{b}' for a, b in r['contents']), r['persist_key'] or '',
+                        r.get('awarded_by') or ''])
     print(len(rows), 'rows;', dict(collections.Counter(r['category'] for r in rows)))
 
 if __name__ == '__main__': main()
