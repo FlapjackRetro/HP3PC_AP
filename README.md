@@ -43,6 +43,7 @@ Research stage. Done so far:
 - Notes on how items, saves and progression work: [docs/FINDINGS.md](docs/FINDINGS.md).
 - How maps, story game states and level loading work, and every map's entrances: [docs/SCENES.md](docs/SCENES.md), [`data/map_entrances.json`](data/map_entrances.json).
 - The Open Castle design (checks, items, area unlocks, entrance layout, draft YAML): [docs/OPEN_CASTLE.md](docs/OPEN_CASTLE.md).
+- Map-by-map notes from the vanilla playthrough: [docs/PLAYTHROUGH.md](docs/PLAYTHROUGH.md).
 - [MapTracker](mod/MapTracker/README.md): a small plugin that shows the current map and story state in the title bar and logs them, for documenting a playthrough.
 
 ## To do
@@ -68,6 +69,7 @@ Research stage. Done so far:
 | `docs/SETUP.md` | Installing the base game, HP3-UHDE and the framerate fix |
 | `docs/SCENES.md` | Maps vs. game states, how levels load, story chains, challenge/exam entrances |
 | `docs/OPEN_CASTLE.md` | Open Castle design: checks, items, area unlocks, entrance plan, draft options |
+| `docs/PLAYTHROUGH.md` | Vanilla playthrough log: confirmed maps, states and checks |
 | `mod/MapTracker/` | Map/state tracker plugin (C, built with clang; no game code) |
 | `data/` | Generated tables: location catalogue (CSV and JSON), map entrances, wizard cards, game states |
 | `tools/` | Python tools: package reader/decompiler, catalogue and entrance-graph builders, framerate patcher |
