@@ -691,7 +691,7 @@ other two challenges.
 
 ## 20. HP3_Ch3GlaciusB: second half of the Glacius challenge
 
-Reached from Ch3 (MapTracker shows the switch to `HP3_Ch3GlaciusB` before 18:07:55). One region with Ch3, like the
+Reached from Ch3 through `ChangeLevelTrigger0` (MapTracker 18:06:58). One region with Ch3, like the
 other challenges.
 
 | Check | Where | Requires | Status |
