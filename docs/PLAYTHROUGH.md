@@ -478,6 +478,31 @@ to the exam (FA2) and uses the side-room door (`ChangeLevelTrigger10`) for the c
 | Check | Where | Requires | Status |
 | --- | --- | --- | --- |
 | Card *Hungarian Horntail* | `ChestSpawner13` (2657, 857, 346), an Alohomora chest; marked at (2656, 809, 360) | **Alohomora** (chest) + **Depulso** (to reach it), confirmed | **found** |
+| 2 pasties (bundimun) | `Bundimun6` (3413, 673, 305); marked at (3445, 664, 330) | **Rictusempra** to stun, then jump on it, confirmed | **found** |
+
+**Bundimuns (pasty creatures).** Stun one with Rictusempra, then jump on it, and it drops pasties. The drops are
+**guaranteed**: `BundimunController.DoGoodieSpawning()` spawns exactly `GoodieCount` × `GoodieToSpawn`, and only
+the direction the pickups fly is random. (Class default: 3 beans; maps override it.) There's no save flag, so a
+bundimun comes back when the map reloads.
+
+All 12 in the game:
+
+| Map | Bundimun | Position | Drop |
+| --- | --- | --- | --- |
+| Ch2B | `Bundimun6` | (3413, 673, 305) | 2 pasties (**found**) |
+| Ch2B | `Bundimun13` | (3080, 1626, 304) | 1 pasty |
+| Ch2B | `Bundimun11` | (3069, 2331, 304) | 1 pasty |
+| Ch2B | `Bundimun4` | (3893, 1985, 304) | 1 pasty |
+| Ch2B | `Bundimun0` | (5316, 4360, 308) | 1 pasty |
+| Ch2B | `Bundimun5` | (4690, 4687, 301) | 1 pasty |
+| Ch2B | `Bundimun3` | (4475, 4953, 296) | 1 pasty |
+| Ch2B | `Bundimun14` | (4633, 5289, 308) | 2 pasties |
+| Ch2B | `Bundimun2` | (5488, 5178, 308) | 1 pasty |
+| FA2Hermione | `Bundimun4`/`6`/`8` | around (340, −1600, 1102) | pasties, count from the class default *(check)* |
+
+**Open Castle:** bundimuns are safe as checks. The drop is fixed, and the check can fire on the defeat itself (the
+controller's `DoRictoHit` → bounce → `DoGoodieSpawning`), not on picking the pasties up. Since they respawn, a
+check, once sent, stays sent. They'd fall under `pasty_checks` (or their own option), and logic needs Rictusempra.
 
 **Open Castle:** Ch2 and Ch2B are one region, like Ch1/Ch1B (confirmed). The whole challenge needs one entrance
 (the side-room door `ChangeLevelTrigger10`) and one exit back to InsideHub.
