@@ -200,6 +200,18 @@ Harry Potter 3 PC:
   shortcut_passwords: item      # item | start_unlocked
 ```
 
+## 7a. Softlocks
+
+When spells are items, any place the player can enter without a spell but can only leave with it is a softlock.
+Each one needs a blocker, an escape trigger, or a guaranteed spell. Found so far:
+
+| Map | Place | Way in | Way out needs | Notes |
+| --- | --- | --- | --- | --- |
+| Ch2Draconifors | Pumpkin pit around (1343, −388, −725): card *Hebridean Black Dragon*, 5 pumpkins, secret area 0 | drop down | **Spongify** (`SpongifyPad3` → `SpongifyTarget5`) | [PLAYTHROUGH.md](PLAYTHROUGH.md) §13 |
+
+A systematic pass is possible from the data: find every Spongify pad, Retractum target and Lumos platform whose
+target is higher than its pad (one-way up), and check whether the area below has another exit.
+
 ## 8. To verify in the playthrough
 
 - Which base state (`090` vs `100`) keeps the most of Hogwarts usable, and what each state hides.
