@@ -1,0 +1,1391 @@
+{
+ "maps": {
+  "Entry": [],
+  "HP3_Adv1Express": [
+   {
+    "dest": "HP3_Adv1Express",
+    "source": "(new game)",
+    "via": "FirstLevel",
+    "actor": "system/Default.ini",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_Adv2ExpPatronum": [
+   {
+    "dest": "HP3_Adv2ExpPatronum",
+    "source": "HP3_Quidditch",
+    "via": "cutscene (chained / level start)",
+    "cutscene": "7010QuidDem_SpinFallShot",
+    "actor": null,
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GState070"
+    ]
+   },
+   {
+    "dest": "HP3_Adv2ExpPatronum",
+    "source": "HP3_GroundsDada",
+    "via": "cutscene (chained / level start)",
+    "cutscene": "7020PatronusIntro_Start",
+    "actor": null,
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_Adv3Library": [
+   {
+    "dest": "HP3_Adv3Library",
+    "source": "HP3_Adv2ExpPatronum",
+    "via": "cutscene",
+    "cutscene": "7090PatronusExit",
+    "actor": "CutSceneTrigger2",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_Adv5Shack": [
+   {
+    "dest": "HP3_Adv5Shack",
+    "source": "HP3_BuckyExecuted",
+    "via": "cutscene",
+    "cutscene": "8180BuckExecuted_02Temp",
+    "actor": "CutSceneTrigger0",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GSate085"
+    ]
+   },
+   {
+    "dest": "HP3_Adv5Shack",
+    "source": "HP3_WhompingWillow",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger1",
+    "tag": "ChangeLevel_Shack",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Adv5Shack",
+    "source": "HP3_BuckyExecuted",
+    "via": "cutscene (chained / level start)",
+    "cutscene": "8180BuckExecuted",
+    "actor": null,
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GSate085"
+    ]
+   },
+   {
+    "dest": "HP3_Adv5Shack",
+    "source": "HP3_WhompingWillow",
+    "via": "cutscene (chained / level start)",
+    "cutscene": "8180BuckExecuted",
+    "actor": null,
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GSate085"
+    ]
+   }
+  ],
+  "HP3_Adv6Paddock": [
+   {
+    "dest": "HP3_ADV6Paddock",
+    "source": "HP3_Infirmary",
+    "via": "cutscene (chained / level start)",
+    "cutscene": "8730DemEncAExit_Infirmary",
+    "actor": null,
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_BeanBonus": [
+   {
+    "dest": "HP3_BeanBonus",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger14",
+    "tag": "WCBonusRoom_Trig",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_BuckyExecuted": [
+   {
+    "dest": "HP3_BuckyExecuted",
+    "source": "HP3_Ch1CarpeRetractum",
+    "via": "cutscene",
+    "cutscene": "0700Ch1Chal_BuckyEx",
+    "actor": "CutSceneTrigger34",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE000",
+     "GSTATE010",
+     "GSTATE040",
+     "GSTATE060",
+     "GSTATE070",
+     "GSTATE090",
+     "GSTATE100"
+    ],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_BuckyExecuted",
+    "source": "HP3_Ch1CarpeRetractumB",
+    "via": "cutscene",
+    "cutscene": "0700Ch1Chal_BuckyEx",
+    "actor": "CutSceneTrigger34",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [
+     "GSTATE075"
+    ],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_BuckyExecuted",
+    "source": "HP3_Ch2DraconiforsB",
+    "via": "cutscene",
+    "cutscene": "DracLoadBuckyExec",
+    "actor": "CutSceneTrigger1",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE065",
+     "GSTATE090",
+     "GSTATE100",
+     "GSTATE070",
+     "GSTATE060"
+    ],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_BuckyExecuted",
+    "source": "HP3_Ch3GlaciusB",
+    "via": "cutscene",
+    "cutscene": "GlaciustoBuckBeakExc",
+    "actor": "CutSceneTrigger11",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [
+     "GSTATE070",
+     "GSTATE075"
+    ],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_COMC": [
+   {
+    "dest": "HP3_COMC",
+    "source": "HP3_GroundsHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger1",
+    "tag": "toCOMC_MINIGAME",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_COMC",
+    "source": "HP3_GroundsHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger3",
+    "tag": "ToCOMC",
+    "only_in": [
+     "GSTATE040"
+    ],
+    "not_in": [],
+    "sets_state": [
+     "GState050"
+    ]
+   },
+   {
+    "dest": "HP3_COMC",
+    "source": "HP3_GroundsHub",
+    "via": "cutscene",
+    "cutscene": "ChangeLevelCOMC",
+    "actor": "CutSceneTrigger24",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [
+     "GSTATE040"
+    ],
+    "not_in": [],
+    "sets_state": [
+     "Gstate040"
+    ]
+   },
+   {
+    "dest": "HP3_COMC",
+    "source": "HP3_GroundsHub",
+    "via": "cutscene",
+    "cutscene": "ChangeLevel_COMC_MINIGAME",
+    "actor": "CutSceneTrigger15",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_COMC",
+    "source": "HP3_GroundsHub",
+    "via": "cutscene",
+    "cutscene": "ChangeLevel_COMC_MINIGAME",
+    "actor": "CutSceneTrigger15",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_Ch1CarpeRetractum": [
+   {
+    "dest": "HP3_Ch1CarpeRetractum",
+    "source": "HP3_Ch1CarpeRetractumB",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger9",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE000"
+    ],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch1CarpeRetractum",
+    "source": "HP3_Ch1CarpeRetractumB",
+    "via": "cutscene",
+    "cutscene": "0700Ch1Chal_CRDoor",
+    "actor": "CutSceneTrigger31",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [
+     "GSTATE000"
+    ],
+    "not_in": [],
+    "sets_state": [
+     "GState010"
+    ]
+   },
+   {
+    "dest": "HP3_Ch1CarpeRetractum",
+    "source": "HP3_Ch2DraconiforsB",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger0",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch1CarpeRetractum",
+    "source": "HP3_Ch3GlaciusB",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger3",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch1CarpeRetractum",
+    "source": "HP3_GroundsDada",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger3",
+    "tag": "ChangleLevel_CarpeChallenge",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch1CarpeRetractum",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger3",
+    "tag": "ChangleLevel_CarpeChallenge",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch1CarpeRetractum",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger9",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch1CarpeRetractum",
+    "source": "HP3_GroundsDada",
+    "via": "cutscene (chained / level start)",
+    "cutscene": "0200DADAIntro",
+    "actor": null,
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch1CarpeRetractum",
+    "source": "HP3_InsideHub",
+    "via": "cutscene (chained / level start)",
+    "cutscene": "0200DADAIntro",
+    "actor": null,
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_Ch1CarpeRetractumB": [
+   {
+    "dest": "HP3_Ch1CarpeRetractumB",
+    "source": "HP3_Ch1CarpeRetractum",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger1",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_Ch2Draconifors": [
+   {
+    "dest": "HP3_Ch2Draconifors",
+    "source": "HP3_Ch1CarpeRetractum",
+    "via": "cutscene",
+    "cutscene": "0700Ch1Chal_DracDoor",
+    "actor": "CutSceneTrigger29",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch2Draconifors",
+    "source": "HP3_Ch1CarpeRetractumB",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger10",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE010",
+     "GSTATE040",
+     "GSTATE060"
+    ],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch2Draconifors",
+    "source": "HP3_Ch1CarpeRetractumB",
+    "via": "cutscene",
+    "cutscene": "0700Ch1Chal_DracDoor",
+    "actor": "CutSceneTrigger29",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch2Draconifors",
+    "source": "HP3_Ch2DraconiforsB",
+    "via": "cutscene",
+    "cutscene": "6620Ch2Chal_DracDoor",
+    "actor": "CutSceneTrigger27",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GState065"
+    ]
+   },
+   {
+    "dest": "HP3_Ch2Draconifors",
+    "source": "HP3_Ch2DraconiforsB",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger2",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch2Draconifors",
+    "source": "HP3_Ch3GlaciusB",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger4",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch2Draconifors",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger7",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE010",
+     "GSTATE040",
+     "GSTATE060"
+    ],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch2Draconifors",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger10",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE010",
+     "GSTATE040",
+     "GSTATE060"
+    ],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch2Draconifors",
+    "source": "HP3_InsideHub",
+    "via": "cutscene",
+    "cutscene": "6180TransIntro",
+    "actor": "CutSceneTrigger0",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [
+     "GSTATE060"
+    ],
+    "not_in": [],
+    "sets_state": [
+     "GState060"
+    ]
+   },
+   {
+    "dest": "HP3_Ch2Draconifors",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger2",
+    "tag": "ChangeLevel_Ch2Dracon",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GState065"
+    ]
+   },
+   {
+    "dest": "HP3_Ch2Draconifors",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger5",
+    "tag": "ChangeLevel_Ch2Dracon",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GState065"
+    ]
+   }
+  ],
+  "HP3_Ch2DraconiforsB": [
+   {
+    "dest": "HP3_Ch2DraconiforsB",
+    "source": "HP3_Ch2Draconifors",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger1",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_Ch3Glacius": [
+   {
+    "dest": "HP3_Ch3Glacius",
+    "source": "HP3_Ch1CarpeRetractum",
+    "via": "cutscene",
+    "cutscene": "0700Ch1Chal_GlacDoor",
+    "actor": "CutSceneTrigger32",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch3Glacius",
+    "source": "HP3_Ch1CarpeRetractumB",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger11",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE010",
+     "GSTATE040",
+     "GSTATE060",
+     "GSTATE070"
+    ],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch3Glacius",
+    "source": "HP3_Ch1CarpeRetractumB",
+    "via": "cutscene",
+    "cutscene": "0700Ch1Chal_GlacDoor",
+    "actor": "CutSceneTrigger32",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch3Glacius",
+    "source": "HP3_Ch2DraconiforsB",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger3",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE065"
+    ],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch3Glacius",
+    "source": "HP3_Ch3GlaciusB",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger0",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch3Glacius",
+    "source": "HP3_InsideHub",
+    "via": "cutscene",
+    "cutscene": "7250CharmsIntro",
+    "actor": "CutSceneTrigger54",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [
+     "GSTATE070"
+    ],
+    "not_in": [],
+    "sets_state": [
+     "GState070"
+    ]
+   },
+   {
+    "dest": "HP3_Ch3Glacius",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger11",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE010",
+     "GSTATE040",
+     "GSTATE060",
+     "GSTATE070"
+    ],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_Ch3Glacius",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger6",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE010",
+     "GSTATE040",
+     "GSTATE060"
+    ],
+    "sets_state": []
+   }
+  ],
+  "HP3_Ch3GlaciusB": [
+   {
+    "dest": "HP3_Ch3GlaciusB",
+    "source": "HP3_Ch3Glacius",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger0",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_DarkTower": [
+   {
+    "dest": "hp3_darktower",
+    "source": "HP3_DementorBattle",
+    "via": "cutscene",
+    "cutscene": "9120DemEncBExit",
+    "actor": "CutSceneTrigger0",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [
+     "GSTATE090"
+    ],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_DementorBattle": [
+   {
+    "dest": "HP3_DementorBattle",
+    "source": "HP3_Adv6Paddock",
+    "via": "cutscene",
+    "cutscene": "9080Adv6Flyaway",
+    "actor": "CutSceneTrigger12",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GState090"
+    ]
+   },
+   {
+    "dest": "HP3_DementorBattle",
+    "source": "HP3_WhompingWillow",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger0",
+    "tag": "ChangeLevel_DementorBattleA",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_DementorBattle",
+    "source": "HP3_WhompingWillow",
+    "via": "cutscene (chained / level start)",
+    "cutscene": "8710DemEncAIntro",
+    "actor": null,
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_DungeonHUB": [
+   {
+    "dest": "HP3_DungeonHUB",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger8",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_FA1Ron": [
+   {
+    "dest": "HP3_FA1Ron",
+    "source": "HP3_GroundsDada",
+    "via": "cutscene",
+    "cutscene": "9240RonExamIntroPt1",
+    "actor": "CutSceneTrigger13",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [
+     "GSTATE090"
+    ],
+    "not_in": [],
+    "sets_state": [
+     "GState100"
+    ]
+   },
+   {
+    "dest": "HP3_FA1Ron",
+    "source": "HP3_InsideHub",
+    "via": "cutscene",
+    "cutscene": "9240RonExamIntroPt1",
+    "actor": "CutSceneTrigger13",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [
+     "GSTATE090"
+    ],
+    "not_in": [],
+    "sets_state": [
+     "GState100"
+    ]
+   }
+  ],
+  "HP3_FA2Hermione": [
+   {
+    "dest": "HP3_FA2Hermione",
+    "source": "HP3_FA1Ron",
+    "via": "cutscene",
+    "cutscene": "RonExamExitDONE",
+    "actor": "CutSceneTrigger4",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_FA3Harry": [
+   {
+    "dest": "HP3_FA3Harry",
+    "source": "HP3_FA2Hermione",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger1",
+    "tag": "Hermionefinalexam_Loads_Harryfinalexam",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_Final": [
+   {
+    "dest": "HP3_Final",
+    "source": "HP3_GroundsHub",
+    "via": "cutscene",
+    "cutscene": "10530EndLastDayYes",
+    "actor": "CutSceneTrigger4",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [
+     "GSTATE100"
+    ],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_GroundsDada": [
+   {
+    "dest": "HP3_GroundsDADA",
+    "source": "HP3_Adv1Express",
+    "via": "cutscene (chained / level start)",
+    "cutscene": "0180ADV1DemExit",
+    "actor": null,
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GState000"
+    ]
+   },
+   {
+    "dest": "HP3_GroundsDADA",
+    "source": "HP3_Quidditch",
+    "via": "cutscene (chained / level start)",
+    "cutscene": "7010QuidDem_ALL",
+    "actor": null,
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GState070"
+    ]
+   }
+  ],
+  "HP3_GroundsHub": [
+   {
+    "dest": "HP3_GroundsHub",
+    "source": "HP3_COMC",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger0",
+    "tag": "Takeittothehub",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_GroundsHub",
+    "source": "HP3_FA3Harry",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger0",
+    "tag": "HFExamloadGroundsHub",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GState100"
+    ]
+   },
+   {
+    "dest": "HP3_groundsHub",
+    "source": "HP3_InsideHub",
+    "via": "cutscene",
+    "cutscene": "LevelLoadGrounds010",
+    "actor": "CutSceneTrigger32",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [
+     "GSTATE010"
+    ],
+    "not_in": [],
+    "sets_state": [
+     "GState040"
+    ]
+   },
+   {
+    "dest": "HP3_groundsHub",
+    "source": "HP3_InsideHub",
+    "via": "cutscene",
+    "cutscene": "LevelLoadGrounds",
+    "actor": "CutSceneTrigger31",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE010"
+    ],
+    "sets_state": []
+   }
+  ],
+  "HP3_Infirmary": [
+   {
+    "dest": "HP3_Infirmary",
+    "source": "HP3_DementorBattle",
+    "via": "cutscene",
+    "cutscene": "8730DemEncAExitPARTONE",
+    "actor": "CutSceneTrigger1",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [
+     "GSTATE085"
+    ],
+    "not_in": [],
+    "sets_state": [
+     "GState090"
+    ]
+   }
+  ],
+  "HP3_InsideHub": [
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_Adv3Library",
+    "via": "cutscene",
+    "cutscene": "7170Library_Exit",
+    "actor": "CutSceneTrigger5",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_BeanBonus",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger1",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_COMC",
+    "via": "cutscene",
+    "cutscene": "4076COMCExit",
+    "actor": "CutSceneTrigger7",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GState060"
+    ]
+   },
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_Ch1CarpeRetractum",
+    "via": "cutscene",
+    "cutscene": "0700Ch1Chal_InsHubDoor_010",
+    "actor": "CutSceneTrigger35",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE010",
+     "GSTATE040",
+     "GSTATE060",
+     "GSTATE065",
+     "GSTATE070",
+     "GSTATE075",
+     "GSTATE090",
+     "GSTATE100"
+    ],
+    "sets_state": [
+     "GState010"
+    ]
+   },
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_Ch1CarpeRetractum",
+    "via": "cutscene",
+    "cutscene": "0700Ch1Chal_InsHubDoor",
+    "actor": "CutSceneTrigger30",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE065",
+     "GSTATE075"
+    ],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_Ch1CarpeRetractumB",
+    "via": "cutscene",
+    "cutscene": "0700Ch1Chal_InsHubDoor_010",
+    "actor": "CutSceneTrigger35",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE010",
+     "GSTATE040",
+     "GSTATE060",
+     "GSTATE065",
+     "GSTATE070",
+     "GSTATE075",
+     "GSTATE090",
+     "GSTATE100"
+    ],
+    "sets_state": [
+     "GState010"
+    ]
+   },
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_Ch1CarpeRetractumB",
+    "via": "cutscene",
+    "cutscene": "0700Ch1Chal_InsHubDoor",
+    "actor": "CutSceneTrigger30",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE065",
+     "GSTATE075"
+    ],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_Ch2DraconiforsB",
+    "via": "cutscene",
+    "cutscene": "DracLoadInsideHub",
+    "actor": "CutSceneTrigger19",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE065",
+     "GSTATE075",
+     "GSTATE060"
+    ],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_Ch3GlaciusB",
+    "via": "cutscene",
+    "cutscene": "GlaciustoInsideHub",
+    "actor": "CutSceneTrigger13",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE065",
+     "GSTATE075",
+     "GSTATE070"
+    ],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_DungeonHUB",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger16",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_GroundsHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger2",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_PortraitPassword_B",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger14",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_PortraitPassword_C",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger0",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_PortraitPassword_D",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger0",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "hp3_InsideHub",
+    "source": "HP3_PortraitPassword_E",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger13",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "hp3_InsideHub",
+    "source": "HP3_PortraitPassword_F",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger13",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   },
+   {
+    "dest": "HP3_InsideHub",
+    "source": "HP3_DarkTower",
+    "via": "cutscene (chained / level start)",
+    "cutscene": "9200ADV7FlyTowrExit",
+    "actor": null,
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GState090"
+    ]
+   }
+  ],
+  "HP3_PortraitPassword_B": [
+   {
+    "dest": "HP3_PortraitPassword_B",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger1",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_PortraitPassword_C": [
+   {
+    "dest": "HP3_PortraitPassword_C",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger4",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_PortraitPassword_D": [
+   {
+    "dest": "HP3_PortraitPassword_D",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger13",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_PortraitPassword_E": [
+   {
+    "dest": "HP3_PortraitPassword_E",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger12",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_PortraitPassword_F": [
+   {
+    "dest": "HP3_PortraitPassword_F",
+    "source": "HP3_InsideHub",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger0",
+    "tag": "ChangeLevelTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": []
+   }
+  ],
+  "HP3_Quidditch": [
+   {
+    "dest": "HP3_Quidditch",
+    "source": "HP3_Ch1CarpeRetractum",
+    "via": "cutscene",
+    "cutscene": "0700Ch1Chal_QuidDem_070",
+    "actor": "CutSceneTrigger36",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE000",
+     "GSTATE010",
+     "GSTATE040",
+     "GSTATE060",
+     "GSTATE070",
+     "GSTATE075",
+     "GSTATE090",
+     "GSTATE100"
+    ],
+    "sets_state": [
+     "GState070"
+    ]
+   },
+   {
+    "dest": "HP3_Quidditch",
+    "source": "HP3_Ch1CarpeRetractumB",
+    "via": "cutscene",
+    "cutscene": "0700Ch1Chal_QuidDem_070",
+    "actor": "CutSceneTrigger36",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE000",
+     "GSTATE010",
+     "GSTATE040",
+     "GSTATE060",
+     "GSTATE070",
+     "GSTATE075",
+     "GSTATE090",
+     "GSTATE100"
+    ],
+    "sets_state": [
+     "GState070"
+    ]
+   },
+   {
+    "dest": "HP3_Quidditch",
+    "source": "HP3_Ch2DraconiforsB",
+    "via": "cutscene",
+    "cutscene": "DracLoadQuidditch",
+    "actor": "CutSceneTrigger25",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [
+     "GSTATE075",
+     "GSTATE090",
+     "GSTATE100",
+     "GSTATE070"
+    ],
+    "sets_state": [
+     "GState070"
+    ]
+   },
+   {
+    "dest": "HP3_Quidditch",
+    "source": "HP3_Ch3GlaciusB",
+    "via": "cutscene",
+    "cutscene": "GlaciustoQuidditch",
+    "actor": "CutSceneTrigger28",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [
+     "GSTATE065"
+    ],
+    "not_in": [],
+    "sets_state": [
+     "GState070"
+    ]
+   }
+  ],
+  "HP3_WhompingWillow": [
+   {
+    "dest": "HP3_WhompingWillow",
+    "source": "HP3_Adv5Shack",
+    "via": "exit",
+    "actor": "ChangeLevelTrigger0",
+    "tag": "ChangeLevel_Willow2",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GState085"
+    ]
+   },
+   {
+    "dest": "HP3_WhompingWillow",
+    "source": "HP3_Adv5Shack",
+    "via": "cutscene",
+    "cutscene": "8700ADV5AtShack",
+    "actor": "CutSceneTrigger3",
+    "actor_class": "CutSceneTrigger",
+    "only_in": [],
+    "not_in": [],
+    "sets_state": [
+     "GState085"
+    ]
+   }
+  ],
+  "HP_Preamble": []
+ },
+ "unattributed_cutscenes": [
+  {
+   "cutscene": "0180ADV1DemExit",
+   "dest": [
+    "HP3_GroundsDADA"
+   ],
+   "sets_state": [
+    "GState000"
+   ],
+   "referenced_by": [
+    "HP3_Adv1Express"
+   ]
+  },
+  {
+   "cutscene": "0200DADAIntro",
+   "dest": [
+    "HP3_Ch1CarpeRetractum"
+   ],
+   "sets_state": [],
+   "referenced_by": [
+    "HP3_GroundsDada",
+    "HP3_InsideHub"
+   ]
+  },
+  {
+   "cutscene": "0200DADAIntro_02",
+   "dest": [
+    "HP3_Ch1CarpeRetractum"
+   ],
+   "sets_state": [],
+   "referenced_by": []
+  },
+  {
+   "cutscene": "6180TransIntro_02",
+   "dest": [
+    "HP3_Ch2Draconifors"
+   ],
+   "sets_state": [
+    "GState065"
+   ],
+   "referenced_by": []
+  },
+  {
+   "cutscene": "6524SP2Exit",
+   "dest": [
+    "HP3_Quidditch"
+   ],
+   "sets_state": [
+    "Gstate070"
+   ],
+   "referenced_by": []
+  },
+  {
+   "cutscene": "7010QuidDem_ALL",
+   "dest": [
+    "HP3_GroundsDADA"
+   ],
+   "sets_state": [
+    "GState070"
+   ],
+   "referenced_by": [
+    "HP3_Quidditch"
+   ]
+  },
+  {
+   "cutscene": "7010QuidDem_SpinFallShot",
+   "dest": [
+    "HP3_Adv2ExpPatronum"
+   ],
+   "sets_state": [
+    "GState070"
+   ],
+   "referenced_by": [
+    "HP3_Quidditch"
+   ]
+  },
+  {
+   "cutscene": "7020PatronusIntro_Start",
+   "dest": [
+    "HP3_Adv2ExpPatronum"
+   ],
+   "sets_state": [],
+   "referenced_by": [
+    "HP3_GroundsDada"
+   ]
+  },
+  {
+   "cutscene": "8180BuckExecuted",
+   "dest": [
+    "HP3_Adv5Shack"
+   ],
+   "sets_state": [
+    "GSate085"
+   ],
+   "referenced_by": [
+    "HP3_BuckyExecuted",
+    "HP3_WhompingWillow"
+   ]
+  },
+  {
+   "cutscene": "8710DemEncAIntro",
+   "dest": [
+    "HP3_DementorBattle"
+   ],
+   "sets_state": [],
+   "referenced_by": [
+    "HP3_DementorBattle",
+    "HP3_WhompingWillow"
+   ]
+  },
+  {
+   "cutscene": "8730DemEncAExit_Infirmary",
+   "dest": [
+    "HP3_ADV6Paddock"
+   ],
+   "sets_state": [],
+   "referenced_by": [
+    "HP3_Infirmary"
+   ]
+  },
+  {
+   "cutscene": "9200ADV7FlyTowrExit",
+   "dest": [
+    "HP3_InsideHub"
+   ],
+   "sets_state": [
+    "GState090"
+   ],
+   "referenced_by": [
+    "HP3_DarkTower"
+   ]
+  },
+  {
+   "cutscene": "RonExamExitReplay",
+   "dest": [
+    "HP3_FA1Ron"
+   ],
+   "sets_state": [],
+   "referenced_by": [
+    "HP3_FA1Ron"
+   ]
+  }
+ ]
+}

@@ -21,6 +21,9 @@ has been tested in-game unless it says so.
 
 ## Story progress
 
+(See [SCENES.md](SCENES.md) for how game states filter actors and how levels load, and [OPEN_CASTLE.md](OPEN_CASTLE.md)
+for side-quest counters and story-granted items.)
+
 `KWGame.CurrentGameState` holds one of the 16 entries in `HPWorldInfo.GameStateMasterList`
 ([`data/game_states.json`](../data/game_states.json)): `GSTATE000` … `GSTATE120`. `GetNumericGameState()` is the
 last three digits. Vendors and wizard-card availability check it (`GameStateAvailable`). Maps set it through
@@ -64,7 +67,7 @@ The game already has debug commands that grant these (`HPHeroController`): `Give
 
 ## Locations
 
-[`data/hp3_location_catalog.csv`](../data/hp3_location_catalog.csv) (976 rows, all 34 maps) lists every actor that could
+[`data/hp3_location_catalog.csv`](../data/hp3_location_catalog.csv) (983 rows, all 34 maps) lists every actor that could
 be a check, with its map, Level ID, actor name, class, position, tag/event, chest contents and the `_PU` save key for pickups:
 
 | Category | Count | Notes |
@@ -74,7 +77,7 @@ be a check, with its map, Level ID, actor name, class, position, tag/event, ches
 | Challenge stars | 63 | Almost all in the classroom challenges and final exams |
 | Save books | 45 | |
 | Secret areas | 41 | |
-| Wizard cards (placed) | 29 | Including five in the Bean Bonus room |
+| Wizard cards | 36 | 29 placed (including five in the Bean Bonus room) + 7 created by quest rewards. 17 are quest/event rewards, marked `awarded_by` (see [OPEN_CASTLE.md](OPEN_CASTLE.md#5-story-granted-items-and-side-quests)) |
 | Vendor items | 22 | All in InsideHub: cards, cakes, pasties, chocolate frogs, portrait passwords, the final card |
 | Creature statues | 18 | Draconifors/Lapifors spell targets |
 | Challenge completions | 7 | `EndChallengeTrigger` |
@@ -101,7 +104,8 @@ All in `tools/`, Python 3 with no dependencies. Run them against your own instal
 | --- | --- |
 | `ue2.py` | Package reader (names/imports/exports, tagged properties, UField/UStruct/UFunction/UState/UClass) and bytecode decompiler |
 | `decompile.py <game>/system <out>` | Decompile HGame/kwGame/GamePlay/Engine and extract the embedded Core/Engine source |
-| `build_catalog.py <game> <out>` | Regenerate everything in `data/` |
+| `build_catalog.py <game> <out>` | Regenerate the catalogue, wizard cards and game states in `data/` |
+| `build_scenes.py <game> <out>` | Regenerate `data/map_entrances.json` (level exits + cutscene `ChangeLevel`s) |
 | `framerate_patch.py <Engine.dll>` | 60 fps cap (see [SETUP.md](SETUP.md)) |
 | `inipatch.py` | Apply UHDE's `.IniPatch` files |
 | `pe.py` | Small PE export-table helper used to find the framerate patch site |
