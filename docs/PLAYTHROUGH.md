@@ -671,6 +671,7 @@ behind the balcony. It's **unreachable**: the player can't get up there (confirm
 | Check | Where | Requires | Status |
 | --- | --- | --- | --- |
 | Card *Eargit the Ugly* (+ 15 beans) | `ChestSpawner12` (9464, −4524, 14248), by secret area `SecretAreaMarker3` (9189, −4540, 14317); marked at (9415, −4526, 14266) | Glacius + **Alohomora**, confirmed | **found** |
+| Card *Alguff the Awful* (+ 10 beans, 2 chocolate frogs) | `ChestSpawner31` (3524, −3817, 10968), by secret area `SecretAreaMarker1` (3522, −3993, 11026); marked at (3533, −3862, 10986) | Glacius + **Alohomora**, confirmed | **found** |
 
 Catalogue, both halves:
 - **Cards (5):** Ch3 has *Eargit the Ugly* (found), *Ug the Unreliable* (`ChestSpawner35` (−4594, −2707, 4691), by
