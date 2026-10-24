@@ -741,5 +741,9 @@ chests with checks; they don't (beans).
 | Checks (catalogue) | **no cards**; 5 secret areas (`SecretAreaMarker0`–`4`); 3 placed pasties and 1 placed cake; 12 snack spawners (chests, skull shelves, cauldrons, 2 "companion" chests) with about 25 pasties and 8 cakes; one Draconifors statue |
 | Requires | Draconifors, Glacius (per the plan) *(to confirm in play)* |
 
+| Check | Where | Requires | Status |
+| --- | --- | --- | --- |
+| 2 pasties | `CauldronSpwn2` (−5522, −1420, −980), a cauldron; marked at (−5537, −1372, −973) | **Depulso**, confirmed | **found** |
+
 **Open Castle:** keeps its checks (secrets and snacks). It needs an entrance: a spare door, or the Whomping Willow
 trigger on the grounds planned in [OPEN_CASTLE.md](OPEN_CASTLE.md) §6.
