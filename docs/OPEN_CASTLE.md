@@ -86,7 +86,7 @@ Depends on Open Castle working without heavy changes to Hogwarts. Candidate item
 | Grounds Access | `GroundsBlocker` ×3 portcullises | GroundsHub |
 | Dungeon | `Dungeon_Door_Mvr` | DungeonHUB |
 | Library | `Library_Door_Mvr` / `Library_Port_Mvr` (2nd floor, ≈ (−704, −1368, 732)) | Adv3Library (confirmed: the library level exits here) |
-| Expecto Patronum | `DADA_DoorToExpecto_Mvr` / `DADA_PortToExpecto_Mvr` | Adv2ExpPatronum *(verify)* |
+| Expecto Patronum | `DADA_DoorToExpecto_Mvr` / `DADA_PortToExpecto_Mvr` (DADA classroom, ≈ (856, −1844, 1152)) | Adv2ExpPatronum (door located in play; it's a closed portcullis + door pair) |
 | Monster Book Room | `MBOMDoor` ×3 | Monster Book side quest |
 | Carpe Retractum / Draconifors / Glacius Challenge | `ChalChamb_CR/Drac/Gla_Door` + portcullises (side room) | Ch1 / Ch2 / Ch3 |
 | Ron's / Hermione's / Harry's Exam | `DADA_DoorToCarpe`, `Transfig_Door`/`ToDrac_Door`, `2nd_Flr_CharmsDoor`/`Glacius_Door` | FA1 / FA2 / FA3 |
