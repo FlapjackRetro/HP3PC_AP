@@ -250,7 +250,7 @@ Logic: the five cards need only GroundsHub access (plus whatever spell the doxy 
 
 | Track | Pass score | Reward (`HPSpawnThingy`, tag) | Status |
 | --- | --- | --- | --- |
-| 1 (tutorial) | 1500 | Joscelind Wadcock (`WizCard1`) | in progress |
+| 1 (tutorial) | 1500 | Joscelind Wadcock (`WizCard1`) | **found**, given during the win cutscene |
 | 2 | 2800 | Gwenog Jones (`WizCard2`) | |
 | 3 | 4000 | Cyprian Youdle (`WizCard3`) | |
 | 4 | 4900 | Roderick Plumpton (`WizCard4`) | |
@@ -262,4 +262,18 @@ Progress is saved by `HippoFlyGame` (`hfg_n` tracks completed, `hfg_h<i>`/`hfg_l
 State note: GroundsHub also has a walk-in entrance to COMC, `ChangeLevelTrigger3`, active only in `GSTATE040`, which
 sets `GState050` on the way in. The Neville cutscene keeps `040`. When `050` takes over: *(to confirm)*.
 
-**Open Castle:** COMC is a separate map with its own entrance from GroundsHub; all five checks are here.
+**End of the first visit (confirmed):** winning track 1 plays a cutscene; the card is awarded during it. The
+cutscene then sets **`GState060`** and sends the player straight back to the castle, arriving in the shortcuts room
+of InsideHub. MapTracker: `HP3_COMC state=GState060` at 12:17:29, then `HP3_InsideHub state=GState060` at 12:17:36.
+This is `4076COMCExit` (COMC → InsideHub, sets `GState060`). On later visits COMC exits to GroundsHub
+(`ChangeLevelTrigger0`).
+
+So in vanilla only track 1 is played on this visit. Tracks 2–5 come on later visits.
+
+**Open Castle:** COMC is a separate map with its own entrance from GroundsHub; all five checks are here. The story
+exit `4076COMCExit` (and its `GState060` change) must not fire in Open Castle; the base state (`090`/`100`) should
+use the normal exit to GroundsHub *(verify)*.
+
+## 8. HP3_InsideHub, `GState060`
+
+Arrived in the shortcuts room straight from the COMC win cutscene (confirmed, 12:17:36).
