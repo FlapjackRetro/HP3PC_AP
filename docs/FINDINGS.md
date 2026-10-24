@@ -47,8 +47,9 @@ Everything persistent goes through `kwGame.PersistentStore`, a string key/value 
 | Vendor stock | `NumCakesForSale`, `NumPastiesForSale`, `<LevelID><Name>` (card class) | `VendorManager`, `VI_WizardCard` |
 | Spawner lives, movers, triggers | `<LevelID><Name>_lives`, `_KeyNum`, `_bTOO`, … | `KWGenericSpawner`, `KWMover`, `KWTrigger` |
 
-`<LevelID>` is `LevelInfo.ID`, a KnowWonder addition. Several maps have no `ID` set (Adv1Express, the three
-`Ch*` challenges and their `B` halves, Final, PortraitPassword_F); how their keys come out needs checking in-game.
+`<LevelID>` is `LevelInfo.ID`, a KnowWonder addition. Every map sets one. Maps contain several `LevelInfo` exports,
+and only the first (`LevelInfo0`) is the live one, so tools must read that one; the others are editor leftovers,
+often with an empty `ID`.
 
 ## Items (what Archipelago could give)
 

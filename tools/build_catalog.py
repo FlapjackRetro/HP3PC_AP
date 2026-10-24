@@ -64,11 +64,11 @@ def main():
 
     rows = []
     for f in sorted(glob.glob(os.path.join(game, 'maps', '*.unr'))):
-        p = Package(f); mp = os.path.splitext(os.path.basename(f))[0]; lid = ''
+        p = Package(f); mp = os.path.splitext(os.path.basename(f))[0]; lid = None
         teleported = {}   # card actor Tag -> event tag of the HPSpawnThingy that hands it to the player
         for e in p.exports:
             c = p.objclass(e['idx'])
-            if c == 'LevelInfo':
+            if c == 'LevelInfo' and lid is None:   # the first LevelInfo (LevelInfo0) is the live one; later ones are leftovers
                 lid = {n: v for n, i, t, v in load(p, e['idx'])['props']}.get('ID', '')
             elif c == 'HPSpawnThingy':
                 pr = {n: v for n, i, t, v in load(p, e['idx'])['props']}
@@ -76,7 +76,7 @@ def main():
                     teleported[str(pr['TeleportActorTag']).lower()] = pr.get('Tag')
                 sc = str(pr.get('SpawnClass') or '').split('.')[-1]
                 if isa(sc, 'WizardCard'):   # card created on the spot by a quest reward
-                    rows.append(dict(map=mp, level_id=lid, actor=e['name'], cls=sc, category='WizardCard',
+                    rows.append(dict(map=mp, level_id=lid or '', actor=e['name'], cls=sc, category='WizardCard',
                                      loc=vec(pr.get('Location')), tag=pr.get('Tag'), event=None, contents=[],
                                      persist_key=None, awarded_by=pr.get('Tag')))
         for e in p.exports:
@@ -94,10 +94,10 @@ def main():
                         nkey = 'GoodiesNumber' if k == 0 else f'GoodiesNumber({k})'
                         num = pr.get(nkey, class_default(c, ('GoodiesNumber', k)))
                         contents.append([g.split('.')[-1], num])
-            rows.append(dict(map=mp, level_id=lid, actor=e['name'], cls=c, category=base,
+            rows.append(dict(map=mp, level_id=lid or '', actor=e['name'], cls=c, category=base,
                              loc=vec(pr.get('Location')), tag=pr.get('Tag'), event=pr.get('Event'),
                              contents=contents,
-                             persist_key=f"{lid}{e['name']}_PU" if isa(c, 'KWPickup') else None,
+                             persist_key=f"{lid or ''}{e['name']}_PU" if isa(c, 'KWPickup') else None,
                              awarded_by=teleported.get(str(pr.get('Tag')).lower()) if base == 'WizardCard' else None))
     json.dump(rows, open(os.path.join(out, 'locations.json'), 'w'), indent=1)
     with open(os.path.join(out, 'hp3_location_catalog.csv'), 'w', newline='') as fh:
