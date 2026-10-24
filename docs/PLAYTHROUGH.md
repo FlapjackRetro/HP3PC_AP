@@ -183,3 +183,25 @@ From the data:
 **Open Castle:** the Marauder's Map check (option `marauders_map_check`) can be detected on picking up
 `MaraudersPickup`, or on the map entering the inventory. The cutscene is story-only, so in Open Castle the pickup
 needs a new trigger, or the map is simply placed at that spot.
+
+### Story beats in InsideHub, `GState010` (confirmed in play)
+
+1. **Follow Fred to the twins' shop.** Shop intro and exit cutscenes are `1040IntroShop` / `1051ShopExit` (they also
+   reposition students: `KidsToFandG_Spawn`, `KidsToChChamb_Spawn`, …).
+2. **Peeves fight for the shortcut passwords.** On leaving the shop, a cutscene leads into a fight with Peeves. Winning
+   it gives **the shortcut passwords**. It's set up at the end of `1051GetMaraudersMap` (`Trigger PeevesEnc1`).
+   There are three `Peeves` actors in InsideHub (`Peeves0` tag `Peeves3` at (−126, 1392, 417), `peeves1` tag `Peeves`
+   at (−3730, −3790, 435), `peeves2` at (−3597, 1059, 742)); a beaten Peeves saves `<LevelID><Name>_bD`. Which one
+   this fight uses: *to confirm*.
+3. **Take a shortcut down to the shortcut chamber** (now unlocked by the passwords).
+4. **Neville's cutscene in the shortcut chamber:** he offers to guide the trio to Care of Magical Creatures. Next
+   map: HP3_COMC or GroundsHub *(next entry)*.
+
+These scenes have no `.int` cutscene file of their own (only the shop and Marauder's Map scenes do), so they're
+probably scripted in the map (`HPScriptedSequence` / `CutSceneTrigger` actors).
+
+**Open Castle:**
+- The shortcut passwords are a story-granted unlock. They should be open from the start, or become a
+  progression item ("Shortcut Passwords"), since the shortcuts connect large parts of the castle.
+- The Peeves fight needs Rictusempra. Beating Peeves could be a check (`_bD` key; 3 Peeves in InsideHub).
+- These story cutscenes don't play in the Open Castle base state, so nothing else is lost.
