@@ -739,13 +739,14 @@ chests with checks; they don't (beans).
 | Entered from | the BuckyExecuted cutscene (`8180BuckExecuted`), confirmed |
 | Leaves to | HP3_WhompingWillow (`ChangeLevelTrigger0` or `8700ADV5AtShack`), setting `GState085` |
 | Checks (catalogue) | **no cards**; 5 secret areas (`SecretAreaMarker0`–`4`); 3 placed pasties and 1 placed cake; 12 snack spawners (chests, skull shelves, cauldrons, 2 "companion" chests) with about 25 pasties and 8 cakes; one Draconifors statue |
-| Requires | Draconifors, Glacius (per the plan) *(to confirm in play)* |
+| Requires | **Draconifors** (dragon form, confirmed), Alohomora, Depulso; Glacius (per the plan) *(to confirm)* |
 
 | Check | Where | Requires | Status |
 | --- | --- | --- | --- |
 | 2 pasties | `CauldronSpwn2` (−5522, −1420, −980), a cauldron; marked at (−5537, −1372, −973) | **Depulso**, confirmed | **found** |
 | 2 pasties (+ 1 chocolate frog) | `ChestSpawner7` (−4582, −2857, −899); marked at (−4590, −2898, −917) | **Alohomora**, confirmed | **found** |
 | Pasty (placed) | `PumpkinPasty3` (−1761, −3577, −880); marked at (−1760, −3584, −853). A padlocked door (`AlohomoraPadLock4`/`5`) is ~315 units west | *(none stated)* | **found** |
+| Cake (placed) | `CauldronCake4` (−707, −5223, −48), high up; marked at (−736, −5227, −116) | **dragon form** (Draconifors statue `DraconisforsStatue1` at (−1319, −3403, −811)), confirmed | **found** |
 | 2 cakes | `ChestSpawner12` (−3235, −3979, −770), in secret area `SecretAreaMarker1` (−3310, −3971, −760); marked at (−3203, −3942, −757) | **Alohomora**, confirmed | **found** |
 
 **Open Castle:** keeps its checks (secrets and snacks). It needs an entrance: a spare door, or the Whomping Willow
