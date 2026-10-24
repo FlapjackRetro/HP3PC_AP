@@ -54,6 +54,7 @@ Notes:
 | Spongify | 97 Spongify pads (traversal, many secrets) | `WeaponWand.HasSpell()` |
 | Lumos | Wand light: reveals or hides actors with `LumosType` (hidden platforms and walls) | Block `WeaponWand.LumosTurnOn()` / the Lumos toggle. Lumos isn't a projectile spell, so `HasSpell` won't cover it. |
 | Rictusempra | Peeves fights (`RictusempraSpell_Combat`), ~14 triggers | `HasSpell()`, or make it a starting spell |
+| Expecto Patronum | Adv2ExpPatronum (the whole level, incl. the *Honoria Nutcombe* card), the Dementor maps | `HasSpell()` for `HGame.PatronumSpell` |
 
 In the original game `HasSpell()` is true for everything except per-character exclusions
 (Harry: no Draconifors/Lapifors/Carpe Retractum; Ron: no Draconifors/Lapifors; Hermione: no Carpe Retractum),
@@ -194,7 +195,7 @@ Harry Potter 3 PC:
   pasty_checks: true
   cake_checks: true
   marauders_map_check: true
-  spell_items: true            # Alohomora, Depulso, Lumos, Spongify (+ Rictusempra?)
+  spell_items: true            # Alohomora, Depulso, Lumos, Spongify, Expecto Patronum (+ Rictusempra?)
   starting_spells: []          # spells precollected
   split_challenge_spells: false
   area_unlocks: true
