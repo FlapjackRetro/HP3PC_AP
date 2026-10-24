@@ -391,6 +391,7 @@ Found so far:
 | Pasty spawner (a pumpkin) | `Pumpkin5` (−255, 297, −437); marked at (−250, 299, −416). Pasties, class-default count | **Depulso**, confirmed | **found** |
 | Pasty spawner (a pumpkin, 1 pasty) | `Pumpkin9` (944, −383, −725); marked at (944, −377, −704) | **Depulso**, confirmed | **found** |
 | Pasty spawner (a pumpkin, 1 pasty) | `Pumpkin8` (1343, −795, −730); marked at (1339, −791, −706) | **Depulso**, confirmed | **found** |
+| Card *Hebridean Black Dragon* | `Pumpkin2` (1343, −388, −716), the large pumpkin in the middle of the pumpkin room; marked at (1329, −387, −704). Secret area `SecretAreaMarker0` is on the same spot | **Depulso**, confirmed | **found** |
 | Cake chest (2 cakes) | `ChestSpawner21` (522, −383, −456); marked at (474, −391, −437), inside secret area `SecretAreaMarker2` (454, −387, −417) | **Alohomora**, confirmed | **found** |
 
 The pumpkin room around (1343, −388, −725) is laid out as a cross: the card pumpkin `Pumpkin2` (Hebridean Black
