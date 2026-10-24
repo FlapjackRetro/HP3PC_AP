@@ -434,7 +434,7 @@ look (`DrawType` 1) and tags `Gsecretgrass1`–`9`, in a patch around (2670–28
 | --- | --- | --- |
 | `KnightSpawner0` | `Gsecretgrass2` | 1 pasty (**found**) |
 | `KnightSpawner19` | `Gsecretgrass4` | 1 pasty |
-| `KnightSpawner22` | `Gsecretgrass7` | 1 pasty |
+| `KnightSpawner22` | `Gsecretgrass7` | 1 pasty (**found**) |
 | `KnightSpawner21` | `Gsecretgrass6` | 1 cake |
 | `KnightSpawner24`/`18`/`20`/`23`/`16` | `Gsecretgrass1`/`3`/`5`/`8`/`9` | 2 beans each |
 
