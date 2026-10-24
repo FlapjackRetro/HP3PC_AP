@@ -465,3 +465,20 @@ The start plays `Cut_6500SP2LapIntro_Start` (`PlayerStart2`), the Lapifors intro
 
 **Open Castle:** in vanilla this challenge is reached from the classroom cutscene. The plan sends the classroom door
 to the exam (FA2) and uses the side-room door (`ChangeLevelTrigger10`) for the challenge.
+
+## 14. HP3_Ch2DraconiforsB: second half of the Draconifors challenge
+
+| | |
+| --- | --- |
+| Level ID | `dlb` |
+| State | `GState060` |
+| Entered from | HP3_Ch2Draconifors, `ChangeLevelTrigger1`, a door just past the end of the dragon section (confirmed) |
+| Checks | *(in progress)* |
+
+**Open Castle:** Ch2 and Ch2B are one region, like Ch1/Ch1B (confirmed). The whole challenge needs one entrance
+(the side-room door `ChangeLevelTrigger10`) and one exit back to InsideHub.
+
+Catalogue for this half: cards *Norwegian Ridgeback* (`ChestSpawner12` (4875, 4646, 312), by secret area
+`SecretAreaMarker1`), *Romanian Longhorn* (`ChestSpawner19` (3296, 5513, 645), by `SecretAreaMarker6`),
+*Hungarian Horntail* (`ChestSpawner13` (2657, 857, 346)); secret areas `SecretAreaMarker1`/`5`/`6`/`7`; 12 placed
+pasties and 14 placed cakes; 4 challenge stars; a bean bonus game; the end trigger.
