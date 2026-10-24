@@ -479,6 +479,12 @@ to the exam (FA2) and uses the side-room door (`ChangeLevelTrigger10`) for the c
 | --- | --- | --- | --- |
 | Card *Hungarian Horntail* | `ChestSpawner13` (2657, 857, 346), an Alohomora chest; marked at (2656, 809, 360) | **Alohomora** (chest) + **Depulso** (to reach it), confirmed | **found** |
 | 2 pasties (bundimun) | `Bundimun6` (3413, 673, 305); marked at (3445, 664, 330) | **Rictusempra** to stun, then jump on it, confirmed | **found** |
+| Pasty | `PumpkinPasty28` (3046, 1321, 294); marked at (3033, 1332, 307) | **rabbit form**, confirmed | **found** |
+| Pasty | `PumpkinPasty29` (3801, 1320, 294); marked at (3809, 1309, 307) | **rabbit form**, confirmed | **found** |
+| Pasty | `PumpkinPasty24` (4081, 1601, 294); marked at (4083, 1594, 307) | **rabbit form**, confirmed | **found** |
+| Pasty | `PumpkinPasty5` (3808, 2643, 294); marked at (3823, 2623, 307) | **rabbit form**, confirmed | **found** |
+| Pasty | `PumpkinPasty25` (3048, 2649, 294); marked at (3026, 2645, 307) | **rabbit form**, confirmed | **found** |
+| Pasty | `PumpkinPasty26` (2764, 2372, 294); marked at (2771, 2387, 307) | **rabbit form**, confirmed | **found** |
 
 **Bundimuns (pasty creatures).** Stun one with Rictusempra, then jump on it, and it drops pasties. The drops are
 **guaranteed**: `BundimunController.DoGoodieSpawning()` spawns exactly `GoodieCount` × `GoodieToSpawn`, and only
