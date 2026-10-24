@@ -67,3 +67,9 @@ Catalogue checks (first half):
 | 9 challenge stars | | candidate checks |
 
 All three cards are in chests inside secret areas.
+
+**Pumpkin pasties:** 3 found (confirmed). The catalogue has no pasties placed in this half; all 3 come out of
+`ChestSpawner11`, the same chest as *Amarillo Lestoat*. Chest drops aren't tracked one by one, so with the current
+plan (placed pasties only) they aren't checks. Options: make each chest one check (keyed by the spawner's
+`_lives` save key), or count chest pasties as part of the chest's check. *(open question, see
+[OPEN_CASTLE.md](OPEN_CASTLE.md) §2 notes)*
