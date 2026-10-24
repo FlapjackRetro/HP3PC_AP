@@ -107,9 +107,11 @@ tag: 32 pasties and 12 cakes across all maps.
 
 | Check | Where | Status |
 | --- | --- | --- |
-| Card *Lady Carmilla Sanguina* | `ChestSpawner13` (−1762, 5868, 2258), with 25 beans and 6 pasties; beside secret area `SecretAreaMarker3` (−1769, 5968, 2288) | **found** (in a chest) |
+| Card *Lady Carmilla Sanguina* | `ChestSpawner13` (−1762, 5868, 2258), with 25 beans and 6 pasties (pasties confirmed); beside secret area `SecretAreaMarker3` (−1769, 5968, 2288) | **found** (in a chest) |
 | Card *Blodwyn Bludd* | `KnightSpawner21` (1713, 5812, 1797), Depulso knight, with 5 pasties | |
 | Secret areas | `SecretAreaMarker3`, `SecretAreaMarker4` (2264, 7105, 1480) | |
+
+Chest pasties come out as a burst, not as placed pickups, so under the current plan they're filler, not checks.
 
 **Open Castle:** Ch1 and Ch1B are one region. The two halves are connected only to each other, so the whole
 challenge needs a single entrance (the side-room door) and a single exit back to InsideHub. Its logic combines both
