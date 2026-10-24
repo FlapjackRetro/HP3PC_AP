@@ -160,8 +160,10 @@ Sequence:
    `0696Ch1FinalStrFail`; replays play `0700Ch1ChalChReplay`.
 2. Bean bonus round, 120 s (only with all 10 shields).
 3. `0698BeanBonusRonEXIT` → `Trigger ChalChamber_CS`: the player comes out in the **challenge chamber**, the side
-   room with the three challenge entrances (`ChangeLevelTrigger9`/`10`/`11`). Confirmed; MapTracker shows this room
-   is in HP3_Ch1CarpeRetractumB, and the state becomes `GState010` here (11:48:07).
+   room with the three challenge entrances. Confirmed with MapTracker v7: the chamber and the shortcuts room it
+   opens onto are both part of **HP3_InsideHub** (its `ChangeLevelTrigger9`/`10`/`11`). Ch1B also contains a copy of
+   the chamber (group `ChallengeChamber`, same three triggers). The earlier log line showing Ch1B in `GState010`
+   came from v5's stale-controller bug, so it doesn't say which copy the bonus exit uses *(to confirm)*.
 4. Leaving the chamber leads into InsideHub (next entry).
 
 **Open Castle:** the bean bonus is beans only (no check). Candidate checks: the challenge win (`EndChallengeTrigger`,
