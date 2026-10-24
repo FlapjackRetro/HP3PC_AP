@@ -698,6 +698,9 @@ other challenges.
 | --- | --- | --- | --- |
 | 8 pasties + 3 cakes (+ 15 beans) | `ChestSpawner32` (−8464, 2120, 1724); marked at (−8510, 2112, 1742) | Glacius + **Alohomora**, confirmed | **found** |
 | 3 pasties (+ 15 beans) | `ChestSpawner30` (−9260, 3106, 1596); marked at (−9294, 3072, 1614) | Glacius + **Alohomora**, confirmed | **found** |
+| 5 pasties + 2 cakes | `BannerSpwn0` (−9173, −407, 1817), a banner (flag) ~210 units up; marked from below at (−9185, −426, 1606) | Glacius + **Depulso**, confirmed | **found** |
+
+Banners (`BannerSpwn`) are Depulso targets hung high on walls; marks from the floor sit ~200 units below them.
 
 Nearby: secret area `SecretAreaMarker0` (−9060, 2105, 1711), about 550 units west; `ChestSpawner30` (−9260, 3106, 1596),
 3 pasties + 15 beans.
