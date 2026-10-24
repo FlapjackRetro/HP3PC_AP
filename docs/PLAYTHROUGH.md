@@ -688,3 +688,15 @@ Catalogue, both halves:
 **Open Castle:** in logic, Glacius gates the entire challenge, so the challenge entrance effectively requires
 Glacius (with `split_challenge_spells` off, the Glacius item opens both). Ch3 and Ch3B will be one region, like the
 other two challenges.
+
+## 20. HP3_Ch3GlaciusB: second half of the Glacius challenge
+
+Reached from Ch3 (MapTracker shows the switch to `HP3_Ch3GlaciusB` before 18:07:55). One region with Ch3, like the
+other challenges.
+
+| Check | Where | Requires | Status |
+| --- | --- | --- | --- |
+| 8 pasties + 3 cakes (+ 15 beans) | `ChestSpawner32` (−8464, 2120, 1724); marked at (−8510, 2112, 1742) | Glacius + **Alohomora**, confirmed | **found** |
+
+Nearby: secret area `SecretAreaMarker0` (−9060, 2105, 1711), about 550 units west; `ChestSpawner30` (−9260, 3106, 1596),
+3 pasties + 15 beans.
