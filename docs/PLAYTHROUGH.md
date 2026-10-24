@@ -738,7 +738,7 @@ chests with checks; they don't (beans).
 | State | **`GState075`** on arrival (the `GSate085` typo is ignored; the map's own default is `GState085`) |
 | Entered from | the BuckyExecuted cutscene (`8180BuckExecuted`), confirmed |
 | Leaves to | HP3_WhompingWillow (`ChangeLevelTrigger0` or `8700ADV5AtShack`), setting `GState085` |
-| Checks (catalogue) | **no cards**; 5 secret areas (`SecretAreaMarker0`–`4`); 3 placed pasties and 1 placed cake; 12 snack spawners (chests, skull shelves, cauldrons, 2 "companion" chests) with about 25 pasties and 8 cakes; one Draconifors statue |
+| Checks (catalogue) | **1 card**: *Sacharissa Tugwood*, an event reward the first catalogue missed (now fixed); 5 secret areas (`SecretAreaMarker0`–`4`); 3 placed pasties and 1 placed cake; 12 snack spawners (chests, skull shelves, cauldrons, 2 "companion" chests) with about 25 pasties and 8 cakes; one Draconifors statue |
 | Requires | **Draconifors** (dragon form), **Alohomora**, **Depulso**, **Spongify** (all confirmed); Glacius (per the plan) *(to confirm)* |
 
 | Check | Where | Requires | Status |
@@ -747,6 +747,7 @@ chests with checks; they don't (beans).
 | 2 pasties | `CauldronSpwn1` (1954, −4330, −856), a cauldron; marked at (1964, −4281, −853) | **Depulso**, confirmed | **found** |
 | 4 pasties (+ 2 chocolate frogs) | `ChestCompanionSpawner0` (3240, −3773, −999), a "companion" chest with **two Alohomora padlocks** on it (`AlohomoraPadLock0`/`1`); marked at (3232, −3819, −981) | **Alohomora**, cast by **Harry and Hermione together** (one padlock each), confirmed | **found** |
 | 5 pasties (+ 1 bean) | `ChestCompanionSpawner4` (4097, −2827, −999), companion chest with padlocks `AlohomoraPadLock16`/`17`; marked at (4133, −2858, −981) | **Alohomora**, Harry + Hermione together, confirmed | **found** |
+| Card *Sacharissa Tugwood* | created by `SpawnThingy10` (5426, −3913, −705, tag `RmG_Win_SpawnThing_Card`, Room G) when the skeleton fight is won (dispatcher `RmG_SkeleKilled_Spwn`, which also fires 8 bean fountains); marked at (5420, −3913, −715) | **Rictusempra** (the fight), confirmed | **found** |
 | 2 pasties (+ 1 chocolate frog) | `ChestSpawner7` (−4582, −2857, −899); marked at (−4590, −2898, −917) | **Alohomora**, confirmed | **found** |
 | Pasty (placed) | `PumpkinPasty3` (−1761, −3577, −880); marked at (−1760, −3584, −853). A padlocked door (`AlohomoraPadLock4`/`5`) is ~315 units west | *(none stated)* | **found** |
 | Cake (placed) | `CauldronCake4` (−707, −5223, −48), high up; marked at (−736, −5227, −116) | **dragon form** (Draconifors statue `DraconisforsStatue1` at (−1319, −3403, −811)), confirmed | **found** |
