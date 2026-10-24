@@ -110,7 +110,7 @@ which proves it's reachable.)
 | InsideHub | `StaticMeshActor9` | (−168, 1272, 1520) | 4th floor | confirmed |
 | InsideHub | `StaticMeshActor292` | (−103, −1084, 2172) | 7th floor | confirmed |
 | InsideHub | `StaticMeshActor228` | (1447, −956, 2171) | 7th floor | confirmed |
-| InsideHub | `StaticMeshActor227` | (669, −2116, 1341) | ? (near DADA, 2nd floor) | *not yet* |
+| InsideHub | `StaticMeshActor227` | (669, −2116, 1341) | DADA classroom: the balcony door, i.e. Lupin's office | **unreachable**: it's on the balcony ~100 units above the classroom floor, with no way up (marked from below at (700, −2026, 1194), 17:54:28) |
 | DungeonHUB | `StaticMeshActor315` | (−480, 2786, −318) | dungeon | confirmed |
 | DungeonHUB | `StaticMeshActor95` | (−480, 4126, −318) | dungeon | confirmed |
 | GroundsDada | `StaticMeshActor227` | (11885, −11669, 1403) | ? | *not yet* (the GroundsDada visits so far were cutscene only) |
