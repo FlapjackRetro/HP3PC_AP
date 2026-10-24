@@ -108,15 +108,29 @@ tag: 32 pasties and 12 cakes across all maps.
 | Check | Where | Status |
 | --- | --- | --- |
 | Card *Lady Carmilla Sanguina* | `ChestSpawner13` (−1762, 5868, 2258), with 25 beans and 6 pasties (pasties confirmed); beside secret area `SecretAreaMarker3` (−1769, 5968, 2288) | **found** (in a chest) |
-| Card *Blodwyn Bludd* | `KnightSpawner21` (1713, 5812, 1797), Depulso knight, with 5 pasties | |
+| Card *Blodwyn Bludd* | `KnightSpawner21` (1713, 5812, 1797), Depulso knight, with 5 pasties | **found**, with the 5 pasties |
 | Secret areas | `SecretAreaMarker3`, `SecretAreaMarker4` (2264, 7105, 1480) | |
 | Cauldron cake | `KnightSpawner11` (1646, 6681, 1792), Depulso knight, with 20 beans | **found** |
 | Cauldron cake | `BannerSpwn1` (−1137, 4734, 1429), a banner | |
-| 2 pasties | `KnightSpawner15` (1585, 5813, 1798), Depulso knight, with 15 beans; next to the Blodwyn Bludd knight | **found** |
+| 2 pasties | `KnightSpawner15` (1585, 5813, 1798), Depulso knight, with 15 beans | **found** |
 | 4 pasties | `ChestSpawner19` (2260, 7300, 1465), beside secret area `SecretAreaMarker4` | |
-| pasties | `ChestSpawner12` (1662, 5275, 1737) | |
+| pasties | `ChestSpawner12` (1662, 5275, 1737), tag `EVChest`, probably the carousel's reward *(verify)* | |
 
 **Requires** Depulso as well (confirmed, knights).
+
+**Knight carousel** (room O–P, around (1648, 5812)): what looks like one suit of armour is four knights on a
+rotating platform (`ElevatorMover0`–`3`, tags `EV1`–`EV4`, 5 keys each). Each Depulso hit turns the next knight to
+the front, so Depulso can be cast again (confirmed). Knights and drops:
+
+| Knight | Tag | Drops |
+| --- | --- | --- |
+| `KnightSpawner23` | `EVKnight` / `EV1` | class default (beans) |
+| `KnightSpawner15` | `EVK2` / `EV2` | 15 beans, 2 pasties (found) |
+| `KnightSpawner16` | `EVK3` / `EV3` | class default (beans) |
+| `KnightSpawner21` | `EVK4` / `EV4` | card *Blodwyn Bludd*, 5 pasties (found) |
+
+`AlohomoraTrigger4` (`AlohEVtrigger` → round robin `EVRR`) is next to it, so Alohomora may be part of the
+mechanism *(verify)*. For Open Castle the carousel is one location group needing Depulso.
 
 Chest pasties come out as a burst, not as placed pickups, so under the current plan they're filler, not checks.
 
