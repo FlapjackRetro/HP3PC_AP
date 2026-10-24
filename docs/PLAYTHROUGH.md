@@ -307,3 +307,19 @@ Arrived in the shortcuts room straight from the COMC win cutscene (confirmed, 12
   can send the player to a story-only map, and the lock bar can be hidden once the matching area item is received
   (a visible "unlocked" cue). Both sit next to the grounds exit, which suits grounds story maps (e.g. Adv5Shack,
   Adv6Paddock, BuckyExecuted) or the Hogwarts Express prologue.
+
+## 11. HP3_DungeonHUB: the dungeons (first visit, `GState060`)
+
+| | |
+| --- | --- |
+| Level ID | `dung` |
+| State | `GState060` (MapTracker 13:07:58); the map's own default is `GState070` |
+| Entered from | InsideHub: from the entrance hall, down a staircase, into `ChangeLevelTrigger8` (225, 2968, −176), beside `Dungeon_Door_Mvr`. Confirmed open and walkable in `GState060`. |
+| Leaves to | InsideHub (`ChangeLevelTrigger16`) |
+| Checks (catalogue) | cards *Doxy* (placed, `WC_Doxy0` (−869, 1627, −430)) and *Bowtruckle* (`ChestSpawner3` (−1248, 4389, −359), with 4 cakes); **23 pasties and 3 cakes spawned by events** (tag `Aspawnbeans` ×17, and `Bs2`…`Bs22` ×9); no secret areas |
+
+The 26 event-spawned snacks (`HPSpawnThingy`) are the largest group in the game: how they're triggered is
+*(to confirm in play)*.
+
+**Open Castle:** in `GState060` the dungeon door is already open, so the planned "Dungeon" area unlock
+(`Dungeon_Door_Mvr`) would have to close it in the base state *(check whether the door is shut in `090`/`100`)*.
