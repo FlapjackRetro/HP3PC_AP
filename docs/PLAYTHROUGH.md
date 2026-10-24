@@ -443,6 +443,15 @@ look (`DrawType` 1) and tags `Gsecretgrass1`–`9`, in a patch around (2670–28
 The real suits of armour in this half: `KnightSpawner2` (card *Welsh Green*, found), `KnightSpawner1` (8 beans),
 `KnightSpawner9`/`11` (6 beans), and `KnightSpawner10` (tag `EVKnight`, empty).
 
+**Point of no return: end of the dragon section** (confirmed). Near the column of dragon pasties there's a scripted
+end to the dragon form, and the player can't go back afterwards. Two placed cakes at ground level there,
+`CauldronCake12` (4496, −1250, −213) and `CauldronCake3` (4550, −511, −213), were seen but missed, with a chest
+between them (`ChestSpawner15` (4680, −888, −200), 22 beans only). Missing them isn't a softlock, but getting them
+means replaying the challenge.
+
+For Open Castle: there's no logic problem (they need dragon form, and a replay gives another chance), but checks
+behind a one-way script should be listed so the player is warned (or the script made skippable).
+
 **Pumpkin default:** `Pumpkin3` sets no count and gave **2 pasties** (confirmed), so the `Pumpkin` class default is 2. That also applies to `Pumpkin5` and `Pumpkin6`, and to the catalogue's other pumpkins with no count.
 
 The pumpkin room around (1343, −388, −725) is laid out as a cross: the card pumpkin `Pumpkin2` (Hebridean Black
