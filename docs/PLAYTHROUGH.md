@@ -496,7 +496,8 @@ its goodie), and `ChestSpawner19` (3296, 5513, 645) holds the card *Romanian Lon
 **Bundimuns (pasty creatures).** Stun one with Rictusempra, then jump on it, and it drops pasties. The drops are
 **guaranteed**: `BundimunController.DoGoodieSpawning()` spawns exactly `GoodieCount` × `GoodieToSpawn`, and only
 the direction the pickups fly is random. (Class default: 3 beans; maps override it.) There's no save flag, so a
-bundimun comes back when the map reloads.
+bundimun comes back when the map reloads. When not stunned, a bundimun burrows back underground (confirmed), so it can be missed
+until it surfaces again.
 
 All 12 in the game:
 
@@ -506,8 +507,8 @@ All 12 in the game:
 | Ch2B | `Bundimun13` | (3080, 1626, 304) | 1 pasty (**marked**) |
 | Ch2B | `Bundimun11` | (3069, 2331, 304) | 1 pasty (**marked**) |
 | Ch2B | `Bundimun4` | (3893, 1985, 304) | 1 pasty (**marked**) |
-| Ch2B | `Bundimun0` | (5316, 4360, 308) | 1 pasty |
-| Ch2B | `Bundimun5` | (4690, 4687, 301) | 1 pasty |
+| Ch2B | `Bundimun0` | (5316, 4360, 308) | 1 pasty (**marked**) |
+| Ch2B | `Bundimun5` | (4690, 4687, 301) | 1 pasty (**marked**) |
 | Ch2B | `Bundimun3` | (4475, 4953, 296) | 1 pasty |
 | Ch2B | `Bundimun14` | (4633, 5289, 308) | 2 pasties |
 | Ch2B | `Bundimun2` | (5488, 5178, 308) | 1 pasty |
