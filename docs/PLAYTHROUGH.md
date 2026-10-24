@@ -578,7 +578,16 @@ player control), as planned. *(Where the vanilla chain goes next: following.)*
 | State | `GState070` (MapTracker 17:24:07) |
 | Entered from | the Quidditch → GroundsDada cutscene chain, `7020PatronusIntro_Start` (confirmed; no control until here) |
 | Leaves to | HP3_Adv3Library (`7090PatronusExit`) |
-| Checks (catalogue) | card *Honoria Nutcombe*, spawned when the second wave is destroyed (`SecondWaveDestroyedWC`); no placed snacks or secrets |
+| Checks (catalogue) | card *Honoria Nutcombe*, spawned when the second wave is destroyed (`SecondWaveDestroyedWC`): **found** (confirmed); no placed snacks or secrets |
+| Requires | **Expecto Patronum** (the level is built around it), plus Depulso for the skull shelves |
+
+**Open Castle:** this level has a check and player control, so it stays, but vanilla only reaches it through the
+Quidditch → GroundsDada cutscene chain. It needs:
+- **an entrance**: the planned DADA → Expecto door (`DADA_DoorToExpecto_Mvr` / `DADA_PortToExpecto_Mvr`,
+  [OPEN_CASTLE.md](OPEN_CASTLE.md) §3), or a spare door;
+- **an exit back** to InsideHub instead of `7090PatronusExit` → Adv3Library;
+- **Expecto Patronum as an item.** The spell is `HGame.PatronumSpell` (also used against `DementorBoss`), so it can be
+  gated through the same `HasSpell` hook as the other spells.
 
 Spawners (all Depulso targets):
 
