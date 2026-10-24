@@ -23,14 +23,16 @@ How HP3 decides what's loaded, and every way each map can be entered. The full m
 | --- | --- | --- |
 | HP3_InsideHub | `ihub` | `GState010` |
 | HP3_GroundsHub | `ghub` | `GState040` |
-| HP3_DungeonHUB | `dung` | `GState010` |
+| HP3_DungeonHUB | `dung` | `GState070` |
 | HP3_COMC | `comc` | `GState040` |
+| HP3_Ch2Draconifors / `B` | `dl` / `dlb` | `GState060` |
+| HP3_Ch3Glacius / `B` | `gl` / `glb` | `GState070` |
 | HP3_Adv6Paddock | `adv6` | `090` |
 | HP3_DementorBattle | `dembtl` | `GState090` |
 | HP3_WhompingWillow | `WhompingWillow` | `GState085` |
 | all others | see `data/locations.json` (`level_id`) | none |
 
-Maps without a Level ID: Adv1Express, Ch1/Ch2/Ch3 and their `B` halves, Final, PortraitPassword_F.
+Each map has several `LevelInfo` exports; only the first (`LevelInfo0`) is live, and its values are the ones above.
 
 ## How levels change
 
