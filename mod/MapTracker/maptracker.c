@@ -49,7 +49,7 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 #define WM_SETTEXT 0x000C
 #define SMTO_ABORTIFHUNG 0x0002
 #define VK_F11 0x7A
-#define MT_VERSION L"v5"
+#define MT_VERSION L"v6"
 
 /* minimal CRT shims (no C runtime is linked) */
 int _fltused = 0;
@@ -188,6 +188,14 @@ static void set_title(const wchar *s) {
     if (gWnd) SendMessageTimeoutW(gWnd, WM_SETTEXT, 0, (long)s, SMTO_ABORTIFHUNG, 500, &res);
 }
 
+/* F11 counts when any window of this process has focus (the window we retitle isn't always the one focused) */
+static int fg_is_ours(void) {
+    u32 pid = 0; HWND f = GetForegroundWindow();
+    if (!f) return 0;
+    GetWindowThreadProcessId(f, &pid);
+    return pid == GetCurrentProcessId();
+}
+
 /* property offsets, looked up lazily (kwGame.u loads after the engine starts) */
 static int offGS = -1, offPawn = -1, offLoc = -1, offLevel = -1, offXLevel = -1, offID = -1, offGame = -1;
 static void lookup_offsets(void) {
@@ -232,7 +240,7 @@ static u32 WINAPI worker(void *arg) {
     for (;;) {
         /* F11 marker, polled fast */
         int down = (GetAsyncKeyState(VK_F11) & 0x8000) != 0;
-        if (down && !f11prev && gWnd && GetForegroundWindow() == gWnd) {
+        if (down && !f11prev && fg_is_ours()) {
             float loc[3] = {0, 0, 0};
             if (pawn && offLoc >= 0) rd(pawn + offLoc, loc, 12);
             wsprintfW(buf, L"MARK  map=%s  state=%s  pos=(%d, %d, %d)", map[0] ? map : L"?", gs[0] ? gs : L"?",
@@ -254,9 +262,10 @@ static u32 WINAPI worker(void *arg) {
             if (sc.clsPC && offPawn >= 0) {
                 for_each_object(v_scan, &sc);
                 for (i = 0; i < sc.npc; i++) { u32 p = rd32(sc.pcs[i] + offPawn); if (p) { pc = sc.pcs[i]; pawn = p; } }
-                /* cutscenes unpossess the pawn: fall back to the newest controller */
-                if (!pc && sc.npc) pc = sc.pcs[sc.npc - 1];
             }
+            /* no possessed pawn (cutscene, level load): keep the last map. Older controllers can still point
+               at a previous level (the prologue's stays around), so they can't be trusted here. */
+            if (!pc) { Sleep(50); continue; }
             map[0] = 0; gs[0] = 0; id[0] = 0; pkg[0] = 0;
             if (pc && offLevel >= 0) li = rd32(pc + offLevel);
             if (li && offID >= 0) read_fstring(li + offID, id, 32);
