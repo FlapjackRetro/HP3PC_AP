@@ -394,6 +394,7 @@ Found so far:
 | Pasty | `PumpkinPasty18` (3364, −1503, 53); marked at (3351, −1502, 51) | **rabbit form**, confirmed | **found** |
 | Pasty | `PumpkinPasty21` (3559, −1098, 343); marked at (3552, −1113, 347) | **dragon form**, confirmed | **found** |
 | Pasty | `PumpkinPasty0` (4606, −1264, 416), bottom of the column; marked at (4608, −1256, 436) | **dragon form**, confirmed | **found** |
+| Pasty | `PumpkinPasty15` (4608, −880, 657), middle of the column; marked at (4598, −895, 676) | **dragon form**, confirmed | **found** |
 | Pasty spawner (a pumpkin) | `Pumpkin6` (−6, −1084, −439); marked at (−10, −1068, −416). Pasties, class-default count (2, see below) | **Depulso**, confirmed | **found** |
 | Pasty spawner (a pumpkin) | `Pumpkin5` (−255, 297, −437); marked at (−250, 299, −416). Pasties, class-default count (2, see below) | **Depulso**, confirmed | **found** |
 | Pasty spawner (a pumpkin, 1 pasty) | `Pumpkin9` (944, −383, −725); marked at (944, −377, −704) | **Depulso**, confirmed | **found** |
@@ -422,10 +423,9 @@ Open Castle must not let that happen. Options:
 2 or 3 is needed, with 1 for the logic. The same check applies to every drop-down area in the game; see the
 softlock list in [OPEN_CASTLE.md](OPEN_CASTLE.md).
 
-**Still to find in the first half (placed):** pasties `PumpkinPasty15`
-(4608, −880, 657), `PumpkinPasty17` (4607, −463, 904);
+**Still to find in the first half (placed):** pasty `PumpkinPasty17` (4607, −463, 904);
 cakes `CauldronCake6` (−3288, −801, −215), `CauldronCake12` (4496, −1250, −213),
-`CauldronCake3` (4550, −511, −213). So far 14 of 16 placed pasties and 1 of 4 placed cakes (the start pasty
+`CauldronCake3` (4550, −511, −213). So far 15 of 16 placed pasties and 1 of 4 placed cakes (the start pasty
 `PumpkinPasty2` is inferred).
 
 **Class names can mislead:** the grass tufts the rabbit eats here are `KnightSpawner` actors with a different
