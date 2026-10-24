@@ -585,6 +585,6 @@ Spawners (all Depulso targets):
 | Spawner | Position | Drop | Status |
 | --- | --- | --- | --- |
 | `SkullShelfSpwn0` (skull shelf) | (3058, 1671, −362) | 3 pasties | **found**: Depulso, confirmed; marked at (3028, 1659, −337) |
-| `SkullShelfSpwn1` | (3040, 2352, −320) | 3 pasties | |
+| `SkullShelfSpwn1` | (3040, 2352, −320) | 3 pasties | **found**: Depulso, confirmed; marked at (3031, 2323, −263) |
 | `SkullShelfSpwn2` | (2112, 1545, −362) | 3 cakes | **found**: Depulso, confirmed; marked at (2128, 1571, −336) |
 | `TapestrySpwn6`, `ArmoireSpwn0`, `KnightSpawner0`, `ChestSpawner1` | around (2200–3130, 1100–2090) | beans | |
