@@ -745,6 +745,7 @@ chests with checks; they don't (beans).
 | --- | --- | --- | --- |
 | 2 pasties | `CauldronSpwn2` (−5522, −1420, −980), a cauldron; marked at (−5537, −1372, −973) | **Depulso**, confirmed | **found** |
 | 2 pasties (+ 1 chocolate frog) | `ChestSpawner7` (−4582, −2857, −899); marked at (−4590, −2898, −917) | **Alohomora**, confirmed | **found** |
+| Pasty (placed) | `PumpkinPasty3` (−1761, −3577, −880); marked at (−1760, −3584, −853). A padlocked door (`AlohomoraPadLock4`/`5`) is ~315 units west | *(none stated)* | **found** |
 | 2 cakes | `ChestSpawner12` (−3235, −3979, −770), in secret area `SecretAreaMarker1` (−3310, −3971, −760); marked at (−3203, −3942, −757) | **Alohomora**, confirmed | **found** |
 
 **Open Castle:** keeps its checks (secrets and snacks). It needs an entrance: a spare door, or the Whomping Willow
