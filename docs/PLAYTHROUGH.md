@@ -485,6 +485,7 @@ to the exam (FA2) and uses the side-room door (`ChangeLevelTrigger10`) for the c
 | Pasty | `PumpkinPasty5` (3808, 2643, 294); marked at (3823, 2623, 307) | **rabbit form**, confirmed | **found** |
 | Pasty | `PumpkinPasty25` (3048, 2649, 294); marked at (3026, 2645, 307) | **rabbit form**, confirmed | **found** |
 | Pasty | `PumpkinPasty26` (2764, 2372, 294); marked at (2771, 2387, 307) | **rabbit form**, confirmed | **found** |
+| Card *Norwegian Ridgeback Dragon* | `ChestSpawner12` (4875, 4646, 312), with 12 beans, inside secret area `SecretAreaMarker1` (4945, 4649, 351); marked at (4921, 4632, 330) | **Alohomora**, confirmed | **found** |
 | Card *Romanian Longhorn Dragon* | `ChestSpawner19` (3296, 5513, 645), a chest by secret area `SecretAreaMarker6`; marked at (3294, 5494, 634) | **Spongify** + **Depulso**, confirmed | **found** |
 | Cake | `CauldronCake9` (3820, 4983, 327); marked at (3817, 4988, 347). A Draconifors statue is 130 units away | **dragon form**, confirmed | **found** |
 | Cake chest (2 cakes) | `ChestSpawner14` (4497, 4562, 312); marked at (4506, 4608, 330) | **Alohomora**, confirmed | **found** |
