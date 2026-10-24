@@ -8,7 +8,10 @@ A tiny Ultimate ASI Loader plugin for documenting the game. It's read-only and n
   2026-10-24 09:02:11  MAP HP3_InsideHub  state=GState010  (id=ihub package=Save100)
   2026-10-24 09:05:40  MARK  map=HP3_InsideHub  state=GState010  pos=(-2412, -1100, 768)
   ```
-- **F11** (game focused): writes a `MARK` line with the player's position, for locked doors and points of interest.
+- **F11**, **Scroll Lock** or **Pause** (game focused): writes a `MARK` line with the player's position, for locked
+  doors and points of interest. Keys are caught with a low-level keyboard hook, because the game reads the keyboard
+  through DirectInput. The log notes when the hook starts receiving keys, which F-keys arrive, and presses ignored
+  because another window had focus.
 - Once the player exists, a `ready: offsets ...` line reports the property offsets it found. A `-1` there means
   that field (state or position) can't be shown; the map name still works.
 
