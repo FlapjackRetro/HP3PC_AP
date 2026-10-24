@@ -49,7 +49,7 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 #define WM_SETTEXT 0x000C
 #define SMTO_ABORTIFHUNG 0x0002
 #define VK_F11 0x7A
-#define MT_VERSION L"v2"
+#define MT_VERSION L"v3"
 
 /* minimal CRT shims (no C runtime is linked) */
 int _fltused = 0;
@@ -63,6 +63,9 @@ static int rd(u32 addr, void *out, u32 n) { u32 got = 0; return addr && ReadProc
 static u32 rd32(u32 addr) { u32 v = 0; rd(addr, &v, 4); return v; }
 
 static int weq(const wchar *a, const wchar *b) { while (*a && *a == *b) { a++; b++; } return *a == *b; }
+/* FNames are case-insensitive (HP3's level object is "myLevel", not "MyLevel") */
+static wchar wlow(wchar c) { return (c >= 'A' && c <= 'Z') ? (wchar)(c + 32) : c; }
+static int wieq(const wchar *a, const wchar *b) { while (*a && wlow(*a) == wlow(*b)) { a++; b++; } return wlow(*a) == wlow(*b); }
 static void wcpy(wchar *d, const wchar *s, int max) { int i = 0; for (; s[i] && i < max - 1; i++) d[i] = s[i]; d[i] = 0; }
 
 /* name of FName index into buf; tries shrinking reads so we never fail on a page boundary */
@@ -77,7 +80,7 @@ static int name_of(int idx, wchar *buf, int max) {
 /* FName index of a string (scan of the name table; names never move) */
 static int name_index(const wchar *want) {
     u32 num = rd32((u32)gNames + 4), i; wchar b[64];
-    for (i = 0; i < num; i++) if (name_of((int)i, b, 64) && weq(b, want)) return (int)i;
+    for (i = 0; i < num; i++) if (name_of((int)i, b, 64) && wieq(b, want)) return (int)i;
     return -1;
 }
 
