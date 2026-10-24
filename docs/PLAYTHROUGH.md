@@ -426,11 +426,20 @@ softlock list in [OPEN_CASTLE.md](OPEN_CASTLE.md).
 `CauldronCake3` (4550, −511, −213). So far 12 of 16 placed pasties and 1 of 4 placed cakes (the start pasty
 `PumpkinPasty2` is inferred).
 
-**Class names can mislead:** the grass tufts the rabbit eats here are `KnightSpawner` actors (`KnightSpawner0`/`18`/
-`19`/`21`/`22`/`24`, around (2670–2840, −1560 to −1770)), with a grass mesh instead of a suit of armour. In the
-catalogue a "knight" can be an armour (Depulso) or grass (rabbit), so the requirement has to come from the mesh or
-from play. Grass row: `KnightSpawner0` 1 pasty (found), `KnightSpawner19`/`22` 1 pasty each, `KnightSpawner21`
-1 cake, `KnightSpawner18`/`24` 2 beans each *(the others: mesh to confirm)*.
+**Class names can mislead:** the grass tufts the rabbit eats here are `KnightSpawner` actors with a different
+look (`DrawType` 1) and tags `Gsecretgrass1`–`9`, in a patch around (2670–2840, −1530 to −1770). In the catalogue a
+"knight" can be an armour (Depulso) or grass (rabbit). The tag tells them apart: `Gsecretgrass*` = grass.
+
+| Grass | Tag | Drop |
+| --- | --- | --- |
+| `KnightSpawner0` | `Gsecretgrass2` | 1 pasty (**found**) |
+| `KnightSpawner19` | `Gsecretgrass4` | 1 pasty |
+| `KnightSpawner22` | `Gsecretgrass7` | 1 pasty |
+| `KnightSpawner21` | `Gsecretgrass6` | 1 cake |
+| `KnightSpawner24`/`18`/`20`/`23`/`16` | `Gsecretgrass1`/`3`/`5`/`8`/`9` | 2 beans each |
+
+The real suits of armour in this half: `KnightSpawner2` (card *Welsh Green*, found), `KnightSpawner1` (8 beans),
+`KnightSpawner9`/`11` (6 beans), and `KnightSpawner10` (tag `EVKnight`, empty).
 
 **Pumpkin default:** `Pumpkin3` sets no count and gave **2 pasties** (confirmed), so the `Pumpkin` class default is 2. That also applies to `Pumpkin5` and `Pumpkin6`, and to the catalogue's other pumpkins with no count.
 
