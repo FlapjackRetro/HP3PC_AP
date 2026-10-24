@@ -49,7 +49,7 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 #define WM_SETTEXT 0x000C
 #define SMTO_ABORTIFHUNG 0x0002
 #define VK_F11 0x7A
-#define MT_VERSION L"v4"
+#define MT_VERSION L"v5"
 
 /* minimal CRT shims (no C runtime is linked) */
 int _fltused = 0;
@@ -254,6 +254,8 @@ static u32 WINAPI worker(void *arg) {
             if (sc.clsPC && offPawn >= 0) {
                 for_each_object(v_scan, &sc);
                 for (i = 0; i < sc.npc; i++) { u32 p = rd32(sc.pcs[i] + offPawn); if (p) { pc = sc.pcs[i]; pawn = p; } }
+                /* cutscenes unpossess the pawn: fall back to the newest controller */
+                if (!pc && sc.npc) pc = sc.pcs[sc.npc - 1];
             }
             map[0] = 0; gs[0] = 0; id[0] = 0; pkg[0] = 0;
             if (pc && offLevel >= 0) li = rd32(pc + offLevel);
@@ -262,7 +264,8 @@ static u32 WINAPI worker(void *arg) {
             if (id[0] && map_for_id(id)) wcpy(map, map_for_id(id), 64);
             else if (pkg[0]) wcpy(map, pkg, 64);
             if (li && offGame >= 0 && offGS >= 0 && (game = rd32(li + offGame)) != 0) read_fstring(game + offGS, gs, 32);
-            if (!weq(map, lastMap) || !weq(gs, lastGs)) {
+            /* nothing readable (level load, cutscene hand-over): keep showing the last map */
+            if (map[0] && (!weq(map, lastMap) || !weq(gs, lastGs))) {
                 wsprintfW(buf, L"MAP %s  state=%s  (id=%s package=%s)", map[0] ? map : L"(none)", gs[0] ? gs : L"(none)",
                           id[0] ? id : L"-", pkg[0] ? pkg : L"-");
                 log_line(buf);
