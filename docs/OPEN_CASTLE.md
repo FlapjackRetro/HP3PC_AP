@@ -29,7 +29,7 @@ Every check below already has a stable save key or a single function the mod can
 | Secret areas | always | 41 | `SecretAreaMarker` → save key `<LevelID><ActorName>` |
 | Pumpkin Pasties (placed) | `pasty_checks` | 180 | `KWPickup` → `<LevelID><ActorName>_PU` |
 | Cauldron Cakes (placed) | `cake_checks` | 71 | same |
-| Marauder's Map | `marauders_map_check` | 1 | Vanilla: `GiveMap` in the `1005TaskedShop` cutscene (InsideHub, `GState010` only). It never plays in Open Castle, so it needs a replacement trigger, e.g. on Fred & George. |
+| Marauder's Map | `marauders_map_check` | 1 | Vanilla (confirmed in play): the `1051GetMaraudersMap` cutscene in the shortcuts room on first arrival at Hogwarts (`GState010`); Harry picks up a `MaraudersPickup` (InsideHub ~(150, −870, 144)). `1005TaskedShop` also has a `GiveMap`. Neither plays in Open Castle, so the pickup needs a new trigger or a placed map. |
 | Beans | no | — | Currency only |
 
 Notes:

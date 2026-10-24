@@ -140,23 +140,44 @@ halves. Catalogue for this half: cards *Blodwyn Bludd* (`KnightSpawner21`, a Dep
 Sanguina* (`ChestSpawner13`), secret areas `SecretAreaMarker3`/`4`, 4 challenge stars, and a bean bonus game.
 Spell actors: 11 Spongify pads, 9 Retractum targets, Lumos sparkles, 2 Alohomora triggers.
 
-### End of the challenge: bean bonus room
+### End of the challenge: bean bonus room (optional)
 
-Confirmed: finishing the challenge leads into the **bean bonus room**. It isn't the separate HP3_BeanBonus map
-(that one is entered from InsideHub, `ChangeLevelTrigger14`). It's built into the challenge: `BeanBonusGame0` in
-HP3_Ch1CarpeRetractumB at (5972, 3560, −1004), group `Beanbonus`, with a 120-second timer (`TimeLimit`). Ch2B and
-Ch3B each have their own.
+**Challenge shields:** the challenge has **10** (confirmed). The bean bonus room is only offered if all ten were
+collected; otherwise the challenge ends without it (confirmed). In the data:
+- first half: `CRS01`–`CRS07`;
+- second half: `CRBS02`–`CRBS04`.
 
-Sequence from the data:
-1. `EndChallengeTrigger0` (4737, 7075, 2209): win → `0697Ch1FinalStarALL`, lose → `0696Ch1FinalStrFail`, replay →
-   `0700Ch1ChalChReplay`.
-2. Bean bonus round (120 s).
-3. `0698BeanBonusRonEXIT` → `Trigger ChalChamber_CS`: the challenge chamber, the room with doors to Ch1/Ch2/Ch3
-   (`ChangeLevelTrigger9`/`10`/`11`).
-4. In `GState000`, `0700Ch1Chal_CRDoor` loads HP3_Ch1CarpeRetractum and sets `GState010`.
+`CRBS01` sits at the same spot as `CRS07` (the area appears in both maps), and two untagged stars
+(`ChallengeStar4`, and `ChallengeStar6` at the end trigger) seem to be unused or duplicates, which explains the
+catalogue's 13.
 
-MapTracker logged a change from Ch1B to HP3_Ch1CarpeRetractum at 11:47:25, around when the bonus room was reached.
-*(Which map the bonus room is on, and where the player goes after the timer: to confirm.)*
+The bean bonus room isn't the separate HP3_BeanBonus map (that one is entered from InsideHub,
+`ChangeLevelTrigger14`). It's built into the challenge: `BeanBonusGame0` in HP3_Ch1CarpeRetractumB at
+(5972, 3560, −1004), with a 120-second timer. Ch2B and Ch3B each have their own.
 
-**Open Castle:** the bean bonus is beans only (no check). The challenge win (`EndChallengeTrigger`, `_bAlreadyWon`)
-and its stars are candidate checks.
+Sequence:
+1. `EndChallengeTrigger0` (4737, 7075, 2209): all shields → `0697Ch1FinalStarALL`, then the bean bonus; otherwise
+   `0696Ch1FinalStrFail`; replays play `0700Ch1ChalChReplay`.
+2. Bean bonus round, 120 s (only with all 10 shields).
+3. `0698BeanBonusRonEXIT` → `Trigger ChalChamber_CS`: the player comes out in the **challenge chamber**, the side
+   room with the three challenge entrances (`ChangeLevelTrigger9`/`10`/`11`). Confirmed; MapTracker shows this room
+   is in HP3_Ch1CarpeRetractumB, and the state becomes `GState010` here (11:48:07).
+4. Leaving the chamber leads into InsideHub (next entry).
+
+**Open Castle:** the bean bonus is beans only (no check). Candidate checks: the challenge win (`EndChallengeTrigger`,
+`_bAlreadyWon`) and all 10 shields.
+
+## 5. HP3_InsideHub: arrival at Hogwarts (`GState010`)
+
+Confirmed: trying to leave the challenge chamber plays a cutscene in the shortcuts room. One of the twins (Fred or
+George) produces the **Marauder's Map**, and Harry picks it up in the cutscene. The player then has control in
+InsideHub, following the twin up to the twins' shop.
+
+From the data:
+- the cutscene is `1051GetMaraudersMap` (Fred and George lines, then Ron and Peeves, then `Trigger PeevesEnc1`);
+- the map is a pickup: `MaraudersPickup0`/`1`/`2` in InsideHub around (150, −870, 144);
+- `1005TaskedShop` also contains a `GiveMap`; which one actually grants the map in vanilla is still to confirm.
+
+**Open Castle:** the Marauder's Map check (option `marauders_map_check`) can be detected on picking up
+`MaraudersPickup`, or on the map entering the inventory. The cutscene is story-only, so in Open Castle the pickup
+needs a new trigger, or the map is simply placed at that spot.
