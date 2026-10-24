@@ -270,6 +270,15 @@ This is `4076COMCExit` (COMC → InsideHub, sets `GState060`). On later visits C
 
 So in vanilla only track 1 is played on this visit. Tracks 2–5 come on later visits.
 
+**Later visits: course selection (confirmed, `GState060`).** Walking back from GroundsHub into the COMC loading
+trigger brings up a **Hippogriff Course Selection** menu (title bar: `HP3_COMC | GState060`) instead of the
+tutorial. It lists the five tracks with high score, last score and a star for each passed track. Tracks unlock in
+order: after track 1 (passed, 2900, star), track 2 is selectable and 3–5 are greyed out. The menu has Play and
+Quit. This matches the `ChangeLevel_COMC_MINIGAME` entrance.
+
+Logic: track *n* needs track *n−1* passed (`hfg_n`). In Open Castle the five cards form a chain inside COMC;
+nothing outside the map is needed apart from reaching it (no spells).
+
 **Open Castle:** COMC is a separate map with its own entrance from GroundsHub; all five checks are here. The story
 exit `4076COMCExit` (and its `GState060` change) must not fire in Open Castle; the base state (`090`/`100`) should
 use the normal exit to GroundsHub *(verify)*.
