@@ -38,6 +38,7 @@ HP3_Adv3Library,adv3,KnightShieldSpawner4,KnightShieldSpawner,KWGenericSpawner,-
 HP3_Adv3Library,adv3,ChestSpawner2,ChestSpawner,KWGenericSpawner,-4278,-3137,281,ChestSpawner,,CauldronCakex4,,
 HP3_Adv3Library,adv3,ChestSpawner10,ChestSpawner,KWGenericSpawner,-3858,-90,27,ChestSpawner,,JellybeanxNone,,
 HP3_Adv3Library,adv3,DraconisForsStatue0,DraconisForsStatue,CreatureStatue,-4416,-2170,355,DraconisForsStatue,,,,
+HP3_Adv5Shack,ADV5Shack,SpawnThingy10,WC_SacharissaTugwood,WizardCard,5426,-3913,-705,RmG_Win_SpawnThing_Card,,,,RmG_Win_SpawnThing_Card
 HP3_Adv5Shack,ADV5Shack,AlohomoraPadLock0,AlohomoraPadLock,KWGenericSpawner,3231,-3798,-1004,RmF_CompChest_Lock02,,SpawnFlashBluexNone,,
 HP3_Adv5Shack,ADV5Shack,CauldronSpwn1,CauldronSpwn,KWGenericSpawner,1954,-4330,-856,RmA_Cauldron_Caul_02,,PumpkinPastyx2,,
 HP3_Adv5Shack,ADV5Shack,AlohomoraPadLock1,AlohomoraPadLock,KWGenericSpawner,3250,-3798,-1004,RmF_CompChest_Lock01,,SpawnFlashBluexNone,,
@@ -964,6 +965,9 @@ HP3_InsideHub,ihub,CauldronSpwn4,CauldronSpwn,KWGenericSpawner,-884,124,228,RmD_
 HP3_InsideHub,ihub,SkullFloatSpwn9,SkullFloatSpwn,KWGenericSpawner,-885,-443,375,Stair_3shield_Spawn,,JellybeanxNone,,
 HP3_InsideHub,ihub,CauldronCake4,CauldronCake,CauldronCake,,,,,,,ihubCauldronCake4_PU,
 HP3_InsideHub,ihub,ChallengeStar0,ChallengeStar,ChallengeStar,,,,,,,ihubChallengeStar0_PU,
+HP3_PortraitPassword_B,ppb,SpawnThingy0,PumpkinPasty,PumpkinPasty,-862,-3443,224,BsecJelly,,,,BsecJelly
+HP3_PortraitPassword_B,ppb,SpawnThingy3,PumpkinPasty,PumpkinPasty,-872,-3489,224,BsecJelly,,,,BsecJelly
+HP3_PortraitPassword_B,ppb,SpawnThingy2,PumpkinPasty,PumpkinPasty,-913,-3452,224,BsecJelly,,,,BsecJelly
 HP3_PortraitPassword_B,ppb,KnightShieldSpawner1,KnightShieldSpawner,KWGenericSpawner,-965,-3654,263,3KnB,,,,
 HP3_PortraitPassword_B,ppb,KnightShieldSpawner3,KnightShieldSpawner,KWGenericSpawner,-1079,-3538,263,3KnC,,,,
 HP3_PortraitPassword_B,ppb,KnightShieldSpawner5,KnightShieldSpawner,KWGenericSpawner,-963,-3265,263,3KnE,,,,

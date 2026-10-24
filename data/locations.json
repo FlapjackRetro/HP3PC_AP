@@ -784,6 +784,23 @@
  {
   "map": "HP3_Adv5Shack",
   "level_id": "ADV5Shack",
+  "actor": "SpawnThingy10",
+  "cls": "WC_SacharissaTugwood",
+  "category": "WizardCard",
+  "loc": [
+   5426,
+   -3913,
+   -705
+  ],
+  "tag": "RmG_Win_SpawnThing_Card",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "RmG_Win_SpawnThing_Card"
+ },
+ {
+  "map": "HP3_Adv5Shack",
+  "level_id": "ADV5Shack",
   "actor": "AlohomoraPadLock0",
   "cls": "AlohomoraPadLock",
   "category": "KWGenericSpawner",
@@ -19095,6 +19112,57 @@
   "contents": [],
   "persist_key": "ihubChallengeStar0_PU",
   "awarded_by": null
+ },
+ {
+  "map": "HP3_PortraitPassword_B",
+  "level_id": "ppb",
+  "actor": "SpawnThingy0",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -862,
+   -3443,
+   224
+  ],
+  "tag": "BsecJelly",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "BsecJelly"
+ },
+ {
+  "map": "HP3_PortraitPassword_B",
+  "level_id": "ppb",
+  "actor": "SpawnThingy3",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -872,
+   -3489,
+   224
+  ],
+  "tag": "BsecJelly",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "BsecJelly"
+ },
+ {
+  "map": "HP3_PortraitPassword_B",
+  "level_id": "ppb",
+  "actor": "SpawnThingy2",
+  "cls": "PumpkinPasty",
+  "category": "PumpkinPasty",
+  "loc": [
+   -913,
+   -3452,
+   224
+  ],
+  "tag": "BsecJelly",
+  "event": null,
+  "contents": [],
+  "persist_key": null,
+  "awarded_by": "BsecJelly"
  },
  {
   "map": "HP3_PortraitPassword_B",
