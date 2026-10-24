@@ -750,6 +750,7 @@ chests with checks; they don't (beans).
 | 2 pasties (+ beans) | `SkullShelfSpwn2` (−2096, −2492, −1488), a skull shelf on the lower level; marked at (−2074, −2469, −1461) | **Depulso**, confirmed | **found** |
 | 3 pasties (+ beans) | `ChestSpawner2` (964, −2395, −3975), at the bottom of the map (height ≈ −3975); marked at (917, −2403, −3957) | **Spongify** + **Alohomora**, confirmed | **found** |
 | 3 cakes | `ChestSpawner5` (785, −3349, −2016), ~350 units from secret area `SecretAreaMarker3` (802, −2960, −1904); marked at (786, −3300, −1997) | **Spongify** + **Alohomora**, confirmed | **found** |
+| Pasty (placed) | `PumpkinPasty5` (824, −2044, −1048); marked at (808, −2038, −1013) | *(none stated)* | **found** (all 3 placed pasties done) |
 | Pasty (placed) | `PumpkinPasty0` (467, −2404, −2895); marked at (447, −2410, −2893) | *(none stated)* | **found** |
 | 2 cakes | `ChestSpawner12` (−3235, −3979, −770), in secret area `SecretAreaMarker1` (−3310, −3971, −760); marked at (−3203, −3942, −757) | **Alohomora**, confirmed | **found** |
 
