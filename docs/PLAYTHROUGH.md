@@ -321,5 +321,16 @@ Arrived in the shortcuts room straight from the COMC win cutscene (confirmed, 12
 The 26 event-spawned snacks (`HPSpawnThingy`) are the largest group in the game: how they're triggered is
 *(to confirm in play)*.
 
+**Locked doors and portcullis** (confirmed, marked in this order):
+
+| # | Mark | What it is |
+| --- | --- | --- |
+| 1 | (−481, 2805, −341) | Locked door: static `RomanesqueDoorL_SM` + `DoorLockBar_SM` in a round arch. No mover; decoration like the entrance-hall doors. Two Alohomora triggers just beside it (`PortPass_Stroulger_Trig`, `PortPass_Glover_Trig`) belong to portrait passwords, not this door. |
+| 2 | (−473, 4107, −341) | Locked door, same static set (`StaticMeshActor57`/`95`). Decoration. |
+| 3 | (−1251, 3822, −341) | **Portcullis, down:** `Mover30`, tag `Bexit`. It's a real mover, opened by `Trigger1` at (−1427, 4102, −291), which is *inside* the room. So it's the room's one-way exit: the room is entered another way and the portcullis lets the player out. The *Bowtruckle* card chest (`ChestSpawner3` (−1248, 4389, −359)) is in this room. |
+
+Open Castle: doors 1 and 2 are spare entrances (like the entrance-hall pair). The portcullis room's entrance and its
+requirements are *(to confirm)*; the Bowtruckle card depends on it.
+
 **Open Castle:** in `GState060` the dungeon door is already open, so the planned "Dungeon" area unlock
 (`Dungeon_Door_Mvr`) would have to close it in the base state *(check whether the door is shut in `090`/`100`)*.
