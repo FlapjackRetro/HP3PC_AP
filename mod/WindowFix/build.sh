@@ -9,7 +9,7 @@ mk kernel32 CreateThread@24 Sleep@4 GetCurrentProcessId@0 DisableThreadLibraryCa
   GetModuleFileNameW@12 WritePrivateProfileStringW@16 GetPrivateProfileStringW@24 GetPrivateProfileIntW@16 CreateFileW@28 WriteFile@20 \
   CloseHandle@4 GetLocalTime@4 WideCharToMultiByte@32
 mk user32 EnumWindows@8 GetWindowThreadProcessId@8 IsWindowVisible@4 IsWindow@4 IsIconic@4 GetWindowRect@8 \
-  GetWindowLongW@8 SetWindowPos@28 MonitorFromWindow@8 MonitorFromRect@8 GetMonitorInfoW@8 GetForegroundWindow@0 keybd_event@16 wsprintfW
+  GetWindowLongW@8 SetWindowPos@28 MonitorFromWindow@8 MonitorFromRect@8 GetMonitorInfoW@8 GetForegroundWindow@0 GetAsyncKeyState@4 keybd_event@16 wsprintfW
 mk shell32 SHGetFolderPathW@20
 clang --target=i686-pc-windows-msvc -O2 -fno-builtin -ffreestanding -fno-stack-protector -mno-sse \
   -Wall -Wextra -c windowfix.c -o "$OUT/windowfix.obj"
