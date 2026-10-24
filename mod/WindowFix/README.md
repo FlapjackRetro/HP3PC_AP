@@ -5,9 +5,11 @@ An Ultimate ASI Loader plugin that fixes two window annoyances:
 - **Remembers fullscreen or windowed.** The game reads `StartupFullscreen` from `hppoa.ini` at startup, but
   Alt+Enter never saves it. The plugin writes the current mode to that key whenever it changes and once more when
   the game exits, so the game starts the way you left it.
-- **Centers the window.** Whenever the game becomes windowed (at startup or after Alt+Enter) the window is moved
-  to the middle of its monitor. If it's bigger than the screen, the title bar stays visible. After that it's left
-  alone, so you can drag it anywhere.
+- **Remembers where the window was.** When you move the window, its position is saved to `HP3_WindowFix.ini`.
+  Whenever the game becomes windowed (at startup or after Alt+Enter) the window goes back there. With no saved
+  position, or if it's no longer on any monitor, the window is centered instead (title bar kept on screen if the
+  window is bigger than the monitor). This uses its own file because the engine rewrites `hppoa.ini` from memory
+  when it exits.
 
 If the ini says windowed and the game still starts fullscreen, the plugin presses Alt+Enter once for you.
 
@@ -19,7 +21,7 @@ Requires HP3-UHDE's `d3d9.dll` (Ultimate ASI Loader). Copy `HP3WindowFix.asi` to
 (admin rights needed under `Program Files`). Delete it to uninstall.
 
 The ini is `Documents\Harry Potter and the Prisoner of Azkaban\hppoa.ini` (or `system\hppoa.ini` if that doesn't
-exist). What the plugin does is logged to `HP3_WindowFix.log` in the same Documents folder.
+exist). `HP3_WindowFix.ini` (saved position) and `HP3_WindowFix.log` (what the plugin did) go in the same Documents folder.
 
 ## Build
 
@@ -27,4 +29,4 @@ exist). What the plugin does is logged to `HP3_WindowFix.log` in the same Docume
 ./build.sh            # needs clang, lld-link and llvm-dlltool; no MSVC or MinGW
 ```
 
-No C runtime: imports are kernel32, user32 and shell32 only, and the output is about 6 KB.
+No C runtime: imports are kernel32, user32 and shell32 only, and the output is about 7 KB.

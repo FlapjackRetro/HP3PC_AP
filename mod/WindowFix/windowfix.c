@@ -5,8 +5,11 @@
  *    [WinDrv.WindowsClient] StartupFullscreen from hppoa.ini at startup but Alt+Enter never
  *    writes it back. This plugin watches the game window and writes the current mode to that
  *    key whenever it changes, and once more on exit (after the engine has saved its config).
- * 2. Centers the window on its monitor whenever it becomes windowed (at startup or after
- *    Alt+Enter). After that the window is left alone, so it can be moved freely.
+ * 2. Remembers where the window was. When the window is moved, its position is saved to
+ *    HP3_WindowFix.ini (next to hppoa.ini; a separate file because the engine rewrites hppoa.ini
+ *    from its own copy on exit). Whenever the game becomes windowed (at startup or after
+ *    Alt+Enter) the window goes back there, or is centered if there's no saved position or it's
+ *    no longer on any monitor.
  *
  * Fallback: if the ini says windowed but the game still comes up fullscreen, it presses
  * Alt+Enter once for you.
@@ -33,6 +36,7 @@ IMP BOOL   WINAPI DisableThreadLibraryCalls(HANDLE);
 IMP u32    WINAPI GetFileAttributesW(const wchar*);
 IMP u32    WINAPI GetModuleFileNameW(HANDLE, wchar*, u32);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
+IMP u32    WINAPI GetPrivateProfileIntW(const wchar*, const wchar*, int, const wchar*);
 IMP u32    WINAPI GetPrivateProfileStringW(const wchar*, const wchar*, const wchar*, wchar*, u32, const wchar*);
 IMP HANDLE WINAPI CreateFileW(const wchar*, u32, u32, void*, u32, u32, HANDLE);
 IMP BOOL   WINAPI WriteFile(HANDLE, const void*, u32, u32*, void*);
@@ -48,6 +52,7 @@ IMP BOOL   WINAPI GetWindowRect(HWND, RECT*);
 IMP long   WINAPI GetWindowLongW(HWND, int);
 IMP BOOL   WINAPI SetWindowPos(HWND, HWND, int, int, int, int, u32);
 IMP HANDLE WINAPI MonitorFromWindow(HWND, u32);
+IMP HANDLE WINAPI MonitorFromRect(const RECT*, u32);
 IMP BOOL   WINAPI GetMonitorInfoW(HANDLE, MONITORINFO*);
 IMP HWND   WINAPI GetForegroundWindow(void);
 IMP void   WINAPI keybd_event(unsigned char, unsigned char, u32, u32);
@@ -64,12 +69,14 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 #define VK_MENU 0x12
 #define KEYEVENTF_KEYUP 2
 #define INVALID_FILE_ATTRIBUTES 0xFFFFFFFFu
-#define WF_VERSION L"v1"
+#define MONITOR_DEFAULTTONULL 0
+#define NOPOS (-32000)
+#define WF_VERSION L"v2"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile unsigned char *p = (volatile unsigned char *)d; while (n--) *p++ = (unsigned char)c; return d; }
 
-static wchar gIni[600], gLog[600];
+static wchar gIni[600], gLog[600], gPosIni[600];
 static volatile int gMode = -1;   /* 1 = fullscreen, 0 = windowed, -1 = unknown */
 
 static void log_line(const wchar *msg) {
@@ -110,6 +117,26 @@ static void save_mode(int fs) {
     if (gIni[0]) WritePrivateProfileStringW(L"WinDrv.WindowsClient", L"StartupFullscreen", fs ? L"True" : L"False", gIni);
 }
 
+/* saved window position, in our own ini */
+static void save_pos(long x, long y) {
+    wchar v[16];
+    wsprintfW(v, L"%d", (int)x); WritePrivateProfileStringW(L"Window", L"X", v, gPosIni);
+    wsprintfW(v, L"%d", (int)y); WritePrivateProfileStringW(L"Window", L"Y", v, gPosIni);
+}
+/* move to the saved position if its title bar would be on some monitor; returns 0 if not */
+static int restore_pos(HWND h) {
+    RECT r, bar; long x, y; wchar buf[160];
+    x = (int)GetPrivateProfileIntW(L"Window", L"X", NOPOS, gPosIni);
+    y = (int)GetPrivateProfileIntW(L"Window", L"Y", NOPOS, gPosIni);
+    if (x == NOPOS || y == NOPOS || !GetWindowRect(h, &r)) return 0;
+    bar.left = x; bar.top = y; bar.right = x + (r.right - r.left); bar.bottom = y + 30;
+    if (!MonitorFromRect(&bar, MONITOR_DEFAULTTONULL)) return 0;
+    SetWindowPos(h, 0, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
+    wsprintfW(buf, L"restored window to (%d, %d)", (int)x, (int)y);
+    log_line(buf);
+    return 1;
+}
+
 /* center on the monitor's work area; if the window is taller/wider than it, keep the title bar on screen */
 static void center(HWND h) {
     RECT r; MONITORINFO mi; long w, ht, x, y; wchar buf[160];
@@ -137,8 +164,8 @@ static int same_rect(const RECT *a, const RECT *b) {
 }
 
 static u32 WINAPI worker(void *arg) {
-    HWND h = 0; RECT r, last = {0, 0, 0, 0}; int stable = 0, fs, wantWindowed, fallbackDone = 0, centerPending = 0;
-    u32 ticks = 0; wchar buf[700], val[16];
+    HWND h = 0; RECT r, last = {0, 0, 0, 0}; int stable = 0, placed = 0, fs, wantWindowed, fallbackDone = 0, centerPending = 0;
+    long placed_x = 0, placed_y = 0; u32 ticks = 0; wchar buf[700], val[16];
     (void)arg;
 
     /* the game keeps its ini in Documents\<game>\hppoa.ini; fall back to system\hppoa.ini next to the exe */
@@ -146,12 +173,18 @@ static u32 WINAPI worker(void *arg) {
         if (SHGetFolderPathW(0, 5 /*CSIDL_PERSONAL*/, 0, 0, docs) == 0) {
             wsprintfW(gLog, L"%s\\Harry Potter and the Prisoner of Azkaban\\HP3_WindowFix.log", docs);
             wsprintfW(gIni, L"%s\\Harry Potter and the Prisoner of Azkaban\\hppoa.ini", docs);
+            wsprintfW(gPosIni, L"%s\\Harry Potter and the Prisoner of Azkaban\\HP3_WindowFix.ini", docs);
         }
         if (!gIni[0] || GetFileAttributesW(gIni) == INVALID_FILE_ATTRIBUTES) {
             GetModuleFileNameW(0, gIni, 520);
             for (p = gIni; *p; p++) if (*p == '\\') slash = p;
             if (slash) wsprintfW(slash + 1, L"hppoa.ini");
             if (!gLog[0]) wsprintfW(gLog, L"HP3_WindowFix.log");
+        }
+        if (!gPosIni[0]) {   /* no Documents folder: keep it next to hppoa.ini */
+            slash = 0; wsprintfW(gPosIni, L"%s", gIni);
+            for (p = gPosIni; *p; p++) if (*p == '\\') slash = p;
+            if (slash) wsprintfW(slash + 1, L"HP3_WindowFix.ini");
         }
     }
     GetPrivateProfileStringW(L"WinDrv.WindowsClient", L"StartupFullscreen", L"True", val, 16, gIni);
@@ -175,6 +208,7 @@ static u32 WINAPI worker(void *arg) {
                       fs ? L"fullscreen" : L"windowed", fs ? L"True" : L"False");
             log_line(buf);
             if (!fs) centerPending = 1;
+            placed = 0;
             /* the ini asked for windowed but the game came up fullscreen anyway: toggle once */
             if (first && fs && wantWindowed && !fallbackDone && GetForegroundWindow() == h) {
                 fallbackDone = 1;
@@ -182,7 +216,17 @@ static u32 WINAPI worker(void *arg) {
                 press_alt_enter();
             }
         }
-        if (centerPending && !fs) { centerPending = 0; center(h); last.left = -99999; }
+        if (centerPending && !fs) {
+            centerPending = 0;
+            if (!restore_pos(h)) center(h);
+            last.left = -99999;   /* let the move settle before treating the position as the user's */
+            continue;
+        }
+        /* windowed and settled: remember where it is (catches the user dragging it) */
+        if (!fs && (!placed || r.left != placed_x || r.top != placed_y)) {
+            placed = 1; placed_x = r.left; placed_y = r.top;
+            save_pos(r.left, r.top);
+        }
     }
 }
 
