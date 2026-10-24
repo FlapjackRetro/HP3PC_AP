@@ -489,6 +489,7 @@ to the exam (FA2) and uses the side-room door (`ChangeLevelTrigger10`) for the c
 | Cake | `CauldronCake9` (3820, 4983, 327); marked at (3817, 4988, 347). A Draconifors statue is 130 units away | **dragon form**, confirmed | **found** |
 | Cake chest (2 cakes) | `ChestSpawner14` (4497, 4562, 312); marked at (4506, 4608, 330) | **Alohomora**, confirmed | **found** |
 | Pasty spawner (chest, 4 pasties) | `ChestSpawner26` (3550, 5514, 638); marked at (3551, 5492, 634) | **Spongify** (to reach) + **Depulso** (to open), confirmed | **found** |
+| Pasty | `PumpkinPasty30` (4977, 4087, 848), high up; marked at (4982, 4087, 868) | **dragon form**, confirmed | **found** |
 | Pasty | `PumpkinPasty19` (4416, 1977, 294), inside secret area `SecretAreaMarker5` (4369, 1979, 351); marked at (4381, 1985, 307) | **rabbit form**, confirmed | **found** |
 
 **Chests near `ChestSpawner26`:** `ChestSpawner23` (3424, 5669, 645) holds a **challenge shield** (`ChallengeStar` as
