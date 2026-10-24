@@ -51,6 +51,8 @@ typedef struct { HWND hwnd; u32 message, wParam; long lParam; u32 time; long pt[
 IMP HANDLE WINAPI SetWindowsHookExW(int, long (WINAPI*)(int, u32, long), HANDLE, u32);
 IMP long   WINAPI CallNextHookEx(HANDLE, int, u32, long);
 IMP BOOL   WINAPI GetMessageW(MSG*, HWND, u32, u32);
+IMP BOOL   WINAPI UnhookWindowsHookEx(HANDLE);
+IMP u32    WINAPI SetTimer(HWND, u32, u32, void*);
 IMP int    __cdecl wsprintfW(wchar*, const wchar*, ...);
 IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 
@@ -58,7 +60,7 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 #define WM_GETTEXT 0x000D
 #define SMTO_ABORTIFHUNG 0x0002
 #define VK_F11 0x7A
-#define MT_VERSION L"v10"
+#define MT_VERSION L"v11"
 
 /* minimal CRT shims (no C runtime is linked) */
 int _fltused = 0;
@@ -358,11 +360,19 @@ static long WINAPI kb_hook(int code, u32 wp, long lp) {
     }
     return CallNextHookEx(0, code, wp, lp);
 }
+/* Low-level hooks run newest first, and the game's DirectInput adds its own once it takes the keyboard, which
+   swallows keys before ours sees them. So the hook is re-installed every 2 s to stay at the front. */
 static u32 WINAPI hook_thread(void *arg) {
-    MSG m; (void)arg;
-    if (!SetWindowsHookExW(13 /*WH_KEYBOARD_LL*/, kb_hook, gInst, 0)) return 1;
+    MSG m; HANDLE h; (void)arg;
+    if (!(h = SetWindowsHookExW(13 /*WH_KEYBOARD_LL*/, kb_hook, gInst, 0))) return 1;
     gHookOk = 1;
-    while (GetMessageW(&m, 0, 0, 0) > 0) { }
+    SetTimer(0, 0, 2000, 0);
+    while (GetMessageW(&m, 0, 0, 0) > 0) {
+        if (m.message == 0x0113 /*WM_TIMER*/) {
+            HANDLE n = SetWindowsHookExW(13, kb_hook, gInst, 0);
+            if (n) { UnhookWindowsHookEx(h); h = n; }
+        }
+    }
     return 0;
 }
 
