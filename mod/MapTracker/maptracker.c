@@ -58,14 +58,15 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 #define WM_GETTEXT 0x000D
 #define SMTO_ABORTIFHUNG 0x0002
 #define VK_F11 0x7A
-#define MT_VERSION L"v9"
+#define MT_VERSION L"v10"
 
 /* minimal CRT shims (no C runtime is linked) */
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile unsigned char *p = (volatile unsigned char *)d; while (n--) *p++ = (unsigned char)c; return d; }
 
 static HANDLE gProc;
-static volatile int gMarkRequests, gHookOk;   /* set by the keyboard hook thread */
+static volatile int gMarkRequests, gHookOk, gKeyEvents, gLastFKey, gMarkElsewhere;
+static int fg_is_ours(void);   /* set by the keyboard hook thread */
 static HANDLE gInst;
 static u32 *gObjs;     /* &GObjObjects : { UObject** Data; int Num; int Max } */
 static u32 *gNames;    /* &FName::Names : { FNameEntry** Data; int Num; int Max } */
@@ -252,7 +253,7 @@ static void lookup_offsets(void) {
 
 static u32 WINAPI worker(void *arg) {
     HANDLE core; wchar map[64] = {0}, lastMap[64] = {0}, gs[32] = {0}, lastGs[32] = {0}, buf[400], id[32], pkg[64];
-    int f11prev = 0, marksSeen = 0, i, reported = 0; u32 tick = 0, pc = 0, pawn = 0;
+    int f11prev = 0, marksSeen = 0, keysReported = 0, elsewhereSeen = 0, lastFKeyLogged = 0, fkeyLogs = 0, i, reported = 0; u32 tick = 0, pc = 0, pawn = 0;
     static struct scan sc;   /* 2 KB+, keep it off the stack */
     (void)arg;
     gProc = GetCurrentProcess();
@@ -282,7 +283,7 @@ static u32 WINAPI worker(void *arg) {
     for (;;) {
         /* F11 marker, polled fast */
         int down = (GetAsyncKeyState(VK_F11) & 0x8000) != 0, req = gMarkRequests;
-        if ((gHookOk ? req != marksSeen : (down && !f11prev)) && fg_is_ours()) {
+        if (gHookOk ? req != marksSeen : (down && !f11prev)) {
             float loc[3] = {0, 0, 0};
             if (pawn && offLoc >= 0) rd(pawn + offLoc, loc, 12);
             wsprintfW(buf, L"MARK  map=%s  state=%s  pos=(%d, %d, %d)", map[0] ? map : L"?", gs[0] ? gs : L"?",
@@ -290,7 +291,16 @@ static u32 WINAPI worker(void *arg) {
             log_line(buf);
         }
         f11prev = down; marksSeen = req;
-        if (tick % 20 == 10) keep_title();
+        if (tick % 20 == 10) {
+            keep_title();
+            if (gKeyEvents && !keysReported) { keysReported = 1; log_line(L"F11: keyboard hook is receiving keys"); }
+            if (gMarkElsewhere != elsewhereSeen) { elsewhereSeen = gMarkElsewhere; log_line(L"mark key pressed, but another window had focus (ignored)"); }
+            if (gLastFKey && gLastFKey != lastFKeyLogged && fkeyLogs < 20) {
+                lastFKeyLogged = gLastFKey; fkeyLogs++;
+                wsprintfW(buf, L"key: F%d pressed%s", gLastFKey - 0x6F, gLastFKey == VK_F11 ? L" (mark)" : L"");
+                log_line(buf);
+            }
+        }
         if (tick++ % 20 == 0) {   /* about once a second */
             u32 li = 0, lvl, game;
             if (!sc.clsPC) { sc.clsPC = find_class(L"PlayerController"); sc.clsClass = sc.clsPC ? rd32(sc.clsPC + 0x24) : 0; }
@@ -339,7 +349,12 @@ static u32 WINAPI worker(void *arg) {
 static long WINAPI kb_hook(int code, u32 wp, long lp) {
     if (code == 0 && (wp == 0x0100 /*WM_KEYDOWN*/ || wp == 0x0104 /*WM_SYSKEYDOWN*/)) {
         KBDLLHOOKSTRUCT *k = (KBDLLHOOKSTRUCT*)lp;
-        if (k->vkCode == VK_F11 && !(k->flags & 0x80)) gMarkRequests++;
+        gKeyEvents++;
+        if (k->vkCode >= 0x70 && k->vkCode <= 0x87) gLastFKey = (int)k->vkCode;   /* F1..F24, for the diagnostic */
+        /* mark keys: F11, Scroll Lock, Pause (in case F11 is taken or sends something else) */
+        if ((k->vkCode == VK_F11 || k->vkCode == 0x91 || k->vkCode == 0x13) && !(k->flags & 0x80)) {
+            if (fg_is_ours()) gMarkRequests++; else gMarkElsewhere++;
+        }
     }
     return CallNextHookEx(0, code, wp, lp);
 }
