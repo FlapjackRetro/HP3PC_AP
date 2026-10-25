@@ -816,3 +816,20 @@ All placed snacks in the level found (6 pasties, 3 cakes), and all 5 snack conta
 
 **Open Castle:** a playable level with a card, so it stays. It needs an entrance (Hagrid's hut door is the natural
 spot, [OPEN_CASTLE.md](OPEN_CASTLE.md) spare doors) and an exit back to GroundsHub instead of `9080Adv6Flyaway`.
+
+### End of the paddock: cutscene chain back to Hogwarts (confirmed)
+
+After Adv6Paddock it's "one long cutscene" until InsideHub:
+
+| Time | Map | State |
+| --- | --- | --- |
+| 07:06:08 | HP3_DementorBattle (second visit, `9080Adv6Flyaway`) | `GState090` |
+| 07:08:29 | HP3_DarkTower (`9120DemEncBExit`) | `GState090` |
+| 07:09:30 | HP3_InsideHub | `GState090` |
+
+DementorBattle (second visit) and DarkTower have no checks and no player control. **Open Castle:** drop both.
+
+## 27. HP3_InsideHub, `GState090`: final exams
+
+The player arrives in InsideHub in `GState090`, ready for the final exams. In vanilla, Ron's exam starts at
+`CutSceneTrigger13` (−98, −714, 1259) (`GState090` only) → `9240RonExamIntroPt1` → FA1Ron, which sets `GState100`.
