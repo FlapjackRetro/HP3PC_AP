@@ -45,7 +45,7 @@ behind the Grounds Access gate).
 | I8 | Gate | `ChangeLevelTrigger11` (974, −1397, 304) → Ch3 | Glacius (+ challenge item) |
 | I9 | Gate + Spawn | DADA portcullis `KWMover27` (`DADA_PortToExpecto_Mvr`) + doors `KWMover66`/`67` (`DADA_DoorToExpecto_Mvr`), (856, −1844, 1152) | on the item: raise/open; spawn a `ChangeLevelTrigger` → **HP3_Adv2ExpPatronum** behind them. Return point here |
 | I10 | Gate + Spawn | Library portcullis `KWMover53` (`Library_Port_Mvr`) + doors `KWMover52`/`13` (`Library_Door_Mvr`), (−704, −1368, 732) | on the item: raise/open; spawn → **HP3_Adv3Library**. Return point here (vanilla `7170Library_Exit` already lands nearby) |
-| I11 | Gate + Spawn | entrance-hall barred door south: bar `StaticMeshActor50` (732, 373, 91); player spot (733, 392, 74) | on the item: hide the bar; spawn → **HP3_GroundsDada**. Return point here |
+| I11 | — | entrance-hall barred door south (733, 392, 74) | **unused**: GroundsDada is provisionally cutscene only. Spare |
 | I12 | Gate + Spawn | entrance-hall barred door north: bar `StaticMeshActor42` (736, 1635, 91); player spot (731, 1615, 74) | on the item: hide the bar; spawn → **HP3_Adv1Express**. Return point here |
 | I13 | Gate | `GroundsBlocker` portcullises `KWMover21`/`43`/`23` (≈ (1024, 880–1136, 0)) | "Grounds Access" item: open; until then shut |
 | I14 | Check | `MaraudersPickup0`/`1`/`2` (≈ (150, −870, 144)) | the vanilla scene (`1051GetMaraudersMap`, `GState010`) never plays: place one pickup there as the Marauder's Map check (option `marauders_map_check`) |
@@ -89,9 +89,6 @@ In `GState090` each challenge already returns to InsideHub (`0700Ch1Chal_InsHubD
 | --- | --- | --- | --- |
 | HP3_Adv1Express | A1 | Retarget | `0180ADV1DemExit` (→ GroundsDada, sets `GState000`) → **InsideHub**, return point I12; no state set |
 | | A2 | Verify | the map's own start (`PlayerStart0`, `Cut_0010Intro`) works when entered from a door |
-| HP3_GroundsDada | A3 | Suppress | level-start chains `7020PatronusIntro_Start` (→ Adv2) and `0200DADAIntro` (→ Ch1); `CutSceneTrigger13` `9240RonExamIntroPt1` (→ FA1) |
-| | A4 | Retarget | `ChangeLevelTrigger3` (`ChangleLevel_CarpeChallenge`, → Ch1) → **InsideHub**, return point I11 |
-| | A5 | Verify | that the map is playable at all when entered this way (every visit so far was cutscene) |
 | HP3_Adv2ExpPatronum | A6 | Retarget | `CutSceneTrigger2` `7090PatronusExit` (→ Adv3Library) → **InsideHub**, return point I9 |
 | HP3_Adv3Library | A7 | Keep | `CutSceneTrigger5` `7170Library_Exit` → InsideHub (return point I10) |
 | HP3_Adv5Shack | A8 | Retarget | `ChangeLevelTrigger0` (`ChangeLevel_Willow2`) and `CutSceneTrigger3` `8700ADV5AtShack` (→ WhompingWillow, set `085`) → **DungeonHUB**, return point D1; no state set |
@@ -104,12 +101,12 @@ In `GState090` each challenge already returns to InsideHub (`0700Ch1Chal_InsHubD
 
 ## 6. Not used (no changes needed)
 
-Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower: nothing leads to them once A1, A3,
-A6, A8 and A10 are retargeted. Their own exits stay as they are.
+Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, and GroundsDada (provisionally
+cutscene only; confirm after the final exams): nothing leads to them once A1, A6, A8 and A10 are retargeted. Their own exits stay as they are.
 
 ## 7. Open items before building
 
-- GroundsDada: is it playable when entered from a door (A5)?
+- GroundsDada: confirm it's cutscene only after the final exams (if it isn't, restore its entrance at I11).
 - Adv5Shack in `090` (A9) and its party (G6).
 - COMC tutorial exit (A14).
 - How the classroom triggers I3–I5 are activated: some are cutscene-fired, so they may need to become touch triggers.

@@ -253,19 +253,24 @@ The concrete per-map change list is in [OPEN_CASTLE_CHANGES.md](OPEN_CASTLE_CHAN
 | FA1Ron (Ron's exam) | 5 stars, 3 snacks | DADA classroom `ChangeLevelTrigger3` (262, −2328, 1218), retargeted from Ch1 | Carpe Retractum | `RonExamExitDONE` (→ FA2) → InsideHub at DADA |
 | FA2Hermione | 5 stars, 61 snacks, 3 bundimuns | Transfiguration `ChangeLevelTrigger2`/`5` (−4373, 1556, 0), retargeted from Ch2 | Draconifors/Lapifors | `ChangeLevelTrigger1` (→ FA3) → InsideHub at Transfiguration |
 | FA3Harry | 5 stars, 5 snacks | Charms `ChangeLevelTrigger6` (−1359, −2983, 941), retargeted from Ch3 | Glacius | `ChangeLevelTrigger0` (→ GroundsHub, sets `100`) → InsideHub at Charms, no state change |
-| GroundsDada | card *Double-Ended Newt* (another copy), 3 secrets | entrance-hall barred door south (733, 392, 74): new trigger, hide the lock bar on the item | GroundsDada item *(what's needed inside: unknown; no playable visit yet)* | its exits go to Ch1 / Adv2 / FA1 → InsideHub at this door |
 | Adv1Express (prologue) | card *Fulbert the Fearful* | **option A:** entrance-hall barred door north (731, 1615, 74); **option B:** keep it as the game's opening and cut `0180ADV1DemExit` straight to InsideHub | — | `0180ADV1DemExit` → InsideHub |
 | Final | 1 chest | `FinalDayDoor` (GroundsHub `Mover11`, (768, −6208, 864)) | **goal** | — |
 
 ### Dropped (cutscene only, no checks)
 
 Quidditch, WhompingWillow, BuckyExecuted, DementorBattle (both visits), Infirmary, DarkTower. Their items: none.
+
+**GroundsDada: treated as cutscene only (provisional).** Both visits so far were cutscene; to be confirmed after the
+final exams (its `9240RonExamIntroPt1` runs in `090`). Its catalogue entries: card *Double-Ended Newt*, which is
+also placed in Adv3Library and GroundsHub, so the card check (keyed by card class) is still reachable without it;
+and 3 secret areas (`BeanPathOne`, `WheelPuzzlePrize`, `SecretAreaMarker2`), which are **not** checks while the map is
+dropped.
 (DementorBattle could come back later as a boss check that needs Expecto Patronum.)
 
 ### Spare entrances left after this layout
 
 4th-floor locked door (−187, 1274, 1498), 7th-floor doors (−84, −1081, 2154) and (1427, −960, 2154), dungeon door 2
-(−480, 4126, −318), Lupin's office (with a Spongify pad), plus the north entrance-hall door if the Express doesn't use it. Reserved for later options (e.g. DementorBattle as a boss, or splitting maps).
+(−480, 4126, −318), Lupin's office (with a Spongify pad), plus the south entrance-hall door (freed by dropping GroundsDada) and the north one if the Express doesn't use it. Reserved for later options (e.g. DementorBattle as a boss, or splitting maps).
 
 ### What the mod does at runtime
 
@@ -300,8 +305,7 @@ grounds route, and Open Castle would have to keep that in step with the Grounds 
 3. **Adv5Shack**: decided: **dungeon locked door 1** (the Willow is unreachable). Lupin's office (via a Spongify
    pad) stays a spare.
 4. **Hagrid's hut door** is for a map with an outdoor setting: **Adv6Paddock** (Buckbeak's paddock) uses it.
-5. **GroundsDada**: its contents (1 card, 3 secrets) and requirements are unknown until a playable visit; the exam
-   chain may provide one (`9240RonExamIntroPt1` runs from GroundsDada in `090`).
+5. **GroundsDada**: provisionally cutscene only and dropped; confirm after the final exams.
 
 ## 7. Draft YAML options
 
