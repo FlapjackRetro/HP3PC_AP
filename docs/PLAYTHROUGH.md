@@ -335,8 +335,8 @@ The 26 event-spawned snacks (`HPSpawnThingy`) are the largest group in the game:
 Open Castle: doors 1 and 2 are spare entrances (like the entrance-hall pair). The portcullis room's entrance and its
 requirements are *(to confirm)*; the Bowtruckle card depends on it.
 
-**Open Castle:** in `GState060` the dungeon door is already open, so the planned "Dungeon" area unlock
-(`Dungeon_Door_Mvr`) would have to close it in the base state *(check whether the door is shut in `090`/`100`)*.
+**Open Castle:** the dungeon is always reachable from InsideHub through its loading trigger, so the planned
+"Dungeon" area unlock is dropped.
 
 ## 12. HP3_InsideHub, `GState060`: second Peeves fight (by the Transfiguration classroom)
 
