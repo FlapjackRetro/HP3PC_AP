@@ -254,7 +254,7 @@ The concrete per-map change list is in [OPEN_CASTLE_CHANGES.md](OPEN_CASTLE_CHAN
 | FA1Ron (Ron's exam) | 5 stars, 3 snacks | DADA classroom `ChangeLevelTrigger3` (262, −2328, 1218), retargeted from Ch1 | Carpe Retractum | `RonExamExitDONE` (→ FA2) → InsideHub at DADA |
 | FA2Hermione | 5 stars, 61 snacks, 3 bundimuns | Transfiguration `ChangeLevelTrigger2`/`5` (−4373, 1556, 0), retargeted from Ch2 | Draconifors/Lapifors | `ChangeLevelTrigger1` (→ FA3) → InsideHub at Transfiguration |
 | FA3Harry | 5 stars, 5 snacks | Charms `ChangeLevelTrigger6` (−1359, −2983, 941), retargeted from Ch3 | Glacius | `ChangeLevelTrigger0` (→ GroundsHub, sets `100`) → InsideHub at Charms, no state change |
-| Adv1Express (prologue) | card *Fulbert the Fearful* | **option A:** entrance-hall barred door north (731, 1615, 74); **option B:** keep it as the game's opening and cut `0180ADV1DemExit` straight to InsideHub | — | `0180ADV1DemExit` → InsideHub |
+| Adv1Express (prologue) | card *Fulbert the Fearful* | **7th-floor locked door (east)** (1427, −960, 2154): new trigger, lock bar `StaticMeshActor228` hidden on the item | Express item | `0180ADV1DemExit` → InsideHub at that door |
 | Final | 1 chest | `FinalDayDoor` (GroundsHub `Mover11`, (768, −6208, 864)) | **goal** | — |
 
 ### Dropped (cutscene only, no checks)
@@ -270,8 +270,8 @@ dropped.
 
 ### Spare entrances left after this layout
 
-4th-floor locked door (−187, 1274, 1498), 7th-floor doors (−84, −1081, 2154) and (1427, −960, 2154), dungeon door 2
-(−480, 4126, −318), Lupin's office (with a Spongify pad), plus the south entrance-hall door (freed by dropping GroundsDada) and the north one if the Express doesn't use it. Reserved for later options (e.g. DementorBattle as a boss, or splitting maps).
+4th-floor locked door (−187, 1274, 1498), 7th-floor west door (−84, −1081, 2154), dungeon door 2
+(−480, 4126, −318), Lupin's office (with a Spongify pad), both entrance-hall doors (the south one held for GroundsDada if it turns out playable). Reserved for later options (e.g. DementorBattle as a boss, or splitting maps).
 
 ### What the mod does at runtime
 
@@ -302,7 +302,7 @@ grounds route, and Open Castle would have to keep that in step with the Grounds 
 
 1. **Base state**: decided: **`GState090`**. The exam-intro cutscene triggers get suppressed. `GState100` was
    rejected because its third Peeves fight toggles `GroundsBlocker` (the Grounds Access portcullises).
-2. **Adv1Express**: no preference given; **default: the north entrance-hall door** (a new game starts in Hogwarts).
+2. **Adv1Express**: decided: **the 7th-floor east locked door**. A new game starts in Hogwarts (shortcuts room).
 3. **Adv5Shack**: decided: **dungeon locked door 1** (the Willow is unreachable). Lupin's office (via a Spongify
    pad) stays a spare.
 4. **Hagrid's hut door** is for a map with an outdoor setting: **Adv6Paddock** (Buckbeak's paddock) uses it.
