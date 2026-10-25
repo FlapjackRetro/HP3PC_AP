@@ -800,5 +800,12 @@ After the Dementor battle the state becomes **`GState090`** and the player passe
 | Checks (catalogue) | card *Professor Armando Dippet* (`CauldronSpwn0` (−1290, 459, 452), a cauldron); 6 placed pasties and 3 placed cakes; 5 snack containers (crate, 2 chests, 2 cauldrons) with about 21 pasties and 3 cakes; no secret areas |
 | Requires | **Depulso** and **Spongify** for the whole level: both are needed right at the start to proceed (confirmed). Lapifors and Draconifors statues are also present (`LapiforsStatue0`, `DraconisforsStatue0`) *(to confirm)* |
 
+| Check | Where | Requires | Status |
+| --- | --- | --- | --- |
+| 4 pasties (a ring) | `PumpkinPasty7` (66, 864, 643), `PumpkinPasty6` (128, 800, 643), `PumpkinPasty0` (129, 928, 643), `PumpkinPasty4` (190, 865, 643), around (128, 864, 643); one mark in the middle at (75, 860, 609) | **dragon form**, confirmed | **found** |
+
+Other placed snacks: pasties `PumpkinPasty5` (−583, −341, 44) and `PumpkinPasty18` (−683, −337, 53); cakes
+`CauldronCake0`/`2`/`7` in a row at (1265–1417, 815, 936).
+
 **Open Castle:** a playable level with a card, so it stays. It needs an entrance (Hagrid's hut door is the natural
 spot, [OPEN_CASTLE.md](OPEN_CASTLE.md) spare doors) and an exit back to GroundsHub instead of `9080Adv6Flyaway`.
