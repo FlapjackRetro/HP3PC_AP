@@ -222,6 +222,8 @@ grant (in the categories in §2) go into the Open Castle item pool instead.
 
 Built from the vanilla playthrough ([PLAYTHROUGH.md](PLAYTHROUGH.md)). Positions are Unreal units in the map named.
 
+The concrete per-map change list is in [OPEN_CASTLE_CHANGES.md](OPEN_CASTLE_CHANGES.md).
+
 ### Already connected (no change)
 
 | Map | Entrance today | Checks |
