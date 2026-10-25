@@ -32,7 +32,7 @@ in `GState090`, plus the positions confirmed in [PLAYTHROUGH.md](PLAYTHROUGH.md)
 | # | Change | Detail |
 | --- | --- | --- |
 | S1 | New game starts in **InsideHub, shortcuts room** (where `1051GetMaraudersMap` leaves the player), not on the Hogwarts Express | `FirstLevel` / the new-game travel URL → `HP3_InsideHub?GameState=GState090`, with the start at the Marauder's Map spot (≈ (150, −870, 144)) |
-| S2 | **Grant the Marauder's Map at start** unless `marauders_map_check` is on | the vanilla way is simply `Spawn(Class'MaraudersMap')` + `InventoryCarrierPawn.AddInventory` (`HPAction_GiveMap`, also the `GiveMap` console command). The `1051GetMaraudersMap` cutscene itself isn't needed: its staging (Fred, George, the shop, Peeves) is `GState010`, so it wouldn't play properly in `090` |
+| S2 | **Marauder's Map as a pickup in front of the player** (no cutscene) | There's no world pickup for the map in vanilla: `MaraudersPickup` (the three actors at ≈ (150, −870, 144)) is only a sparkle effect (`Pickups extends GameFX`, just `Emitters`), and the map itself is plain inventory (`MaraudersMap extends Inventory`) handed over by the cutscene's `GiveMap` action. So the mod builds the pickup: (1) show the sparkle (`MaraudersPickup`) right in front of the start spot; (2) watch the player's distance to it; (3) on touch, remove the sparkle and, when `marauders_map_check` is **off**, grant the map exactly as `HPAction_GiveMap` does (`Spawn(Class'MaraudersMap')` + `InventoryCarrierPawn.AddInventory`, or the `GiveMap` console command); when the option is **on**, send the check instead, and the map arrives as an item |
 | S3 | Optional flavour | a short custom cutscene of the twins handing over the map, if wanted later |
 
 ## 1. HP3_InsideHub
@@ -56,7 +56,7 @@ behind the Grounds Access gate).
 | I11 | — | entrance-hall barred door south (733, 392, 74) | **unused**: GroundsDada is provisionally cutscene only. Spare |
 | I12 | Gate + Spawn | entrance-hall barred door north: bar `StaticMeshActor42` (736, 1635, 91); player spot (731, 1615, 74) | on the item: hide the bar; spawn → **HP3_Adv1Express**. Return point here |
 | I13 | Gate | `GroundsBlocker` portcullises `KWMover21`/`43`/`23` (≈ (1024, 880–1136, 0)) | "Grounds Access" item: open; until then shut |
-| I14 | Check / start item | `MaraudersPickup0`/`1`/`2` (≈ (150, −870, 144), shortcuts room; no state group, so present in `090`) | `marauders_map_check` **off**: the map is granted at game start (below). **On**: the pickup spot is the check location and the map is an item in the pool |
+| I14 | Check / start item | the same pickup (S2) | see S2 |
 
 ## 2. HP3_GroundsHub
 
