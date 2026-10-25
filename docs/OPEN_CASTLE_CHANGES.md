@@ -54,9 +54,10 @@ behind the Grounds Access gate).
 | I9 | Gate + Spawn | DADA portcullis `KWMover27` (`DADA_PortToExpecto_Mvr`) + doors `KWMover66`/`67` (`DADA_DoorToExpecto_Mvr`), (856, −1844, 1152) | on the item: raise/open; spawn a `ChangeLevelTrigger` → **HP3_Adv2ExpPatronum** behind them. Return point here |
 | I10 | Gate + Spawn | Library portcullis `KWMover53` (`Library_Port_Mvr`) + doors `KWMover52`/`13` (`Library_Door_Mvr`), (−704, −1368, 732) | on the item: raise/open; spawn → **HP3_Adv3Library**. Return point here (vanilla `7170Library_Exit` already lands nearby) |
 | I11 | — | entrance-hall barred door south (733, 392, 74) | **unused**: GroundsDada is provisionally cutscene only. Spare |
-| I12 | Gate + Spawn | 7th-floor locked door (east): bar `StaticMeshActor228` (1447, −956, 2171); player spot (1427, −960, 2154) | on the Express item: hide the bar; spawn → **HP3_Adv1Express**. Return point here. (The entrance-hall north door is now spare) |
+| I12 | Gate + Spawn | 7th-floor locked door (east): bar `StaticMeshActor228` (1447, −956, 2171); player spot (1427, −960, 2154) | on the Express item: hide the bar; spawn → **HP3_Adv1Express**. Return point here |
 | I13 | Gate | `GroundsBlocker` portcullises `KWMover21`/`43`/`23` (≈ (1024, 880–1136, 0)) | "Grounds Access" item: open; until then shut |
 | I14 | Check / start item | the same pickup (S2) | see S2 |
+| I15 | Gate + Spawn | entrance-hall barred door north: bar `StaticMeshActor42` (736, 1635, 91); player spot (731, 1615, 74) | on the Paddock item: hide the bar; spawn → **HP3_Adv6Paddock**. Return point here |
 
 ## 2. HP3_GroundsHub
 
@@ -65,7 +66,7 @@ InsideHub), the well quest (`RoundRobin1`/`0`).
 
 | # | Change | Actor(s) | Detail |
 | --- | --- | --- | --- |
-| H1 | Spawn | Hagrid's hut door, player spot (813, −1121, 696) | `ChangeLevelTrigger` → **HP3_Adv6Paddock**. Gate: Paddock item. Return point here |
+| H1 | — | Hagrid's hut door, player spot (813, −1121, 696) | **unused**: Adv6Paddock moved to the entrance hall (I15). Reserved for an outdoor map |
 | H2 | Gate (goal) | `FinalDayDoor` (`Mover11`, (768, −6208, 864)) | open when the goal condition is met; it leads to **HP3_Final** |
 | H3 | Verify | `ChangeLevelTrigger3` (COMC, `GState040` only, sets `050`) | inactive in `090`: no change |
 
@@ -101,7 +102,7 @@ In `GState090` each challenge already returns to InsideHub (`0700Ch1Chal_InsHubD
 | HP3_Adv3Library | A7 | Keep | `CutSceneTrigger5` `7170Library_Exit` → InsideHub (return point I10) |
 | HP3_Adv5Shack | A8 | Retarget | `ChangeLevelTrigger0` (`ChangeLevel_Willow2`) and `CutSceneTrigger3` `8700ADV5AtShack` (→ WhompingWillow, set `085`) → **DungeonHUB**, return point D1; no state set |
 | | A9 | Verify | the map works in `090` (built for `085`; vanilla entered it in `075`) |
-| HP3_Adv6Paddock | A10 | Retarget | `CutSceneTrigger12` `9080Adv6Flyaway` (→ DementorBattle) → **GroundsHub**, return point H1 |
+| HP3_Adv6Paddock | A10 | Retarget | `CutSceneTrigger12` `9080Adv6Flyaway` (→ DementorBattle) → **InsideHub**, return point I15 |
 | HP3_FA1Ron | A11 | Retarget | `CutSceneTrigger4` `RonExamExitDONE` (→ FA2) → **InsideHub**, return point at DADA (I3) |
 | HP3_FA2Hermione | A12 | Retarget | `ChangeLevelTrigger1` (→ FA3) → **InsideHub**, return point at Transfiguration (I4) |
 | HP3_FA3Harry | A13 | Retarget | `ChangeLevelTrigger0` (→ GroundsHub, sets `100`) → **InsideHub**, return point at Charms (I5); no state set |
