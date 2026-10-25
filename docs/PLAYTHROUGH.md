@@ -808,10 +808,11 @@ After the Dementor battle the state becomes **`GState090`** and the player passe
 | 4 pasties + 1 cake | `CrateSpwn1` (−1245, −157, 554), a crate opened by the doxy-fight script (`bActivateOnTrigger`, tag `poxiedis`); marked at (−1173, −137, 458) | **none beyond reaching it**: the items can be picked up without finishing the fight (confirmed) | **found** |
 | Card *Professor Armando Dippet* | `CauldronSpwn0` (−1290, 459, 452), a cauldron; marked at (−1256, 421, 458) | **Depulso**, confirmed | **found** |
 | 4 pasties | `ChestSpawner0` (−325, −214, 441); marked at (−376, −217, 458) | **Alohomora**, confirmed | **found** |
+| 5 pasties | `CauldronSpwn4` (−147, −318, 1249), a cauldron high up; marked at (−111, −284, 1258) | **Depulso**, confirmed | **found** |
 | 3 cakes (a row) | `CauldronCake0` (1265, 815, 936), `CauldronCake2` (1344, 814, 937), `CauldronCake7` (1417, 815, 936); marked at (1381, 817, 955) | **dragon form**, confirmed | **found** |
 | 2 pasties | `PumpkinPasty5` (−583, −341, 44) and `PumpkinPasty18` (−683, −337, 53); one mark between them at (−628, −339, 51) | **rabbit form**, confirmed (Lapifors statue `LapiforsStatue0` nearby at (−1080, −335, 502)) | **found** |
 
-All placed snacks in the level found (6 pasties, 3 cakes).
+All placed snacks in the level found (6 pasties, 3 cakes), and all 5 snack containers plus the card cauldron.
 
 **Open Castle:** a playable level with a card, so it stays. It needs an entrance (Hagrid's hut door is the natural
 spot, [OPEN_CASTLE.md](OPEN_CASTLE.md) spare doors) and an exit back to GroundsHub instead of `9080Adv6Flyaway`.
