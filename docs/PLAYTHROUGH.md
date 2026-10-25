@@ -40,7 +40,8 @@ The map does contain checks (catalogue: wizard card *Double-Ended Newt*, and 3 s
 `WheelPuzzlePrize`, `SecretAreaMarker2`). They're reached on a later, playable visit: the Patronus chain enters
 from Quidditch (`7010QuidDem_ALL`, `GState070`) *(to confirm)*.
 
-**Open Castle:** this visit is cutscene-only and can be skipped. The map itself stays, for the later visit.
+**Open Castle:** treated as **cutscene only** for now (both visits were); to be confirmed after the final exams. Its
+*Double-Ended Newt* card is also in Adv3Library and GroundsHub; its 3 secrets aren't checks while it's dropped.
 
 ## 3. HP3_Ch1CarpeRetractum: Carpe Retractum challenge (first visit)
 
