@@ -250,7 +250,7 @@ The concrete per-map change list is in [OPEN_CASTLE_CHANGES.md](OPEN_CASTLE_CHAN
 | Adv2ExpPatronum | card *Honoria Nutcombe*, skull shelves | DADA classroom portcullis + doors `DADA_PortToExpecto_Mvr` / `DADA_DoorToExpecto_Mvr` (856, −1844, 1152): raise/open on the item, `ChangeLevelTrigger` behind | Expecto Patronum (+ area item if split) | `7090PatronusExit` (→ Adv3Library) → InsideHub at the DADA door |
 | Adv3Library | cards *Falco Aesalon*, *Double-Ended Newt*; 4 secrets | 2nd-floor Library portcullis + doors `Library_Port_Mvr` / `Library_Door_Mvr` (−704, −1368, 732) | Library item; Depulso inside | already exits to InsideHub at this door (`7170Library_Exit`) |
 | Adv5Shack | card *Sacharissa Tugwood*; 5 secrets; ~37 snacks | **Dungeon locked door 1**, DungeonHUB (−480, 2786, −318): new trigger, lock bar `StaticMeshActor315` hidden on the item. Spare: dungeon door 2 (−480, 4126, −318). (The Whomping Willow isn't reachable by the player, confirmed.) | Shack item; Draconifors, Alohomora, Depulso, Spongify, Rictusempra inside; party must be Harry + Hermione | exit to WhompingWillow (`ChangeLevelTrigger0` / `8700ADV5AtShack`) → DungeonHUB at dungeon door 1 |
-| Adv6Paddock | card *Professor Armando Dippet*; ~33 snacks | Hagrid's hut door, GroundsHub (813, −1121, 696): new trigger | Paddock item; **Depulso + Spongify** to start; Lapifors, Draconifors, Alohomora inside | `9080Adv6Flyaway` (→ DementorBattle) → GroundsHub at Hagrid's hut |
+| Adv6Paddock | card *Professor Armando Dippet*; ~33 snacks | **entrance hall, north locked door** (731, 1615, 74): new trigger, lock bar `StaticMeshActor42` hidden on the item | Paddock item; **Depulso + Spongify** to start; Lapifors, Draconifors, Alohomora inside | `9080Adv6Flyaway` (→ DementorBattle) → InsideHub at the entrance-hall north door |
 | FA1Ron (Ron's exam) | 5 stars, 3 snacks | DADA classroom `ChangeLevelTrigger3` (262, −2328, 1218), retargeted from Ch1 | Carpe Retractum | `RonExamExitDONE` (→ FA2) → InsideHub at DADA |
 | FA2Hermione | 5 stars, 61 snacks, 3 bundimuns | Transfiguration `ChangeLevelTrigger2`/`5` (−4373, 1556, 0), retargeted from Ch2 | Draconifors/Lapifors | `ChangeLevelTrigger1` (→ FA3) → InsideHub at Transfiguration |
 | FA3Harry | 5 stars, 5 snacks | Charms `ChangeLevelTrigger6` (−1359, −2983, 941), retargeted from Ch3 | Glacius | `ChangeLevelTrigger0` (→ GroundsHub, sets `100`) → InsideHub at Charms, no state change |
@@ -271,7 +271,7 @@ dropped.
 ### Spare entrances left after this layout
 
 4th-floor locked door (−187, 1274, 1498), 7th-floor west door (−84, −1081, 2154), dungeon door 2
-(−480, 4126, −318), Lupin's office (with a Spongify pad), both entrance-hall doors (the south one held for GroundsDada if it turns out playable). Reserved for later options (e.g. DementorBattle as a boss, or splitting maps).
+(−480, 4126, −318), Lupin's office (with a Spongify pad), the entrance hall's south door (held for GroundsDada if it turns out playable), and Hagrid's hut door (outdoor maps only). Reserved for later options (e.g. DementorBattle as a boss, or splitting maps).
 
 ### What the mod does at runtime
 
@@ -305,7 +305,8 @@ grounds route, and Open Castle would have to keep that in step with the Grounds 
 2. **Adv1Express**: decided: **the 7th-floor east locked door**. A new game starts in Hogwarts (shortcuts room).
 3. **Adv5Shack**: decided: **dungeon locked door 1** (the Willow is unreachable). Lupin's office (via a Spongify
    pad) stays a spare.
-4. **Hagrid's hut door** is for a map with an outdoor setting: **Adv6Paddock** (Buckbeak's paddock) uses it.
+4. **Hagrid's hut door** is reserved for a map with an outdoor setting. **Adv6Paddock** moved to the entrance hall's
+   north door, so the hut is currently unused.
 5. **GroundsDada**: provisionally cutscene only and dropped; confirm after the final exams.
 
 ## 7. Draft YAML options
