@@ -798,7 +798,7 @@ After the Dementor battle the state becomes **`GState090`** and the player passe
 | Entered from | the Infirmary cutscene (`8730DemEncAExit_Infirmary`), confirmed |
 | Leaves to | HP3_DementorBattle again (`9080Adv6Flyaway`), the second Dementor fight |
 | Checks (catalogue) | card *Professor Armando Dippet* (`CauldronSpwn0` (−1290, 459, 452), a cauldron); 6 placed pasties and 3 placed cakes; 5 snack containers (crate, 2 chests, 2 cauldrons) with about 21 pasties and 3 cakes; no secret areas |
-| Requires | **Depulso** and **Spongify** for the whole level: both are needed right at the start to proceed (confirmed). Lapifors and Draconifors statues are also present (`LapiforsStatue0`, `DraconisforsStatue0`) *(to confirm)* |
+| Requires | **Depulso** and **Spongify** for the whole level: both are needed right at the start to proceed (confirmed). **Lapifors** (rabbit) and **Draconifors** (dragon) also used, confirmed |
 
 | Check | Where | Requires | Status |
 | --- | --- | --- | --- |
@@ -808,8 +808,9 @@ After the Dementor battle the state becomes **`GState090`** and the player passe
 | 4 pasties + 1 cake | `CrateSpwn1` (−1245, −157, 554), a crate opened by the doxy-fight script (`bActivateOnTrigger`, tag `poxiedis`); marked at (−1173, −137, 458) | **none beyond reaching it**: the items can be picked up without finishing the fight (confirmed) | **found** |
 | Card *Professor Armando Dippet* | `CauldronSpwn0` (−1290, 459, 452), a cauldron; marked at (−1256, 421, 458) | **Depulso**, confirmed | **found** |
 | 3 cakes (a row) | `CauldronCake0` (1265, 815, 936), `CauldronCake2` (1344, 814, 937), `CauldronCake7` (1417, 815, 936); marked at (1381, 817, 955) | **dragon form**, confirmed | **found** |
+| 2 pasties | `PumpkinPasty5` (−583, −341, 44) and `PumpkinPasty18` (−683, −337, 53); one mark between them at (−628, −339, 51) | **rabbit form**, confirmed (Lapifors statue `LapiforsStatue0` nearby at (−1080, −335, 502)) | **found** |
 
-Other placed snacks: pasties `PumpkinPasty5` (−583, −341, 44) and `PumpkinPasty18` (−683, −337, 53).
+All placed snacks in the level found (6 pasties, 3 cakes).
 
 **Open Castle:** a playable level with a card, so it stays. It needs an entrance (Hagrid's hut door is the natural
 spot, [OPEN_CASTLE.md](OPEN_CASTLE.md) spare doors) and an exit back to GroundsHub instead of `9080Adv6Flyaway`.
