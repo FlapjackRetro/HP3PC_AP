@@ -833,3 +833,18 @@ DementorBattle (second visit) and DarkTower have no checks and no player control
 
 The player arrives in InsideHub in `GState090`, ready for the final exams. In vanilla, Ron's exam starts at
 `CutSceneTrigger13` (−98, −714, 1259) (`GState090` only) → `9240RonExamIntroPt1` → FA1Ron, which sets `GState100`.
+
+## 28. HP3_PortraitPassword_F (`GState090`)
+
+| | |
+| --- | --- |
+| Level ID | `ppf` |
+| State | `GState090` (MapTracker 07:16:31) |
+| Entered from | InsideHub `ChangeLevelTrigger0`, behind a portrait (portrait password F) |
+| Checks (catalogue) | card *Manticore* (`ChestSpawner34` (−3990, −580, 1680), with 8 cakes); secret area `SecretAreaMarker0` (−3400, −559, 1749); a suit of armour with pasties |
+
+| Check | Where | Requires | Status |
+| --- | --- | --- | --- |
+| Pasties (default count) | `KnightSpawner7` (−3521, −776, 1608), suit of armour; marked at (−3471, −784, 1568) | **Depulso**, confirmed | **found** |
+
+**Open Castle:** hub-reachable with the portrait password, so it stays as is (password = area unlock).
