@@ -846,5 +846,6 @@ The player arrives in InsideHub in `GState090`, ready for the final exams. In va
 | Check | Where | Requires | Status |
 | --- | --- | --- | --- |
 | Pasties (default count) | `KnightSpawner7` (−3521, −776, 1608), suit of armour; marked at (−3471, −784, 1568) | **Depulso**, confirmed | **found** |
+| Card *Manticore* + 8 cakes | `ChestSpawner34` (−3990, −580, 1680); marked at (−3943, −579, 1698) | **Alohomora**, confirmed | **found** |
 
 **Open Castle:** hub-reachable with the portrait password, so it stays as is (password = area unlock).
