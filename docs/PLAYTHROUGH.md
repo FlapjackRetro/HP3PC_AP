@@ -240,7 +240,7 @@ Castle the well quest needs no entrance of its own: it's part of GroundsHub.
 Stage 2 is available right after stage 1 (confirmed). The data backs this up for every stage: the five battles
 (`PBattle1Dispatch`–`PBattle5Dispatch`, picked in turn by `RoundRobin1`) and their `PoxieManager`s carry no game-state
 group or exclusion. So all five stages can be played back to back, in any story state where the well is reachable.
-Logic: the five cards need only GroundsHub access (plus whatever spell the doxy fights take, presumably Rictusempra).
+Logic: the five cards need only GroundsHub access (plus Rictusempra).
 
 ## 7. HP3_COMC: Care of Magical Creatures, hippogriff riding (first visit, `GState040`)
 
