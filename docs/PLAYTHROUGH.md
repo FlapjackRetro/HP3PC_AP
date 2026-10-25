@@ -803,9 +803,9 @@ After the Dementor battle the state becomes **`GState090`** and the player passe
 | Check | Where | Requires | Status |
 | --- | --- | --- | --- |
 | 4 pasties (a ring) | `PumpkinPasty7` (66, 864, 643), `PumpkinPasty6` (128, 800, 643), `PumpkinPasty0` (129, 928, 643), `PumpkinPasty4` (190, 865, 643), around (128, 864, 643); one mark in the middle at (75, 860, 609) | **dragon form**, confirmed | **found** |
+| 3 cakes (a row) | `CauldronCake0` (1265, 815, 936), `CauldronCake2` (1344, 814, 937), `CauldronCake7` (1417, 815, 936); marked at (1381, 817, 955) | **dragon form**, confirmed | **found** |
 
-Other placed snacks: pasties `PumpkinPasty5` (−583, −341, 44) and `PumpkinPasty18` (−683, −337, 53); cakes
-`CauldronCake0`/`2`/`7` in a row at (1265–1417, 815, 936).
+Other placed snacks: pasties `PumpkinPasty5` (−583, −341, 44) and `PumpkinPasty18` (−683, −337, 53).
 
 **Open Castle:** a playable level with a card, so it stays. It needs an entrance (Hagrid's hut door is the natural
 spot, [OPEN_CASTLE.md](OPEN_CASTLE.md) spare doors) and an exit back to GroundsHub instead of `9080Adv6Flyaway`.
