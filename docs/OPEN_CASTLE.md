@@ -31,6 +31,7 @@ Every check below already has a stable save key or a single function the mod can
 | Pumpkin Pasties (placed) | `pasty_checks` | 180 | `KWPickup` → `<LevelID><ActorName>_PU` |
 | Cauldron Cakes (placed) | `cake_checks` | 71 | same |
 | Marauder's Map | `marauders_map_check` | 1 | Vanilla (confirmed in play): the `1051GetMaraudersMap` cutscene in the shortcuts room on first arrival at Hogwarts (`GState010`); Harry picks up a `MaraudersPickup` (InsideHub ~(150, −870, 144)). `1005TaskedShop` also has a `GiveMap`. Neither plays in Open Castle, so the pickup needs a new trigger or a placed map. |
+|  |  |  | **Default when the option is off: granted at game start**, and the game starts in the shortcuts room where Fred's scene ends ([OPEN_CASTLE_CHANGES.md](OPEN_CASTLE_CHANGES.md) S1–S2). |
 | Bundimun drops | `pasty_checks` (or own option) | 12 creatures (9 in Ch2B, 3 in FA2) | Fixed drop (`GoodieCount` × `GoodieToSpawn`, only the direction is random); hook the defeat in `BundimunController`. Needs Rictusempra. Respawns on reload. See [PLAYTHROUGH.md](PLAYTHROUGH.md) §14. |
 | Beans | no | — | Currency only |
 
