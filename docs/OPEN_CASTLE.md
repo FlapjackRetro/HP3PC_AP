@@ -280,13 +280,23 @@ On loading a story map: retarget its vanilla exit to InsideHub/GroundsHub at its
 `SmartStart` there), and set or restore the game state the map needs (e.g. Adv5Shack was built for `085`, Adv6 for
 `090`).
 
+### Third Peeves fight (entrance hall, `GState100`)
+
+`Peeves0` (tag `Peeves3`, (−126, 1392, 417)) is grouped into `GState100` only. The intro trigger `CutSceneTrigger9`
+(`9225ADV4PeevesIntro`) is in `GState010` and `GState100`. Reward on defeat: **3 Cauldron Cakes only** (dispatcher
+`Peeves3Done` → `Peeves3_Spwn_Cake_01`–`03`), plus its `_bD` defeat flag. No card, no unlock. Side effects: the intro
+and exit cutscenes (`9225…`/`9227ADV4PeevesExit`) `savegame`, toggle the entrance-hall torch puzzle
+(`Main_TorchPuzz_Torch*`), the portrait movers `Peeves3_Port`, and **`GroundsBlocker`**, the portcullises
+between the entrance hall and the grounds (the planned "Grounds Access" unlock). So the fight shuts and reopens the
+grounds route, and Open Castle would have to keep that in step with the Grounds Access item.
+
 ### Open decisions
 
 1. **Base state**: `GState090` (exam intro triggers present, to be suppressed) or `GState100` (post-exams;
    `FinalDayDoor` logic, the third Peeves fight).
-2. **Adv1Express**: a door in the entrance hall, or the game's opening.
-3. **Adv5Shack**: Lupin's office (needs a Spongify pad; thematic) or the Whomping Willow on the grounds (thematic;
-   position needs marking).
+2. **Adv1Express**: no preference given; **default: the north entrance-hall door** (a new game starts in Hogwarts).
+3. **Adv5Shack**: no preference given; **default: the Whomping Willow** on the grounds (position to mark), with
+   Lupin's office as the fallback.
 4. **GroundsDada**: its contents (1 card, 3 secrets) and requirements are unknown until a playable visit; the exam
    chain may provide one (`9240RonExamIntroPt1` runs from GroundsDada in `090`).
 
