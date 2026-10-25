@@ -217,6 +217,79 @@ The well and Monster Book cards are placed out of reach ("Green Room DON'T HIDE"
 Rule from the plan: **maps that are cutscene-only with no player interaction are removed.** Any items they would
 grant (in the categories in §2) go into the Open Castle item pool instead.
 
+## 6a. Layout (draft v1)
+
+Built from the vanilla playthrough ([PLAYTHROUGH.md](PLAYTHROUGH.md)). Positions are Unreal units in the map named.
+
+### Already connected (no change)
+
+| Map | Entrance today | Checks |
+| --- | --- | --- |
+| GroundsHub | InsideHub main doors (cutscene trigger `LevelLoadGrounds`; back via GroundsHub `ChangeLevelTrigger2` (−830, −7617, 1153)) | 10 cards, 6 secrets, well quest |
+| DungeonHUB | InsideHub `ChangeLevelTrigger8` (225, 2968, −176), entrance-hall stairs | 2 cards, 26 event snacks |
+| COMC | GroundsHub `ChangeLevelTrigger1` (−1816, 1191, 769), course selection | 5 hippogriff cards |
+| BeanBonus | InsideHub `ChangeLevelTrigger14` (−1083, −2365, 2246) | 5 cards |
+| PortraitPassword_B–F | InsideHub `ChangeLevelTrigger1`/`4`/`13`/`12`/`0` (portraits) | 1 card each |
+
+### Challenges: side room (existing doors)
+
+| Region | Entrance | Gate (item) | Exit back |
+| --- | --- | --- | --- |
+| Ch1 + Ch1B (Carpe Retractum) | side room `ChangeLevelTrigger9` (971, −2049, 304) | Carpe Retractum (+ challenge access if split) | the B map's chamber copy → InsideHub; keep only `0700Ch1Chal_InsHubDoor`, suppress the story exits (`…_QuidDem_070`, `…_BuckyEx`, `…_CRDoor`) |
+| Ch2 + Ch2B (Draconifors) | side room `ChangeLevelTrigger10` (1309, −1722, 304) (also `ChangeLevelTrigger7` (−3172, 2205, 547), a second chamber door) | Draconifors | suppress `DracLoadQuidditch` / `DracLoadBuckyExec` |
+| Ch3 + Ch3B (Glacius) | side room `ChangeLevelTrigger11` (974, −1397, 304) | **Glacius** (needed to move at all) | suppress `GlaciustoQuidditch` / `GlaciustoBuckBeakExc` |
+
+### Story maps: new entrances
+
+| Map | Checks | Entrance | Gate | Exit back (retarget) |
+| --- | --- | --- | --- | --- |
+| Adv2ExpPatronum | card *Honoria Nutcombe*, skull shelves | DADA classroom portcullis + doors `DADA_PortToExpecto_Mvr` / `DADA_DoorToExpecto_Mvr` (856, −1844, 1152): raise/open on the item, `ChangeLevelTrigger` behind | Expecto Patronum (+ area item if split) | `7090PatronusExit` (→ Adv3Library) → InsideHub at the DADA door |
+| Adv3Library | cards *Falco Aesalon*, *Double-Ended Newt*; 4 secrets | 2nd-floor Library portcullis + doors `Library_Port_Mvr` / `Library_Door_Mvr` (−704, −1368, 732) | Library item; Depulso inside | already exits to InsideHub at this door (`7170Library_Exit`) |
+| Adv5Shack | card *Sacharissa Tugwood*; 5 secrets; ~37 snacks | **option A:** Lupin's office balcony door (722, −2085, 1281) with a spawned Spongify pad below; **option B:** a new trigger at the Whomping Willow on the grounds *(position to mark)* | Shack item; Draconifors, Alohomora, Depulso, Spongify, Rictusempra inside; party must be Harry + Hermione | exit to WhompingWillow (`ChangeLevelTrigger0` / `8700ADV5AtShack`) → back to the entrance |
+| Adv6Paddock | card *Professor Armando Dippet*; ~33 snacks | Hagrid's hut door, GroundsHub (813, −1121, 696): new trigger | Paddock item; **Depulso + Spongify** to start; Lapifors, Draconifors, Alohomora inside | `9080Adv6Flyaway` (→ DementorBattle) → GroundsHub at Hagrid's hut |
+| FA1Ron (Ron's exam) | 5 stars, 3 snacks | DADA classroom `ChangeLevelTrigger3` (262, −2328, 1218), retargeted from Ch1 | Carpe Retractum | `RonExamExitDONE` (→ FA2) → InsideHub at DADA |
+| FA2Hermione | 5 stars, 61 snacks, 3 bundimuns | Transfiguration `ChangeLevelTrigger2`/`5` (−4373, 1556, 0), retargeted from Ch2 | Draconifors/Lapifors | `ChangeLevelTrigger1` (→ FA3) → InsideHub at Transfiguration |
+| FA3Harry | 5 stars, 5 snacks | Charms `ChangeLevelTrigger6` (−1359, −2983, 941), retargeted from Ch3 | Glacius | `ChangeLevelTrigger0` (→ GroundsHub, sets `100`) → InsideHub at Charms, no state change |
+| GroundsDada | card *Double-Ended Newt* (another copy), 3 secrets | entrance-hall barred door south (733, 392, 74): new trigger, hide the lock bar on the item | GroundsDada item *(what's needed inside: unknown; no playable visit yet)* | its exits go to Ch1 / Adv2 / FA1 → InsideHub at this door |
+| Adv1Express (prologue) | card *Fulbert the Fearful* | **option A:** entrance-hall barred door north (731, 1615, 74); **option B:** keep it as the game's opening and cut `0180ADV1DemExit` straight to InsideHub | — | `0180ADV1DemExit` → InsideHub |
+| Final | 1 chest | `FinalDayDoor` (GroundsHub `Mover11`, (768, −6208, 864)) | **goal** | — |
+
+### Dropped (cutscene only, no checks)
+
+Quidditch, WhompingWillow, BuckyExecuted, DementorBattle (both visits), Infirmary, DarkTower. Their items: none.
+(DementorBattle could come back later as a boss check that needs Expecto Patronum.)
+
+### Spare entrances left after this layout
+
+4th-floor locked door (−187, 1274, 1498), 7th-floor doors (−84, −1081, 2154) and (1427, −960, 2154), dungeon doors
+(−480, 2786, −318) and (−480, 4126, −318), plus whichever of Lupin's office / the Willow and the north entrance-hall
+door isn't used. Reserved for later options (e.g. DementorBattle as a boss, or splitting maps).
+
+### What the mod does at runtime
+
+On loading a hub (InsideHub, GroundsHub):
+1. Spawn the new `ChangeLevelTrigger`s above (and the Spongify pad and target for Lupin's office, if option A).
+2. Per received area item: raise the portcullis / open the door movers, or hide the lock-bar mesh; until then, keep
+   them shut and their triggers disabled.
+3. Retarget the classroom triggers (`ChangeLevelTrigger3`/`2`/`5`/`6`) from the challenges to the exams.
+4. Suppress the story cutscene triggers that would pull the player into the vanilla chain (exam intros
+   `CutSceneTrigger13` / `6180TransIntro` / `7250CharmsIntro`, the challenge-chamber story exits, `FinalDayDoor`
+   until the goal is met).
+
+On loading a story map: retarget its vanilla exit to InsideHub/GroundsHub at its entrance (a `PlayerStart` /
+`SmartStart` there), and set or restore the game state the map needs (e.g. Adv5Shack was built for `085`, Adv6 for
+`090`).
+
+### Open decisions
+
+1. **Base state**: `GState090` (exam intro triggers present, to be suppressed) or `GState100` (post-exams;
+   `FinalDayDoor` logic, the third Peeves fight).
+2. **Adv1Express**: a door in the entrance hall, or the game's opening.
+3. **Adv5Shack**: Lupin's office (needs a Spongify pad; thematic) or the Whomping Willow on the grounds (thematic;
+   position needs marking).
+4. **GroundsDada**: its contents (1 card, 3 secrets) and requirements are unknown until a playable visit; the exam
+   chain may provide one (`9240RonExamIntroPt1` runs from GroundsDada in `090`).
+
 ## 7. Draft YAML options
 
 ```yaml
