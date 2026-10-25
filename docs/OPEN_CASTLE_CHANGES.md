@@ -54,7 +54,7 @@ behind the Grounds Access gate).
 | I9 | Gate + Spawn | DADA portcullis `KWMover27` (`DADA_PortToExpecto_Mvr`) + doors `KWMover66`/`67` (`DADA_DoorToExpecto_Mvr`), (856, −1844, 1152) | on the item: raise/open; spawn a `ChangeLevelTrigger` → **HP3_Adv2ExpPatronum** behind them. Return point here |
 | I10 | Gate + Spawn | Library portcullis `KWMover53` (`Library_Port_Mvr`) + doors `KWMover52`/`13` (`Library_Door_Mvr`), (−704, −1368, 732) | on the item: raise/open; spawn → **HP3_Adv3Library**. Return point here (vanilla `7170Library_Exit` already lands nearby) |
 | I11 | — | entrance-hall barred door south (733, 392, 74) | **unused**: GroundsDada is provisionally cutscene only. Spare |
-| I12 | Gate + Spawn | entrance-hall barred door north: bar `StaticMeshActor42` (736, 1635, 91); player spot (731, 1615, 74) | on the item: hide the bar; spawn → **HP3_Adv1Express**. Return point here |
+| I12 | Gate + Spawn | 7th-floor locked door (east): bar `StaticMeshActor228` (1447, −956, 2171); player spot (1427, −960, 2154) | on the Express item: hide the bar; spawn → **HP3_Adv1Express**. Return point here. (The entrance-hall north door is now spare) |
 | I13 | Gate | `GroundsBlocker` portcullises `KWMover21`/`43`/`23` (≈ (1024, 880–1136, 0)) | "Grounds Access" item: open; until then shut |
 | I14 | Check / start item | the same pickup (S2) | see S2 |
 
