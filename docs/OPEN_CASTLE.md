@@ -85,7 +85,7 @@ Depends on Open Castle working without heavy changes to Hogwarts. Candidate item
 | Item | Door(s) | Leads to |
 | --- | --- | --- |
 | Grounds Access | `GroundsBlocker` ×3 portcullises | GroundsHub |
-| Dungeon | `Dungeon_Door_Mvr` | DungeonHUB |
+| ~~Dungeon~~ | ~~`Dungeon_Door_Mvr`~~ | dropped: the dungeon is always reachable from InsideHub (`ChangeLevelTrigger8` has no state filter; walked in freely in `GState060`, confirmed). Re-adding it would mean shutting a door vanilla leaves open |
 | Library | `Library_Door_Mvr` / `Library_Port_Mvr` (2nd floor, ≈ (−704, −1368, 732)) | Adv3Library (confirmed: the library level exits here) |
 | Expecto Patronum | `DADA_DoorToExpecto_Mvr` / `DADA_PortToExpecto_Mvr` (DADA classroom, ≈ (856, −1844, 1152)) | Adv2ExpPatronum (door located in play; it's a closed portcullis + door pair) |
 | Monster Book Room | `MBOMDoor` ×3 | Monster Book side quest |
@@ -246,7 +246,7 @@ Built from the vanilla playthrough ([PLAYTHROUGH.md](PLAYTHROUGH.md)). Positions
 | --- | --- | --- | --- | --- |
 | Adv2ExpPatronum | card *Honoria Nutcombe*, skull shelves | DADA classroom portcullis + doors `DADA_PortToExpecto_Mvr` / `DADA_DoorToExpecto_Mvr` (856, −1844, 1152): raise/open on the item, `ChangeLevelTrigger` behind | Expecto Patronum (+ area item if split) | `7090PatronusExit` (→ Adv3Library) → InsideHub at the DADA door |
 | Adv3Library | cards *Falco Aesalon*, *Double-Ended Newt*; 4 secrets | 2nd-floor Library portcullis + doors `Library_Port_Mvr` / `Library_Door_Mvr` (−704, −1368, 732) | Library item; Depulso inside | already exits to InsideHub at this door (`7170Library_Exit`) |
-| Adv5Shack | card *Sacharissa Tugwood*; 5 secrets; ~37 snacks | **Dungeon locked door 1**, DungeonHUB (−480, 2786, −318): new trigger, lock bar `StaticMeshActor315` hidden on the item. Logic also needs dungeon access (the "Dungeon" area unlock). Spare: dungeon door 2 (−480, 4126, −318). (The Whomping Willow isn't reachable by the player, confirmed.) | Shack item; Draconifors, Alohomora, Depulso, Spongify, Rictusempra inside; party must be Harry + Hermione | exit to WhompingWillow (`ChangeLevelTrigger0` / `8700ADV5AtShack`) → DungeonHUB at dungeon door 1 |
+| Adv5Shack | card *Sacharissa Tugwood*; 5 secrets; ~37 snacks | **Dungeon locked door 1**, DungeonHUB (−480, 2786, −318): new trigger, lock bar `StaticMeshActor315` hidden on the item. Spare: dungeon door 2 (−480, 4126, −318). (The Whomping Willow isn't reachable by the player, confirmed.) | Shack item; Draconifors, Alohomora, Depulso, Spongify, Rictusempra inside; party must be Harry + Hermione | exit to WhompingWillow (`ChangeLevelTrigger0` / `8700ADV5AtShack`) → DungeonHUB at dungeon door 1 |
 | Adv6Paddock | card *Professor Armando Dippet*; ~33 snacks | Hagrid's hut door, GroundsHub (813, −1121, 696): new trigger | Paddock item; **Depulso + Spongify** to start; Lapifors, Draconifors, Alohomora inside | `9080Adv6Flyaway` (→ DementorBattle) → GroundsHub at Hagrid's hut |
 | FA1Ron (Ron's exam) | 5 stars, 3 snacks | DADA classroom `ChangeLevelTrigger3` (262, −2328, 1218), retargeted from Ch1 | Carpe Retractum | `RonExamExitDONE` (→ FA2) → InsideHub at DADA |
 | FA2Hermione | 5 stars, 61 snacks, 3 bundimuns | Transfiguration `ChangeLevelTrigger2`/`5` (−4373, 1556, 0), retargeted from Ch2 | Draconifors/Lapifors | `ChangeLevelTrigger1` (→ FA3) → InsideHub at Transfiguration |
