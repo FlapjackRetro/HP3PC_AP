@@ -9,7 +9,8 @@ Status: plan. Everything marked *(verify)* needs an in-game check, which is what
 
 ## 1. Base state
 
-Open Castle locks the game to a single story state. **`GState090` or `GState100`** is the natural choice:
+Open Castle locks the game to a single story state. **Decided: `GState090`** (see §6a, open decisions). Notes from
+when it was between `090` and `100`:
 
 - all three side-room challenge doors are active, and all three challenges send you back to InsideHub, in both;
 - the Monster Book intro trigger is tagged `GState070/090/100`, so it can start in either;
@@ -245,7 +246,7 @@ Built from the vanilla playthrough ([PLAYTHROUGH.md](PLAYTHROUGH.md)). Positions
 | --- | --- | --- | --- | --- |
 | Adv2ExpPatronum | card *Honoria Nutcombe*, skull shelves | DADA classroom portcullis + doors `DADA_PortToExpecto_Mvr` / `DADA_DoorToExpecto_Mvr` (856, −1844, 1152): raise/open on the item, `ChangeLevelTrigger` behind | Expecto Patronum (+ area item if split) | `7090PatronusExit` (→ Adv3Library) → InsideHub at the DADA door |
 | Adv3Library | cards *Falco Aesalon*, *Double-Ended Newt*; 4 secrets | 2nd-floor Library portcullis + doors `Library_Port_Mvr` / `Library_Door_Mvr` (−704, −1368, 732) | Library item; Depulso inside | already exits to InsideHub at this door (`7170Library_Exit`) |
-| Adv5Shack | card *Sacharissa Tugwood*; 5 secrets; ~37 snacks | **Lupin's office balcony door** (722, −2085, 1281), InsideHub, reached by a spawned Spongify pad below. No extra logic cost, since the Shack already needs Spongify inside. Fallback: the 4th-floor locked door (−187, 1274, 1498). (The Whomping Willow isn't reachable by the player, confirmed.) | Shack item; Draconifors, Alohomora, Depulso, Spongify, Rictusempra inside; party must be Harry + Hermione | exit to WhompingWillow (`ChangeLevelTrigger0` / `8700ADV5AtShack`) → InsideHub, DADA classroom below Lupin's office |
+| Adv5Shack | card *Sacharissa Tugwood*; 5 secrets; ~37 snacks | **Dungeon locked door 1**, DungeonHUB (−480, 2786, −318): new trigger, lock bar `StaticMeshActor315` hidden on the item. Logic also needs dungeon access (the "Dungeon" area unlock). Spare: dungeon door 2 (−480, 4126, −318). (The Whomping Willow isn't reachable by the player, confirmed.) | Shack item; Draconifors, Alohomora, Depulso, Spongify, Rictusempra inside; party must be Harry + Hermione | exit to WhompingWillow (`ChangeLevelTrigger0` / `8700ADV5AtShack`) → DungeonHUB at dungeon door 1 |
 | Adv6Paddock | card *Professor Armando Dippet*; ~33 snacks | Hagrid's hut door, GroundsHub (813, −1121, 696): new trigger | Paddock item; **Depulso + Spongify** to start; Lapifors, Draconifors, Alohomora inside | `9080Adv6Flyaway` (→ DementorBattle) → GroundsHub at Hagrid's hut |
 | FA1Ron (Ron's exam) | 5 stars, 3 snacks | DADA classroom `ChangeLevelTrigger3` (262, −2328, 1218), retargeted from Ch1 | Carpe Retractum | `RonExamExitDONE` (→ FA2) → InsideHub at DADA |
 | FA2Hermione | 5 stars, 61 snacks, 3 bundimuns | Transfiguration `ChangeLevelTrigger2`/`5` (−4373, 1556, 0), retargeted from Ch2 | Draconifors/Lapifors | `ChangeLevelTrigger1` (→ FA3) → InsideHub at Transfiguration |
@@ -261,8 +262,8 @@ Quidditch, WhompingWillow, BuckyExecuted, DementorBattle (both visits), Infirmar
 
 ### Spare entrances left after this layout
 
-4th-floor locked door (−187, 1274, 1498), 7th-floor doors (−84, −1081, 2154) and (1427, −960, 2154), dungeon doors
-(−480, 2786, −318) and (−480, 4126, −318), plus the north entrance-hall door if the Express doesn't use it. Reserved for later options (e.g. DementorBattle as a boss, or splitting maps).
+4th-floor locked door (−187, 1274, 1498), 7th-floor doors (−84, −1081, 2154) and (1427, −960, 2154), dungeon door 2
+(−480, 4126, −318), Lupin's office (with a Spongify pad), plus the north entrance-hall door if the Express doesn't use it. Reserved for later options (e.g. DementorBattle as a boss, or splitting maps).
 
 ### What the mod does at runtime
 
@@ -291,11 +292,11 @@ grounds route, and Open Castle would have to keep that in step with the Grounds 
 
 ### Open decisions
 
-1. **Base state**: `GState090` (exam intro triggers present, to be suppressed) or `GState100` (post-exams;
-   `FinalDayDoor` logic, the third Peeves fight).
+1. **Base state**: decided: **`GState090`**. The exam-intro cutscene triggers get suppressed. `GState100` was
+   rejected because its third Peeves fight toggles `GroundsBlocker` (the Grounds Access portcullises).
 2. **Adv1Express**: no preference given; **default: the north entrance-hall door** (a new game starts in Hogwarts).
-3. **Adv5Shack**: decided: an InsideHub door for continuity (the Willow is unreachable). Lupin's office via a
-   Spongify pad, with the 4th-floor door as the fallback.
+3. **Adv5Shack**: decided: **dungeon locked door 1** (the Willow is unreachable). Lupin's office (via a Spongify
+   pad) stays a spare.
 4. **Hagrid's hut door** is for a map with an outdoor setting: **Adv6Paddock** (Buckbeak's paddock) uses it.
 5. **GroundsDada**: its contents (1 card, 3 secrets) and requirements are unknown until a playable visit; the exam
    chain may provide one (`9240RonExamIntroPt1` runs from GroundsDada in `090`).
