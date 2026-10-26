@@ -758,6 +758,7 @@ chests with checks; they don't (beans).
 | Pasty (placed) | `PumpkinPasty5` (824, −2044, −1048); marked at (808, −2038, −1013) | *(none stated)* | **found** (all 3 placed pasties done) |
 | Pasty (placed) | `PumpkinPasty0` (467, −2404, −2895); marked at (447, −2410, −2893) | *(none stated)* | **found** |
 | 2 cakes | `ChestSpawner12` (−3235, −3979, −770), in secret area `SecretAreaMarker1` (−3310, −3971, −760); marked at (−3203, −3942, −757) | **Alohomora**, confirmed | **found** |
+| Cake | `ChestSpawner11` (−6349, 63, −992, tag `RmA_Secret_01_Chest`), a chest in Room A's secret (`SecretAreaMarker4` is ~570 units away); marked at (−6325, 21, −973) during the Open Castle test (`GState090`, entered through dungeon door 1) | **Alohomora**, confirmed | **found** |
 
 **Companion chests** (`ChestCompanionSpawner*`): two padlocks that two characters must open together. Here Harry
 and Hermione are both in the party, since this level puts both of them in it (assumed; Ron is the injured one in
