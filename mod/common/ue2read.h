@@ -85,6 +85,17 @@ static int prop_offset(const wchar *cls, const wchar *prop) {
     if (f.prop >= 0 && f.cls >= 0) for_each_object(v_findprop, &f);
     return f.off;
 }
+/* member of a struct (the outer is a Struct, not a Class); struct names here are unique, so no class check */
+static int v_findmember(u32 o, int name, u32 cls, void *c) {
+    struct findprop *f = c; (void)cls;
+    if (name == f->prop && (int)rd32(rd32(o + 0x18) + 0x20) == f->cls) { f->off = (int)rd32(o + 0x4C); f->obj = o; return 1; }
+    return 0;
+}
+static int struct_member_offset(const wchar *strct, const wchar *prop) {
+    struct findprop f; f.prop = name_index(prop); f.cls = name_index(strct); f.off = -1; f.obj = 0;
+    if (f.prop >= 0 && f.cls >= 0) for_each_object(v_findmember, &f);
+    return f.off;
+}
 static int is_a_cls(u32 c, u32 want) { int guard = 64; while (c && guard--) { if (c == want) return 1; c = rd32(c + 0x2C); } return 0; }
 
 /* every Player (viewport) object: Player.Actor is the live PlayerController */

@@ -63,7 +63,7 @@ IMP BOOL   WINAPI ReadFile(HANDLE, void*, u32, u32*, void*);
 IMP u32    WINAPI GetFileSize(HANDLE, u32*);
 IMP u32    WINAPI SetFilePointer(HANDLE, int, int*, u32);
 
-#define OC_VERSION L"poc6g"
+#define OC_VERSION L"poc6h"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -369,6 +369,7 @@ static void gates_poll(u32 level, const wchar *map) {
 }
 
 #include "aptest.h"
+#include "comcfix.h"
 
 static u32 WINAPI worker(void *arg) {
     HANDLE core; static wchar buf[400], id[32], lastMap[64]; static struct players pl;
@@ -474,6 +475,7 @@ static u32 WINAPI worker(void *arg) {
             armed = 0; settle = 0; shortcutsDone = 0;
         }
         settle++;
+        if (settle >= 4) comc_poll(level, lastMap);
         if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); aptest_poll(level); grid_poll(lastMap); }   /* once settled, every 2 s */
         if (!shortcutsDone && settle >= 12) {
             shortcutsDone = 1;

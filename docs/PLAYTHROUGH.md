@@ -260,6 +260,14 @@ Logic: the five cards need only GroundsHub access (plus Rictusempra).
 | 4 | 4900 | Roderick Plumpton (`WizCard4`) | |
 | 5 | 5600 | Bowman Wright (`WizCard5`) | |
 
+**Vanilla data slip (found in Open Castle testing, 2026-10-26):** COMC has two managers. The tutorial one
+(`HippoFlyGame1`, group `gstate040`) gives track 1's card via `4076COMCExit` → `WizCard1` (Joscelind Wadcock).
+The course-selection one (`HippoFlyGame2`, every state but `040`) has `CardWinEvent[0] = COMCWin_WizCard2QC`,
+the same as track 2's. So winning track 1 outside `040` gives **Gwenog Jones** (seen in `GState090`), and
+Joscelind Wadcock can't be obtained. Vanilla never shows this, because track 1 is always won in `040` first. Open
+Castle's fix (`mod/OpenCastle/comcfix.h`) sets the `WizCard2` spawner's `SpawnClass` to `WC_JoscelindWadcock`
+while track 1 is the one being played. For the randomizer, the location is "win track n" whichever card spawns.
+
 Progress is saved by `HippoFlyGame` (`hfg_n` tracks completed, `hfg_h<i>`/`hfg_l<i>` scores). Win cutscenes:
 `COMCWin_WizCard2`–`5`, `COMCWin_2ndTimeonTrack`; loss: `COMCTutorialLose`, `COMCLose_AllTracks`.
 
