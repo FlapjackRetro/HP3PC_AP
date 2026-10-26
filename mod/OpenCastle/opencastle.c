@@ -60,7 +60,7 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 IMP u32    WINAPI GetPrivateProfileIntW(const wchar*, const wchar*, int, const wchar*);
 IMP u32    WINAPI GetTickCount(void);
 
-#define OC_VERSION L"poc6c"
+#define OC_VERSION L"poc6d"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -216,6 +216,7 @@ static void fire_gates(void) {
 #include "hubmenu.h"
 static volatile int gAPTestPending;   /* aptest.h: worker found the pickups, game thread swaps their look */
 static void aptest_apply(void);
+static void aptest_spawned(u32 o);
 static void __thiscall pe_hook(void *self, void *func, void *parms, void *result) {
     int fname;
     if (gPending && !gInTravel) { gInTravel = 1; gPending = 0; do_travel(); gInTravel = 0; }
@@ -235,6 +236,9 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
     if (fname == N_TravelPostAccept && N_TravelPostAccept >= 0 && gClsHero
         && is_a_cls(*(u32 *)((u8 *)self + 0x24), gClsHero)) { travel_post_accept(self, func, parms, result); return; }
     gPEOrig(self, func, parms, result);
+    if (fname == N_PostBeginPlay && N_PostBeginPlay >= 0 && gClsPickup && !gInTravel && is_a_fast((u32)self, gClsPickup)) {
+        gInTravel = 1; aptest_spawned((u32)self); gInTravel = 0;
+    }
 }
 
 /* ---- patching ---- */

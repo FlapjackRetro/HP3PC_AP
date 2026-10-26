@@ -67,3 +67,16 @@ static void aptest_apply(void) {
     wsprintfW(b, L"aptest: drawn as AP sprites: %d cakes (progression), %d pasties (useful), %d cards (filler)", n[0], n[1], n[2]);
     log_line(b);
 }
+
+/* game thread, after a KWPickup's PostBeginPlay: goodies thrown out of chests and cauldrons after the map settled
+   get the same look. */
+static void aptest_spawned(u32 o) {
+    static const wchar *names[3] = { L"HP3AP.APLogoProgression", L"HP3AP.APLogoUseful", L"HP3AP.APLogoFiller" };
+    u32 cls, tex; int t;
+    if (!gAPMode || !gLoadObject || offDrawType <= 0) return;
+    cls = P(o + 0x24);
+    if (cls_named(cls, N_CauldronCake)) t = 0; else if (cls_named(cls, N_PumpkinPasty)) t = 1; else if (cls_named(cls, N_WizardCard)) t = 2; else return;
+    tex = (u32)gLoadObject((void *)gClsTexture, 0, gAPMode == 2 ? L"HP_FX.Particles.Key1" : names[t], 0, 0x2002, 0);
+    if (!tex) return;
+    *(u8 *)(o + offDrawType) = 1; *(u32 *)(o + offTexture) = tex; *(u8 *)(o + offStyle2) = 2; *(float *)(o + offDrawScale) = 0.3f;
+}
