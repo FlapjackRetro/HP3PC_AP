@@ -84,11 +84,11 @@ static void aptest_spawned(u32 o) {
 /* ---- one-time test: every candidate item sprite in a grid where the player last pressed the MapTracker mark key
    (End). With [Test] SpriteGrid=1 the worker watches HP3_MapLog.txt; each new MARK on the current map spawns the grid
    (inert Engine.Effects actors: no collision, sprite drawn with the texture), 7 columns, 60 units apart:
-     row 1: AP progression / useful / filler, keys Key1 / Key2 / Key3 / Les_RedKey
+     row 1: AP progression / useful / filler, keys: retail Key2, Key2 upscaled 4x, our drawn key, retail Key3
      rows 2-3: the 14 spell-shape glyphs */
 static const wchar *GRID[] = {
     L"HP3AP.APLogoProgression", L"HP3AP.APLogoUseful", L"HP3AP.APLogoFiller",
-    L"HP_FX.Particles.Key1", L"HP_FX.Particles.Key2", L"HP_FX.Particles.Key3", L"HP_FX.Particles.Les_RedKey",
+    L"HP_FX.Particles.Key2", L"HP3AP.APKeyUpscaled", L"HP3AP.APKeyDrawn", L"HP_FX.Particles.Key3",
     L"SpellShapes.Shapes.SPSalohomora", L"SpellShapes.Shapes.SPSCarpeRetractum", L"SpellShapes.Shapes.SPSdepulso",
     L"SpellShapes.Shapes.SPSdraconifor", L"SpellShapes.Shapes.SPSexpecto", L"SpellShapes.Shapes.SPSglacius",
     L"SpellShapes.Shapes.SPSlapifors",

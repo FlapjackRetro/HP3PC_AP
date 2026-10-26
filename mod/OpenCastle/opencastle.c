@@ -63,7 +63,7 @@ IMP BOOL   WINAPI ReadFile(HANDLE, void*, u32, u32*, void*);
 IMP u32    WINAPI GetFileSize(HANDLE, u32*);
 IMP u32    WINAPI SetFilePointer(HANDLE, int, int*, u32);
 
-#define OC_VERSION L"poc6e"
+#define OC_VERSION L"poc6f"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
