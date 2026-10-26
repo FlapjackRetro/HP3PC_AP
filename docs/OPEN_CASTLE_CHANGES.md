@@ -140,3 +140,26 @@ cutscene only; confirm after the final exams): nothing leads to them once A1, A6
 - Side chamber: only the Carpe Retractum portcullis is raised in `090`; Draconifors and Glacius stay down (C1–C6).
 - Shortcut portraits: "Looks like it's locked". The passwords (`pp_8`–`pp_21`) are only granted in `010`.
   poc2 calls `PortraitPasswordManager.EnablePortraitShortcuts` on every map load (option `start_unlocked`).
+
+### Re-entering a story map: do checks stay collected?
+
+Yes. The vanilla save system already handles it; nothing new is needed for the paddock.
+- On every level change with `bItems=true`, `LevelInfo.ServerTravel` calls `SavePersistentData` on every actor.
+  This covers vanilla `ChangeLevelTrigger`s and cutscenes (`KWPawn.LoadLevel`) as well as Open Castle's door
+  travel. The values go into the `PersistentStore`, which travels with the player and is written into save games.
+  Keys are `<Level.ID><ActorName><suffix>`, so every map keeps its own state.
+- `KWPickup` (pasties, cakes, cards placed in the map) writes `_PU` when picked up and destroys itself on reload.
+  It is on by default (`bPickUpPersistent=True`).
+- `KWGenericSpawner` (chests, cauldrons, crates, statues) saves `_lives`. A spent spawner goes straight to
+  `stateEnd` on reload (`bLivesPersistent=True` by default).
+- The catalog's `persist_key` column now gives the real key, or blank where the map switches persistence off.
+  Exceptions with persistence off (these reset on every visit):
+  - every `AlohomoraPadLock` in Adv1, Adv6, Ch1, Ch2B, FA1, FA2, DarkTower and Final. They lock again, which is
+    harmless because none of them is a check;
+  - the jellybeans and `CauldronCake`s in the Ch2B/Ch3B chamber copies, and the jellybeans in Ch1B (farmable);
+  - Ch2 `KnightSpawner10` and Ch3B `TapestrySpwn0`.
+- **Gap:** goodies a spawner has already thrown out are dynamic actors. If the player opens a chest and leaves
+  before collecting what fell out, the chest stays spent and the goodies are lost. The randomizer should therefore
+  send a chest's check when the chest opens (its `_lives` reaches 0), not when the goodie is picked up.
+- Event rewards (`HPSpawnThingy` rows, which have no `persist_key`) depend on whether their trigger, fight or
+  Peeves persists. They need checking map by map; none are in the paddock.
