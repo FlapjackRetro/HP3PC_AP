@@ -62,6 +62,16 @@ def main():
             r = Reader(v[1]); n = r.ci()
             json.dump([r.fstr() for _ in range(n)], open(os.path.join(out, 'game_states.json'), 'w'), indent=1)
 
+    def persist_key(lid, name, c, pr):
+        """PersistentStore key the game writes for this actor (KWPickup.PickedUp / KWGenericSpawner.SavePersistentData),
+        or None when the map turns persistence off (the actor comes back on every visit)."""
+        def flag(k):
+            v = pr.get(k)
+            return class_default(c, (k, 0)) if v is None else v
+        if isa(c, 'KWPickup'): return f"{lid}{name}_PU" if flag('bPickUpPersistent') is not False else None
+        if isa(c, 'KWGenericSpawner'): return f"{lid}{name}_lives" if flag('bLivesPersistent') is not False else None
+        return None
+
     rows = []
     for f in sorted(glob.glob(os.path.join(game, 'maps', '*.unr'))):
         p = Package(f); mp = os.path.splitext(os.path.basename(f))[0]; lid = None
@@ -98,7 +108,7 @@ def main():
             rows.append(dict(map=mp, level_id=lid or '', actor=e['name'], cls=c, category=base,
                              loc=vec(pr.get('Location')), tag=pr.get('Tag'), event=pr.get('Event'),
                              contents=contents,
-                             persist_key=f"{lid or ''}{e['name']}_PU" if isa(c, 'KWPickup') else None,
+                             persist_key=persist_key(lid or '', e['name'], c, pr),
                              awarded_by=teleported.get(str(pr.get('Tag')).lower()) if base == 'WizardCard' else None))
     json.dump(rows, open(os.path.join(out, 'locations.json'), 'w'), indent=1)
     with open(os.path.join(out, 'hp3_location_catalog.csv'), 'w', newline='') as fh:

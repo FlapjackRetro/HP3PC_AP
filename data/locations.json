@@ -103,7 +103,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv1HPGenericSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -125,7 +125,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv1HPGenericSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -147,7 +147,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv1HPGenericSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -169,7 +169,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv1Hpgenericspawner6_lives",
   "awarded_by": null
  },
  {
@@ -191,7 +191,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv1HPGenericSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -213,7 +213,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv1HPGenericSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -269,7 +269,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv2SkullShelfSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -291,7 +291,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv2KnightSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -313,7 +313,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv2ChestSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -335,7 +335,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv2SkullShelfSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -357,7 +357,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv2SkullShelfSpwn2_lives",
   "awarded_by": null
  },
  {
@@ -379,7 +379,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv2TapestrySpwn6_lives",
   "awarded_by": null
  },
  {
@@ -418,7 +418,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv2ArmoireSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -440,7 +440,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv3AlohomoraPadLock3_lives",
   "awarded_by": null
  },
  {
@@ -462,7 +462,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv3AlohomoraPadLock2_lives",
   "awarded_by": null
  },
  {
@@ -488,7 +488,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv3ChestSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -510,7 +510,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv3KnightSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -532,7 +532,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv3ArmoireSpwn3_lives",
   "awarded_by": null
  },
  {
@@ -554,7 +554,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv3ChestSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -576,7 +576,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv3KnightShieldSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -717,7 +717,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv3KnightShieldSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -739,7 +739,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv3ChestSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -761,7 +761,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv3ChestSpawner10_lives",
   "awarded_by": null
  },
  {
@@ -817,7 +817,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock0_lives",
   "awarded_by": null
  },
  {
@@ -839,7 +839,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackCauldronSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -861,7 +861,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock1_lives",
   "awarded_by": null
  },
  {
@@ -883,7 +883,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock8_lives",
   "awarded_by": null
  },
  {
@@ -905,7 +905,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock9_lives",
   "awarded_by": null
  },
  {
@@ -931,7 +931,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackChestCompanionSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -974,7 +974,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackSkullShelfSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -1000,7 +1000,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackChestCompanionSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -1022,7 +1022,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock16_lives",
   "awarded_by": null
  },
  {
@@ -1044,7 +1044,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock6_lives",
   "awarded_by": null
  },
  {
@@ -1066,7 +1066,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock7_lives",
   "awarded_by": null
  },
  {
@@ -1088,7 +1088,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock17_lives",
   "awarded_by": null
  },
  {
@@ -1110,7 +1110,7 @@
     25
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackChestCompanionSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -1132,7 +1132,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock10_lives",
   "awarded_by": null
  },
  {
@@ -1154,7 +1154,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock11_lives",
   "awarded_by": null
  },
  {
@@ -1176,7 +1176,7 @@
     20
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackChestSpawner9_lives",
   "awarded_by": null
  },
  {
@@ -1193,7 +1193,7 @@
   "tag": "Secret_01_Skull",
   "event": null,
   "contents": [],
-  "persist_key": null,
+  "persist_key": "ADV5ShackSkullShelfSpwn5_lives",
   "awarded_by": null
  },
  {
@@ -1215,7 +1215,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackSkullShelfSpwn6_lives",
   "awarded_by": null
  },
  {
@@ -1237,7 +1237,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackChestSpawner12_lives",
   "awarded_by": null
  },
  {
@@ -1259,7 +1259,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock3_lives",
   "awarded_by": null
  },
  {
@@ -1281,7 +1281,7 @@
     7
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackCauldronSpwn3_lives",
   "awarded_by": null
  },
  {
@@ -1320,7 +1320,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackChestSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -1346,7 +1346,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackChestSpawner7_lives",
   "awarded_by": null
  },
  {
@@ -1372,7 +1372,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackChestSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -1394,7 +1394,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackSkullShelfSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -1416,7 +1416,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackChestSpawner11_lives",
   "awarded_by": null
  },
  {
@@ -1438,7 +1438,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackCauldronSpwn2_lives",
   "awarded_by": null
  },
  {
@@ -1460,7 +1460,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock2_lives",
   "awarded_by": null
  },
  {
@@ -1482,7 +1482,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackSkullShelfSpwn7_lives",
   "awarded_by": null
  },
  {
@@ -1504,7 +1504,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackChestCompanionSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -1526,7 +1526,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock12_lives",
   "awarded_by": null
  },
  {
@@ -1548,7 +1548,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock13_lives",
   "awarded_by": null
  },
  {
@@ -1570,7 +1570,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackSkullShelfSpwn4_lives",
   "awarded_by": null
  },
  {
@@ -1592,7 +1592,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackSkullShelfSpwn3_lives",
   "awarded_by": null
  },
  {
@@ -1614,7 +1614,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock4_lives",
   "awarded_by": null
  },
  {
@@ -1636,7 +1636,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackAlohomoraPadLock5_lives",
   "awarded_by": null
  },
  {
@@ -1726,7 +1726,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackSkullShelfSpwn8_lives",
   "awarded_by": null
  },
  {
@@ -1816,7 +1816,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackChestSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -1889,7 +1889,7 @@
     6
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackChestSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -1911,7 +1911,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackChestSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -1937,7 +1937,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ADV5ShackSkullShelfSpwn2_lives",
   "awarded_by": null
  },
  {
@@ -2085,7 +2085,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv6CrateSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -2107,7 +2107,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv6CauldronSpwn2_lives",
   "awarded_by": null
  },
  {
@@ -2129,7 +2129,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv6CauldronSpwn3_lives",
   "awarded_by": null
  },
  {
@@ -2151,7 +2151,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv6ChestSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -2173,7 +2173,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv6CauldronSpwn4_lives",
   "awarded_by": null
  },
  {
@@ -2195,7 +2195,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv6CauldronSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -2306,7 +2306,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv6ChestSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -2336,7 +2336,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "adv6CauldronSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -2570,7 +2570,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbChestSpawner7_lives",
   "awarded_by": null
  },
  {
@@ -2600,7 +2600,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbChestSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -2630,7 +2630,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbChestSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -2660,7 +2660,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbChestSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -2690,7 +2690,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbChestSpawner9_lives",
   "awarded_by": null
  },
  {
@@ -2720,7 +2720,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbChestSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -2801,7 +2801,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbKnightSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -2831,7 +2831,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbChestSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -2861,7 +2861,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbKnightSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -2891,7 +2891,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbKnightSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -2921,7 +2921,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbChestSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -2951,7 +2951,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbKnightSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -2981,7 +2981,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbKnightSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -3011,7 +3011,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbKnightSpawner7_lives",
   "awarded_by": null
  },
  {
@@ -3041,7 +3041,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbKnightSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -3071,7 +3071,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbKnightSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -3101,7 +3101,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbKnightSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -3131,7 +3131,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbChestSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -3161,7 +3161,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bbChestSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -3319,7 +3319,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bexPumpkin2_lives",
   "awarded_by": null
  },
  {
@@ -3341,7 +3341,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bexPumpkin3_lives",
   "awarded_by": null
  },
  {
@@ -3363,7 +3363,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bexPumpkin1_lives",
   "awarded_by": null
  },
  {
@@ -3385,7 +3385,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bexPumpkin5_lives",
   "awarded_by": null
  },
  {
@@ -3407,7 +3407,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bexScarecrow0_lives",
   "awarded_by": null
  },
  {
@@ -3429,7 +3429,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bexPumpkin6_lives",
   "awarded_by": null
  },
  {
@@ -3451,7 +3451,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "bexPumpkin4_lives",
   "awarded_by": null
  },
  {
@@ -3724,7 +3724,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crChestSpawner11_lives",
   "awarded_by": null
  },
  {
@@ -3780,7 +3780,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crChestSpawner22_lives",
   "awarded_by": null
  },
  {
@@ -3823,7 +3823,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crChestSpawner15_lives",
   "awarded_by": null
  },
  {
@@ -3883,7 +3883,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crArmoireSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -3909,7 +3909,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crArmoireSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -4003,7 +4003,7 @@
     6
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crChestSpawner17_lives",
   "awarded_by": null
  },
  {
@@ -4042,7 +4042,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crChestSpawner14_lives",
   "awarded_by": null
  },
  {
@@ -4064,7 +4064,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crKnightSpawner17_lives",
   "awarded_by": null
  },
  {
@@ -4086,7 +4086,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crKnightSpawner31_lives",
   "awarded_by": null
  },
  {
@@ -4108,7 +4108,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crKnightSpawner30_lives",
   "awarded_by": null
  },
  {
@@ -4130,7 +4130,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crKnightSpawner29_lives",
   "awarded_by": null
  },
  {
@@ -4152,7 +4152,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crKnightSpawner28_lives",
   "awarded_by": null
  },
  {
@@ -4174,7 +4174,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crKnightSpawner27_lives",
   "awarded_by": null
  },
  {
@@ -4196,7 +4196,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crKnightSpawner25_lives",
   "awarded_by": null
  },
  {
@@ -4235,7 +4235,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crKnightSpawner9_lives",
   "awarded_by": null
  },
  {
@@ -4261,7 +4261,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crChestSpawner18_lives",
   "awarded_by": null
  },
  {
@@ -4283,7 +4283,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crKnightSpawner32_lives",
   "awarded_by": null
  },
  {
@@ -4305,7 +4305,7 @@
     12
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crKnightSpawner22_lives",
   "awarded_by": null
  },
  {
@@ -4327,7 +4327,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crKnightSpawner18_lives",
   "awarded_by": null
  },
  {
@@ -4349,7 +4349,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crKnightSpawner10_lives",
   "awarded_by": null
  },
  {
@@ -4371,7 +4371,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crChestSpawner20_lives",
   "awarded_by": null
  },
  {
@@ -4444,7 +4444,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner23_lives",
   "awarded_by": null
  },
  {
@@ -4466,7 +4466,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -4488,7 +4488,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner9_lives",
   "awarded_by": null
  },
  {
@@ -4510,7 +4510,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner7_lives",
   "awarded_by": null
  },
  {
@@ -4532,7 +4532,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -4554,7 +4554,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -4576,7 +4576,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -4598,7 +4598,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -4620,7 +4620,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -4642,7 +4642,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -4664,7 +4664,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -4686,7 +4686,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -4708,7 +4708,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner16_lives",
   "awarded_by": null
  },
  {
@@ -4730,7 +4730,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner14_lives",
   "awarded_by": null
  },
  {
@@ -4752,7 +4752,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner13_lives",
   "awarded_by": null
  },
  {
@@ -4774,7 +4774,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -4796,7 +4796,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -4818,7 +4818,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -4840,7 +4840,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner7_lives",
   "awarded_by": null
  },
  {
@@ -4862,7 +4862,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -4884,7 +4884,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner12_lives",
   "awarded_by": null
  },
  {
@@ -4910,7 +4910,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner11_lives",
   "awarded_by": null
  },
  {
@@ -4936,7 +4936,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner15_lives",
   "awarded_by": null
  },
  {
@@ -4962,7 +4962,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner21_lives",
   "awarded_by": null
  },
  {
@@ -4979,7 +4979,7 @@
   "tag": "KnightSpawner",
   "event": null,
   "contents": [],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -5001,7 +5001,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -5040,7 +5040,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner19_lives",
   "awarded_by": null
  },
  {
@@ -5079,7 +5079,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -5101,7 +5101,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner23_lives",
   "awarded_by": null
  },
  {
@@ -5131,7 +5131,7 @@
     6
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner13_lives",
   "awarded_by": null
  },
  {
@@ -5170,7 +5170,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner16_lives",
   "awarded_by": null
  },
  {
@@ -5192,7 +5192,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner19_lives",
   "awarded_by": null
  },
  {
@@ -5218,7 +5218,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner24_lives",
   "awarded_by": null
  },
  {
@@ -5240,7 +5240,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbBannerSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -5279,7 +5279,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner21_lives",
   "awarded_by": null
  },
  {
@@ -5352,7 +5352,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner10_lives",
   "awarded_by": null
  },
  {
@@ -5408,7 +5408,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbChestSpawner12_lives",
   "awarded_by": null
  },
  {
@@ -5430,7 +5430,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "crbKnightSpawner9_lives",
   "awarded_by": null
  },
  {
@@ -5452,7 +5452,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlChestSpawner29_lives",
   "awarded_by": null
  },
  {
@@ -5559,7 +5559,7 @@
     22
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlChestSpawner15_lives",
   "awarded_by": null
  },
  {
@@ -5581,7 +5581,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlChestSpawner21_lives",
   "awarded_by": null
  },
  {
@@ -5603,7 +5603,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlPumpkin3_lives",
   "awarded_by": null
  },
  {
@@ -5625,7 +5625,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlPumpkin8_lives",
   "awarded_by": null
  },
  {
@@ -5647,7 +5647,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlPumpkin9_lives",
   "awarded_by": null
  },
  {
@@ -5669,7 +5669,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlPumpkin7_lives",
   "awarded_by": null
  },
  {
@@ -5691,7 +5691,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlPumpkin2_lives",
   "awarded_by": null
  },
  {
@@ -5730,7 +5730,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlPumpkin6_lives",
   "awarded_by": null
  },
  {
@@ -5752,7 +5752,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlPumpkin5_lives",
   "awarded_by": null
  },
  {
@@ -5774,7 +5774,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlPumpkin0_lives",
   "awarded_by": null
  },
  {
@@ -5869,7 +5869,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlKnightSpawner22_lives",
   "awarded_by": null
  },
  {
@@ -5891,7 +5891,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlKnightSpawner18_lives",
   "awarded_by": null
  },
  {
@@ -5913,7 +5913,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlChestSpawner20_lives",
   "awarded_by": null
  },
  {
@@ -5935,7 +5935,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlChestSpawner17_lives",
   "awarded_by": null
  },
  {
@@ -6008,7 +6008,7 @@
     6
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlKnightSpawner9_lives",
   "awarded_by": null
  },
  {
@@ -6064,7 +6064,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlChestSpawner16_lives",
   "awarded_by": null
  },
  {
@@ -6086,7 +6086,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlKnightSpawner19_lives",
   "awarded_by": null
  },
  {
@@ -6108,7 +6108,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlKnightSpawner24_lives",
   "awarded_by": null
  },
  {
@@ -6164,7 +6164,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlKnightSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -6186,7 +6186,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlKnightSpawner21_lives",
   "awarded_by": null
  },
  {
@@ -6208,7 +6208,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlKnightSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -6230,7 +6230,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlKnightSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -6252,7 +6252,7 @@
     6
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlKnightSpawner11_lives",
   "awarded_by": null
  },
  {
@@ -6274,7 +6274,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlKnightSpawner16_lives",
   "awarded_by": null
  },
  {
@@ -6296,7 +6296,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlKnightSpawner23_lives",
   "awarded_by": null
  },
  {
@@ -6386,7 +6386,7 @@
     6
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlChestSpawner30_lives",
   "awarded_by": null
  },
  {
@@ -6680,7 +6680,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlTapestrySpwn1_lives",
   "awarded_by": null
  },
  {
@@ -6753,7 +6753,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlPumpkin12_lives",
   "awarded_by": null
  },
  {
@@ -6809,7 +6809,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlKnightSpawner20_lives",
   "awarded_by": null
  },
  {
@@ -6831,7 +6831,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlChestSpawner22_lives",
   "awarded_by": null
  },
  {
@@ -6853,7 +6853,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlTapestrySpwn2_lives",
   "awarded_by": null
  },
  {
@@ -6875,7 +6875,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlChestSpawner25_lives",
   "awarded_by": null
  },
  {
@@ -6905,7 +6905,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner7_lives",
   "awarded_by": null
  },
  {
@@ -6935,7 +6935,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -6965,7 +6965,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner9_lives",
   "awarded_by": null
  },
  {
@@ -6995,7 +6995,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -7042,7 +7042,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -7072,7 +7072,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -7098,7 +7098,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner12_lives",
   "awarded_by": null
  },
  {
@@ -7124,7 +7124,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -7150,7 +7150,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner7_lives",
   "awarded_by": null
  },
  {
@@ -7176,7 +7176,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -7206,7 +7206,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -7236,7 +7236,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -7262,7 +7262,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner13_lives",
   "awarded_by": null
  },
  {
@@ -7288,7 +7288,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner14_lives",
   "awarded_by": null
  },
  {
@@ -7314,7 +7314,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -7340,7 +7340,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -7366,7 +7366,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -7392,7 +7392,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -7418,7 +7418,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -7474,7 +7474,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner14_lives",
   "awarded_by": null
  },
  {
@@ -7530,7 +7530,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner23_lives",
   "awarded_by": null
  },
  {
@@ -7552,7 +7552,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbTopiaryBadgerSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -7574,7 +7574,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbTopiarySnakeSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -7617,7 +7617,7 @@
     12
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner12_lives",
   "awarded_by": null
  },
  {
@@ -7656,7 +7656,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbTopiaryLionSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -7678,7 +7678,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner26_lives",
   "awarded_by": null
  },
  {
@@ -7717,7 +7717,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -7739,7 +7739,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner19_lives",
   "awarded_by": null
  },
  {
@@ -7773,7 +7773,7 @@
   "tag": "KnightSpawner",
   "event": null,
   "contents": [],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -7795,7 +7795,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner15_lives",
   "awarded_by": null
  },
  {
@@ -7817,7 +7817,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbCauldronSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -7834,7 +7834,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "dlbCauldronCake1_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -7856,7 +7856,7 @@
     16
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner10_lives",
   "awarded_by": null
  },
  {
@@ -7912,7 +7912,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner13_lives",
   "awarded_by": null
  },
  {
@@ -7968,7 +7968,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbCauldronSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -7990,7 +7990,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner11_lives",
   "awarded_by": null
  },
  {
@@ -8012,7 +8012,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbCauldronSpwn2_lives",
   "awarded_by": null
  },
  {
@@ -8046,7 +8046,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "dlbCauldronCake2_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -8063,7 +8063,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "dlbCauldronCake4_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -8080,7 +8080,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "dlbCauldronCake0_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -8102,7 +8102,7 @@
     6
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner32_lives",
   "awarded_by": null
  },
  {
@@ -8119,7 +8119,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "dlbCauldronCake16_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -8136,7 +8136,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "dlbCauldronCake18_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -8153,7 +8153,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "dlbCauldronCake19_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -8260,7 +8260,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner17_lives",
   "awarded_by": null
  },
  {
@@ -8282,7 +8282,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner31_lives",
   "awarded_by": null
  },
  {
@@ -8304,7 +8304,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner30_lives",
   "awarded_by": null
  },
  {
@@ -8326,7 +8326,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner29_lives",
   "awarded_by": null
  },
  {
@@ -8348,7 +8348,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner28_lives",
   "awarded_by": null
  },
  {
@@ -8370,7 +8370,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner27_lives",
   "awarded_by": null
  },
  {
@@ -8392,7 +8392,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner26_lives",
   "awarded_by": null
  },
  {
@@ -8414,7 +8414,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbKnightSpawner25_lives",
   "awarded_by": null
  },
  {
@@ -8436,7 +8436,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner28_lives",
   "awarded_by": null
  },
  {
@@ -8487,7 +8487,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "dlbCauldronCake25_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -8509,7 +8509,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbTopiaryRavenSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -8531,7 +8531,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner27_lives",
   "awarded_by": null
  },
  {
@@ -8553,7 +8553,7 @@
     6
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner31_lives",
   "awarded_by": null
  },
  {
@@ -8626,7 +8626,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner24_lives",
   "awarded_by": null
  },
  {
@@ -8643,7 +8643,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "dlbCauldronCake15_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -8660,7 +8660,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "dlbCauldronCake20_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -8716,7 +8716,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "dlbCauldronCake21_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -8874,7 +8874,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dlbChestSpawner22_lives",
   "awarded_by": null
  },
  {
@@ -9002,7 +9002,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glKnightSpawner39_lives",
   "awarded_by": null
  },
  {
@@ -9028,7 +9028,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glKnightSpawner38_lives",
   "awarded_by": null
  },
  {
@@ -9152,7 +9152,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glCauldronSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -9191,7 +9191,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glAlohomoraPadLock12_lives",
   "awarded_by": null
  },
  {
@@ -9306,7 +9306,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glChestSpawner35_lives",
   "awarded_by": null
  },
  {
@@ -9374,7 +9374,7 @@
   "tag": "RmG_Secret_Chest_NoSpawn",
   "event": null,
   "contents": [],
-  "persist_key": null,
+  "persist_key": "glChestSpawner13_lives",
   "awarded_by": null
  },
  {
@@ -9404,7 +9404,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glChestSpawner31_lives",
   "awarded_by": null
  },
  {
@@ -9685,7 +9685,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glChestSpawner12_lives",
   "awarded_by": null
  },
  {
@@ -10127,7 +10127,7 @@
   "tag": "KnightSpawner",
   "event": null,
   "contents": [],
-  "persist_key": null,
+  "persist_key": "glKnightSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -10234,7 +10234,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -10256,7 +10256,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -10278,7 +10278,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -10308,7 +10308,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner7_lives",
   "awarded_by": null
  },
  {
@@ -10330,7 +10330,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -10352,7 +10352,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner9_lives",
   "awarded_by": null
  },
  {
@@ -10378,7 +10378,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbKnightSpawner7_lives",
   "awarded_by": null
  },
  {
@@ -10404,7 +10404,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbKnightSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -10430,7 +10430,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbKnightSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -10456,7 +10456,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -10482,7 +10482,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -10508,7 +10508,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbKnightSpawner12_lives",
   "awarded_by": null
  },
  {
@@ -10534,7 +10534,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbKnightSpawner13_lives",
   "awarded_by": null
  },
  {
@@ -10560,7 +10560,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbKnightSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -10603,7 +10603,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbKnightSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -10629,7 +10629,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbKnightSpawner14_lives",
   "awarded_by": null
  },
  {
@@ -10655,7 +10655,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbKnightSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -10681,7 +10681,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -10707,7 +10707,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -10724,7 +10724,7 @@
   "tag": "KnightSpawner",
   "event": null,
   "contents": [],
-  "persist_key": null,
+  "persist_key": "glbKnightSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -10797,7 +10797,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbKnightSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -11091,7 +11091,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbKnightSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -11134,7 +11134,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner30_lives",
   "awarded_by": null
  },
  {
@@ -11160,7 +11160,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner33_lives",
   "awarded_by": null
  },
  {
@@ -11246,7 +11246,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbBannerSpwn2_lives",
   "awarded_by": null
  },
  {
@@ -11331,7 +11331,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "glbCauldronCake17_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -11382,7 +11382,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "glbCauldronCake2_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -11399,7 +11399,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "glbCauldronCake0_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -11429,7 +11429,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner32_lives",
   "awarded_by": null
  },
  {
@@ -11446,7 +11446,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "glbCauldronCake16_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -11463,7 +11463,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "glbCauldronCake18_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -11480,7 +11480,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "glbCauldronCake19_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -11523,7 +11523,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner11_lives",
   "awarded_by": null
  },
  {
@@ -11557,7 +11557,7 @@
   "tag": "CauldronCake",
   "event": null,
   "contents": [],
-  "persist_key": "glbCauldronCake4_PU",
+  "persist_key": null,
   "awarded_by": null
  },
  {
@@ -11638,7 +11638,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbChestSpawner10_lives",
   "awarded_by": null
  },
  {
@@ -11664,7 +11664,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbBannerSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -11686,7 +11686,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "glbBannerSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -12443,7 +12443,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dungChestSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -12509,7 +12509,7 @@
     12
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dungChestSpawner11_lives",
   "awarded_by": null
  },
  {
@@ -12531,7 +12531,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dungChestSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -12553,7 +12553,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dungChestSpawner10_lives",
   "awarded_by": null
  },
  {
@@ -12592,7 +12592,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dungKnightSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -12614,7 +12614,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dungKnightSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -12636,7 +12636,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dungChestSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -12662,7 +12662,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dungChestSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -12688,7 +12688,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "dungChestSpawner7_lives",
   "awarded_by": null
  },
  {
@@ -12778,7 +12778,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfChestSpawner9_lives",
   "awarded_by": null
  },
  {
@@ -12800,7 +12800,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfAlohomoraPadLock1_lives",
   "awarded_by": null
  },
  {
@@ -12929,7 +12929,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfKnightSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -12951,7 +12951,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfKnightSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -12973,7 +12973,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfKnightSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -12995,7 +12995,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfKnightSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -13017,7 +13017,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfKnightSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -13043,7 +13043,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfKnightSpawner7_lives",
   "awarded_by": null
  },
  {
@@ -13065,7 +13065,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfChestSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -13087,7 +13087,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfChestSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -13109,7 +13109,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfChestSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -13131,7 +13131,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfChestSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -13153,7 +13153,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfChestSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -13179,7 +13179,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfChestSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -13201,7 +13201,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfChestSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -13223,7 +13223,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfChestSpawner7_lives",
   "awarded_by": null
  },
  {
@@ -13245,7 +13245,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfKnightSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -13267,7 +13267,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfKnightSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -13344,7 +13344,7 @@
     6
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfTapestrySpwn1_lives",
   "awarded_by": null
  },
  {
@@ -13366,7 +13366,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfTapestrySpwn0_lives",
   "awarded_by": null
  },
  {
@@ -13388,7 +13388,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfChestSpawner10_lives",
   "awarded_by": null
  },
  {
@@ -13444,7 +13444,7 @@
     6
    ]
   ],
-  "persist_key": null,
+  "persist_key": "rfChestSpawner11_lives",
   "awarded_by": null
  },
  {
@@ -13505,7 +13505,7 @@
     12
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfCauldronSpwn3_lives",
   "awarded_by": null
  },
  {
@@ -13527,7 +13527,7 @@
     12
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfCauldronSpwn4_lives",
   "awarded_by": null
  },
  {
@@ -14093,7 +14093,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfKnightSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -14115,7 +14115,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfKnightSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -14290,7 +14290,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfKnightSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -14329,7 +14329,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfCauldronSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -14470,7 +14470,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfKnightSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -14866,7 +14866,7 @@
     20
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfCauldronSpwn2_lives",
   "awarded_by": null
  },
  {
@@ -14888,7 +14888,7 @@
     20
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfCauldronSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -14918,7 +14918,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfeHpgenericspawner1_lives",
   "awarded_by": null
  },
  {
@@ -14991,7 +14991,7 @@
     16
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfeChestSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -15013,7 +15013,7 @@
     16
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfeChestSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -15035,7 +15035,7 @@
     16
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfeChestSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -15057,7 +15057,7 @@
     16
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfeChestSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -15168,7 +15168,7 @@
     6
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfeHpgenericspawner0_lives",
   "awarded_by": null
  },
  {
@@ -15194,7 +15194,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfeHpgenericspawner4_lives",
   "awarded_by": null
  },
  {
@@ -15220,7 +15220,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfeHpgenericspawner3_lives",
   "awarded_by": null
  },
  {
@@ -15246,7 +15246,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfeHpgenericspawner2_lives",
   "awarded_by": null
  },
  {
@@ -15336,7 +15336,7 @@
     15
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfeSkullShelfSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -15358,7 +15358,7 @@
     15
    ]
   ],
-  "persist_key": null,
+  "persist_key": "hfeSkullShelfSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -15397,7 +15397,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "HP3FinalHPGenericSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -15419,7 +15419,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "GroundDADAKnightShieldSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -15458,7 +15458,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "GroundDADASkullFloatSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -15565,7 +15565,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubScarecrow0_lives",
   "awarded_by": null
  },
  {
@@ -15587,7 +15587,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubKnightShieldSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -15626,7 +15626,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubChestSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -15648,7 +15648,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubKnightCollapse0_lives",
   "awarded_by": null
  },
  {
@@ -15687,7 +15687,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubKnightShieldSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -15726,7 +15726,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubPumpkin3_lives",
   "awarded_by": null
  },
  {
@@ -15748,7 +15748,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubPumpkin2_lives",
   "awarded_by": null
  },
  {
@@ -15770,7 +15770,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubPumpkin6_lives",
   "awarded_by": null
  },
  {
@@ -15792,7 +15792,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubPumpkin5_lives",
   "awarded_by": null
  },
  {
@@ -15814,7 +15814,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubPumpkin1_lives",
   "awarded_by": null
  },
  {
@@ -15836,7 +15836,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubKnightShieldSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -15875,7 +15875,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubPumpkin4_lives",
   "awarded_by": null
  },
  {
@@ -15897,7 +15897,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubKnightSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -15919,7 +15919,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubTopiarySnakeSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -15941,7 +15941,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubTopiaryRavenSpwn2_lives",
   "awarded_by": null
  },
  {
@@ -15963,7 +15963,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubTopiaryBadgerSpwn2_lives",
   "awarded_by": null
  },
  {
@@ -15985,7 +15985,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubTopiaryBadgerSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -16041,7 +16041,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubTopiarySnakeSpwn3_lives",
   "awarded_by": null
  },
  {
@@ -16063,7 +16063,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubTopiaryRavenSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -16085,7 +16085,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubTopiaryLionSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -16124,7 +16124,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubTopiaryLionSpwn2_lives",
   "awarded_by": null
  },
  {
@@ -16146,7 +16146,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubTopiaryBadgerSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -16168,7 +16168,7 @@
     4
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubTopiarySnakeSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -16207,7 +16207,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubChestSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -16229,7 +16229,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubChestSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -16438,7 +16438,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubArmoireSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -16460,7 +16460,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubArmoireSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -16669,7 +16669,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubTopiaryRavenSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -16691,7 +16691,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ghubTopiaryLionSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -16934,7 +16934,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubAlohomoraPadLock14_lives",
   "awarded_by": null
  },
  {
@@ -16956,7 +16956,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubAlohomoraPadLock15_lives",
   "awarded_by": null
  },
  {
@@ -16978,7 +16978,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner21_lives",
   "awarded_by": null
  },
  {
@@ -17004,7 +17004,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -17026,7 +17026,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubAlohomoraPadLock16_lives",
   "awarded_by": null
  },
  {
@@ -17048,7 +17048,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubAlohomoraPadLock13_lives",
   "awarded_by": null
  },
  {
@@ -17070,7 +17070,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubKnightShieldSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -17126,7 +17126,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubKnightSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -17148,7 +17148,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubAlohomoraPadLock11_lives",
   "awarded_by": null
  },
  {
@@ -17170,7 +17170,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubAlohomoraPadLock10_lives",
   "awarded_by": null
  },
  {
@@ -17192,7 +17192,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubCauldronSpwn3_lives",
   "awarded_by": null
  },
  {
@@ -17214,7 +17214,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubAlohomoraPadLock2_lives",
   "awarded_by": null
  },
  {
@@ -17236,7 +17236,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubAlohomoraPadLock5_lives",
   "awarded_by": null
  },
  {
@@ -17258,7 +17258,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubAlohomoraPadLock1_lives",
   "awarded_by": null
  },
  {
@@ -17280,7 +17280,7 @@
     15
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestCompanionSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -17302,7 +17302,7 @@
     20
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner18_lives",
   "awarded_by": null
  },
  {
@@ -17324,7 +17324,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubKnightSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -17363,7 +17363,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubKnightShieldSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -17385,7 +17385,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner19_lives",
   "awarded_by": null
  },
  {
@@ -17407,7 +17407,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubAlohomoraPadLock12_lives",
   "awarded_by": null
  },
  {
@@ -17429,7 +17429,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner13_lives",
   "awarded_by": null
  },
  {
@@ -17485,7 +17485,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubKnightSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -17507,7 +17507,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubKnightSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -17529,7 +17529,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubCauldronSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -17546,7 +17546,7 @@
   "tag": "1st_Flr_Peaves2_StandIn_Spawn",
   "event": null,
   "contents": [],
-  "persist_key": null,
+  "persist_key": "ihubSkullFloatSpwn3_lives",
   "awarded_by": null
  },
  {
@@ -17589,7 +17589,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner17_lives",
   "awarded_by": null
  },
  {
@@ -17611,7 +17611,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubTapestrySpwn0_lives",
   "awarded_by": null
  },
  {
@@ -17637,7 +17637,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -17659,7 +17659,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubAlohomoraPadLock4_lives",
   "awarded_by": null
  },
  {
@@ -17681,7 +17681,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubKnightSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -17703,7 +17703,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubKnightCollapse4_lives",
   "awarded_by": null
  },
  {
@@ -17725,7 +17725,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubTapestrySpwn1_lives",
   "awarded_by": null
  },
  {
@@ -17747,7 +17747,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubCauldronSpwn2_lives",
   "awarded_by": null
  },
  {
@@ -17769,7 +17769,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubAlohomoraPadLock3_lives",
   "awarded_by": null
  },
  {
@@ -17791,7 +17791,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestCompanionSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -17813,7 +17813,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubCauldronSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -17835,7 +17835,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubKnightSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -17857,7 +17857,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubAlohomoraPadLock0_lives",
   "awarded_by": null
  },
  {
@@ -17879,7 +17879,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestCompanionSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -17952,7 +17952,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -18076,7 +18076,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -18098,7 +18098,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubSkullShelfSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -18120,7 +18120,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner7_lives",
   "awarded_by": null
  },
  {
@@ -18142,7 +18142,7 @@
     12
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubSkullFloatSpwn5_lives",
   "awarded_by": null
  },
  {
@@ -18168,7 +18168,7 @@
     2
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubSkullFloatSpwn7_lives",
   "awarded_by": null
  },
  {
@@ -18211,7 +18211,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -18233,7 +18233,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubKnightSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -18276,7 +18276,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner14_lives",
   "awarded_by": null
  },
  {
@@ -18298,7 +18298,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubSkullFloatSpwn2_lives",
   "awarded_by": null
  },
  {
@@ -18337,7 +18337,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -18359,7 +18359,7 @@
     20
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -18449,7 +18449,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubChestSpawner20_lives",
   "awarded_by": null
  },
  {
@@ -18488,7 +18488,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubTapestrySpwn2_lives",
   "awarded_by": null
  },
  {
@@ -18629,7 +18629,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubArmoireSpwn3_lives",
   "awarded_by": null
  },
  {
@@ -18855,7 +18855,7 @@
     6
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubSkullFloatSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -18928,7 +18928,7 @@
     3
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubSkullFloatSpwn4_lives",
   "awarded_by": null
  },
  {
@@ -19040,7 +19040,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubHPGenericSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -19062,7 +19062,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubCauldronSpwn4_lives",
   "awarded_by": null
  },
  {
@@ -19084,7 +19084,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ihubSkullFloatSpwn9_lives",
   "awarded_by": null
  },
  {
@@ -19285,7 +19285,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppbAlohomoraPadLock0_lives",
   "awarded_by": null
  },
  {
@@ -19307,7 +19307,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppbAlohomoraPadLock3_lives",
   "awarded_by": null
  },
  {
@@ -19363,7 +19363,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppbAlohomoraPadLock1_lives",
   "awarded_by": null
  },
  {
@@ -19440,7 +19440,7 @@
     20
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppbChestSpawner12_lives",
   "awarded_by": null
  },
  {
@@ -19714,7 +19714,7 @@
     30
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppcChestSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -19740,7 +19740,7 @@
     15
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppcChestSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -19762,7 +19762,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppcKnightSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -19784,7 +19784,7 @@
     8
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppcKnightSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -19835,7 +19835,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppdChestCompanionSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -19857,7 +19857,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppdAlohomoraPadLock12_lives",
   "awarded_by": null
  },
  {
@@ -19879,7 +19879,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppdAlohomoraPadLock1_lives",
   "awarded_by": null
  },
  {
@@ -19901,7 +19901,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppdAlohomoraPadLock13_lives",
   "awarded_by": null
  },
  {
@@ -19931,7 +19931,7 @@
     15
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppdChestCompanionSpawner0_lives",
   "awarded_by": null
  },
  {
@@ -19953,7 +19953,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppdAlohomoraPadLock3_lives",
   "awarded_by": null
  },
  {
@@ -19975,7 +19975,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppdAlohomoraPadLock4_lives",
   "awarded_by": null
  },
  {
@@ -19997,7 +19997,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppdAlohomoraPadLock5_lives",
   "awarded_by": null
  },
  {
@@ -20014,7 +20014,7 @@
   "tag": "7thFlr_FreePixies_Spawn",
   "event": null,
   "contents": [],
-  "persist_key": null,
+  "persist_key": "ppdSkullFloatSpwn5_lives",
   "awarded_by": null
  },
  {
@@ -20036,7 +20036,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppdTapestrySpwn1_lives",
   "awarded_by": null
  },
  {
@@ -20053,7 +20053,7 @@
   "tag": "7thFlr_FreePixies02_Spawn",
   "event": null,
   "contents": [],
-  "persist_key": null,
+  "persist_key": "ppdSkullFloatSpwn4_lives",
   "awarded_by": null
  },
  {
@@ -20083,7 +20083,7 @@
     25
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppeKnightSpawner5_lives",
   "awarded_by": null
  },
  {
@@ -20105,7 +20105,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppeKnightSpawner4_lives",
   "awarded_by": null
  },
  {
@@ -20131,7 +20131,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppeKnightSpawner2_lives",
   "awarded_by": null
  },
  {
@@ -20161,7 +20161,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppeKnightSpawner3_lives",
   "awarded_by": null
  },
  {
@@ -20183,7 +20183,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppeKnightSpawner1_lives",
   "awarded_by": null
  },
  {
@@ -20209,7 +20209,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppeKnightSpawner7_lives",
   "awarded_by": null
  },
  {
@@ -20235,7 +20235,7 @@
     20
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppeKnightSpawner6_lives",
   "awarded_by": null
  },
  {
@@ -20265,7 +20265,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppeArmoireSpwn2_lives",
   "awarded_by": null
  },
  {
@@ -20308,7 +20308,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppeArmoireSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -20347,7 +20347,7 @@
     25
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppfCauldronSpwn5_lives",
   "awarded_by": null
  },
  {
@@ -20373,7 +20373,7 @@
     1
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppfChestSpawner34_lives",
   "awarded_by": null
  },
  {
@@ -20395,7 +20395,7 @@
     5
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppfKnightSpawner8_lives",
   "awarded_by": null
  },
  {
@@ -20417,7 +20417,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppfBannerSpwn1_lives",
   "awarded_by": null
  },
  {
@@ -20439,7 +20439,7 @@
     10
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppfBannerSpwn0_lives",
   "awarded_by": null
  },
  {
@@ -20461,7 +20461,7 @@
     null
    ]
   ],
-  "persist_key": null,
+  "persist_key": "ppfKnightSpawner7_lives",
   "awarded_by": null
  }
 ]
