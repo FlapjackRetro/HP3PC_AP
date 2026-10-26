@@ -126,3 +126,10 @@ Every look rendered (InsideHub entrance hall):
 - The Marauder's Map skeletal mesh at DrawScale 1 stands upright and large, about the size of a notice board.
   It needs a smaller scale (about 0.4) and a lying-down rotation when it's placed as an item.
 - Pasty, cake and Harry's card look right at the game's own scales.
+- Harry's card (a real `WC_HarryPotter` spawned at runtime) fell to the floor, could be picked up despite
+  `SetCollision(false, false, false)`, and **was added to the card collection** on a new save, as the only card
+  collected. Its bounce-into-place state probably turns collision back on.
+  - For the randomizer this is good news. A card is tracked by its class / `CardID` alone (`WizardCardManager`),
+    with no map or story state involved.
+  - So a received card can be granted by spawning its `WC_*` pickup at the player, the same way the game's own
+    `HPSpawnThingy` hands out event-reward cards.
