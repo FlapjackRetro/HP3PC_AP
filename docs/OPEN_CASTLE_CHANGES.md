@@ -120,3 +120,23 @@ cutscene only; confirm after the final exams): nothing leads to them once A1, A6
 - COMC tutorial exit (A14).
 - How the classroom triggers I3–I5 are activated: some are cutscene-fired, so they may need to become touch triggers.
 - Return-point mechanism (G5): a spawned `PlayerStart` with the right `SmartStart.PreviousLevelName`, or a teleport.
+
+## 8. Test results
+
+### poc1 (2026-10-26)
+
+- Both hooks install. New Game → InsideHub in `GState090` works; the `090` intro cutscene ("Ron's exam is next")
+  still plays at the start. It can stay for now.
+- Entrance-hall north door → Adv6Paddock works. The paddock exit (→ DementorBattle) is rerouted to InsideHub, but
+  the player lands in the **GState holding room** (around (−3650, −3700, 326)). That room holds every
+  `GStateNNN` `PlayerStart` (the `090` one is at (−2424, −3597, 368)), plus parked cutscene props such as the
+  hag's vendor cards. Those cards are props, not checks.
+  - Why: `KWHeroController.TravelPostAccept` moves the player to the `SmartStart` whose `PreviousLevelName`
+    matches `KWPawn.PreviousLevelName` (the map just left). InsideHub has SmartStarts only for GroundsHub,
+    DungeonHUB, the three challenge B maps, BeanBonus and PP_B–F. Without a match, the player stays at the
+    state's `PlayerStart`, and in vanilla a cutscene then moves them.
+  - Fix (poc2, G5): during that one call, hand the pawn a nearby SmartStart's name, so Ron and Hermione follow too.
+    Then `RelocatePawn` to the Open Castle door where there's no SmartStart close by.
+- Side chamber: only the Carpe Retractum portcullis is raised in `090`; Draconifors and Glacius stay down (C1–C6).
+- Shortcut portraits: "Looks like it's locked". The passwords (`pp_8`–`pp_21`) are only granted in `010`.
+  poc2 calls `PortraitPasswordManager.EnablePortraitShortcuts` on every map load (option `start_unlocked`).
