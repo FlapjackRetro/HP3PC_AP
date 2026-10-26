@@ -19,6 +19,10 @@
  *  6. Leftover goodies (leftovers.h): items a chest threw out but the player didn't pick up come back on the next
  *     visit.
  *  7. Softlock escape (hubmenu.h): RETURN TO HUB in the pause menu's exit dialog.
+ *  8. Door gates: a door's loading trigger only works while the door is unlocked, and its portcullis (a TriggerToggle
+ *     KWMover, the one the vanilla cutscenes trigger) is raised or lowered to match. Which doors are unlocked comes
+ *     from Documents\Harry Potter and the Prisoner of Azkaban\HP3_OpenCastle.ini, [Doors] <key>=1/0 (default 1), read
+ *     every 2 s, so it can be changed while the game runs. The randomizer will drive the same switch.
  *
  * Not in this build: item gating (every door is open), spell hooks, the Marauder's Map pickup.
  *
@@ -53,8 +57,10 @@ IMP void*  WINAPI VirtualAlloc(void*, u32, u32, u32);
 IMP BOOL   WINAPI FlushInstructionCache(HANDLE, const void*, u32);
 IMP int    __cdecl wsprintfW(wchar*, const wchar*, ...);
 IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
+IMP u32    WINAPI GetPrivateProfileIntW(const wchar*, const wchar*, int, const wchar*);
+IMP u32    WINAPI GetTickCount(void);
 
-#define OC_VERSION L"poc4e"
+#define OC_VERSION L"poc5"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -191,6 +197,21 @@ static void enable_shortcuts(void) {
     gPEOrig((void *)ppm, fn, 0, 0);
     log_line(L"shortcuts: all shortcut passwords unlocked");
 }
+/* ---- door gates (game thread part): Trigger the queued gate movers ---- */
+#define MAXGATES 8
+static volatile u32 gGateObj[MAXGATES]; static volatile u32 gGateFire;   /* bit i: Trigger gate i */
+static int N_Trigger = -1;
+static void fire_gates(void) {
+    struct { u32 other, instigator; } parms; void *fn; int i; u32 bits = gGateFire;
+    gGateFire = 0;
+    for (i = 0; i < MAXGATES; i++) if ((bits >> i) & 1) {
+        u32 m = gGateObj[i];
+        if (!m || N_Trigger < 0 || !(fn = gFindFunction((void *)m, N_Trigger, 0))) continue;   /* state-aware: TriggerToggle.Trigger */
+        parms.other = parms.instigator = 0;
+        gPEOrig((void *)m, fn, &parms, 0);
+    }
+}
+
 #include "leftovers.h"
 #include "hubmenu.h"
 static void __thiscall pe_hook(void *self, void *func, void *parms, void *result) {
@@ -199,6 +220,7 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
     if (gPendingShortcuts && !gInTravel) { gInTravel = 1; gPendingShortcuts = 0; enable_shortcuts(); gInTravel = 0; }
     if (gPendingRespawn && !gInTravel) { gInTravel = 1; gPendingRespawn = 0; lo_respawn(); gInTravel = 0; }
     if (gMenuPatch && !gInTravel) { gInTravel = 1; gMenuPatch = 0; hub_patch(); gInTravel = 0; }
+    if (gGateFire && !gInTravel) { gInTravel = 1; fire_gates(); gInTravel = 0; }
     if (!func || !self) { gPEOrig(self, func, parms, result); return; }
     fname = *(int *)((u8 *)func + 0x20);
     if (fname == N_MyOnClick && N_MyOnClick >= 0 && !gInTravel) {
@@ -253,18 +275,68 @@ static void install_hooks(void) {
 }
 
 /* ---- doors: stand here to enter (player positions marked in the playthrough) ---- */
-struct door { const wchar *map; float x, y, z; const wchar *dest; const wchar *name; };
+struct door { const wchar *map; float x, y, z; const wchar *dest; const wchar *name; const wchar *key; const wchar *gate; };
 static const struct door DOORS[] = {
-    { L"HP3_InsideHub",  731, 1615,   74, L"HP3_Adv6Paddock",     L"entrance hall north door" },
-    { L"HP3_InsideHub", 1427, -960, 2154, L"HP3_Adv1Express",     L"7th floor east door" },
-    { L"HP3_InsideHub",  838, -1844, 1194, L"HP3_Adv2ExpPatronum", L"DADA portcullis" },
-    { L"HP3_InsideHub", -710, -1349,  778, L"HP3_Adv3Library",     L"Library portcullis" },
-    { L"HP3_DungeonHUB", -481, 2805, -341, L"HP3_Adv5Shack",       L"dungeon door 1" },
+    /* map               stand here            goes to                 name                        ini key    portcullis mover tag */
+    { L"HP3_InsideHub",  731, 1615,   74, L"HP3_Adv6Paddock",     L"entrance hall north door", L"Paddock", 0 },
+    { L"HP3_InsideHub", 1427, -960, 2154, L"HP3_Adv1Express",     L"7th floor east door",      L"Express", 0 },
+    { L"HP3_InsideHub",  838, -1844, 1194, L"HP3_Adv2ExpPatronum", L"DADA portcullis",         L"DADA",    L"DADA_PortToExpecto_Mvr" },
+    { L"HP3_InsideHub", -710, -1349,  778, L"HP3_Adv3Library",     L"Library portcullis",      L"Library", L"Library_Port_Mvr" },
+    { L"HP3_DungeonHUB", -481, 2805, -341, L"HP3_Adv5Shack",       L"dungeon door 1",          L"Shack",   0 },
 };
 #define NDOORS (int)(sizeof DOORS / sizeof DOORS[0])
 #define DOOR_R   90.0f    /* horizontal reach */
 #define DOOR_DZ 160.0f
 #define ARM_R   300.0f    /* must have been this far from every door on the map before a door works */
+
+/* ---- door gates (worker part) ---- */
+static wchar gIniPath[600];
+static int gDoorOn[16];
+static int offTag = -1, offKeyNum = -1;
+static u32 gClsMover;
+static u32 gGateLevel; static u32 gGateLast[MAXGATES];   /* GetTickCount of our last Trigger, per gate */
+struct findgate { u32 level; int names[MAXGATES]; u32 found[MAXGATES]; };
+static int v_findgate(u32 o, int name, u32 cls, void *c) {
+    struct findgate *f = c; int i, tag; (void)name;
+    if (!cls || rd32(o + offLevel) != f->level || !is_a_cls(cls, gClsMover)) return 0;
+    tag = (int)rd32(o + offTag);
+    for (i = 0; i < NDOORS && i < MAXGATES; i++) if (f->names[i] >= 0 && tag == f->names[i]) f->found[i] = o;
+    return 0;
+}
+/* every 2 s: read which doors are unlocked; raise/lower each gate on this map to match */
+static void gates_poll(u32 level, const wchar *map) {
+    static wchar b[200]; int i, changed = 0;
+    for (i = 0; i < NDOORS; i++) {
+        int on = GetPrivateProfileIntW(L"Doors", DOORS[i].key, 1, gIniPath) != 0;
+        if (on != gDoorOn[i]) { changed = 1; gDoorOn[i] = on; }
+    }
+    if (changed) {
+        wcpy(b, L"doors unlocked:", 200);
+        for (i = 0; i < NDOORS; i++) if (gDoorOn[i]) wsprintfW(b + wlen(b), L" %s", DOORS[i].key);
+        log_line(b);
+    }
+    if (!gClsMover || offTag < 0 || offKeyNum < 0) return;
+    if (level != gGateLevel) {   /* new map: find its gate movers */
+        struct findgate f; int n = 0;
+        f.level = level;
+        for (i = 0; i < MAXGATES; i++) { f.found[i] = 0; f.names[i] = -1; gGateLast[i] = 0; }
+        for (i = 0; i < NDOORS && i < MAXGATES; i++) if (DOORS[i].gate && weq(DOORS[i].map, map)) { f.names[i] = name_index(DOORS[i].gate); n++; }
+        if (n) for_each_object(v_findgate, &f);
+        for (i = 0; i < MAXGATES; i++) gGateObj[i] = f.found[i];
+        gGateLevel = level;
+        for (i = 0; i < NDOORS && i < MAXGATES; i++) if (f.names[i] >= 0) {
+            wsprintfW(b, L"gate %s: %s %s", DOORS[i].key, DOORS[i].gate, f.found[i] ? L"found" : L"NOT FOUND"); log_line(b);
+        }
+    }
+    for (i = 0; i < NDOORS && i < MAXGATES; i++) {
+        u32 m = gGateObj[i]; int open;
+        if (!m) continue;
+        open = (rd32(m + offKeyNum) & 0xFF) != 0;   /* InterpolateTo sets KeyNum to the target key at once */
+        if (open == gDoorOn[i] || (gGateLast[i] && GetTickCount() - gGateLast[i] < 3000)) continue;
+        gGateLast[i] = GetTickCount(); gGateFire |= 1u << i;
+        wsprintfW(b, L"gate %s: %s", DOORS[i].key, gDoorOn[i] ? L"raising" : L"lowering"); log_line(b);
+    }
+}
 
 static u32 WINAPI worker(void *arg) {
     HANDLE core; static wchar buf[400], id[32], lastMap[64]; static struct players pl;
@@ -275,6 +347,10 @@ static u32 WINAPI worker(void *arg) {
         if (SHGetFolderPathW(0, 5 /*CSIDL_PERSONAL*/, 0, 0, docs) == 0)
             wsprintfW(gLogPath, L"%s\\Harry Potter and the Prisoner of Azkaban\\HP3_OpenCastle.log", docs);
         else wcpy(gLogPath, L"HP3_OpenCastle.log", 600);
+        if (SHGetFolderPathW(0, 5, 0, 0, docs) == 0)
+            wsprintfW(gIniPath, L"%s\\Harry Potter and the Prisoner of Azkaban\\HP3_OpenCastle.ini", docs);
+        else wcpy(gIniPath, L".\\HP3_OpenCastle.ini", 600);
+        for (i = 0; i < 16; i++) gDoorOn[i] = 1;
     }
     wsprintfW(buf, L"---- HP3 Open Castle " OC_VERSION L" loaded: travel hook %s, ProcessEvent hook %s ----",
               gHookFurl ? L"ok" : L"NOT INSTALLED", gHookPE ? L"ok" : L"NOT INSTALLED");
@@ -299,6 +375,7 @@ static u32 WINAPI worker(void *arg) {
                 NAME(N_EnableShortcuts, L"EnablePortraitShortcuts") NAME(N_SaveValue, L"SaveValue")
                 NAME(N_RestoreValue, L"RestoreValue") NAME(N_FancySpawn, L"FancySpawn") NAME(N_Destroyed, L"Destroyed")
                 NAME(N_PostPDR, L"PostPersistentDataRestored") NAME(N_TravelExporting, L"TravelExporting")
+                NAME(N_Trigger, L"Trigger")
 #undef NAME
                 if (!miss && !logged) {
                     logged = 1;
@@ -324,6 +401,9 @@ static u32 WINAPI worker(void *arg) {
         if (offPicked < 0)  offPicked  = prop_offset(L"KWPickup", L"HasBeenPickedUp");
         if (offStore < 0)   offStore   = prop_offset(L"GameInfo", L"PersistentStore");
         if (!gClsPickup) gClsPickup = find_class(L"KWPickup");
+        if (offTag < 0)    offTag    = prop_offset(L"Actor", L"Tag");
+        if (offKeyNum < 0) offKeyNum = prop_offset(L"Mover", L"KeyNum");
+        if (!gClsMover) gClsMover = find_class(L"Mover");
         /* PostBeginPlay is armed last: the leftover tracking only starts once everything it needs is known */
         if (!gClsSpawner && gClsPickup && offLives > 0 && offGoodies > 0 && offPicked > 0 && offStore > 0 && offLoc > 0
             && offLevel >= 0 && (gClsSpawner = find_class(L"KWGenericSpawner")) != 0) N_PostBeginPlay = name_index(L"PostBeginPlay");
@@ -358,7 +438,9 @@ static u32 WINAPI worker(void *arg) {
             wsprintfW(buf, L"MAP %s", lastMap); log_line(buf);
             armed = 0; settle = 0; shortcutsDone = 0;
         }
-        if (!shortcutsDone && ++settle >= 12) {
+        settle++;
+        if (settle >= 12 && (settle - 12) % 8 == 0) gates_poll(level, lastMap);   /* once settled, every 2 s */
+        if (!shortcutsDone && settle >= 12) {
             shortcutsDone = 1;
             if (!weq(lastMap, L"Entry") && !weq(lastMap, L"HP_Preamble")) { gPendingShortcuts = 1; gPendingRespawn = 1; }
         }
@@ -370,7 +452,7 @@ static u32 WINAPI worker(void *arg) {
                 if (!weq(DOORS[i].map, lastMap)) continue;
                 dx = loc[0] - DOORS[i].x; dy = loc[1] - DOORS[i].y; dz = loc[2] - DOORS[i].z; h2 = dx * dx + dy * dy;
                 if (h2 < ARM_R * ARM_R) far_from_all = 0;
-                if (h2 < DOOR_R * DOOR_R && dz < DOOR_DZ && dz > -DOOR_DZ) near = i;
+                if (h2 < DOOR_R * DOOR_R && dz < DOOR_DZ && dz > -DOOR_DZ && gDoorOn[i]) near = i;
             }
             if (far_from_all && !armed) armed = 1;
             if (near >= 0 && armed) {
