@@ -23,6 +23,7 @@
  *     KWMover, the one the vanilla cutscenes trigger) is raised or lowered to match. Which doors are unlocked comes
  *     from Documents\Harry Potter and the Prisoner of Azkaban\HP3_OpenCastle.ini, [Doors] <key>=1/0 (default 1), read
  *     every 2 s, so it can be changed while the game runs. The randomizer will drive the same switch.
+ *  9. Shop prices (shop.h): [Shop] Cheap=1 makes wizard cards and portrait passwords cost 10% (rounded up).
  *
  * Not in this build: item gating (every door is open), spell hooks, the Marauder's Map pickup.
  *
@@ -67,7 +68,7 @@ IMP HWND   WINAPI GetForegroundWindow(void);
 IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 
-#define OC_VERSION L"poc6o"
+#define OC_VERSION L"poc6p"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -420,6 +421,7 @@ static void gates_poll(u32 level, const wchar *map) {
 #include "aptest.h"
 #include "comcfix.h"
 #include "blocker.h"
+#include "shop.h"
 
 static u32 WINAPI worker(void *arg) {
     HANDLE core; static wchar buf[400], id[32], lastMap[64]; static struct players pl;
@@ -526,7 +528,7 @@ static u32 WINAPI worker(void *arg) {
         }
         settle++;
         if (settle >= 4) comc_poll(level, lastMap);
-        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); blockers_poll(level, lastMap); }   /* once settled, every 2 s */
+        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); blockers_poll(level, lastMap); shop_poll(level, offGame > 0 ? rd32(level + offGame) : 0); }   /* once settled, every 2 s */
         if (!shortcutsDone && settle >= 12) {
             shortcutsDone = 1;
             if (!weq(lastMap, L"Entry") && !weq(lastMap, L"HP_Preamble")) { gPendingShortcuts = 1; gPendingRespawn = 1; }
