@@ -17,6 +17,7 @@ static int offGUICtl = -1, offActivePage = -1, offDecoy = -1, offBtnYes = -1, of
            offStyle = -1, offWinTop = -1, offWinLeft = -1, offWinWidth = -1, offWinHeight = -1, offOnClick = -1,
            offOnWatch = -1, offCompCtl = -1, offParentPage = -1, offBound = -1;
 static u32 maskBound;   /* bit of GUIComponent.bBoundToParent in its dword, 0 if it couldn't be verified */
+static int N_MainMenuCls = -1;   /* class name HPPageMainMenu (by name: menu classes may be reloaded) */
 static int N_MyOnClick = -1, N_CloseMenu = -1, N_ExitMenu = -1, N_CloseAll = -1, N_SetPause = -1;
 static volatile u32 gMenuPage; static volatile int gMenuPatch;
 static u32 gHubPage; static int gHubArmed;
@@ -54,12 +55,12 @@ static int hub_init(void) {
 }
 static int hub_page_init(u32 cls) {
     static int tried; static wchar b[200];
-    if (gClsExitPage) return 1;
+    if (gClsExitPage) { gClsExitPage = cls; return 1; }
     if (tried) return 0;
     tried = 1;
     offDecoy = prop_offset(L"HPPageQuit", L"decoy");
     offBtnYes = prop_offset(L"KWPageYesNo", L"btnYes"); offBtnNo = prop_offset(L"KWPageYesNo", L"btnNo");
-    gClsMainMenu = find_class(L"HPPageMainMenu");
+    gClsMainMenu = find_class(L"HPPageMainMenu"); N_MainMenuCls = name_index(L"HPPageMainMenu");
     wsprintfW(b, L"hub menu: exit dialog lookups decoy=%d yes=%d no=%d mainmenu %s", offDecoy, offBtnYes, offBtnNo, gClsMainMenu ? L"ok" : L"-");
     log_line(b);
     if (offDecoy > 0 && offBtnYes > 0 && offBtnNo > 0) gClsExitPage = cls;
@@ -68,17 +69,19 @@ static int hub_page_init(u32 cls) {
 /* worker, every poll: while an HPPageExit is the active page and its decoy isn't our button (a new page, or the GUI
    re-ran InitComponent after a level change and put the decoy back), have the game thread patch it */
 static void hub_poll(void) {
-    static u32 lastActive; static int nExitPage = -2; u32 ctl, page, cls, decoy; wchar nm[32]; float w = 0;
+    static u32 lastActive; static int nExitPage = -2; u32 ctl, page, cls, decoy; wchar nm[48]; float w = 0;
     if (!gPlayer) return;
-    if (nExitPage == -2) nExitPage = name_index(L"HPPageExit");
+    if (nExitPage < 0) nExitPage = name_index(L"HPPageExit");
     ctl = rd32(gPlayer + offGUICtl); page = ctl ? rd32(ctl + offActivePage) : 0;
-    if (!page) { lastActive = 0; return; }
-    cls = rd32(page + 0x24);
-    if (!(gClsExitPage ? cls == gClsExitPage
-                       : (nExitPage >= 0 && (int)rd32(cls + 0x20) == nExitPage && name_of(nExitPage, nm, 32) && hub_page_init(cls))))
-        { lastActive = page; return; }
-    if (page != lastActive) { static wchar b[80]; wsprintfW(b, L"hub menu: exit dialog open (page %08x)", page); log_line(b); }
-    lastActive = page;
+    cls = page ? rd32(page + 0x24) : 0;
+    if (page != lastActive) {   /* diagnostics: every change of the active menu page */
+        static wchar b[120];
+        if (!cls || !name_of((int)rd32(cls + 0x20), nm, 48)) wcpy(nm, L"-", 48);
+        wsprintfW(b, L"hub menu: active page %08x %s (controller %08x)", page, nm, ctl); log_line(b);
+        lastActive = page;
+    }
+    /* by class name, not class pointer: a level change may reload the menu classes */
+    if (!page || nExitPage < 0 || (int)rd32(cls + 0x20) != nExitPage || !hub_page_init(cls)) return;
     decoy = rd32(page + offDecoy);
     {   u32 yes = rd32(page + offBtnYes);
         if (decoy && yes && rd(decoy + offWinWidth, &w, 4) && w == 0.32f && rd32(decoy + offOnClick) == rd32(yes + offOnClick)
@@ -109,8 +112,10 @@ static void hub_patch(void) {
     if (maskBound && offBound >= 0 && (P(decoy + offBound) & maskBound) && !(P(no + offBound) & maskBound)) {
         *(u32 *)(decoy + offBound) &= ~maskBound;   /* screen coordinates, like YES / NO */
         *(float *)(decoy + offWinLeft) = 0.34f; *(float *)(decoy + offWinTop) = 0.6333f;
-    } else {   /* bound to the dialog (left/top offset by its corner): dialog is at 0.18, 0.2867 */
-        *(float *)(decoy + offWinLeft) = 0.16f; *(float *)(decoy + offWinTop) = 0.3466f;
+    } else {
+        /* bound to the dialog: left/top are fractions of the dialog (0.18, 0.2867, 0.64 x 0.4267), width/height stay
+           fractions of the screen (measured in game). Same column as YES / NO (0.34..0.66), under NO at 0.6333. */
+        *(float *)(decoy + offWinLeft) = 0.25f; *(float *)(decoy + offWinTop) = 0.8123f;
     }
     *(float *)(decoy + offWinWidth) = 0.32f; *(float *)(decoy + offWinHeight) = 0.05333f;
     gHubPage = page; gHubArmed = 0;
@@ -133,7 +138,7 @@ static int hub_click(u32 page, u32 *parms) {
     log_line(L"hub menu: RETURN TO HUB chosen");
     ctl = P(page + offCompCtl); parent = offParentPage >= 0 ? P(page + offParentPage) : 0;
     call_bool(ctl, N_CloseMenu, 0);                                   /* close this dialog */
-    if (parent && gClsMainMenu && is_a_fast(parent, gClsMainMenu)) call0(parent, N_ExitMenu);   /* unpause, music, close */
+    if (parent && N_MainMenuCls >= 0 && (int)P(P(parent + 0x24) + 0x20) == N_MainMenuCls) call0(parent, N_ExitMenu);   /* unpause, music, close */
     else {
         call_bool(ctl, N_CloseAll, 0);
         pc = gPlayer ? P(gPlayer + offPlayerActor) : 0;

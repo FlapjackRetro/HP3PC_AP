@@ -130,7 +130,8 @@ static void lo_flush(void) {
         wsprintfW(msg, L"leftovers: saved %s = %s", key, val); log_line(msg);
         total += n; notes++;
     }
-    wsprintfW(msg, L"leftovers: leaving with %d item(s) on the ground from %d spawner(s) (%d tracked)", total, notes, gNPu);
+    wsprintfW(msg, L"leftovers: leaving with %d item(s) on the ground from %d spawner(s) (%d spawners known, %d pickups tracked)",
+              total, notes, gNSp, gNPu);
     log_line(msg);
 }
 
