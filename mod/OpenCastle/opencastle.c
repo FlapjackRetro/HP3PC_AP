@@ -10,7 +10,14 @@
  *     a travel, which the ProcessEvent hook performs on the game thread by calling LevelInfo.ServerTravel.
  *  3. Logs everything to Documents\Harry Potter and the Prisoner of Azkaban\HP3_OpenCastle.log.
  *
- * Not in this build: item gating (every door is open), return points, spell hooks, the Marauder's Map pickup.
+ *  4. Return points: when the player arrives back on a hub, the ProcessEvent hook catches the hero controller's
+ *     TravelPostAccept. The game places the player at the SmartStart whose PreviousLevelName matches the map they
+ *     came from; story maps rerouted by Open Castle have none, so the player would land in the GState holding room.
+ *     We lend the pawn's PreviousLevelName a nearby SmartStart's name for that one call (so Ron and Hermione follow
+ *     too), then optionally RelocatePawn to the Open Castle door.
+ *  5. Shortcut passwords start unlocked (PortraitPasswordManager.EnablePortraitShortcuts, once per map load).
+ *
+ * Not in this build: item gating (every door is open), spell hooks, the Marauder's Map pickup.
  *
  * Hooks are only installed if the bytes at each site are exactly what was verified on the retail build; otherwise
  * the log says so and the game runs unmodified.
@@ -44,7 +51,7 @@ IMP BOOL   WINAPI FlushInstructionCache(HANDLE, const void*, u32);
 IMP int    __cdecl wsprintfW(wchar*, const wchar*, ...);
 IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 
-#define OC_VERSION L"poc1"
+#define OC_VERSION L"poc2"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -74,7 +81,10 @@ static wchar gMapBuf[2][64];
 static const wchar *volatile gCurMap = L"";   /* map the player is on, as a file name */
 static volatile u32 gPlayer;                  /* Player (viewport) object; persists across levels */
 static int offPlayerActor = -1, offPawn = -1, offLoc = -1, offLevel = -1, offID = -1;
-static int N_ServerTravel = -1;
+static int N_ServerTravel = -1, N_TravelPostAccept = -1, N_RelocatePawn = -1, N_EnableShortcuts = -1;
+static int offPrevLevel = -1, offGame = -1, offPPM = -1;
+static volatile u32 gClsHero;                 /* KWHeroController class */
+static volatile int gPendingShortcuts;
 static volatile int gPending; static wchar gPendingURL[128];
 
 /* ---- hook 1: FURL::FURL(FURL* Base, const TCHAR* TextURL, ETravelType) ---- */
@@ -113,8 +123,70 @@ static void do_travel(void) {
     log_line(msg);
     gPEOrig((void *)level, fn, &parms, 0);
 }
+/* ---- return points: arriving on `hub` from `from` ---- */
+struct ret { const wchar *hub, *from, *smart; int move; float x, y, z; };
+static const struct ret RETS[] = {
+    /* hub              came from                use this SmartStart        move?  door position */
+    { L"HP3_InsideHub",  L"HP3_Adv6Paddock",     L"HP3_GroundsHub",           0,    0,     0,    0 },   /* entrance hall */
+    { L"HP3_InsideHub",  L"HP3_Adv1Express",     L"HP3_PortraitPassword_D",   1, 1427,  -960, 2154 },
+    { L"HP3_InsideHub",  L"HP3_Adv2ExpPatronum", L"HP3_PortraitPassword_C",   1,  838, -1844, 1194 },
+    { L"HP3_InsideHub",  L"HP3_Adv3Library",     L"HP3_PortraitPassword_C",   1, -710, -1349,  778 },
+    { L"HP3_InsideHub",  L"HP3_FA1Ron",          L"HP3_Ch1CarpeRetractumB",   0,    0,     0,    0 },   /* exam side room */
+    { L"HP3_InsideHub",  L"HP3_FA2Hermione",     L"HP3_Ch2DraconiforsB",      0,    0,     0,    0 },
+    { L"HP3_InsideHub",  L"HP3_FA3Harry",        L"HP3_Ch3GlaciusB",          0,    0,     0,    0 },
+    { L"HP3_DungeonHUB", L"HP3_Adv5Shack",       0,                           1, -481,  2805, -341 },   /* no SmartStarts */
+};
+#define NRETS (int)(sizeof RETS / sizeof RETS[0])
+
+static const wchar *level_map(u32 level) {   /* game thread */
+    static wchar id[32];
+    if (!level || offID < 0 || !read_fstring(level + offID, id, 32)) return 0;
+    return map_for_id(id);
+}
+static void call_relocate(u32 pawn, const struct ret *r) {
+    struct { float x, y, z; u32 ret; } parms; void *fn; static wchar msg[200];
+    if (N_RelocatePawn < 0 || !(fn = gFindFunction((void *)pawn, N_RelocatePawn, 0))) { log_line(L"return: RelocatePawn not found"); return; }
+    parms.x = r->x; parms.y = r->y; parms.z = r->z; parms.ret = 0;
+    gPEOrig((void *)pawn, fn, &parms, 0);
+    wsprintfW(msg, L"return: moved to the door (%d, %d, %d): %s", (int)r->x, (int)r->y, (int)r->z, parms.ret ? L"ok" : L"FAILED");
+    log_line(msg);
+}
+/* the hero controller's TravelPostAccept: choose where the player appears */
+static void travel_post_accept(void *self, void *func, void *parms, void *result) {
+    u32 pc = (u32)self, pawn, sv[3]; const wchar *hub; wchar prev[64]; static wchar msg[300], lend[64];
+    const struct ret *r = 0; int i;
+    pawn = offPawn >= 0 ? rd32(pc + offPawn) : 0;
+    hub = level_map(offLevel >= 0 ? rd32(pc + offLevel) : 0);
+    if (!pawn || !hub || offPrevLevel < 0 || !rd(pawn + offPrevLevel, sv, 12)) { gPEOrig(self, func, parms, result); return; }
+    if (!read_fstring(pawn + offPrevLevel, prev, 64)) prev[0] = 0;
+    for (i = 0; i < NRETS; i++) if (wieq(RETS[i].hub, hub) && wieq(RETS[i].from, prev)) { r = &RETS[i]; break; }
+    wsprintfW(msg, L"arrive %s from \"%s\"%s", hub, prev, r ? L" -> Open Castle return point" : L"");
+    log_line(msg);
+    if (r && r->smart) {   /* lend the SmartStart's name for this one call, then put the original string back */
+        u32 tmp[3];
+        wcpy(lend, r->smart, 64);
+        tmp[0] = (u32)lend; tmp[1] = wlen(lend) + 1; tmp[2] = tmp[1];
+        memcpy((void *)(pawn + offPrevLevel), tmp, 12);
+        gPEOrig(self, func, parms, result);
+        if (rd32(pawn + offPrevLevel) == (u32)lend) memcpy((void *)(pawn + offPrevLevel), sv, 12);
+        else log_line(L"return: PreviousLevelName was replaced during TravelPostAccept (left as is)");
+    } else gPEOrig(self, func, parms, result);
+    if (r && r->move) call_relocate(rd32(pc + offPawn), r);
+}
+static void enable_shortcuts(void) {
+    u32 pc, level, game, ppm; void *fn;
+    if (!gPlayer || offGame < 0 || offPPM < 0 || N_EnableShortcuts < 0) return;
+    pc = rd32(gPlayer + offPlayerActor); level = pc ? rd32(pc + offLevel) : 0;
+    game = level ? rd32(level + offGame) : 0; ppm = game ? rd32(game + offPPM) : 0;
+    if (!ppm || !(fn = gFindFunction((void *)ppm, N_EnableShortcuts, 0))) { log_line(L"shortcuts: no PortraitPasswordManager on this map"); return; }
+    gPEOrig((void *)ppm, fn, 0, 0);
+    log_line(L"shortcuts: all shortcut passwords unlocked");
+}
 static void __thiscall pe_hook(void *self, void *func, void *parms, void *result) {
     if (gPending && !gInTravel) { gInTravel = 1; gPending = 0; do_travel(); gInTravel = 0; }
+    if (gPendingShortcuts && !gInTravel) { gInTravel = 1; gPendingShortcuts = 0; enable_shortcuts(); gInTravel = 0; }
+    if (func && N_TravelPostAccept >= 0 && *(int *)((u8 *)func + 0x20) == N_TravelPostAccept && gClsHero
+        && is_a_cls(*(u32 *)((u8 *)self + 0x24), gClsHero)) { travel_post_accept(self, func, parms, result); return; }
     gPEOrig(self, func, parms, result);
 }
 
@@ -174,7 +246,7 @@ static const struct door DOORS[] = {
 
 static u32 WINAPI worker(void *arg) {
     HANDLE core; static wchar buf[400], id[32], lastMap[64]; static struct players pl;
-    int i, cur = 0, armed = 0; u32 clsPlayer, pc, pawn, level; float loc[3];
+    int i, cur = 0, armed = 0, settle = 0, shortcutsDone = 1; u32 clsPlayer, pc, pawn, level; float loc[3];
     (void)arg;
     gProc = GetCurrentProcess();
     {   wchar docs[520];
@@ -195,6 +267,8 @@ static u32 WINAPI worker(void *arg) {
         if ((N_Class = name_index(L"Class")) >= 0) break;
     }
     N_ServerTravel = name_index(L"ServerTravel");
+    N_RelocatePawn = name_index(L"RelocatePawn");
+    N_EnableShortcuts = name_index(L"EnablePortraitShortcuts");
     for (;;) {
         Sleep(250);
         if (offPlayerActor < 0) offPlayerActor = prop_offset(L"Player", L"Actor");
@@ -202,6 +276,10 @@ static u32 WINAPI worker(void *arg) {
         if (offLoc < 0)   offLoc   = prop_offset(L"Actor", L"Location");
         if (offLevel < 0) offLevel = prop_offset(L"Actor", L"Level");
         if (offID < 0)    offID    = prop_offset(L"LevelInfo", L"ID");
+        if (offPrevLevel < 0) offPrevLevel = prop_offset(L"KWPawn", L"PreviousLevelName");
+        if (offGame < 0)  offGame  = prop_offset(L"LevelInfo", L"Game");
+        if (offPPM < 0)   offPPM   = prop_offset(L"HGame", L"PortraitPasswordManager");
+        if (!gClsHero && (gClsHero = find_class(L"KWHeroController")) != 0) N_TravelPostAccept = name_index(L"TravelPostAccept");
         if (!gPlayer) {
             clsPlayer = find_class(L"Player");
             if (clsPlayer) {
@@ -209,8 +287,10 @@ static u32 WINAPI worker(void *arg) {
                 for_each_object(v_players, &pl);
                 for (i = 0; i < pl.n; i++) if (offPlayerActor >= 0 && rd32(pl.found[i] + offPlayerActor)) { gPlayer = pl.found[i]; break; }
                 if (gPlayer) {
-                    wsprintfW(buf, L"ready: offsets player.actor=%d pawn=%d loc=%d level=%d id=%d; ServerTravel name %d",
-                              offPlayerActor, offPawn, offLoc, offLevel, offID, N_ServerTravel);
+                    wsprintfW(buf, L"ready: offsets player.actor=%d pawn=%d loc=%d level=%d id=%d prevlevel=%d game=%d ppm=%d; "
+                              L"names ServerTravel=%d TravelPostAccept=%d RelocatePawn=%d EnablePortraitShortcuts=%d; hero class %s",
+                              offPlayerActor, offPawn, offLoc, offLevel, offID, offPrevLevel, offGame, offPPM,
+                              N_ServerTravel, N_TravelPostAccept, N_RelocatePawn, N_EnableShortcuts, gClsHero ? L"ok" : L"MISSING");
                     log_line(buf);
                 }
             }
@@ -223,8 +303,9 @@ static u32 WINAPI worker(void *arg) {
             wcpy(lastMap, map_for_id(id), 64);
             cur ^= 1; wcpy(gMapBuf[cur], lastMap, 64); gCurMap = gMapBuf[cur];
             wsprintfW(buf, L"MAP %s", lastMap); log_line(buf);
-            armed = 0;
+            armed = 0; settle = 0; shortcutsDone = 0;
         }
+        if (!shortcutsDone && ++settle >= 12) { shortcutsDone = 1; if (!weq(lastMap, L"Entry") && !weq(lastMap, L"HP_Preamble")) gPendingShortcuts = 1; }
         pawn = rd32(pc + offPawn);
         if (!pawn || !rd(pawn + offLoc, loc, 12) || gPending) continue;
         {   int near = -1, far_from_all = 1;
