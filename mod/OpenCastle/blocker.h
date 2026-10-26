@@ -14,6 +14,14 @@ static const struct blocker BLOCKERS[] = {
 #define NBLOCKERS (int)(sizeof BLOCKERS / sizeof BLOCKERS[0])
 static u32 gBlockObj[NBLOCKERS], gBlockCol[NBLOCKERS], gBlockLevel[NBLOCKERS];   /* visual, collider */
 static int N_SetCollisionSize = -1, N_Destroy = -1;
+/* Native functions can't be called through ProcessEvent (an exec function reads its arguments from the script
+   bytecode, not from the parms block), so SetCollision / SetCollisionSize / Destroy did nothing in poc6m-n. Call the
+   C++ methods exported by Engine.dll instead. */
+typedef void (__thiscall *setcol_fn)(void *actor, int colActors, int blockActors, int blockPlayers);
+typedef void (__thiscall *setcolsize_fn)(void *actor, float radius, float height);
+typedef int (__thiscall *destroyactor_fn)(void *level, void *actor, int bNetForce);
+static setcol_fn gSetCollision; static setcolsize_fn gSetCollisionSize; static destroyactor_fn gDestroyActor;
+static int offXLevel = -1;
 
 /* worker, from gates_poll: decide */
 static void blockers_poll(u32 level, const wchar *map) {
@@ -28,6 +36,17 @@ static void blockers_poll(u32 level, const wchar *map) {
         if (!gClsStaticMesh) gClsStaticMesh = find_class(L"StaticMesh");
         if (offStaticMesh < 0) offStaticMesh = prop_offset(L"Actor", L"StaticMesh");
         if (offDrawScale <= 0) { offDrawScale = prop_offset(L"Actor", L"DrawScale"); offTexture = prop_offset(L"Actor", L"Texture"); offStyle2 = prop_offset(L"Actor", L"Style"); }
+        offXLevel = prop_offset(L"Actor", L"XLevel");
+        {   HANDLE eng = GetModuleHandleW(L"Engine.dll"); static wchar b[160];
+            if (eng) {
+                gSetCollision = (setcol_fn)GetProcAddress(eng, "?SetCollision@AActor@@QAEXHHH@Z");
+                gSetCollisionSize = (setcolsize_fn)GetProcAddress(eng, "?SetCollisionSize@AActor@@QAEXMM@Z");
+                gDestroyActor = (destroyactor_fn)GetProcAddress(eng, "?DestroyActor@ULevel@@UAEHPAVAActor@@H@Z");
+            }
+            wsprintfW(b, L"blocker: Engine.dll SetCollision %s, SetCollisionSize %s, DestroyActor %s; xlevel=%d",
+                      gSetCollision ? L"ok" : L"-", gSetCollisionSize ? L"ok" : L"-", gDestroyActor ? L"ok" : L"-", offXLevel);
+            log_line(b);
+        }
     }
     for (i = 0; i < NBLOCKERS; i++) {
         int on = 1, locked;
@@ -47,10 +66,9 @@ static void blockers_apply(void) {
     for (i = 0; i < NBLOCKERS; i++) if (((kill >> i) & 1) && gBlockObj[i]) {
         u32 objs[2]; int k;
         objs[0] = gBlockObj[i]; objs[1] = gBlockCol[i];
-        for (k = 0; k < 2; k++) if (objs[k]) {
-            void *d = N_Destroy >= 0 ? gFindFunction((void *)objs[k], N_Destroy, 0) : 0;
-            struct { u32 ret; } dp = { 0 };
-            if (d) gPEOrig((void *)objs[k], d, &dp, 0);
+        for (k = 0; k < 2; k++) if (objs[k] && gDestroyActor && offXLevel > 0) {
+            u32 xl = P(objs[k] + offXLevel);
+            if (xl) gDestroyActor((void *)xl, (void *)objs[k], 0);
         }
         wsprintfW(b, L"blocker %s: removed (%s unlocked)", BLOCKERS[i].why, BLOCKERS[i].key); log_line(b);
         gBlockObj[i] = gBlockCol[i] = 0;
@@ -80,10 +98,9 @@ static void blockers_apply(void) {
         gPEOrig((void *)pawn, fn, &parms, 0);
         if (!parms.ret) { wsprintfW(b, L"blocker %s: collider spawn failed", bl->why); log_line(b); continue; }
         *(u8 *)(parms.ret + offDrawType) = 0;   /* DT_None */
-        sz = N_SetCollisionSize >= 0 ? gFindFunction((void *)parms.ret, N_SetCollisionSize, 0) : 0;
-        sc = N_SetCollision >= 0 ? gFindFunction((void *)parms.ret, N_SetCollision, 0) : 0;
-        if (sz) { struct { float r, h, w; u32 ret; } sp = { bl->radius, bl->height, 0, 0 }; gPEOrig((void *)parms.ret, sz, &sp, 0); }
-        if (sc) { struct { u32 a, b, c; } cp = { 1, 1, 1 }; gPEOrig((void *)parms.ret, sc, &cp, 0); }
+        sz = (void *)gSetCollisionSize; sc = (void *)gSetCollision;
+        if (gSetCollisionSize) gSetCollisionSize((void *)parms.ret, bl->radius, bl->height);
+        if (gSetCollision) gSetCollision((void *)parms.ret, 1, 1, 1);
         gBlockCol[i] = parms.ret;
         wsprintfW(b, L"blocker %s: placed (%s locked); collider %s%s", bl->why, bl->key, sz ? L"sized" : L"NOT SIZED", sc ? L", solid" : L", NOT SOLID");
         log_line(b);
