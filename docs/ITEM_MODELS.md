@@ -82,3 +82,13 @@ A texture is flat. Depth needs a mesh to put it on:
    collision), a bigger job than textures.
 3. **Sprites** (`DrawType=DT_Sprite`) always face the camera, so they never look edge-on. This is what the test
    uses.
+
+## Test result (poc6d, 2026-10-26)
+
+- `HP3AP.utx` (written by `utxwriter.py`) loads with `StaticLoadObject` and renders in game. The progression
+  logo was seen on a cake thrown out of a chest in Adv5Shack, at `DrawScale` 0.3 on a 128 px texture: an OK
+  size.
+- Swapping works both for pickups placed in the map (at settle) and for goodies spawned later (after
+  `PostBeginPlay`).
+- Lesson: never keep a texture pointer across a level change. Anything unreferenced is garbage collected, so
+  reload with `StaticLoadObject` each time (two poc6 crashes).
