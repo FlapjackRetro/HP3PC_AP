@@ -54,7 +54,7 @@ IMP BOOL   WINAPI FlushInstructionCache(HANDLE, const void*, u32);
 IMP int    __cdecl wsprintfW(wchar*, const wchar*, ...);
 IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 
-#define OC_VERSION L"poc4b"
+#define OC_VERSION L"poc4c"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -308,7 +308,7 @@ static u32 WINAPI worker(void *arg) {
         if (offLives < 0)   offLives   = prop_offset(L"KWGenericSpawner", L"Lives");
         if (offGoodies < 0) offGoodies = prop_offset(L"KWGenericSpawner", L"GoodieToSpawn");
         if (offPicked < 0)  offPicked  = prop_offset(L"KWPickup", L"HasBeenPickedUp");
-        if (offStore < 0)   offStore   = prop_offset(L"KWGame", L"PersistentStore");
+        if (offStore < 0)   offStore   = prop_offset(L"GameInfo", L"PersistentStore");
         if (!gClsPickup) gClsPickup = find_class(L"KWPickup");
         /* PostBeginPlay is armed last: the leftover tracking only starts once everything it needs is known */
         if (!gClsSpawner && gClsPickup && offLives > 0 && offGoodies > 0 && offPicked > 0 && offStore > 0 && offLoc > 0
