@@ -100,3 +100,21 @@ A texture is flat. Depth needs a mesh to put it on:
 - **Building the package:** `tools/build_hp3ap.py <icon.png> <game folder> HP3AP.utx` builds everything.
   - `APKeyUpscaled` is generated from the player's own `HP_FX.utx`, so the installer should run the build on the
     player's machine. No EA-derived art is shipped or committed.
+
+## Shipped choice: level unlocks
+
+The level-unlock stand-in is `HP3AP.APKeyDrawn`, the drawn key with a blue glow rim (`gen_key.py drawn`).
+`key_style` still offers `upscaled` and `original`.
+
+## poc6g: final look test
+
+With `[Test] SpriteGrid=1`, each new End-key mark spawns every look the randomizer will use, in three rows:
+1. the ten spell glyphs;
+2. the AP progression / useful / filler logos and the drawn key;
+3. HP3's own models:
+   - Marauder's Map (`HProps.MarauderMap`, skeletal);
+   - password scroll as Peeves carries it (`HProps.PeevesScroll`) and as the shop sells it
+     (`HP3_InteriorAccents_SM.books.BlueBandScroll_SM`);
+   - pasty (`PumpkinPasty_SM` ×2.0) and cake (`CauldronCake_SM` ×2.5);
+   - Harry Potter's wizard card. That's a real `HGame.WC_HarryPotter` pickup with its collision switched off,
+     since the card face is a per-class skin.

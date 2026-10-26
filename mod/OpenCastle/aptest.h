@@ -12,6 +12,8 @@ static u32 gClsTexture, gAPTex[3];
 static int offDrawScale = -1, offTexture = -1, offStyle2 = -1;   /* Actor.DrawScale / Texture / Style (offDrawType: gates) */
 static int N_CauldronCake = -1, N_PumpkinPasty = -1, N_WizardCard = -1;
 static u32 gAPPickups[512]; static int gNAPPickups;
+static u32 gClsStaticMesh, gClsMesh, gClsClass; static int offStaticMesh = -1, offMesh = -1, N_SetCollision = -1;
+static volatile int gGridSpawning;   /* aptest_spawned leaves the grid's real pickup alone */
 static u32 gAPLevel; static int gAPMode;   /* 1 = HP3AP.utx tiers, 2 = a retail texture (HP_FX.Particles.Key1) for all */
 
 /* worker: called once a map has settled */
@@ -73,7 +75,7 @@ static void aptest_apply(void) {
 static void aptest_spawned(u32 o) {
     static const wchar *names[3] = { L"HP3AP.APLogoProgression", L"HP3AP.APLogoUseful", L"HP3AP.APLogoFiller" };
     u32 cls, tex; int t;
-    if (!gAPMode || !gLoadObject || offDrawType <= 0) return;
+    if (!gAPMode || !gLoadObject || offDrawType <= 0 || gGridSpawning) return;
     cls = P(o + 0x24);
     if (cls_named(cls, N_CauldronCake)) t = 0; else if (cls_named(cls, N_PumpkinPasty)) t = 1; else if (cls_named(cls, N_WizardCard)) t = 2; else return;
     tex = (u32)gLoadObject((void *)gClsTexture, 0, gAPMode == 2 ? L"HP_FX.Particles.Key1" : names[t], 0, 0x2002, 0);
@@ -86,16 +88,28 @@ static void aptest_spawned(u32 o) {
    (inert Engine.Effects actors: no collision, sprite drawn with the texture), 7 columns, 60 units apart:
      row 1: AP progression / useful / filler, keys: retail Key2, Key2 upscaled 4x, our drawn key, retail Key3
      rows 2-3: the 14 spell-shape glyphs */
-static const wchar *GRID[] = {
-    L"HP3AP.APLogoProgression", L"HP3AP.APLogoUseful", L"HP3AP.APLogoFiller",
-    L"HP_FX.Particles.Key2", L"HP3AP.APKeyUpscaled", L"HP3AP.APKeyDrawn", L"HP_FX.Particles.Key3",
-    L"SpellShapes.Shapes.SPSalohomora", L"SpellShapes.Shapes.SPSCarpeRetractum", L"SpellShapes.Shapes.SPSdepulso",
-    L"SpellShapes.Shapes.SPSdraconifor", L"SpellShapes.Shapes.SPSexpecto", L"SpellShapes.Shapes.SPSglacius",
-    L"SpellShapes.Shapes.SPSlapifors",
-    L"SpellShapes.Shapes.SPSlumos", L"SpellShapes.Shapes.SPSrictusempra", L"SpellShapes.Shapes.SPSspongify",
-    L"SpellShapes.Shapes.SPSavifors", L"SpellShapes.Shapes.SPSdiffindo", L"SpellShapes.Shapes.SPSflipendo",
-    L"SpellShapes.Shapes.SPSskurge",
+/* the item looks the randomizer will use (decided 2026-10-26). kind: 'S' sprite texture, 'M' static mesh,
+   'K' skeletal mesh, 'C' an actual class (spawned with its collision off, for looks that need its skins) */
+struct grident { char kind; const wchar *obj; float scale; const wchar *label; };
+static const struct grident GRID[] = {
+    /* row 1: the ten spells */
+    { 'S', L"SpellShapes.Shapes.SPSalohomora", 0, L"Alohomora" },        { 'S', L"SpellShapes.Shapes.SPSCarpeRetractum", 0, L"Carpe Retractum" },
+    { 'S', L"SpellShapes.Shapes.SPSdepulso", 0, L"Depulso" },            { 'S', L"SpellShapes.Shapes.SPSdraconifor", 0, L"Draconifors" },
+    { 'S', L"SpellShapes.Shapes.SPSexpecto", 0, L"Expecto Patronum" },   { 'S', L"SpellShapes.Shapes.SPSglacius", 0, L"Glacius" },
+    { 'S', L"SpellShapes.Shapes.SPSlapifors", 0, L"Lapifors" },          { 'S', L"SpellShapes.Shapes.SPSlumos", 0, L"Lumos" },
+    { 'S', L"SpellShapes.Shapes.SPSrictusempra", 0, L"Rictusempra" },    { 'S', L"SpellShapes.Shapes.SPSspongify", 0, L"Spongify" },
+    /* row 2: Archipelago tiers and the level-unlock key */
+    { 'S', L"HP3AP.APLogoProgression", 0, L"AP progression" }, { 'S', L"HP3AP.APLogoUseful", 0, L"AP useful" },
+    { 'S', L"HP3AP.APLogoFiller", 0, L"AP filler" },           { 'S', L"HP3AP.APKeyDrawn", 0, L"level unlock key" },
+    /* row 3: HP3's own models */
+    { 'K', L"HProps.MarauderMap", 1.0f, L"Marauder's Map" },
+    { 'K', L"HProps.PeevesScroll", 1.0f, L"password scroll (Peeves)" },
+    { 'M', L"HP3_InteriorAccents_SM.books.BlueBandScroll_SM", 1.0f, L"password scroll (shop)" },
+    { 'M', L"HP3_GamePlay_sm.Spells_Objects.PumpkinPasty_SM", 2.0f, L"pumpkin pasty" },
+    { 'M', L"HP3_GamePlay_sm.Spells_Objects.CauldronCake_SM", 2.5f, L"cauldron cake" },
+    { 'C', L"HGame.WC_HarryPotter", 0, L"wizard card (Harry Potter)" },
 };
+static const int GRIDROW[] = { 10, 4, 6 };   /* entries per row, in order */
 #define NGRID (int)(sizeof GRID / sizeof GRID[0])
 static float gGridAt[3];
 static wchar gMapLogPath[600];
@@ -142,31 +156,48 @@ static void grid_poll(const wchar *map) {
     if (!gLoadObject) { HANDLE core = GetModuleHandleW(L"Core.dll");
         gLoadObject = core ? (loadobj_fn)GetProcAddress(core, "?StaticLoadObject@UObject@@SAPAV1@PAVUClass@@PAV1@PBG2KPAVUPackageMap@@@Z") : 0; }
     if (!gClsTexture) gClsTexture = find_class(L"Texture");
+    if (!gClsStaticMesh) gClsStaticMesh = find_class(L"StaticMesh");
+    if (!gClsMesh) gClsMesh = find_class(L"Mesh");
+    if (!gClsClass) gClsClass = find_class(L"Class");
+    if (offStaticMesh < 0) offStaticMesh = prop_offset(L"Actor", L"StaticMesh");
+    if (offMesh < 0) offMesh = prop_offset(L"Actor", L"Mesh");
+    if (N_SetCollision < 0) N_SetCollision = name_index(L"SetCollision");
     if (offDrawScale <= 0) { offDrawScale = prop_offset(L"Actor", L"DrawScale"); offTexture = prop_offset(L"Actor", L"Texture"); offStyle2 = prop_offset(L"Actor", L"Style"); }
     gGridPending = 1;
 }
 /* game thread */
 static void grid_spawn(void) {
     struct { u32 type, owner; int tag; float x, y, z; int p, yw, r; u32 bz; u32 ret; } parms;
-    static wchar b[200]; u32 pc, pawn, tex; void *fn; int i, ok = 0;
+    static wchar b[240]; u32 pc, pawn, obj, cls; void *fn; int i, ok = 0, row = 0, col = 0, inrow = GRIDROW[0];
     pc = gPlayer ? P(gPlayer + offPlayerActor) : 0; pawn = pc ? P(pc + offPawn) : 0;
     if (!pawn || !gClsEffects || !gLoadObject || !gClsTexture || offDrawScale <= 0 || offTexture <= 0 || offStyle2 <= 0
         || N_FancySpawn2 < 0 || !(fn = gFindFunction((void *)pawn, N_FancySpawn2, 0))) { log_line(L"grid: lookups failed"); return; }
-    for (i = 0; i < NGRID; i++) {
-        int row = i < 7 ? 0 : (i < 14 ? 1 : 2), col = i < 7 ? i : (i - 7) % 7; float px;
-        tex = (u32)gLoadObject((void *)gClsTexture, 0, GRID[i], 0, 0x2002, 0);
-        if (!tex) { wsprintfW(b, L"grid: %s not found", GRID[i]); log_line(b); continue; }
+    for (i = 0; i < NGRID; i++, col++) {
+        const struct grident *g = &GRID[i]; float px;
+        if (col == inrow) { row++; col = 0; inrow = GRIDROW[row]; }
+        cls = g->kind == 'S' ? gClsTexture : g->kind == 'M' ? gClsStaticMesh : g->kind == 'K' ? gClsMesh : gClsClass;
+        obj = cls ? (u32)gLoadObject((void *)cls, 0, g->obj, 0, 0x2002, 0) : 0;
+        if (!obj) { wsprintfW(b, L"grid: %s (%s) not found", g->label, g->obj); log_line(b); continue; }
         memset(&parms, 0, sizeof parms);
-        parms.type = gClsEffects;
-        parms.x = gGridAt[0] + (col - 3) * 60.0f; parms.y = gGridAt[1] + (row - 1) * 60.0f; parms.z = gGridAt[2] + 40.0f;
-        gPEOrig((void *)pawn, fn, &parms, 0);
-        if (!parms.ret) { wsprintfW(b, L"grid: spawn for %s failed", GRID[i]); log_line(b); continue; }
-        px = offUSize > 0 ? (float)(int)P(tex + offUSize) : 64.0f; if (px <= 0) px = 64.0f;
-        *(u32 *)(parms.ret + offTexture) = tex;
-        *(u8 *)(parms.ret + offStyle2) = 2;                 /* STY_Masked */
-        *(float *)(parms.ret + offDrawScale) = 38.0f / px;  /* every sprite about 38 units across */
+        parms.type = g->kind == 'C' ? obj : gClsEffects;
+        parms.x = gGridAt[0] + (col - (inrow - 1) / 2.0f) * 70.0f; parms.y = gGridAt[1] + (row - 1) * 80.0f; parms.z = gGridAt[2] + 40.0f;
+        gGridSpawning = 1; gPEOrig((void *)pawn, fn, &parms, 0); gGridSpawning = 0;
+        if (!parms.ret) { wsprintfW(b, L"grid: spawn for %s failed", g->label); log_line(b); continue; }
+        if (g->kind == 'S') {
+            px = offUSize > 0 ? (float)(int)P(obj + offUSize) : 64.0f; if (px <= 0) px = 64.0f;
+            *(u32 *)(parms.ret + offTexture) = obj; *(u8 *)(parms.ret + offStyle2) = 2;
+            *(float *)(parms.ret + offDrawScale) = 38.0f / px;
+        } else if (g->kind == 'M' && offStaticMesh > 0) {
+            *(u32 *)(parms.ret + offStaticMesh) = obj; *(u8 *)(parms.ret + offDrawType) = 8; *(float *)(parms.ret + offDrawScale) = g->scale;
+        } else if (g->kind == 'K' && offMesh > 0) {
+            *(u32 *)(parms.ret + offMesh) = obj; *(u8 *)(parms.ret + offDrawType) = 2; *(float *)(parms.ret + offDrawScale) = g->scale;
+        } else if (g->kind == 'C') {   /* a real pickup: switch its collision off so it can't be collected */
+            void *sc = N_SetCollision >= 0 ? gFindFunction((void *)parms.ret, N_SetCollision, 0) : 0;
+            struct { u32 a, b, c; } cp = { 0, 0, 0 };
+            if (sc) gPEOrig((void *)parms.ret, sc, &cp, 0); else log_line(L"grid: SetCollision not found; the card can be collected");
+        }
         ok++;
     }
-    wsprintfW(b, L"grid: %d of %d sprites placed around (%d, %d, %d)", ok, NGRID, (int)gGridAt[0], (int)gGridAt[1], (int)gGridAt[2]);
+    wsprintfW(b, L"grid: %d of %d item looks placed around (%d, %d, %d)", ok, NGRID, (int)gGridAt[0], (int)gGridAt[1], (int)gGridAt[2]);
     log_line(b);
 }
