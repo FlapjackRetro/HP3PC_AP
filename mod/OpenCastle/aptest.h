@@ -46,9 +46,11 @@ static int cls_named(u32 cls, int n) { int g = 64; while (cls && g--) { if ((int
 static void aptest_apply(void) {
     if (!gLoadObject) return;
     static const wchar *names[3] = { L"HP3AP.APLogoProgression", L"HP3AP.APLogoUseful", L"HP3AP.APLogoFiller" };
-    static wchar b[200]; int i, n[3] = { 0, 0, 0 }; static int loadedMode;
-    if (loadedMode != gAPMode) { gAPTex[0] = gAPTex[1] = gAPTex[2] = 0; loadedMode = gAPMode; }
-    for (i = 0; i < 3; i++) if (!gAPTex[i])
+    static wchar b[200]; int i, n[3] = { 0, 0, 0 };
+    /* load every time: a texture nothing references is garbage collected at the next level change, so a pointer
+       kept from an earlier map is stale (poc6 crashed drawing / cleaning up through one). StaticLoadObject returns the
+       object at once when it is already loaded. */
+    for (i = 0; i < 3; i++)
         gAPTex[i] = (u32)gLoadObject((void *)gClsTexture, 0, gAPMode == 2 ? L"HP_FX.Particles.Key1" : names[i], 0, 0x2002 /*NoWarn|Quiet*/, 0);
     wsprintfW(b, L"aptest: mode %d", gAPMode); log_line(b);
     wsprintfW(b, L"aptest: HP3AP textures %08x %08x %08x", gAPTex[0], gAPTex[1], gAPTex[2]); log_line(b);
