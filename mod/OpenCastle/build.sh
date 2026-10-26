@@ -7,7 +7,8 @@ mk() { lib=$1; shift; { echo "LIBRARY $lib.dll"; echo "EXPORTS"; for s in "$@"; 
        llvm-dlltool -m i386 -k -d "$OUT/$lib.def" -l "$OUT/$lib.lib"; }
 mk kernel32 GetModuleHandleW@4 GetProcAddress@8 CreateThread@24 Sleep@4 ReadProcessMemory@20 GetCurrentProcess@0 \
   DisableThreadLibraryCalls@4 CreateFileW@28 WriteFile@20 CloseHandle@4 GetLocalTime@4 WideCharToMultiByte@32 \
-  VirtualProtect@16 VirtualAlloc@16 FlushInstructionCache@12
+  VirtualProtect@16 VirtualAlloc@16 FlushInstructionCache@12 \
+  GetPrivateProfileIntW@16 GetTickCount@0
 mk user32 wsprintfW
 mk shell32 SHGetFolderPathW@20
 clang --target=i686-pc-windows-msvc -O2 -fno-builtin -ffreestanding -fno-stack-protector -mno-sse \

@@ -182,3 +182,16 @@ Yes. The vanilla save system already handles it; nothing new is needed for the p
     travels to InsideHub. The player arrives in the entrance hall (the GroundsHub SmartStart).
   - The button only appears if YES's `OnClick` delegate looks exactly as expected; otherwise the log says
     "button not added" and the dialog stays vanilla.
+
+### poc4e test, poc5: door gates
+
+- poc4e: RETURN TO HUB works every time. Leftovers work end to end:
+  - InsideHub `ChestSpawner4` left 1 item, and it was thrown out again on return.
+  - The paddock saved notes for 6 spawners (44 items).
+- poc5: a door's loading trigger only works while the door is unlocked, and its portcullis follows that:
+  - The DADA (`DADA_PortToExpecto_Mvr`) and Library (`Library_Port_Mvr`) portcullises are `TriggerToggle` `KWMover`s,
+    the same ones the vanilla cutscenes trigger (`7200TaskedCharms`).
+  - The mod calls `Trigger` on the mover whenever its `KeyNum` disagrees with the door's state.
+  - The test switch is `Documents\Harry Potter and the Prisoner of Azkaban\HP3_OpenCastle.ini`, `[Doors]` with
+    Paddock / Express / DADA / Library / Shack set to 1 or 0. It is read every 2 s. The randomizer's items will
+    drive the same switch.
