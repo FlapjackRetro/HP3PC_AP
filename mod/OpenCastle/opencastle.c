@@ -60,7 +60,7 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 IMP u32    WINAPI GetPrivateProfileIntW(const wchar*, const wchar*, int, const wchar*);
 IMP u32    WINAPI GetTickCount(void);
 
-#define OC_VERSION L"poc5b"
+#define OC_VERSION L"poc6"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -214,6 +214,8 @@ static void fire_gates(void) {
 
 #include "leftovers.h"
 #include "hubmenu.h"
+static volatile int gAPTestPending;   /* aptest.h: worker found the pickups, game thread swaps their look */
+static void aptest_apply(void);
 static void __thiscall pe_hook(void *self, void *func, void *parms, void *result) {
     int fname;
     if (gPending && !gInTravel) { gInTravel = 1; gPending = 0; do_travel(); gInTravel = 0; }
@@ -221,6 +223,7 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
     if (gPendingRespawn && !gInTravel) { gInTravel = 1; gPendingRespawn = 0; lo_respawn(); gInTravel = 0; }
     if (gMenuPatch && !gInTravel) { gInTravel = 1; gMenuPatch = 0; hub_patch(); gInTravel = 0; }
     if (gGateFire && !gInTravel) { gInTravel = 1; fire_gates(); gInTravel = 0; }
+    if (gAPTestPending && !gInTravel) { gInTravel = 1; aptest_apply(); gAPTestPending = 0; gInTravel = 0; }
     if (!func || !self) { gPEOrig(self, func, parms, result); return; }
     fname = *(int *)((u8 *)func + 0x20);
     if (fname == N_MyOnClick && N_MyOnClick >= 0 && !gInTravel) {
@@ -356,6 +359,8 @@ static void gates_poll(u32 level, const wchar *map) {
     }
 }
 
+#include "aptest.h"
+
 static u32 WINAPI worker(void *arg) {
     HANDLE core; static wchar buf[400], id[32], lastMap[64]; static struct players pl;
     int i, cur = 0, armed = 0, settle = 0, shortcutsDone = 1; u32 clsPlayer, pc, pawn, level; float loc[3];
@@ -458,7 +463,7 @@ static u32 WINAPI worker(void *arg) {
             armed = 0; settle = 0; shortcutsDone = 0;
         }
         settle++;
-        if (settle >= 12 && (settle - 12) % 8 == 0) gates_poll(level, lastMap);   /* once settled, every 2 s */
+        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); aptest_poll(level); }   /* once settled, every 2 s */
         if (!shortcutsDone && settle >= 12) {
             shortcutsDone = 1;
             if (!weq(lastMap, L"Entry") && !weq(lastMap, L"HP_Preamble")) { gPendingShortcuts = 1; gPendingRespawn = 1; }

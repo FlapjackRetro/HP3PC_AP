@@ -45,3 +45,40 @@ path (HP2 leftovers?).
      including P8 / DXT mips.
   3. At runtime, show the texture as a sprite, or as the skin of an existing flat mesh such as
      `WizardCard_SM`. That gives a spinning card with the logo, with no new mesh needed.
+
+## Decided (2026-10-26)
+
+| Item | Look |
+| --- | --- |
+| Pasty, cake, wizard card | their own meshes |
+| Marauder's Map | its own mesh |
+| Portrait / shortcut passwords | the password scroll (the one Peeves carries and Fred & George sell; `HProps.PeevesScroll`) |
+| Carpe Retractum, Alohomora, Depulso, Draconifors, Expecto Patronum, Glacius, Lapifors, Lumos, Rictusempra, Spongify | their spell-shape glyph (`SpellShapes.Shapes.SPS*`) |
+| Door / area unlocks | key: `HP_FX.Particles.Key1` (gold, blue glow); `Key2` (plain gold) if Key1 looks bad in game |
+| Items from other games | Archipelago logo, three tiers |
+
+## Building the Archipelago textures
+
+    python tools/gen_ap_logos.py <Archipelago>/data/icon.png build/aplogo 128
+    python tools/utxwriter.py HP3AP.utx APLogoProgression=build/aplogo/APLogoProgression.png \
+        APLogoUseful=build/aplogo/APLogoUseful.png APLogoFiller=build/aplogo/APLogoFiller.png
+
+- `utxwriter.py` writes a version-129 texture package. Each image becomes a masked P8 texture with a full mip
+  chain: transparent pixels map to palette index 0, as in HP3's own sprite textures.
+- `ue2.py` reads the result back, and the mip offsets are checked.
+- In game the objects are `HP3AP.APLogoProgression` / `APLogoUseful` / `APLogoFiller`. `install_opencastle.bat`
+  copies `HP3AP.utx` into the game's `textures` folder.
+- The poc6 test (`[Test] APLogos=1` in HP3_OpenCastle.ini) loads them with `StaticLoadObject` and draws every
+  cake / pasty / card as one of the tiers.
+
+## Depth
+
+A texture is flat. Depth needs a mesh to put it on:
+1. **An existing HP3 mesh with the texture as its skin**, e.g. `WizardCard_SM` (a card with thickness) or a
+   coin- or tile-shaped mesh. No new file format is needed, but the mesh's UV layout decides how the texture
+   wraps, so each candidate has to be checked.
+2. **Our own StaticMesh in the package**: an extruded token with the logo or glyph on both faces and a coloured
+   rim. That needs `utxwriter.py` to also write `StaticMesh` exports (vertex / UV / index buffers, sections,
+   collision), a bigger job than textures.
+3. **Sprites** (`DrawType=DT_Sprite`) always face the camera, so they never look edge-on. This is what the test
+   uses.
