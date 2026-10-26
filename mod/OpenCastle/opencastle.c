@@ -18,6 +18,7 @@
  *  5. Shortcut passwords start unlocked (PortraitPasswordManager.EnablePortraitShortcuts, once per map load).
  *  6. Leftover goodies (leftovers.h): items a chest threw out but the player didn't pick up come back on the next
  *     visit.
+ *  7. Softlock escape (hubmenu.h): RETURN TO HUB in the pause menu's exit dialog.
  *
  * Not in this build: item gating (every door is open), spell hooks, the Marauder's Map pickup.
  *
@@ -53,7 +54,7 @@ IMP BOOL   WINAPI FlushInstructionCache(HANDLE, const void*, u32);
 IMP int    __cdecl wsprintfW(wchar*, const wchar*, ...);
 IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 
-#define OC_VERSION L"poc3"
+#define OC_VERSION L"poc4"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -88,6 +89,7 @@ static int offPrevLevel = -1, offGame = -1, offPPM = -1;
 static volatile u32 gClsHero;                 /* KWHeroController class */
 static volatile int gPendingShortcuts;
 static volatile int gPending; static wchar gPendingURL[128];
+static volatile int gHubReturn;               /* the next arrival on InsideHub came from RETURN TO HUB */
 
 /* ---- hook 1: FURL::FURL(FURL* Base, const TCHAR* TextURL, ETravelType) ---- */
 typedef void *(__thiscall *furl_fn)(void *self, void *base, const wchar *text, int type);
@@ -162,6 +164,11 @@ static void travel_post_accept(void *self, void *func, void *parms, void *result
     if (!pawn || !hub || offPrevLevel < 0 || !rd(pawn + offPrevLevel, sv, 12)) { gPEOrig(self, func, parms, result); return; }
     if (!read_fstring(pawn + offPrevLevel, prev, 64)) prev[0] = 0;
     for (i = 0; i < NRETS; i++) if (wieq(RETS[i].hub, hub) && wieq(RETS[i].from, prev)) { r = &RETS[i]; break; }
+    if (gHubReturn) {   /* RETURN TO HUB: the entrance hall, whatever map it came from */
+        static const struct ret hubret = { L"HP3_InsideHub", L"", L"HP3_GroundsHub", 0, 0, 0, 0 };
+        gHubReturn = 0;
+        if (wieq(hub, L"HP3_InsideHub")) r = &hubret;
+    }
     wsprintfW(msg, L"arrive %s from \"%s\"%s", hub, prev, r ? L" -> Open Castle return point" : L"");
     log_line(msg);
     if (r && r->smart) {   /* lend the SmartStart's name for this one call, then put the original string back */
@@ -185,13 +192,19 @@ static void enable_shortcuts(void) {
     log_line(L"shortcuts: all shortcut passwords unlocked");
 }
 #include "leftovers.h"
+#include "hubmenu.h"
 static void __thiscall pe_hook(void *self, void *func, void *parms, void *result) {
     int fname;
     if (gPending && !gInTravel) { gInTravel = 1; gPending = 0; do_travel(); gInTravel = 0; }
     if (gPendingShortcuts && !gInTravel) { gInTravel = 1; gPendingShortcuts = 0; enable_shortcuts(); gInTravel = 0; }
     if (gPendingRespawn && !gInTravel) { gInTravel = 1; gPendingRespawn = 0; lo_respawn(); gInTravel = 0; }
+    if (gMenuPatch && !gInTravel) { gInTravel = 1; gMenuPatch = 0; hub_patch(); gInTravel = 0; }
     if (!func || !self) { gPEOrig(self, func, parms, result); return; }
     fname = *(int *)((u8 *)func + 0x20);
+    if (fname == N_MyOnClick && N_MyOnClick >= 0 && !gInTravel) {
+        int done; gInTravel = 1; done = hub_click((u32)self, (u32 *)parms); gInTravel = 0;
+        if (done) return;
+    }
     if (fname == N_PostBeginPlay || fname == N_Destroyed || fname == N_PostPDR || fname == N_TravelExporting)
         lo_event((u32)self, fname);
     if (fname == N_TravelPostAccept && N_TravelPostAccept >= 0 && gClsHero
@@ -317,6 +330,10 @@ static u32 WINAPI worker(void *arg) {
                 }
             }
             continue;
+        }
+        {   static int hubTried;
+            if (!hubTried) { hubTried = 1; hub_init(); }
+            if (gClsExitPage && gFStrAssign) hub_poll();
         }
         pc = rd32(gPlayer + offPlayerActor);
         level = pc ? rd32(pc + offLevel) : 0;

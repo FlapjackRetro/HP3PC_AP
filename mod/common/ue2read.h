@@ -62,15 +62,21 @@ static u32 find_class(const wchar *cname) {
     if (f.name >= 0) for_each_object(v_findcls, &f);
     return f.found;
 }
-struct findprop { int prop, cls; int off; };
+struct findprop { int prop, cls; int off; u32 obj; };
 static int v_findprop(u32 o, int name, u32 cls, void *c) {
     struct findprop *f = c; (void)cls;
-    if (name == f->prop && (int)rd32(rd32(o + 0x18) + 0x20) == f->cls) { f->off = (int)rd32(o + 0x4C); return 1; }
+    if (name == f->prop && (int)rd32(rd32(o + 0x18) + 0x20) == f->cls) { f->off = (int)rd32(o + 0x4C); f->obj = o; return 1; }
     return 0;
+}
+/* the UProperty object itself (0 if not found) */
+static u32 prop_object(const wchar *cls, const wchar *prop) {
+    struct findprop f; f.prop = name_index(prop); f.cls = name_index(cls); f.off = -1; f.obj = 0;
+    if (f.prop >= 0 && f.cls >= 0) for_each_object(v_findprop, &f);
+    return f.obj;
 }
 /* byte offset of property `prop` declared in class `cls` (-1 if not found) */
 static int prop_offset(const wchar *cls, const wchar *prop) {
-    struct findprop f; f.prop = name_index(prop); f.cls = name_index(cls); f.off = -1;
+    struct findprop f; f.prop = name_index(prop); f.cls = name_index(cls); f.off = -1; f.obj = 0;
     if (f.prop >= 0 && f.cls >= 0) for_each_object(v_findprop, &f);
     return f.off;
 }
