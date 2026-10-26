@@ -59,8 +59,11 @@ IMP int    __cdecl wsprintfW(wchar*, const wchar*, ...);
 IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 IMP u32    WINAPI GetPrivateProfileIntW(const wchar*, const wchar*, int, const wchar*);
 IMP u32    WINAPI GetTickCount(void);
+IMP BOOL   WINAPI ReadFile(HANDLE, void*, u32, u32*, void*);
+IMP u32    WINAPI GetFileSize(HANDLE, u32*);
+IMP u32    WINAPI SetFilePointer(HANDLE, int, int*, u32);
 
-#define OC_VERSION L"poc6d"
+#define OC_VERSION L"poc6e"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -217,6 +220,7 @@ static void fire_gates(void) {
 static volatile int gAPTestPending;   /* aptest.h: worker found the pickups, game thread swaps their look */
 static void aptest_apply(void);
 static void aptest_spawned(u32 o);
+static volatile int gGridPending; static void grid_spawn(void);
 static void __thiscall pe_hook(void *self, void *func, void *parms, void *result) {
     int fname;
     if (gPending && !gInTravel) { gInTravel = 1; gPending = 0; do_travel(); gInTravel = 0; }
@@ -225,6 +229,7 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
     if (gMenuPatch && !gInTravel) { gInTravel = 1; gMenuPatch = 0; hub_patch(); gInTravel = 0; }
     if (gGateFire && !gInTravel) { gInTravel = 1; fire_gates(); gInTravel = 0; }
     if (gAPTestPending && !gInTravel) { gInTravel = 1; aptest_apply(); gAPTestPending = 0; gInTravel = 0; }
+    if (gGridPending && !gInTravel) { gInTravel = 1; grid_spawn(); gGridPending = 0; gInTravel = 0; }
     if (!func || !self) { gPEOrig(self, func, parms, result); return; }
     fname = *(int *)((u8 *)func + 0x20);
     if (fname == N_MyOnClick && N_MyOnClick >= 0 && !gInTravel) {
@@ -377,6 +382,8 @@ static u32 WINAPI worker(void *arg) {
         if (SHGetFolderPathW(0, 5, 0, 0, docs) == 0)
             wsprintfW(gIniPath, L"%s\\Harry Potter and the Prisoner of Azkaban\\HP3_OpenCastle.ini", docs);
         else wcpy(gIniPath, L".\\HP3_OpenCastle.ini", 600);
+        if (SHGetFolderPathW(0, 5, 0, 0, docs) == 0)
+            wsprintfW(gMapLogPath, L"%s\\Harry Potter and the Prisoner of Azkaban\\HP3_MapLog.txt", docs);
         for (i = 0; i < 16; i++) gDoorOn[i] = 1;
     }
     wsprintfW(buf, L"---- HP3 Open Castle " OC_VERSION L" loaded: travel hook %s, ProcessEvent hook %s ----",
@@ -467,7 +474,7 @@ static u32 WINAPI worker(void *arg) {
             armed = 0; settle = 0; shortcutsDone = 0;
         }
         settle++;
-        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); aptest_poll(level); }   /* once settled, every 2 s */
+        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); aptest_poll(level); grid_poll(lastMap); }   /* once settled, every 2 s */
         if (!shortcutsDone && settle >= 12) {
             shortcutsDone = 1;
             if (!weq(lastMap, L"Entry") && !weq(lastMap, L"HP_Preamble")) { gPendingShortcuts = 1; gPendingRespawn = 1; }
