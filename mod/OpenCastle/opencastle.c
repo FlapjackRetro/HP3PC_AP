@@ -16,6 +16,8 @@
  *     We lend the pawn's PreviousLevelName a nearby SmartStart's name for that one call (so Ron and Hermione follow
  *     too), then optionally RelocatePawn to the Open Castle door.
  *  5. Shortcut passwords start unlocked (PortraitPasswordManager.EnablePortraitShortcuts, once per map load).
+ *  6. Leftover goodies (leftovers.h): items a chest threw out but the player didn't pick up come back on the next
+ *     visit.
  *
  * Not in this build: item gating (every door is open), spell hooks, the Marauder's Map pickup.
  *
@@ -51,7 +53,7 @@ IMP BOOL   WINAPI FlushInstructionCache(HANDLE, const void*, u32);
 IMP int    __cdecl wsprintfW(wchar*, const wchar*, ...);
 IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 
-#define OC_VERSION L"poc2"
+#define OC_VERSION L"poc3"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -182,10 +184,17 @@ static void enable_shortcuts(void) {
     gPEOrig((void *)ppm, fn, 0, 0);
     log_line(L"shortcuts: all shortcut passwords unlocked");
 }
+#include "leftovers.h"
 static void __thiscall pe_hook(void *self, void *func, void *parms, void *result) {
+    int fname;
     if (gPending && !gInTravel) { gInTravel = 1; gPending = 0; do_travel(); gInTravel = 0; }
     if (gPendingShortcuts && !gInTravel) { gInTravel = 1; gPendingShortcuts = 0; enable_shortcuts(); gInTravel = 0; }
-    if (func && N_TravelPostAccept >= 0 && *(int *)((u8 *)func + 0x20) == N_TravelPostAccept && gClsHero
+    if (gPendingRespawn && !gInTravel) { gInTravel = 1; gPendingRespawn = 0; lo_respawn(); gInTravel = 0; }
+    if (!func || !self) { gPEOrig(self, func, parms, result); return; }
+    fname = *(int *)((u8 *)func + 0x20);
+    if (fname == N_PostBeginPlay || fname == N_Destroyed || fname == N_PostPDR || fname == N_TravelExporting)
+        lo_event((u32)self, fname);
+    if (fname == N_TravelPostAccept && N_TravelPostAccept >= 0 && gClsHero
         && is_a_cls(*(u32 *)((u8 *)self + 0x24), gClsHero)) { travel_post_accept(self, func, parms, result); return; }
     gPEOrig(self, func, parms, result);
 }
@@ -269,6 +278,9 @@ static u32 WINAPI worker(void *arg) {
     N_ServerTravel = name_index(L"ServerTravel");
     N_RelocatePawn = name_index(L"RelocatePawn");
     N_EnableShortcuts = name_index(L"EnablePortraitShortcuts");
+    N_SaveValue = name_index(L"SaveValue"); N_RestoreValue = name_index(L"RestoreValue"); N_FancySpawn = name_index(L"FancySpawn");
+    N_Destroyed = name_index(L"Destroyed"); N_PostPDR = name_index(L"PostPersistentDataRestored");
+    N_TravelExporting = name_index(L"TravelExporting");
     for (;;) {
         Sleep(250);
         if (offPlayerActor < 0) offPlayerActor = prop_offset(L"Player", L"Actor");
@@ -280,6 +292,14 @@ static u32 WINAPI worker(void *arg) {
         if (offGame < 0)  offGame  = prop_offset(L"LevelInfo", L"Game");
         if (offPPM < 0)   offPPM   = prop_offset(L"HGame", L"PortraitPasswordManager");
         if (!gClsHero && (gClsHero = find_class(L"KWHeroController")) != 0) N_TravelPostAccept = name_index(L"TravelPostAccept");
+        if (offLives < 0)   offLives   = prop_offset(L"KWGenericSpawner", L"Lives");
+        if (offGoodies < 0) offGoodies = prop_offset(L"KWGenericSpawner", L"GoodieToSpawn");
+        if (offPicked < 0)  offPicked  = prop_offset(L"KWPickup", L"HasBeenPickedUp");
+        if (offStore < 0)   offStore   = prop_offset(L"KWGame", L"PersistentStore");
+        if (!gClsPickup) gClsPickup = find_class(L"KWPickup");
+        /* PostBeginPlay is armed last: the leftover tracking only starts once everything it needs is known */
+        if (!gClsSpawner && gClsPickup && offLives >= 0 && offGoodies >= 0 && offPicked >= 0 && offStore >= 0 && offLoc >= 0
+            && offLevel >= 0 && (gClsSpawner = find_class(L"KWGenericSpawner")) != 0) N_PostBeginPlay = name_index(L"PostBeginPlay");
         if (!gPlayer) {
             clsPlayer = find_class(L"Player");
             if (clsPlayer) {
@@ -288,9 +308,11 @@ static u32 WINAPI worker(void *arg) {
                 for (i = 0; i < pl.n; i++) if (offPlayerActor >= 0 && rd32(pl.found[i] + offPlayerActor)) { gPlayer = pl.found[i]; break; }
                 if (gPlayer) {
                     wsprintfW(buf, L"ready: offsets player.actor=%d pawn=%d loc=%d level=%d id=%d prevlevel=%d game=%d ppm=%d; "
-                              L"names ServerTravel=%d TravelPostAccept=%d RelocatePawn=%d EnablePortraitShortcuts=%d; hero class %s",
+                              L"names ServerTravel=%d TravelPostAccept=%d RelocatePawn=%d EnablePortraitShortcuts=%d; hero class %s; "
+                              L"leftovers: lives=%d goodies=%d picked=%d store=%d spawner %s pickup %s",
                               offPlayerActor, offPawn, offLoc, offLevel, offID, offPrevLevel, offGame, offPPM,
-                              N_ServerTravel, N_TravelPostAccept, N_RelocatePawn, N_EnableShortcuts, gClsHero ? L"ok" : L"MISSING");
+                              N_ServerTravel, N_TravelPostAccept, N_RelocatePawn, N_EnableShortcuts, gClsHero ? L"ok" : L"MISSING",
+                              offLives, offGoodies, offPicked, offStore, gClsSpawner ? L"ok" : L"MISSING", gClsPickup ? L"ok" : L"MISSING");
                     log_line(buf);
                 }
             }
@@ -305,7 +327,10 @@ static u32 WINAPI worker(void *arg) {
             wsprintfW(buf, L"MAP %s", lastMap); log_line(buf);
             armed = 0; settle = 0; shortcutsDone = 0;
         }
-        if (!shortcutsDone && ++settle >= 12) { shortcutsDone = 1; if (!weq(lastMap, L"Entry") && !weq(lastMap, L"HP_Preamble")) gPendingShortcuts = 1; }
+        if (!shortcutsDone && ++settle >= 12) {
+            shortcutsDone = 1;
+            if (!weq(lastMap, L"Entry") && !weq(lastMap, L"HP_Preamble")) { gPendingShortcuts = 1; gPendingRespawn = 1; }
+        }
         pawn = rd32(pc + offPawn);
         if (!pawn || !rd(pawn + offLoc, loc, 12) || gPending) continue;
         {   int near = -1, far_from_all = 1;

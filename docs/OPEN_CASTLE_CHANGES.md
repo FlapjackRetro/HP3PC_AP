@@ -158,8 +158,16 @@ Yes. The vanilla save system already handles it; nothing new is needed for the p
     harmless because none of them is a check;
   - the jellybeans and `CauldronCake`s in the Ch2B/Ch3B chamber copies, and the jellybeans in Ch1B (farmable);
   - Ch2 `KnightSpawner10` and Ch3B `TapestrySpwn0`.
-- **Gap:** goodies a spawner has already thrown out are dynamic actors. If the player opens a chest and leaves
-  before collecting what fell out, the chest stays spent and the goodies are lost. The randomizer should therefore
-  send a chest's check when the chest opens (its `_lives` reaches 0), not when the goodie is picked up.
+- **Gap:** goodies a spawner has already thrown out are dynamic actors, so nothing records them. Fixed in poc3
+  (`mod/OpenCastle/leftovers.h`):
+  - The mod links every new pickup to the nearest spawner opened this visit whose `GoodieToSpawn` list holds the
+    pickup's class.
+  - When the `PersistentStore` travels, it writes the indices still on the ground to `<id><spawner>_OCleft`.
+    Items that faded or fell out of the world count as still on the ground.
+  - On the next visit it reads that note in `PostPersistentDataRestored`, clears it, and spawns those goodies
+    again above the spawner.
+  - The randomizer should still send a chest's check as soon as the chest opens (its `_lives` reaches 0).
+  - Known hole: after loading a save in the middle of a level, the drops already on the ground aren't linked
+    (no `PostBeginPlay`), so they aren't tracked until the next level load.
 - Event rewards (`HPSpawnThingy` rows, which have no `persist_key`) depend on whether their trigger, fight or
   Peeves persists. They need checking map by map; none are in the paddock.
