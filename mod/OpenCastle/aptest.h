@@ -12,7 +12,7 @@ static u32 gClsTexture, gAPTex[3];
 static int offDrawScale = -1, offTexture = -1, offStyle2 = -1;   /* Actor.DrawScale / Texture / Style (offDrawType: gates) */
 static int N_CauldronCake = -1, N_PumpkinPasty = -1, N_WizardCard = -1;
 static u32 gAPPickups[512]; static int gNAPPickups;
-static u32 gAPLevel;
+static u32 gAPLevel; static int gAPMode;   /* 1 = HP3AP.utx tiers, 2 = a retail texture (HP_FX.Particles.Key1) for all */
 
 /* worker: called once a map has settled */
 struct findpu { u32 level; };
@@ -25,7 +25,7 @@ static int v_findpu(u32 o, int name, u32 cls, void *c) {
 static void aptest_poll(u32 level) {
     struct findpu f;
     if (gAPTestPending || level == gAPLevel) return;
-    if (!GetPrivateProfileIntW(L"Test", L"APLogos", 0, gIniPath)) return;
+    if (!(gAPMode = GetPrivateProfileIntW(L"Test", L"APLogos", 0, gIniPath))) return;
     if (!gLoadObject) {
         HANDLE core = GetModuleHandleW(L"Core.dll");
         gLoadObject = core ? (loadobj_fn)GetProcAddress(core, "?StaticLoadObject@UObject@@SAPAV1@PAVUClass@@PAV1@PBG2KPAVUPackageMap@@@Z") : 0;
@@ -46,8 +46,11 @@ static int cls_named(u32 cls, int n) { int g = 64; while (cls && g--) { if ((int
 static void aptest_apply(void) {
     if (!gLoadObject) return;
     static const wchar *names[3] = { L"HP3AP.APLogoProgression", L"HP3AP.APLogoUseful", L"HP3AP.APLogoFiller" };
-    static wchar b[200]; int i, n[3] = { 0, 0, 0 };
-    for (i = 0; i < 3; i++) if (!gAPTex[i]) gAPTex[i] = (u32)gLoadObject((void *)gClsTexture, 0, names[i], 0, 0x2002 /*NoWarn|Quiet*/, 0);
+    static wchar b[200]; int i, n[3] = { 0, 0, 0 }; static int loadedMode;
+    if (loadedMode != gAPMode) { gAPTex[0] = gAPTex[1] = gAPTex[2] = 0; loadedMode = gAPMode; }
+    for (i = 0; i < 3; i++) if (!gAPTex[i])
+        gAPTex[i] = (u32)gLoadObject((void *)gClsTexture, 0, gAPMode == 2 ? L"HP_FX.Particles.Key1" : names[i], 0, 0x2002 /*NoWarn|Quiet*/, 0);
+    wsprintfW(b, L"aptest: mode %d", gAPMode); log_line(b);
     wsprintfW(b, L"aptest: HP3AP textures %08x %08x %08x", gAPTex[0], gAPTex[1], gAPTex[2]); log_line(b);
     if (!gAPTex[0] || !gAPTex[1] || !gAPTex[2]) { log_line(L"aptest: HP3AP.utx missing from the textures folder?"); return; }
     for (i = 0; i < gNAPPickups; i++) {
