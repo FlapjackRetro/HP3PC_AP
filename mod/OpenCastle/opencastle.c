@@ -67,7 +67,7 @@ IMP HWND   WINAPI GetForegroundWindow(void);
 IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 
-#define OC_VERSION L"poc6l"
+#define OC_VERSION L"poc6m"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -226,6 +226,7 @@ static void fire_gates(void) {
 #include "leftovers.h"
 #include "hubmenu.h"
 static volatile int gGridPending; static void grid_spawn(void);
+static volatile u32 gBlockSpawn, gBlockKill; static void blockers_apply(void);
 static void __thiscall pe_hook(void *self, void *func, void *parms, void *result) {
     int fname;
     if (gPending && !gInTravel) { gInTravel = 1; gPending = 0; do_travel(); gInTravel = 0; }
@@ -234,6 +235,7 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
     if (gMenuPatch && !gInTravel) { gInTravel = 1; gMenuPatch = 0; hub_patch(); gInTravel = 0; }
     if (gGateFire && !gInTravel) { gInTravel = 1; fire_gates(); gInTravel = 0; }
     if (gGridPending && !gInTravel) { gInTravel = 1; grid_spawn(); gGridPending = 0; gInTravel = 0; }
+    if ((gBlockSpawn || gBlockKill) && !gInTravel) { gInTravel = 1; blockers_apply(); gInTravel = 0; }
     if (!func || !self) { gPEOrig(self, func, parms, result); return; }
     fname = *(int *)((u8 *)func + 0x20);
     if (fname == N_MyOnClick && N_MyOnClick >= 0 && !gInTravel) {
@@ -417,6 +419,7 @@ static void gates_poll(u32 level, const wchar *map) {
 
 #include "aptest.h"
 #include "comcfix.h"
+#include "blocker.h"
 
 static u32 WINAPI worker(void *arg) {
     HANDLE core; static wchar buf[400], id[32], lastMap[64]; static struct players pl;
@@ -523,7 +526,7 @@ static u32 WINAPI worker(void *arg) {
         }
         settle++;
         if (settle >= 4) comc_poll(level, lastMap);
-        if (settle >= 12 && (settle - 12) % 8 == 0) gates_poll(level, lastMap);   /* once settled, every 2 s */
+        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); blockers_poll(level, lastMap); }   /* once settled, every 2 s */
         if (!shortcutsDone && settle >= 12) {
             shortcutsDone = 1;
             if (!weq(lastMap, L"Entry") && !weq(lastMap, L"HP_Preamble")) { gPendingShortcuts = 1; gPendingRespawn = 1; }

@@ -217,3 +217,9 @@ Yes. The vanilla save system already handles it; nothing new is needed for the p
     - GroundsHub `CutSceneTrigger15` (`ChangeLevel_COMC_MINIGAME`, the walk-in to the course selection);
     - `CompanionSpellTrigger10` (the doxy well).
   - A locked challenge shows no sign yet. One option: float the drawn key sprite at the entrance while it's locked.
+- **Hippogriff path (poc6l test):** with the walk-in trigger off, the path past the COMC arch still leads out of
+  bounds. poc6m adds a blocker (`blocker.h`) at the arch (GroundsHub `StaticMeshActor260`, `COMCgate_SM` at
+  (−1868, 992, 576)) while `Hippogriff` is locked:
+  - the castle portcullis mesh (`Portcullis_SM`, ×2.0, so 256 × 408 units) on an inert `Effects` actor;
+  - a blocking cylinder (radius 135, half-height 210), set through `SetCollisionSize` + `SetCollision`.
+  - It's removed when the key unlocks, and spawned again on each visit while locked.
