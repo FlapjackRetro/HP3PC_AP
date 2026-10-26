@@ -54,7 +54,7 @@ IMP BOOL   WINAPI FlushInstructionCache(HANDLE, const void*, u32);
 IMP int    __cdecl wsprintfW(wchar*, const wchar*, ...);
 IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 
-#define OC_VERSION L"poc4c"
+#define OC_VERSION L"poc4e"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -288,14 +288,28 @@ static u32 WINAPI worker(void *arg) {
         if (rd32((u32)gObjs + 4) < 1000) continue;
         if ((N_Class = name_index(L"Class")) >= 0) break;
     }
-    N_ServerTravel = name_index(L"ServerTravel");
-    N_RelocatePawn = name_index(L"RelocatePawn");
-    N_EnableShortcuts = name_index(L"EnablePortraitShortcuts");
-    N_SaveValue = name_index(L"SaveValue"); N_RestoreValue = name_index(L"RestoreValue"); N_FancySpawn = name_index(L"FancySpawn");
-    N_Destroyed = name_index(L"Destroyed"); N_PostPDR = name_index(L"PostPersistentDataRestored");
-    N_TravelExporting = name_index(L"TravelExporting");
     for (;;) {
         Sleep(250);
+        {   /* names: some (HGame's) only exist once their package has loaded, so retry the missing ones every 2 s */
+            static int tick; static int logged;
+            if (tick++ % 8 == 0) {
+                int miss = 0;
+#define NAME(v, s) if (v < 0) { v = name_index(s); if (v < 0) miss++; }
+                NAME(N_ServerTravel, L"ServerTravel") NAME(N_RelocatePawn, L"RelocatePawn")
+                NAME(N_EnableShortcuts, L"EnablePortraitShortcuts") NAME(N_SaveValue, L"SaveValue")
+                NAME(N_RestoreValue, L"RestoreValue") NAME(N_FancySpawn, L"FancySpawn") NAME(N_Destroyed, L"Destroyed")
+                NAME(N_PostPDR, L"PostPersistentDataRestored") NAME(N_TravelExporting, L"TravelExporting")
+#undef NAME
+                if (!miss && !logged) {
+                    logged = 1;
+                    wsprintfW(buf, L"names: ServerTravel=%d RelocatePawn=%d EnablePortraitShortcuts=%d SaveValue=%d RestoreValue=%d "
+                              L"FancySpawn=%d Destroyed=%d PostPersistentDataRestored=%d TravelExporting=%d", N_ServerTravel,
+                              N_RelocatePawn, N_EnableShortcuts, N_SaveValue, N_RestoreValue, N_FancySpawn, N_Destroyed, N_PostPDR,
+                              N_TravelExporting);
+                    log_line(buf);
+                }
+            }
+        }
         if (offPlayerActor < 0) offPlayerActor = prop_offset(L"Player", L"Actor");
         if (offPawn < 0)  offPawn  = prop_offset(L"Controller", L"Pawn");
         if (offLoc < 0)   offLoc   = prop_offset(L"Actor", L"Location");
