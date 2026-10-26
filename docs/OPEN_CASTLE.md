@@ -351,3 +351,18 @@ target is higher than its pad (one-way up), and check whether the area below has
 - Where grounds triggers could go for Adv5Shack, Adv6Paddock and BuckyExecuted.
 - Which story maps are pure cutscene (no player control).
 - Arrival spawn points and state requirements for each story map.
+
+## Location rule: no random amounts (decided 2026-10-26)
+
+A container whose snack amount is rolled when it opens is **not a randomizer location**. It stays in the game with
+its vanilla behaviour (it still drops what it would normally drop) and is left out of the item pool.
+
+- How the game decides (KWGenericSpawner): if any `GoodiesNumber` is set, the drop is exact. Otherwise it spawns
+  `RandRange(Limits.Min, Limits.Max)` goodies, which is a fixed `Min` whenever `Max <= Min`.
+- The catalogue's `random_amount` column marks the containers that really roll (`Max > Min`, shown as the range).
+- The only rolling containers with pasties or cakes:
+  - `HP3_Ch1CarpeRetractumB` `BannerSpwn1`: 2–3 cauldron cakes;
+  - `HP3_PortraitPassword_F` `KnightSpawner7`: 6–14 pumpkin pasties per hit, 2 hits.
+- Containers that only ever give jellybeans also roll, often by class default. They aren't snack checks.
+- Look fixed but aren't random: the Ch1B 8-pasty chest (`ChestSpawner12`), the Ch2 pumpkins (2 pasties each), Ch2
+  `KnightSpawner2` (the Common Welsh Green Dragon card), and FA1 `ChestSpawner7`. All have Min = Max.

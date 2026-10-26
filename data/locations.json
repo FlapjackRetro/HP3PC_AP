@@ -31,7 +31,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv1Express",
@@ -48,7 +49,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv1Express",
@@ -65,7 +67,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv1Express",
@@ -82,7 +85,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv1Express",
@@ -104,7 +108,8 @@
    ]
   ],
   "persist_key": "adv1HPGenericSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "4-5"
  },
  {
   "map": "HP3_Adv1Express",
@@ -126,7 +131,8 @@
    ]
   ],
   "persist_key": "adv1HPGenericSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "4-5"
  },
  {
   "map": "HP3_Adv1Express",
@@ -148,7 +154,8 @@
    ]
   ],
   "persist_key": "adv1HPGenericSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "4-5"
  },
  {
   "map": "HP3_Adv1Express",
@@ -170,7 +177,8 @@
    ]
   ],
   "persist_key": "adv1Hpgenericspawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "4-5"
  },
  {
   "map": "HP3_Adv1Express",
@@ -192,7 +200,8 @@
    ]
   ],
   "persist_key": "adv1HPGenericSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv1Express",
@@ -214,7 +223,8 @@
    ]
   ],
   "persist_key": "adv1HPGenericSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv2ExpPatronum",
@@ -248,7 +258,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv2ExpPatronum",
@@ -270,7 +281,8 @@
    ]
   ],
   "persist_key": "adv2SkullShelfSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv2ExpPatronum",
@@ -292,7 +304,8 @@
    ]
   ],
   "persist_key": "adv2KnightSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "4-5"
  },
  {
   "map": "HP3_Adv2ExpPatronum",
@@ -314,7 +327,8 @@
    ]
   ],
   "persist_key": "adv2ChestSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv2ExpPatronum",
@@ -336,7 +350,8 @@
    ]
   ],
   "persist_key": "adv2SkullShelfSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv2ExpPatronum",
@@ -358,7 +373,8 @@
    ]
   ],
   "persist_key": "adv2SkullShelfSpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv2ExpPatronum",
@@ -380,7 +396,8 @@
    ]
   ],
   "persist_key": "adv2TapestrySpwn6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "6-9"
  },
  {
   "map": "HP3_Adv2ExpPatronum",
@@ -397,7 +414,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv2ExpPatronum",
@@ -419,7 +437,8 @@
    ]
   ],
   "persist_key": "adv2ArmoireSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "4-5"
  },
  {
   "map": "HP3_Adv3Library",
@@ -441,7 +460,8 @@
    ]
   ],
   "persist_key": "adv3AlohomoraPadLock3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv3Library",
@@ -463,7 +483,8 @@
    ]
   ],
   "persist_key": "adv3AlohomoraPadLock2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv3Library",
@@ -489,7 +510,8 @@
    ]
   ],
   "persist_key": "adv3ChestSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv3Library",
@@ -511,7 +533,8 @@
    ]
   ],
   "persist_key": "adv3KnightSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv3Library",
@@ -533,7 +556,8 @@
    ]
   ],
   "persist_key": "adv3ArmoireSpwn3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv3Library",
@@ -555,7 +579,8 @@
    ]
   ],
   "persist_key": "adv3ChestSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "4-7"
  },
  {
   "map": "HP3_Adv3Library",
@@ -577,7 +602,8 @@
    ]
   ],
   "persist_key": "adv3KnightShieldSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv3Library",
@@ -594,7 +620,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv3Library",
@@ -611,7 +638,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv3Library",
@@ -628,7 +656,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv3Library",
@@ -645,7 +674,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv3Library",
@@ -662,7 +692,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv3Library",
@@ -679,7 +710,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv3Library",
@@ -696,7 +728,8 @@
   "event": null,
   "contents": [],
   "persist_key": "adv3WC_DoubleEndedNewt0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv3Library",
@@ -718,7 +751,8 @@
    ]
   ],
   "persist_key": "adv3KnightShieldSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv3Library",
@@ -740,7 +774,8 @@
    ]
   ],
   "persist_key": "adv3ChestSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv3Library",
@@ -762,7 +797,8 @@
    ]
   ],
   "persist_key": "adv3ChestSpawner10_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "4-7"
  },
  {
   "map": "HP3_Adv3Library",
@@ -779,7 +815,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -818,7 +855,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -840,7 +878,8 @@
    ]
   ],
   "persist_key": "ADV5ShackCauldronSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -862,7 +901,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -884,7 +924,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -906,7 +947,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock9_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -932,7 +974,8 @@
    ]
   ],
   "persist_key": "ADV5ShackChestCompanionSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -949,7 +992,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -975,7 +1019,8 @@
    ]
   ],
   "persist_key": "ADV5ShackSkullShelfSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1001,7 +1046,8 @@
    ]
   ],
   "persist_key": "ADV5ShackChestCompanionSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1023,7 +1069,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock16_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1045,7 +1092,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1067,7 +1115,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1089,7 +1138,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock17_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1111,7 +1161,8 @@
    ]
   ],
   "persist_key": "ADV5ShackChestCompanionSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1133,7 +1184,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock10_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1155,7 +1207,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock11_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1177,7 +1230,8 @@
    ]
   ],
   "persist_key": "ADV5ShackChestSpawner9_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1194,7 +1248,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ADV5ShackSkullShelfSpwn5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1216,7 +1271,8 @@
    ]
   ],
   "persist_key": "ADV5ShackSkullShelfSpwn6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1238,7 +1294,8 @@
    ]
   ],
   "persist_key": "ADV5ShackChestSpawner12_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1260,7 +1317,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1282,7 +1340,8 @@
    ]
   ],
   "persist_key": "ADV5ShackCauldronSpwn3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1299,7 +1358,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1321,7 +1381,8 @@
    ]
   ],
   "persist_key": "ADV5ShackChestSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1347,7 +1408,8 @@
    ]
   ],
   "persist_key": "ADV5ShackChestSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1373,7 +1435,8 @@
    ]
   ],
   "persist_key": "ADV5ShackChestSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1395,7 +1458,8 @@
    ]
   ],
   "persist_key": "ADV5ShackSkullShelfSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1417,7 +1481,8 @@
    ]
   ],
   "persist_key": "ADV5ShackChestSpawner11_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1439,7 +1504,8 @@
    ]
   ],
   "persist_key": "ADV5ShackCauldronSpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1461,7 +1527,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1483,7 +1550,8 @@
    ]
   ],
   "persist_key": "ADV5ShackSkullShelfSpwn7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1505,7 +1573,8 @@
    ]
   ],
   "persist_key": "ADV5ShackChestCompanionSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1527,7 +1596,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock12_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1549,7 +1619,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock13_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1571,7 +1642,8 @@
    ]
   ],
   "persist_key": "ADV5ShackSkullShelfSpwn4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1593,7 +1665,8 @@
    ]
   ],
   "persist_key": "ADV5ShackSkullShelfSpwn3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1615,7 +1688,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1637,7 +1711,8 @@
    ]
   ],
   "persist_key": "ADV5ShackAlohomoraPadLock5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1654,7 +1729,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1671,7 +1747,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1688,7 +1765,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1705,7 +1783,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1727,7 +1806,8 @@
    ]
   ],
   "persist_key": "ADV5ShackSkullShelfSpwn8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1744,7 +1824,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ADV5ShackPumpkinPasty3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1761,7 +1842,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1778,7 +1860,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ADV5ShackPumpkinPasty0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1795,7 +1878,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ADV5ShackPumpkinPasty5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1817,7 +1901,8 @@
    ]
   ],
   "persist_key": "ADV5ShackChestSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1834,7 +1919,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1851,7 +1937,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1868,7 +1955,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1890,7 +1978,8 @@
    ]
   ],
   "persist_key": "ADV5ShackChestSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1912,7 +2001,8 @@
    ]
   ],
   "persist_key": "ADV5ShackChestSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1938,7 +2028,8 @@
    ]
   ],
   "persist_key": "ADV5ShackSkullShelfSpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1955,7 +2046,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv5Shack",
@@ -1972,7 +2064,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ADV5ShackCauldronCake4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -1994,7 +2087,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2016,7 +2110,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2038,7 +2133,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2060,7 +2156,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2086,7 +2183,8 @@
    ]
   ],
   "persist_key": "adv6CrateSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2108,7 +2206,8 @@
    ]
   ],
   "persist_key": "adv6CauldronSpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2130,7 +2229,8 @@
    ]
   ],
   "persist_key": "adv6CauldronSpwn3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2152,7 +2252,8 @@
    ]
   ],
   "persist_key": "adv6ChestSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2174,7 +2275,8 @@
    ]
   ],
   "persist_key": "adv6CauldronSpwn4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2196,7 +2298,8 @@
    ]
   ],
   "persist_key": "adv6CauldronSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2213,7 +2316,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2230,7 +2334,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2247,7 +2352,8 @@
   "event": null,
   "contents": [],
   "persist_key": "adv6PumpkinPasty0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2264,7 +2370,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2281,7 +2388,8 @@
   "event": null,
   "contents": [],
   "persist_key": "adv6PumpkinPasty5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2307,7 +2415,8 @@
    ]
   ],
   "persist_key": "adv6ChestSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2337,7 +2446,8 @@
    ]
   ],
   "persist_key": "adv6CauldronSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2354,7 +2464,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2371,7 +2482,8 @@
   "event": null,
   "contents": [],
   "persist_key": "adv6PumpkinPasty7_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2388,7 +2500,8 @@
   "event": null,
   "contents": [],
   "persist_key": "adv6PumpkinPasty18_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2405,7 +2518,8 @@
   "event": null,
   "contents": [],
   "persist_key": "adv6CauldronCake2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2422,7 +2536,8 @@
   "event": null,
   "contents": [],
   "persist_key": "adv6CauldronCake0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2439,7 +2554,8 @@
   "event": null,
   "contents": [],
   "persist_key": "adv6PumpkinPasty4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2456,7 +2572,8 @@
   "event": null,
   "contents": [],
   "persist_key": "adv6CauldronCake7_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2473,7 +2590,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Adv6Paddock",
@@ -2490,7 +2608,8 @@
   "event": null,
   "contents": [],
   "persist_key": "adv6PumpkinPasty6_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2507,7 +2626,8 @@
   "event": null,
   "contents": [],
   "persist_key": "bbWC_Dumbledore0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2524,7 +2644,8 @@
   "event": null,
   "contents": [],
   "persist_key": "bbWC_HelgaHufflepuff0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2541,7 +2662,8 @@
   "event": null,
   "contents": [],
   "persist_key": "bbPumpkinPasty5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2571,7 +2693,8 @@
    ]
   ],
   "persist_key": "bbChestSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2601,7 +2724,8 @@
    ]
   ],
   "persist_key": "bbChestSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2631,7 +2755,8 @@
    ]
   ],
   "persist_key": "bbChestSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2661,7 +2786,8 @@
    ]
   ],
   "persist_key": "bbChestSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2691,7 +2817,8 @@
    ]
   ],
   "persist_key": "bbChestSpawner9_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2721,7 +2848,8 @@
    ]
   ],
   "persist_key": "bbChestSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2738,7 +2866,8 @@
   "event": null,
   "contents": [],
   "persist_key": "bbWC_GodricGryffindor0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2755,7 +2884,8 @@
   "event": null,
   "contents": [],
   "persist_key": "bbWC_SalazarSlytherin0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2772,7 +2902,8 @@
   "event": null,
   "contents": [],
   "persist_key": "bbWC_RowenaRavenclaw0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2802,7 +2933,8 @@
    ]
   ],
   "persist_key": "bbKnightSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2832,7 +2964,8 @@
    ]
   ],
   "persist_key": "bbChestSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2862,7 +2995,8 @@
    ]
   ],
   "persist_key": "bbKnightSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2892,7 +3026,8 @@
    ]
   ],
   "persist_key": "bbKnightSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2922,7 +3057,8 @@
    ]
   ],
   "persist_key": "bbChestSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2952,7 +3088,8 @@
    ]
   ],
   "persist_key": "bbKnightSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -2982,7 +3119,8 @@
    ]
   ],
   "persist_key": "bbKnightSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -3012,7 +3150,8 @@
    ]
   ],
   "persist_key": "bbKnightSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -3042,7 +3181,8 @@
    ]
   ],
   "persist_key": "bbKnightSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -3072,7 +3212,8 @@
    ]
   ],
   "persist_key": "bbKnightSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -3102,7 +3243,8 @@
    ]
   ],
   "persist_key": "bbKnightSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -3132,7 +3274,8 @@
    ]
   ],
   "persist_key": "bbChestSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -3162,7 +3305,8 @@
    ]
   ],
   "persist_key": "bbChestSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -3179,7 +3323,8 @@
   "event": null,
   "contents": [],
   "persist_key": "bbPumpkinPasty12_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -3196,7 +3341,8 @@
   "event": null,
   "contents": [],
   "persist_key": "bbPumpkinPasty6_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -3213,7 +3359,8 @@
   "event": null,
   "contents": [],
   "persist_key": "bbPumpkinPasty11_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -3230,7 +3377,8 @@
   "event": null,
   "contents": [],
   "persist_key": "bbPumpkinPasty10_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -3247,7 +3395,8 @@
   "event": null,
   "contents": [],
   "persist_key": "bbPumpkinPasty1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -3264,7 +3413,8 @@
   "event": null,
   "contents": [],
   "persist_key": "bbPumpkinPasty7_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -3281,7 +3431,8 @@
   "event": null,
   "contents": [],
   "persist_key": "bbPumpkinPasty9_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BeanBonus",
@@ -3298,7 +3449,8 @@
   "event": null,
   "contents": [],
   "persist_key": "bbPumpkinPasty8_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_BuckyExecuted",
@@ -3320,7 +3472,8 @@
    ]
   ],
   "persist_key": "bexPumpkin2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_BuckyExecuted",
@@ -3342,7 +3495,8 @@
    ]
   ],
   "persist_key": "bexPumpkin3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_BuckyExecuted",
@@ -3364,7 +3518,8 @@
    ]
   ],
   "persist_key": "bexPumpkin1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_BuckyExecuted",
@@ -3386,7 +3541,8 @@
    ]
   ],
   "persist_key": "bexPumpkin5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_BuckyExecuted",
@@ -3408,7 +3564,8 @@
    ]
   ],
   "persist_key": "bexScarecrow0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_BuckyExecuted",
@@ -3430,7 +3587,8 @@
    ]
   ],
   "persist_key": "bexPumpkin6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_BuckyExecuted",
@@ -3452,7 +3610,8 @@
    ]
   ],
   "persist_key": "bexPumpkin4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_COMC",
@@ -3622,7 +3781,8 @@
   "event": null,
   "contents": [],
   "persist_key": "crChallengeStar11_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3639,7 +3799,8 @@
   "event": null,
   "contents": [],
   "persist_key": "crChallengeStar2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3656,7 +3817,8 @@
   "event": null,
   "contents": [],
   "persist_key": "crChallengeStar8_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3673,7 +3835,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3699,7 +3862,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3725,7 +3889,8 @@
    ]
   ],
   "persist_key": "crChestSpawner11_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3751,7 +3916,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3781,7 +3947,8 @@
    ]
   ],
   "persist_key": "crChestSpawner22_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3798,7 +3965,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3824,7 +3992,8 @@
    ]
   ],
   "persist_key": "crChestSpawner15_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3841,7 +4010,8 @@
   "event": null,
   "contents": [],
   "persist_key": "crChallengeStar0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3858,7 +4028,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3884,7 +4055,8 @@
    ]
   ],
   "persist_key": "crArmoireSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3910,7 +4082,8 @@
    ]
   ],
   "persist_key": "crArmoireSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3927,7 +4100,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3944,7 +4118,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3961,7 +4136,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -3978,7 +4154,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4004,7 +4181,8 @@
    ]
   ],
   "persist_key": "crChestSpawner17_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4021,7 +4199,8 @@
   "event": null,
   "contents": [],
   "persist_key": "crChallengeStar9_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4043,7 +4222,8 @@
    ]
   ],
   "persist_key": "crChestSpawner14_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4065,7 +4245,8 @@
    ]
   ],
   "persist_key": "crKnightSpawner17_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "4-7"
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4087,7 +4268,8 @@
    ]
   ],
   "persist_key": "crKnightSpawner31_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "2-3"
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4109,7 +4291,8 @@
    ]
   ],
   "persist_key": "crKnightSpawner30_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "2-3"
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4131,7 +4314,8 @@
    ]
   ],
   "persist_key": "crKnightSpawner29_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "2-3"
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4153,7 +4337,8 @@
    ]
   ],
   "persist_key": "crKnightSpawner28_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "4-7"
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4175,7 +4360,8 @@
    ]
   ],
   "persist_key": "crKnightSpawner27_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "4-7"
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4197,7 +4383,8 @@
    ]
   ],
   "persist_key": "crKnightSpawner25_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "4-7"
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4214,7 +4401,8 @@
   "event": null,
   "contents": [],
   "persist_key": "crChallengeStar6_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4236,7 +4424,8 @@
    ]
   ],
   "persist_key": "crKnightSpawner9_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4262,7 +4451,8 @@
    ]
   ],
   "persist_key": "crChestSpawner18_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4284,7 +4474,8 @@
    ]
   ],
   "persist_key": "crKnightSpawner32_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "2-3"
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4306,7 +4497,8 @@
    ]
   ],
   "persist_key": "crKnightSpawner22_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4328,7 +4520,8 @@
    ]
   ],
   "persist_key": "crKnightSpawner18_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "6-11"
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4350,7 +4543,8 @@
    ]
   ],
   "persist_key": "crKnightSpawner10_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4372,7 +4566,8 @@
    ]
   ],
   "persist_key": "crChestSpawner20_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4389,7 +4584,8 @@
   "event": null,
   "contents": [],
   "persist_key": "crChallengeStar10_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4406,7 +4602,8 @@
   "event": null,
   "contents": [],
   "persist_key": "crChallengeStar4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractum",
@@ -4423,7 +4620,8 @@
   "event": null,
   "contents": [],
   "persist_key": "crChallengeStar3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4445,7 +4643,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner23_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4467,7 +4666,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "6-7"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4489,7 +4689,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner9_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "6-7"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4511,7 +4712,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "6-7"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4533,7 +4735,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "6-7"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4555,7 +4758,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "6-7"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4577,7 +4781,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "8-9"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4599,7 +4804,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "6-7"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4621,7 +4827,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "8-9"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4643,7 +4850,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "8-9"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4665,7 +4873,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "12-13"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4687,7 +4896,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "12-13"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4709,7 +4919,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner16_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4731,7 +4942,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner14_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "8-9"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4753,7 +4965,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner13_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "8-9"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4775,7 +4988,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "12-13"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4797,7 +5011,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "12-13"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4819,7 +5034,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "8-9"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4841,7 +5057,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "8-9"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4863,7 +5080,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "8-9"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4885,7 +5103,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner12_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "8-9"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4911,7 +5130,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner11_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4937,7 +5157,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner15_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4963,7 +5184,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner21_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -4980,7 +5202,8 @@
   "event": null,
   "contents": [],
   "persist_key": "crbKnightSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5002,7 +5225,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5019,7 +5243,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5041,7 +5266,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner19_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5058,7 +5284,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5080,7 +5307,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5102,7 +5330,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner23_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5132,7 +5361,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner13_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5149,7 +5379,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5171,7 +5402,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner16_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "20-24"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5193,7 +5425,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner19_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "5-14"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5219,7 +5452,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner24_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5241,7 +5475,8 @@
    ]
   ],
   "persist_key": "crbBannerSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "2-3"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5258,7 +5493,8 @@
   "event": null,
   "contents": [],
   "persist_key": "crbChallengeStar1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5280,7 +5516,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner21_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5297,7 +5534,8 @@
   "event": null,
   "contents": [],
   "persist_key": "crbChallengeStar7_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5314,7 +5552,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5331,7 +5570,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5353,7 +5593,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner10_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "20-24"
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5370,7 +5611,8 @@
   "event": null,
   "contents": [],
   "persist_key": "crbChallengeStar3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5387,7 +5629,8 @@
   "event": null,
   "contents": [],
   "persist_key": "crbChallengeStar6_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5409,7 +5652,8 @@
    ]
   ],
   "persist_key": "crbChestSpawner12_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch1CarpeRetractumB",
@@ -5431,7 +5675,8 @@
    ]
   ],
   "persist_key": "crbKnightSpawner9_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5453,7 +5698,8 @@
    ]
   ],
   "persist_key": "dlChestSpawner29_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5470,7 +5716,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5487,7 +5734,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5504,7 +5752,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5521,7 +5770,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5538,7 +5788,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5560,7 +5811,8 @@
    ]
   ],
   "persist_key": "dlChestSpawner15_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5582,7 +5834,8 @@
    ]
   ],
   "persist_key": "dlChestSpawner21_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5604,7 +5857,8 @@
    ]
   ],
   "persist_key": "dlPumpkin3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5626,7 +5880,8 @@
    ]
   ],
   "persist_key": "dlPumpkin8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5648,7 +5903,8 @@
    ]
   ],
   "persist_key": "dlPumpkin9_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5670,7 +5926,8 @@
    ]
   ],
   "persist_key": "dlPumpkin7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5692,7 +5949,8 @@
    ]
   ],
   "persist_key": "dlPumpkin2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5709,7 +5967,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5731,7 +5990,8 @@
    ]
   ],
   "persist_key": "dlPumpkin6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5753,7 +6013,8 @@
    ]
   ],
   "persist_key": "dlPumpkin5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5775,7 +6036,8 @@
    ]
   ],
   "persist_key": "dlPumpkin0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5792,7 +6054,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5809,7 +6072,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5826,7 +6090,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlChallengeStar2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5848,7 +6113,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5870,7 +6136,8 @@
    ]
   ],
   "persist_key": "dlKnightSpawner22_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5892,7 +6159,8 @@
    ]
   ],
   "persist_key": "dlKnightSpawner18_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5914,7 +6182,8 @@
    ]
   ],
   "persist_key": "dlChestSpawner20_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5936,7 +6205,8 @@
    ]
   ],
   "persist_key": "dlChestSpawner17_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5953,7 +6223,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlChallengeStar4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5970,7 +6241,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlChallengeStar11_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -5987,7 +6259,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlChallengeStar3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6009,7 +6282,8 @@
    ]
   ],
   "persist_key": "dlKnightSpawner9_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6026,7 +6300,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlChallengeStar6_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6043,7 +6318,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlChallengeStar0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6065,7 +6341,8 @@
    ]
   ],
   "persist_key": "dlChestSpawner16_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6087,7 +6364,8 @@
    ]
   ],
   "persist_key": "dlKnightSpawner19_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6109,7 +6387,8 @@
    ]
   ],
   "persist_key": "dlKnightSpawner24_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6126,7 +6405,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlChallengeStar1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6143,7 +6423,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6165,7 +6446,8 @@
    ]
   ],
   "persist_key": "dlKnightSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6187,7 +6469,8 @@
    ]
   ],
   "persist_key": "dlKnightSpawner21_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6209,7 +6492,8 @@
    ]
   ],
   "persist_key": "dlKnightSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6231,7 +6515,8 @@
    ]
   ],
   "persist_key": "dlKnightSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6253,7 +6538,8 @@
    ]
   ],
   "persist_key": "dlKnightSpawner11_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6275,7 +6561,8 @@
    ]
   ],
   "persist_key": "dlKnightSpawner16_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6297,7 +6584,8 @@
    ]
   ],
   "persist_key": "dlKnightSpawner23_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6314,7 +6602,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6331,7 +6620,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlChallengeStar5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6348,7 +6638,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlCauldronCake6_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6365,7 +6656,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlCauldronCake8_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6387,7 +6679,8 @@
    ]
   ],
   "persist_key": "dlChestSpawner30_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6404,7 +6697,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6421,7 +6715,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6438,7 +6733,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6455,7 +6751,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty10_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6472,7 +6769,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty11_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6489,7 +6787,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty12_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6506,7 +6805,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty13_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6523,7 +6823,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty22_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6540,7 +6841,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty17_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6557,7 +6859,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty18_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6574,7 +6877,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty15_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6591,7 +6895,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6608,7 +6913,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6625,7 +6931,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty9_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6642,7 +6949,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty21_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6659,7 +6967,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlPumpkinPasty20_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6681,7 +6990,8 @@
    ]
   ],
   "persist_key": "dlTapestrySpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6698,7 +7008,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6715,7 +7026,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlCauldronCake12_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6732,7 +7044,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6754,7 +7067,8 @@
    ]
   ],
   "persist_key": "dlPumpkin12_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6771,7 +7085,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlCauldronCake3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6788,7 +7103,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6810,7 +7126,8 @@
    ]
   ],
   "persist_key": "dlKnightSpawner20_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6832,7 +7149,8 @@
    ]
   ],
   "persist_key": "dlChestSpawner22_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6854,7 +7172,8 @@
    ]
   ],
   "persist_key": "dlTapestrySpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2Draconifors",
@@ -6876,7 +7195,8 @@
    ]
   ],
   "persist_key": "dlChestSpawner25_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -6906,7 +7226,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -6936,7 +7257,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -6966,7 +7288,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner9_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -6996,7 +7319,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7013,7 +7337,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7043,7 +7368,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7073,7 +7399,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7099,7 +7426,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner12_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7125,7 +7453,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7151,7 +7480,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7177,7 +7507,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7207,7 +7538,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7237,7 +7569,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7263,7 +7596,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner13_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7289,7 +7623,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner14_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7315,7 +7650,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7341,7 +7677,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7367,7 +7704,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7393,7 +7731,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7419,7 +7758,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7436,7 +7776,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbChallengeStar3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7453,7 +7794,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7475,7 +7817,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner14_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7492,7 +7835,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7509,7 +7853,8 @@
   "event": "FinalCutScene",
   "contents": [],
   "persist_key": "dlbChallengeStar4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7531,7 +7876,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner23_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7553,7 +7899,8 @@
    ]
   ],
   "persist_key": "dlbTopiaryBadgerSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7575,7 +7922,8 @@
    ]
   ],
   "persist_key": "dlbTopiarySnakeSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7592,7 +7940,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7618,7 +7967,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner12_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7635,7 +7985,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7657,7 +8008,8 @@
    ]
   ],
   "persist_key": "dlbTopiaryLionSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7679,7 +8031,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner26_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7696,7 +8049,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbCauldronCake5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7718,7 +8072,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7740,7 +8095,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner19_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7757,7 +8113,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7774,7 +8131,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbKnightSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7796,7 +8154,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner15_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7818,7 +8177,8 @@
    ]
   ],
   "persist_key": "dlbCauldronSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7835,7 +8195,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7857,7 +8218,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner10_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7874,7 +8236,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7891,7 +8254,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbChallengeStar1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7913,7 +8277,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner13_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7930,7 +8295,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbPumpkinPasty23_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7947,7 +8313,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbPumpkinPasty24_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7969,7 +8336,8 @@
    ]
   ],
   "persist_key": "dlbCauldronSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -7991,7 +8359,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner11_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8013,7 +8382,8 @@
    ]
   ],
   "persist_key": "dlbCauldronSpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8030,7 +8400,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8047,7 +8418,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8064,7 +8436,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8081,7 +8454,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8103,7 +8477,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner32_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8120,7 +8495,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8137,7 +8513,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8154,7 +8531,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8171,7 +8549,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbPumpkinPasty19_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8188,7 +8567,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbPumpkinPasty33_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8205,7 +8585,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbPumpkinPasty5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8222,7 +8603,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbChallengeStar8_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8239,7 +8621,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbCauldronCake9_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8261,7 +8644,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner17_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8283,7 +8667,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner31_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8305,7 +8690,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner30_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8327,7 +8713,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner29_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8349,7 +8736,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner28_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8371,7 +8759,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner27_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8393,7 +8782,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner26_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8415,7 +8805,8 @@
    ]
   ],
   "persist_key": "dlbKnightSpawner25_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8437,7 +8828,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner28_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8454,7 +8846,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbCauldronCake7_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8471,7 +8864,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8488,7 +8882,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8510,7 +8905,8 @@
    ]
   ],
   "persist_key": "dlbTopiaryRavenSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8532,7 +8928,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner27_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8554,7 +8951,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner31_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8571,7 +8969,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8588,7 +8987,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8605,7 +9005,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8627,7 +9028,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner24_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8644,7 +9046,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8661,7 +9064,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8683,7 +9087,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8700,7 +9105,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbPumpkinPasty25_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8717,7 +9123,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8734,7 +9141,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbPumpkinPasty26_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8751,7 +9159,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbPumpkinPasty28_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8768,7 +9177,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbPumpkinPasty29_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8785,7 +9195,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbPumpkinPasty31_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8802,7 +9213,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbPumpkinPasty30_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8819,7 +9231,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dlbPumpkinPasty32_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8836,7 +9249,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8853,7 +9267,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch2DraconiforsB",
@@ -8875,7 +9290,8 @@
    ]
   ],
   "persist_key": "dlbChestSpawner22_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -8892,7 +9308,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glChallengeStar10_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -8909,7 +9326,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glChallengeStar1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -8926,7 +9344,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glChallengeStar3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -8943,7 +9362,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glChallengeStar4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -8960,7 +9380,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty11_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -8977,7 +9398,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glCauldronCake13_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9003,7 +9425,8 @@
    ]
   ],
   "persist_key": "glKnightSpawner39_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9029,7 +9452,8 @@
    ]
   ],
   "persist_key": "glKnightSpawner38_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9046,7 +9470,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glChallengeStar9_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9063,7 +9488,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glCauldronCake12_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9080,7 +9506,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty15_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9097,7 +9524,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty14_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9114,7 +9542,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty27_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9131,7 +9560,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glChallengeStar12_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9153,7 +9583,8 @@
    ]
   ],
   "persist_key": "glCauldronSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9170,7 +9601,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9192,7 +9624,8 @@
    ]
   ],
   "persist_key": "glAlohomoraPadLock12_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9209,7 +9642,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glCauldronCake11_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9226,7 +9660,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty37_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9243,7 +9678,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glCauldronCake10_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9260,7 +9696,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty28_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9277,7 +9714,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty26_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9307,7 +9745,8 @@
    ]
   ],
   "persist_key": "glChestSpawner35_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9324,7 +9763,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty32_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9341,7 +9781,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty30_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9358,7 +9799,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glCauldronCake8_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9375,7 +9817,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glChestSpawner13_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9405,7 +9848,8 @@
    ]
   ],
   "persist_key": "glChestSpawner31_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9422,7 +9866,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty13_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9439,7 +9884,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glCauldronCake5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9456,7 +9902,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty29_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9473,7 +9920,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty41_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9490,7 +9938,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty42_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9507,7 +9956,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty43_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9524,7 +9974,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty44_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9541,7 +9992,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty25_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9558,7 +10010,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glCauldronCake6_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9575,7 +10028,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty31_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9592,7 +10046,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glCauldronCake15_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9609,7 +10064,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9626,7 +10082,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9643,7 +10100,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9660,7 +10118,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9686,7 +10145,8 @@
    ]
   ],
   "persist_key": "glChestSpawner12_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9703,7 +10163,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glCauldronCake14_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9720,7 +10181,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glCauldronCake3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9737,7 +10199,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty38_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9754,7 +10217,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9771,7 +10235,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glChallengeStar5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9788,7 +10253,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty24_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9805,7 +10271,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty12_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9822,7 +10289,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty23_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9839,7 +10307,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glChallengeStar6_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9856,7 +10325,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glChallengeStar0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9873,7 +10343,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty19_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9890,7 +10361,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty18_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9907,7 +10379,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty45_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9924,7 +10397,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty7_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9941,7 +10415,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty49_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9958,7 +10433,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty34_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9975,7 +10451,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty33_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -9992,7 +10469,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty17_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -10009,7 +10487,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty22_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -10026,7 +10505,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty20_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -10043,7 +10523,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty50_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -10060,7 +10541,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty9_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -10077,7 +10559,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty10_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -10094,7 +10577,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glChallengeStar8_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -10111,7 +10595,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glChallengeStar7_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -10128,7 +10613,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glKnightSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -10145,7 +10631,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty35_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -10162,7 +10649,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -10179,7 +10667,8 @@
   "event": "RmJ_LoopStar_Emit",
   "contents": [],
   "persist_key": "glChallengeStar2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -10196,7 +10685,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty6_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3Glacius",
@@ -10213,7 +10703,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glPumpkinPasty36_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10235,7 +10726,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10257,7 +10749,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10279,7 +10772,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10309,7 +10803,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10331,7 +10826,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10353,7 +10849,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner9_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10379,7 +10876,8 @@
    ]
   ],
   "persist_key": "glbKnightSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10405,7 +10903,8 @@
    ]
   ],
   "persist_key": "glbKnightSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10431,7 +10930,8 @@
    ]
   ],
   "persist_key": "glbKnightSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10457,7 +10957,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10483,7 +10984,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10509,7 +11011,8 @@
    ]
   ],
   "persist_key": "glbKnightSpawner12_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10535,7 +11038,8 @@
    ]
   ],
   "persist_key": "glbKnightSpawner13_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10561,7 +11065,8 @@
    ]
   ],
   "persist_key": "glbKnightSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10578,7 +11083,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty35_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10604,7 +11110,8 @@
    ]
   ],
   "persist_key": "glbKnightSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10630,7 +11137,8 @@
    ]
   ],
   "persist_key": "glbKnightSpawner14_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10656,7 +11164,8 @@
    ]
   ],
   "persist_key": "glbKnightSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10682,7 +11191,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10708,7 +11218,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10725,7 +11236,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbKnightSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10742,7 +11254,8 @@
   "event": "RmJ_LoopStar_Emit",
   "contents": [],
   "persist_key": "glbChallengeStar2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10759,7 +11272,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbChallengeStar7_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10776,7 +11290,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbChallengeStar8_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10798,7 +11313,8 @@
    ]
   ],
   "persist_key": "glbKnightSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10815,7 +11331,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbWC_Gringott0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10832,7 +11349,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty19_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10849,7 +11367,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty18_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10866,7 +11385,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty45_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10883,7 +11403,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty7_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10900,7 +11421,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty49_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10917,7 +11439,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty34_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10934,7 +11457,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty33_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10951,7 +11475,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty17_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10968,7 +11493,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty22_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -10985,7 +11511,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty20_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11002,7 +11529,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty50_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11019,7 +11547,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty9_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11036,7 +11565,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty10_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11053,7 +11583,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11070,7 +11601,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11092,7 +11624,8 @@
    ]
   ],
   "persist_key": "glbKnightSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11109,7 +11642,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11135,7 +11669,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner30_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11161,7 +11696,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner33_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11178,7 +11714,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbChallengeStar11_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11200,7 +11737,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11217,7 +11755,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty21_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11247,7 +11786,8 @@
    ]
   ],
   "persist_key": "glbBannerSpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11264,7 +11804,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty46_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11281,7 +11822,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty47_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11298,7 +11840,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty48_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11315,7 +11858,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty51_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11332,7 +11876,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11349,7 +11894,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty16_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11366,7 +11912,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty8_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11383,7 +11930,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11400,7 +11948,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11430,7 +11979,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner32_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11447,7 +11997,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11464,7 +12015,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11481,7 +12033,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11498,7 +12051,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11524,7 +12078,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner11_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11541,7 +12096,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11558,7 +12114,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11575,7 +12132,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11592,7 +12150,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11609,7 +12168,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11639,7 +12199,8 @@
    ]
   ],
   "persist_key": "glbChestSpawner10_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11665,7 +12226,8 @@
    ]
   ],
   "persist_key": "glbBannerSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11687,7 +12249,8 @@
    ]
   ],
   "persist_key": "glbBannerSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11704,7 +12267,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbChallengeStar12_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11721,7 +12285,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty15_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11738,7 +12303,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty14_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11755,7 +12321,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbChallengeStar3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11772,7 +12339,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbChallengeStar4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11789,7 +12357,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty11_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11806,7 +12375,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbChallengeStar0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11823,7 +12393,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbChallengeStar6_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11840,7 +12411,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty23_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11857,7 +12429,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty12_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11874,7 +12447,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty24_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11891,7 +12465,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbChallengeStar5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11908,7 +12483,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty38_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11925,7 +12501,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty6_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Ch3GlaciusB",
@@ -11942,7 +12519,8 @@
   "event": null,
   "contents": [],
   "persist_key": "glbPumpkinPasty36_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_DarkTower",
@@ -11959,7 +12537,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_DarkTower",
@@ -11976,7 +12555,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_DungeonHUB",
@@ -12444,7 +13024,8 @@
    ]
   ],
   "persist_key": "dungChestSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_DungeonHUB",
@@ -12466,7 +13047,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_DungeonHUB",
@@ -12488,7 +13070,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_DungeonHUB",
@@ -12510,7 +13093,8 @@
    ]
   ],
   "persist_key": "dungChestSpawner11_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_DungeonHUB",
@@ -12532,7 +13116,8 @@
    ]
   ],
   "persist_key": "dungChestSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_DungeonHUB",
@@ -12554,7 +13139,8 @@
    ]
   ],
   "persist_key": "dungChestSpawner10_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "8-11"
  },
  {
   "map": "HP3_DungeonHUB",
@@ -12571,7 +13157,8 @@
   "event": null,
   "contents": [],
   "persist_key": "dungWC_Doxy0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_DungeonHUB",
@@ -12593,7 +13180,8 @@
    ]
   ],
   "persist_key": "dungKnightSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_DungeonHUB",
@@ -12615,7 +13203,8 @@
    ]
   ],
   "persist_key": "dungKnightSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_DungeonHUB",
@@ -12637,7 +13226,8 @@
    ]
   ],
   "persist_key": "dungChestSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "6-7"
  },
  {
   "map": "HP3_DungeonHUB",
@@ -12663,7 +13253,8 @@
    ]
   ],
   "persist_key": "dungChestSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_DungeonHUB",
@@ -12689,7 +13280,8 @@
    ]
   ],
   "persist_key": "dungChestSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_DungeonHUB",
@@ -12706,7 +13298,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_DungeonHUB",
@@ -12723,7 +13316,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -12740,7 +13334,8 @@
   "event": null,
   "contents": [],
   "persist_key": "rfChallengeStar4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -12757,7 +13352,8 @@
   "event": null,
   "contents": [],
   "persist_key": "rfChallengeStar0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -12779,7 +13375,8 @@
    ]
   ],
   "persist_key": "rfChestSpawner9_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -12801,7 +13398,8 @@
    ]
   ],
   "persist_key": "rfAlohomoraPadLock1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_FA1Ron",
@@ -12818,7 +13416,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -12840,7 +13439,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_FA1Ron",
@@ -12857,7 +13457,8 @@
   "event": null,
   "contents": [],
   "persist_key": "rfCauldronCake1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -12874,7 +13475,8 @@
   "event": null,
   "contents": [],
   "persist_key": "rfChallengeStar3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -12891,7 +13493,8 @@
   "event": null,
   "contents": [],
   "persist_key": "rfChallengeStar2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -12908,7 +13511,8 @@
   "event": null,
   "contents": [],
   "persist_key": "rfChallengeStar1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -12930,7 +13534,8 @@
    ]
   ],
   "persist_key": "rfKnightSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -12952,7 +13557,8 @@
    ]
   ],
   "persist_key": "rfKnightSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "6-9"
  },
  {
   "map": "HP3_FA1Ron",
@@ -12974,7 +13580,8 @@
    ]
   ],
   "persist_key": "rfKnightSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "5-9"
  },
  {
   "map": "HP3_FA1Ron",
@@ -12996,7 +13603,8 @@
    ]
   ],
   "persist_key": "rfKnightSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "5-9"
  },
  {
   "map": "HP3_FA1Ron",
@@ -13018,7 +13626,8 @@
    ]
   ],
   "persist_key": "rfKnightSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "10-14"
  },
  {
   "map": "HP3_FA1Ron",
@@ -13044,7 +13653,8 @@
    ]
   ],
   "persist_key": "rfKnightSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -13066,7 +13676,8 @@
    ]
   ],
   "persist_key": "rfChestSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "15-24"
  },
  {
   "map": "HP3_FA1Ron",
@@ -13088,7 +13699,8 @@
    ]
   ],
   "persist_key": "rfChestSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -13110,7 +13722,8 @@
    ]
   ],
   "persist_key": "rfChestSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "10-19"
  },
  {
   "map": "HP3_FA1Ron",
@@ -13132,7 +13745,8 @@
    ]
   ],
   "persist_key": "rfChestSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "15-19"
  },
  {
   "map": "HP3_FA1Ron",
@@ -13154,7 +13768,8 @@
    ]
   ],
   "persist_key": "rfChestSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "10-14"
  },
  {
   "map": "HP3_FA1Ron",
@@ -13180,7 +13795,8 @@
    ]
   ],
   "persist_key": "rfChestSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -13202,7 +13818,8 @@
    ]
   ],
   "persist_key": "rfChestSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_FA1Ron",
@@ -13224,7 +13841,8 @@
    ]
   ],
   "persist_key": "rfChestSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -13246,7 +13864,8 @@
    ]
   ],
   "persist_key": "rfKnightSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "4-9"
  },
  {
   "map": "HP3_FA1Ron",
@@ -13268,7 +13887,8 @@
    ]
   ],
   "persist_key": "rfKnightSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -13285,7 +13905,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -13302,7 +13923,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -13319,7 +13941,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -13345,7 +13968,8 @@
    ]
   ],
   "persist_key": "rfTapestrySpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -13367,7 +13991,8 @@
    ]
   ],
   "persist_key": "rfTapestrySpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_FA1Ron",
@@ -13389,7 +14014,8 @@
    ]
   ],
   "persist_key": "rfChestSpawner10_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "10-19"
  },
  {
   "map": "HP3_FA1Ron",
@@ -13406,7 +14032,8 @@
   "event": null,
   "contents": [],
   "persist_key": "rfCauldronCake0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -13423,7 +14050,8 @@
   "event": null,
   "contents": [],
   "persist_key": "rfCauldronCake2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA1Ron",
@@ -13445,7 +14073,8 @@
    ]
   ],
   "persist_key": "rfChestSpawner11_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13462,7 +14091,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfCauldronCake1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13484,7 +14114,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13506,7 +14137,8 @@
    ]
   ],
   "persist_key": "hfCauldronSpwn3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13528,7 +14160,8 @@
    ]
   ],
   "persist_key": "hfCauldronSpwn4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13545,7 +14178,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty36_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13562,7 +14196,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty53_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13579,7 +14214,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfCauldronCake23_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13596,7 +14232,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty47_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13613,7 +14250,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty46_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13630,7 +14268,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty45_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13647,7 +14286,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty44_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13664,7 +14304,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty43_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13681,7 +14322,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty42_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13698,7 +14340,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty40_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13715,7 +14358,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty39_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13732,7 +14376,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty38_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13749,7 +14394,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13766,7 +14412,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfCauldronCake13_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13783,7 +14430,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty35_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13800,7 +14448,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty34_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13817,7 +14466,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty51_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13834,7 +14484,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty27_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13851,7 +14502,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty16_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13868,7 +14520,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty50_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13885,7 +14538,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty49_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13902,7 +14556,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty54_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13919,7 +14574,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty14_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13936,7 +14592,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty48_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13953,7 +14610,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty8_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13970,7 +14628,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty7_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -13987,7 +14646,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty6_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14004,7 +14664,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty37_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14021,7 +14682,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty52_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14038,7 +14700,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty10_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14055,7 +14718,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14072,7 +14736,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14094,7 +14759,8 @@
    ]
   ],
   "persist_key": "hfKnightSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14116,7 +14782,8 @@
    ]
   ],
   "persist_key": "hfKnightSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14133,7 +14800,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfCauldronCake22_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14150,7 +14818,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty41_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14167,7 +14836,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty11_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14184,7 +14854,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty12_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14201,7 +14872,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty13_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14218,7 +14890,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty22_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14235,7 +14908,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty17_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14252,7 +14926,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty18_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14269,7 +14944,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty15_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14291,7 +14967,8 @@
    ]
   ],
   "persist_key": "hfKnightSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14308,7 +14985,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14330,7 +15008,8 @@
    ]
   ],
   "persist_key": "hfCauldronSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14347,7 +15026,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14364,7 +15044,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14381,7 +15062,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty9_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14398,7 +15080,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty21_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14415,7 +15098,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty20_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14432,7 +15116,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14449,7 +15134,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14471,7 +15157,8 @@
    ]
   ],
   "persist_key": "hfKnightSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14488,7 +15175,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14505,7 +15193,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfChallengeStar0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14522,7 +15211,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfChallengeStar2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14539,7 +15229,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfChallengeStar1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14556,7 +15247,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfChallengeStar3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14573,7 +15265,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfChallengeStar4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14590,7 +15283,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14607,7 +15301,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty23_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14624,7 +15319,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty24_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14641,7 +15337,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfCauldronCake15_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14658,7 +15355,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfCauldronCake20_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14675,7 +15373,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty25_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14692,7 +15391,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfCauldronCake21_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14709,7 +15409,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty26_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14726,7 +15427,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty28_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14743,7 +15445,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty29_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14760,7 +15463,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty31_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14777,7 +15481,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty30_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14794,7 +15499,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty32_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14811,7 +15517,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty19_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14828,7 +15535,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14845,7 +15553,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfPumpkinPasty33_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14867,7 +15576,8 @@
    ]
   ],
   "persist_key": "hfCauldronSpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA2Hermione",
@@ -14889,7 +15599,8 @@
    ]
   ],
   "persist_key": "hfCauldronSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -14919,7 +15630,8 @@
    ]
   ],
   "persist_key": "hfeHpgenericspawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -14936,7 +15648,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfeChallengeStar3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -14953,7 +15666,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfeChallengeStar4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -14970,7 +15684,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfeChallengeStar2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -14992,7 +15707,8 @@
    ]
   ],
   "persist_key": "hfeChestSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15014,7 +15730,8 @@
    ]
   ],
   "persist_key": "hfeChestSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15036,7 +15753,8 @@
    ]
   ],
   "persist_key": "hfeChestSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15058,7 +15776,8 @@
    ]
   ],
   "persist_key": "hfeChestSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15075,7 +15794,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfeChallengeStar1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15092,7 +15812,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfePumpkinPasty1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15109,7 +15830,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfeChallengeStar0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15126,7 +15848,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfePumpkinPasty2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15143,7 +15866,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfePumpkinPasty0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15169,7 +15893,8 @@
    ]
   ],
   "persist_key": "hfeHpgenericspawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15195,7 +15920,8 @@
    ]
   ],
   "persist_key": "hfeHpgenericspawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15221,7 +15947,8 @@
    ]
   ],
   "persist_key": "hfeHpgenericspawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15247,7 +15974,8 @@
    ]
   ],
   "persist_key": "hfeHpgenericspawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15264,7 +15992,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15281,7 +16010,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfeCauldronCake0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15298,7 +16028,8 @@
   "event": null,
   "contents": [],
   "persist_key": "hfeCauldronCake2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15315,7 +16046,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15337,7 +16069,8 @@
    ]
   ],
   "persist_key": "hfeSkullShelfSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_FA3Harry",
@@ -15359,7 +16092,8 @@
    ]
   ],
   "persist_key": "hfeSkullShelfSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Final",
@@ -15376,7 +16110,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_Final",
@@ -15398,7 +16133,8 @@
    ]
   ],
   "persist_key": "HP3FinalHPGenericSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsDada",
@@ -15420,7 +16156,8 @@
    ]
   ],
   "persist_key": "GroundDADAKnightShieldSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_GroundsDada",
@@ -15437,7 +16174,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsDada",
@@ -15459,7 +16197,8 @@
    ]
   ],
   "persist_key": "GroundDADASkullFloatSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_GroundsDada",
@@ -15476,7 +16215,8 @@
   "event": null,
   "contents": [],
   "persist_key": "GroundDADAWC_DoubleEndedNewt0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsDada",
@@ -15493,7 +16233,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsDada",
@@ -15510,7 +16251,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15527,7 +16269,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubWC_Cyclops0_PU",
-  "awarded_by": "WinCard2"
+  "awarded_by": "WinCard2",
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15544,7 +16287,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubWC_Morholt0_PU",
-  "awarded_by": "WinCard4"
+  "awarded_by": "WinCard4",
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15566,7 +16310,8 @@
    ]
   ],
   "persist_key": "ghubScarecrow0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15588,7 +16333,8 @@
    ]
   ],
   "persist_key": "ghubKnightShieldSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15605,7 +16351,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubWC_Goliath0_PU",
-  "awarded_by": "WinCard3"
+  "awarded_by": "WinCard3",
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15627,7 +16374,8 @@
    ]
   ],
   "persist_key": "ghubChestSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15649,7 +16397,8 @@
    ]
   ],
   "persist_key": "ghubKnightCollapse0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15666,7 +16415,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15688,7 +16438,8 @@
    ]
   ],
   "persist_key": "ghubKnightShieldSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15705,7 +16456,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubWC_HengistofUpperBarnton0_PU",
-  "awarded_by": "WinCard5"
+  "awarded_by": "WinCard5",
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15727,7 +16479,8 @@
    ]
   ],
   "persist_key": "ghubPumpkin3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15749,7 +16502,8 @@
    ]
   ],
   "persist_key": "ghubPumpkin2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15771,7 +16525,8 @@
    ]
   ],
   "persist_key": "ghubPumpkin6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15793,7 +16548,8 @@
    ]
   ],
   "persist_key": "ghubPumpkin5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15815,7 +16571,8 @@
    ]
   ],
   "persist_key": "ghubPumpkin1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15837,7 +16594,8 @@
    ]
   ],
   "persist_key": "ghubKnightShieldSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15854,7 +16612,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubWC_Gytrash0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15876,7 +16635,8 @@
    ]
   ],
   "persist_key": "ghubPumpkin4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15898,7 +16658,8 @@
    ]
   ],
   "persist_key": "ghubKnightSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15920,7 +16681,8 @@
    ]
   ],
   "persist_key": "ghubTopiarySnakeSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15942,7 +16704,8 @@
    ]
   ],
   "persist_key": "ghubTopiaryRavenSpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15964,7 +16727,8 @@
    ]
   ],
   "persist_key": "ghubTopiaryBadgerSpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -15986,7 +16750,8 @@
    ]
   ],
   "persist_key": "ghubTopiaryBadgerSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "1-3"
  },
  {
   "map": "HP3_GroundsHub",
@@ -16003,7 +16768,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubWC_BrantheBloodthirsty0_PU",
-  "awarded_by": "WinCard1"
+  "awarded_by": "WinCard1",
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16020,7 +16786,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16042,7 +16809,8 @@
    ]
   ],
   "persist_key": "ghubTopiarySnakeSpwn3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16064,7 +16832,8 @@
    ]
   ],
   "persist_key": "ghubTopiaryRavenSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16086,7 +16855,8 @@
    ]
   ],
   "persist_key": "ghubTopiaryLionSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16103,7 +16873,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubWC_GiantPurpleToad0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16125,7 +16896,8 @@
    ]
   ],
   "persist_key": "ghubTopiaryLionSpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16147,7 +16919,8 @@
    ]
   ],
   "persist_key": "ghubTopiaryBadgerSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16169,7 +16942,8 @@
    ]
   ],
   "persist_key": "ghubTopiarySnakeSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16186,7 +16960,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16208,7 +16983,8 @@
    ]
   ],
   "persist_key": "ghubChestSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "14-15"
  },
  {
   "map": "HP3_GroundsHub",
@@ -16230,7 +17006,8 @@
    ]
   ],
   "persist_key": "ghubChestSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "14-15"
  },
  {
   "map": "HP3_GroundsHub",
@@ -16247,7 +17024,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16264,7 +17042,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16281,7 +17060,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubCauldronCake1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16298,7 +17078,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16315,7 +17096,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubCauldronCake3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16332,7 +17114,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16349,7 +17132,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16366,7 +17150,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubPumpkinPasty20_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16383,7 +17168,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubPumpkinPasty22_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16400,7 +17186,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubCauldronCake5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16417,7 +17204,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubCauldronCake4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16439,7 +17227,8 @@
    ]
   ],
   "persist_key": "ghubArmoireSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16461,7 +17250,8 @@
    ]
   ],
   "persist_key": "ghubArmoireSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16478,7 +17268,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16495,7 +17286,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16512,7 +17304,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubPumpkinPasty19_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16529,7 +17322,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubPumpkinPasty21_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16546,7 +17340,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16563,7 +17358,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16580,7 +17376,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16597,7 +17394,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16614,7 +17412,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16631,7 +17430,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubWC_DoubleEndedNewt0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16648,7 +17448,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubWC_Kelpie0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16670,7 +17471,8 @@
    ]
   ],
   "persist_key": "ghubTopiaryRavenSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "1-3"
  },
  {
   "map": "HP3_GroundsHub",
@@ -16692,7 +17494,8 @@
    ]
   ],
   "persist_key": "ghubTopiaryLionSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "1-3"
  },
  {
   "map": "HP3_GroundsHub",
@@ -16709,7 +17512,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubPumpkinPasty18_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16726,7 +17530,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubCauldronCake2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_GroundsHub",
@@ -16743,7 +17548,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ghubCauldronCake0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -16935,7 +17741,8 @@
    ]
   ],
   "persist_key": "ihubAlohomoraPadLock14_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -16957,7 +17764,8 @@
    ]
   ],
   "persist_key": "ihubAlohomoraPadLock15_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -16979,7 +17787,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner21_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17005,7 +17814,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17027,7 +17837,8 @@
    ]
   ],
   "persist_key": "ihubAlohomoraPadLock16_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17049,7 +17860,8 @@
    ]
   ],
   "persist_key": "ihubAlohomoraPadLock13_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17071,7 +17883,8 @@
    ]
   ],
   "persist_key": "ihubKnightShieldSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17088,7 +17901,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17105,7 +17919,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17127,7 +17942,8 @@
    ]
   ],
   "persist_key": "ihubKnightSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17149,7 +17965,8 @@
    ]
   ],
   "persist_key": "ihubAlohomoraPadLock11_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17171,7 +17988,8 @@
    ]
   ],
   "persist_key": "ihubAlohomoraPadLock10_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17193,7 +18011,8 @@
    ]
   ],
   "persist_key": "ihubCauldronSpwn3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17215,7 +18034,8 @@
    ]
   ],
   "persist_key": "ihubAlohomoraPadLock2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17237,7 +18057,8 @@
    ]
   ],
   "persist_key": "ihubAlohomoraPadLock5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17259,7 +18080,8 @@
    ]
   ],
   "persist_key": "ihubAlohomoraPadLock1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17281,7 +18103,8 @@
    ]
   ],
   "persist_key": "ihubChestCompanionSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17303,7 +18126,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner18_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17325,7 +18149,8 @@
    ]
   ],
   "persist_key": "ihubKnightSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17342,7 +18167,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17364,7 +18190,8 @@
    ]
   ],
   "persist_key": "ihubKnightShieldSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17386,7 +18213,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner19_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17408,7 +18236,8 @@
    ]
   ],
   "persist_key": "ihubAlohomoraPadLock12_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17430,7 +18259,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner13_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17447,7 +18277,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ihubWC_OldMotherHubbard0_PU",
-  "awarded_by": "MBWC4"
+  "awarded_by": "MBWC4",
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17464,7 +18295,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ihubWC_LeticiaSomnolens0_PU",
-  "awarded_by": "MBWC3"
+  "awarded_by": "MBWC3",
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17486,7 +18318,8 @@
    ]
   ],
   "persist_key": "ihubKnightSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17508,7 +18341,8 @@
    ]
   ],
   "persist_key": "ihubKnightSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17530,7 +18364,8 @@
    ]
   ],
   "persist_key": "ihubCauldronSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17547,7 +18382,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ihubSkullFloatSpwn3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17564,7 +18400,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ihubWC_MalodoraGrymm0_PU",
-  "awarded_by": "MBWC2"
+  "awarded_by": "MBWC2",
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17590,7 +18427,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner17_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17612,7 +18450,8 @@
    ]
   ],
   "persist_key": "ihubTapestrySpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17638,7 +18477,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17660,7 +18500,8 @@
    ]
   ],
   "persist_key": "ihubAlohomoraPadLock4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17682,7 +18523,8 @@
    ]
   ],
   "persist_key": "ihubKnightSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17704,7 +18546,8 @@
    ]
   ],
   "persist_key": "ihubKnightCollapse4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17726,7 +18569,8 @@
    ]
   ],
   "persist_key": "ihubTapestrySpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17748,7 +18592,8 @@
    ]
   ],
   "persist_key": "ihubCauldronSpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17770,7 +18615,8 @@
    ]
   ],
   "persist_key": "ihubAlohomoraPadLock3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17792,7 +18638,8 @@
    ]
   ],
   "persist_key": "ihubChestCompanionSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17814,7 +18661,8 @@
    ]
   ],
   "persist_key": "ihubCauldronSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17836,7 +18684,8 @@
    ]
   ],
   "persist_key": "ihubKnightSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17858,7 +18707,8 @@
    ]
   ],
   "persist_key": "ihubAlohomoraPadLock0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17880,7 +18730,8 @@
    ]
   ],
   "persist_key": "ihubChestCompanionSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17897,7 +18748,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17914,7 +18766,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17931,7 +18784,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17953,7 +18807,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -17970,7 +18825,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -17987,7 +18843,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18004,7 +18861,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18021,7 +18879,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18038,7 +18897,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18055,7 +18915,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18077,7 +18938,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -18099,7 +18961,8 @@
    ]
   ],
   "persist_key": "ihubSkullShelfSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18121,7 +18984,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -18143,7 +19007,8 @@
    ]
   ],
   "persist_key": "ihubSkullFloatSpwn5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18169,7 +19034,8 @@
    ]
   ],
   "persist_key": "ihubSkullFloatSpwn7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18186,7 +19052,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18212,7 +19079,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18234,7 +19102,8 @@
    ]
   ],
   "persist_key": "ihubKnightSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -18251,7 +19120,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ihubWC_Babayaga0_PU",
-  "awarded_by": "MBWC1"
+  "awarded_by": "MBWC1",
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18277,7 +19147,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner14_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18299,7 +19170,8 @@
    ]
   ],
   "persist_key": "ihubSkullFloatSpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -18316,7 +19188,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18338,7 +19211,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -18360,7 +19234,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18377,7 +19252,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ihubWC_CordeliaMisericordia0_PU",
-  "awarded_by": "MBWC5"
+  "awarded_by": "MBWC5",
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18394,7 +19270,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18411,7 +19288,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18428,7 +19306,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18450,7 +19329,8 @@
    ]
   ],
   "persist_key": "ihubChestSpawner20_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -18467,7 +19347,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18489,7 +19370,8 @@
    ]
   ],
   "persist_key": "ihubTapestrySpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18506,7 +19388,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18523,7 +19406,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18540,7 +19424,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18557,7 +19442,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18574,7 +19460,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18591,7 +19478,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18608,7 +19496,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18630,7 +19519,8 @@
    ]
   ],
   "persist_key": "ihubArmoireSpwn3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -18647,7 +19537,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18664,7 +19555,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18681,7 +19573,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18698,7 +19591,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18715,7 +19609,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18732,7 +19627,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18749,7 +19645,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18766,7 +19663,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18783,7 +19681,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18800,7 +19699,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18817,7 +19717,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18834,7 +19735,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18856,7 +19758,8 @@
    ]
   ],
   "persist_key": "ihubSkullFloatSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18873,7 +19776,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18890,7 +19794,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18907,7 +19812,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18929,7 +19835,8 @@
    ]
   ],
   "persist_key": "ihubSkullFloatSpwn4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18942,7 +19849,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ihubPumpkinPasty5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18959,7 +19867,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ihubWC_BeatrixBloxam5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18976,7 +19885,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ihubWC_BeatrixBloxam1_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -18989,7 +19899,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ihubWC_BeatrixBloxam2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -19006,7 +19917,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ihubWC_BeatrixBloxam3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -19023,7 +19935,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ihubWC_BeatrixBloxam4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -19041,7 +19954,8 @@
    ]
   ],
   "persist_key": "ihubHPGenericSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "4-5"
  },
  {
   "map": "HP3_InsideHub",
@@ -19063,7 +19977,8 @@
    ]
   ],
   "persist_key": "ihubCauldronSpwn4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -19085,7 +20000,8 @@
    ]
   ],
   "persist_key": "ihubSkullFloatSpwn9_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_InsideHub",
@@ -19098,7 +20014,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ihubCauldronCake4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_InsideHub",
@@ -19111,7 +20028,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ihubChallengeStar0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19179,7 +20097,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19196,7 +20115,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19213,7 +20133,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19230,7 +20151,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19247,7 +20169,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19264,7 +20187,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19286,7 +20210,8 @@
    ]
   ],
   "persist_key": "ppbAlohomoraPadLock0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19308,7 +20233,8 @@
    ]
   ],
   "persist_key": "ppbAlohomoraPadLock3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19325,7 +20251,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppbCauldronCake2_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19342,7 +20269,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppbCauldronCake5_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19364,7 +20292,8 @@
    ]
   ],
   "persist_key": "ppbAlohomoraPadLock1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19381,7 +20310,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppbCauldronCake3_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19398,7 +20328,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppbCauldronCake11_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19415,7 +20346,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppbCauldronCake0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19441,7 +20373,8 @@
    ]
   ],
   "persist_key": "ppbChestSpawner12_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19458,7 +20391,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppbCauldronCake6_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19475,7 +20409,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppbCauldronCake7_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19492,7 +20427,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppbCauldronCake9_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19509,7 +20445,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppbCauldronCake10_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19526,7 +20463,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppbCauldronCake4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19543,7 +20481,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppbCauldronCake13_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_B",
@@ -19560,7 +20499,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppbCauldronCake8_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_C",
@@ -19645,7 +20585,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppcWC_Gnome0_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_C",
@@ -19667,7 +20608,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_C",
@@ -19689,7 +20631,8 @@
    ]
   ],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_C",
@@ -19715,7 +20658,8 @@
    ]
   ],
   "persist_key": "ppcChestSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_C",
@@ -19741,7 +20685,8 @@
    ]
   ],
   "persist_key": "ppcChestSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_C",
@@ -19763,7 +20708,8 @@
    ]
   ],
   "persist_key": "ppcKnightSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_C",
@@ -19785,7 +20731,8 @@
    ]
   ],
   "persist_key": "ppcKnightSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_D",
@@ -19802,7 +20749,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppdCauldronCake4_PU",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_D",
@@ -19836,7 +20784,8 @@
    ]
   ],
   "persist_key": "ppdChestCompanionSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_D",
@@ -19858,7 +20807,8 @@
    ]
   ],
   "persist_key": "ppdAlohomoraPadLock12_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_PortraitPassword_D",
@@ -19880,7 +20830,8 @@
    ]
   ],
   "persist_key": "ppdAlohomoraPadLock1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_PortraitPassword_D",
@@ -19902,7 +20853,8 @@
    ]
   ],
   "persist_key": "ppdAlohomoraPadLock13_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_PortraitPassword_D",
@@ -19932,7 +20884,8 @@
    ]
   ],
   "persist_key": "ppdChestCompanionSpawner0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_D",
@@ -19954,7 +20907,8 @@
    ]
   ],
   "persist_key": "ppdAlohomoraPadLock3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_PortraitPassword_D",
@@ -19976,7 +20930,8 @@
    ]
   ],
   "persist_key": "ppdAlohomoraPadLock4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_PortraitPassword_D",
@@ -19998,7 +20953,8 @@
    ]
   ],
   "persist_key": "ppdAlohomoraPadLock5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_PortraitPassword_D",
@@ -20015,7 +20971,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppdSkullFloatSpwn5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_D",
@@ -20037,7 +20994,8 @@
    ]
   ],
   "persist_key": "ppdTapestrySpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "class default Limits"
  },
  {
   "map": "HP3_PortraitPassword_D",
@@ -20054,7 +21012,8 @@
   "event": null,
   "contents": [],
   "persist_key": "ppdSkullFloatSpwn4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_E",
@@ -20084,7 +21043,8 @@
    ]
   ],
   "persist_key": "ppeKnightSpawner5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_E",
@@ -20106,7 +21066,8 @@
    ]
   ],
   "persist_key": "ppeKnightSpawner4_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_E",
@@ -20132,7 +21093,8 @@
    ]
   ],
   "persist_key": "ppeKnightSpawner2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_E",
@@ -20162,7 +21124,8 @@
    ]
   ],
   "persist_key": "ppeKnightSpawner3_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_E",
@@ -20184,7 +21147,8 @@
    ]
   ],
   "persist_key": "ppeKnightSpawner1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_E",
@@ -20210,7 +21174,8 @@
    ]
   ],
   "persist_key": "ppeKnightSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_E",
@@ -20236,7 +21201,8 @@
    ]
   ],
   "persist_key": "ppeKnightSpawner6_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_E",
@@ -20266,7 +21232,8 @@
    ]
   ],
   "persist_key": "ppeArmoireSpwn2_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_E",
@@ -20283,7 +21250,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_E",
@@ -20309,7 +21277,8 @@
    ]
   ],
   "persist_key": "ppeArmoireSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_F",
@@ -20326,7 +21295,8 @@
   "event": null,
   "contents": [],
   "persist_key": null,
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_F",
@@ -20348,7 +21318,8 @@
    ]
   ],
   "persist_key": "ppfCauldronSpwn5_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_F",
@@ -20374,7 +21345,8 @@
    ]
   ],
   "persist_key": "ppfChestSpawner34_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_F",
@@ -20396,7 +21368,8 @@
    ]
   ],
   "persist_key": "ppfKnightSpawner8_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_F",
@@ -20418,7 +21391,8 @@
    ]
   ],
   "persist_key": "ppfBannerSpwn1_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_F",
@@ -20440,7 +21414,8 @@
    ]
   ],
   "persist_key": "ppfBannerSpwn0_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": null
  },
  {
   "map": "HP3_PortraitPassword_F",
@@ -20462,6 +21437,7 @@
    ]
   ],
   "persist_key": "ppfKnightSpawner7_lives",
-  "awarded_by": null
+  "awarded_by": null,
+  "random_amount": "6-14"
  }
 ]
