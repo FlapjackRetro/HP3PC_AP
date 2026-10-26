@@ -54,7 +54,7 @@ IMP BOOL   WINAPI FlushInstructionCache(HANDLE, const void*, u32);
 IMP int    __cdecl wsprintfW(wchar*, const wchar*, ...);
 IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 
-#define OC_VERSION L"poc4"
+#define OC_VERSION L"poc4b"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -311,7 +311,7 @@ static u32 WINAPI worker(void *arg) {
         if (offStore < 0)   offStore   = prop_offset(L"KWGame", L"PersistentStore");
         if (!gClsPickup) gClsPickup = find_class(L"KWPickup");
         /* PostBeginPlay is armed last: the leftover tracking only starts once everything it needs is known */
-        if (!gClsSpawner && gClsPickup && offLives >= 0 && offGoodies >= 0 && offPicked >= 0 && offStore >= 0 && offLoc >= 0
+        if (!gClsSpawner && gClsPickup && offLives > 0 && offGoodies > 0 && offPicked > 0 && offStore > 0 && offLoc > 0
             && offLevel >= 0 && (gClsSpawner = find_class(L"KWGenericSpawner")) != 0) N_PostBeginPlay = name_index(L"PostBeginPlay");
         if (!gPlayer) {
             clsPlayer = find_class(L"Player");
@@ -331,9 +331,9 @@ static u32 WINAPI worker(void *arg) {
             }
             continue;
         }
-        {   static int hubTried;
-            if (!hubTried) { hubTried = 1; hub_init(); }
-            if (gClsExitPage && gFStrAssign) hub_poll();
+        {   static int hubState;   /* 0 not tried, 1 ready, -1 disabled */
+            if (!hubState) hubState = hub_init() ? 1 : -1;
+            if (hubState > 0) hub_poll();
         }
         pc = rd32(gPlayer + offPlayerActor);
         level = pc ? rd32(pc + offLevel) : 0;

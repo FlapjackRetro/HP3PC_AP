@@ -23,18 +23,14 @@ static u32 gHubPage; static int gHubArmed;
 typedef void *(__thiscall *fstr_assign_fn)(void *self, const wchar *s);
 static fstr_assign_fn gFStrAssign;
 
-/* worker: look everything up once */
+/* worker: the engine-side lookups, once. The menu classes (HGame.HPPageExit ...) are only loaded when a menu first
+   opens, so those are looked up later, in hub_page_init, the first time an HPPageExit is the active page. */
 static int hub_init(void) {
-    static int done; u32 core, bprop;
-    if (done) return done > 0;
-    done = -1;
+    u32 core, bprop;
     core = (u32)GetModuleHandleW(L"Core.dll");
     gFStrAssign = core ? (fstr_assign_fn)GetProcAddress((HANDLE)core, "??4FString@@QAEAAV0@PBG@Z") : 0;
-    gClsExitPage = find_class(L"HPPageExit"); gClsMainMenu = find_class(L"HPPageMainMenu");
     offGUICtl = prop_offset(L"Player", L"GUIController");
     offActivePage = prop_offset(L"GUIController", L"ActivePage");
-    offDecoy = prop_offset(L"HPPageQuit", L"decoy");
-    offBtnYes = prop_offset(L"KWPageYesNo", L"btnYes"); offBtnNo = prop_offset(L"KWPageYesNo", L"btnNo");
     offCaption = prop_offset(L"GUIButton", L"Caption");
     offStyle = prop_offset(L"GUIComponent", L"Style");
     offWinTop = prop_offset(L"GUIComponent", L"WinTop"); offWinLeft = prop_offset(L"GUIComponent", L"WinLeft");
@@ -47,24 +43,41 @@ static int hub_init(void) {
     if (bprop) { u32 m = rd32(bprop + 0x64); offBound = (int)rd32(bprop + 0x4C); if (m && !(m & (m - 1))) maskBound = m; }
     N_MyOnClick = name_index(L"MyOnClick"); N_CloseMenu = name_index(L"CloseMenu"); N_ExitMenu = name_index(L"ExitMenu");
     N_CloseAll = name_index(L"CloseAll"); N_SetPause = name_index(L"SetPause");
-    if (gFStrAssign && gClsExitPage && offGUICtl >= 0 && offActivePage >= 0 && offDecoy >= 0 && offBtnYes >= 0 && offBtnNo >= 0
-        && offCaption >= 0 && offStyle >= 0 && offWinTop >= 0 && offWinLeft >= 0 && offWinWidth >= 0 && offWinHeight >= 0
-        && offOnClick >= 0 && offOnWatch >= 0 && offCompCtl >= 0 && N_MyOnClick >= 0 && N_CloseMenu >= 0) done = 1;
-    {   static wchar b[400];
-        wsprintfW(b, L"hub menu: %s (exitpage %s, mainmenu %s, FString= %s, offsets gui=%d page=%d decoy=%d yes=%d no=%d caption=%d "
-                     L"style=%d click=%d watch=%d bound=%d mask=%x)", done > 0 ? L"ready" : L"DISABLED",
-                  gClsExitPage ? L"ok" : L"-", gClsMainMenu ? L"ok" : L"-", gFStrAssign ? L"ok" : L"-", offGUICtl, offActivePage,
-                  offDecoy, offBtnYes, offBtnNo, offCaption, offStyle, offOnClick, offOnWatch, offBound, maskBound);
+    {   static wchar b[300];
+        wsprintfW(b, L"hub menu: engine lookups FString= %s gui=%d page=%d caption=%d style=%d click=%d watch=%d ctl=%d parent=%d bound=%d mask=%x",
+                  gFStrAssign ? L"ok" : L"-", offGUICtl, offActivePage, offCaption, offStyle, offOnClick, offOnWatch, offCompCtl,
+                  offParentPage, offBound, maskBound);
         log_line(b);
     }
-    return done > 0;
+    return gFStrAssign && offGUICtl > 0 && offActivePage > 0 && offCaption > 0 && offStyle > 0 && offWinTop > 0 && offWinLeft > 0
+        && offWinWidth > 0 && offWinHeight > 0 && offOnClick > 0 && offOnWatch > 0 && offCompCtl > 0 && N_MyOnClick >= 0 && N_CloseMenu >= 0;
+}
+static int hub_page_init(u32 cls) {
+    static int tried; static wchar b[200];
+    if (gClsExitPage) return 1;
+    if (tried) return 0;
+    tried = 1;
+    offDecoy = prop_offset(L"HPPageQuit", L"decoy");
+    offBtnYes = prop_offset(L"KWPageYesNo", L"btnYes"); offBtnNo = prop_offset(L"KWPageYesNo", L"btnNo");
+    gClsMainMenu = find_class(L"HPPageMainMenu");
+    wsprintfW(b, L"hub menu: exit dialog lookups decoy=%d yes=%d no=%d mainmenu %s", offDecoy, offBtnYes, offBtnNo, gClsMainMenu ? L"ok" : L"-");
+    log_line(b);
+    if (offDecoy > 0 && offBtnYes > 0 && offBtnNo > 0) gClsExitPage = cls;
+    return gClsExitPage != 0;
 }
 /* worker, every poll: an HPPageExit that just became the active page gets patched on the game thread */
 static void hub_poll(void) {
-    static u32 lastActive; u32 ctl, page;
-    if (!gPlayer || offGUICtl < 0 || offActivePage < 0) return;
+    static u32 lastActive; static int nExitPage = -2; u32 ctl, page, cls; wchar nm[32];
+    if (!gPlayer) return;
+    if (nExitPage == -2) nExitPage = name_index(L"HPPageExit");
     ctl = rd32(gPlayer + offGUICtl); page = ctl ? rd32(ctl + offActivePage) : 0;
-    if (page && page != lastActive && is_a_cls(rd32(page + 0x24), gClsExitPage)) { gMenuPage = page; gMenuPatch = 1; }
+    if (page && page != lastActive) {
+        cls = rd32(page + 0x24);
+        if (gClsExitPage ? cls == gClsExitPage
+                         : (nExitPage >= 0 && (int)rd32(cls + 0x20) == nExitPage && name_of(nExitPage, nm, 32) && hub_page_init(cls))) {
+            gMenuPage = page; gMenuPatch = 1;
+        }
+    }
     lastActive = page;
 }
 
