@@ -3,9 +3,9 @@
  * Documents\Harry Potter and the Prisoner of Azkaban\HP3_OpenCastle.ini, [Shop] Cheap=1 (default 0 = normal), read
  * every 2 s so it can be flipped while the game runs.
  *
- * Cheap = 10% of the vanilla price, rounded up (25 pasties -> 3). It applies to the purchases that are checks: wizard
+ * Cheap = 50% of the vanilla price, rounded up (25 pasties -> 13). It applies to the purchases that are checks: wizard
  * cards and portrait passwords. Pasties, cakes and chocolate frogs bought for jellybeans stay vanilla (they are
- * currency, not checks; 3-bean pasties would make the pasty-priced cards trivial).
+ * currency, not checks; 15-bean pasties would make the pasty-priced cards much cheaper).
  *
  * Where the prices live (HGame, decompiled):
  *   WizardCardManager.Cards[i].cost          (struct CardDesc; read by VI_WizardCard.GetCostAndCurrency and by the
@@ -54,7 +54,7 @@ static const u16 VANILLA_PW[22] = { 10, 12, 12, 15, 15, 20, 25, 30, 0, 0, 0, 0, 
 #define SHOP_PWSOLD 8          /* PortraitPasswordManager sells 0..7 (FIRST_PORTRAIT_SHORTCUT_INDEX = 8) */
 #define SHOP_MAXVI  32
 
-static int cheap_of(int v) { return (v + 9) / 10; }   /* 10%, rounded up */
+static int cheap_of(int v) { return (v + 1) / 2; }   /* 50%, rounded up */
 static int offWCM = -1, offCards = -1, offPWs = -1, offCardCost = -1, offCardCls = -1, offPwCost = -1, offPwOwned = -1;
 static int offVICost = -1, offVICardCls = -1, gCardStride, gPwStride;
 static u32 gClsVICard, gClsVIPw, gClsVIFinal;
@@ -105,7 +105,7 @@ static void shop_poll(u32 level, u32 game) {
     static wchar b[200]; static u32 scanTick; int cheap, i, n = 0;
     u32 wcm, ppm, cards, pws; int ncards, npws;
     cheap = GetPrivateProfileIntW(L"Shop", L"Cheap", 0, gIniPath) != 0;
-    if (cheap != gShopCheap) { gShopCheap = cheap; wsprintfW(b, L"shop prices: %s", cheap ? L"cheap (10%, rounded up)" : L"normal (vanilla)"); log_line(b); }
+    if (cheap != gShopCheap) { gShopCheap = cheap; wsprintfW(b, L"shop prices: %s", cheap ? L"cheap (50%, rounded up)" : L"normal (vanilla)"); log_line(b); }
     if (!game || !shop_init()) return;
     wcm = rd32(game + offWCM); ppm = rd32(game + offPPM);
     cards = wcm ? rd32(wcm + offCards) : 0; ncards = wcm ? (int)rd32(wcm + offCards + 4) : 0;

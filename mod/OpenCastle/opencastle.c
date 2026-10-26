@@ -23,7 +23,7 @@
  *     KWMover, the one the vanilla cutscenes trigger) is raised or lowered to match. Which doors are unlocked comes
  *     from Documents\Harry Potter and the Prisoner of Azkaban\HP3_OpenCastle.ini, [Doors] <key>=1/0 (default 1), read
  *     every 2 s, so it can be changed while the game runs. The randomizer will drive the same switch.
- *  9. Shop prices (shop.h): [Shop] Cheap=1 makes wizard cards and portrait passwords cost 10% (rounded up).
+ *  9. Shop prices (shop.h): [Shop] Cheap=1 makes wizard cards and portrait passwords cost 50% (rounded up).
  *
  * Not in this build: item gating (every door is open), spell hooks, the Marauder's Map pickup.
  *
@@ -68,7 +68,7 @@ IMP HWND   WINAPI GetForegroundWindow(void);
 IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 
-#define OC_VERSION L"poc6p"
+#define OC_VERSION L"poc6q"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
