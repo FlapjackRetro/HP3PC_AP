@@ -70,6 +70,7 @@ Research stage. Done so far:
 | `docs/SCENES.md` | Maps vs. game states, how levels load, story chains, challenge/exam entrances |
 | `docs/OPEN_CASTLE.md` | Open Castle design: checks, items, area unlocks, entrance plan, draft options |
 | `docs/PLAYTHROUGH.md` | Vanilla playthrough log: confirmed maps, states and checks |
+| `docs/OPEN_CASTLE_CHANGES.md` | Open Castle: concrete mod changes, map by map (spawn/retarget/suppress/gate) |
 | `mod/MapTracker/` | Map/state tracker plugin (C, built with clang; no game code) |
 | `data/` | Generated tables: location catalogue (CSV and JSON), map entrances, wizard cards, game states |
 | `tools/` | Python tools: package reader/decompiler, catalogue and entrance-graph builders, framerate patcher |
