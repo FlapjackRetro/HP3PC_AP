@@ -195,3 +195,25 @@ Yes. The vanilla save system already handles it; nothing new is needed for the p
   - The test switch is `Documents\Harry Potter and the Prisoner of Azkaban\HP3_OpenCastle.ini`, `[Doors]` with
     Paddock / Express / DADA / Library / Shack set to 1 or 0. It is read every 2 s. The randomizer's items will
     drive the same switch.
+
+### poc6l: challenges, second New Game
+
+- **Second New Game** (from the title screen without restarting) used to start the vanilla Express opening,
+  because the travel came from the last loaded map rather than HP_Preamble. Now any travel to `HP3_Adv1Express`
+  with `GameState=GSTATE000` counts as New Game. Our 7th-floor door sends no GameState.
+- **Reward check for the other two challenges.** Unlike COMC, neither has the track-1 slip:
+  - Doxy (GroundsHub, 5 `PixieGame`s): the well's companion spell (`CompanionSpellTrigger10` →
+    `PixieBattleRoundRobin`, persistent) runs rounds 1–5 in order. Each round's win teleports its placed card:
+    `WinCard1`–`5` → Bran the Bloodthirsty, Cyclops, Goliath, Morholt, Hengist of Upper Barnton.
+  - Monster Book (InsideHub): `CompanionSpellTrigger3` → `MBRobin` (persistent) → `MBDis1`–`5`. Each round's win
+    teleports its card, `MBWC1`–`5` → Babayaga, Malodora Grymm, Leticia Somnolens, Old Mother Hubbard, and Cordelia
+    Misericordia (round 5's comes from cutscene `7240MBOMWin_05Exit`).
+  - No GState groups are involved, so the rewards are the same in `GState090`.
+- **Gating.** `[Doors]` keys `MonsterBook` / `Hippogriff` / `Doxy`:
+  - Monster Book: the room's door is three movers tagged `MBOMDoor` (portcullis `KWMover19` and doors
+    `KWMover37`/`6`). They're `TriggerToggle` movers that `7200TaskedCharms` opens, so they aren't static. They are
+    raised or lowered like the other portcullises. The start trigger is switched off too, as a backup.
+  - Hippogriff and doxy have no door, so their start triggers are switched off while locked:
+    - GroundsHub `CutSceneTrigger15` (`ChangeLevel_COMC_MINIGAME`, the walk-in to the course selection);
+    - `CompanionSpellTrigger10` (the doxy well).
+  - A locked challenge shows no sign yet. One option: float the drawn key sprite at the entrance while it's locked.
