@@ -67,7 +67,7 @@ IMP HWND   WINAPI GetForegroundWindow(void);
 IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 
-#define OC_VERSION L"poc6k"
+#define OC_VERSION L"poc6l"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -206,16 +206,20 @@ static void enable_shortcuts(void) {
 }
 /* ---- door gates (game thread part): Trigger the queued gate movers ---- */
 #define MAXGATES 8
-static volatile u32 gGateObj[MAXGATES]; static volatile u32 gGateFire;   /* bit i: Trigger gate i */
+#define GATEMOVERS 4   /* movers sharing one gate tag (MBOMDoor: a portcullis and two doors) */
+static volatile u32 gGateObj[MAXGATES][GATEMOVERS]; static volatile u32 gGateFire;   /* bit i: Trigger gate i's movers */
 static int N_Trigger = -1;
 static void fire_gates(void) {
     struct { u32 other, instigator; } parms; void *fn; int i; u32 bits = gGateFire;
     gGateFire = 0;
     for (i = 0; i < MAXGATES; i++) if ((bits >> i) & 1) {
-        u32 m = gGateObj[i];
-        if (!m || N_Trigger < 0 || !(fn = gFindFunction((void *)m, N_Trigger, 0))) continue;   /* state-aware: TriggerToggle.Trigger */
-        parms.other = parms.instigator = 0;
-        gPEOrig((void *)m, fn, &parms, 0);
+        int k;
+        for (k = 0; k < GATEMOVERS; k++) {
+            u32 m = gGateObj[i][k];
+            if (!m || N_Trigger < 0 || !(fn = gFindFunction((void *)m, N_Trigger, 0))) continue;   /* state-aware: TriggerToggle.Trigger */
+            parms.other = parms.instigator = 0;
+            gPEOrig((void *)m, fn, &parms, 0);
+        }
     }
 }
 
@@ -292,6 +296,12 @@ static const struct door DOORS[] = {
     { L"HP3_InsideHub",  838, -1844, 1194, L"HP3_Adv2ExpPatronum", L"DADA portcullis",         L"DADA",    L"DADA_PortToExpecto_Mvr", 0 },
     { L"HP3_InsideHub", -710, -1349,  778, L"HP3_Adv3Library",     L"Library portcullis",      L"Library", L"Library_Port_Mvr",       0 },
     { L"HP3_DungeonHUB", -481, 2805, -341, L"HP3_Adv5Shack",       L"dungeon door 1",          L"Shack",   0,                        L"StaticMeshActor315" },
+    /* challenges: no loading trigger of ours (dest 0). The Monster Book room has a door (portcullis + two doors, all
+       tag MBOMDoor, movable: 7200TaskedCharms opens them); the hippogriff and doxy challenges have no door, so their
+       start triggers are switched off while locked (EVENTGATES). */
+    { L"HP3_InsideHub",     0,     0,    0, 0,                     L"Monster Book challenge",  L"MonsterBook", L"MBOMDoor",          0 },
+    { L"HP3_GroundsHub",    0,     0,    0, 0,                     L"hippogriff challenge",    L"Hippogriff",  0,                    0 },
+    { L"HP3_GroundsHub",    0,     0,    0, 0,                     L"doxy challenge",          L"Doxy",        0,                    0 },
 };
 #define NDOORS (int)(sizeof DOORS / sizeof DOORS[0])
 #define DOOR_R   90.0f    /* horizontal reach */
@@ -306,20 +316,27 @@ static u32 gClsMover;
 static u32 gGateLevel; static u32 gGateLast[MAXGATES];   /* GetTickCount of our last Trigger, per gate */
 /* cutscene triggers Open Castle switches off (their Event is set to None once the map loads; the trigger stays but
    fires nothing). Only if the Event is the expected one, so a different map version is left alone. */
-struct suppress { const wchar *map, *actor, *event, *why; };
+/* key 0: always off. key set: the trigger works only while that door / challenge is unlocked. */
+struct suppress { const wchar *map, *actor, *event, *why, *key; };
 static const struct suppress SUPPRESS[] = {
     /* 3rd floor corridor in front of DADA, GState090 group: 9240RonExamIntroPt1 = ChangeLevel HP3_FA1Ron + GState100 */
-    { L"HP3_InsideHub", L"CutSceneTrigger13", L"9240RonExamIntroPt1", L"Ron's exam intro on the 3rd floor (I1)" },
+    { L"HP3_InsideHub",  L"CutSceneTrigger13",      L"9240RonExamIntroPt1",       L"Ron's exam intro on the 3rd floor (I1)", 0 },
+    /* GroundsHub walk-in to the COMC course selection (CutSceneFunctionality group, every state) */
+    { L"HP3_GroundsHub", L"CutSceneTrigger15",      L"ChangeLevel_COMC_MINIGAME", L"hippogriff challenge entrance",          L"Hippogriff" },
+    /* the well: a companion spell starts the next doxy round (RoundRobin PixieBattleRoundRobin) */
+    { L"HP3_GroundsHub", L"CompanionSpellTrigger10", L"PixieBattleRoundRobin",    L"doxy challenge start",                   L"Doxy" },
+    /* the Monster Book cauldron: a companion spell starts the next round (RoundRobin MBRobin); backs up the door */
+    { L"HP3_InsideHub",  L"CompanionSpellTrigger3",  L"MBRobin",                  L"Monster Book challenge start",           L"MonsterBook" },
 };
 #define NSUPPRESS (int)(sizeof SUPPRESS / sizeof SUPPRESS[0])
 static int offEvent = -1;
-static u32 gSuppObj[NSUPPRESS];
+static u32 gSuppObj[NSUPPRESS]; static int gSuppEvent[NSUPPRESS];   /* the trigger and its original Event name */
 
 /* lock bars: separate StaticMeshActors (DoorLockBar_SM) in front of the doors without a portcullis. Static actors
    can't be moved, so an unlocked door's bar is hidden: DrawType DT_StaticMesh (8) -> DT_None (0). */
 static int offDrawType = -1;
 static u32 gBarObj[MAXGATES];
-struct findgate { u32 level; int names[MAXGATES]; u32 found[MAXGATES]; int bars[MAXGATES]; u32 barfound[MAXGATES]; int supp[NSUPPRESS]; };
+struct findgate { u32 level; int names[MAXGATES]; u32 found[MAXGATES][GATEMOVERS]; int nfound[MAXGATES]; int bars[MAXGATES]; u32 barfound[MAXGATES]; int supp[NSUPPRESS]; };
 static int v_findgate(u32 o, int name, u32 cls, void *c) {
     struct findgate *f = c; int i, tag;
     if (!cls || rd32(o + offLevel) != f->level) return 0;
@@ -327,7 +344,7 @@ static int v_findgate(u32 o, int name, u32 cls, void *c) {
     for (i = 0; i < NSUPPRESS; i++) if (f->supp[i] >= 0 && name == f->supp[i]) gSuppObj[i] = o;
     if (!is_a_cls(cls, gClsMover)) return 0;
     tag = (int)rd32(o + offTag);
-    for (i = 0; i < NDOORS && i < MAXGATES; i++) if (f->names[i] >= 0 && tag == f->names[i]) f->found[i] = o;
+    for (i = 0; i < NDOORS && i < MAXGATES; i++) if (f->names[i] >= 0 && tag == f->names[i] && f->nfound[i] < GATEMOVERS) f->found[i][f->nfound[i]++] = o;
     return 0;
 }
 /* every 2 s: read which doors are unlocked; raise/lower each gate on this map to match */
@@ -346,7 +363,7 @@ static void gates_poll(u32 level, const wchar *map) {
     if (level != gGateLevel) {   /* new map: find its gate movers */
         struct findgate f; int n = 0;
         f.level = level;
-        for (i = 0; i < MAXGATES; i++) { f.found[i] = f.barfound[i] = 0; f.names[i] = f.bars[i] = -1; gGateLast[i] = 0; }
+        for (i = 0; i < MAXGATES; i++) { int k; for (k = 0; k < GATEMOVERS; k++) f.found[i][k] = 0; f.nfound[i] = 0; f.barfound[i] = 0; f.names[i] = f.bars[i] = -1; gGateLast[i] = 0; }
         for (i = 0; i < NDOORS && i < MAXGATES; i++) if (weq(DOORS[i].map, map)) {
             if (DOORS[i].gate) { f.names[i] = name_index(DOORS[i].gate); n++; }
             if (DOORS[i].bar)  { f.bars[i]  = name_index(DOORS[i].bar);  n++; }
@@ -354,17 +371,19 @@ static void gates_poll(u32 level, const wchar *map) {
         for (i = 0; i < NSUPPRESS; i++) { gSuppObj[i] = 0; f.supp[i] = weq(SUPPRESS[i].map, map) ? name_index(SUPPRESS[i].actor) : -1; if (f.supp[i] >= 0) n++; }
         if (n) for_each_object(v_findgate, &f);
         if (offEvent < 0) offEvent = prop_offset(L"Actor", L"Event");
-        for (i = 0; i < NSUPPRESS; i++) if (gSuppObj[i] && offEvent > 0) {
-            int ev = (int)rd32(gSuppObj[i] + offEvent), want = name_index(SUPPRESS[i].event);
-            if (want >= 0 && ev == want) { *(volatile int *)(gSuppObj[i] + offEvent) = 0; wsprintfW(b, L"suppressed %s: %s", SUPPRESS[i].actor, SUPPRESS[i].why); }
-            else if (ev == 0) wsprintfW(b, L"%s already suppressed", SUPPRESS[i].actor);
-            else wsprintfW(b, L"%s has an unexpected Event; left alone", SUPPRESS[i].actor);
+        for (i = 0; i < NSUPPRESS; i++) {
+            int ev, want;
+            gSuppEvent[i] = 0;
+            if (!gSuppObj[i] || offEvent <= 0) continue;
+            ev = (int)rd32(gSuppObj[i] + offEvent); want = name_index(SUPPRESS[i].event);
+            if (want >= 0 && (ev == want || ev == 0)) { gSuppEvent[i] = want; wsprintfW(b, L"trigger %s found: %s", SUPPRESS[i].actor, SUPPRESS[i].why); }
+            else { gSuppObj[i] = 0; wsprintfW(b, L"trigger %s has an unexpected Event; left alone", SUPPRESS[i].actor); }
             log_line(b);
         }
-        for (i = 0; i < MAXGATES; i++) { gGateObj[i] = f.found[i]; gBarObj[i] = f.barfound[i]; }
+        for (i = 0; i < MAXGATES; i++) { int k; for (k = 0; k < GATEMOVERS; k++) gGateObj[i][k] = f.found[i][k]; gBarObj[i] = f.barfound[i]; }
         gGateLevel = level;
         for (i = 0; i < NDOORS && i < MAXGATES; i++) {
-            if (f.names[i] >= 0) { wsprintfW(b, L"gate %s: %s %s", DOORS[i].key, DOORS[i].gate, f.found[i] ? L"found" : L"NOT FOUND"); log_line(b); }
+            if (f.names[i] >= 0) { wsprintfW(b, L"gate %s: %s, %d mover(s)", DOORS[i].key, DOORS[i].gate, f.nfound[i]); log_line(b); }
             if (f.bars[i] >= 0)  { wsprintfW(b, L"bar %s: %s %s", DOORS[i].key, DOORS[i].bar, f.barfound[i] ? L"found" : L"NOT FOUND"); log_line(b); }
         }
     }
@@ -376,8 +395,18 @@ static void gates_poll(u32 level, const wchar *map) {
         *(volatile u8 *)(gBarObj[i] + offDrawType) = want;
         wsprintfW(b, L"bar %s: %s", DOORS[i].key, want ? L"shown (locked)" : L"hidden (unlocked)"); log_line(b);
     }
+    for (i = 0; i < NSUPPRESS; i++) {   /* event gates: the trigger's Event follows its key (always off without one) */
+        int on = 0, k, cur, want;
+        if (!gSuppObj[i] || !gSuppEvent[i]) continue;
+        if (SUPPRESS[i].key) for (k = 0; k < NDOORS; k++) if (weq(DOORS[k].key, SUPPRESS[i].key)) { on = gDoorOn[k]; break; }
+        want = on ? gSuppEvent[i] : 0;
+        cur = (int)rd32(gSuppObj[i] + offEvent);
+        if (cur == want) continue;
+        *(volatile int *)(gSuppObj[i] + offEvent) = want;
+        wsprintfW(b, L"trigger %s (%s): %s", SUPPRESS[i].actor, SUPPRESS[i].why, want ? L"on" : L"off"); log_line(b);
+    }
     for (i = 0; i < NDOORS && i < MAXGATES; i++) {
-        u32 m = gGateObj[i]; int open;
+        u32 m = gGateObj[i][0]; int open;
         if (!m) continue;
         open = (rd32(m + offKeyNum) & 0xFF) != 0;   /* InterpolateTo sets KeyNum to the target key at once */
         if (open == gDoorOn[i] || (gGateLast[i] && GetTickCount() - gGateLast[i] < 3000)) continue;
@@ -505,7 +534,7 @@ static u32 WINAPI worker(void *arg) {
         {   int near = -1, far_from_all = 1;
             for (i = 0; i < NDOORS; i++) {
                 float dx, dy, dz, h2;
-                if (!weq(DOORS[i].map, lastMap)) continue;
+                if (!DOORS[i].dest || !weq(DOORS[i].map, lastMap)) continue;
                 dx = loc[0] - DOORS[i].x; dy = loc[1] - DOORS[i].y; dz = loc[2] - DOORS[i].z; h2 = dx * dx + dy * dy;
                 if (h2 < ARM_R * ARM_R) far_from_all = 0;
                 if (h2 < DOOR_R * DOOR_R && dz < DOOR_DZ && dz > -DOOR_DZ && gDoorOn[i]) near = i;

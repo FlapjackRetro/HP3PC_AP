@@ -18,6 +18,8 @@ int main(void) {
     t(L"HP_Preamble", L"HP3_Adv1Express?GameState=GSTATE000", L"HP3_InsideHub?GameState=GState090");
     t(L"", L"..\\Maps\\HP3_Adv1Express.unr", L"HP3_InsideHub?GameState=GState090");
     t(L"HP3_InsideHub", L"HP3_Adv1Express?GameState=GState090", 0);                 /* via the 7th-floor door: unchanged */
+    t(L"HP3_Adv6Paddock", L"HP3_Adv1Express.unr?GameState=GSTATE000", L"HP3_InsideHub?GameState=GState090");   /* 2nd New Game */
+    t(L"HP3_InsideHub", L"HP3_Adv1Express", L"HP3_Adv1Express?GameState=GState090");   /* our door: no GameState given */
     t(L"HP3_InsideHub", L"HP3_Ch1CarpeRetractum?quiet?GameState=GState090", L"HP3_FA1Ron?quiet?GameState=GState090");
     t(L"HP3_InsideHub", L"HP3_Ch1CarpeRetractum.unr?quiet?GameState=GState090", 0);  /* side room: unchanged */
     t(L"HP3_InsideHub", L"HP3_Ch2Draconifors?quiet?GameState=GState065", L"HP3_FA2Hermione?quiet?GameState=GState090");

@@ -61,6 +61,10 @@ static int oc_rewrite(const wchar *src, const wchar *in, wchar *out, int outmax,
     if (!dst) return 0;
     for (q = p; *q; q++) if (*q == '#') { portal = q; break; }
     if (contains_ci(p, L"save") || contains_ci(p, L"load")) return 0;
+    /* New Game: the front end travels to Adv1Express with GameState=GSTATE000. A second New Game from the title
+       screen (without restarting the game) starts from whatever map was loaded last, so the source map can't tell
+       it apart; the GSTATE000 option can. Our own 7th-floor door sends no GameState. */
+    if (is_map(dst, L"HP3_Adv1Express") && contains_ci(p, L"GameState=GSTATE000")) src = L"";
     ndst = oc_route(src ? src : L"", dst, had_unr, &reason);
     /* options without any GameState=..., then our state */
     opts[0] = 0;
