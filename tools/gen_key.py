@@ -2,7 +2,7 @@
 """Key textures for door / area unlock items.
 
   python gen_key.py drawn OUT.png
-      our own gold key (vector-drawn, bevelled), 128x128, transparent background.
+      our own gold key (vector-drawn, bevelled, blue glow rim), 128x128, transparent background.
   python gen_key.py upscale <game>/textures/HP_FX.utx OUT.png
       HP3's own plain gold key (HP_FX.Particles.Key2, 32x32) scaled 4x with Scale2x twice, cropped to fill
       the 128x128 texture. It's built from the player's own game files, so no EA art goes into this repo.
@@ -25,13 +25,17 @@ def drawn():
         hole = 34 - grow
         d.ellipse((cx - hole, cy - hole, cx + hole, cy + hole), fill=0)
         return m
-    outer, inner = shape(16), shape(0)
+    inner = shape(0)
     grad = Image.new('RGBA', (S, S)); gd = ImageDraw.Draw(grad)
     for y in range(S):
         t = y / S
         gd.line([(0, y), (S, y)], fill=(int(255 - 40 * t), int(222 - 90 * t), int(96 - 70 * t), 255))
     im = Image.new('RGBA', (S, S), (0, 0, 0, 0))
-    im.paste((74, 42, 4, 255), mask=outer); im.paste(grad, mask=inner)
+    # blue glow rim like HP3's own Key2: bright near the key, deeper blue further out. The texture is masked
+    # (no partial alpha), so the glow is drawn as solid bands that fade in colour, not in transparency.
+    for grow, col in ((20, (24, 70, 190, 255)), (15, (40, 110, 225, 255)), (10, (70, 160, 245, 255)), (5, (140, 210, 255, 255))):
+        im.paste(col, mask=shape(grow))
+    im.paste(grad, mask=inner)
     hl = ImageChops.subtract(inner, ImageChops.offset(inner, 6, 6)).filter(ImageFilter.GaussianBlur(2))
     sh = ImageChops.subtract(inner, ImageChops.offset(inner, -6, -6)).filter(ImageFilter.GaussianBlur(2))
     im.paste((255, 246, 190, 255), mask=hl.point(lambda v: int(v * 0.8)))
