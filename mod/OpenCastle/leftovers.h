@@ -56,8 +56,8 @@ static int lo_key(int sp, wchar *out, int max) {
     return 1;
 }
 static u32 lo_store(void) {
-    u32 game = offGame >= 0 ? P(gLoLevel + offGame) : 0;
-    return game && offStore >= 0 ? P(game + offStore) : 0;
+    u32 game = offGame > 0 ? P(gLoLevel + offGame) : 0;
+    return game && offStore > 0 ? P(game + offStore) : 0;
 }
 static void lo_save_value(u32 store, wchar *key, wchar *val) {
     struct { wchar *k; int kn, km; wchar *v; int vn, vm; } parms; void *fn;
@@ -178,7 +178,7 @@ static void lo_respawn(void) {
 
 /* called from pe_hook before the original runs; returns nothing, never blocks the event */
 static void lo_event(u32 self, int fname) {
-    if (!gClsSpawner || !gClsPickup || offLevel < 0 || offLoc < 0 || offLives < 0 || offGoodies < 0) return;
+    if (!gClsSpawner || !gClsPickup || offLevel <= 0 || offLoc <= 0 || offLives <= 0 || offGoodies <= 0 || offStore <= 0) return;
     if (fname == N_PostBeginPlay) {
         if (is_a_fast(self, gClsSpawner)) lo_add_spawner(self);
         else if (is_a_fast(self, gClsPickup)) lo_link_pickup(self);

@@ -65,7 +65,12 @@ static u32 find_class(const wchar *cname) {
 struct findprop { int prop, cls; int off; u32 obj; };
 static int v_findprop(u32 o, int name, u32 cls, void *c) {
     struct findprop *f = c; (void)cls;
-    if (name == f->prop && (int)rd32(rd32(o + 0x18) + 0x20) == f->cls) { f->off = (int)rd32(o + 0x4C); f->obj = o; return 1; }
+    u32 outer;
+    if (name != f->prop) return 0;
+    outer = rd32(o + 0x18);
+    /* the outer must be the class itself, not a package of the same name: class PersistentStore lives in package
+       KWGame, and KWGame is also a class, so "KWGame.PersistentStore" alone is ambiguous */
+    if ((int)rd32(outer + 0x20) == f->cls && (int)rd32(rd32(outer + 0x24) + 0x20) == N_Class) { f->off = (int)rd32(o + 0x4C); f->obj = o; return 1; }
     return 0;
 }
 /* the UProperty object itself (0 if not found) */
