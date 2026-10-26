@@ -63,7 +63,7 @@ IMP BOOL   WINAPI ReadFile(HANDLE, void*, u32, u32*, void*);
 IMP u32    WINAPI GetFileSize(HANDLE, u32*);
 IMP u32    WINAPI SetFilePointer(HANDLE, int, int*, u32);
 
-#define OC_VERSION L"poc6h"
+#define OC_VERSION L"poc6i"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -217,9 +217,6 @@ static void fire_gates(void) {
 
 #include "leftovers.h"
 #include "hubmenu.h"
-static volatile int gAPTestPending;   /* aptest.h: worker found the pickups, game thread swaps their look */
-static void aptest_apply(void);
-static void aptest_spawned(u32 o);
 static volatile int gGridPending; static void grid_spawn(void);
 static void __thiscall pe_hook(void *self, void *func, void *parms, void *result) {
     int fname;
@@ -228,7 +225,6 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
     if (gPendingRespawn && !gInTravel) { gInTravel = 1; gPendingRespawn = 0; lo_respawn(); gInTravel = 0; }
     if (gMenuPatch && !gInTravel) { gInTravel = 1; gMenuPatch = 0; hub_patch(); gInTravel = 0; }
     if (gGateFire && !gInTravel) { gInTravel = 1; fire_gates(); gInTravel = 0; }
-    if (gAPTestPending && !gInTravel) { gInTravel = 1; aptest_apply(); gAPTestPending = 0; gInTravel = 0; }
     if (gGridPending && !gInTravel) { gInTravel = 1; grid_spawn(); gGridPending = 0; gInTravel = 0; }
     if (!func || !self) { gPEOrig(self, func, parms, result); return; }
     fname = *(int *)((u8 *)func + 0x20);
@@ -241,9 +237,6 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
     if (fname == N_TravelPostAccept && N_TravelPostAccept >= 0 && gClsHero
         && is_a_cls(*(u32 *)((u8 *)self + 0x24), gClsHero)) { travel_post_accept(self, func, parms, result); return; }
     gPEOrig(self, func, parms, result);
-    if (fname == N_PostBeginPlay && N_PostBeginPlay >= 0 && gClsPickup && !gInTravel && is_a_fast((u32)self, gClsPickup)) {
-        gInTravel = 1; aptest_spawned((u32)self); gInTravel = 0;
-    }
 }
 
 /* ---- patching ---- */
@@ -476,7 +469,7 @@ static u32 WINAPI worker(void *arg) {
         }
         settle++;
         if (settle >= 4) comc_poll(level, lastMap);
-        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); aptest_poll(level); grid_poll(lastMap); }   /* once settled, every 2 s */
+        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); grid_poll(lastMap); }   /* once settled, every 2 s */
         if (!shortcutsDone && settle >= 12) {
             shortcutsDone = 1;
             if (!weq(lastMap, L"Entry") && !weq(lastMap, L"HP_Preamble")) { gPendingShortcuts = 1; gPendingRespawn = 1; }
