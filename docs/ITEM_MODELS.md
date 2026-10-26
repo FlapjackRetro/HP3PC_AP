@@ -52,7 +52,7 @@ path (HP2 leftovers?).
 | --- | --- |
 | Pasty, cake, wizard card | their own meshes |
 | Marauder's Map | its own mesh |
-| Portrait / shortcut passwords | the password scroll (the one Peeves carries and Fred & George sell; `HProps.PeevesScroll`) |
+| Portrait / shortcut passwords | the shop's password scroll, `HP3_InteriorAccents_SM.books.BlueBandScroll_SM` (static mesh). The Peeves scroll `HProps.PeevesScroll` looks the same in game, but it's a skeletal mesh, so the static one is simpler. |
 | Carpe Retractum, Alohomora, Depulso, Draconifors, Expecto Patronum, Glacius, Lapifors, Lumos, Rictusempra, Spongify | their spell-shape glyph (`SpellShapes.Shapes.SPS*`) |
 | Door / area unlocks | key, player option `key_style`: **`drawn`** (default, `HP3AP.APKeyDrawn`, our own drawing) / `upscaled` (`HP3AP.APKeyUpscaled`, Key2 at 4×) / `original` (`HP_FX.Particles.Key2`, 32 px). The glow keys (`Key1`, `Les_RedKey`) draw a black square when masked, so they're out. |
 | Items from other games | Archipelago logo, three tiers |
@@ -118,3 +118,11 @@ With `[Test] SpriteGrid=1`, each new End-key mark spawns every look the randomiz
    - pasty (`PumpkinPasty_SM` ×2.0) and cake (`CauldronCake_SM` ×2.5);
    - Harry Potter's wizard card. That's a real `HGame.WC_HarryPotter` pickup with its collision switched off,
      since the card face is a per-class skin.
+
+## poc6g result (2026-10-26)
+
+Every look rendered (InsideHub entrance hall):
+- The two scrolls look the same in game, so the shop's static mesh is the one used.
+- The Marauder's Map skeletal mesh at DrawScale 1 stands upright and large, about the size of a notice board.
+  It needs a smaller scale (about 0.4) and a lying-down rotation when it's placed as an item.
+- Pasty, cake and Harry's card look right at the game's own scales.
