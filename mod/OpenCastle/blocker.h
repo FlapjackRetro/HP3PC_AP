@@ -12,7 +12,7 @@ static const struct blocker BLOCKERS[] = {
       L"HP3_InterArch_SM.Movers.Portcullis_SM", 2.0f, 135.0f, 210.0f },
 };
 #define NBLOCKERS (int)(sizeof BLOCKERS / sizeof BLOCKERS[0])
-static u32 gBlockObj[NBLOCKERS], gBlockLevel[NBLOCKERS];
+static u32 gBlockObj[NBLOCKERS], gBlockCol[NBLOCKERS], gBlockLevel[NBLOCKERS];   /* visual, collider */
 static int N_SetCollisionSize = -1, N_Destroy = -1;
 
 /* worker, from gates_poll: decide */
@@ -31,7 +31,7 @@ static void blockers_poll(u32 level, const wchar *map) {
     }
     for (i = 0; i < NBLOCKERS; i++) {
         int on = 1, locked;
-        if (gBlockLevel[i] != level) { gBlockObj[i] = 0; gBlockLevel[i] = level; }   /* a new map: the old actor is gone */
+        if (gBlockLevel[i] != level) { gBlockObj[i] = gBlockCol[i] = 0; gBlockLevel[i] = level; }   /* a new map: the old actor is gone */
         if (!weq(BLOCKERS[i].map, map)) continue;
         for (k = 0; k < NDOORS; k++) if (weq(DOORS[k].key, BLOCKERS[i].key)) { on = gDoorOn[k]; break; }
         locked = !on;
@@ -45,11 +45,15 @@ static void blockers_apply(void) {
     static wchar b[200]; u32 spawn = gBlockSpawn, kill = gBlockKill, pc, pawn, mesh; void *fn; int i;
     gBlockSpawn = gBlockKill = 0;
     for (i = 0; i < NBLOCKERS; i++) if (((kill >> i) & 1) && gBlockObj[i]) {
-        void *d = N_Destroy >= 0 ? gFindFunction((void *)gBlockObj[i], N_Destroy, 0) : 0;
-        struct { u32 ret; } dp = { 0 };
-        if (d) gPEOrig((void *)gBlockObj[i], d, &dp, 0);
+        u32 objs[2]; int k;
+        objs[0] = gBlockObj[i]; objs[1] = gBlockCol[i];
+        for (k = 0; k < 2; k++) if (objs[k]) {
+            void *d = N_Destroy >= 0 ? gFindFunction((void *)objs[k], N_Destroy, 0) : 0;
+            struct { u32 ret; } dp = { 0 };
+            if (d) gPEOrig((void *)objs[k], d, &dp, 0);
+        }
         wsprintfW(b, L"blocker %s: removed (%s unlocked)", BLOCKERS[i].why, BLOCKERS[i].key); log_line(b);
-        gBlockObj[i] = 0;
+        gBlockObj[i] = gBlockCol[i] = 0;
     }
     if (!spawn) return;
     pc = gPlayer ? P(gPlayer + offPlayerActor) : 0; pawn = pc ? P(pc + offPawn) : 0;
@@ -67,15 +71,21 @@ static void blockers_apply(void) {
         gPEOrig((void *)pawn, fn, &parms, 0);
         if (!parms.ret) { wsprintfW(b, L"blocker %s: spawn failed", bl->why); log_line(b); continue; }
         *(u32 *)(parms.ret + offStaticMesh) = mesh; *(u8 *)(parms.ret + offDrawType) = 8; *(float *)(parms.ret + offDrawScale) = bl->scale;
-        if (N_SetCollisionSize >= 0 && (sz = gFindFunction((void *)parms.ret, N_SetCollisionSize, 0))) {
-            struct { float r, h, w; u32 ret; } sp = { bl->radius, bl->height, 0, 0 };
-            gPEOrig((void *)parms.ret, sz, &sp, 0);
-        }
-        if (N_SetCollision >= 0 && (sc = gFindFunction((void *)parms.ret, N_SetCollision, 0))) {
-            struct { u32 a, b, c; } cp = { 1, 1, 1 };
-            gPEOrig((void *)parms.ret, sc, &cp, 0);
-        }
         gBlockObj[i] = parms.ret;
-        wsprintfW(b, L"blocker %s: placed (%s locked)", bl->why, bl->key); log_line(b);
+        /* the collider: a second, invisible actor. An actor drawn as a static mesh collides with the mesh's own
+           collision model, and Portcullis_SM has none usable here (poc6m let the player walk through), so the
+           cylinder goes on an actor with DrawType None, which always uses its cylinder. */
+        memset(&parms, 0, sizeof parms);
+        parms.type = gClsEffects; parms.x = bl->x; parms.y = bl->y; parms.z = bl->z + bl->height; parms.yw = bl->yaw;
+        gPEOrig((void *)pawn, fn, &parms, 0);
+        if (!parms.ret) { wsprintfW(b, L"blocker %s: collider spawn failed", bl->why); log_line(b); continue; }
+        *(u8 *)(parms.ret + offDrawType) = 0;   /* DT_None */
+        sz = N_SetCollisionSize >= 0 ? gFindFunction((void *)parms.ret, N_SetCollisionSize, 0) : 0;
+        sc = N_SetCollision >= 0 ? gFindFunction((void *)parms.ret, N_SetCollision, 0) : 0;
+        if (sz) { struct { float r, h, w; u32 ret; } sp = { bl->radius, bl->height, 0, 0 }; gPEOrig((void *)parms.ret, sz, &sp, 0); }
+        if (sc) { struct { u32 a, b, c; } cp = { 1, 1, 1 }; gPEOrig((void *)parms.ret, sc, &cp, 0); }
+        gBlockCol[i] = parms.ret;
+        wsprintfW(b, L"blocker %s: placed (%s locked); collider %s%s", bl->why, bl->key, sz ? L"sized" : L"NOT SIZED", sc ? L", solid" : L", NOT SOLID");
+        log_line(b);
     }
 }
