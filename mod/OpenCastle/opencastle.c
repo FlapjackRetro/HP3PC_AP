@@ -62,8 +62,12 @@ IMP u32    WINAPI GetTickCount(void);
 IMP BOOL   WINAPI ReadFile(HANDLE, void*, u32, u32*, void*);
 IMP u32    WINAPI GetFileSize(HANDLE, u32*);
 IMP u32    WINAPI SetFilePointer(HANDLE, int, int*, u32);
+IMP short  WINAPI GetAsyncKeyState(int);
+IMP HWND   WINAPI GetForegroundWindow(void);
+IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
+IMP u32    WINAPI GetCurrentProcessId(void);
 
-#define OC_VERSION L"poc6i"
+#define OC_VERSION L"poc6j"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -469,12 +473,13 @@ static u32 WINAPI worker(void *arg) {
         }
         settle++;
         if (settle >= 4) comc_poll(level, lastMap);
-        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); grid_poll(lastMap); }   /* once settled, every 2 s */
+        if (settle >= 12 && (settle - 12) % 8 == 0) gates_poll(level, lastMap);   /* once settled, every 2 s */
         if (!shortcutsDone && settle >= 12) {
             shortcutsDone = 1;
             if (!weq(lastMap, L"Entry") && !weq(lastMap, L"HP_Preamble")) { gPendingShortcuts = 1; gPendingRespawn = 1; }
         }
         pawn = rd32(pc + offPawn);
+        if (settle >= 12) grid_poll(pawn);
         if (!pawn || !rd(pawn + offLoc, loc, 12) || gPending) continue;
         {   int near = -1, far_from_all = 1;
             for (i = 0; i < NDOORS; i++) {
@@ -500,6 +505,7 @@ BOOL WINAPI DllMain(HANDLE inst, u32 reason, void *res) {
         DisableThreadLibraryCalls(inst);
         install_hooks();   /* on the loading thread, before the worker starts */
         CreateThread(0, 0, worker, 0, 0, 0);
+        CreateThread(0, 0, key_thread, 0, 0, 0);
     }
     return 1;
 }
