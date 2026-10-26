@@ -67,7 +67,7 @@ IMP HWND   WINAPI GetForegroundWindow(void);
 IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 
-#define OC_VERSION L"poc6j"
+#define OC_VERSION L"poc6k"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -304,15 +304,27 @@ static int gDoorOn[16];
 static int offTag = -1, offKeyNum = -1;
 static u32 gClsMover;
 static u32 gGateLevel; static u32 gGateLast[MAXGATES];   /* GetTickCount of our last Trigger, per gate */
+/* cutscene triggers Open Castle switches off (their Event is set to None once the map loads; the trigger stays but
+   fires nothing). Only if the Event is the expected one, so a different map version is left alone. */
+struct suppress { const wchar *map, *actor, *event, *why; };
+static const struct suppress SUPPRESS[] = {
+    /* 3rd floor corridor in front of DADA, GState090 group: 9240RonExamIntroPt1 = ChangeLevel HP3_FA1Ron + GState100 */
+    { L"HP3_InsideHub", L"CutSceneTrigger13", L"9240RonExamIntroPt1", L"Ron's exam intro on the 3rd floor (I1)" },
+};
+#define NSUPPRESS (int)(sizeof SUPPRESS / sizeof SUPPRESS[0])
+static int offEvent = -1;
+static u32 gSuppObj[NSUPPRESS];
+
 /* lock bars: separate StaticMeshActors (DoorLockBar_SM) in front of the doors without a portcullis. Static actors
    can't be moved, so an unlocked door's bar is hidden: DrawType DT_StaticMesh (8) -> DT_None (0). */
 static int offDrawType = -1;
 static u32 gBarObj[MAXGATES];
-struct findgate { u32 level; int names[MAXGATES]; u32 found[MAXGATES]; int bars[MAXGATES]; u32 barfound[MAXGATES]; };
+struct findgate { u32 level; int names[MAXGATES]; u32 found[MAXGATES]; int bars[MAXGATES]; u32 barfound[MAXGATES]; int supp[NSUPPRESS]; };
 static int v_findgate(u32 o, int name, u32 cls, void *c) {
     struct findgate *f = c; int i, tag;
     if (!cls || rd32(o + offLevel) != f->level) return 0;
     for (i = 0; i < NDOORS && i < MAXGATES; i++) if (f->bars[i] >= 0 && name == f->bars[i]) f->barfound[i] = o;
+    for (i = 0; i < NSUPPRESS; i++) if (f->supp[i] >= 0 && name == f->supp[i]) gSuppObj[i] = o;
     if (!is_a_cls(cls, gClsMover)) return 0;
     tag = (int)rd32(o + offTag);
     for (i = 0; i < NDOORS && i < MAXGATES; i++) if (f->names[i] >= 0 && tag == f->names[i]) f->found[i] = o;
@@ -339,7 +351,16 @@ static void gates_poll(u32 level, const wchar *map) {
             if (DOORS[i].gate) { f.names[i] = name_index(DOORS[i].gate); n++; }
             if (DOORS[i].bar)  { f.bars[i]  = name_index(DOORS[i].bar);  n++; }
         }
+        for (i = 0; i < NSUPPRESS; i++) { gSuppObj[i] = 0; f.supp[i] = weq(SUPPRESS[i].map, map) ? name_index(SUPPRESS[i].actor) : -1; if (f.supp[i] >= 0) n++; }
         if (n) for_each_object(v_findgate, &f);
+        if (offEvent < 0) offEvent = prop_offset(L"Actor", L"Event");
+        for (i = 0; i < NSUPPRESS; i++) if (gSuppObj[i] && offEvent > 0) {
+            int ev = (int)rd32(gSuppObj[i] + offEvent), want = name_index(SUPPRESS[i].event);
+            if (want >= 0 && ev == want) { *(volatile int *)(gSuppObj[i] + offEvent) = 0; wsprintfW(b, L"suppressed %s: %s", SUPPRESS[i].actor, SUPPRESS[i].why); }
+            else if (ev == 0) wsprintfW(b, L"%s already suppressed", SUPPRESS[i].actor);
+            else wsprintfW(b, L"%s has an unexpected Event; left alone", SUPPRESS[i].actor);
+            log_line(b);
+        }
         for (i = 0; i < MAXGATES; i++) { gGateObj[i] = f.found[i]; gBarObj[i] = f.barfound[i]; }
         gGateLevel = level;
         for (i = 0; i < NDOORS && i < MAXGATES; i++) {

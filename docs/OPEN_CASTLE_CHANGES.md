@@ -43,7 +43,7 @@ behind the Grounds Access gate).
 
 | # | Change | Actor(s) | Detail |
 | --- | --- | --- | --- |
-| I1 | Suppress | `CutSceneTrigger13` (−98, −714, 1259), `9240RonExamIntroPt1` | Ron's exam intro (would load FA1 and set `100`) |
+| I1 | Suppress | `CutSceneTrigger13` (−98, −714, 1259), `9240RonExamIntroPt1` | Ron's exam intro (would load FA1 and set `100`). Unavoidable in the 3rd-floor corridor before DADA (confirmed in testing). **Done in poc6k**: its Event is set to None on map load |
 | I2 | Suppress | `0200DADAIntro` (level-start cutscene into Ch1) | DADA intro chain |
 | I3 | Retarget | `ChangeLevelTrigger3` (262, −2328, 1218), tag `ChangleLevel_CarpeChallenge` | Ch1 → **HP3_FA1Ron**. Gate: Carpe Retractum (+ exam item if split). It's normally fired by a cutscene; make it touch-activated |
 | I4 | Retarget | `ChangeLevelTrigger2` and `ChangeLevelTrigger5` (−4373, 1556, 0), tag `ChangeLevel_Ch2Dracon` | Ch2 → **HP3_FA2Hermione**; drop `bSetGameState` (`GState065`). Gate: Draconifors |
