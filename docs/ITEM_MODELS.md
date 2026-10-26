@@ -54,7 +54,7 @@ path (HP2 leftovers?).
 | Marauder's Map | its own mesh |
 | Portrait / shortcut passwords | the password scroll (the one Peeves carries and Fred & George sell; `HProps.PeevesScroll`) |
 | Carpe Retractum, Alohomora, Depulso, Draconifors, Expecto Patronum, Glacius, Lapifors, Lumos, Rictusempra, Spongify | their spell-shape glyph (`SpellShapes.Shapes.SPS*`) |
-| Door / area unlocks | key: `HP_FX.Particles.Key1` (gold, blue glow); `Key2` (plain gold) if Key1 looks bad in game |
+| Door / area unlocks | key, player option `key_style`: **`drawn`** (default, `HP3AP.APKeyDrawn`, our own drawing) / `upscaled` (`HP3AP.APKeyUpscaled`, Key2 at 4×) / `original` (`HP_FX.Particles.Key2`, 32 px). The glow keys (`Key1`, `Les_RedKey`) draw a black square when masked, so they're out. |
 | Items from other games | Archipelago logo, three tiers |
 
 ## Building the Archipelago textures
@@ -92,3 +92,11 @@ A texture is flat. Depth needs a mesh to put it on:
   `PostBeginPlay`).
 - Lesson: never keep a texture pointer across a level change. Anything unreferenced is garbage collected, so
   reload with `StaticLoadObject` each time (two poc6 crashes).
+
+## Keys (decided after the poc6f grid test)
+
+- **Default:** the drawn key, which looks best in game. All three styles stay available because the community may
+  prefer another one, so `key_style` is a player option.
+- **Building the package:** `tools/build_hp3ap.py <icon.png> <game folder> HP3AP.utx` builds everything.
+  - `APKeyUpscaled` is generated from the player's own `HP_FX.utx`, so the installer should run the build on the
+    player's machine. No EA-derived art is shipped or committed.
