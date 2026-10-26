@@ -60,7 +60,7 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 IMP u32    WINAPI GetPrivateProfileIntW(const wchar*, const wchar*, int, const wchar*);
 IMP u32    WINAPI GetTickCount(void);
 
-#define OC_VERSION L"poc5"
+#define OC_VERSION L"poc5b"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -275,14 +275,14 @@ static void install_hooks(void) {
 }
 
 /* ---- doors: stand here to enter (player positions marked in the playthrough) ---- */
-struct door { const wchar *map; float x, y, z; const wchar *dest; const wchar *name; const wchar *key; const wchar *gate; };
+struct door { const wchar *map; float x, y, z; const wchar *dest; const wchar *name; const wchar *key; const wchar *gate; const wchar *bar; };
 static const struct door DOORS[] = {
-    /* map               stand here            goes to                 name                        ini key    portcullis mover tag */
-    { L"HP3_InsideHub",  731, 1615,   74, L"HP3_Adv6Paddock",     L"entrance hall north door", L"Paddock", 0 },
-    { L"HP3_InsideHub", 1427, -960, 2154, L"HP3_Adv1Express",     L"7th floor east door",      L"Express", 0 },
-    { L"HP3_InsideHub",  838, -1844, 1194, L"HP3_Adv2ExpPatronum", L"DADA portcullis",         L"DADA",    L"DADA_PortToExpecto_Mvr" },
-    { L"HP3_InsideHub", -710, -1349,  778, L"HP3_Adv3Library",     L"Library portcullis",      L"Library", L"Library_Port_Mvr" },
-    { L"HP3_DungeonHUB", -481, 2805, -341, L"HP3_Adv5Shack",       L"dungeon door 1",          L"Shack",   0 },
+    /* map               stand here            goes to                 name                        ini key    portcullis mover tag      lock bar (StaticMeshActor, DoorLockBar_SM) */
+    { L"HP3_InsideHub",  731, 1615,   74, L"HP3_Adv6Paddock",     L"entrance hall north door", L"Paddock", 0,                        L"StaticMeshActor42" },
+    { L"HP3_InsideHub", 1427, -960, 2154, L"HP3_Adv1Express",     L"7th floor east door",      L"Express", 0,                        L"StaticMeshActor228" },
+    { L"HP3_InsideHub",  838, -1844, 1194, L"HP3_Adv2ExpPatronum", L"DADA portcullis",         L"DADA",    L"DADA_PortToExpecto_Mvr", 0 },
+    { L"HP3_InsideHub", -710, -1349,  778, L"HP3_Adv3Library",     L"Library portcullis",      L"Library", L"Library_Port_Mvr",       0 },
+    { L"HP3_DungeonHUB", -481, 2805, -341, L"HP3_Adv5Shack",       L"dungeon door 1",          L"Shack",   0,                        L"StaticMeshActor315" },
 };
 #define NDOORS (int)(sizeof DOORS / sizeof DOORS[0])
 #define DOOR_R   90.0f    /* horizontal reach */
@@ -295,10 +295,16 @@ static int gDoorOn[16];
 static int offTag = -1, offKeyNum = -1;
 static u32 gClsMover;
 static u32 gGateLevel; static u32 gGateLast[MAXGATES];   /* GetTickCount of our last Trigger, per gate */
-struct findgate { u32 level; int names[MAXGATES]; u32 found[MAXGATES]; };
+/* lock bars: separate StaticMeshActors (DoorLockBar_SM) in front of the doors without a portcullis. Static actors
+   can't be moved, so an unlocked door's bar is hidden: DrawType DT_StaticMesh (8) -> DT_None (0). */
+static int offDrawType = -1;
+static u32 gBarObj[MAXGATES];
+struct findgate { u32 level; int names[MAXGATES]; u32 found[MAXGATES]; int bars[MAXGATES]; u32 barfound[MAXGATES]; };
 static int v_findgate(u32 o, int name, u32 cls, void *c) {
-    struct findgate *f = c; int i, tag; (void)name;
-    if (!cls || rd32(o + offLevel) != f->level || !is_a_cls(cls, gClsMover)) return 0;
+    struct findgate *f = c; int i, tag;
+    if (!cls || rd32(o + offLevel) != f->level) return 0;
+    for (i = 0; i < NDOORS && i < MAXGATES; i++) if (f->bars[i] >= 0 && name == f->bars[i]) f->barfound[i] = o;
+    if (!is_a_cls(cls, gClsMover)) return 0;
     tag = (int)rd32(o + offTag);
     for (i = 0; i < NDOORS && i < MAXGATES; i++) if (f->names[i] >= 0 && tag == f->names[i]) f->found[i] = o;
     return 0;
@@ -319,14 +325,26 @@ static void gates_poll(u32 level, const wchar *map) {
     if (level != gGateLevel) {   /* new map: find its gate movers */
         struct findgate f; int n = 0;
         f.level = level;
-        for (i = 0; i < MAXGATES; i++) { f.found[i] = 0; f.names[i] = -1; gGateLast[i] = 0; }
-        for (i = 0; i < NDOORS && i < MAXGATES; i++) if (DOORS[i].gate && weq(DOORS[i].map, map)) { f.names[i] = name_index(DOORS[i].gate); n++; }
-        if (n) for_each_object(v_findgate, &f);
-        for (i = 0; i < MAXGATES; i++) gGateObj[i] = f.found[i];
-        gGateLevel = level;
-        for (i = 0; i < NDOORS && i < MAXGATES; i++) if (f.names[i] >= 0) {
-            wsprintfW(b, L"gate %s: %s %s", DOORS[i].key, DOORS[i].gate, f.found[i] ? L"found" : L"NOT FOUND"); log_line(b);
+        for (i = 0; i < MAXGATES; i++) { f.found[i] = f.barfound[i] = 0; f.names[i] = f.bars[i] = -1; gGateLast[i] = 0; }
+        for (i = 0; i < NDOORS && i < MAXGATES; i++) if (weq(DOORS[i].map, map)) {
+            if (DOORS[i].gate) { f.names[i] = name_index(DOORS[i].gate); n++; }
+            if (DOORS[i].bar)  { f.bars[i]  = name_index(DOORS[i].bar);  n++; }
         }
+        if (n) for_each_object(v_findgate, &f);
+        for (i = 0; i < MAXGATES; i++) { gGateObj[i] = f.found[i]; gBarObj[i] = f.barfound[i]; }
+        gGateLevel = level;
+        for (i = 0; i < NDOORS && i < MAXGATES; i++) {
+            if (f.names[i] >= 0) { wsprintfW(b, L"gate %s: %s %s", DOORS[i].key, DOORS[i].gate, f.found[i] ? L"found" : L"NOT FOUND"); log_line(b); }
+            if (f.bars[i] >= 0)  { wsprintfW(b, L"bar %s: %s %s", DOORS[i].key, DOORS[i].bar, f.barfound[i] ? L"found" : L"NOT FOUND"); log_line(b); }
+        }
+    }
+    for (i = 0; i < NDOORS && i < MAXGATES; i++) {   /* lock bars: hidden while the door is unlocked */
+        u8 want = gDoorOn[i] ? 0 : 8, cur;
+        if (!gBarObj[i] || offDrawType <= 0) continue;
+        cur = *(volatile u8 *)(gBarObj[i] + offDrawType);
+        if (cur == want || (cur != 0 && cur != 8)) continue;   /* only ever toggle between the two we know */
+        *(volatile u8 *)(gBarObj[i] + offDrawType) = want;
+        wsprintfW(b, L"bar %s: %s", DOORS[i].key, want ? L"shown (locked)" : L"hidden (unlocked)"); log_line(b);
     }
     for (i = 0; i < NDOORS && i < MAXGATES; i++) {
         u32 m = gGateObj[i]; int open;
@@ -403,6 +421,7 @@ static u32 WINAPI worker(void *arg) {
         if (!gClsPickup) gClsPickup = find_class(L"KWPickup");
         if (offTag < 0)    offTag    = prop_offset(L"Actor", L"Tag");
         if (offKeyNum < 0) offKeyNum = prop_offset(L"Mover", L"KeyNum");
+        if (offDrawType < 0) offDrawType = prop_offset(L"Actor", L"DrawType");
         if (!gClsMover) gClsMover = find_class(L"Mover");
         /* PostBeginPlay is armed last: the leftover tracking only starts once everything it needs is known */
         if (!gClsSpawner && gClsPickup && offLives > 0 && offGoodies > 0 && offPicked > 0 && offStore > 0 && offLoc > 0
