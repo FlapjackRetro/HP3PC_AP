@@ -34,7 +34,7 @@ static struct lo_q gQ[128]; static int gNQ; static u32 gQLevel;
 static volatile int gPendingRespawn;
 
 static u32 gClsSpawner, gClsPickup;
-static int offLives = -1, offGoodies = -1, offPicked = -1, offStore = -1;
+static int offLives = -1, offGoodies = -1, offPicked = -1, offStore = -1;   /* GameInfo.PersistentStore */
 static int N_PostBeginPlay = -1, N_Destroyed = -1, N_TravelExporting = -1, N_PostPDR = -1, N_SaveValue = -1, N_RestoreValue = -1,
            N_FancySpawn = -1;
 

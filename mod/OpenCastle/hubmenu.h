@@ -65,32 +65,40 @@ static int hub_page_init(u32 cls) {
     if (offDecoy > 0 && offBtnYes > 0 && offBtnNo > 0) gClsExitPage = cls;
     return gClsExitPage != 0;
 }
-/* worker, every poll: an HPPageExit that just became the active page gets patched on the game thread */
+/* worker, every poll: while an HPPageExit is the active page and its decoy isn't our button (a new page, or the GUI
+   re-ran InitComponent after a level change and put the decoy back), have the game thread patch it */
 static void hub_poll(void) {
-    static u32 lastActive; static int nExitPage = -2; u32 ctl, page, cls; wchar nm[32];
+    static u32 lastActive; static int nExitPage = -2; u32 ctl, page, cls, decoy; wchar nm[32]; float w = 0;
     if (!gPlayer) return;
     if (nExitPage == -2) nExitPage = name_index(L"HPPageExit");
     ctl = rd32(gPlayer + offGUICtl); page = ctl ? rd32(ctl + offActivePage) : 0;
-    if (page && page != lastActive) {
-        cls = rd32(page + 0x24);
-        if (gClsExitPage ? cls == gClsExitPage
-                         : (nExitPage >= 0 && (int)rd32(cls + 0x20) == nExitPage && name_of(nExitPage, nm, 32) && hub_page_init(cls))) {
-            gMenuPage = page; gMenuPatch = 1;
-        }
-    }
+    if (!page) { lastActive = 0; return; }
+    cls = rd32(page + 0x24);
+    if (!(gClsExitPage ? cls == gClsExitPage
+                       : (nExitPage >= 0 && (int)rd32(cls + 0x20) == nExitPage && name_of(nExitPage, nm, 32) && hub_page_init(cls))))
+        { lastActive = page; return; }
+    if (page != lastActive) { static wchar b[80]; wsprintfW(b, L"hub menu: exit dialog open (page %08x)", page); log_line(b); }
     lastActive = page;
+    decoy = rd32(page + offDecoy);
+    {   u32 yes = rd32(page + offBtnYes);
+        if (decoy && yes && rd(decoy + offWinWidth, &w, 4) && w == 0.32f && rd32(decoy + offOnClick) == rd32(yes + offOnClick)
+            && rd32(decoy + offOnClick + 4) == rd32(yes + offOnClick + 4)) return;   /* already our button */
+    }
+    if (!gMenuPatch) { gMenuPage = page; gMenuPatch = 1; }
 }
 
 static void set_caption(u32 btn, const wchar *s) { gFStrAssign((void *)(btn + offCaption), s); }
 /* game thread */
 static void hub_patch(void) {
     u32 page = gMenuPage, decoy, yes, no, *dy, *dd; static wchar msg[200];
+    static u32 failedPage;
+    if (page == failedPage) return;
     decoy = P(page + offDecoy); yes = P(page + offBtnYes); no = P(page + offBtnNo);
-    if (!decoy || !yes || !no) { log_line(L"hub menu: dialog has no decoy/yes/no button"); return; }
+    if (!decoy || !yes || !no) { failedPage = page; log_line(L"hub menu: dialog has no decoy/yes/no button"); return; }
     /* YES's OnClick must point at this page's MyOnClick, or we don't know the delegate layout: leave the menu alone */
     dy = (u32 *)(yes + offOnClick);
     if (!((dy[0] == page && (int)dy[1] == N_MyOnClick) || ((int)dy[0] == N_MyOnClick && dy[1] == page))) {
-        wsprintfW(msg, L"hub menu: unexpected YES delegate %08x %08x; button not added", dy[0], dy[1]); log_line(msg); return;
+        failedPage = page; wsprintfW(msg, L"hub menu: unexpected YES delegate %08x %08x; button not added", dy[0], dy[1]); log_line(msg); return;
     }
     dd = (u32 *)(decoy + offOnClick); dd[0] = dy[0]; dd[1] = dy[1];
     dy = (u32 *)(yes + offOnWatch); dd = (u32 *)(decoy + offOnWatch); dd[0] = dy[0]; dd[1] = dy[1];
