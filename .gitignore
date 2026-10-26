@@ -22,3 +22,4 @@ __pycache__/
 # Build outputs
 mod/**/build/
 mod/**/test/harness
+mod/**/test/rules_test
