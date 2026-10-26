@@ -171,3 +171,14 @@ Yes. The vanilla save system already handles it; nothing new is needed for the p
     (no `PostBeginPlay`), so they aren't tracked until the next level load.
 - Event rewards (`HPSpawnThingy` rows, which have no `persist_key`) depend on whether their trigger, fight or
   Peeves persists. They need checking map by map; none are in the paddock.
+
+### poc4: softlock escape
+
+- **RETURN TO HUB**: the pause menu's X opens `HGame.HPPageExit` ("Exit game and return to Main Menu?"). poc4 adds a
+  third button under YES / NO by reusing the dialog's invisible focus `decoy` button (`hubmenu.h`).
+  - The first click arms it ("CLICK AGAIN TO RETURN TO HUB"), because the decoy holds the initial focus and a
+    stray Enter could otherwise press it.
+  - The second click closes the menus with the main menu's own `ExitMenu` (unpause, stop the menu music) and
+    travels to InsideHub. The player arrives in the entrance hall (the GroundsHub SmartStart).
+  - The button only appears if YES's `OnClick` delegate looks exactly as expected; otherwise the log says
+    "button not added" and the dialog stays vanilla.
