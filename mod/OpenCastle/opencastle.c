@@ -15,8 +15,8 @@
  *     came from; story maps rerouted by Open Castle have none, so the player would land in the GState holding room.
  *     We lend the pawn's PreviousLevelName a nearby SmartStart's name for that one call (so Ron and Hermione follow
  *     too), then optionally RelocatePawn to the Open Castle door.
- *  5. Unlocks (unlocks.h): spells (WeaponWand.HasSpell made native), the Marauder's Map and the shortcut passwords,
- *     from the ini like the doors. Shortcuts are locked until [Items] ShortcutPasswords=1.
+ *  5. Unlocks (unlocks.h): spells (WeaponWand.HasSpell made native), doors, the Marauder's Map and the shortcut
+ *     passwords. Start state from the ini, found state in the save (PersistentStore OC_* keys).
  *  6. Leftover goodies (leftovers.h): items a chest threw out but the player didn't pick up come back on the next
  *     visit.
  *  7. Softlock escape (hubmenu.h): RETURN TO HUB in the pause menu's exit dialog.
@@ -70,7 +70,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc7b"
+#define OC_VERSION L"poc7c"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -318,6 +318,7 @@ static const struct door DOORS[] = {
 /* ---- door gates (worker part) ---- */
 static wchar gIniPath[600];
 static int gDoorOn[16];
+static volatile int gSaveDoor[16];   /* door found in this save (unlocks.h) */
 static int offTag = -1, offKeyNum = -1;
 static u32 gClsMover;
 static u32 gGateLevel; static u32 gGateLast[MAXGATES];   /* GetTickCount of our last Trigger, per gate */
@@ -358,7 +359,7 @@ static int v_findgate(u32 o, int name, u32 cls, void *c) {
 static void gates_poll(u32 level, const wchar *map) {
     static wchar b[200]; int i, changed = 0;
     for (i = 0; i < NDOORS; i++) {
-        int on = GetPrivateProfileIntW(L"Doors", DOORS[i].key, 1, gIniPath) != 0;
+        int on = GetPrivateProfileIntW(L"Doors", DOORS[i].key, 1, gIniPath) != 0 || gSaveDoor[i];
         if (on != gDoorOn[i]) { changed = 1; gDoorOn[i] = on; }
     }
     if (changed) {
