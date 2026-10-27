@@ -24,8 +24,14 @@ static int dropped_map(const wchar *m) {
 /* Decide the new destination. src = map the player is leaving ("" if unknown), dst = canonical destination,
    had_unr = the URL named the map with ".unr" (InsideHub's side-room doors do; the classroom triggers don't).
    Returns the new map (may equal dst) and a short reason in *why (0 if unchanged). */
+/* set by the worker: the player stands at the Transfiguration exam door (InsideHub ChangeLevelTrigger7, the
+   "ToDrac" door). That trigger's URL is "HP3_Ch2Draconifors.unr", the same as the side room's Draconifors door, so
+   only the player's position tells them apart. */
+static volatile int gAtTransfigDoor;
 static const wchar *oc_route(const wchar *src, const wchar *dst, int had_unr, const wchar **why) {
     *why = 0;
+    if (is_map(src, L"HP3_InsideHub") && is_map(dst, L"HP3_Ch2Draconifors") && gAtTransfigDoor)
+        { *why = L"Transfiguration exam door -> Hermione's exam"; return L"HP3_FA2Hermione"; }
     if (is_map(dst, L"HP3_Adv1Express") && (!src[0] || is_map(src, L"HP_Preamble") || is_map(src, L"Entry")))
         { *why = L"new game starts in Hogwarts"; return L"HP3_InsideHub"; }
     if (is_map(src, L"HP3_InsideHub") && !had_unr) {   /* classroom triggers: challenges -> final exams */

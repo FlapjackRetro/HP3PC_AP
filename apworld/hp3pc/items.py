@@ -72,6 +72,9 @@ LEVEL_UNLOCKS: dict[str, ItemData] = {
     "Hippogriff Challenge Unlock":      ItemData(110, IC.progression, "Level Unlocks", "door Hippogriff (COMC)"),
     "Doxy Challenge Unlock":            ItemData(111, IC.progression, "Level Unlocks", "door Doxy (well)"),
     "Bonus Room Unlock":                ItemData(112, IC.progression, "Level Unlocks", "door BonusRoom: HP3_BeanBonus (entrance hall south door)"),
+    "Ron's Final Exam Unlock":          ItemData(113, IC.progression, "Level Unlocks", "door ExamRon: FA1Ron (DADA classroom portcullis)"),
+    "Hermione's Final Exam Unlock":     ItemData(114, IC.progression, "Level Unlocks", "door ExamHermione: FA2Hermione (Transfiguration, ToDrac portcullis)"),
+    "Harry's Final Exam Unlock":        ItemData(115, IC.progression, "Level Unlocks", "door ExamHarry: FA3Harry (Charms classroom portcullis)"),
 }
 CHALLENGE_GRANTS = {
     "Carpe Retractum Challenge Unlock": ("Carpe Retractum",),

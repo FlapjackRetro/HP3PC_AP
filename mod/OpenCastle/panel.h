@@ -31,6 +31,8 @@ static const struct prow PROWS[] = {
     { 'd', L"Doxy challenge", 0, L"Doxy" }, { 'd', L"Wizard Card bonus room", 0, L"BonusRoom" },
     { 'd', L"Carpe Retractum challenge", 0, L"ChCarpe" }, { 'd', L"Draconifors / Lapifors challenge", 0, L"ChDracLap" },
     { 'd', L"Glacius challenge", 0, L"ChGlacius" },
+    { 'd', L"Ron's exam (DADA)", 0, L"ExamRon" }, { 'd', L"Hermione's exam (Transfiguration)", 0, L"ExamHermione" },
+    { 'd', L"Harry's exam (Charms)", 0, L"ExamHarry" },
     { 'h', L"PORTRAIT PASSWORDS (order the twins sell them)", 0, 0 },
     { 'w', L"Portrait Password 1", 0, 0 }, { 'w', L"Portrait Password 2", 1, 0 }, { 'w', L"Portrait Password 3", 2, 0 },
     { 'w', L"Portrait Password 4", 3, 0 }, { 'w', L"Portrait Password 5", 4, 0 }, { 'w', L"Portrait Password 6", 5, 0 },

@@ -70,7 +70,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc8f"
+#define OC_VERSION L"poc8g"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -114,12 +114,14 @@ static furl_fn gFurlOrig;
 static wchar gUrlOut[600];
 static const wchar *locked_challenge(const wchar *url);   /* after DOORS */
 static void *__thiscall furl_hook(void *self, void *base, const wchar *text, int type) {
-    const wchar *use = text, *lk; wchar why[128]; static wchar msg[900];
-    if (text && (lk = locked_challenge(text)) != 0) {   /* any way into a locked challenge (chamber copies in the B maps too) */
-        wcpy(gUrlOut, L"HP3_InsideHub?GameState=GState090", 600);
-        wsprintfW(msg, L"TRAVEL  from %s:  %s  ->  %s   [%s is locked]", gCurMap[0] ? gCurMap : L"?", text, gUrlOut, lk);
+    const wchar *use = text, *lk; wchar why[128]; static wchar msg[900], blocked[600];
+    /* where the travel really goes (after Open Castle's own rewrite): a locked challenge or exam is refused, from any
+       trigger (the chamber copies in the B maps too) */
+    if (text && (lk = locked_challenge(oc_rewrite((const wchar *)gCurMap, text, gUrlOut, 600, why, 128) ? gUrlOut : text)) != 0) {
+        wcpy(blocked, L"HP3_InsideHub?GameState=GState090", 600);
+        wsprintfW(msg, L"TRAVEL  from %s:  %s  ->  %s   [%s is locked]", gCurMap[0] ? gCurMap : L"?", text, blocked, lk);
         log_line(msg);
-        return gFurlOrig(self, base, gUrlOut, type);
+        return gFurlOrig(self, base, blocked, type);
     }
     if (text && oc_rewrite((const wchar *)gCurMap, text, gUrlOut, 600, why, 128)) {
         use = gUrlOut;
@@ -160,9 +162,10 @@ static const struct ret RETS[] = {
     { L"HP3_InsideHub",  L"HP3_Adv1Express",     L"HP3_PortraitPassword_D",   1, 1427,  -960, 2154 },
     { L"HP3_InsideHub",  L"HP3_Adv2ExpPatronum", L"HP3_PortraitPassword_C",   1,  838, -1844, 1194 },
     { L"HP3_InsideHub",  L"HP3_Adv3Library",     L"HP3_PortraitPassword_C",   1, -710, -1349,  778 },
-    { L"HP3_InsideHub",  L"HP3_FA1Ron",          L"HP3_Ch1CarpeRetractumB",   0,    0,     0,    0 },   /* exam side room */
-    { L"HP3_InsideHub",  L"HP3_FA2Hermione",     L"HP3_Ch2DraconiforsB",      0,    0,     0,    0 },
-    { L"HP3_InsideHub",  L"HP3_FA3Harry",        L"HP3_Ch3GlaciusB",          0,    0,     0,    0 },
+    /* exams: back in front of the classroom door (where its voice-line PopupTrigger stood, clear of the loading trigger) */
+    { L"HP3_InsideHub",  L"HP3_FA1Ron",          L"HP3_GroundsHub",           1,  418, -2221, 1206 },   /* DADA */
+    { L"HP3_InsideHub",  L"HP3_FA2Hermione",     L"HP3_GroundsHub",           1, -3309,  2200,  533 },   /* Transfiguration (ToDrac door) */
+    { L"HP3_InsideHub",  L"HP3_FA3Harry",        L"HP3_GroundsHub",           1, -1365, -2829,  948 },   /* Charms */
     { L"HP3_DungeonHUB", L"HP3_Adv5Shack",       0,                           1, -481,  2805, -341 },   /* no SmartStarts */
     { L"HP3_InsideHub",  L"HP3_BeanBonus",       L"HP3_GroundsHub",           1,  733,   392,   74 },   /* entrance hall, south door */
 };
@@ -241,7 +244,17 @@ static void fire_gates(void) {
 static volatile int gGridPending; static void grid_spawn(void); static void items_apply(void);
 static volatile u32 gGridTake; static void grid_take(void);
 static volatile u32 gBlockSpawn, gBlockKill; static void blockers_apply(void); static void trig_apply(void);
-static volatile u32 gTrigFire;
+static volatile u32 gTrigFire; static volatile int gSilFire;
+/* voice lines switched off for good (touch PopupTriggers, collision off on each map): the exam doors' "that's the
+   door to the ... spell challenge" comments */
+struct silence { const wchar *map, *actor, *why; };
+static const struct silence SILENCE[] = {
+    { L"HP3_InsideHub", L"PopupTrigger10", L"DADA exam door (PC_HRY_CHALCH1COMMENTS_6)" },
+    { L"HP3_InsideHub", L"PopupTrigger17", L"Transfiguration exam door (PC_HRY_DOORCOMMENTS_34)" },
+    { L"HP3_InsideHub", L"PopupTrigger13", L"Charms exam door (PC_RON_DOORCOMMENTS_40)" },
+};
+#define NSILENCE (int)(sizeof SILENCE / sizeof SILENCE[0])
+static volatile u32 gSilObj[NSILENCE]; static volatile int gSilFire;
 static int N_PlayerTick = -1, N_Tick = -1;
 static volatile int gPanelPause, gAddCurrency, gPanelOpen; static void panel_pause(void); static void panel_currency(void);
 static int N_PostRender; static u32 gClsHUD; static void panel_render(u32 cv);
@@ -263,7 +276,7 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
         if (gGridPending) { grid_spawn(); gGridPending = 0; }
         if (gBlockSpawn || gBlockKill) blockers_apply();
         if (gAddCurrency) panel_currency();
-        if (gTrigFire) trig_apply();
+        if (gTrigFire || gSilFire) trig_apply();
         gInTravel = 0;
     }
     if (!func || !self) { gPEOrig(self, func, parms, result); return; }
@@ -345,21 +358,30 @@ static const struct door DOORS[] = {
     { L"HP3_GroundsHub",    0,     0,    0, 0,                     L"doxy challenge",          L"Doxy",        0,                    0, 0, { 0, 0 } },
     /* the side room (challenge chamber): the castle's own portcullises (KWMover31/32/33, bPersistent, key 0 = up at
        z 392, key 1 = down, 136 lower) in front of the vanilla loading triggers. Carpe's starts up in GState090,
-       Draconifors' and Glacius' down. ChangeLevelTrigger7 is the chamber's second Draconifors trigger. */
+       Draconifors' and Glacius' down. */
     { L"HP3_InsideHub",     0,     0,    0, 0,                     L"Carpe Retractum challenge", L"ChCarpe",   L"ChalChamb_CR_Port",   0, 1, { L"ChangeLevelTrigger9", 0 } },
-    { L"HP3_InsideHub",     0,     0,    0, 0,                     L"Draconifors challenge",     L"ChDracLap", L"ChalChamb_Drac_Port", 0, 1, { L"ChangeLevelTrigger10", L"ChangeLevelTrigger7" } },
+    { L"HP3_InsideHub",     0,     0,    0, 0,                     L"Draconifors challenge",     L"ChDracLap", L"ChalChamb_Drac_Port", 0, 1, { L"ChangeLevelTrigger10", 0 } },
     { L"HP3_InsideHub",     0,     0,    0, 0,                     L"Glacius challenge",         L"ChGlacius", L"ChalChamb_Gla_Port",  0, 1, { L"ChangeLevelTrigger11", 0 } },
+    /* the final exams, through the classroom doors (portcullis key 1 = up, like DADA / Library). Their loading
+       triggers are the vanilla ones, retargeted by rules.h: DADA's touch Trigger58 fires ChangeLevelTrigger3
+       (HP3_Ch1CarpeRetractum -> FA1); Charms' ChangeLevelTrigger6 (HP3_Ch3Glacius -> FA3); Transfiguration's door
+       is the "ToDrac" door on the floor below the classroom, ChangeLevelTrigger7 (HP3_Ch2Draconifors.unr -> FA2,
+       by the player's position, see gAtTransfigDoor). In GState090 Ron's portcullis starts up, the other two down. */
+    { L"HP3_InsideHub",     0,     0,    0, 0,                     L"Ron's exam (DADA)",          L"ExamRon",      L"DADA_PortToCarpe_Mvr", 0, 0, { L"Trigger58", 0 } },
+    { L"HP3_InsideHub",     0,     0,    0, 0,                     L"Hermione's exam (Transfiguration)", L"ExamHermione", L"ToDrac_Prt_Mvr", 0, 0, { L"ChangeLevelTrigger7", 0 } },
+    { L"HP3_InsideHub",     0,     0,    0, 0,                     L"Harry's exam (Charms)",      L"ExamHarry",    L"Glacius_Port_Mvr",     0, 0, { L"ChangeLevelTrigger6", 0 } },
 };
 #define NDOORS (int)(sizeof DOORS / sizeof DOORS[0])
 static int gDoorOn[16];
 /* the challenge a travel URL goes to, if its door is locked (0 otherwise). Map token = up to '?' or '.' */
 static const wchar *locked_challenge(const wchar *url) {
-    static const wchar *const CH[3][2] = { { L"HP3_Ch1CarpeRetractum", L"ChCarpe" }, { L"HP3_Ch2Draconifors", L"ChDracLap" },
-                                           { L"HP3_Ch3Glacius", L"ChGlacius" } };
+    static const wchar *const CH[6][2] = { { L"HP3_Ch1CarpeRetractum", L"ChCarpe" }, { L"HP3_Ch2Draconifors", L"ChDracLap" },
+                                           { L"HP3_Ch3Glacius", L"ChGlacius" }, { L"HP3_FA1Ron", L"ExamRon" },
+                                           { L"HP3_FA2Hermione", L"ExamHermione" }, { L"HP3_FA3Harry", L"ExamHarry" } };
     wchar tok[64]; int n = 0, c, d;
     while (url[n] && url[n] != '?' && url[n] != '.' && n < 63) { tok[n] = url[n]; n++; }
     tok[n] = 0;
-    for (c = 0; c < 3; c++) if (wieq(tok, CH[c][0]))
+    for (c = 0; c < 6; c++) if (wieq(tok, CH[c][0]))
         for (d = 0; d < NDOORS; d++) if (weq(DOORS[d].key, CH[c][1])) return gDoorOn[d] ? 0 : DOORS[d].name;
     return 0;
 }
@@ -404,6 +426,7 @@ static u32 gBarObj[MAXGATES];
 static volatile u32 gTrigObj[MAXGATES][2]; static int gTrigApplied[MAXGATES]; static volatile int gTrigWant[MAXGATES];
 static volatile u32 gTrigFire;
 struct findgate { u32 level; int names[MAXGATES]; u32 found[MAXGATES][GATEMOVERS]; int nfound[MAXGATES]; int bars[MAXGATES]; u32 barfound[MAXGATES]; int supp[NSUPPRESS];
+                 int sil[NSILENCE];
                  int trigs[MAXGATES][2]; u32 trigfound[MAXGATES][2]; };
 static int v_findgate(u32 o, int name, u32 cls, void *c) {
     struct findgate *f = c; int i, tag;
@@ -414,6 +437,7 @@ static int v_findgate(u32 o, int name, u32 cls, void *c) {
         if (f->trigs[i][1] >= 0 && name == f->trigs[i][1]) f->trigfound[i][1] = o;
     }
     for (i = 0; i < NSUPPRESS; i++) if (f->supp[i] >= 0 && name == f->supp[i]) gSuppObj[i] = o;
+    for (i = 0; i < NSILENCE; i++) if (f->sil[i] >= 0 && name == f->sil[i]) gSilObj[i] = o;
     if (!is_a_cls(cls, gClsMover)) return 0;
     tag = (int)rd32(o + offTag);
     for (i = 0; i < NDOORS && i < MAXGATES; i++) if (f->names[i] >= 0 && tag == f->names[i] && f->nfound[i] < GATEMOVERS) f->found[i][f->nfound[i]++] = o;
@@ -497,6 +521,7 @@ static void gates_poll(u32 level, const wchar *map) {
             if (DOORS[i].trig[1]) { f.trigs[i][1] = name_index(DOORS[i].trig[1]); n++; }
         }
         for (i = 0; i < NSUPPRESS; i++) { gSuppObj[i] = 0; f.supp[i] = weq(SUPPRESS[i].map, map) ? name_index(SUPPRESS[i].actor) : -1; if (f.supp[i] >= 0) n++; }
+        for (i = 0; i < NSILENCE; i++) { gSilObj[i] = 0; f.sil[i] = weq(SILENCE[i].map, map) ? name_index(SILENCE[i].actor) : -1; if (f.sil[i] >= 0) n++; }
         if (n) for_each_object(v_findgate, &f);
         if (offEvent < 0) offEvent = prop_offset(L"Actor", L"Event");
         for (i = 0; i < NSUPPRESS; i++) {
@@ -511,6 +536,7 @@ static void gates_poll(u32 level, const wchar *map) {
         for (i = 0; i < MAXGATES; i++) { int k; for (k = 0; k < GATEMOVERS; k++) gGateObj[i][k] = f.found[i][k]; gBarObj[i] = f.barfound[i];
             gTrigObj[i][0] = f.trigfound[i][0]; gTrigObj[i][1] = f.trigfound[i][1]; }
         gGateLevel = level;
+        for (i = 0; i < NSILENCE; i++) if (gSilObj[i]) { wsprintfW(b, L"voice line off: %s %s", SILENCE[i].actor, SILENCE[i].why); log_line(b); gSilFire = 1; }
         for (i = 0; i < NDOORS && i < MAXGATES; i++) {
             if (f.names[i] >= 0) { wsprintfW(b, L"gate %s: %s, %d mover(s)", DOORS[i].key, DOORS[i].gate, f.nfound[i]); log_line(b); }
             if (f.bars[i] >= 0)  { wsprintfW(b, L"bar %s: %s %s", DOORS[i].key, DOORS[i].bar, f.barfound[i] ? L"found" : L"NOT FOUND"); log_line(b); }
@@ -673,7 +699,11 @@ static u32 WINAPI worker(void *arg) {
         }
         pawn = rd32(pc + offPawn);
         if (settle >= 12) grid_poll(pawn, level);
-        if (!pawn || !rd(pawn + offLoc, loc, 12) || gPending) continue;
+        if (!pawn || !rd(pawn + offLoc, loc, 12)) { gAtTransfigDoor = 0; continue; }
+        {   float dx = loc[0] + 3171.0f, dy = loc[1] - 2204.0f;   /* Transfiguration exam door, ChangeLevelTrigger7 */
+            gAtTransfigDoor = weq(lastMap, L"HP3_InsideHub") && dx * dx + dy * dy < 250.0f * 250.0f;
+        }
+        if (gPending) continue;
         {   int near = -1, far_from_all = 1;
             for (i = 0; i < NDOORS; i++) {
                 float dx, dy, dz, h2;

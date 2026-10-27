@@ -10,7 +10,7 @@ seeds can't be generated; the item table and options are in place. Decisions fro
 | progression | Wizard cards (one item per card, "*Name* Card") | 79 |
 | progression | Spells: Alohomora, Depulso, Lumos, Rictusempra, Spongify, Expecto Patronum | 6 |
 | progression | Challenge spells: Carpe Retractum, Draconifors, Lapifors, Glacius (only with `split_challenge_spells`) | 4 |
-| progression | Level unlocks: Carpe Retractum / Draconifors / Glacius / Monster Book / Hippogriff / Doxy Challenge; Hogwarts Express, Patronus Lesson, Library, Shrieking Shack, Paddock, Bonus Room | 12 |
+| progression | Level unlocks: Carpe Retractum / Draconifors / Glacius / Monster Book / Hippogriff / Doxy Challenge; Hogwarts Express, Patronus Lesson, Library, Shrieking Shack, Paddock, Bonus Room; Ron's / Hermione's / Harry's Final Exam | 15 |
 | progression | Portrait Password 1–8 (`pp_0`–`pp_7`, in the order the twins sell them) | 8 |
 | progression_skip_balancing | Pumpkin pasty bundles 1, 2, 3, 4, 5, 10; cauldron cake bundles 1, 2, 3, 4 | per location |
 | useful | Shortcut Passwords (`pp_8`–`pp_21` at once) | 1 |
@@ -18,7 +18,7 @@ seeds can't be generated; the item table and options are in place. Decisions fro
 
 Not randomized (first pass): jellybeans, challenge stars (the game's challenge shields), the Harry Potter card.
 
-IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–112, passwords 200–207 and 220, currency 301–310 and
+IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–115, passwords 200–207 and 220, currency 301–310 and
 321–324, filler 340–341, traps 350–399 (reserved), cards 1000 + index in `WizardCardManager.Cards`). Offsets never change once released.
 
 ### Currency

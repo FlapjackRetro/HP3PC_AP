@@ -237,6 +237,7 @@ static void trig_apply(void) {
     u32 bits = gTrigFire; int i, k;
     gTrigFire = 0;
     if (!gSetCollision) return;
+    if (gSilFire) { gSilFire = 0; for (i = 0; i < NSILENCE; i++) if (gSilObj[i]) gSetCollision((void *)gSilObj[i], 0, 0, 0); }
     for (i = 0; i < MAXGATES; i++) if ((bits >> i) & 1)
         for (k = 0; k < 2; k++) if (gTrigObj[i][k]) gSetCollision((void *)gTrigObj[i][k], gTrigWant[i] ? 1 : 0, 0, 0);
 }
