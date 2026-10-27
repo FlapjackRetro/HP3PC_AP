@@ -115,7 +115,7 @@ shared and sold in a fixed order, whichever student you buy from (20 cards, plus
 
 ## Logic notes
 
-Portrait passwords → portraits (mapping in progress): **1 → a secret room inside the castle (InsideHub, around (−500, 500, 1530))**, **3 → an area in the dungeons (DungeonHUB, around (290, 900, −690))**, **5 → a second dungeon area (probably the "Glover" portrait, `PortraitPasswordTrigger1` at (−1255, 2340, −282); to confirm)**, **2 → Portrait F**, **7 → Portrait D**, **8 → Portrait E**.
+Portrait passwords → portraits (mapping in progress): **1 → a secret room inside the castle (InsideHub, around (−500, 500, 1530))**, **3 → an area in the dungeons (DungeonHUB, around (290, 900, −690))**, **5 → the "Glover" portrait room in the dungeons (`PortraitPasswordTrigger1` at (−1255, 2340, −282); room around (−1630, 2270, −359))**, **2 → Portrait F**, **7 → Portrait D**, **8 → Portrait E**.
 
 Rules collected so far (to go into `rules.py` with the locations):
 
@@ -149,6 +149,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Dungeons: chest `ChestSpawner8` (1 cake; also 10 beans) | the Password 3 area rule + Alohomora, cast twice. At (−1056, 960, −951), save key `dungChestSpawner8_lives` | marked in play 2026-10-27 |
 | Dungeons: Doxy Card (placed `WC_Doxy0`) | the Password 3 area rule (Portrait Password 3 + Spongify). At (−869, 1627, −430), save key `dungWC_Doxy0_PU` | marked in play 2026-10-27 |
 | Dungeons: the doxy-fight reward, every `HPSpawnThingy` tagged `Aspawnbeans`: pasties `HPSpawnThingy16` (290, 1120, −509), `25` (−739, 961, −698), `26` (−865, 1050, −744), `28`, `30`; cakes `19`, `29` (the line at x ≈ −864, y 1191–1410); plus beans | the Password 3 area rule + **Alohomora** (opening `ChestSpawner0` / `ChestSpawner9`, tags `Stroulger_Poxie_Chest`/`2`, releases the doxies) + **Rictusempra** (beat them). Map: `Counter1` (`Apoxiecounter`, 6) → `Aspawnbeans`. Event-spawned, no save key of their own: detect from the counter / event | marked in play 2026-10-27 |
+| Dungeons: chest `ChestSpawner5` (4 pasties) | the Password 5 area rule (Portrait Password 5 + Lumos) + Alohomora. At (−1628, 2272, −359), save key `dungChestSpawner5_lives` | marked in play 2026-10-27 |
 | Portrait D: Cauldron Cake | only Portrait Password 7 (opens Portrait D). Freestanding `CauldronCake4` at (897, 139, 2178), save key `ppdCauldronCake4_PU` | marked in play 2026-10-27 |
 
 For logic tracing the challenge doors and the spells are separate unlocks in the mod and the debug panel; the
