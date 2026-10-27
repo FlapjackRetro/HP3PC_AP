@@ -90,7 +90,7 @@ If the client isn't connected at load time, the mod keeps the save as is and rec
 - The server delivers starting inventory (precollected items: `spell_mode: vanilla` spells, `shortcut_passwords:
   start_unlocked`, …) as the first received items, with the client's items-handling flags set to receive both
   remote and own items plus starting inventory.
-- The ini starting state (`HP3_OpenCastle.ini`, poc7c) is a stand-in until then and goes away.
+- The ini starting state (`HP3_OpenCastle.ini`, poc7c) was removed in poc8c: until the client exists, everything starts locked and the debug panel turns things on.
 - Options that are settings, not items (`shop_prices`, `cards_required`, `goal`), come from slot data on connect
   and are stored in the save alongside the seed binding.
 
