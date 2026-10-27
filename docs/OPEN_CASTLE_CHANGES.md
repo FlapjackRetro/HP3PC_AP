@@ -303,3 +303,18 @@ New mechanisms (`unlocks.h`):
 - New Game: the moment the New Game travel is seen, the cached found flags are dropped (so the previous game's
   spells don't work for the ~3 s before the new, empty save is read).
 - The debug panel's "(start)" marker can't appear any more.
+
+### poc8d: challenge doors in the side room
+
+- The side room's three portcullises are gated like the other doors: `ChalChamb_CR_Port` (KWMover31),
+  `ChalChamb_Drac_Port` (KWMover32), `ChalChamb_Gla_Port` (KWMover33). They're the reverse of DADA / Library:
+  key 0 = up (z 392), key 1 = down (136 lower). In `GState090` Carpe's starts up, the other two down. Door keys
+  `ChCarpe`, `ChDracLap`, `ChGlacius`; all locked by default; rows in the debug panel.
+- Their loading triggers are switched off (no collision) while locked: `ChangeLevelTrigger9` (Ch1),
+  `ChangeLevelTrigger10` and the chamber's second Draconifors trigger `ChangeLevelTrigger7` (Ch2),
+  `ChangeLevelTrigger11` (Ch3). `DOORS` gained `inv` and `trig` fields for this.
+- The B maps (Ch1B, Ch2B, Ch3B) each have a copy of the chamber with triggers into all three challenges. Rather than
+  gate each copy, the travel hook refuses any travel into a locked challenge's map (`HP3_Ch1CarpeRetractum` /
+  `HP3_Ch2Draconifors` / `HP3_Ch3Glacius`) and sends the player to InsideHub instead.
+- Spells and challenge access stay separate unlocks for now (logic tracing).
+- Doors now start locked from the first frame (the worker used to assume unlocked until the first poll).

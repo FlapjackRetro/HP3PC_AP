@@ -113,6 +113,17 @@ shared and sold in a fixed order, whichever student you buy from (20 cards, plus
 (`AvailableInAdventureLevel`) that drop into the pool once the game state passes theirs, which in Open Castle's
 `GState090` is at once).
 
+## Logic notes
+
+Rules collected so far (to go into `rules.py` with the locations):
+
+| Region | Every check there needs |
+| --- | --- |
+| Carpe (Ch1 + Ch1B) | Carpe Retractum Challenge Unlock (door), **Carpe Retractum, Spongify, Depulso** (2026-10-27) |
+
+For logic tracing the challenge doors and the spells are separate unlocks in the mod and the debug panel; the
+apworld couples them by default (`split_challenge_spells: false`).
+
 ## Client sync
 
 How received items reach the game and how saves are reconciled with the server: [CLIENT_SYNC.md](CLIENT_SYNC.md).

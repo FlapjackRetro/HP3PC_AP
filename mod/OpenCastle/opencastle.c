@@ -70,7 +70,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc8c"
+#define OC_VERSION L"poc8d"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -112,8 +112,15 @@ static volatile int gNewGame;                 /* a New Game travel was seen: for
 typedef void *(__thiscall *furl_fn)(void *self, void *base, const wchar *text, int type);
 static furl_fn gFurlOrig;
 static wchar gUrlOut[600];
+static const wchar *locked_challenge(const wchar *url);   /* after DOORS */
 static void *__thiscall furl_hook(void *self, void *base, const wchar *text, int type) {
-    const wchar *use = text; wchar why[128]; static wchar msg[900];
+    const wchar *use = text, *lk; wchar why[128]; static wchar msg[900];
+    if (text && (lk = locked_challenge(text)) != 0) {   /* any way into a locked challenge (chamber copies in the B maps too) */
+        wcpy(gUrlOut, L"HP3_InsideHub?GameState=GState090", 600);
+        wsprintfW(msg, L"TRAVEL  from %s:  %s  ->  %s   [%s is locked]", gCurMap[0] ? gCurMap : L"?", text, gUrlOut, lk);
+        log_line(msg);
+        return gFurlOrig(self, base, gUrlOut, type);
+    }
     if (text && oc_rewrite((const wchar *)gCurMap, text, gUrlOut, 600, why, 128)) {
         use = gUrlOut;
         if (wieq(why, L"new game starts in Hogwarts")) gNewGame = 1;
@@ -233,7 +240,8 @@ static void fire_gates(void) {
 #include "hubmenu.h"
 static volatile int gGridPending; static void grid_spawn(void); static void items_apply(void);
 static volatile u32 gGridTake; static void grid_take(void);
-static volatile u32 gBlockSpawn, gBlockKill; static void blockers_apply(void);
+static volatile u32 gBlockSpawn, gBlockKill; static void blockers_apply(void); static void trig_apply(void);
+static volatile u32 gTrigFire;
 static int N_PlayerTick = -1, N_Tick = -1;
 static volatile int gPanelPause, gAddCurrency, gPanelOpen; static void panel_pause(void); static void panel_currency(void);
 static int N_PostRender; static u32 gClsHUD; static void panel_render(u32 cv);
@@ -255,6 +263,7 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
         if (gGridPending) { grid_spawn(); gGridPending = 0; }
         if (gBlockSpawn || gBlockKill) blockers_apply();
         if (gAddCurrency) panel_currency();
+        if (gTrigFire) trig_apply();
         gInTravel = 0;
     }
     if (!func || !self) { gPEOrig(self, func, parms, result); return; }
@@ -315,31 +324,51 @@ static void install_hooks(void) {
 }
 
 /* ---- doors: stand here to enter (player positions marked in the playthrough) ---- */
-struct door { const wchar *map; float x, y, z; const wchar *dest; const wchar *name; const wchar *key; const wchar *gate; const wchar *bar; };
+struct door { const wchar *map; float x, y, z; const wchar *dest; const wchar *name; const wchar *key; const wchar *gate; const wchar *bar;
+               int inv; const wchar *trig[2]; };
+/* inv: the portcullis is open at key 0 (down at key 1), the reverse of DADA / Library.
+   trig: the map's own loading triggers for this door, switched off (no collision) while it's locked. */
 static const struct door DOORS[] = {
     /* map               stand here            goes to                 name                        ini key    portcullis mover tag      lock bar (StaticMeshActor, DoorLockBar_SM) */
-    { L"HP3_InsideHub",  731, 1615,   74, L"HP3_Adv6Paddock",     L"entrance hall north door", L"Paddock", 0,                        L"StaticMeshActor42" },
-    { L"HP3_InsideHub", 1427, -960, 2154, L"HP3_Adv1Express",     L"7th floor east door",      L"Express", 0,                        L"StaticMeshActor228" },
-    { L"HP3_InsideHub",  838, -1844, 1194, L"HP3_Adv2ExpPatronum", L"DADA portcullis",         L"DADA",    L"DADA_PortToExpecto_Mvr", 0 },
-    { L"HP3_InsideHub", -710, -1349,  778, L"HP3_Adv3Library",     L"Library portcullis",      L"Library", L"Library_Port_Mvr",       0 },
-    { L"HP3_DungeonHUB", -481, 2805, -341, L"HP3_Adv5Shack",       L"dungeon door 1",          L"Shack",   0,                        L"StaticMeshActor315" },
+    { L"HP3_InsideHub",  731, 1615,   74, L"HP3_Adv6Paddock",     L"entrance hall north door", L"Paddock", 0,                        L"StaticMeshActor42", 0, { 0, 0 } },
+    { L"HP3_InsideHub", 1427, -960, 2154, L"HP3_Adv1Express",     L"7th floor east door",      L"Express", 0,                        L"StaticMeshActor228", 0, { 0, 0 } },
+    { L"HP3_InsideHub",  838, -1844, 1194, L"HP3_Adv2ExpPatronum", L"DADA portcullis",         L"DADA",    L"DADA_PortToExpecto_Mvr", 0, 0, { 0, 0 } },
+    { L"HP3_InsideHub", -710, -1349,  778, L"HP3_Adv3Library",     L"Library portcullis",      L"Library", L"Library_Port_Mvr",       0, 0, { 0, 0 } },
+    { L"HP3_DungeonHUB", -481, 2805, -341, L"HP3_Adv5Shack",       L"dungeon door 1",          L"Shack",   0,                        L"StaticMeshActor315", 0, { 0, 0 } },
     /* the Wizard Card bonus room (vanilla: only after the Harry Potter card, see SUPPRESS) */
-    { L"HP3_InsideHub",  733,  392,   74, L"HP3_BeanBonus",       L"entrance hall south door", L"BonusRoom", 0,                      L"StaticMeshActor50" },
+    { L"HP3_InsideHub",  733,  392,   74, L"HP3_BeanBonus",       L"entrance hall south door", L"BonusRoom", 0,                      L"StaticMeshActor50", 0, { 0, 0 } },
     /* challenges: no loading trigger of ours (dest 0). The Monster Book room has a door (portcullis + two doors, all
        tag MBOMDoor, movable: 7200TaskedCharms opens them); the hippogriff and doxy challenges have no door, so their
        start triggers are switched off while locked (EVENTGATES). */
-    { L"HP3_InsideHub",     0,     0,    0, 0,                     L"Monster Book challenge",  L"MonsterBook", L"MBOMDoor",          0 },
-    { L"HP3_GroundsHub",    0,     0,    0, 0,                     L"hippogriff challenge",    L"Hippogriff",  0,                    0 },
-    { L"HP3_GroundsHub",    0,     0,    0, 0,                     L"doxy challenge",          L"Doxy",        0,                    0 },
+    { L"HP3_InsideHub",     0,     0,    0, 0,                     L"Monster Book challenge",  L"MonsterBook", L"MBOMDoor",          0, 0, { 0, 0 } },
+    { L"HP3_GroundsHub",    0,     0,    0, 0,                     L"hippogriff challenge",    L"Hippogriff",  0,                    0, 0, { 0, 0 } },
+    { L"HP3_GroundsHub",    0,     0,    0, 0,                     L"doxy challenge",          L"Doxy",        0,                    0, 0, { 0, 0 } },
+    /* the side room (challenge chamber): the castle's own portcullises (KWMover31/32/33, bPersistent, key 0 = up at
+       z 392, key 1 = down, 136 lower) in front of the vanilla loading triggers. Carpe's starts up in GState090,
+       Draconifors' and Glacius' down. ChangeLevelTrigger7 is the chamber's second Draconifors trigger. */
+    { L"HP3_InsideHub",     0,     0,    0, 0,                     L"Carpe Retractum challenge", L"ChCarpe",   L"ChalChamb_CR_Port",   0, 1, { L"ChangeLevelTrigger9", 0 } },
+    { L"HP3_InsideHub",     0,     0,    0, 0,                     L"Draconifors challenge",     L"ChDracLap", L"ChalChamb_Drac_Port", 0, 1, { L"ChangeLevelTrigger10", L"ChangeLevelTrigger7" } },
+    { L"HP3_InsideHub",     0,     0,    0, 0,                     L"Glacius challenge",         L"ChGlacius", L"ChalChamb_Gla_Port",  0, 1, { L"ChangeLevelTrigger11", 0 } },
 };
 #define NDOORS (int)(sizeof DOORS / sizeof DOORS[0])
+static int gDoorOn[16];
+/* the challenge a travel URL goes to, if its door is locked (0 otherwise). Map token = up to '?' or '.' */
+static const wchar *locked_challenge(const wchar *url) {
+    static const wchar *const CH[3][2] = { { L"HP3_Ch1CarpeRetractum", L"ChCarpe" }, { L"HP3_Ch2Draconifors", L"ChDracLap" },
+                                           { L"HP3_Ch3Glacius", L"ChGlacius" } };
+    wchar tok[64]; int n = 0, c, d;
+    while (url[n] && url[n] != '?' && url[n] != '.' && n < 63) { tok[n] = url[n]; n++; }
+    tok[n] = 0;
+    for (c = 0; c < 3; c++) if (wieq(tok, CH[c][0]))
+        for (d = 0; d < NDOORS; d++) if (weq(DOORS[d].key, CH[c][1])) return gDoorOn[d] ? 0 : DOORS[d].name;
+    return 0;
+}
 #define DOOR_R   90.0f    /* horizontal reach */
 #define DOOR_DZ 160.0f
 #define ARM_R   300.0f    /* must have been this far from every door on the map before a door works */
 
 /* ---- door gates (worker part) ---- */
 static wchar gIniPath[600];
-static int gDoorOn[16];
 static volatile int gSaveDoor[16];   /* door found in this save (unlocks.h) */
 static volatile int gIniDoor[16];    /* door's start state (ini), for the debug panel */
 static int offTag = -1, offKeyNum = -1;
@@ -371,11 +400,19 @@ static u32 gSuppObj[NSUPPRESS]; static int gSuppEvent[NSUPPRESS];   /* the trigg
    can't be moved, so an unlocked door's bar is hidden: DrawType DT_StaticMesh (8) -> DT_None (0). */
 static int offDrawType = -1;
 static u32 gBarObj[MAXGATES];
-struct findgate { u32 level; int names[MAXGATES]; u32 found[MAXGATES][GATEMOVERS]; int nfound[MAXGATES]; int bars[MAXGATES]; u32 barfound[MAXGATES]; int supp[NSUPPRESS]; };
+/* the doors' own loading triggers (DOORS.trig): collision follows the door; switched on the game thread (trig_apply) */
+static volatile u32 gTrigObj[MAXGATES][2]; static int gTrigApplied[MAXGATES]; static volatile int gTrigWant[MAXGATES];
+static volatile u32 gTrigFire;
+struct findgate { u32 level; int names[MAXGATES]; u32 found[MAXGATES][GATEMOVERS]; int nfound[MAXGATES]; int bars[MAXGATES]; u32 barfound[MAXGATES]; int supp[NSUPPRESS];
+                 int trigs[MAXGATES][2]; u32 trigfound[MAXGATES][2]; };
 static int v_findgate(u32 o, int name, u32 cls, void *c) {
     struct findgate *f = c; int i, tag;
     if (!cls || rd32(o + offLevel) != f->level) return 0;
-    for (i = 0; i < NDOORS && i < MAXGATES; i++) if (f->bars[i] >= 0 && name == f->bars[i]) f->barfound[i] = o;
+    for (i = 0; i < NDOORS && i < MAXGATES; i++) {
+        if (f->bars[i] >= 0 && name == f->bars[i]) f->barfound[i] = o;
+        if (f->trigs[i][0] >= 0 && name == f->trigs[i][0]) f->trigfound[i][0] = o;
+        if (f->trigs[i][1] >= 0 && name == f->trigs[i][1]) f->trigfound[i][1] = o;
+    }
     for (i = 0; i < NSUPPRESS; i++) if (f->supp[i] >= 0 && name == f->supp[i]) gSuppObj[i] = o;
     if (!is_a_cls(cls, gClsMover)) return 0;
     tag = (int)rd32(o + offTag);
@@ -400,10 +437,13 @@ static void gates_poll(u32 level, const wchar *map) {
     if (level != gGateLevel) {   /* new map: find its gate movers */
         struct findgate f; int n = 0;
         f.level = level;
-        for (i = 0; i < MAXGATES; i++) { int k; for (k = 0; k < GATEMOVERS; k++) f.found[i][k] = 0; f.nfound[i] = 0; f.barfound[i] = 0; f.names[i] = f.bars[i] = -1; gGateLast[i] = 0; }
+        for (i = 0; i < MAXGATES; i++) { int k; for (k = 0; k < GATEMOVERS; k++) f.found[i][k] = 0; f.nfound[i] = 0; f.barfound[i] = 0; f.names[i] = f.bars[i] = -1; gGateLast[i] = 0;
+            f.trigs[i][0] = f.trigs[i][1] = -1; f.trigfound[i][0] = f.trigfound[i][1] = 0; gTrigApplied[i] = -1; }
         for (i = 0; i < NDOORS && i < MAXGATES; i++) if (weq(DOORS[i].map, map)) {
             if (DOORS[i].gate) { f.names[i] = name_index(DOORS[i].gate); n++; }
             if (DOORS[i].bar)  { f.bars[i]  = name_index(DOORS[i].bar);  n++; }
+            if (DOORS[i].trig[0]) { f.trigs[i][0] = name_index(DOORS[i].trig[0]); n++; }
+            if (DOORS[i].trig[1]) { f.trigs[i][1] = name_index(DOORS[i].trig[1]); n++; }
         }
         for (i = 0; i < NSUPPRESS; i++) { gSuppObj[i] = 0; f.supp[i] = weq(SUPPRESS[i].map, map) ? name_index(SUPPRESS[i].actor) : -1; if (f.supp[i] >= 0) n++; }
         if (n) for_each_object(v_findgate, &f);
@@ -417,11 +457,14 @@ static void gates_poll(u32 level, const wchar *map) {
             else { gSuppObj[i] = 0; wsprintfW(b, L"trigger %s has an unexpected Event; left alone", SUPPRESS[i].actor); }
             log_line(b);
         }
-        for (i = 0; i < MAXGATES; i++) { int k; for (k = 0; k < GATEMOVERS; k++) gGateObj[i][k] = f.found[i][k]; gBarObj[i] = f.barfound[i]; }
+        for (i = 0; i < MAXGATES; i++) { int k; for (k = 0; k < GATEMOVERS; k++) gGateObj[i][k] = f.found[i][k]; gBarObj[i] = f.barfound[i];
+            gTrigObj[i][0] = f.trigfound[i][0]; gTrigObj[i][1] = f.trigfound[i][1]; }
         gGateLevel = level;
         for (i = 0; i < NDOORS && i < MAXGATES; i++) {
             if (f.names[i] >= 0) { wsprintfW(b, L"gate %s: %s, %d mover(s)", DOORS[i].key, DOORS[i].gate, f.nfound[i]); log_line(b); }
             if (f.bars[i] >= 0)  { wsprintfW(b, L"bar %s: %s %s", DOORS[i].key, DOORS[i].bar, f.barfound[i] ? L"found" : L"NOT FOUND"); log_line(b); }
+            if (f.trigs[i][0] >= 0) { wsprintfW(b, L"loading trigger %s: %s %s%s%s", DOORS[i].key, DOORS[i].trig[0], f.trigfound[i][0] ? L"found" : L"NOT FOUND",
+                                                DOORS[i].trig[1] ? L", second " : L"", DOORS[i].trig[1] ? (f.trigfound[i][1] ? L"found" : L"NOT FOUND") : L""); log_line(b); }
         }
     }
     for (i = 0; i < NDOORS && i < MAXGATES; i++) {   /* lock bars: hidden while the door is unlocked */
@@ -431,6 +474,12 @@ static void gates_poll(u32 level, const wchar *map) {
         if (cur == want || (cur != 0 && cur != 8)) continue;   /* only ever toggle between the two we know */
         *(volatile u8 *)(gBarObj[i] + offDrawType) = want;
         wsprintfW(b, L"bar %s: %s", DOORS[i].key, want ? L"shown (locked)" : L"hidden (unlocked)"); log_line(b);
+    }
+    for (i = 0; i < NDOORS && i < MAXGATES; i++) {   /* the door's own loading triggers: collision on only while unlocked */
+        if (!gTrigObj[i][0] && !gTrigObj[i][1]) continue;
+        if (gTrigApplied[i] == gDoorOn[i]) continue;
+        gTrigWant[i] = gDoorOn[i]; gTrigApplied[i] = gDoorOn[i]; gTrigFire |= 1u << i;
+        wsprintfW(b, L"loading trigger %s: %s", DOORS[i].key, gDoorOn[i] ? L"on" : L"off"); log_line(b);
     }
     for (i = 0; i < NSUPPRESS; i++) {   /* event gates: the trigger's Event follows its key (always off without one) */
         int on = 0, k, cur, want;
@@ -446,6 +495,7 @@ static void gates_poll(u32 level, const wchar *map) {
         u32 m = gGateObj[i][0]; int open;
         if (!m) continue;
         open = (rd32(m + offKeyNum) & 0xFF) != 0;   /* InterpolateTo sets KeyNum to the target key at once */
+        if (DOORS[i].inv) open = !open;
         if (open == gDoorOn[i] || (gGateLast[i] && GetTickCount() - gGateLast[i] < 3000)) continue;
         gGateLast[i] = GetTickCount(); gGateFire |= 1u << i;
         wsprintfW(b, L"gate %s: %s", DOORS[i].key, gDoorOn[i] ? L"raising" : L"lowering"); log_line(b);
@@ -473,7 +523,7 @@ static u32 WINAPI worker(void *arg) {
         else wcpy(gIniPath, L".\\HP3_OpenCastle.ini", 600);
         if (SHGetFolderPathW(0, 5, 0, 0, docs) == 0)
             wsprintfW(gMapLogPath, L"%s\\Harry Potter and the Prisoner of Azkaban\\HP3_MapLog.txt", docs);
-        for (i = 0; i < 16; i++) gDoorOn[i] = 1;
+        for (i = 0; i < 16; i++) gDoorOn[i] = 0;   /* locked until the save says otherwise */
     }
     wsprintfW(buf, L"---- HP3 Open Castle " OC_VERSION L" loaded: travel hook %s, ProcessEvent hook %s ----",
               gHookFurl ? L"ok" : L"NOT INSTALLED", gHookPE ? L"ok" : L"NOT INSTALLED");
