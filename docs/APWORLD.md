@@ -123,6 +123,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | --- | --- |
 | Carpe (Ch1 + Ch1B) | Carpe Retractum Challenge Unlock (door), **Carpe Retractum, Spongify, Depulso** (2026-10-27) |
 | Portrait E | **Portrait Password 8**, and to enter any part of it **Alohomora, Depulso and Spongify** (2026-10-27). Its checks: 7 knights (Depulso) and one armoire with two spawners (below) |
+| Portrait Password 3 area (Dungeons, around (290, 900, −690)) | **Portrait Password 3 + Spongify** for every check there (2026-10-27) |
 | Portrait D | **Portrait Password 7** (confirmed in play 2026-10-27); everything past the freestanding cake also needs **Rictusempra, Spongify and Depulso** (2026-10-27): the two companion chests `ChestCompanionSpawner3` (Imp card, 10 pasties, 5 cakes) and `ChestCompanionSpawner0` (10 pasties, 15 cakes) |
 
 | Check | Extra needs | Source |
@@ -143,7 +144,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Hogwarts: chest `ChestSpawner3` (Giant Squid card, 15 pasties) | Portrait Password 1 (the room behind its portrait) + Alohomora. At (−493, 483, 1524), save key `ihubChestSpawner3_lives` | marked in play 2026-10-27 |
 | Hogwarts: chest `ChestSpawner0` (15 pasties, 8 cakes) | Portrait Password 1 (same secret room) + Alohomora. At (−754, 635, 1480), save key `ihubChestSpawner0_lives` | marked in play 2026-10-27 |
 | Hogwarts: 4th-floor secret Spongify column: pasty (`HPSpawnThingy2`, z 1657), pasty (`HPSpawnThingy4`, z 1742), cake (`HPSpawnThingy1`, z 1842) at about (−545, 637) | Portrait Password 1 (same secret room) + **Alohomora + Spongify**. Opening the Giant Squid chest releases them (confirmed in the map: `AlohomoraTrigger0` → `4thFlr_SecretSpong_Disp` → `Dispatcher26` → `4thFlr_SecretSpong_Spwn_01`–`03`, the `HPSpawnThingy`s; the Spongify pad `SpongifyPad6` → target `SpongifyTarget13` reaches them). No save key of their own: check detection for spawned pickups is still to design | marked in play 2026-10-27 |
-| Dungeons: chest `ChestSpawner7` (2 pasties; also 10 beans) | Portrait Password 3 + Alohomora, cast twice (`Lives` 2: two openings). At (291, 764, −694), save key `dungChestSpawner7_lives` (the check fires on the first opening or when Lives reaches 0: to decide) | marked in play 2026-10-27 |
+| Dungeons: chest `ChestSpawner7` (2 pasties; also 10 beans) | the Password 3 area rule + Alohomora, cast twice (`Lives` 2: two openings). At (291, 764, −694), save key `dungChestSpawner7_lives` (the check fires on the first opening or when Lives reaches 0: to decide) | marked in play 2026-10-27 |
 | Portrait D: Cauldron Cake | only Portrait Password 7 (opens Portrait D). Freestanding `CauldronCake4` at (897, 139, 2178), save key `ppdCauldronCake4_PU` | marked in play 2026-10-27 |
 
 For logic tracing the challenge doors and the spells are separate unlocks in the mod and the debug panel; the
