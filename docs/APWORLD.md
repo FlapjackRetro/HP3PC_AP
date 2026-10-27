@@ -10,7 +10,7 @@ seeds can't be generated; the item table and options are in place. Decisions fro
 | progression | Wizard cards (one item per card, "*Name* Card") | 79 |
 | progression | Spells: Alohomora, Depulso, Lumos, Rictusempra, Spongify, Expecto Patronum | 6 |
 | progression | Challenge spells: Carpe Retractum, Draconifors, Lapifors, Glacius (only with `split_challenge_spells`) | 4 |
-| progression | Level unlocks: Carpe Retractum / Draconifors / Glacius / Monster Book / Hippogriff / Doxy Challenge; Hogwarts Express, Patronus Lesson, Library, Shrieking Shack, Paddock | 11 |
+| progression | Level unlocks: Carpe Retractum / Draconifors / Glacius / Monster Book / Hippogriff / Doxy Challenge; Hogwarts Express, Patronus Lesson, Library, Shrieking Shack, Paddock, Bonus Room | 12 |
 | progression | Portrait Password 1–8 (`pp_0`–`pp_7`, in the order the twins sell them) | 8 |
 | progression_skip_balancing | Pumpkin pasty bundles 1, 2, 3, 4, 5, 10; cauldron cake bundles 1, 2, 3, 4 | per location |
 | useful | Shortcut Passwords (`pp_8`–`pp_21` at once) | 1 |
@@ -18,7 +18,7 @@ seeds can't be generated; the item table and options are in place. Decisions fro
 
 Not randomized (first pass): jellybeans, challenge stars (the game's challenge shields), the Harry Potter card.
 
-IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–111, passwords 200–207 and 220, currency 301–310 and
+IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–112, passwords 200–207 and 220, currency 301–310 and
 321–324, filler 340–341, traps 350–399 (reserved), cards 1000 + index in `WizardCardManager.Cards`). Offsets never change once released.
 
 ### Currency
@@ -56,7 +56,7 @@ IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–111, passwords 
 - Ideas to workshop: N cards **and** pass the three final exams; card sets (the game has 10: WZ 15, WI 15, QU 5,
   VP 5, HG 5, GI 5, GB 5, DR 5, BE 15, BO 5).
 - The Harry Potter card check stays vanilla: Fred & George give it once 74 cards are found (all but Harry Potter
-  and the five in the Wizard Card bonus room, which it opens). Earlier notes said 79.
+  and the five in the Wizard Card bonus room). In Open Castle it no longer opens the room (Bonus Room Unlock does).
 
 ## Other options
 
@@ -93,7 +93,7 @@ Archipelago shows as "found X at …"; item names stay plain.
 | Portrait B–F | PortraitPassword_B–F (letters, so they don't read as Portrait Password 1–8) |
 | F&G Shop | Fred & George's 6 cards and 8 passwords |
 | Vendor | student vendors: one shared, ordered pool (see below) |
-| (open) | HP3_BeanBonus, the Wizard Card bonus room: 5 placed cards (Dumbledore and the four founders) |
+| (open) | HP3_BeanBonus, the Wizard Card bonus room: 5 placed cards (Dumbledore and the four founders); its own level unlock since poc8b |
 
 Wizard Card bonus room (HP3_BeanBonus), confirmed in the map data: getting the Harry Potter card from Fred & George
 (`VI_FinalWizardCard0`, 7th floor) fires `GotCardEvent` = `WCBonusRoom_Trig_Disp` → `Dispatcher10` → after 3 s
@@ -101,6 +101,11 @@ Wizard Card bonus room (HP3_BeanBonus), confirmed in the map data: getting the H
 `ChangeLevelTrigger1`, goes back to HP3_InsideHub. The Harry Potter card itself unlocks at
 `WizardCardManager.IsFinalCardAvailable()`: found ≥ `Cards.Length − 6` = **74**, i.e. every card except Harry Potter
 and the five that are in the bonus room. (Earlier notes said 79: wrong.)
+
+**Open Castle decouples the room from the cards (2026-10-27):** the room is behind the entrance hall's south door
+(lock bar `StaticMeshActor50`, door key `BonusRoom`), unlocked by the **Bonus Room Unlock** item (a drawn key).
+The vanilla teleport is switched off (`ChangeLevelTrigger14` loses its Tag `WCBonusRoom_Trig`), so getting the
+Harry Potter card no longer moves the player. The room's exit returns to the south door.
 
 Student vendors: every student vendor sells `WizardCardManager.GetAvailableVendorCard()`, the first card in the
 table with status `AvailableToVendors` whose game state has been reached; buying one marks it owned. So the pool is

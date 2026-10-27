@@ -65,8 +65,8 @@ class TestPool(unittest.TestCase):
         self.assertNotIn("Glacius", pool)
         self.assertNotIn("Lumos", pool)
         self.assertIn("Shortcut Passwords", pool)
-        # 1 spell + 11 unlocks + 9 passwords + 79 cards + map
-        self.assertEqual(len(pool), 1 + 11 + 9 + 79 + 1)
+        # 1 spell + 12 unlocks + 9 passwords + 79 cards + map
+        self.assertEqual(len(pool), 1 + 12 + 9 + 79 + 1)
 
     def test_hard_split(self):
         w = _World(spell_mode=1, split=1, shortcuts=1)

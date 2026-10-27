@@ -283,3 +283,14 @@ New mechanisms (`unlocks.h`):
   (`[Items] Portrait1`–`8` in the ini, `OC_Items_Portrait<n>` in the save).
 - Drawn from the HUD's `PostRender` with Engine.dll's `UCanvas::DrawTile` / `WrappedPrintf`. Fallback if this
   doesn't work out: a separate Win32 window with checkboxes.
+
+### poc8b: Wizard Card bonus room on the entrance hall south door
+
+- HP3_BeanBonus (5 cards: Dumbledore and the four founders) is decoupled from the 74-card Harry Potter card: the
+  entrance hall's south door (733, 392, 74; lock bar `StaticMeshActor50`) leads there, `[Doors] BonusRoom`, item
+  Bonus Room Unlock (drawn key; a second key on the test grid, a row in the debug panel).
+- Vanilla teleport off: InsideHub `ChangeLevelTrigger14` (Tag `WCBonusRoom_Trig`, fired by `VI_FinalWizardCard0`'s
+  `GotCardEvent` → `Dispatcher10`) gets Tag None. The SUPPRESS table can now switch a Tag as well as an Event.
+- Return: the room's exit (`ChangeLevelTrigger1` → HP3_InsideHub) lands at the south door (entrance-hall
+  SmartStart + RelocatePawn).
+- MAXGATES 8 → 16 (nine doors now).

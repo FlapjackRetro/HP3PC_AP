@@ -3,7 +3,7 @@
  * grid starting 150 units in front of (north of) the player. Each one falls to the floor and is picked up by walking
  * into it, and does what the real item will do (a save flag, see unlocks.h):
  *   spell glyphs        OC_Spells_<spell>         (the spell becomes castable)
- *   drawn key           OC_Doors_Paddock          (test: the entrance-hall north door)
+ *   drawn keys          OC_Doors_Paddock / OC_Doors_BonusRoom (the entrance hall's north / south door)
  *   Marauder's Map      OC_Items_MaraudersMap     (HPHeroController.GiveMap)
  *   password scroll     OC_Items_ShortcutPasswords (EnablePortraitShortcuts)
  *   hippogriff / doxy / Monster Book   OC_Doors_Hippogriff / Doxy / MonsterBook
@@ -46,6 +46,7 @@ static const struct grident GRID[] = {
     { 'S', L"HP3AP.APLogoUseful", 0, L"AP useful", 0, 0, 19 },
     { 'S', L"HP3AP.APLogoFiller", 0, L"AP filler", 0, 0, 19 },
     { 'S', L"HP3AP.APKeyDrawn", 0, L"Paddock Unlock (key)", 'd', L"Paddock", 19 },
+    { 'S', L"HP3AP.APKeyDrawn", 0, L"Bonus Room Unlock (key)", 'd', L"BonusRoom", 19 },
     /* row 3: HP3's own models */
     { 'K', L"HProps.MarauderMap", 1.0f, L"Marauder's Map", 'm', 0, 8 },
     { 'M', L"HP3_InteriorAccents_SM.books.BlueBandScroll_SM", 1.0f, L"Shortcut Passwords (scroll)", 'p', 0, 8 },
@@ -58,7 +59,7 @@ static const struct grident GRID[] = {
     { 'A', L"HPCharacters.Pixie", 0.65f, L"Doxy Challenge Unlock", 'd', L"Doxy", 30 },
     { 'A', L"HPCharacters.MBOM", 0.8f, L"Monster Book Challenge Unlock", 'd', L"MonsterBook", 28 },
 };
-static const int GRIDROW[] = { 10, 4, 5, 3 };   /* entries per row, in order */
+static const int GRIDROW[] = { 10, 5, 5, 3 };   /* entries per row, in order */
 #define NGRID (int)(sizeof GRID / sizeof GRID[0])
 #define GRID_REACH 22.0f   /* horizontal pickup reach beyond the look's own radius (about the hero's radius) */
 #define GRID_R     20.0f   /* collision radius of every look */

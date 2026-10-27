@@ -70,7 +70,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc8a"
+#define OC_VERSION L"poc8b"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -155,6 +155,7 @@ static const struct ret RETS[] = {
     { L"HP3_InsideHub",  L"HP3_FA2Hermione",     L"HP3_Ch2DraconiforsB",      0,    0,     0,    0 },
     { L"HP3_InsideHub",  L"HP3_FA3Harry",        L"HP3_Ch3GlaciusB",          0,    0,     0,    0 },
     { L"HP3_DungeonHUB", L"HP3_Adv5Shack",       0,                           1, -481,  2805, -341 },   /* no SmartStarts */
+    { L"HP3_InsideHub",  L"HP3_BeanBonus",       L"HP3_GroundsHub",           1,  733,   392,   74 },   /* entrance hall, south door */
 };
 #define NRETS (int)(sizeof RETS / sizeof RETS[0])
 
@@ -208,7 +209,7 @@ static void enable_shortcuts(void) {
     log_line(L"shortcuts: all shortcut passwords unlocked");
 }
 /* ---- door gates (game thread part): Trigger the queued gate movers ---- */
-#define MAXGATES 8
+#define MAXGATES 16
 #define GATEMOVERS 4   /* movers sharing one gate tag (MBOMDoor: a portcullis and two doors) */
 static volatile u32 gGateObj[MAXGATES][GATEMOVERS]; static volatile u32 gGateFire;   /* bit i: Trigger gate i's movers */
 static int N_Trigger = -1;
@@ -320,6 +321,8 @@ static const struct door DOORS[] = {
     { L"HP3_InsideHub",  838, -1844, 1194, L"HP3_Adv2ExpPatronum", L"DADA portcullis",         L"DADA",    L"DADA_PortToExpecto_Mvr", 0 },
     { L"HP3_InsideHub", -710, -1349,  778, L"HP3_Adv3Library",     L"Library portcullis",      L"Library", L"Library_Port_Mvr",       0 },
     { L"HP3_DungeonHUB", -481, 2805, -341, L"HP3_Adv5Shack",       L"dungeon door 1",          L"Shack",   0,                        L"StaticMeshActor315" },
+    /* the Wizard Card bonus room (vanilla: only after the Harry Potter card, see SUPPRESS) */
+    { L"HP3_InsideHub",  733,  392,   74, L"HP3_BeanBonus",       L"entrance hall south door", L"BonusRoom", 0,                      L"StaticMeshActor50" },
     /* challenges: no loading trigger of ours (dest 0). The Monster Book room has a door (portcullis + two doors, all
        tag MBOMDoor, movable: 7200TaskedCharms opens them); the hippogriff and doxy challenges have no door, so their
        start triggers are switched off while locked (EVENTGATES). */
@@ -343,16 +346,20 @@ static u32 gGateLevel; static u32 gGateLast[MAXGATES];   /* GetTickCount of our 
 /* cutscene triggers Open Castle switches off (their Event is set to None once the map loads; the trigger stays but
    fires nothing). Only if the Event is the expected one, so a different map version is left alone. */
 /* key 0: always off. key set: the trigger works only while that door / challenge is unlocked. */
-struct suppress { const wchar *map, *actor, *event, *why, *key; };
+struct suppress { const wchar *map, *actor, *event, *why, *key; int tag; };   /* tag: switch the actor's Tag, not its Event */
 static const struct suppress SUPPRESS[] = {
     /* 3rd floor corridor in front of DADA, GState090 group: 9240RonExamIntroPt1 = ChangeLevel HP3_FA1Ron + GState100 */
-    { L"HP3_InsideHub",  L"CutSceneTrigger13",      L"9240RonExamIntroPt1",       L"Ron's exam intro on the 3rd floor (I1)", 0 },
+    { L"HP3_InsideHub",  L"CutSceneTrigger13",      L"9240RonExamIntroPt1",       L"Ron's exam intro on the 3rd floor (I1)", 0, 0 },
     /* GroundsHub walk-in to the COMC course selection (CutSceneFunctionality group, every state) */
-    { L"HP3_GroundsHub", L"CutSceneTrigger15",      L"ChangeLevel_COMC_MINIGAME", L"hippogriff challenge entrance",          L"Hippogriff" },
+    { L"HP3_GroundsHub", L"CutSceneTrigger15",      L"ChangeLevel_COMC_MINIGAME", L"hippogriff challenge entrance",          L"Hippogriff", 0 },
     /* the well: a companion spell starts the next doxy round (RoundRobin PixieBattleRoundRobin) */
-    { L"HP3_GroundsHub", L"CompanionSpellTrigger10", L"PixieBattleRoundRobin",    L"doxy challenge start",                   L"Doxy" },
+    { L"HP3_GroundsHub", L"CompanionSpellTrigger10", L"PixieBattleRoundRobin",    L"doxy challenge start",                   L"Doxy", 0 },
     /* the Monster Book cauldron: a companion spell starts the next round (RoundRobin MBRobin); backs up the door */
-    { L"HP3_InsideHub",  L"CompanionSpellTrigger3",  L"MBRobin",                  L"Monster Book challenge start",           L"MonsterBook" },
+    { L"HP3_InsideHub",  L"CompanionSpellTrigger3",  L"MBRobin",                  L"Monster Book challenge start",           L"MonsterBook", 0 },
+    /* the Harry Potter card (74 cards) sends the player to the Wizard Card bonus room: VI_FinalWizardCard0 GotCardEvent
+       -> Dispatcher10 -> after 3 s WCBonusRoom_Trig = this ChangeLevelTrigger14. Open Castle reaches the room by the
+       entrance hall south door instead, so the trigger loses its Tag and nothing can fire it. */
+    { L"HP3_InsideHub",  L"ChangeLevelTrigger14",    L"WCBonusRoom_Trig",         L"Harry Potter card -> bonus room teleport", 0, 1 },
 };
 #define NSUPPRESS (int)(sizeof SUPPRESS / sizeof SUPPRESS[0])
 static int offEvent = -1;
@@ -402,8 +409,8 @@ static void gates_poll(u32 level, const wchar *map) {
         for (i = 0; i < NSUPPRESS; i++) {
             int ev, want;
             gSuppEvent[i] = 0;
-            if (!gSuppObj[i] || offEvent <= 0) continue;
-            ev = (int)rd32(gSuppObj[i] + offEvent); want = name_index(SUPPRESS[i].event);
+            if (!gSuppObj[i] || offEvent <= 0 || offTag <= 0) continue;
+            ev = (int)rd32(gSuppObj[i] + (SUPPRESS[i].tag ? offTag : offEvent)); want = name_index(SUPPRESS[i].event);
             if (want >= 0 && (ev == want || ev == 0)) { gSuppEvent[i] = want; wsprintfW(b, L"trigger %s found: %s", SUPPRESS[i].actor, SUPPRESS[i].why); }
             else { gSuppObj[i] = 0; wsprintfW(b, L"trigger %s has an unexpected Event; left alone", SUPPRESS[i].actor); }
             log_line(b);
@@ -428,9 +435,9 @@ static void gates_poll(u32 level, const wchar *map) {
         if (!gSuppObj[i] || !gSuppEvent[i]) continue;
         if (SUPPRESS[i].key) for (k = 0; k < NDOORS; k++) if (weq(DOORS[k].key, SUPPRESS[i].key)) { on = gDoorOn[k]; break; }
         want = on ? gSuppEvent[i] : 0;
-        cur = (int)rd32(gSuppObj[i] + offEvent);
+        cur = (int)rd32(gSuppObj[i] + (SUPPRESS[i].tag ? offTag : offEvent));
         if (cur == want) continue;
-        *(volatile int *)(gSuppObj[i] + offEvent) = want;
+        *(volatile int *)(gSuppObj[i] + (SUPPRESS[i].tag ? offTag : offEvent)) = want;
         wsprintfW(b, L"trigger %s (%s): %s", SUPPRESS[i].actor, SUPPRESS[i].why, want ? L"on" : L"off"); log_line(b);
     }
     for (i = 0; i < NDOORS && i < MAXGATES; i++) {
