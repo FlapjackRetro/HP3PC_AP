@@ -9,7 +9,7 @@ Usage: python build_catalog.py <game_dir> <out_dir>
 """
 import os, sys, glob, json, csv, struct, collections
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ue2 import Package, load, Reader, decode_struct_array
+from ue2 import Package, load, Reader, decode_struct_array, read_tagged
 
 CHECK_BASES = ['WizardCard', 'ChallengeStar', 'CauldronCake', 'PumpkinPasty', 'MaraudersPickup',
                'SecretAreaMarker', 'VendorItem', 'EndChallengeTrigger', 'Peeves', 'BeanBonusGame',
@@ -62,6 +62,16 @@ def main():
             r = Reader(v[1]); n = r.ci()
             json.dump([r.fstr() for _ in range(n)], open(os.path.join(out, 'game_states.json'), 'w'), indent=1)
 
+    def persist_key(lid, name, c, pr):
+        """PersistentStore key the game writes for this actor (KWPickup.PickedUp / KWGenericSpawner.SavePersistentData),
+        or None when the map turns persistence off (the actor comes back on every visit)."""
+        def flag(k):
+            v = pr.get(k)
+            return class_default(c, (k, 0)) if v is None else v
+        if isa(c, 'KWPickup'): return f"{lid}{name}_PU" if flag('bPickUpPersistent') is not False else None
+        if isa(c, 'KWGenericSpawner'): return f"{lid}{name}_lives" if flag('bLivesPersistent') is not False else None
+        return None
+
     rows = []
     for f in sorted(glob.glob(os.path.join(game, 'maps', '*.unr'))):
         p = Package(f); mp = os.path.splitext(os.path.basename(f))[0]; lid = None
@@ -95,19 +105,31 @@ def main():
                         nkey = 'GoodiesNumber' if k == 0 else f'GoodiesNumber({k})'
                         num = pr.get(nkey, class_default(c, ('GoodiesNumber', k)))
                         contents.append([g.split('.')[-1], num])
+            random_amount = None
+            if base == 'KWGenericSpawner' and contents and not any(n for _, n in contents):
+                # no GoodiesNumber set: KWGenericSpawner spawns RandRange(Limits.Min, Limits.Max) goodies (Min when
+                # Min >= Max), so the amount is random only when Max > Min
+                lim = pr.get('Limits'); lo = hi = None
+                if isinstance(lim, tuple) and lim[0] == 'STRUCT':
+                    sub = {n: v for n, _, _, v in read_tagged(p, Reader(lim[2]))}
+                    lo, hi = sub.get('Min', 0), sub.get('Max', 0)
+                    if hi > lo: random_amount = f'{lo}-{hi - 1}'
+                else:
+                    random_amount = 'class default Limits'
             rows.append(dict(map=mp, level_id=lid or '', actor=e['name'], cls=c, category=base,
                              loc=vec(pr.get('Location')), tag=pr.get('Tag'), event=pr.get('Event'),
                              contents=contents,
-                             persist_key=f"{lid or ''}{e['name']}_PU" if isa(c, 'KWPickup') else None,
-                             awarded_by=teleported.get(str(pr.get('Tag')).lower()) if base == 'WizardCard' else None))
+                             persist_key=persist_key(lid or '', e['name'], c, pr),
+                             awarded_by=teleported.get(str(pr.get('Tag')).lower()) if base == 'WizardCard' else None,
+                             random_amount=random_amount))
     json.dump(rows, open(os.path.join(out, 'locations.json'), 'w'), indent=1)
     with open(os.path.join(out, 'hp3_location_catalog.csv'), 'w', newline='') as fh:
         w = csv.writer(fh)
-        w.writerow(['map', 'level_id', 'actor', 'class', 'category', 'x', 'y', 'z', 'tag', 'event', 'contents', 'persist_key', 'awarded_by'])
+        w.writerow(['map', 'level_id', 'actor', 'class', 'category', 'x', 'y', 'z', 'tag', 'event', 'contents', 'persist_key', 'awarded_by', 'random_amount'])
         for r in rows:
             w.writerow([r['map'], r['level_id'], r['actor'], r['cls'], r['category'], *(r['loc'] or ['', '', '']),
                         r['tag'] or '', r['event'] or '', ';'.join(f'{a}x{b}' for a, b in r['contents']), r['persist_key'] or '',
-                        r.get('awarded_by') or ''])
+                        r.get('awarded_by') or '', r.get('random_amount') or ''])
     print(len(rows), 'rows;', dict(collections.Counter(r['category'] for r in rows)))
 
 if __name__ == '__main__': main()

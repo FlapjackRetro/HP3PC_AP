@@ -40,7 +40,8 @@ The map does contain checks (catalogue: wizard card *Double-Ended Newt*, and 3 s
 `WheelPuzzlePrize`, `SecretAreaMarker2`). They're reached on a later, playable visit: the Patronus chain enters
 from Quidditch (`7010QuidDem_ALL`, `GState070`) *(to confirm)*.
 
-**Open Castle:** this visit is cutscene-only and can be skipped. The map itself stays, for the later visit.
+**Open Castle:** treated as **cutscene only** for now (both visits were); to be confirmed after the final exams. Its
+*Double-Ended Newt* card is also in Adv3Library and GroundsHub; its 3 secrets aren't checks while it's dropped.
 
 ## 3. HP3_Ch1CarpeRetractum: Carpe Retractum challenge (first visit)
 
@@ -259,6 +260,14 @@ Logic: the five cards need only GroundsHub access (plus Rictusempra).
 | 4 | 4900 | Roderick Plumpton (`WizCard4`) | |
 | 5 | 5600 | Bowman Wright (`WizCard5`) | |
 
+**Vanilla data slip (found in Open Castle testing, 2026-10-26):** COMC has two managers. The tutorial one
+(`HippoFlyGame1`, group `gstate040`) gives track 1's card via `4076COMCExit` → `WizCard1` (Joscelind Wadcock).
+The course-selection one (`HippoFlyGame2`, every state but `040`) has `CardWinEvent[0] = COMCWin_WizCard2QC`,
+the same as track 2's. So winning track 1 outside `040` gives **Gwenog Jones** (seen in `GState090`), and
+Joscelind Wadcock can't be obtained. Vanilla never shows this, because track 1 is always won in `040` first. Open
+Castle's fix (`mod/OpenCastle/comcfix.h`) sets the `WizCard2` spawner's `SpawnClass` to `WC_JoscelindWadcock`
+while track 1 is the one being played. For the randomizer, the location is "win track n" whichever card spawns.
+
 Progress is saved by `HippoFlyGame` (`hfg_n` tracks completed, `hfg_h<i>`/`hfg_l<i>` scores). Win cutscenes:
 `COMCWin_WizCard2`–`5`, `COMCWin_2ndTimeonTrack`; loss: `COMCTutorialLose`, `COMCLose_AllTracks`.
 
@@ -335,8 +344,8 @@ The 26 event-spawned snacks (`HPSpawnThingy`) are the largest group in the game:
 Open Castle: doors 1 and 2 are spare entrances (like the entrance-hall pair). The portcullis room's entrance and its
 requirements are *(to confirm)*; the Bowtruckle card depends on it.
 
-**Open Castle:** in `GState060` the dungeon door is already open, so the planned "Dungeon" area unlock
-(`Dungeon_Door_Mvr`) would have to close it in the base state *(check whether the door is shut in `090`/`100`)*.
+**Open Castle:** the dungeon is always reachable from InsideHub through its loading trigger, so the planned
+"Dungeon" area unlock is dropped.
 
 ## 12. HP3_InsideHub, `GState060`: second Peeves fight (by the Transfiguration classroom)
 
@@ -757,6 +766,7 @@ chests with checks; they don't (beans).
 | Pasty (placed) | `PumpkinPasty5` (824, −2044, −1048); marked at (808, −2038, −1013) | *(none stated)* | **found** (all 3 placed pasties done) |
 | Pasty (placed) | `PumpkinPasty0` (467, −2404, −2895); marked at (447, −2410, −2893) | *(none stated)* | **found** |
 | 2 cakes | `ChestSpawner12` (−3235, −3979, −770), in secret area `SecretAreaMarker1` (−3310, −3971, −760); marked at (−3203, −3942, −757) | **Alohomora**, confirmed | **found** |
+| Cake | `ChestSpawner11` (−6349, 63, −992, tag `RmA_Secret_01_Chest`), a chest in Room A's secret (`SecretAreaMarker4` is ~570 units away); marked at (−6325, 21, −973) during the Open Castle test (`GState090`, entered through dungeon door 1) | **Alohomora**, confirmed | **found** |
 
 **Companion chests** (`ChestCompanionSpawner*`): two padlocks that two characters must open together. Here Harry
 and Hermione are both in the party, since this level puts both of them in it (assumed; Ron is the injured one in
@@ -798,7 +808,57 @@ After the Dementor battle the state becomes **`GState090`** and the player passe
 | Entered from | the Infirmary cutscene (`8730DemEncAExit_Infirmary`), confirmed |
 | Leaves to | HP3_DementorBattle again (`9080Adv6Flyaway`), the second Dementor fight |
 | Checks (catalogue) | card *Professor Armando Dippet* (`CauldronSpwn0` (−1290, 459, 452), a cauldron); 6 placed pasties and 3 placed cakes; 5 snack containers (crate, 2 chests, 2 cauldrons) with about 21 pasties and 3 cakes; no secret areas |
-| Requires | Lapifors and Draconifors statues present (`LapiforsStatue0`, `DraconisforsStatue0`) *(to confirm in play)* |
+| Requires | **Depulso** and **Spongify** for the whole level: both are needed right at the start to proceed (confirmed). **Lapifors** (rabbit) and **Draconifors** (dragon) also used, confirmed |
+
+| Check | Where | Requires | Status |
+| --- | --- | --- | --- |
+| 4 pasties (a ring) | `PumpkinPasty7` (66, 864, 643), `PumpkinPasty6` (128, 800, 643), `PumpkinPasty0` (129, 928, 643), `PumpkinPasty4` (190, 865, 643), around (128, 864, 643); one mark in the middle at (75, 860, 609) | **dragon form**, confirmed | **found** |
+| 4 pasties + 2 cakes (+ 10 beans) | `CauldronSpwn1` (1385, 1265, 45), a cauldron; marked at (1392, 1215, 45) | **Depulso**, confirmed | **found** |
+| 4 pasties (+ 10 beans) | `ChestSpawner1` (1565, 1058, 440); marked at (1520, 1040, 458) | **Alohomora**, confirmed | **found** |
+| 4 pasties + 1 cake | `CrateSpwn1` (−1245, −157, 554), a crate opened by the doxy-fight script (`bActivateOnTrigger`, tag `poxiedis`); marked at (−1173, −137, 458) | **none beyond reaching it**: the items can be picked up without finishing the fight (confirmed) | **found** |
+| Card *Professor Armando Dippet* | `CauldronSpwn0` (−1290, 459, 452), a cauldron; marked at (−1256, 421, 458) | **Depulso**, confirmed | **found** |
+| 4 pasties | `ChestSpawner0` (−325, −214, 441); marked at (−376, −217, 458) | **Alohomora**, confirmed | **found** |
+| 5 pasties | `CauldronSpwn4` (−147, −318, 1249), a cauldron high up; marked at (−111, −284, 1258) | **Depulso**, confirmed | **found** |
+| 3 cakes (a row) | `CauldronCake0` (1265, 815, 936), `CauldronCake2` (1344, 814, 937), `CauldronCake7` (1417, 815, 936); marked at (1381, 817, 955) | **dragon form**, confirmed | **found** |
+| 2 pasties | `PumpkinPasty5` (−583, −341, 44) and `PumpkinPasty18` (−683, −337, 53); one mark between them at (−628, −339, 51) | **rabbit form**, confirmed (Lapifors statue `LapiforsStatue0` nearby at (−1080, −335, 502)) | **found** |
+
+All placed snacks in the level found (6 pasties, 3 cakes), and all 5 snack containers plus the card cauldron.
 
 **Open Castle:** a playable level with a card, so it stays. It needs an entrance (Hagrid's hut door is the natural
 spot, [OPEN_CASTLE.md](OPEN_CASTLE.md) spare doors) and an exit back to GroundsHub instead of `9080Adv6Flyaway`.
+
+### End of the paddock: cutscene chain back to Hogwarts (confirmed)
+
+After Adv6Paddock it's "one long cutscene" until InsideHub:
+
+| Time | Map | State |
+| --- | --- | --- |
+| 07:06:08 | HP3_DementorBattle (second visit, `9080Adv6Flyaway`) | `GState090` |
+| 07:08:29 | HP3_DarkTower (`9120DemEncBExit`) | `GState090` |
+| 07:09:30 | HP3_InsideHub | `GState090` |
+
+DementorBattle (second visit) and DarkTower have no checks and no player control. **Open Castle:** drop both.
+
+## 27. HP3_InsideHub, `GState090`: final exams
+
+The player arrives in InsideHub in `GState090`, ready for the final exams. In vanilla, Ron's exam starts at
+`CutSceneTrigger13` (−98, −714, 1259) (`GState090` only) → `9240RonExamIntroPt1` → FA1Ron, which sets `GState100`.
+
+## 28. HP3_PortraitPassword_F (`GState090`)
+
+| | |
+| --- | --- |
+| Level ID | `ppf` |
+| State | `GState090` (MapTracker 07:16:31) |
+| Entered from | InsideHub `ChangeLevelTrigger0`, behind a portrait (portrait password F) |
+| Checks (catalogue) | card *Manticore* (`ChestSpawner34` (−3990, −580, 1680), with 8 cakes); secret area `SecretAreaMarker0` (−3400, −559, 1749); a suit of armour with pasties |
+
+| Check | Where | Requires | Status |
+| --- | --- | --- | --- |
+| Pasties (default count) | `KnightSpawner7` (−3521, −776, 1608), suit of armour; marked at (−3471, −784, 1568) | **Depulso**, confirmed | **found** |
+| Card *Manticore* + 8 cakes | `ChestSpawner34` (−3990, −580, 1680); marked at (−3943, −579, 1698) | **Alohomora**, confirmed | **found** |
+| Secret area | `SecretAreaMarker0` (−3400, −559, 1749) | none beyond the room | **found** (HUD shows 1/1) |
+
+The HUD keeps a per-map secret counter (found/total), a handy cross-check for secret-area checks.
+
+**Open Castle:** hub-reachable with the portrait password, so it stays as is (password = area unlock).
