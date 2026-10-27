@@ -66,6 +66,10 @@ IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–111, passwords 
 
 Slot data: all six options.
 
+## Client sync
+
+How received items reach the game and how saves are reconciled with the server: [CLIENT_SYNC.md](CLIENT_SYNC.md).
+
 ## Mod work this implies
 
 - **Bean bonus room:** challenge stars stay vanilla, so finding all of a challenge's stars still sends the player to
