@@ -55,7 +55,8 @@ IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–111, passwords 
   default 40). Victory is the event "Final Day Door Opened".
 - Ideas to workshop: N cards **and** pass the three final exams; card sets (the game has 10: WZ 15, WI 15, QU 5,
   VP 5, HG 5, GI 5, GB 5, DR 5, BE 15, BO 5).
-- The Harry Potter card check stays vanilla: Fred & George give it once the other 79 are found.
+- The Harry Potter card check stays vanilla: Fred & George give it once 74 cards are found (all but Harry Potter
+  and the five in the Wizard Card bonus room, which it opens). Earlier notes said 79.
 
 ## Other options
 
@@ -92,7 +93,14 @@ Archipelago shows as "found X at …"; item names stay plain.
 | Portrait B–F | PortraitPassword_B–F (letters, so they don't read as Portrait Password 1–8) |
 | F&G Shop | Fred & George's 6 cards and 8 passwords |
 | Vendor | student vendors: one shared, ordered pool (see below) |
-| (open) | HP3_BeanBonus: 5 placed cards (Dumbledore and the four founders), entered from InsideHub `ChangeLevelTrigger14` |
+| (open) | HP3_BeanBonus, the Wizard Card bonus room: 5 placed cards (Dumbledore and the four founders) |
+
+Wizard Card bonus room (HP3_BeanBonus), confirmed in the map data: getting the Harry Potter card from Fred & George
+(`VI_FinalWizardCard0`, 7th floor) fires `GotCardEvent` = `WCBonusRoom_Trig_Disp` → `Dispatcher10` → after 3 s
+`WCBonusRoom_Trig` = InsideHub `ChangeLevelTrigger14` (triggered, not walked into) → HP3_BeanBonus. Its exit,
+`ChangeLevelTrigger1`, goes back to HP3_InsideHub. The Harry Potter card itself unlocks at
+`WizardCardManager.IsFinalCardAvailable()`: found ≥ `Cards.Length − 6` = **74**, i.e. every card except Harry Potter
+and the five that are in the bonus room. (Earlier notes said 79: wrong.)
 
 Student vendors: every student vendor sells `WizardCardManager.GetAvailableVendorCard()`, the first card in the
 table with status `AvailableToVendors` whose game state has been reached; buying one marks it owned. So the pool is
