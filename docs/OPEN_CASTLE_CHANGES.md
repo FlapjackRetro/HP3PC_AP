@@ -270,7 +270,7 @@ New mechanisms (`unlocks.h`):
 
 ### poc8: debug panel (test only, not for release)
 
-- **Delete** opens an in-game panel with a checkbox for every unlock; **Insert** spawns the old pickup grid.
+- **Delete** opens an in-game panel with a checkbox for every unlock; **backslash** (`\`) spawns the old pickup grid (poc8a; Insert in poc8).
   Arrows move, Enter / Space toggles, Delete closes. The game pauses while it's open (`[Debug] PanelPause=0` to
   leave it running).
 - Rows: the 10 spells; Marauder's Map; Shortcut Passwords; the 8 level / challenge unlocks wired so far (Paddock,

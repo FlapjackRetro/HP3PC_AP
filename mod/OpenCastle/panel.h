@@ -1,5 +1,5 @@
 /*
- * Debug panel (TEST ONLY, remove from release builds: it is a cheat menu). Delete opens / closes it (Insert spawns the
+ * Debug panel (TEST ONLY, remove from release builds: it is a cheat menu). Delete opens / closes it (backslash spawns the
  * old item test grid). While open the game is paused ([Debug] PanelPause=0 in the ini to leave it running) and:
  *   Up / Down       move              Left / Right   other column
  *   Enter / Space   tick / untick the highlighted unlock, or run the highlighted action
