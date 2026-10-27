@@ -155,6 +155,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Dungeons: chest `ChestSpawner3` (Bowtruckle card, 4 cakes) | the Password 5 area rule (Portrait Password 5 + Lumos) + **Rictusempra** (past the firecrabs) + Alohomora. At (−1248, 4389, −359), save key `dungChestSpawner3_lives` | marked in play 2026-10-27 |
 | Portrait B: the 12 placed cakes (`CauldronCake0`, `2`–`11`, `13`; line along y ≈ −3460, x −6 to 843, z 63; save keys `ppbCauldronCake<n>_PU`) | the Portrait B rule only | collected in play 2026-10-27 |
 | Portrait B: chest `ChestSpawner12` (Billywig card; also 20 beans) | the Portrait B rule (Alohomora included). At (1177, −3457, 97), save key `ppbChestSpawner12_lives` | marked in play 2026-10-27 |
+| Portrait B: 3 event pasties (`SpawnThingy0` / `2` / `3`, tag `BsecJelly`, around (−880, −3460, 224)) | the Portrait B rule (smashing the six shield knights is Depulso). Map: the knights (`3KnA`–`F`) count up `Counter0` (`CompanionKnightsSmash`, 6) → `SecretStairsBB` raises the secret stairs; stair mover `Mover3` → `ExitSecretB` … → `Dispatcher0` (`ExitSecretC`) → `MtriggerA`–`F` and `BsecJelly` (the pasties). Event-spawned, no save key: detect from the counter / dispatcher | marked in play 2026-10-27 |
 | Portrait D: Cauldron Cake | only Portrait Password 7 (opens Portrait D). Freestanding `CauldronCake4` at (897, 139, 2178), save key `ppdCauldronCake4_PU` | marked in play 2026-10-27 |
 
 For logic tracing the challenge doors and the spells are separate unlocks in the mod and the debug panel; the
