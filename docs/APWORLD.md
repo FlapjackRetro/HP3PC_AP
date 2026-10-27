@@ -115,7 +115,7 @@ shared and sold in a fixed order, whichever student you buy from (20 cards, plus
 
 ## Logic notes
 
-Portrait passwords → portraits (mapping in progress): **1 → a secret room inside the castle (InsideHub, around (−500, 500, 1530))**, **2 → Portrait F**, **7 → Portrait D**, **8 → Portrait E**.
+Portrait passwords → portraits (mapping in progress): **1 → a secret room inside the castle (InsideHub, around (−500, 500, 1530))**, **3 → an area in the dungeons (DungeonHUB, around (290, 900, −690))**, **2 → Portrait F**, **7 → Portrait D**, **8 → Portrait E**.
 
 Rules collected so far (to go into `rules.py` with the locations):
 
@@ -143,6 +143,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Hogwarts: chest `ChestSpawner3` (Giant Squid card, 15 pasties) | Portrait Password 1 (the room behind its portrait) + Alohomora. At (−493, 483, 1524), save key `ihubChestSpawner3_lives` | marked in play 2026-10-27 |
 | Hogwarts: chest `ChestSpawner0` (15 pasties, 8 cakes) | Portrait Password 1 (same secret room) + Alohomora. At (−754, 635, 1480), save key `ihubChestSpawner0_lives` | marked in play 2026-10-27 |
 | Hogwarts: 4th-floor secret Spongify column: pasty (`HPSpawnThingy2`, z 1657), pasty (`HPSpawnThingy4`, z 1742), cake (`HPSpawnThingy1`, z 1842) at about (−545, 637) | Portrait Password 1 (same secret room) + **Alohomora + Spongify**. Opening the Giant Squid chest releases them (confirmed in the map: `AlohomoraTrigger0` → `4thFlr_SecretSpong_Disp` → `Dispatcher26` → `4thFlr_SecretSpong_Spwn_01`–`03`, the `HPSpawnThingy`s; the Spongify pad `SpongifyPad6` → target `SpongifyTarget13` reaches them). No save key of their own: check detection for spawned pickups is still to design | marked in play 2026-10-27 |
+| Dungeons: chest `ChestSpawner7` (2 pasties; also 10 beans) | Portrait Password 3 + Alohomora, cast twice (`Lives` 2: two openings). At (291, 764, −694), save key `dungChestSpawner7_lives` (the check fires on the first opening or when Lives reaches 0: to decide) | marked in play 2026-10-27 |
 | Portrait D: Cauldron Cake | only Portrait Password 7 (opens Portrait D). Freestanding `CauldronCake4` at (897, 139, 2178), save key `ppdCauldronCake4_PU` | marked in play 2026-10-27 |
 
 For logic tracing the challenge doors and the spells are separate unlocks in the mod and the debug panel; the
