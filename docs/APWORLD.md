@@ -165,6 +165,22 @@ Rules collected so far (to go into `rules.py` with the locations):
 For logic tracing the challenge doors and the spells are separate unlocks in the mod and the debug panel; the
 apworld couples them by default (`split_challenge_spells: false`).
 
+## To do: repeatable event rewards (decision deferred, 2026-10-27)
+
+Event-spawned rewards (an `HPSpawnThingy` fired by a counter or dispatcher) have no save record, so the fight and
+its reward reset on every visit. Confirmed in play: re-entering Portrait C, the chests and armour stayed empty but
+beating the firecrabs again spawned the 4 cakes again (the placed Gnome card stayed gone).
+
+- Plan: the check fires once, on the first completion in a save (an `OC_Loc_<id>` flag, see
+  [CLIENT_SYNC.md](CLIENT_SYNC.md)); the first reward is the check, not the vanilla spawn.
+- **Open decision:** what repeat completions give. (a) nothing: the mod turns the spawns off once the check is
+  taken; (b) the vanilla currency again: a farm for pasties / cakes, which softens normal shop prices (logic never
+  counts on it).
+- Verify per reward which ones repeat: Stroulger doxies (counter: probably), Glover firecrab line (counters:
+  probably), Portrait C cakes (**confirmed**), Portrait B pasties (knights may stay smashed), 4th-floor Spongify
+  column (Giant Squid chest's Alohomora trigger: may fire once), Carpe imp pasties (first-visit cutscene: once per
+  save).
+
 ## Client sync
 
 How received items reach the game and how saves are reconciled with the server: [CLIENT_SYNC.md](CLIENT_SYNC.md).
