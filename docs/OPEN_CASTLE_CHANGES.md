@@ -332,3 +332,13 @@ New mechanisms (`unlocks.h`):
   other's plus `_02`, the first-visit one loses its Event. In the retail maps that's four pairs, all in Ch1:
   `6033Ch1GnomeGetsUp`, `6035Ch1HoleQC`, `6040Ch1PixiesQC`, `6045Ch1BeatPixiesQC`. The cost: the first-visit
   dialogue lines in those scenes.
+
+### poc8f: keep the first-visit cutscene, drop the replay (pasties back)
+
+- poc8e switched off the first-visit trigger, but the replay cutscenes aren't just shorter: `6035Ch1HoleQC_02`
+  leaves out `Trigger SpawnPastiesImp` (→ `Dispatcher14` → the `SpawnPasties3` spawners), so the three pasties
+  by the Spongify pad never appeared (marked in play at (1275, 2247, 866)).
+- Now the other way round: while the first-visit trigger is still active (it hasn't fired in this save;
+  `KWTrigger` saves `bInitiallyActive` as `<LevelID><Name>_bTOO`), the **replay** trigger loses its Event, so the
+  first visit plays like vanilla's, rewards and dialogue included. Once it has fired, nothing is touched and later
+  visits play the replay, as in vanilla.
