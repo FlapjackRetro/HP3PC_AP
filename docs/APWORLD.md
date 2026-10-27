@@ -115,7 +115,7 @@ shared and sold in a fixed order, whichever student you buy from (20 cards, plus
 
 ## Logic notes
 
-Portrait passwords → portraits (mapping in progress): **1 → a secret room inside the castle (InsideHub, around (−500, 500, 1530))**, **4 → Portrait B**, **3 → an area in the dungeons (DungeonHUB, around (290, 900, −690))**, **5 → the "Glover" portrait room in the dungeons (`PortraitPasswordTrigger1` at (−1255, 2340, −282); room around (−1630, 2270, −359))**, **2 → Portrait F**, **7 → Portrait D**, **8 → Portrait E**.
+Portrait passwords → portraits (mapping in progress): **1 → a secret room inside the castle (InsideHub, around (−500, 500, 1530))**, **4 → Portrait B**, **6 → Portrait C**, **3 → an area in the dungeons (DungeonHUB, around (290, 900, −690))**, **5 → the "Glover" portrait room in the dungeons (`PortraitPasswordTrigger1` at (−1255, 2340, −282); room around (−1630, 2270, −359))**, **2 → Portrait F**, **7 → Portrait D**, **8 → Portrait E**.
 
 Rules collected so far (to go into `rules.py` with the locations):
 
@@ -126,6 +126,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Portrait Password 3 area (Dungeons, around (290, 900, −690); the "Stroulger" portrait room: chests tagged `Stroulger_Poxie_Chest`) | **Portrait Password 3 + Spongify** for every check there (2026-10-27); everything past the doxy fight also needs **Alohomora + Rictusempra** |
 | Portrait Password 5 area (Dungeons) | **Portrait Password 5 + Lumos** for every check there (2026-10-27). Possible bypass to verify: `AlohomoraTrigger8` (−496, 2669, −280), near dungeon door 1, also opens `PortPass_Glover_Mvr` |
 | Portrait B | **Portrait Password 4 + Lumos, Alohomora and Depulso** for everything there (2026-10-27) |
+| Portrait C | **Portrait Password 6 + Depulso and Spongify** for everything there (2026-10-27) |
 | Portrait D | **Portrait Password 7** (confirmed in play 2026-10-27); everything past the freestanding cake also needs **Rictusempra, Spongify and Depulso** (2026-10-27): the two companion chests `ChestCompanionSpawner3` (Imp card, 10 pasties, 5 cakes) and `ChestCompanionSpawner0` (10 pasties, 15 cakes) |
 
 | Check | Extra needs | Source |
@@ -156,6 +157,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Portrait B: the 12 placed cakes (`CauldronCake0`, `2`–`11`, `13`; line along y ≈ −3460, x −6 to 843, z 63; save keys `ppbCauldronCake<n>_PU`) | the Portrait B rule only | collected in play 2026-10-27 |
 | Portrait B: chest `ChestSpawner12` (Billywig card; also 20 beans) | the Portrait B rule (Alohomora included). At (1177, −3457, 97), save key `ppbChestSpawner12_lives` | marked in play 2026-10-27 |
 | Portrait B: 3 event pasties (`SpawnThingy0` / `2` / `3`, tag `BsecJelly`, around (−880, −3460, 224)) | the Portrait B rule (smashing the six shield knights is Depulso). Map: the knights (`3KnA`–`F`) count up `Counter0` (`CompanionKnightsSmash`, 6) → `SecretStairsBB` raises the secret stairs; stair mover `Mover3` → `ExitSecretB` … → `Dispatcher0` (`ExitSecretC`) → `MtriggerA`–`F` and `BsecJelly` (the pasties). Event-spawned, no save key: detect from the counter / dispatcher | marked in play 2026-10-27 |
+| Portrait C: chest `ChestSpawner0` (4 pasties; also 30 beans) | the Portrait C rule + Alohomora. At (−3296, −1182, 1208), save key `ppcChestSpawner0_lives` | marked in play 2026-10-27 |
 | Portrait D: Cauldron Cake | only Portrait Password 7 (opens Portrait D). Freestanding `CauldronCake4` at (897, 139, 2178), save key `ppdCauldronCake4_PU` | marked in play 2026-10-27 |
 
 For logic tracing the challenge doors and the spells are separate unlocks in the mod and the debug panel; the
