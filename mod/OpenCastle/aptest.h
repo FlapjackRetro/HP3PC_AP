@@ -104,12 +104,12 @@ static void grid_animate(u32 actor, u32 mesh, int which, const wchar *label) {
     wsprintfW(b, L"grid: %s: none of the idle names found; reference pose", label); log_line(b);
 }
 
-/* key thread: Delete opens / closes the debug panel (panel.h), Insert spawns the test grid; while the panel is open,
+/* key thread: Delete opens / closes the debug panel (panel.h), backslash spawns the test grid; while the panel is open,
    arrows / Enter / Space go to it. Only while the game window has focus. */
 static volatile int gGridKey;
 static volatile int gPanelOpen, gPanelPause; static volatile long gPanelKeys;
 static u32 WINAPI key_thread(void *arg) {
-    static const int VK[] = { 0x2E /*Delete*/, 0x2D /*Insert*/, 0x26 /*Up*/, 0x28 /*Down*/, 0x25 /*Left*/, 0x27 /*Right*/, 0x0D /*Enter*/, 0x20 /*Space*/ };
+    static const int VK[] = { 0x2E /*Delete*/, 0xDC /*backslash (VK_OEM_5)*/, 0x26 /*Up*/, 0x28 /*Down*/, 0x25 /*Left*/, 0x27 /*Right*/, 0x0D /*Enter*/, 0x20 /*Space*/ };
     static const long BIT[] = { 0, 0, 1, 2, 4, 8, 16, 16 };
     int was[8] = { 0 }, k; u32 pid = 0; (void)arg;
     for (;;) {
