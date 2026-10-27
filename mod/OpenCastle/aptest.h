@@ -13,7 +13,7 @@ static u32 gClsStaticMesh, gClsMesh, gClsClass; static int offStaticMesh = -1, o
 /* ---- look test: pressing Delete in game spawns every item look the randomizer will use in a grid around the
    player (inert Engine.Effects actors for sprites and meshes). End stays MapTracker's mark key. */
 /* the item looks the randomizer will use (decided 2026-10-26). kind: 'S' sprite texture, 'M' static mesh,
-   'K' skeletal mesh, 'C' an actual class (spawned with its collision off, for looks that need its skins) */
+   'K' skeletal mesh, 'A' skeletal mesh with a looping idle, 'C' an actual class (spawned with its collision off, for looks that need its skins) */
 struct grident { char kind; const wchar *obj; float scale; const wchar *label; };
 static const struct grident GRID[] = {
     /* row 1: the ten spells */
@@ -32,8 +32,50 @@ static const struct grident GRID[] = {
     { 'M', L"HP3_GamePlay_sm.Spells_Objects.PumpkinPasty_SM", 2.0f, L"pumpkin pasty" },
     { 'M', L"HP3_GamePlay_sm.Spells_Objects.CauldronCake_SM", 2.5f, L"cauldron cake" },
     { 'C', L"HGame.WC_HarryPotter", 0, L"wizard card (Harry Potter)" },
+    /* row 4: challenge unlocks (decided 2026-10-27), animated skeletal meshes. Scales from the meshes' bounding
+       spheres (HPCharacters.ukx): Buckbeak r 330, Pixie 78, MBOM 60 -> all about r 50 here. */
+    { 'A', L"HPCharacters.Buckbeak", 0.15f, L"Hippogriff Challenge Unlock" },
+    { 'A', L"HPCharacters.Pixie", 0.65f, L"Doxy Challenge Unlock" },
+    { 'A', L"HPCharacters.MBOM", 0.8f, L"Monster Book Challenge Unlock" },
 };
-static const int GRIDROW[] = { 10, 4, 6 };   /* entries per row, in order */
+static const int GRIDROW[] = { 10, 4, 6, 3 };   /* entries per row, in order */
+/* idle animation to loop, per 'A' look (first one the mesh has). Every sequence name is logged once, to pick from. */
+static const wchar *const ANIM_TRY[][4] = {
+    { L"standIdle", L"Stand_idle", L"Idle", L"Idle1" },   /* Buckbeak */
+    { L"Hover_idle", L"Idle", 0, 0 },                     /* Pixie (Poxie.IdleAnimName) */
+    { L"Idle", 0, 0, 0 },                                 /* MBOM (MonsterBook.StateIdle loops 'Idle') */
+};
+/* Engine.dll: mesh instances and AActor::PlayAnim (native, so not through ProcessEvent) */
+typedef void *(__thiscall *meshinst_fn)(void *mesh, void *actor);
+typedef int   (__thiscall *animcount_fn)(void *inst);
+typedef void *(__thiscall *animidx_fn)(void *inst, int i);
+typedef int  *(__thiscall *animname_fn)(void *inst, int *ret, void *seq);
+typedef void *(__thiscall *animnamed_fn)(void *inst, int name);
+typedef void  (__thiscall *playanim_fn)(void *actor, int channel, int seq, float rate, float tween, int loop);
+static meshinst_fn gMeshInst; static animcount_fn gAnimCount; static animidx_fn gAnimIdx; static animname_fn gAnimName;
+static animnamed_fn gAnimNamed; static playanim_fn gPlayAnim;
+/* game thread: loop an idle on a freshly spawned skeletal look; logs the mesh's sequences the first time */
+static void grid_animate(u32 actor, u32 mesh, int which, const wchar *label) {
+    static wchar b[1200]; static int logged[8]; void *inst; int n, i, k, nm;
+    if (!gMeshInst || !gAnimCount || !gAnimIdx || !gAnimName || !gAnimNamed || !gPlayAnim) { log_line(L"grid: animation exports missing"); return; }
+    if (!(inst = gMeshInst((void *)mesh, (void *)actor))) { wsprintfW(b, L"grid: %s has no mesh instance", label); log_line(b); return; }
+    n = gAnimCount(inst);
+    if (which < 8 && !logged[which]) {
+        wchar one[64]; int len;
+        logged[which] = 1; wsprintfW(b, L"grid: %s, %d animations:", label, n); len = wlen(b);
+        for (i = 0; i < n && len < 1100; i++) {
+            int out = -1; gAnimName(inst, &out, gAnimIdx(inst, i));
+            if (out >= 0 && name_of(out, one, 64)) { wsprintfW(b + len, L" %s", one); len = wlen(b); }
+        }
+        log_line(b);
+    }
+    for (k = 0; k < 4 && which < 3 && ANIM_TRY[which][k]; k++)
+        if ((nm = name_index(ANIM_TRY[which][k])) >= 0 && gAnimNamed(inst, nm)) {
+            gPlayAnim((void *)actor, 0, nm, 1.0f, 0.0f, 1);
+            wsprintfW(b, L"grid: %s loops %s", label, ANIM_TRY[which][k]); log_line(b); return;
+        }
+    wsprintfW(b, L"grid: %s: none of the idle names found; reference pose", label); log_line(b);
+}
 #define NGRID (int)(sizeof GRID / sizeof GRID[0])
 static float gGridAt[3];
 static wchar gMapLogPath[600];
@@ -66,6 +108,15 @@ static void grid_poll(u32 pawn) {
     if (N_FancySpawn2 < 0) N_FancySpawn2 = name_index(L"FancySpawn");
     if (!gLoadObject) { HANDLE core = GetModuleHandleW(L"Core.dll");
         gLoadObject = core ? (loadobj_fn)GetProcAddress(core, "?StaticLoadObject@UObject@@SAPAV1@PAVUClass@@PAV1@PBG2KPAVUPackageMap@@@Z") : 0; }
+    if (!gPlayAnim) { HANDLE eng = GetModuleHandleW(L"Engine.dll");
+        if (eng) {
+            gMeshInst  = (meshinst_fn)GetProcAddress(eng, "?MeshGetInstance@UMesh@@UAEPAVUMeshInstance@@PBVAActor@@@Z");
+            gAnimCount = (animcount_fn)GetProcAddress(eng, "?GetAnimCount@USkeletalMeshInstance@@UAEHXZ");
+            gAnimIdx   = (animidx_fn)GetProcAddress(eng, "?GetAnimIndexed@USkeletalMeshInstance@@UAEPAXH@Z");
+            gAnimName  = (animname_fn)GetProcAddress(eng, "?AnimGetName@USkeletalMeshInstance@@UAE?AVFName@@PAX@Z");
+            gAnimNamed = (animnamed_fn)GetProcAddress(eng, "?GetAnimNamed@USkeletalMeshInstance@@UAEPAXVFName@@@Z");
+            gPlayAnim  = (playanim_fn)GetProcAddress(eng, "?PlayAnim@AActor@@UAEXHVFName@@MMH@Z");
+        } }
     if (!gClsTexture) gClsTexture = find_class(L"Texture");
     if (!gClsStaticMesh) gClsStaticMesh = find_class(L"StaticMesh");
     if (!gClsMesh) gClsMesh = find_class(L"Mesh");
@@ -80,19 +131,20 @@ static void grid_poll(u32 pawn) {
 /* game thread */
 static void grid_spawn(void) {
     struct { u32 type, owner; int tag; float x, y, z; int p, yw, r; u32 bz; u32 ret; } parms;
-    static wchar b[240]; u32 pc, pawn, obj, cls; void *fn; int i, ok = 0, row = 0, col = 0, inrow = GRIDROW[0];
+    static wchar b[240]; u32 pc, pawn, obj, cls; void *fn; int i, ok = 0, row = 0, col = 0, inrow = GRIDROW[0], nanim = 0;
     pc = gPlayer ? P(gPlayer + offPlayerActor) : 0; pawn = pc ? P(pc + offPawn) : 0;
     if (!pawn || !gClsEffects || !gLoadObject || !gClsTexture || offDrawScale <= 0 || offTexture <= 0 || offStyle2 <= 0
         || N_FancySpawn2 < 0 || !(fn = gFindFunction((void *)pawn, N_FancySpawn2, 0))) { log_line(L"grid: lookups failed"); return; }
     for (i = 0; i < NGRID; i++, col++) {
         const struct grident *g = &GRID[i]; float px;
         if (col == inrow) { row++; col = 0; inrow = GRIDROW[row]; }
-        cls = g->kind == 'S' ? gClsTexture : g->kind == 'M' ? gClsStaticMesh : g->kind == 'K' ? gClsMesh : gClsClass;
+        cls = g->kind == 'S' ? gClsTexture : g->kind == 'M' ? gClsStaticMesh : (g->kind == 'K' || g->kind == 'A') ? gClsMesh : gClsClass;
         obj = cls ? (u32)gLoadObject((void *)cls, 0, g->obj, 0, 0x2002, 0) : 0;
         if (!obj) { wsprintfW(b, L"grid: %s (%s) not found", g->label, g->obj); log_line(b); continue; }
         memset(&parms, 0, sizeof parms);
         parms.type = g->kind == 'C' ? obj : gClsEffects;
-        parms.x = gGridAt[0] + (col - (inrow - 1) / 2.0f) * 70.0f; parms.y = gGridAt[1] + (row - 1) * 80.0f; parms.z = gGridAt[2] + 40.0f;
+        parms.x = gGridAt[0] + (col - (inrow - 1) / 2.0f) * (row == 3 ? 120.0f : 70.0f); parms.y = gGridAt[1] + (row - 1) * 80.0f + (row == 3 ? 40.0f : 0.0f);
+        parms.z = gGridAt[2] + 40.0f;
         gPEOrig((void *)pawn, fn, &parms, 0);
         if (!parms.ret) { wsprintfW(b, L"grid: spawn for %s failed", g->label); log_line(b); continue; }
         if (g->kind == 'S') {
@@ -103,6 +155,9 @@ static void grid_spawn(void) {
             *(u32 *)(parms.ret + offStaticMesh) = obj; *(u8 *)(parms.ret + offDrawType) = 8; *(float *)(parms.ret + offDrawScale) = g->scale;
         } else if (g->kind == 'K' && offMesh > 0) {
             *(u32 *)(parms.ret + offMesh) = obj; *(u8 *)(parms.ret + offDrawType) = 2; *(float *)(parms.ret + offDrawScale) = g->scale;
+        } else if (g->kind == 'A' && offMesh > 0) {
+            *(u32 *)(parms.ret + offMesh) = obj; *(u8 *)(parms.ret + offDrawType) = 2; *(float *)(parms.ret + offDrawScale) = g->scale;
+            grid_animate(parms.ret, obj, nanim, g->label); nanim++;
         } else if (g->kind == 'C') {   /* a real pickup: switch its collision off so it can't be collected */
             void *sc = N_SetCollision >= 0 ? gFindFunction((void *)parms.ret, N_SetCollision, 0) : 0;
             struct { u32 a, b, c; } cp = { 0, 0, 0 };
