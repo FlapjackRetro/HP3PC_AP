@@ -125,7 +125,8 @@ FILLER_ITEM_NAME = "Chocolate Frog"
 
 # ---- wizard cards -------------------------------------------------------------------------------------------------
 # (index in WizardCardManager.Cards, class, display name). Item name: "<display name> Card".
-# Index 39, Harry Potter, is not an item: Fred & George give it for the other 79, as in vanilla.
+# Index 39, Harry Potter, is not an item: Fred & George give it once 74 cards are found (all but it and the five in
+# the Wizard Card bonus room, HP3_BeanBonus, which it opens), as in vanilla.
 _CARDS = [
     ( 0, "WC_AlgufftheAwful", "Alguff the Awful"),
     ( 1, "WC_AmarilloLestoat", "Amarillo Lestoat"),
