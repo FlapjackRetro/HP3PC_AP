@@ -194,7 +194,8 @@ static void grid_poll(u32 pawn, u32 level) {
     if (offMesh < 0) offMesh = prop_offset(L"Actor", L"Mesh");
     if (offPhysics < 0) offPhysics = prop_offset(L"Actor", L"Physics");
     if (offCollideWorld < 0) {
-        u32 bp = prop_object(L"Actor", L"bCollideWorld"), m = bp ? rd32(bp + 0x64) : 0;
+        /* UBoolProperty.BitMask is at +0x70 (Core.dll UBoolProperty::Identical: `and 0x70(%ecx)`) */
+        u32 bp = prop_object(L"Actor", L"bCollideWorld"), m = bp ? rd32(bp + 0x70) : 0;
         if (bp && m && !(m & (m - 1))) { offCollideWorld = (int)rd32(bp + 0x4C); maskCollideWorld = m; }
     }
     if (offDrawScale <= 0) { offDrawScale = prop_offset(L"Actor", L"DrawScale"); offTexture = prop_offset(L"Actor", L"Texture"); offStyle2 = prop_offset(L"Actor", L"Style"); }
@@ -221,7 +222,8 @@ static void grid_spawn(void) {
     if (!pawn || !gClsEffects || !gLoadObject || !gClsTexture || offDrawScale <= 0 || offTexture <= 0 || offStyle2 <= 0
         || N_FancySpawn2 < 0 || !(fn = gFindFunction((void *)pawn, N_FancySpawn2, 0))) { log_line(L"grid: lookups failed"); return; }
     if (!gSetCollision || !gSetCollisionSize || offPhysics <= 0 || offCollideWorld <= 0)
-        log_line(L"grid: collision / physics lookups missing; the looks will float and can't be picked up");
+        {   wsprintfW(b, L"grid: lookups missing (SetCollision %s, SetCollisionSize %s, physics %d, collideworld %d); the looks will float",
+                      gSetCollision ? L"ok" : L"-", gSetCollisionSize ? L"ok" : L"-", offPhysics, offCollideWorld); log_line(b); }
     for (i = 0; i < NGRID; i++, col++) {
         const struct grident *g = &GRID[i]; float px;
         if (col == inrow) { row++; col = 0; inrow = GRIDROW[row]; }
@@ -254,7 +256,7 @@ static void grid_spawn(void) {
         if (gSetCollisionSize) gSetCollisionSize((void *)a, GRID_R, g->h);
         if (gSetCollision) gSetCollision((void *)a, 1, 0, 0);
         if (offCollideWorld > 0) *(u32 *)(a + offCollideWorld) |= maskCollideWorld;
-        if (offPhysics > 0) *(u8 *)(a + offPhysics) = 2;   /* PHYS_Falling */
+        if (offPhysics > 0 && offCollideWorld > 0) *(u8 *)(a + offPhysics) = 2;   /* PHYS_Falling, only with world collision */
         gGridObj[i] = a;
     }
     wsprintfW(b, L"grid: %d of %d items placed in front of (%d, %d, %d)", ok, NGRID, (int)gGridAt[0], (int)gGridAt[1], (int)gGridAt[2]);
