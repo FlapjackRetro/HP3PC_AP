@@ -297,7 +297,7 @@ On loading a story map: retarget its vanilla exit to InsideHub/GroundsHub at its
 and exit cutscenes (`9225…`/`9227ADV4PeevesExit`) `savegame`, toggle the entrance-hall torch puzzle
 (`Main_TorchPuzz_Torch*`), the portrait movers `Peeves3_Port`, and **`GroundsBlocker`**, the portcullises
 between the entrance hall and the grounds (the planned "Grounds Access" unlock). So the fight shuts and reopens the
-grounds route, and Open Castle would have to keep that in step with the Grounds Access item.
+grounds route. (Moot: Open Castle runs in `GState090` and the grounds stay open, no Grounds Access item.)
 
 ### Open decisions
 
