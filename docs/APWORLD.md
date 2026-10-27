@@ -115,7 +115,7 @@ shared and sold in a fixed order, whichever student you buy from (20 cards, plus
 
 ## Logic notes
 
-Portrait passwords → portraits (mapping in progress): **7 → Portrait D**, **8 → Portrait E**.
+Portrait passwords → portraits (mapping in progress): **2 → Portrait F**, **7 → Portrait D**, **8 → Portrait E**.
 
 Rules collected so far (to go into `rules.py` with the locations):
 
@@ -137,6 +137,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Portrait E: knights `KnightSpawner3` (5 cakes, 10 pasties; 25 beans), `KnightSpawner6` (10 cakes; 20 beans), `KnightSpawner7` (10 cakes; 20 beans) | Depulso, within the Portrait E rule. Top level (z 3078–3081), about 415 units above the marker at (−1476, −1019, 2698); save keys `ppeKnightSpawner3/6/7_lives` | marked in play 2026-10-27 |
 | Portrait E: armoire `ArmoireSpwn2` (Unicorn card) | Alohomora, within the Portrait E rule. At (−1472, −2957, 1816); opening it starts a flying-book fight (19 `FlyingBook`s, Event `FCount1`) | marked in play 2026-10-27 |
 | Portrait E: armoire `ArmoireSpwn0` (10 pasties; also 100 beans) | the book fight won: the same armoire, a second spawner (Tag `OpenPortcullisA`) fired when the last book falls. Spell for the books: TBD (Rictusempra?) | marked in play 2026-10-27 |
+| (not a location) Portrait F knight `KnightSpawner7` (pasties) | Depulso. Rolls 6–14 pasties per hit, 2 hits, so it stays vanilla under the no-random-amounts rule. At (−3521, −776, 1608) | marked in play 2026-10-27 |
 | Portrait D: Cauldron Cake | only Portrait Password 7 (opens Portrait D). Freestanding `CauldronCake4` at (897, 139, 2178), save key `ppdCauldronCake4_PU` | marked in play 2026-10-27 |
 
 For logic tracing the challenge doors and the spells are separate unlocks in the mod and the debug panel; the
