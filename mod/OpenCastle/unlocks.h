@@ -1,10 +1,7 @@
 /*
- * Unlock state: spells, doors, the Marauder's Map and the shortcut passwords. Two sources, OR'ed:
- *   - HP3_OpenCastle.ini: what the player STARTS with (stand-in for slot data / starting inventory), read every 2 s:
- *       [Spells] Alohomora / CarpeRetractum / Depulso / Draconifors / ExpectoPatronum / Glacius / Lapifors / Lumos /
- *                Rictusempra / Spongify = 1 (default) or 0;  [Doors] <key> = 1 (default) or 0;
- *       [Items]  MaraudersMap / ShortcutPasswords = 0 (default) or 1
- *   - the save: what has been FOUND since (pickups now, received items later). Kept in the game's PersistentStore
+ * Unlock state: spells, doors, the Marauder's Map, the shortcut and portrait passwords. Everything starts LOCKED
+ * (poc8c: the ini no longer forces anything open; the gIni* values stay 0 and "(start)" never shows). Source:
+ *   - the save: what has been FOUND (pickups, the debug panel; received items later). Kept in the game's PersistentStore
  *     as OC_<Section>_<Key> = "1", which travels between levels and is written into save games, so a New Game starts
  *     empty and loading a save brings its own state. Read on every settled map load (game thread).
  *
@@ -110,7 +107,7 @@ static void spells_init(void) {
 static void unlocks_poll(void) {
     static wchar b[300]; int i, on, changed = 0;
     for (i = 0; i < NSPELLS; i++) {
-        gIniSpell[i] = GetPrivateProfileIntW(L"Spells", SPELLS[i].key, 1, gIniPath) != 0;
+        gIniSpell[i] = 0;   /* no ini start state any more (poc8c) */
         on = gIniSpell[i] || gSaveSpell[i];
         if (on != gSpellOn[i]) { gSpellOn[i] = on; changed = 1; }
     }
@@ -119,18 +116,29 @@ static void unlocks_poll(void) {
         for (i = 0; i < NSPELLS; i++) wsprintfW(b + wlen(b), L" %s=%d", SPELLS[i].key, gSpellOn[i]);
         log_line(b);
     }
-    gIniMap = GetPrivateProfileIntW(L"Items", L"MaraudersMap", 0, gIniPath) != 0;
+    gIniMap = 0;
     on = gIniMap || gSaveMap;
     if (on != gHaveMap) { gHaveMap = on; wsprintfW(b, L"items: Marauder's Map %s", on ? L"unlocked" : L"locked"); log_line(b); if (on) gPendingShortcuts = 1; }
-    gIniShortcuts = GetPrivateProfileIntW(L"Items", L"ShortcutPasswords", 0, gIniPath) != 0;
+    gIniShortcuts = 0;
     on = gIniShortcuts || gSaveShortcuts;
     if (on != gHaveShortcuts) { gHaveShortcuts = on; wsprintfW(b, L"items: shortcut passwords %s", on ? L"unlocked" : L"locked"); log_line(b); gPendingShortcuts = 1; }
     for (i = 0; i < 8; i++) {
         wchar k[16]; wsprintfW(k, L"Portrait%d", i + 1);
-        gIniPortrait[i] = GetPrivateProfileIntW(L"Items", k, 0, gIniPath) != 0;
+        gIniPortrait[i] = 0; (void)k;
         on = gIniPortrait[i] || gSavePortrait[i];
         if (on != gHavePortrait[i]) { gHavePortrait[i] = on; wsprintfW(b, L"items: portrait password %d %s", i + 1, on ? L"unlocked" : L"locked"); log_line(b); gPendingShortcuts = 1; }
     }
+}
+/* worker, on the first map of a New Game: drop the previous game's found flags at once (the save read at settle
+   would do it ~3 s later; until then the old game's spells would still work) */
+static void unlocks_reset(void) {
+    int i;
+    for (i = 0; i < NSPELLS; i++) gSaveSpell[i] = 0;
+    for (i = 0; i < 16; i++) gSaveDoor[i] = 0;
+    for (i = 0; i < 8; i++) gSavePortrait[i] = 0;
+    gSaveMap = gSaveShortcuts = 0;
+    log_line(L"new game: every unlock reset to locked");
+    unlocks_poll();
 }
 /* ---- the save side (game thread) ---- */
 static u32 cur_store(void) {
