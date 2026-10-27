@@ -66,14 +66,50 @@ IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–111, passwords 
 
 Slot data: all six options.
 
+## Location naming (draft, 2026-10-27)
+
+`<Area>: <Thing>`; things that repeat in an area are numbered in a fixed order (`Glacius: Pumpkin Pasty 17`,
+`Grounds: Chest 4`); a card is named by the card (`Hippogriff: Joscelind Wadcock Card`). Location names are what
+Archipelago shows as "found X at …"; item names stay plain.
+
+| Prefix | Maps / checks |
+| --- | --- |
+| Express | Adv1Express |
+| Tunnel | Adv5Shack |
+| Paddock | Adv6Paddock |
+| Hippogriff | COMC (5 course cards) |
+| Doxy | the 5 doxy rounds (GroundsHub well) |
+| MonsterBook | the 5 Monster Book rounds (InsideHub) |
+| Harry FE / Hermione FE / Ron FE | FA3Harry / FA2Hermione / FA1Ron |
+| Carpe | Ch1 + Ch1B |
+| Drac/Lap | Ch2 + Ch2B |
+| Glacius | Ch3 + Ch3B |
+| Patronum | Adv2ExpPatronum |
+| Hogwarts | InsideHub (not the shop or the Monster Book rounds) |
+| Dungeons | DungeonHUB |
+| Grounds | GroundsHub (not the doxy rounds) |
+| Library | Adv3Library |
+| Portrait B–F | PortraitPassword_B–F (letters, so they don't read as Portrait Password 1–8) |
+| F&G Shop | Fred & George's 6 cards and 8 passwords |
+| Vendor | student vendors: one shared, ordered pool (see below) |
+| (open) | HP3_BeanBonus: 5 placed cards (Dumbledore and the four founders), entered from InsideHub `ChangeLevelTrigger14` |
+
+Student vendors: every student vendor sells `WizardCardManager.GetAvailableVendorCard()`, the first card in the
+table with status `AvailableToVendors` whose game state has been reached; buying one marks it owned. So the pool is
+shared and sold in a fixed order, whichever student you buy from (20 cards, plus the four adventure-level cards
+(`AvailableInAdventureLevel`) that drop into the pool once the game state passes theirs, which in Open Castle's
+`GState090` is at once).
+
 ## Client sync
 
 How received items reach the game and how saves are reconciled with the server: [CLIENT_SYNC.md](CLIENT_SYNC.md).
 
 ## Mod work this implies
 
-- **Bean bonus room:** challenge stars stay vanilla, so finding all of a challenge's stars still sends the player to
-  HP3_BeanBonus. Allow it, and when the bonus game ends, travel to InsideHub instead of the vanilla next map.
+- **Bean bonus room:** challenge stars stay vanilla, so finding all of a challenge's shields still starts the
+  challenge's bean bonus round (`BeanBonusGame` inside the Ch1B / Ch2B / Ch3B map, not the separate HP3_BeanBonus
+  map). Allow it, and when it ends (`…BeanBonus…EXIT` → the chamber copy in the B map) send the player to InsideHub
+  instead of the vanilla next map.
 - Receiving a challenge unlock (split off) must grant the spell(s) as well as open the door.
 - Spells as items: replace `WeaponWand.HasSpell()`; Lumos needs its own hook (`LumosTurnOn`).
 - Shortcut Passwords item: the mod currently unlocks all shortcuts at load; that becomes the `start_unlocked` path.
