@@ -15,7 +15,8 @@
  *     came from; story maps rerouted by Open Castle have none, so the player would land in the GState holding room.
  *     We lend the pawn's PreviousLevelName a nearby SmartStart's name for that one call (so Ron and Hermione follow
  *     too), then optionally RelocatePawn to the Open Castle door.
- *  5. Shortcut passwords start unlocked (PortraitPasswordManager.EnablePortraitShortcuts, once per map load).
+ *  5. Unlocks (unlocks.h): spells (WeaponWand.HasSpell made native), the Marauder's Map and the shortcut passwords,
+ *     from the ini like the doors. Shortcuts are locked until [Items] ShortcutPasswords=1.
  *  6. Leftover goodies (leftovers.h): items a chest threw out but the player didn't pick up come back on the next
  *     visit.
  *  7. Softlock escape (hubmenu.h): RETURN TO HUB in the pause menu's exit dialog.
@@ -67,8 +68,9 @@ IMP short  WINAPI GetAsyncKeyState(int);
 IMP HWND   WINAPI GetForegroundWindow(void);
 IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
+IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc6s"
+#define OC_VERSION L"poc7"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -226,12 +228,14 @@ static void fire_gates(void) {
 
 #include "leftovers.h"
 #include "hubmenu.h"
-static volatile int gGridPending; static void grid_spawn(void);
+static volatile int gGridPending; static void grid_spawn(void); static void items_apply(void);
+static volatile u32 gGridTake; static void grid_take(void);
 static volatile u32 gBlockSpawn, gBlockKill; static void blockers_apply(void);
 static void __thiscall pe_hook(void *self, void *func, void *parms, void *result) {
     int fname;
     if (gPending && !gInTravel) { gInTravel = 1; gPending = 0; do_travel(); gInTravel = 0; }
-    if (gPendingShortcuts && !gInTravel) { gInTravel = 1; gPendingShortcuts = 0; enable_shortcuts(); gInTravel = 0; }
+    if (gPendingShortcuts && !gInTravel) { gInTravel = 1; gPendingShortcuts = 0; items_apply(); gInTravel = 0; }
+    if (gGridTake && !gInTravel) { gInTravel = 1; grid_take(); gInTravel = 0; }
     if (gPendingRespawn && !gInTravel) { gInTravel = 1; gPendingRespawn = 0; lo_respawn(); gInTravel = 0; }
     if (gMenuPatch && !gInTravel) { gInTravel = 1; gMenuPatch = 0; hub_patch(); gInTravel = 0; }
     if (gGateFire && !gInTravel) { gInTravel = 1; fire_gates(); gInTravel = 0; }
@@ -418,10 +422,11 @@ static void gates_poll(u32 level, const wchar *map) {
     }
 }
 
+#include "shop.h"
+#include "unlocks.h"
 #include "aptest.h"
 #include "comcfix.h"
 #include "blocker.h"
-#include "shop.h"
 
 static u32 WINAPI worker(void *arg) {
     HANDLE core; static wchar buf[400], id[32], lastMap[64]; static struct players pl;
@@ -528,13 +533,13 @@ static u32 WINAPI worker(void *arg) {
         }
         settle++;
         if (settle >= 4) comc_poll(level, lastMap);
-        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); blockers_poll(level, lastMap); shop_poll(level, offGame > 0 ? rd32(level + offGame) : 0); }   /* once settled, every 2 s */
+        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); blockers_poll(level, lastMap); shop_poll(level, offGame > 0 ? rd32(level + offGame) : 0); spells_init(); unlocks_poll(); }   /* once settled, every 2 s */
         if (!shortcutsDone && settle >= 12) {
             shortcutsDone = 1;
             if (!weq(lastMap, L"Entry") && !weq(lastMap, L"HP_Preamble")) { gPendingShortcuts = 1; gPendingRespawn = 1; }
         }
         pawn = rd32(pc + offPawn);
-        if (settle >= 12) grid_poll(pawn);
+        if (settle >= 12) grid_poll(pawn, level);
         if (!pawn || !rd(pawn + offLoc, loc, 12) || gPending) continue;
         {   int near = -1, far_from_all = 1;
             for (i = 0; i < NDOORS; i++) {

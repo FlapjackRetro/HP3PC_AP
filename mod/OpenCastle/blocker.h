@@ -14,14 +14,7 @@ static const struct blocker BLOCKERS[] = {
 #define NBLOCKERS (int)(sizeof BLOCKERS / sizeof BLOCKERS[0])
 static u32 gBlockObj[NBLOCKERS], gBlockCol[NBLOCKERS], gBlockLevel[NBLOCKERS];   /* visual, collider */
 static int N_SetCollisionSize = -1, N_Destroy = -1;
-/* Native functions can't be called through ProcessEvent (an exec function reads its arguments from the script
-   bytecode, not from the parms block), so SetCollision / SetCollisionSize / Destroy did nothing in poc6m-n. Call the
-   C++ methods exported by Engine.dll instead. */
-typedef void (__thiscall *setcol_fn)(void *actor, int colActors, int blockActors, int blockPlayers);
-typedef void (__thiscall *setcolsize_fn)(void *actor, float radius, float height);
-typedef int (__thiscall *destroyactor_fn)(void *level, void *actor, int bNetForce);
-static setcol_fn gSetCollision; static setcolsize_fn gSetCollisionSize; static destroyactor_fn gDestroyActor;
-static int offXLevel = -1;
+/* gSetCollision / gSetCollisionSize / gDestroyActor / offXLevel: aptest.h */
 
 /* worker, from gates_poll: decide */
 static void blockers_poll(u32 level, const wchar *map) {
@@ -36,17 +29,7 @@ static void blockers_poll(u32 level, const wchar *map) {
         if (!gClsStaticMesh) gClsStaticMesh = find_class(L"StaticMesh");
         if (offStaticMesh < 0) offStaticMesh = prop_offset(L"Actor", L"StaticMesh");
         if (offDrawScale <= 0) { offDrawScale = prop_offset(L"Actor", L"DrawScale"); offTexture = prop_offset(L"Actor", L"Texture"); offStyle2 = prop_offset(L"Actor", L"Style"); }
-        offXLevel = prop_offset(L"Actor", L"XLevel");
-        {   HANDLE eng = GetModuleHandleW(L"Engine.dll"); static wchar b[160];
-            if (eng) {
-                gSetCollision = (setcol_fn)GetProcAddress(eng, "?SetCollision@AActor@@QAEXHHH@Z");
-                gSetCollisionSize = (setcolsize_fn)GetProcAddress(eng, "?SetCollisionSize@AActor@@QAEXMM@Z");
-                gDestroyActor = (destroyactor_fn)GetProcAddress(eng, "?DestroyActor@ULevel@@UAEHPAVAActor@@H@Z");
-            }
-            wsprintfW(b, L"blocker: Engine.dll SetCollision %s, SetCollisionSize %s, DestroyActor %s; xlevel=%d",
-                      gSetCollision ? L"ok" : L"-", gSetCollisionSize ? L"ok" : L"-", gDestroyActor ? L"ok" : L"-", offXLevel);
-            log_line(b);
-        }
+        engine_exports();
     }
     for (i = 0; i < NBLOCKERS; i++) {
         int on = 1, locked;

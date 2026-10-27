@@ -223,3 +223,28 @@ Yes. The vanilla save system already handles it; nothing new is needed for the p
   - the castle portcullis mesh (`Portcullis_SM`, ×2.0, so 256 × 408 units) on an inert `Effects` actor;
   - a blocking cylinder (radius 135, half-height 210), set through `SetCollisionSize` + `SetCollision`.
   - It's removed when the key unlocks, and spawned again on each visit while locked.
+
+### poc7: item pickups (test grid)
+
+The Delete grid is now a set of working pickups (`aptest.h`): each item falls to the floor (PHYS_Falling,
+bCollideWorld, a collision cylinder) and is collected by walking into it. What each one does is the same switch
+the randomizer client will drive, in `HP3_OpenCastle.ini`:
+
+| Pickup | Effect |
+| --- | --- |
+| 10 spell glyphs | `[Spells] <spell>=1` |
+| drawn key | `[Doors] Paddock=1` (test) |
+| hippogriff / doxy / Monster Book | `[Doors] Hippogriff` / `Doxy` / `MonsterBook` `=1` |
+| Marauder's Map | `[Items] MaraudersMap=1` → `HPHeroController.GiveMap()` (on every map load while set) |
+| password scroll (`BlueBandScroll_SM`) | `[Items] ShortcutPasswords=1` → `EnablePortraitShortcuts()` |
+| Archipelago logos | nothing |
+| pasty, cake, Harry Potter card | the game's own pickup classes |
+
+New mechanisms (`unlocks.h`):
+- **Spell gating.** `WeaponWand.HasSpell` is turned into a native function at runtime (iNative + Func on its
+  UFunction; Core.dll's CallFunction calls Func whenever iNative ≠ 0). It returns the vanilla answer unless the
+  spell is locked in `[Spells]` (default 1 = has it). The spell cursor won't target, and ChooseSpell won't pick, a
+  locked spell. Covers LumosSpell (gargoyles). Not covered yet: companion-cast spells (`CompanionSpellTrigger`).
+- **Shortcut passwords are locked by default** (`[Items] ShortcutPasswords`, default 0): on every map load,
+  entries 8–21 (but 18, vanilla's free one) are cleared until the item is set. Earlier builds unlocked them all.
+- **Marauder's Map** (`[Items] MaraudersMap`, default 0).
