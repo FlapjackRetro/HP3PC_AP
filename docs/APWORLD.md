@@ -121,6 +121,10 @@ Rules collected so far (to go into `rules.py` with the locations):
 | --- | --- |
 | Carpe (Ch1 + Ch1B) | Carpe Retractum Challenge Unlock (door), **Carpe Retractum, Spongify, Depulso** (2026-10-27) |
 
+| Check | Extra needs | Source |
+| --- | --- | --- |
+| Carpe: Sir Herbert Varney Card | Alohomora (chest `ChestSpawner18`, Ch1 (2736, 1140, 608); also 5 beans) | marked in play 2026-10-27 |
+
 For logic tracing the challenge doors and the spells are separate unlocks in the mod and the debug panel; the
 apworld couples them by default (`split_challenge_spells: false`).
 
