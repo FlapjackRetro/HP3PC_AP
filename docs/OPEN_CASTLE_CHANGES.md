@@ -258,3 +258,12 @@ New mechanisms (`unlocks.h`):
   games, so a New Game starts with nothing found and loading a save brings back that save's unlocks.
 - Effective state = ini OR save. Read on every settled map load (log: `save flags (found): ...`).
 - The randomizer client will write received items to the same keys.
+
+### poc7d: crash fix (GPF in RenderLevel on a pickup)
+
+- poc7c tested: found unlocks survive save / quit / load, and a New Game starts with none (`save flags (found): none`).
+- Crash: picking up the Rictusempra glyph gave a GPF in `RenderLevel`. The mod's queued game-thread jobs ran on
+  whatever ProcessEvent came next, including events fired while the frame is drawn (HUD / canvas). Destroying the
+  picked-up actor (or spawning the sparkle) mid-render can leave the renderer with a dead actor.
+- Fix: jobs that spawn, destroy or change actors (pickups, grid, leftovers, gates, blockers, Map / shortcut grants)
+  run only from `PlayerTick` / `Tick` events, i.e. while the level ticks. Travel and the menu patch are unchanged.
