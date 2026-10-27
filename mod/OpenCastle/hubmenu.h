@@ -41,6 +41,8 @@ static int hub_init(void) {
     offCompCtl = prop_offset(L"GUI", L"Controller");
     offParentPage = prop_offset(L"GUIPage", L"ParentPage");
     bprop = prop_object(L"GUIComponent", L"bBoundToParent");
+    /* NB: +0x64 is not UBoolProperty.BitMask (that's +0x70), so maskBound stays 0 and the bound-to-dialog layout below
+       is the one in use; it was tuned that way in play, so it's left as is. */
     if (bprop) { u32 m = rd32(bprop + 0x64); offBound = (int)rd32(bprop + 0x4C); if (m && !(m & (m - 1))) maskBound = m; }
     N_MyOnClick = name_index(L"MyOnClick"); N_CloseMenu = name_index(L"CloseMenu"); N_ExitMenu = name_index(L"ExitMenu");
     N_CloseAll = name_index(L"CloseAll"); N_SetPause = name_index(L"SetPause");
