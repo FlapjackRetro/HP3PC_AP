@@ -230,3 +230,13 @@ static void items_apply(void) {
     } else map_take_away();
     portraits_apply();
 }
+
+/* game thread, tick job: switch the doors' own loading triggers (DOORS.trig) on or off. A ChangeLevelTrigger is a
+   plain touch trigger: bCollideActors on, no blocking. */
+static void trig_apply(void) {
+    u32 bits = gTrigFire; int i, k;
+    gTrigFire = 0;
+    if (!gSetCollision) return;
+    for (i = 0; i < MAXGATES; i++) if ((bits >> i) & 1)
+        for (k = 0; k < 2; k++) if (gTrigObj[i][k]) gSetCollision((void *)gTrigObj[i][k], gTrigWant[i] ? 1 : 0, 0, 0);
+}
