@@ -267,3 +267,19 @@ New mechanisms (`unlocks.h`):
   picked-up actor (or spawning the sparkle) mid-render can leave the renderer with a dead actor.
 - Fix: jobs that spawn, destroy or change actors (pickups, grid, leftovers, gates, blockers, Map / shortcut grants)
   run only from `PlayerTick` / `Tick` events, i.e. while the level ticks. Travel and the menu patch are unchanged.
+
+### poc8: debug panel (test only, not for release)
+
+- **Delete** opens an in-game panel with a checkbox for every unlock; **Insert** spawns the old pickup grid.
+  Arrows move, Enter / Space toggles, Delete closes. The game pauses while it's open (`[Debug] PanelPause=0` to
+  leave it running).
+- Rows: the 10 spells; Marauder's Map; Shortcut Passwords; the 8 level / challenge unlocks wired so far (Paddock,
+  Express, DADA, Library, Shack, Monster Book, Hippogriff, Doxy); Portrait Password 1–8 (entries `pp_0`–`pp_7`,
+  in sale order, which portrait each opens is still to map); placeholders for the Carpe Retractum / Draconifors /
+  Glacius challenge doors (not wired). Actions: +10 pasties, +10 cakes, +100 beans, untick everything found.
+- Toggling writes the save flag (`OC_*`, now `1` or `0`). Items forced on by the ini start state show `(start)` and
+  can't be unticked from the panel.
+- New: unticking the Marauder's Map takes it out of the inventory; portrait passwords 1–8 follow their flags
+  (`[Items] Portrait1`–`8` in the ini, `OC_Items_Portrait<n>` in the save).
+- Drawn from the HUD's `PostRender` with Engine.dll's `UCanvas::DrawTile` / `WrappedPrintf`. Fallback if this
+  doesn't work out: a separate Win32 window with checkboxes.
