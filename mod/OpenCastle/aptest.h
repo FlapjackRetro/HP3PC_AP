@@ -34,7 +34,7 @@ static const struct grident GRID[] = {
     { 'C', L"HGame.WC_HarryPotter", 0, L"wizard card (Harry Potter)" },
     /* row 4: challenge unlocks (decided 2026-10-27), animated skeletal meshes. Scales from the meshes' bounding
        spheres (HPCharacters.ukx): Buckbeak r 330, Pixie 78, MBOM 60 -> all about r 50 here. */
-    { 'A', L"HPCharacters.Buckbeak", 0.15f, L"Hippogriff Challenge Unlock" },
+    { 'A', L"HPCharacters.Buckbeak", 0.30f, L"Hippogriff Challenge Unlock" },
     { 'A', L"HPCharacters.Pixie", 0.65f, L"Doxy Challenge Unlock" },
     { 'A', L"HPCharacters.MBOM", 0.8f, L"Monster Book Challenge Unlock" },
 };
