@@ -29,6 +29,7 @@ typedef void (__thiscall *setcolsize_fn)(void *actor, float radius, float height
 typedef int (__thiscall *destroyactor_fn)(void *level, void *actor, int bNetForce);
 static setcol_fn gSetCollision; static setcolsize_fn gSetCollisionSize; static destroyactor_fn gDestroyActor;
 static int offXLevel = -1;
+static void pickup_fx_lookups(void);
 static void engine_exports(void) {
     HANDLE eng; static wchar b[160];
     if (gSetCollision && gSetCollisionSize && gDestroyActor && offXLevel > 0) return;
@@ -186,6 +187,7 @@ static void grid_poll(u32 pawn, u32 level) {
             gPlayAnim  = (playanim_fn)GetProcAddress(eng, "?PlayAnim@AActor@@UAEXHVFName@@MMH@Z");
         } }
     engine_exports();
+    pickup_fx_lookups();
     if (!gClsTexture) gClsTexture = find_class(L"Texture");
     if (!gClsStaticMesh) gClsStaticMesh = find_class(L"StaticMesh");
     if (!gClsMesh) gClsMesh = find_class(L"Mesh");
@@ -202,11 +204,48 @@ static void grid_poll(u32 pawn, u32 level) {
     gGridPending = 1;
 }
 
+/* The wizard card's pickup feedback, for every custom pickup (KWPickup.AnnouncePickup: PlaySound(PickupSound, ..)
+   + FancySpawn(PickupFXClass); WizardCard: SoundEffects.Magic.pickup_wizardcard and the BeanPickup sparkle).
+   PlaySound is native with no C++ helper, so AActor::execPlaySound is called with a frame of our own whose bytecode
+   holds the arguments, the way a script call would: EX_ObjectConst <sound>, EX_Nothing for the 7 optional ones,
+   EX_EndFunctionParms. FFrame: vtable, Node, Object, Code (+0xC), Locals (Core.dll FFrame ctor / Step). */
+typedef void (__thiscall *framector_fn)(void *frame, void *obj);
+typedef void (__thiscall *execnative_fn)(void *self, void *frame, void *result);
+static framector_fn gFrameCtor; static execnative_fn gExecPlaySound; static u32 gClsSound, gClsSparkle;
+static void pickup_fx_lookups(void) {   /* worker */
+    HANDLE core = GetModuleHandleW(L"Core.dll"), eng = GetModuleHandleW(L"Engine.dll");
+    if (!gFrameCtor && core) gFrameCtor = (framector_fn)GetProcAddress(core, "??0FFrame@@QAE@PAVUObject@@@Z");
+    if (!gExecPlaySound && eng) gExecPlaySound = (execnative_fn)GetProcAddress(eng, "?execPlaySound@AActor@@QAEXAAUFFrame@@QAX@Z");
+    if (!gClsSound) gClsSound = find_class(L"Sound");
+    if (!gClsSparkle) gClsSparkle = find_class(L"BeanPickup");
+}
+static void pickup_fx(u32 pawn, const float *at) {   /* game thread */
+    struct { u32 type, owner; int tag; float x, y, z; int p, yw, r; u32 bz; u32 ret; } parms; void *fn;
+    if (gClsSparkle && N_FancySpawn2 >= 0 && (fn = gFindFunction((void *)pawn, N_FancySpawn2, 0))) {
+        memset(&parms, 0, sizeof parms);
+        parms.type = gClsSparkle; parms.x = at[0]; parms.y = at[1]; parms.z = at[2];
+        gPEOrig((void *)pawn, fn, &parms, 0);
+    }
+    if (gFrameCtor && gExecPlaySound && gClsSound && gLoadObject) {
+        u32 snd = (u32)gLoadObject((void *)gClsSound, 0, L"SoundEffects.Magic.pickup_wizardcard", 0, 0x2002, 0);
+        u32 frame[16]; u8 code[16]; int k;
+        if (!snd) return;
+        memset(frame, 0, sizeof frame);
+        code[0] = 0x20; memcpy(code + 1, &snd, 4);           /* EX_ObjectConst sound */
+        for (k = 0; k < 7; k++) code[5 + k] = 0x0B;          /* EX_Nothing: slot, volume, ... (defaults) */
+        code[12] = 0x16; code[13] = 0x16;                    /* EX_EndFunctionParms */
+        gFrameCtor(frame, (void *)pawn);
+        frame[3] = (u32)code;
+        gExecPlaySound((void *)pawn, frame, 0);   /* on the hero: the look itself is destroyed right after */
+    }
+}
 /* game thread: destroy the looks the worker saw picked up; the Map / Shortcut Passwords take effect now */
 static void grid_take(void) {
-    u32 bits = gGridTake; int i, apply = 0;
+    u32 bits = gGridTake, pc, pawn; int i, apply = 0;
+    pc = gPlayer ? P(gPlayer + offPlayerActor) : 0; pawn = pc ? P(pc + offPawn) : 0;
     for (i = 0; i < NGRID; i++) if ((bits >> i) & 1) {
         u32 a = gGridKill[i], xl = a && offXLevel > 0 ? P(a + offXLevel) : 0;
+        if (a && pawn) pickup_fx(pawn, (const float *)(a + offLoc));
         if (xl && gDestroyActor) gDestroyActor((void *)xl, (void *)a, 0);
         gGridKill[i] = 0;
         if (GRID[i].fx == 'm' || GRID[i].fx == 'p') apply = 1;
