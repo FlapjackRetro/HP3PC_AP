@@ -52,7 +52,7 @@ IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–111, passwords 
 ## Goal (`goal`, `cards_required`)
 
 - `final_day_cards`: the Final Day door (GroundsHub `FinalDayDoor`) opens with `cards_required` cards (1–79,
-  default 40 for now). Victory is the event "Final Day Door Opened".
+  default 40). Victory is the event "Final Day Door Opened".
 - Ideas to workshop: N cards **and** pass the three final exams; card sets (the game has 10: WZ 15, WI 15, QU 5,
   VP 5, HG 5, GI 5, GB 5, DR 5, BE 15, BO 5).
 - The Harry Potter card check stays vanilla: Fred & George give it once the other 79 are found.
@@ -77,10 +77,10 @@ Slot data: all six options.
 ## Open questions
 
 - Which portrait each of Portrait Password 1–8 opens (PortraitPassword_B–F plus in-hub rooms): next session.
-- Default for `cards_required`.
 
 ## Settled
 
+- `cards_required` defaults to 40.
 - Game name: **Harry Potter 3 PC**, after Harry Potter 2 PC, the first of the series in Archipelago.
 - The grounds are always open: no Grounds Access item, the `GroundsBlocker` portcullises stay up.
 - Traps: none designed yet. IDs 350–399 are reserved for them.
