@@ -71,6 +71,7 @@ LEVEL_UNLOCKS: dict[str, ItemData] = {
     "Monster Book Challenge Unlock":    ItemData(109, IC.progression, "Level Unlocks", "door MonsterBook (MBOMDoor)"),
     "Hippogriff Challenge Unlock":      ItemData(110, IC.progression, "Level Unlocks", "door Hippogriff (COMC)"),
     "Doxy Challenge Unlock":            ItemData(111, IC.progression, "Level Unlocks", "door Doxy (well)"),
+    "Bonus Room Unlock":                ItemData(112, IC.progression, "Level Unlocks", "door BonusRoom: HP3_BeanBonus (entrance hall south door)"),
 }
 CHALLENGE_GRANTS = {
     "Carpe Retractum Challenge Unlock": ("Carpe Retractum",),
