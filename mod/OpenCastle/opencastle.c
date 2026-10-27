@@ -70,7 +70,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc8d"
+#define OC_VERSION L"poc8e"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -419,6 +419,47 @@ static int v_findgate(u32 o, int name, u32 cls, void *c) {
     for (i = 0; i < NDOORS && i < MAXGATES; i++) if (f->names[i] >= 0 && tag == f->names[i] && f->nfound[i] < GATEMOVERS) f->found[i][f->nfound[i]++] = o;
     return 0;
 }
+/* First-visit vs replay cutscenes. Story maps pair a first-visit CutSceneTrigger (bPersistent, fires once, event E)
+   with a replay one on the same Tag (event E_02..., ExcludeFromGameStates GState000). Vanilla plays the map first in
+   GState000, where only the first one runs, and on later visits the first one has already fired. Open Castle enters
+   in GState090 with nothing fired yet, so BOTH run and every Trigger in them happens twice: a TriggerToggle mover
+   opens and shuts again (Ch1: the imp portrait springs back, the trapdoor over the Spongify pad closes, softlock).
+   On each new map: for every pair of CutSceneTriggers with the same Tag where one's Event is the other's Event
+   followed by "_02", the first-visit one loses its Event, so only the replay version plays. In the retail maps that's
+   HP3_Ch1CarpeRetractum only: 6033Ch1GnomeGetsUp, 6035Ch1HoleQC, 6040Ch1PixiesQC, 6045Ch1BeatPixiesQC. */
+#define CS_MAX 256
+struct csfind { u32 level, cls; int n; u32 obj[CS_MAX]; int tag[CS_MAX], ev[CS_MAX]; };
+static int v_cs(u32 o, int name, u32 cls, void *c) {
+    struct csfind *f = c; (void)name;
+    if (!cls || f->n >= CS_MAX || rd32(o + offLevel) != f->level || !is_a_cls(cls, f->cls)) return 0;
+    f->obj[f->n] = o; f->tag[f->n] = (int)rd32(o + offTag); f->ev[f->n] = (int)rd32(o + offEvent); f->n++;
+    return 0;
+}
+static void dedupe_cutscenes(u32 level) {
+    static struct csfind f; static u32 clsCS; static wchar b[200]; int i, j, n = 0;
+    if (!clsCS) clsCS = find_class(L"CutSceneTrigger");
+    if (offEvent < 0) offEvent = prop_offset(L"Actor", L"Event");
+    if (!clsCS || offEvent <= 0 || offTag <= 0) return;
+    f.level = level; f.cls = clsCS; f.n = 0;
+    for_each_object(v_cs, &f);
+    for (i = 0; i < f.n; i++) {
+        wchar a[96];
+        if (!f.ev[i] || !name_of(f.ev[i], a, 96)) continue;
+        for (j = 0; j < f.n; j++) {
+            wchar e[96]; int k;
+            if (j == i || f.tag[j] != f.tag[i] || !f.ev[j] || !name_of(f.ev[j], e, 96)) continue;
+            for (k = 0; a[k] && wlow(a[k]) == wlow(e[k]); k++) ;
+            if (a[k] || e[k] != '_' || e[k + 1] != '0' || e[k + 2] != '2') continue;   /* e must be a + "_02..." (not "_010", a state variant) */
+            if (rd32(f.obj[i] + offEvent) == (u32)f.ev[i]) {
+                *(volatile int *)(f.obj[i] + offEvent) = 0;
+                wsprintfW(b, L"cutscenes: %s off (first visit), %s plays instead", a, e); log_line(b); n++;
+            }
+            break;
+        }
+    }
+    if (n) { wsprintfW(b, L"cutscenes: %d first-visit trigger(s) switched off on this map", n); log_line(b); }
+}
+
 /* every 2 s: read which doors are unlocked; raise/lower each gate on this map to match */
 static void gates_poll(u32 level, const wchar *map) {
     static wchar b[200]; int i, changed = 0;
@@ -434,6 +475,7 @@ static void gates_poll(u32 level, const wchar *map) {
         log_line(b);
     }
     if (!gClsMover || offTag < 0 || offKeyNum < 0) return;
+    if (level != gGateLevel) dedupe_cutscenes(level);
     if (level != gGateLevel) {   /* new map: find its gate movers */
         struct findgate f; int n = 0;
         f.level = level;
