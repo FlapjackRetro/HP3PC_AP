@@ -318,3 +318,17 @@ New mechanisms (`unlocks.h`):
   `HP3_Ch2Draconifors` / `HP3_Ch3Glacius`) and sends the player to InsideHub instead.
 - Spells and challenge access stay separate unlocks for now (logic tracing).
 - Doors now start locked from the first frame (the worker used to assume unlocked until the first poll).
+
+### poc8e: first-visit and replay cutscenes both played (Ch1 softlock)
+
+- Reported: in HP3_Ch1CarpeRetractum the imp portrait fell and sprang back; after the imps, the trapdoor over the
+  Spongify pad (`Mover23`, `CRTrapdoorZ1`) opened and shut at once, and the pad couldn't be reached (softlock).
+- Cause: Ch1 pairs each scripted moment with a first-visit cutscene trigger (`bPersistent`, fires once, e.g.
+  `6033Ch1GnomeGetsUp`, `6035Ch1HoleQC`) and a replay one on the same Tag (`…_02`, `ExcludeFromGameStates` GState000).
+  Vanilla plays Ch1 first in `GState000` (only the first-visit one) and later visits have it already fired. Open
+  Castle enters in `GState090` with nothing fired, so both play, and every `Trigger` in them runs twice: the portrait
+  (a toggle mover) falls and returns, the trapdoor opens and closes.
+- Fix (`dedupe_cutscenes`): on each new map, for two CutSceneTriggers with the same Tag where one's Event is the
+  other's plus `_02`, the first-visit one loses its Event. In the retail maps that's four pairs, all in Ch1:
+  `6033Ch1GnomeGetsUp`, `6035Ch1HoleQC`, `6040Ch1PixiesQC`, `6045Ch1BeatPixiesQC`. The cost: the first-visit
+  dialogue lines in those scenes.
