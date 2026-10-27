@@ -115,7 +115,7 @@ shared and sold in a fixed order, whichever student you buy from (20 cards, plus
 
 ## Logic notes
 
-Portrait passwords → portraits (mapping in progress): **1 → a secret room inside the castle (InsideHub, around (−500, 500, 1530))**, **3 → an area in the dungeons (DungeonHUB, around (290, 900, −690))**, **2 → Portrait F**, **7 → Portrait D**, **8 → Portrait E**.
+Portrait passwords → portraits (mapping in progress): **1 → a secret room inside the castle (InsideHub, around (−500, 500, 1530))**, **3 → an area in the dungeons (DungeonHUB, around (290, 900, −690))**, **5 → a second dungeon area (probably the "Glover" portrait, `PortraitPasswordTrigger1` at (−1255, 2340, −282); to confirm)**, **2 → Portrait F**, **7 → Portrait D**, **8 → Portrait E**.
 
 Rules collected so far (to go into `rules.py` with the locations):
 
@@ -124,6 +124,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Carpe (Ch1 + Ch1B) | Carpe Retractum Challenge Unlock (door), **Carpe Retractum, Spongify, Depulso** (2026-10-27) |
 | Portrait E | **Portrait Password 8**, and to enter any part of it **Alohomora, Depulso and Spongify** (2026-10-27). Its checks: 7 knights (Depulso) and one armoire with two spawners (below) |
 | Portrait Password 3 area (Dungeons, around (290, 900, −690); the "Stroulger" portrait room: chests tagged `Stroulger_Poxie_Chest`) | **Portrait Password 3 + Spongify** for every check there (2026-10-27); everything past the doxy fight also needs **Alohomora + Rictusempra** |
+| Portrait Password 5 area (Dungeons) | **Portrait Password 5 + Lumos** for every check there (2026-10-27). Possible bypass to verify: `AlohomoraTrigger8` (−496, 2669, −280), near dungeon door 1, also opens `PortPass_Glover_Mvr` |
 | Portrait D | **Portrait Password 7** (confirmed in play 2026-10-27); everything past the freestanding cake also needs **Rictusempra, Spongify and Depulso** (2026-10-27): the two companion chests `ChestCompanionSpawner3` (Imp card, 10 pasties, 5 cakes) and `ChestCompanionSpawner0` (10 pasties, 15 cakes) |
 
 | Check | Extra needs | Source |
