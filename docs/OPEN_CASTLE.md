@@ -9,7 +9,8 @@ Status: plan. Everything marked *(verify)* needs an in-game check, which is what
 
 ## 1. Base state
 
-Open Castle locks the game to a single story state. **`GState090` or `GState100`** is the natural choice:
+Open Castle locks the game to a single story state. **Decided: `GState090`** (see §6a, open decisions). Notes from
+when it was between `090` and `100`:
 
 - all three side-room challenge doors are active, and all three challenges send you back to InsideHub, in both;
 - the Monster Book intro trigger is tagged `GState070/090/100`, so it can start in either;
@@ -30,6 +31,7 @@ Every check below already has a stable save key or a single function the mod can
 | Pumpkin Pasties (placed) | `pasty_checks` | 180 | `KWPickup` → `<LevelID><ActorName>_PU` |
 | Cauldron Cakes (placed) | `cake_checks` | 71 | same |
 | Marauder's Map | `marauders_map_check` | 1 | Vanilla (confirmed in play): the `1051GetMaraudersMap` cutscene in the shortcuts room on first arrival at Hogwarts (`GState010`); Harry picks up a `MaraudersPickup` (InsideHub ~(150, −870, 144)). `1005TaskedShop` also has a `GiveMap`. Neither plays in Open Castle, so the pickup needs a new trigger or a placed map. |
+|  |  |  | **Default when the option is off: granted at game start**, and the game starts in the shortcuts room where Fred's scene ends ([OPEN_CASTLE_CHANGES.md](OPEN_CASTLE_CHANGES.md) S1–S2). |
 | Bundimun drops | `pasty_checks` (or own option) | 12 creatures (9 in Ch2B, 3 in FA2) | Fixed drop (`GoodieCount` × `GoodieToSpawn`, only the direction is random); hook the defeat in `BundimunController`. Needs Rictusempra. Respawns on reload. See [PLAYTHROUGH.md](PLAYTHROUGH.md) §14. |
 | Beans | no | — | Currency only |
 
@@ -83,8 +85,8 @@ Depends on Open Castle working without heavy changes to Hogwarts. Candidate item
 
 | Item | Door(s) | Leads to |
 | --- | --- | --- |
-| Grounds Access | `GroundsBlocker` ×3 portcullises | GroundsHub |
-| Dungeon | `Dungeon_Door_Mvr` | DungeonHUB |
+| ~~Grounds Access~~ | ~~`GroundsBlocker` ×3 portcullises~~ | dropped (2026-10-26): the grounds stay open, no item |
+| ~~Dungeon~~ | ~~`Dungeon_Door_Mvr`~~ | dropped: the dungeon is always reachable from InsideHub (`ChangeLevelTrigger8` has no state filter; walked in freely in `GState060`, confirmed). Re-adding it would mean shutting a door vanilla leaves open |
 | Library | `Library_Door_Mvr` / `Library_Port_Mvr` (2nd floor, ≈ (−704, −1368, 732)) | Adv3Library (confirmed: the library level exits here) |
 | Expecto Patronum | `DADA_DoorToExpecto_Mvr` / `DADA_PortToExpecto_Mvr` (DADA classroom, ≈ (856, −1844, 1152)) | Adv2ExpPatronum (door located in play; it's a closed portcullis + door pair) |
 | Monster Book Room | `MBOMDoor` ×3 | Monster Book side quest |
@@ -149,7 +151,8 @@ per area) is possible later, since each entry is separate.
 
 ### Filler
 
-Beans, cakes and pasties as currency; chocolate frogs; possibly traps later.
+Superseded: the item tiers are in [APWORLD.md](APWORLD.md) (cakes and pasties are progression_skip_balancing
+currency, beans stay vanilla, chocolate frogs and the Marauder's Map are filler).
 
 ## 4. Hogwarts entrance layout
 
@@ -203,7 +206,7 @@ The well and Monster Book cards are placed out of reach ("Green Room DON'T HIDE"
 
 | Map | Has checks | Plan |
 | --- | --- | --- |
-| Adv1Express (Hogwarts Express, prologue) | 1: Fulbert the Fearful card (confirmed, [PLAYTHROUGH.md](PLAYTHROUGH.md)) | drop it and put the card in the pool, or keep it as the opening (no hub door exists) |
+| Adv1Express (Hogwarts Express, prologue) | 1: Fulbert the Fearful card (confirmed, [PLAYTHROUGH.md](PLAYTHROUGH.md)) | 7th-floor east locked door (§6a) |
 | GroundsDada | yes | entrance needed |
 | Adv2ExpPatronum | yes | DADA → Expecto door *(verify)* |
 | Adv3Library | yes | Library door *(verify)* |
@@ -217,7 +220,99 @@ The well and Monster Book cards are placed out of reach ("Green Room DON'T HIDE"
 Rule from the plan: **maps that are cutscene-only with no player interaction are removed.** Any items they would
 grant (in the categories in §2) go into the Open Castle item pool instead.
 
+## 6a. Layout (draft v1)
+
+Built from the vanilla playthrough ([PLAYTHROUGH.md](PLAYTHROUGH.md)). Positions are Unreal units in the map named.
+
+The concrete per-map change list is in [OPEN_CASTLE_CHANGES.md](OPEN_CASTLE_CHANGES.md).
+
+### Already connected (no change)
+
+| Map | Entrance today | Checks |
+| --- | --- | --- |
+| GroundsHub | InsideHub main doors (cutscene trigger `LevelLoadGrounds`; back via GroundsHub `ChangeLevelTrigger2` (−830, −7617, 1153)) | 10 cards, 6 secrets, well quest |
+| DungeonHUB | InsideHub `ChangeLevelTrigger8` (225, 2968, −176), entrance-hall stairs | 2 cards, 26 event snacks |
+| COMC | GroundsHub `ChangeLevelTrigger1` (−1816, 1191, 769), course selection | 5 hippogriff cards |
+| BeanBonus | InsideHub `ChangeLevelTrigger14` (−1083, −2365, 2246) | 5 cards |
+| PortraitPassword_B–F | InsideHub `ChangeLevelTrigger1`/`4`/`13`/`12`/`0` (portraits) | 1 card each |
+
+### Challenges: side room (existing doors)
+
+| Region | Entrance | Gate (item) | Exit back |
+| --- | --- | --- | --- |
+| Ch1 + Ch1B (Carpe Retractum) | side room `ChangeLevelTrigger9` (971, −2049, 304) | Carpe Retractum (+ challenge access if split) | the B map's chamber copy → InsideHub; keep only `0700Ch1Chal_InsHubDoor`, suppress the story exits (`…_QuidDem_070`, `…_BuckyEx`, `…_CRDoor`) |
+| Ch2 + Ch2B (Draconifors) | side room `ChangeLevelTrigger10` (1309, −1722, 304) (also `ChangeLevelTrigger7` (−3172, 2205, 547), a second chamber door) | Draconifors | suppress `DracLoadQuidditch` / `DracLoadBuckyExec` |
+| Ch3 + Ch3B (Glacius) | side room `ChangeLevelTrigger11` (974, −1397, 304) | **Glacius** (needed to move at all) | suppress `GlaciustoQuidditch` / `GlaciustoBuckBeakExc` |
+
+### Story maps: new entrances
+
+| Map | Checks | Entrance | Gate | Exit back (retarget) |
+| --- | --- | --- | --- | --- |
+| Adv2ExpPatronum | card *Honoria Nutcombe*, skull shelves | DADA classroom portcullis + doors `DADA_PortToExpecto_Mvr` / `DADA_DoorToExpecto_Mvr` (856, −1844, 1152): raise/open on the item, `ChangeLevelTrigger` behind | Expecto Patronum (+ area item if split) | `7090PatronusExit` (→ Adv3Library) → InsideHub at the DADA door |
+| Adv3Library | cards *Falco Aesalon*, *Double-Ended Newt*; 4 secrets | 2nd-floor Library portcullis + doors `Library_Port_Mvr` / `Library_Door_Mvr` (−704, −1368, 732) | Library item; Depulso inside | already exits to InsideHub at this door (`7170Library_Exit`) |
+| Adv5Shack | card *Sacharissa Tugwood*; 5 secrets; ~37 snacks | **Dungeon locked door 1**, DungeonHUB (−480, 2786, −318): new trigger, lock bar `StaticMeshActor315` hidden on the item. Spare: dungeon door 2 (−480, 4126, −318). (The Whomping Willow isn't reachable by the player, confirmed.) | Shack item; Draconifors, Alohomora, Depulso, Spongify, Rictusempra inside; party must be Harry + Hermione | exit to WhompingWillow (`ChangeLevelTrigger0` / `8700ADV5AtShack`) → DungeonHUB at dungeon door 1 |
+| Adv6Paddock | card *Professor Armando Dippet*; ~33 snacks | **entrance hall, north locked door** (731, 1615, 74): new trigger, lock bar `StaticMeshActor42` hidden on the item | Paddock item; **Depulso + Spongify** to start; Lapifors, Draconifors, Alohomora inside | `9080Adv6Flyaway` (→ DementorBattle) → InsideHub at the entrance-hall north door |
+| FA1Ron (Ron's exam) | 5 stars, 3 snacks | DADA classroom `ChangeLevelTrigger3` (262, −2328, 1218), retargeted from Ch1 | Carpe Retractum | `RonExamExitDONE` (→ FA2) → InsideHub at DADA |
+| FA2Hermione | 5 stars, 61 snacks, 3 bundimuns | Transfiguration `ChangeLevelTrigger2`/`5` (−4373, 1556, 0), retargeted from Ch2 | Draconifors/Lapifors | `ChangeLevelTrigger1` (→ FA3) → InsideHub at Transfiguration |
+| FA3Harry | 5 stars, 5 snacks | Charms `ChangeLevelTrigger6` (−1359, −2983, 941), retargeted from Ch3 | Glacius | `ChangeLevelTrigger0` (→ GroundsHub, sets `100`) → InsideHub at Charms, no state change |
+| Adv1Express (prologue) | card *Fulbert the Fearful* | **7th-floor locked door (east)** (1427, −960, 2154): new trigger, lock bar `StaticMeshActor228` hidden on the item | Express item | `0180ADV1DemExit` → InsideHub at that door |
+| Final | 1 chest | `FinalDayDoor` (GroundsHub `Mover11`, (768, −6208, 864)) | **goal** | — |
+
+### Dropped (cutscene only, no checks)
+
+Quidditch, WhompingWillow, BuckyExecuted, DementorBattle (both visits), Infirmary, DarkTower. Their items: none.
+
+**GroundsDada: treated as cutscene only (provisional).** Both visits so far were cutscene; to be confirmed after the
+final exams (its `9240RonExamIntroPt1` runs in `090`). Its catalogue entries: card *Double-Ended Newt*, which is
+also placed in Adv3Library and GroundsHub, so the card check (keyed by card class) is still reachable without it;
+and 3 secret areas (`BeanPathOne`, `WheelPuzzlePrize`, `SecretAreaMarker2`), which are **not** checks while the map is
+dropped.
+(DementorBattle could come back later as a boss check that needs Expecto Patronum.)
+
+### Spare entrances left after this layout
+
+4th-floor locked door (−187, 1274, 1498), 7th-floor west door (−84, −1081, 2154), dungeon door 2
+(−480, 4126, −318), Lupin's office (with a Spongify pad), the entrance hall's south door (held for GroundsDada if it turns out playable), and Hagrid's hut door (outdoor maps only). Reserved for later options (e.g. DementorBattle as a boss, or splitting maps).
+
+### What the mod does at runtime
+
+On loading a hub (InsideHub, GroundsHub):
+1. Spawn the new `ChangeLevelTrigger`s above (and the Spongify pad and target for Lupin's office, if option A).
+2. Per received area item: raise the portcullis / open the door movers, or hide the lock-bar mesh; until then, keep
+   them shut and their triggers disabled.
+3. Retarget the classroom triggers (`ChangeLevelTrigger3`/`2`/`5`/`6`) from the challenges to the exams.
+4. Suppress the story cutscene triggers that would pull the player into the vanilla chain (exam intros
+   `CutSceneTrigger13` / `6180TransIntro` / `7250CharmsIntro`, the challenge-chamber story exits, `FinalDayDoor`
+   until the goal is met).
+
+On loading a story map: retarget its vanilla exit to InsideHub/GroundsHub at its entrance (a `PlayerStart` /
+`SmartStart` there), and set or restore the game state the map needs (e.g. Adv5Shack was built for `085`, Adv6 for
+`090`).
+
+### Third Peeves fight (entrance hall, `GState100`)
+
+`Peeves0` (tag `Peeves3`, (−126, 1392, 417)) is grouped into `GState100` only. The intro trigger `CutSceneTrigger9`
+(`9225ADV4PeevesIntro`) is in `GState010` and `GState100`. Reward on defeat: **3 Cauldron Cakes only** (dispatcher
+`Peeves3Done` → `Peeves3_Spwn_Cake_01`–`03`), plus its `_bD` defeat flag. No card, no unlock. Side effects: the intro
+and exit cutscenes (`9225…`/`9227ADV4PeevesExit`) `savegame`, toggle the entrance-hall torch puzzle
+(`Main_TorchPuzz_Torch*`), the portrait movers `Peeves3_Port`, and **`GroundsBlocker`**, the portcullises
+between the entrance hall and the grounds (the planned "Grounds Access" unlock). So the fight shuts and reopens the
+grounds route. (Moot: Open Castle runs in `GState090` and the grounds stay open, no Grounds Access item.)
+
+### Open decisions
+
+1. **Base state**: decided: **`GState090`**. The exam-intro cutscene triggers get suppressed. `GState100` was
+   rejected because its third Peeves fight toggles `GroundsBlocker` (the Grounds Access portcullises).
+2. **Adv1Express**: decided: **the 7th-floor east locked door**. A new game starts in Hogwarts (shortcuts room).
+3. **Adv5Shack**: decided: **dungeon locked door 1** (the Willow is unreachable). Lupin's office (via a Spongify
+   pad) stays a spare.
+4. **Hagrid's hut door** is reserved for a map with an outdoor setting. **Adv6Paddock** moved to the entrance hall's
+   north door, so the hut is currently unused.
+5. **GroundsDada**: provisionally cutscene only and dropped; confirm after the final exams.
+
 ## 7. Draft YAML options
+
+Superseded by the options in [APWORLD.md](APWORLD.md) (`apworld/hp3pc/options.py`).
 
 ```yaml
 Harry Potter 3 PC:
@@ -259,3 +354,18 @@ target is higher than its pad (one-way up), and check whether the area below has
 - Where grounds triggers could go for Adv5Shack, Adv6Paddock and BuckyExecuted.
 - Which story maps are pure cutscene (no player control).
 - Arrival spawn points and state requirements for each story map.
+
+## Location rule: no random amounts (decided 2026-10-26)
+
+A container whose snack amount is rolled when it opens is **not a randomizer location**. It stays in the game with
+its vanilla behaviour (it still drops what it would normally drop) and is left out of the item pool.
+
+- How the game decides (KWGenericSpawner): if any `GoodiesNumber` is set, the drop is exact. Otherwise it spawns
+  `RandRange(Limits.Min, Limits.Max)` goodies, which is a fixed `Min` whenever `Max <= Min`.
+- The catalogue's `random_amount` column marks the containers that really roll (`Max > Min`, shown as the range).
+- The only rolling containers with pasties or cakes:
+  - `HP3_Ch1CarpeRetractumB` `BannerSpwn1`: 2–3 cauldron cakes;
+  - `HP3_PortraitPassword_F` `KnightSpawner7`: 6–14 pumpkin pasties per hit, 2 hits.
+- Containers that only ever give jellybeans also roll, often by class default. They aren't snack checks.
+- Look fixed but aren't random: the Ch1B 8-pasty chest (`ChestSpawner12`), the Ch2 pumpkins (2 pasties each), Ch2
+  `KnightSpawner2` (the Common Welsh Green Dragon card), and FA1 `ChestSpawner7`. All have Min = Max.
