@@ -70,7 +70,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc7c"
+#define OC_VERSION L"poc7d"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -231,18 +231,26 @@ static void fire_gates(void) {
 static volatile int gGridPending; static void grid_spawn(void); static void items_apply(void);
 static volatile u32 gGridTake; static void grid_take(void);
 static volatile u32 gBlockSpawn, gBlockKill; static void blockers_apply(void);
+static int N_PlayerTick = -1, N_Tick = -1;
 static void __thiscall pe_hook(void *self, void *func, void *parms, void *result) {
-    int fname;
+    int fname = func ? *(int *)((u8 *)func + 0x20) : -1, safe;
+    /* Jobs that spawn, destroy or change actors run only from a tick event (PlayerTick / Tick, called while the
+       level ticks). ProcessEvent is also called while the frame is drawn (HUD and canvas events from
+       UGameEngine::Draw), and destroying an actor there crashed in RenderLevel (poc7c, a grid pickup). */
+    safe = fname >= 0 && (fname == N_PlayerTick || fname == N_Tick);
     if (gPending && !gInTravel) { gInTravel = 1; gPending = 0; do_travel(); gInTravel = 0; }
-    if (gPendingShortcuts && !gInTravel) { gInTravel = 1; gPendingShortcuts = 0; items_apply(); gInTravel = 0; }
-    if (gGridTake && !gInTravel) { gInTravel = 1; grid_take(); gInTravel = 0; }
-    if (gPendingRespawn && !gInTravel) { gInTravel = 1; gPendingRespawn = 0; lo_respawn(); gInTravel = 0; }
     if (gMenuPatch && !gInTravel) { gInTravel = 1; gMenuPatch = 0; hub_patch(); gInTravel = 0; }
-    if (gGateFire && !gInTravel) { gInTravel = 1; fire_gates(); gInTravel = 0; }
-    if (gGridPending && !gInTravel) { gInTravel = 1; grid_spawn(); gGridPending = 0; gInTravel = 0; }
-    if ((gBlockSpawn || gBlockKill) && !gInTravel) { gInTravel = 1; blockers_apply(); gInTravel = 0; }
+    if (safe && !gInTravel) {
+        gInTravel = 1;
+        if (gPendingShortcuts) { gPendingShortcuts = 0; items_apply(); }
+        if (gGridTake) grid_take();
+        if (gPendingRespawn) { gPendingRespawn = 0; lo_respawn(); }
+        if (gGateFire) fire_gates();
+        if (gGridPending) { grid_spawn(); gGridPending = 0; }
+        if (gBlockSpawn || gBlockKill) blockers_apply();
+        gInTravel = 0;
+    }
     if (!func || !self) { gPEOrig(self, func, parms, result); return; }
-    fname = *(int *)((u8 *)func + 0x20);
     if (fname == N_MyOnClick && N_MyOnClick >= 0 && !gInTravel) {
         int done; gInTravel = 1; done = hub_click((u32)self, (u32 *)parms); gInTravel = 0;
         if (done) return;
@@ -468,7 +476,7 @@ static u32 WINAPI worker(void *arg) {
                 NAME(N_EnableShortcuts, L"EnablePortraitShortcuts") NAME(N_SaveValue, L"SaveValue")
                 NAME(N_RestoreValue, L"RestoreValue") NAME(N_FancySpawn, L"FancySpawn") NAME(N_Destroyed, L"Destroyed")
                 NAME(N_PostPDR, L"PostPersistentDataRestored") NAME(N_TravelExporting, L"TravelExporting")
-                NAME(N_Trigger, L"Trigger")
+                NAME(N_Trigger, L"Trigger") NAME(N_PlayerTick, L"PlayerTick") NAME(N_Tick, L"Tick")
 #undef NAME
                 if (!miss && !logged) {
                     logged = 1;
