@@ -151,7 +151,8 @@ per area) is possible later, since each entry is separate.
 
 ### Filler
 
-Beans, cakes and pasties as currency; chocolate frogs; possibly traps later.
+Superseded: the item tiers are in [APWORLD.md](APWORLD.md) (cakes and pasties are progression_skip_balancing
+currency, beans stay vanilla, chocolate frogs and the Marauder's Map are filler).
 
 ## 4. Hogwarts entrance layout
 
@@ -310,6 +311,8 @@ grounds route, and Open Castle would have to keep that in step with the Grounds 
 5. **GroundsDada**: provisionally cutscene only and dropped; confirm after the final exams.
 
 ## 7. Draft YAML options
+
+Superseded by the options in [APWORLD.md](APWORLD.md) (`apworld/hp3pc/options.py`).
 
 ```yaml
 Harry Potter 3 PC:
