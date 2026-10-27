@@ -19,7 +19,7 @@ seeds can't be generated; the item table and options are in place. Decisions fro
 Not randomized (first pass): jellybeans, challenge stars (the game's challenge shields), the Harry Potter card.
 
 IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–111, passwords 200–207 and 220, currency 301–310 and
-321–324, filler 340–341, cards 1000 + index in `WizardCardManager.Cards`). Offsets never change once released.
+321–324, filler 340–341, traps 350–399 (reserved), cards 1000 + index in `WizardCardManager.Cards`). Offsets never change once released.
 
 ### Currency
 
@@ -76,8 +76,11 @@ Slot data: all six options.
 
 ## Open questions
 
-- Which portrait each of Portrait Password 1–8 opens (PortraitPassword_B–F plus in-hub rooms).
+- Which portrait each of Portrait Password 1–8 opens (PortraitPassword_B–F plus in-hub rooms): next session.
 - Default for `cards_required`.
-- Game name (`Harry Potter 3 PC`, from the draft YAML): it's permanent once seeds exist.
-- Grounds Access (the `GroundsBlocker` portcullises) as a level unlock: not in the item table.
-- Traps: none yet; IDs 350+ are free for them.
+
+## Settled
+
+- Game name: **Harry Potter 3 PC**, after Harry Potter 2 PC, the first of the series in Archipelago.
+- The grounds are always open: no Grounds Access item, the `GroundsBlocker` portcullises stay up.
+- Traps: none designed yet. IDs 350–399 are reserved for them.

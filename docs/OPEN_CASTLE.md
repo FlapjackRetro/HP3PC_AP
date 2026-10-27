@@ -85,7 +85,7 @@ Depends on Open Castle working without heavy changes to Hogwarts. Candidate item
 
 | Item | Door(s) | Leads to |
 | --- | --- | --- |
-| Grounds Access | `GroundsBlocker` ×3 portcullises | GroundsHub |
+| ~~Grounds Access~~ | ~~`GroundsBlocker` ×3 portcullises~~ | dropped (2026-10-26): the grounds stay open, no item |
 | ~~Dungeon~~ | ~~`Dungeon_Door_Mvr`~~ | dropped: the dungeon is always reachable from InsideHub (`ChangeLevelTrigger8` has no state filter; walked in freely in `GState060`, confirmed). Re-adding it would mean shutting a door vanilla leaves open |
 | Library | `Library_Door_Mvr` / `Library_Port_Mvr` (2nd floor, ≈ (−704, −1368, 732)) | Adv3Library (confirmed: the library level exits here) |
 | Expecto Patronum | `DADA_DoorToExpecto_Mvr` / `DADA_PortToExpecto_Mvr` (DADA classroom, ≈ (856, −1844, 1152)) | Adv2ExpPatronum (door located in play; it's a closed portcullis + door pair) |

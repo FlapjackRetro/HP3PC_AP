@@ -21,7 +21,7 @@ from BaseClasses import Item, ItemClassification as IC
 if TYPE_CHECKING:
     from .world import HP3PCWorld
 
-GAME_NAME = "Harry Potter 3 PC"
+GAME_NAME = "Harry Potter 3 PC"   # after Harry Potter 2 PC
 BASE_ID = 33_000_000
 
 
@@ -121,6 +121,7 @@ FILLER: dict[str, ItemData] = {
     "Marauder's Map": ItemData(341, IC.filler, "Filler", "MaraudersMap inventory item"),
 }
 FILLER_ITEM_NAME = "Chocolate Frog"
+# offsets 350-399: reserved for traps (none designed yet)
 
 # ---- wizard cards -------------------------------------------------------------------------------------------------
 # (index in WizardCardManager.Cards, class, display name). Item name: "<display name> Card".
