@@ -120,7 +120,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Region | Every check there needs |
 | --- | --- |
 | Carpe (Ch1 + Ch1B) | Carpe Retractum Challenge Unlock (door), **Carpe Retractum, Spongify, Depulso** (2026-10-27) |
-| Portrait D | its portrait password; everything past the freestanding cake also needs **Rictusempra and Spongify** (2026-10-27): the two companion chests `ChestCompanionSpawner3` (Imp card, 10 pasties, 5 cakes) and `ChestCompanionSpawner0` (10 pasties, 15 cakes) |
+| Portrait D | its portrait password; everything past the freestanding cake also needs **Rictusempra, Spongify and Depulso** (2026-10-27): the two companion chests `ChestCompanionSpawner3` (Imp card, 10 pasties, 5 cakes) and `ChestCompanionSpawner0` (10 pasties, 15 cakes) |
 
 | Check | Extra needs | Source |
 | --- | --- | --- |
