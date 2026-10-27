@@ -115,7 +115,7 @@ shared and sold in a fixed order, whichever student you buy from (20 cards, plus
 
 ## Logic notes
 
-Portrait passwords → portraits (mapping in progress): **2 → Portrait F**, **7 → Portrait D**, **8 → Portrait E**.
+Portrait passwords → portraits (mapping in progress): **1 → a secret room inside the castle (InsideHub, around (−500, 500, 1530))**, **2 → Portrait F**, **7 → Portrait D**, **8 → Portrait E**.
 
 Rules collected so far (to go into `rules.py` with the locations):
 
@@ -140,6 +140,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | (not a location) Portrait F knight `KnightSpawner7` (pasties) | Depulso. Rolls 6–14 pasties per hit, 2 hits, so it stays vanilla under the no-random-amounts rule. At (−3521, −776, 1608) | marked in play 2026-10-27 |
 | Portrait F: chest `ChestSpawner34` (Manticore card, 8 cakes) | Alohomora, plus Portrait Password 2. At (−3990, −580, 1680), save key `ppfChestSpawner34_lives` | marked in play 2026-10-27 |
 | Portrait F: Secret Area (`SecretAreaMarker0`, (−3400, −559, 1749)) | same as the chest `ChestSpawner34`: Alohomora, plus Portrait Password 2 (found together in play) | marked in play 2026-10-27 |
+| Hogwarts: chest `ChestSpawner3` (Giant Squid card, 15 pasties) | Portrait Password 1 (the room behind its portrait) + Alohomora. At (−493, 483, 1524), save key `ihubChestSpawner3_lives` | marked in play 2026-10-27 |
 | Portrait D: Cauldron Cake | only Portrait Password 7 (opens Portrait D). Freestanding `CauldronCake4` at (897, 139, 2178), save key `ppdCauldronCake4_PU` | marked in play 2026-10-27 |
 
 For logic tracing the challenge doors and the spells are separate unlocks in the mod and the debug panel; the
