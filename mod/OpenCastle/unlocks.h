@@ -24,6 +24,29 @@
  * Shortcuts: PortraitPasswordManager entries 8-21. On: EnablePortraitShortcuts(). Off: Owned = 0 for each (but 18,
  * which vanilla owns from the start).
  */
+/* Native functions can't be called through ProcessEvent (an exec function reads its arguments from the script
+   bytecode, not from the parms block), so SetCollision / SetCollisionSize / Destroy are called as the C++ methods
+   Engine.dll exports. Shared with blocker.h. */
+typedef void (__thiscall *setcol_fn)(void *actor, int colActors, int blockActors, int blockPlayers);
+typedef void (__thiscall *setcolsize_fn)(void *actor, float radius, float height);
+typedef int (__thiscall *destroyactor_fn)(void *level, void *actor, int bNetForce);
+static setcol_fn gSetCollision; static setcolsize_fn gSetCollisionSize; static destroyactor_fn gDestroyActor;
+static int offXLevel = -1;
+static void engine_exports(void) {
+    HANDLE eng; static wchar b[160];
+    if (gSetCollision && gSetCollisionSize && gDestroyActor && offXLevel > 0) return;
+    offXLevel = prop_offset(L"Actor", L"XLevel");
+    eng = GetModuleHandleW(L"Engine.dll");
+    if (eng) {
+        gSetCollision = (setcol_fn)GetProcAddress(eng, "?SetCollision@AActor@@QAEXHHH@Z");
+        gSetCollisionSize = (setcolsize_fn)GetProcAddress(eng, "?SetCollisionSize@AActor@@QAEXMM@Z");
+        gDestroyActor = (destroyactor_fn)GetProcAddress(eng, "?DestroyActor@ULevel@@UAEHPAVAActor@@H@Z");
+    }
+    wsprintfW(b, L"engine: SetCollision %s, SetCollisionSize %s, DestroyActor %s; xlevel=%d",
+              gSetCollision ? L"ok" : L"-", gSetCollisionSize ? L"ok" : L"-", gDestroyActor ? L"ok" : L"-", offXLevel);
+    log_line(b);
+}
+
 struct spellent { const wchar *key, *cls; };
 static const struct spellent SPELLS[] = {
     { L"Alohomora", L"AlohomoraSpell" },     { L"CarpeRetractum", L"RetractumSpell" }, { L"Depulso", L"DepulsoSpell" },
@@ -36,6 +59,9 @@ static volatile int gSpellOn[NSPELLS] = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
 static u32 gSpellCls[NSPELLS], gClsDracFire;
 static volatile int gHaveMap = -1, gHaveShortcuts = -1;
 static volatile int gSaveSpell[NSPELLS], gSaveMap, gSaveShortcuts;   /* found (save); gSaveDoor: opencastle.c */
+static volatile int gIniSpell[NSPELLS], gIniMap, gIniShortcuts;       /* start state (ini), for the debug panel */
+/* portrait passwords 1-8 = PortraitPasswordManager entries 0-7 (pp_0..pp_7, in the order the twins sell them) */
+static volatile int gSavePortrait[8], gIniPortrait[8], gHavePortrait[8] = { -1, -1, -1, -1, -1, -1, -1, -1 };
 typedef void (__thiscall *step_fn)(void *frame, void *context, void *result);
 static step_fn gStep;
 
@@ -84,7 +110,8 @@ static void spells_init(void) {
 static void unlocks_poll(void) {
     static wchar b[300]; int i, on, changed = 0;
     for (i = 0; i < NSPELLS; i++) {
-        on = GetPrivateProfileIntW(L"Spells", SPELLS[i].key, 1, gIniPath) != 0 || gSaveSpell[i];
+        gIniSpell[i] = GetPrivateProfileIntW(L"Spells", SPELLS[i].key, 1, gIniPath) != 0;
+        on = gIniSpell[i] || gSaveSpell[i];
         if (on != gSpellOn[i]) { gSpellOn[i] = on; changed = 1; }
     }
     if (changed) {
@@ -92,10 +119,18 @@ static void unlocks_poll(void) {
         for (i = 0; i < NSPELLS; i++) wsprintfW(b + wlen(b), L" %s=%d", SPELLS[i].key, gSpellOn[i]);
         log_line(b);
     }
-    on = GetPrivateProfileIntW(L"Items", L"MaraudersMap", 0, gIniPath) != 0 || gSaveMap;
+    gIniMap = GetPrivateProfileIntW(L"Items", L"MaraudersMap", 0, gIniPath) != 0;
+    on = gIniMap || gSaveMap;
     if (on != gHaveMap) { gHaveMap = on; wsprintfW(b, L"items: Marauder's Map %s", on ? L"unlocked" : L"locked"); log_line(b); if (on) gPendingShortcuts = 1; }
-    on = GetPrivateProfileIntW(L"Items", L"ShortcutPasswords", 0, gIniPath) != 0 || gSaveShortcuts;
+    gIniShortcuts = GetPrivateProfileIntW(L"Items", L"ShortcutPasswords", 0, gIniPath) != 0;
+    on = gIniShortcuts || gSaveShortcuts;
     if (on != gHaveShortcuts) { gHaveShortcuts = on; wsprintfW(b, L"items: shortcut passwords %s", on ? L"unlocked" : L"locked"); log_line(b); gPendingShortcuts = 1; }
+    for (i = 0; i < 8; i++) {
+        wchar k[16]; wsprintfW(k, L"Portrait%d", i + 1);
+        gIniPortrait[i] = GetPrivateProfileIntW(L"Items", k, 0, gIniPath) != 0;
+        on = gIniPortrait[i] || gSavePortrait[i];
+        if (on != gHavePortrait[i]) { gHavePortrait[i] = on; wsprintfW(b, L"items: portrait password %d %s", i + 1, on ? L"unlocked" : L"locked"); log_line(b); gPendingShortcuts = 1; }
+    }
 }
 /* ---- the save side (game thread) ---- */
 static u32 cur_store(void) {
@@ -116,18 +151,54 @@ static void save_flags_read(void) {
     for (i = 0; i < NDOORS && i < 16; i++) if ((gSaveDoor[i] = save_flag_get(store, L"Doors", DOORS[i].key)) != 0) { wsprintfW(b + wlen(b), L" door:%s", DOORS[i].key); n++; }
     if ((gSaveMap = save_flag_get(store, L"Items", L"MaraudersMap")) != 0) { wcpy(b + wlen(b), L" MaraudersMap", 40); n++; }
     if ((gSaveShortcuts = save_flag_get(store, L"Items", L"ShortcutPasswords")) != 0) { wcpy(b + wlen(b), L" ShortcutPasswords", 40); n++; }
+    for (i = 0; i < 8; i++) { wchar k[16]; wsprintfW(k, L"Portrait%d", i + 1);
+        if ((gSavePortrait[i] = save_flag_get(store, L"Items", k)) != 0) { wsprintfW(b + wlen(b), L" %s", k); n++; } }
     if (!n) wcpy(b + wlen(b), L" none", 10);
     log_line(b);
     unlocks_poll();
 }
-/* a pickup (later: a received item): remember it in the save and take effect now */
-static void save_flag_set(const wchar *section, const wchar *key) {
+/* a pickup (later: a received item) sets a flag; the debug panel can also clear one. Takes effect now. */
+static void save_flag_put(const wchar *section, const wchar *key, int on) {
     static wchar k[96], b[160]; u32 store = cur_store();
     if (!store) { wsprintfW(b, L"save flags: no PersistentStore; %s %s not kept", section, key); log_line(b); return; }
     wsprintfW(k, L"OC_%s_%s", section, key);
-    lo_save_value(store, k, L"1");
-    wsprintfW(b, L"save flags: %s set", k); log_line(b);
+    lo_save_value(store, k, on ? L"1" : L"0");
+    wsprintfW(b, L"save flags: %s %s", k, on ? L"set" : L"cleared"); log_line(b);
     save_flags_read();
+}
+static void save_flag_set(const wchar *section, const wchar *key) { save_flag_put(section, key, 1); }
+/* the carrier pawn holds the inventory (Level.InventoryCarrierPawn; GiveMap adds the map there) */
+static int offCarrier = -1; static u32 gClsMapInv;
+static u32 carrier_pawn(void) {
+    u32 pc = gPlayer ? P(gPlayer + offPlayerActor) : 0, level = pc ? P(pc + offLevel) : 0;
+    if (offCarrier < 0) offCarrier = prop_offset(L"LevelInfo", L"InventoryCarrierPawn");
+    return level && offCarrier > 0 ? P(level + offCarrier) : 0;
+}
+/* game thread: Marauder's Map locked again (debug panel): carrier.FindInventoryType -> DeleteInventory -> destroy */
+static void map_take_away(void) {
+    struct { u32 cls, ret; } fp; struct { u32 item; } dp; void *fn; u32 carrier = carrier_pawn(), xl;
+    static int N_FindInv = -1, N_DelInv = -1;
+    if (!carrier) return;
+    if (!gClsMapInv) gClsMapInv = find_class(L"MaraudersMap");
+    if (N_FindInv < 0) N_FindInv = name_index(L"FindInventoryType");
+    if (N_DelInv < 0) N_DelInv = name_index(L"DeleteInventory");
+    if (!gClsMapInv || N_FindInv < 0 || !(fn = gFindFunction((void *)carrier, N_FindInv, 0))) return;
+    fp.cls = gClsMapInv; fp.ret = 0; gPEOrig((void *)carrier, fn, &fp, 0);
+    if (!fp.ret) return;
+    if (N_DelInv >= 0 && (fn = gFindFunction((void *)carrier, N_DelInv, 0))) { dp.item = fp.ret; gPEOrig((void *)carrier, fn, &dp, 0); }
+    xl = offXLevel > 0 ? P(fp.ret + offXLevel) : 0;
+    if (xl && gDestroyActor) gDestroyActor((void *)xl, (void *)fp.ret, 0);
+    log_line(L"items: Marauder's Map taken away (locked)");
+}
+/* game thread: portrait passwords 1-8 follow their flags (Owned of entries 0-7) */
+static void portraits_apply(void) {
+    u32 pc, level, game, ppm, pws; int i, n;
+    if (!shop_init()) return;
+    pc = P(gPlayer + offPlayerActor); level = pc ? P(pc + offLevel) : 0;
+    game = level ? P(level + offGame) : 0; ppm = game ? P(game + offPPM) : 0;
+    pws = ppm ? P(ppm + offPWs) : 0; n = ppm ? (int)P(ppm + offPWs + 4) : 0;
+    if (!pws || n != 22) return;
+    for (i = 0; i < 8; i++) *(u32 *)(pws + i * PW_STRIDE + offPwOwned) = gHavePortrait[i] > 0 ? 1 : 0;
 }
 /* game thread, on every settled map load and after a Map / Shortcut Passwords pickup */
 static void items_apply(void) {
@@ -148,5 +219,6 @@ static void items_apply(void) {
         pc = P(gPlayer + offPlayerActor);
         if (pc && N_GiveMap >= 0 && (fn = gFindFunction((void *)pc, N_GiveMap, 0))) { gPEOrig((void *)pc, fn, 0, 0); log_line(L"items: Marauder's Map given (GiveMap)"); }
         else log_line(L"items: GiveMap not found");
-    }
+    } else map_take_away();
+    portraits_apply();
 }

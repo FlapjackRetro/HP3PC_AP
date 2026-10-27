@@ -70,7 +70,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc7d"
+#define OC_VERSION L"poc8"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -232,6 +232,8 @@ static volatile int gGridPending; static void grid_spawn(void); static void item
 static volatile u32 gGridTake; static void grid_take(void);
 static volatile u32 gBlockSpawn, gBlockKill; static void blockers_apply(void);
 static int N_PlayerTick = -1, N_Tick = -1;
+static volatile int gPanelPause, gAddCurrency, gPanelOpen; static void panel_pause(void); static void panel_currency(void);
+static int N_PostRender; static u32 gClsHUD; static void panel_render(u32 cv);
 static void __thiscall pe_hook(void *self, void *func, void *parms, void *result) {
     int fname = func ? *(int *)((u8 *)func + 0x20) : -1, safe;
     /* Jobs that spawn, destroy or change actors run only from a tick event (PlayerTick / Tick, called while the
@@ -240,6 +242,7 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
     safe = fname >= 0 && (fname == N_PlayerTick || fname == N_Tick);
     if (gPending && !gInTravel) { gInTravel = 1; gPending = 0; do_travel(); gInTravel = 0; }
     if (gMenuPatch && !gInTravel) { gInTravel = 1; gMenuPatch = 0; hub_patch(); gInTravel = 0; }
+    if (gPanelPause && !gInTravel) { gInTravel = 1; panel_pause(); gInTravel = 0; }
     if (safe && !gInTravel) {
         gInTravel = 1;
         if (gPendingShortcuts) { gPendingShortcuts = 0; items_apply(); }
@@ -248,9 +251,15 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
         if (gGateFire) fire_gates();
         if (gGridPending) { grid_spawn(); gGridPending = 0; }
         if (gBlockSpawn || gBlockKill) blockers_apply();
+        if (gAddCurrency) panel_currency();
         gInTravel = 0;
     }
     if (!func || !self) { gPEOrig(self, func, parms, result); return; }
+    if (gPanelOpen && fname == N_PostRender && N_PostRender >= 0 && gClsHUD && !gInTravel && is_a_fast((u32)self, gClsHUD)) {
+        gPEOrig(self, func, parms, result);   /* the HUD first, then the debug panel on top */
+        gInTravel = 1; panel_render(parms ? *(u32 *)parms : 0); gInTravel = 0;
+        return;
+    }
     if (fname == N_MyOnClick && N_MyOnClick >= 0 && !gInTravel) {
         int done; gInTravel = 1; done = hub_click((u32)self, (u32 *)parms); gInTravel = 0;
         if (done) return;
@@ -327,6 +336,7 @@ static const struct door DOORS[] = {
 static wchar gIniPath[600];
 static int gDoorOn[16];
 static volatile int gSaveDoor[16];   /* door found in this save (unlocks.h) */
+static volatile int gIniDoor[16];    /* door's start state (ini), for the debug panel */
 static int offTag = -1, offKeyNum = -1;
 static u32 gClsMover;
 static u32 gGateLevel; static u32 gGateLast[MAXGATES];   /* GetTickCount of our last Trigger, per gate */
@@ -367,7 +377,9 @@ static int v_findgate(u32 o, int name, u32 cls, void *c) {
 static void gates_poll(u32 level, const wchar *map) {
     static wchar b[200]; int i, changed = 0;
     for (i = 0; i < NDOORS; i++) {
-        int on = GetPrivateProfileIntW(L"Doors", DOORS[i].key, 1, gIniPath) != 0 || gSaveDoor[i];
+        int on;
+        gIniDoor[i] = GetPrivateProfileIntW(L"Doors", DOORS[i].key, 1, gIniPath) != 0;
+        on = gIniDoor[i] || gSaveDoor[i];
         if (on != gDoorOn[i]) { changed = 1; gDoorOn[i] = on; }
     }
     if (changed) {
@@ -436,6 +448,7 @@ static void gates_poll(u32 level, const wchar *map) {
 #include "aptest.h"
 #include "comcfix.h"
 #include "blocker.h"
+#include "panel.h"
 
 static u32 WINAPI worker(void *arg) {
     HANDLE core; static wchar buf[400], id[32], lastMap[64]; static struct players pl;
@@ -542,7 +555,7 @@ static u32 WINAPI worker(void *arg) {
         }
         settle++;
         if (settle >= 4) comc_poll(level, lastMap);
-        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); blockers_poll(level, lastMap); shop_poll(level, offGame > 0 ? rd32(level + offGame) : 0); spells_init(); unlocks_poll(); }   /* once settled, every 2 s */
+        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); blockers_poll(level, lastMap); shop_poll(level, offGame > 0 ? rd32(level + offGame) : 0); spells_init(); unlocks_poll(); panel_lookups(); }   /* once settled, every 2 s */
         if (!shortcutsDone && settle >= 12) {
             shortcutsDone = 1;
             if (!weq(lastMap, L"Entry") && !weq(lastMap, L"HP_Preamble")) { gPendingShortcuts = 1; gPendingRespawn = 1; }

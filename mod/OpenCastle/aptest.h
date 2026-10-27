@@ -21,29 +21,8 @@ static int offDrawScale = -1, offTexture = -1, offStyle2 = -1;   /* Actor.DrawSc
 static u32 gClsStaticMesh, gClsMesh, gClsClass; static int offStaticMesh = -1, offMesh = -1, N_SetCollision = -1;
 static int offPhysics = -1, offCollideWorld = -1; static u32 maskCollideWorld;
 
-/* Native functions can't be called through ProcessEvent (an exec function reads its arguments from the script
-   bytecode, not from the parms block), so SetCollision / SetCollisionSize / Destroy are called as the C++ methods
-   Engine.dll exports. Shared with blocker.h. */
-typedef void (__thiscall *setcol_fn)(void *actor, int colActors, int blockActors, int blockPlayers);
-typedef void (__thiscall *setcolsize_fn)(void *actor, float radius, float height);
-typedef int (__thiscall *destroyactor_fn)(void *level, void *actor, int bNetForce);
-static setcol_fn gSetCollision; static setcolsize_fn gSetCollisionSize; static destroyactor_fn gDestroyActor;
-static int offXLevel = -1;
+/* gSetCollision / gSetCollisionSize / gDestroyActor / offXLevel / engine_exports: unlocks.h */
 static void pickup_fx_lookups(void);
-static void engine_exports(void) {
-    HANDLE eng; static wchar b[160];
-    if (gSetCollision && gSetCollisionSize && gDestroyActor && offXLevel > 0) return;
-    offXLevel = prop_offset(L"Actor", L"XLevel");
-    eng = GetModuleHandleW(L"Engine.dll");
-    if (eng) {
-        gSetCollision = (setcol_fn)GetProcAddress(eng, "?SetCollision@AActor@@QAEXHHH@Z");
-        gSetCollisionSize = (setcolsize_fn)GetProcAddress(eng, "?SetCollisionSize@AActor@@QAEXMM@Z");
-        gDestroyActor = (destroyactor_fn)GetProcAddress(eng, "?DestroyActor@ULevel@@UAEHPAVAActor@@H@Z");
-    }
-    wsprintfW(b, L"engine: SetCollision %s, SetCollisionSize %s, DestroyActor %s; xlevel=%d",
-              gSetCollision ? L"ok" : L"-", gSetCollisionSize ? L"ok" : L"-", gDestroyActor ? L"ok" : L"-", offXLevel);
-    log_line(b);
-}
 
 /* kind: 'S' sprite texture, 'M' static mesh, 'K' skeletal mesh, 'A' skeletal mesh with a looping idle, 'C' one of the
    game's own pickup classes (spawned as is). fx: 's' spell, 'd' door, 'm' Marauder's Map, 'p' shortcut passwords,
@@ -125,20 +104,31 @@ static void grid_animate(u32 actor, u32 mesh, int which, const wchar *label) {
     wsprintfW(b, L"grid: %s: none of the idle names found; reference pose", label); log_line(b);
 }
 
-/* key thread: the Delete key (only while the game window has focus) asks for a grid */
+/* key thread: Delete opens / closes the debug panel (panel.h), Insert spawns the test grid; while the panel is open,
+   arrows / Enter / Space go to it. Only while the game window has focus. */
 static volatile int gGridKey;
+static volatile int gPanelOpen, gPanelPause; static volatile long gPanelKeys;
 static u32 WINAPI key_thread(void *arg) {
-    int was = 0; u32 pid = 0; (void)arg;
+    static const int VK[] = { 0x2E /*Delete*/, 0x2D /*Insert*/, 0x26 /*Up*/, 0x28 /*Down*/, 0x25 /*Left*/, 0x27 /*Right*/, 0x0D /*Enter*/, 0x20 /*Space*/ };
+    static const long BIT[] = { 0, 0, 1, 2, 4, 8, 16, 16 };
+    int was[8] = { 0 }, k; u32 pid = 0; (void)arg;
     for (;;) {
-        int down;
-        Sleep(30);
-        down = (GetAsyncKeyState(0x2E /*VK_DELETE*/) & 0x8000) != 0;
-        if (down && !was) {
-            HWND w = GetForegroundWindow();
-            GetWindowThreadProcessId(w, &pid);
-            if (pid == GetCurrentProcessId()) gGridKey = 1;
+        Sleep(20);
+        for (k = 0; k < 8; k++) {
+            int down = (GetAsyncKeyState(VK[k]) & 0x8000) != 0;
+            if (down && !was[k]) {
+                GetWindowThreadProcessId(GetForegroundWindow(), &pid);
+                if (pid == GetCurrentProcessId()) {
+                    if (k == 0) {
+                        gPanelOpen = !gPanelOpen;
+                        if (GetPrivateProfileIntW(L"Debug", L"PanelPause", 1, gIniPath)) gPanelPause = gPanelOpen ? 1 : 2;
+                        log_line(gPanelOpen ? L"panel: open" : L"panel: closed");
+                    } else if (k == 1) gGridKey = 1;
+                    else if (gPanelOpen) __sync_fetch_and_or(&gPanelKeys, BIT[k]);
+                }
+            }
+            was[k] = down;
         }
-        was = down;
     }
 }
 /* worker: a look was walked into (the effect is applied on the game thread, grid_take) */
