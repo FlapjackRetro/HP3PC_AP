@@ -342,3 +342,26 @@ New mechanisms (`unlocks.h`):
   `KWTrigger` saves `bInitiallyActive` as `<LevelID><Name>_bTOO`), the **replay** trigger loses its Event, so the
   first visit plays like vanilla's, rewards and dialogue included. Once it has fired, nothing is touched and later
   visits play the replay, as in vanilla.
+
+### poc8g: final exam doors
+
+- Three new level unlocks (door keys `ExamRon`, `ExamHermione`, `ExamHarry`; debug-panel rows; apworld items
+  Ron's / Hermione's / Harry's Final Exam Unlock, offsets 113–115). Each raises its classroom portcullis and switches
+  its loading trigger on; all start locked.
+
+| Exam | Portcullis (key 1 = up) | Loading trigger (vanilla, retargeted) | Voice line switched off |
+| --- | --- | --- | --- |
+| Ron (FA1) | `DADA_PortToCarpe_Mvr` (KWMover64; starts up in `GState090`) | touch `Trigger58` → `ChangeLevelTrigger3` (`HP3_Ch1CarpeRetractum` → FA1) | `PopupTrigger10` (`PC_HRY_CHALCH1COMMENTS_6`) |
+| Hermione (FA2) | `ToDrac_Prt_Mvr` (KWMover50; starts down) | `ChangeLevelTrigger7` (`HP3_Ch2Draconifors.unr` → FA2, by player position) | `PopupTrigger17` (`PC_HRY_DOORCOMMENTS_34`) |
+| Harry (FA3) | `Glacius_Port_Mvr` (KWMover56; starts down) | `ChangeLevelTrigger6` (`HP3_Ch3Glacius` → FA3) | `PopupTrigger13` (`PC_RON_DOORCOMMENTS_40`) |
+
+- Correction to poc8d: `ChangeLevelTrigger7` isn't a second side-room Draconifors door, it's the Transfiguration exam
+  door (the "ToDrac" door below the classroom; the in-classroom triggers `Trigger47`/`59` exist only in `GState060`).
+  Its URL is the same as the side room's (`HP3_Ch2Draconifors.unr`), so the worker flags when the player stands at it
+  (`gAtTransfigDoor`, within 250 of (−3171, 2204)) and rules.h sends that travel to FA2. Before this it went to the
+  Draconifors challenge.
+- The travel gate now looks at the destination after Open Castle's own rewrite, so a classroom door is checked
+  against its exam (not the challenge whose map name the vanilla trigger carries).
+- Return points: each exam drops the player in front of its classroom door (entrance-hall SmartStart, then
+  RelocatePawn to where the voice-line trigger stood), not in the side room.
+- Voice lines: a `SILENCE` table switches those touch PopupTriggers off (collision off) on every map load.
