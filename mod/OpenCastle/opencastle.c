@@ -70,7 +70,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc8b"
+#define OC_VERSION L"poc8c"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -106,6 +106,7 @@ static volatile u32 gClsHero;                 /* KWHeroController class */
 static volatile int gPendingShortcuts;
 static volatile int gPending; static wchar gPendingURL[128];
 static volatile int gHubReturn;               /* the next arrival on InsideHub came from RETURN TO HUB */
+static volatile int gNewGame;                 /* a New Game travel was seen: forget the previous game's unlocks */
 
 /* ---- hook 1: FURL::FURL(FURL* Base, const TCHAR* TextURL, ETravelType) ---- */
 typedef void *(__thiscall *furl_fn)(void *self, void *base, const wchar *text, int type);
@@ -115,6 +116,7 @@ static void *__thiscall furl_hook(void *self, void *base, const wchar *text, int
     const wchar *use = text; wchar why[128]; static wchar msg[900];
     if (text && oc_rewrite((const wchar *)gCurMap, text, gUrlOut, 600, why, 128)) {
         use = gUrlOut;
+        if (wieq(why, L"new game starts in Hogwarts")) gNewGame = 1;
         wsprintfW(msg, L"TRAVEL  from %s:  %s  ->  %s   [%s]", gCurMap[0] ? gCurMap : L"?", text, gUrlOut, why);
         log_line(msg);
     } else if (text && text[0] && !contains_ci(text, L"127.0.0.1")) {
@@ -385,7 +387,7 @@ static void gates_poll(u32 level, const wchar *map) {
     static wchar b[200]; int i, changed = 0;
     for (i = 0; i < NDOORS; i++) {
         int on;
-        gIniDoor[i] = GetPrivateProfileIntW(L"Doors", DOORS[i].key, 1, gIniPath) != 0;
+        gIniDoor[i] = 0;   /* no ini start state any more (poc8c): locked until found */
         on = gIniDoor[i] || gSaveDoor[i];
         if (on != gDoorOn[i]) { changed = 1; gDoorOn[i] = on; }
     }
@@ -559,6 +561,7 @@ static u32 WINAPI worker(void *arg) {
             cur ^= 1; wcpy(gMapBuf[cur], lastMap, 64); gCurMap = gMapBuf[cur];
             wsprintfW(buf, L"MAP %s", lastMap); log_line(buf);
             armed = 0; settle = 0; shortcutsDone = 0;
+            if (gNewGame) { gNewGame = 0; unlocks_reset(); }
         }
         settle++;
         if (settle >= 4) comc_poll(level, lastMap);

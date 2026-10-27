@@ -294,3 +294,12 @@ New mechanisms (`unlocks.h`):
 - Return: the room's exit (`ChangeLevelTrigger1` → HP3_InsideHub) lands at the south door (entrance-hall
   SmartStart + RelocatePawn).
 - MAXGATES 8 → 16 (nine doors now).
+
+### poc8c: everything starts locked
+
+- The ini no longer sets unlocks: `[Doors]`, `[Spells]` and `[Items]` are ignored. Every spell, door and item starts
+  locked; only the save (`OC_*` flags: pickups, the debug panel, later received items) turns things on. The ini
+  keeps `[Shop] Cheap` and `[Debug] PanelPause`.
+- New Game: the moment the New Game travel is seen, the cached found flags are dropped (so the previous game's
+  spells don't work for the ~3 s before the new, empty save is read).
+- The debug panel's "(start)" marker can't appear any more.
