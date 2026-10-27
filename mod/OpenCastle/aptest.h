@@ -1,12 +1,12 @@
 /*
  * Item test grid: pressing Delete (game window focused) spawns one of every item look the randomizer will use, in a
  * grid starting 150 units in front of (north of) the player. Each one falls to the floor and is picked up by walking
- * into it, and does what the real item will do:
- *   spell glyphs        [Spells] <spell>=1        (the spell becomes castable)
- *   drawn key           [Doors] Paddock=1         (test: the entrance-hall north door)
- *   Marauder's Map      [Items] MaraudersMap=1    (HPHeroController.GiveMap)
- *   password scroll     [Items] ShortcutPasswords=1 (EnablePortraitShortcuts)
- *   hippogriff / doxy / Monster Book   [Doors] Hippogriff / Doxy / MonsterBook = 1
+ * into it, and does what the real item will do (a save flag, see unlocks.h):
+ *   spell glyphs        OC_Spells_<spell>         (the spell becomes castable)
+ *   drawn key           OC_Doors_Paddock          (test: the entrance-hall north door)
+ *   Marauder's Map      OC_Items_MaraudersMap     (HPHeroController.GiveMap)
+ *   password scroll     OC_Items_ShortcutPasswords (EnablePortraitShortcuts)
+ *   hippogriff / doxy / Monster Book   OC_Doors_Hippogriff / Doxy / MonsterBook
  *   Archipelago logos   nothing (they still fall and can be picked up)
  *   pasty, cake, Harry Potter card     the game's own pickup classes, collected the vanilla way
  * Our looks are inert Engine.Effects actors: a sprite / static mesh / skeletal mesh, a collision cylinder
@@ -141,17 +141,10 @@ static u32 WINAPI key_thread(void *arg) {
         was = down;
     }
 }
-/* worker: a look was walked into */
+/* worker: a look was walked into (the effect is applied on the game thread, grid_take) */
 static void grid_pickup(int i) {
-    const struct grident *g = &GRID[i]; static wchar b[200];
-    wsprintfW(b, L"grid: picked up %s", g->label); log_line(b);
-    switch (g->fx) {
-    case 's': unlock_write(L"Spells", g->arg); break;
-    case 'd': unlock_write(L"Doors", g->arg); break;   /* gates_poll opens it within 2 s */
-    case 'm': unlock_write(L"Items", L"MaraudersMap"); break;
-    case 'p': unlock_write(L"Items", L"ShortcutPasswords"); break;
-    default: break;
-    }
+    static wchar b[200];
+    wsprintfW(b, L"grid: picked up %s", GRID[i].label); log_line(b);
 }
 /* worker, every poll on a settled map: Delete pressed -> grid; and the pickup check */
 static void grid_poll(u32 pawn, u32 level) {
@@ -246,6 +239,13 @@ static void grid_take(void) {
     for (i = 0; i < NGRID; i++) if ((bits >> i) & 1) {
         u32 a = gGridKill[i], xl = a && offXLevel > 0 ? P(a + offXLevel) : 0;
         if (a && pawn) pickup_fx(pawn, (const float *)(a + offLoc));
+        switch (GRID[i].fx) {
+        case 's': save_flag_set(L"Spells", GRID[i].arg); break;
+        case 'd': save_flag_set(L"Doors", GRID[i].arg); break;   /* gates_poll opens it within 2 s */
+        case 'm': save_flag_set(L"Items", L"MaraudersMap"); break;
+        case 'p': save_flag_set(L"Items", L"ShortcutPasswords"); break;
+        default: break;
+        }
         if (xl && gDestroyActor) gDestroyActor((void *)xl, (void *)a, 0);
         gGridKill[i] = 0;
         if (GRID[i].fx == 'm' || GRID[i].fx == 'p') apply = 1;

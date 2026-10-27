@@ -248,3 +248,13 @@ New mechanisms (`unlocks.h`):
 - **Shortcut passwords are locked by default** (`[Items] ShortcutPasswords`, default 0): on every map load,
   entries 8–21 (but 18, vanilla's free one) are cleared until the item is set. Earlier builds unlocked them all.
 - **Marauder's Map** (`[Items] MaraudersMap`, default 0).
+
+### poc7c: unlock state lives in the save
+
+- `HP3_OpenCastle.ini` is now only the **starting** state (stand-in for slot data / starting inventory). Pickups no
+  longer write to it.
+- What's found is kept in the game's PersistentStore as `OC_<Section>_<Key>` = `1` (e.g. `OC_Spells_Alohomora`,
+  `OC_Doors_Paddock`, `OC_Items_ShortcutPasswords`). The store travels between levels and is written into save
+  games, so a New Game starts with nothing found and loading a save brings back that save's unlocks.
+- Effective state = ini OR save. Read on every settled map load (log: `save flags (found): ...`).
+- The randomizer client will write received items to the same keys.

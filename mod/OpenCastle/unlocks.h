@@ -1,9 +1,12 @@
 /*
- * Unlock state: spells, the Marauder's Map and the shortcut passwords (doors live in [Doors], see gates_poll).
- * Read from HP3_OpenCastle.ini every 2 s, like the doors; the randomizer client will drive the same switches.
- *   [Spells] Alohomora / CarpeRetractum / Depulso / Draconifors / ExpectoPatronum / Glacius / Lapifors / Lumos /
- *            Rictusempra / Spongify = 1 (has it, default) or 0 (locked)
- *   [Items]  MaraudersMap = 0 (default) / 1, ShortcutPasswords = 0 (default) / 1
+ * Unlock state: spells, doors, the Marauder's Map and the shortcut passwords. Two sources, OR'ed:
+ *   - HP3_OpenCastle.ini: what the player STARTS with (stand-in for slot data / starting inventory), read every 2 s:
+ *       [Spells] Alohomora / CarpeRetractum / Depulso / Draconifors / ExpectoPatronum / Glacius / Lapifors / Lumos /
+ *                Rictusempra / Spongify = 1 (default) or 0;  [Doors] <key> = 1 (default) or 0;
+ *       [Items]  MaraudersMap / ShortcutPasswords = 0 (default) or 1
+ *   - the save: what has been FOUND since (pickups now, received items later). Kept in the game's PersistentStore
+ *     as OC_<Section>_<Key> = "1", which travels between levels and is written into save games, so a New Game starts
+ *     empty and loading a save brings its own state. Read on every settled map load (game thread).
  *
  * Spells: every spell check in the game goes through WeaponWand.HasSpell(class<Projectile>) (the spell cursor's
  * targeting, ChooseSpell; HarryWand / RonWand / HermioneWand only add their character exclusions and call super).
@@ -32,6 +35,7 @@ static const struct spellent SPELLS[] = {
 static volatile int gSpellOn[NSPELLS] = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };   /* -1 = not read yet (has it) */
 static u32 gSpellCls[NSPELLS], gClsDracFire;
 static volatile int gHaveMap = -1, gHaveShortcuts = -1;
+static volatile int gSaveSpell[NSPELLS], gSaveMap, gSaveShortcuts;   /* found (save); gSaveDoor: opencastle.c */
 typedef void (__thiscall *step_fn)(void *frame, void *context, void *result);
 static step_fn gStep;
 
@@ -80,7 +84,7 @@ static void spells_init(void) {
 static void unlocks_poll(void) {
     static wchar b[300]; int i, on, changed = 0;
     for (i = 0; i < NSPELLS; i++) {
-        on = GetPrivateProfileIntW(L"Spells", SPELLS[i].key, 1, gIniPath) != 0;
+        on = GetPrivateProfileIntW(L"Spells", SPELLS[i].key, 1, gIniPath) != 0 || gSaveSpell[i];
         if (on != gSpellOn[i]) { gSpellOn[i] = on; changed = 1; }
     }
     if (changed) {
@@ -88,20 +92,49 @@ static void unlocks_poll(void) {
         for (i = 0; i < NSPELLS; i++) wsprintfW(b + wlen(b), L" %s=%d", SPELLS[i].key, gSpellOn[i]);
         log_line(b);
     }
-    on = GetPrivateProfileIntW(L"Items", L"MaraudersMap", 0, gIniPath) != 0;
+    on = GetPrivateProfileIntW(L"Items", L"MaraudersMap", 0, gIniPath) != 0 || gSaveMap;
     if (on != gHaveMap) { gHaveMap = on; wsprintfW(b, L"items: Marauder's Map %s", on ? L"unlocked" : L"locked"); log_line(b); if (on) gPendingShortcuts = 1; }
-    on = GetPrivateProfileIntW(L"Items", L"ShortcutPasswords", 0, gIniPath) != 0;
+    on = GetPrivateProfileIntW(L"Items", L"ShortcutPasswords", 0, gIniPath) != 0 || gSaveShortcuts;
     if (on != gHaveShortcuts) { gHaveShortcuts = on; wsprintfW(b, L"items: shortcut passwords %s", on ? L"unlocked" : L"locked"); log_line(b); gPendingShortcuts = 1; }
 }
-static void unlock_write(const wchar *section, const wchar *key) {
-    WritePrivateProfileStringW(section, key, L"1", gIniPath);
+/* ---- the save side (game thread) ---- */
+static u32 cur_store(void) {
+    u32 level = cur_level(), game = level && offGame > 0 ? P(level + offGame) : 0;
+    return game && offStore > 0 ? P(game + offStore) : 0;
+}
+static int save_flag_get(u32 store, const wchar *section, const wchar *key) {
+    wchar k[96], v[16];
+    wsprintfW(k, L"OC_%s_%s", section, key);
+    return lo_restore_value(store, k, v, 16) && v[0] == '1';
+}
+/* every settled map load, before items_apply acts on it */
+static void save_flags_read(void) {
+    static wchar b[600]; u32 store = cur_store(); int i, n = 0;
+    if (!store) { log_line(L"save flags: no PersistentStore on this map"); return; }
+    wcpy(b, L"save flags (found):", 600);
+    for (i = 0; i < NSPELLS; i++) if ((gSaveSpell[i] = save_flag_get(store, L"Spells", SPELLS[i].key)) != 0) { wsprintfW(b + wlen(b), L" %s", SPELLS[i].key); n++; }
+    for (i = 0; i < NDOORS && i < 16; i++) if ((gSaveDoor[i] = save_flag_get(store, L"Doors", DOORS[i].key)) != 0) { wsprintfW(b + wlen(b), L" door:%s", DOORS[i].key); n++; }
+    if ((gSaveMap = save_flag_get(store, L"Items", L"MaraudersMap")) != 0) { wcpy(b + wlen(b), L" MaraudersMap", 40); n++; }
+    if ((gSaveShortcuts = save_flag_get(store, L"Items", L"ShortcutPasswords")) != 0) { wcpy(b + wlen(b), L" ShortcutPasswords", 40); n++; }
+    if (!n) wcpy(b + wlen(b), L" none", 10);
+    log_line(b);
     unlocks_poll();
+}
+/* a pickup (later: a received item): remember it in the save and take effect now */
+static void save_flag_set(const wchar *section, const wchar *key) {
+    static wchar k[96], b[160]; u32 store = cur_store();
+    if (!store) { wsprintfW(b, L"save flags: no PersistentStore; %s %s not kept", section, key); log_line(b); return; }
+    wsprintfW(k, L"OC_%s_%s", section, key);
+    lo_save_value(store, k, L"1");
+    wsprintfW(b, L"save flags: %s set", k); log_line(b);
+    save_flags_read();
 }
 /* game thread, on every settled map load and after a Map / Shortcut Passwords pickup */
 static void items_apply(void) {
     static wchar b[200]; u32 pc, level, game, ppm, pws; int n, i, cleared = 0; void *fn;
     static int N_GiveMap = -1;
     if (!gPlayer) return;
+    save_flags_read();
     if (gHaveShortcuts > 0) enable_shortcuts();
     else if (shop_init()) {
         pc = P(gPlayer + offPlayerActor); level = pc ? P(pc + offLevel) : 0;
