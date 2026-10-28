@@ -6,8 +6,8 @@ cake / card drop, and secret areas. Left out: random-amount containers (not loca
 challenge stars (not randomized), shops and vendors (logic = shop access + currency), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 27 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 417.
+- **Partly known:** 46 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Nothing recorded:** 397.
 
 ## Partly known
 
@@ -40,6 +40,25 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Dungeons | `HPSpawnThingy5` | pasty (event spawn) | (-158, 2113, -293) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
 | Dungeons | `HPSpawnThingy7` | pasty (event spawn) | (109, 2113, -597) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
 | Portrait E | `ArmoireSpwn0` | ArmoireSpwn: pastyx10 | (-1473, -2902, 1860) | book-fight spell TBD |
+| Bonus Room | `ChestSpawner4` | ChestSpawner: pastyx4, cakex4 | (809, -1467, 451) | area rule only (Bonus Room Unlock + Spongify for the upper levels); spawn event `gargspawner1`; extra needs not reported |
+| Bonus Room | `ChestSpawner5` | ChestSpawner: pastyx4, cakex4 | (470, -1467, 451) | area rule only (Bonus Room Unlock + Spongify for the upper levels); spawn event `gargspawner1`; extra needs not reported |
+| Bonus Room | `ChestSpawner6` | ChestSpawner: pastyx4, cakex4 | (471, -448, 451) | area rule only (Bonus Room Unlock + Spongify for the upper levels); spawn event `gargspawner1`; extra needs not reported |
+| Bonus Room | `ChestSpawner7` | ChestSpawner: pastyx4, cakex4 | (810, -448, 451) | area rule only (Bonus Room Unlock + Spongify for the upper levels); spawn event `gargspawner1`; extra needs not reported |
+| Bonus Room | `ChestSpawner8` | ChestSpawner: pastyx4, cakex4 | (473, -959, 451) | area rule only (Bonus Room Unlock + Spongify for the upper levels); spawn event `gargspawner1`; extra needs not reported |
+| Bonus Room | `ChestSpawner9` | ChestSpawner: pastyx4, cakex4 | (811, -959, 451) | area rule only (Bonus Room Unlock + Spongify for the upper levels); spawn event `gargspawner1`; extra needs not reported |
+| Bonus Room | `KnightSpawner3` | KnightSpawner: pastyx2, cakex2 | (-286, -1731, 120) | area rule only (Bonus Room Unlock + Spongify for the upper levels); spawn event `khall6`; extra needs not reported |
+| Bonus Room | `KnightSpawner5` | KnightSpawner: pastyx2, cakex2 | (1088, -1986, 119) | area rule only (Bonus Room Unlock + Spongify for the upper levels); spawn event `k2`; extra needs not reported |
+| Bonus Room | `PumpkinPasty1` | pasty (placed) | (-127, -2367, 166) | area rule only (Bonus Room Unlock + Spongify for the upper levels); extra needs not reported |
+| Bonus Room | `PumpkinPasty10` | pasty (placed) | (1683, -191, 149) | area rule only (Bonus Room Unlock + Spongify for the upper levels); extra needs not reported |
+| Bonus Room | `PumpkinPasty11` | pasty (placed) | (-450, -1484, 149) | area rule only (Bonus Room Unlock + Spongify for the upper levels); extra needs not reported |
+| Bonus Room | `PumpkinPasty12` | pasty (placed) | (-449, -2141, 149) | area rule only (Bonus Room Unlock + Spongify for the upper levels); extra needs not reported |
+| Bonus Room | `PumpkinPasty5` | pasty (placed) | (1120, -703, 145) | area rule only (Bonus Room Unlock + Spongify for the upper levels); extra needs not reported |
+| Bonus Room | `PumpkinPasty6` | pasty (placed) | (1120, -1217, 145) | area rule only (Bonus Room Unlock + Spongify for the upper levels); extra needs not reported |
+| Bonus Room | `PumpkinPasty7` | pasty (placed) | (167, -1217, 145) | area rule only (Bonus Room Unlock + Spongify for the upper levels); extra needs not reported |
+| Bonus Room | `PumpkinPasty8` | pasty (placed) | (171, -704, 145) | area rule only (Bonus Room Unlock + Spongify for the upper levels); extra needs not reported |
+| Bonus Room | `PumpkinPasty9` | pasty (placed) | (192, -296, 145) | area rule only (Bonus Room Unlock + Spongify for the upper levels); extra needs not reported |
+| Bonus Room | `WC_Dumbledore0` | card Dumbledore | (640, -958, 486) | area rule only (Bonus Room Unlock + Spongify for the upper levels); extra needs not reported |
+| Bonus Room | `WC_GodricGryffindor0` | card GodricGryffindor | (639, -962, 226) | area rule only (Bonus Room Unlock + Spongify for the upper levels); extra needs not reported |
 
 ## Nothing recorded
 
@@ -50,7 +69,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Drac/Lap (B) (`HP3_Ch2DraconiforsB`) | 58 |
 | Glacius (`HP3_Ch3Glacius`) | 57 |
 | Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
-| Bonus Room (`HP3_BeanBonus`) | 21 |
+| Bonus Room (`HP3_BeanBonus`) | 1 |
 | Grounds (`HP3_GroundsHub`) | 31 |
 | Hogwarts (`HP3_InsideHub`) | 27 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
@@ -361,31 +380,11 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `SecretAreaMarker3` | secret area | (3862, -476, -163) |  |
 | `SecretAreaMarker4` | secret area | (2752, -1778, 95) |  |
 
-### Bonus Room (`HP3_BeanBonus`): 21
+### Bonus Room (`HP3_BeanBonus`): 1
 
 | Actor | What | Where | Tag |
 | --- | --- | --- | --- |
-| `ChestSpawner4` | ChestSpawner: pastyx4, cakex4 | (809, -1467, 451) | `gargspawner1` |
-| `ChestSpawner5` | ChestSpawner: pastyx4, cakex4 | (470, -1467, 451) | `gargspawner1` |
-| `ChestSpawner6` | ChestSpawner: pastyx4, cakex4 | (471, -448, 451) | `gargspawner1` |
-| `ChestSpawner7` | ChestSpawner: pastyx4, cakex4 | (810, -448, 451) | `gargspawner1` |
-| `ChestSpawner8` | ChestSpawner: pastyx4, cakex4 | (473, -959, 451) | `gargspawner1` |
-| `ChestSpawner9` | ChestSpawner: pastyx4, cakex4 | (811, -959, 451) | `gargspawner1` |
 | `KnightSpawner1` | KnightSpawner: pastyx2, cakex2 | (-447, -1569, -424) | `kside1` |
-| `KnightSpawner3` | KnightSpawner: pastyx2, cakex2 | (-286, -1731, 120) | `khall6` |
-| `KnightSpawner5` | KnightSpawner: pastyx2, cakex2 | (1088, -1986, 119) | `k2` |
-| `PumpkinPasty1` | pasty (placed) | (-127, -2367, 166) |  |
-| `PumpkinPasty10` | pasty (placed) | (1683, -191, 149) |  |
-| `PumpkinPasty11` | pasty (placed) | (-450, -1484, 149) |  |
-| `PumpkinPasty12` | pasty (placed) | (-449, -2141, 149) |  |
-| `PumpkinPasty5` | pasty (placed) | (1120, -703, 145) |  |
-| `PumpkinPasty6` | pasty (placed) | (1120, -1217, 145) |  |
-| `PumpkinPasty7` | pasty (placed) | (167, -1217, 145) |  |
-| `PumpkinPasty8` | pasty (placed) | (171, -704, 145) |  |
-| `PumpkinPasty9` | pasty (placed) | (192, -296, 145) |  |
-| `WC_Dumbledore0` | card Dumbledore | (640, -958, 486) |  |
-| `WC_GodricGryffindor0` | card GodricGryffindor | (639, -962, 226) |  |
-| `WC_SalazarSlytherin0` | card SalazarSlytherin | (638, -958, -64) |  |
 
 ### Grounds (`HP3_GroundsHub`): 31
 
