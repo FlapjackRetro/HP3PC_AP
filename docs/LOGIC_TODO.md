@@ -3,11 +3,12 @@
 Generated 2026-10-28 from `data/hp3_location_catalog.csv` against the logic notes in [APWORLD.md](APWORLD.md).
 Candidate locations: placed pasties / cakes / cards, event-spawned pasties / cakes, containers with a fixed pasty /
 cake / card drop, and secret areas. Left out: random-amount containers (not locations), bean-only containers,
-challenge stars (not randomized), shops and vendors (logic = shop access + currency), and the dropped maps
+challenge stars (not randomized), shops and vendors (logic = shop access + currency; this includes the five
+`WC_BeatrixBloxam` cards, which are display props in Fred & George's shop), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 368.
+- **Nothing recorded:** 363.
 
 ## Partly known
 
@@ -40,7 +41,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Glacius (`HP3_Ch3Glacius`) | 57 |
 | Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
 | Grounds (`HP3_GroundsHub`) | 31 |
-| Hogwarts (`HP3_InsideHub`) | 14 |
+| Hogwarts (`HP3_InsideHub`) | 9 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
@@ -385,7 +386,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `WC_Kelpie0` | card Kelpie | (-832, -4344, 1808) |  |
 | `WC_Morholt0` | card Morholt | (-2976, -10104, 808) |  |
 
-### Hogwarts (`HP3_InsideHub`): 14
+### Hogwarts (`HP3_InsideHub`): 9
 
 | Actor | What | Where | Tag |
 | --- | --- | --- | --- |
@@ -398,11 +399,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `HPSpawnThingy16` | pasty (event spawn) | (-3592, 749, 488) | `peeves2_Spwn_Pastie_02` |
 | `HPSpawnThingy18` | pasty (event spawn) | (-3587, 807, 488) | `peeves2_Spwn_Pastie_03` |
 | `PumpkinPasty5` | pasty (placed) | (no position in catalogue) |  |
-| `WC_BeatrixBloxam1` | card BeatrixBloxam | (-240, -2495, 2187) |  |
-| `WC_BeatrixBloxam2` | card BeatrixBloxam | (no position in catalogue) |  |
-| `WC_BeatrixBloxam3` | card BeatrixBloxam | (-17, -2486, 2185) |  |
-| `WC_BeatrixBloxam4` | card BeatrixBloxam | (-261, -2263, 2185) |  |
-| `WC_BeatrixBloxam5` | card BeatrixBloxam | (-25, -2250, 2185) |  |
 
 ### Tunnel (`HP3_Adv5Shack`): 21
 
