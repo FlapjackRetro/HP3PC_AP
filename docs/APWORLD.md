@@ -175,6 +175,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Monster Book challenge: LeticiaSomnolens card (`WC_LeticiaSomnolens0`) | **Monster Book Challenge Unlock + Depulso + Rictusempra**. At (-2647, -3774, 304), tag `MBOM_LeticiaSomnolens` | marked in play 2026-10-28 |
 | Monster Book challenge: MalodoraGrymm card (`WC_MalodoraGrymm0`) | **Monster Book Challenge Unlock + Depulso + Rictusempra**. At (-2652, -3793, 304), tag `MBOM_MalodoraGrymm` | marked in play 2026-10-28 |
 | Monster Book challenge: OldMotherHubbard card (`WC_OldMotherHubbard0`) | **Monster Book Challenge Unlock + Depulso + Rictusempra**. At (-2642, -3753, 304), tag `MBOM_OldMotherHubbard` | marked in play 2026-10-28 |
+| Hogwarts: chest `ChestSpawner4` (3 pasties; also 10 beans) | **Alohomora** to open, **Lumos and Spongify** to reach it. At (-1369, -1581, 1120) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
