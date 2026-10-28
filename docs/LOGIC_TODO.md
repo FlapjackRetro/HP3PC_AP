@@ -7,7 +7,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 370.
+- **Nothing recorded:** 369.
 
 ## Partly known
 
@@ -40,7 +40,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Glacius (`HP3_Ch3Glacius`) | 57 |
 | Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
 | Grounds (`HP3_GroundsHub`) | 31 |
-| Hogwarts (`HP3_InsideHub`) | 16 |
+| Hogwarts (`HP3_InsideHub`) | 15 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
@@ -385,7 +385,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `WC_Kelpie0` | card Kelpie | (-832, -4344, 1808) |  |
 | `WC_Morholt0` | card Morholt | (-2976, -10104, 808) |  |
 
-### Hogwarts (`HP3_InsideHub`): 16
+### Hogwarts (`HP3_InsideHub`): 15
 
 | Actor | What | Where | Tag |
 | --- | --- | --- | --- |
@@ -399,7 +399,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `HPSpawnThingy16` | pasty (event spawn) | (-3592, 749, 488) | `peeves2_Spwn_Pastie_02` |
 | `HPSpawnThingy18` | pasty (event spawn) | (-3587, 807, 488) | `peeves2_Spwn_Pastie_03` |
 | `PumpkinPasty5` | pasty (placed) | (no position in catalogue) |  |
-| `SecretAreaMarker2` | secret area | (-672, 1004, 859) | `IH03` |
 | `WC_BeatrixBloxam1` | card BeatrixBloxam | (-240, -2495, 2187) |  |
 | `WC_BeatrixBloxam2` | card BeatrixBloxam | (no position in catalogue) |  |
 | `WC_BeatrixBloxam3` | card BeatrixBloxam | (-17, -2486, 2185) |  |
