@@ -7,7 +7,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 27 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 438.
+- **Nothing recorded:** 433.
 
 ## Partly known
 
@@ -58,7 +58,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
 | Library (`HP3_Adv3Library`) | 7 |
-| Hippogriff (`HP3_COMC`) | 5 |
 | Patronum (`HP3_Adv2ExpPatronum`) | 4 |
 
 ### Glacius (B) (`HP3_Ch3GlaciusB`): 63
@@ -554,16 +553,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `SecretAreaMarker5` | secret area | (-9504, -5620, 1311) | `BridgeSecrets` |
 | `SecretAreaMarker6` | secret area | (-10597, -8007, 1651) | `BeanPathOne` |
 | `WC_DoubleEndedNewt0` | card DoubleEndedNewt | (-8216, -7269, 1357) |  |
-
-### Hippogriff (`HP3_COMC`): 5
-
-| Actor | What | Where | Tag |
-| --- | --- | --- | --- |
-| `HPSpawnThingy0` | card BowmanWright | (-12029, -16663, 675) | `WizCard5` |
-| `HPSpawnThingy1` | card JoscelindWadcock | (-12228, -16459, 675) | `WizCard1` |
-| `HPSpawnThingy2` | card GwenogJones | (-12022, -16666, 620) | `WizCard2` |
-| `HPSpawnThingy3` | card CyprianYoudle | (-12022, -16662, 675) | `WizCard3` |
-| `HPSpawnThingy4` | card RoderickPlumpton | (-12027, -16665, 675) | `WizCard4` |
 
 ### Patronum (`HP3_Adv2ExpPatronum`): 4
 
