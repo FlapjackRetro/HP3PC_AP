@@ -390,3 +390,7 @@ New mechanisms (`unlocks.h`):
 ### poc8j: noclip x10 again
 
 - 70000 units a second, 280000 with Shift.
+
+### poc8k: noclip up / down on Space and Left Ctrl
+
+- Space goes up and Left Ctrl goes down (E / Page Up and Q / Page Down still work too).
