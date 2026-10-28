@@ -173,7 +173,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Portrait E: knight `KnightSpawner5` (10 cakes, 5 pasties; also 25 beans) | Depulso, within the Portrait E rule. Upper level, at (−1932, −1177, 2741), right above the marker (2346); save key `ppeKnightSpawner5_lives` | marked in play 2026-10-27 |
 | Portrait E: knights `KnightSpawner3` (5 cakes, 10 pasties; 25 beans), `KnightSpawner6` (10 cakes; 20 beans), `KnightSpawner7` (10 cakes; 20 beans) | Depulso, within the Portrait E rule. Top level (z 3078–3081), about 415 units above the marker at (−1476, −1019, 2698); save keys `ppeKnightSpawner3/6/7_lives` | marked in play 2026-10-27 |
 | Portrait E: armoire `ArmoireSpwn2` (Unicorn card) | Alohomora, within the Portrait E rule. At (−1472, −2957, 1816); opening it starts a flying-book fight (19 `FlyingBook`s, Event `FCount1`) | marked in play 2026-10-27 |
-| Portrait E: armoire `ArmoireSpwn0` (10 pasties; also 100 beans) | the book fight won: the same armoire, a second spawner (Tag `OpenPortcullisA`) fired when the last book falls. Spell for the books: TBD (Rictusempra?) | marked in play 2026-10-27 |
+| Portrait E: armoire `ArmoireSpwn0` (10 pasties; also 100 beans) | the book fight won: the same armoire, a second spawner (Tag `OpenPortcullisA`) fired when the last book falls. Spell for the books: **Depulso** (`FlyingBook.vulnerableToClass = DepulsoSpell`, from the decompiled class; already in the Portrait E rule) | marked in play 2026-10-27 |
 | (not a location) Portrait F knight `KnightSpawner7` (pasties) | Depulso. Rolls 6–14 pasties per hit, 2 hits, so it stays vanilla under the no-random-amounts rule. At (−3521, −776, 1608) | marked in play 2026-10-27 |
 | Portrait F: chest `ChestSpawner34` (Manticore card, 8 cakes) | Alohomora, plus Portrait Password 2. At (−3990, −580, 1680), save key `ppfChestSpawner34_lives` | marked in play 2026-10-27 |
 | Portrait F: Secret Area (`SecretAreaMarker0`, (−3400, −559, 1749)) | same as the chest `ChestSpawner34`: Alohomora, plus Portrait Password 2 (found together in play) | marked in play 2026-10-27 |
@@ -235,7 +235,16 @@ How received items reach the game and how saves are reconciled with the server: 
 ## Mod tooling to-do
 
 - **Noclip toggle** in the debug panel, to fly to spawns that can't be found on foot (first use: the two Paddock pasties).
-- **Live coordinates in the window title bar** (map + player X, Y, Z), so a catalogue position can be walked to directly.
+- **Companions ignore spell locks** (seen in the Paddock doxy fight, 2026-10-28). The lock is `WeaponWand.HasSpell`, which
+  only the player's targeting calls. A companion in a fight (`HPCompanionCombatController`, state `stateShootAtTarget`)
+  calls `HPCharacter.castSpell(target, , target.vulnerableToClass)` directly. Each `PoxieManager` sets how many
+  creatures the companions kill per wave (`CompanionNumToDestroyPerWave`). Paddock sets 2, so the player still has to
+  finish each wave. But the class default is 999, and managers that don't override it let the companions clear the
+  whole fight alone: the Carpe, Carpe B, Glacius and Glacius B doxy groups, the two Stroulger (Portrait Password 3)
+  doxy fights, and Library `BookBattleB_CantDoThis`. The imp fights (`ImpCombatManager`) have no such setting at all.
+  Doxies and imps need Rictusempra (`RictusempraSpell_Combat`); flying books need Depulso. Fix (planned): companions
+  can't cast a locked spell either.
+ (map + player X, Y, Z), so a catalogue position can be walked to directly.
 
 ## Settled
 
