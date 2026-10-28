@@ -7,7 +7,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 27 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 421.
+- **Nothing recorded:** 417.
 
 ## Partly known
 
@@ -50,7 +50,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Drac/Lap (B) (`HP3_Ch2DraconiforsB`) | 58 |
 | Glacius (`HP3_Ch3Glacius`) | 57 |
 | Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
-| Bonus Room (`HP3_BeanBonus`) | 25 |
+| Bonus Room (`HP3_BeanBonus`) | 21 |
 | Grounds (`HP3_GroundsHub`) | 31 |
 | Hogwarts (`HP3_InsideHub`) | 27 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
@@ -361,14 +361,10 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `SecretAreaMarker3` | secret area | (3862, -476, -163) |  |
 | `SecretAreaMarker4` | secret area | (2752, -1778, 95) |  |
 
-### Bonus Room (`HP3_BeanBonus`): 25
+### Bonus Room (`HP3_BeanBonus`): 21
 
 | Actor | What | Where | Tag |
 | --- | --- | --- | --- |
-| `ChestSpawner0` | ChestSpawner: pastyxNone, cakex2 | (38, -705, -456) | `floorplate` |
-| `ChestSpawner1` | ChestSpawner: pastyxNone, cakex2 | (35, -1217, -456) | `floorplate` |
-| `ChestSpawner2` | ChestSpawner: pastyxNone, cakex2 | (1245, -1217, -456) | `floorplate` |
-| `ChestSpawner3` | ChestSpawner: pastyxNone, cakex2 | (1240, -701, -456) | `floorplate` |
 | `ChestSpawner4` | ChestSpawner: pastyx4, cakex4 | (809, -1467, 451) | `gargspawner1` |
 | `ChestSpawner5` | ChestSpawner: pastyx4, cakex4 | (470, -1467, 451) | `gargspawner1` |
 | `ChestSpawner6` | ChestSpawner: pastyx4, cakex4 | (471, -448, 451) | `gargspawner1` |
