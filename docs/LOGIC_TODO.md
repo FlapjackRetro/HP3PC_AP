@@ -6,8 +6,8 @@ cake / card drop, and secret areas. Left out: random-amount containers (not loca
 challenge stars (not randomized), shops and vendors (logic = shop access + currency), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 27 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 396.
+- **Partly known:** 42 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Nothing recorded:** 381.
 
 ## Partly known
 
@@ -40,6 +40,21 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Dungeons | `HPSpawnThingy5` | pasty (event spawn) | (-158, 2113, -293) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
 | Dungeons | `HPSpawnThingy7` | pasty (event spawn) | (109, 2113, -597) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
 | Portrait E | `ArmoireSpwn0` | ArmoireSpwn: pastyx10 | (-1473, -2902, 1860) | book-fight spell TBD |
+| Paddock | `CauldronCake0` | cake (placed) | (1265, 815, 936) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
+| Paddock | `CauldronCake2` | cake (placed) | (1344, 814, 937) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
+| Paddock | `CauldronCake7` | cake (placed) | (1417, 815, 936) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
+| Paddock | `CauldronSpwn0` | CauldronSpwn: card ProfessorAmandoDippetx1 | (-1290, 459, 452) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
+| Paddock | `CauldronSpwn1` | CauldronSpwn: pastyx4, cakex2 | (1385, 1265, 45) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
+| Paddock | `CauldronSpwn4` | CauldronSpwn: pastyx5 | (-147, -318, 1249) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
+| Paddock | `ChestSpawner0` | ChestSpawner: pastyx4 | (-325, -214, 441) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
+| Paddock | `ChestSpawner1` | ChestSpawner: pastyx4 | (1565, 1058, 440) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
+| Paddock | `CrateSpwn1` | CrateSpwn: pastyx4, cakex1 | (-1245, -157, 554) | area rule only (Paddock Unlock + Depulso + Spongify); spawn event `poxiedis`; extra needs not reported |
+| Paddock | `PumpkinPasty0` | pasty (placed) | (129, 928, 643) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
+| Paddock | `PumpkinPasty18` | pasty (placed) | (-683, -337, 53) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
+| Paddock | `PumpkinPasty4` | pasty (placed) | (190, 865, 643) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
+| Paddock | `PumpkinPasty5` | pasty (placed) | (-583, -341, 44) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
+| Paddock | `PumpkinPasty6` | pasty (placed) | (128, 800, 643) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
+| Paddock | `PumpkinPasty7` | pasty (placed) | (66, 864, 643) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
 
 ## Nothing recorded
 
@@ -53,7 +68,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Grounds (`HP3_GroundsHub`) | 31 |
 | Hogwarts (`HP3_InsideHub`) | 27 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
-| Paddock (`HP3_Adv6Paddock`) | 15 |
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
 | Library (`HP3_Adv3Library`) | 7 |
@@ -454,26 +468,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `SecretAreaMarker3` | secret area | (802, -2960, -1904) |  |
 | `SecretAreaMarker4` | secret area | (-6270, -544, -928) |  |
 | `SpawnThingy10` | card SacharissaTugwood | (5426, -3913, -705) | `RmG_Win_SpawnThing_Card` |
-
-### Paddock (`HP3_Adv6Paddock`): 15
-
-| Actor | What | Where | Tag |
-| --- | --- | --- | --- |
-| `CauldronCake0` | cake (placed) | (1265, 815, 936) |  |
-| `CauldronCake2` | cake (placed) | (1344, 814, 937) |  |
-| `CauldronCake7` | cake (placed) | (1417, 815, 936) |  |
-| `CauldronSpwn0` | CauldronSpwn: card ProfessorAmandoDippetx1 | (-1290, 459, 452) |  |
-| `CauldronSpwn1` | CauldronSpwn: pastyx4, cakex2 | (1385, 1265, 45) |  |
-| `CauldronSpwn4` | CauldronSpwn: pastyx5 | (-147, -318, 1249) |  |
-| `ChestSpawner0` | ChestSpawner: pastyx4 | (-325, -214, 441) |  |
-| `ChestSpawner1` | ChestSpawner: pastyx4 | (1565, 1058, 440) |  |
-| `CrateSpwn1` | CrateSpwn: pastyx4, cakex1 | (-1245, -157, 554) | `poxiedis` |
-| `PumpkinPasty0` | pasty (placed) | (129, 928, 643) |  |
-| `PumpkinPasty18` | pasty (placed) | (-683, -337, 53) |  |
-| `PumpkinPasty4` | pasty (placed) | (190, 865, 643) |  |
-| `PumpkinPasty5` | pasty (placed) | (-583, -341, 44) |  |
-| `PumpkinPasty6` | pasty (placed) | (128, 800, 643) |  |
-| `PumpkinPasty7` | pasty (placed) | (66, 864, 643) |  |
 
 ### Harry FE (`HP3_FA3Harry`): 10
 
