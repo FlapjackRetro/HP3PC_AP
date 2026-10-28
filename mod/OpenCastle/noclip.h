@@ -121,7 +121,7 @@ static void noclip_tick(u32 pc, float dt) {
     }
     mz = up;
     if (mx == 0 && my == 0 && mz == 0) return;
-    speed = (nc_key(0x10) ? 2800.0f : 700.0f) * dt;
+    speed = (nc_key(0x10) ? 28000.0f : 7000.0f) * dt;   /* units per second; Shift x4 */
     xlevel = P(pawn + offXLevel);
     if (!xlevel) return;
     loc[0] = ((float *)(pawn + offLoc))[0] + mx * speed;
