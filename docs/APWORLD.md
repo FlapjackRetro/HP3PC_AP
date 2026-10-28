@@ -166,6 +166,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Paddock: crate `CrateSpwn1` (4 pasties, 1 cake; spawn event `poxiedis`) | Alohomora to reach it, within the Paddock rule. At (-1245, -157, 554) | marked in play 2026-10-28 |
 | Paddock: Professor Armando Dippet card (cauldron `CauldronSpwn0`) | Depulso, plus Alohomora to reach the area, within the Paddock rule. At (-1290, 459, 452) | marked in play 2026-10-28 |
 | Paddock: chest `ChestSpawner0` (4 pasties) | Alohomora to open it, plus Rictusempra and Lapifors to reach the area, within the Paddock rule. At (-325, -214, 441) | marked in play 2026-10-28 |
+| Paddock: cauldron `CauldronSpwn4` (5 pasties) | Depulso, plus Rictusempra and Lapifors to reach the area, within the Paddock rule. At (-147, -318, 1249) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
