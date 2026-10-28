@@ -200,6 +200,8 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Grounds: placed pasty `PumpkinPasty20` (x≈450 path) | **Depulso + Spongify**. At (474, -5639, 1316) | marked in play 2026-10-28 |
 | Grounds: placed pasty `PumpkinPasty21` (x≈450 path) | **Depulso + Spongify**. At (466, -5873, 1316) | marked in play 2026-10-28 |
 | Grounds: placed pasty `PumpkinPasty22` (x≈450 path) | **Depulso + Spongify**. At (429, -5776, 1316) | marked in play 2026-10-28 |
+| Grounds: Giant Purple Toad card (`WC_GiantPurpleToad0`) | **Alohomora + Lumos + Spongify**. At (-204, -7440, 1236) | marked in play 2026-10-28 |
+| Grounds: secret area `SecretAreaMarker3` (with the Giant Purple Toad card) | **Alohomora + Lumos + Spongify**. At (-228, -7437, 1256) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
