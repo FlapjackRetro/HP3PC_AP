@@ -9,7 +9,7 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 332.
+- **Nothing recorded:** 331.
 
 ## Partly known
 
@@ -41,7 +41,7 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 | Drac/Lap (B) (`HP3_Ch2DraconiforsB`) | 58 |
 | Glacius (`HP3_Ch3Glacius`) | 57 |
 | Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
-| Grounds (`HP3_GroundsHub`) | 9 |
+| Grounds (`HP3_GroundsHub`) | 8 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
@@ -350,11 +350,10 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 | `SecretAreaMarker4` | secret area | (2752, -1778, 95) |  |
 
 
-### Grounds (`HP3_GroundsHub`): 9
+### Grounds (`HP3_GroundsHub`): 8
 
 | Actor | What | Where | Tag |
 | --- | --- | --- | --- |
-| `CauldronCake0` | cake (placed) | (-2426, -2738, 884) |  |
 | `Pumpkin3` | Pumpkin: pastyx2 | (902, -609, 590) |  |
 | `Scarecrow0` | Scarecrow: cakex2 | (1126, -491, 647) | `CompScareCrow` |
 | `SecretAreaMarker6` | secret area | (-1925, -6023, 1619) | `BeanPathOne` |
