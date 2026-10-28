@@ -6,8 +6,8 @@ cake / card drop, and secret areas. Left out: random-amount containers (not loca
 challenge stars (not randomized), shops and vendors (logic = shop access + currency), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 27 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 433.
+- **Partly known:** 31 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Nothing recorded:** 429.
 
 ## Partly known
 
@@ -40,6 +40,10 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Dungeons | `HPSpawnThingy5` | pasty (event spawn) | (-158, 2113, -293) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
 | Dungeons | `HPSpawnThingy7` | pasty (event spawn) | (109, 2113, -597) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
 | Portrait E | `ArmoireSpwn0` | ArmoireSpwn: pastyx10 | (-1473, -2902, 1860) | book-fight spell TBD |
+| Patronum | `SkullShelfSpwn0` | SkullShelfSpwn: pastyx3 | (3058, 1671, -362) | area rule only (Patronus Lesson Unlock + Expecto Patronum); extra needs not reported |
+| Patronum | `SkullShelfSpwn1` | SkullShelfSpwn: pastyx3 | (3040, 2352, -320) | area rule only (Patronus Lesson Unlock + Expecto Patronum); extra needs not reported |
+| Patronum | `SkullShelfSpwn2` | SkullShelfSpwn: cakex3 | (2112, 1545, -362) | area rule only (Patronus Lesson Unlock + Expecto Patronum); extra needs not reported |
+| Patronum | `HPSpawnThingy3` | card HonoriaNutcombe | (2592, 2816, -462) | area rule only (Patronus Lesson Unlock + Expecto Patronum); extra needs not reported |
 
 ## Nothing recorded
 
@@ -58,7 +62,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
 | Library (`HP3_Adv3Library`) | 7 |
-| Patronum (`HP3_Adv2ExpPatronum`) | 4 |
 
 ### Glacius (B) (`HP3_Ch3GlaciusB`): 63
 
@@ -553,12 +556,3 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `SecretAreaMarker5` | secret area | (-9504, -5620, 1311) | `BridgeSecrets` |
 | `SecretAreaMarker6` | secret area | (-10597, -8007, 1651) | `BeanPathOne` |
 | `WC_DoubleEndedNewt0` | card DoubleEndedNewt | (-8216, -7269, 1357) |  |
-
-### Patronum (`HP3_Adv2ExpPatronum`): 4
-
-| Actor | What | Where | Tag |
-| --- | --- | --- | --- |
-| `SkullShelfSpwn0` | SkullShelfSpwn: pastyx3 | (3058, 1671, -362) |  |
-| `SkullShelfSpwn1` | SkullShelfSpwn: pastyx3 | (3040, 2352, -320) |  |
-| `SkullShelfSpwn2` | SkullShelfSpwn: cakex3 | (2112, 1545, -362) |  |
-| `HPSpawnThingy3` | card HonoriaNutcombe | (2592, 2816, -462) | `SecondWaveDestroyedWC` |
