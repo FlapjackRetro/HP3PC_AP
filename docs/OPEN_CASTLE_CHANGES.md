@@ -365,3 +365,17 @@ New mechanisms (`unlocks.h`):
 - Return points: each exam drops the player in front of its classroom door (entrance-hall SmartStart, then
   RelocatePawn to where the voice-line trigger stood), not in the side room.
 - Voice lines: a `SILENCE` table switches those touch PopupTriggers off (collision off) on every map load.
+
+### poc8h: noclip (test tool)
+
+- **F6** (or the debug panel's new "Noclip" row under ACTIONS) toggles noclip, to reach spawns that can't be found on
+  foot while finishing the logic. Test-only, like the panel: remove from release builds.
+- While on: move with the game's own movement keys (camera-relative; WASD / arrows as a fallback), **E / Page Up**
+  up, **Q / Page Down** down, **Shift** x4 speed. Collision is off, so nothing is picked up and no trigger fires:
+  turn it off above a floor next to the item, and the player falls onto it.
+- How (`noclip.h`): right after the player controller's `PlayerTick`, the pawn gets collision off
+  (`AActor::SetCollision`, the previous flags kept for turning it back on), `bCollideWorld` cleared and `PHYS_None`
+  (`AActor::setPhysics`); each frame it is moved with `ULevel::FarMoveActor` (no encroachment check), and Velocity /
+  Acceleration are zeroed. Off: the saved collision flags, `bCollideWorld` and `PHYS_Falling`. A level load turns it
+  off for the old pawn and on again for the new one.
+- MapTracker v13 (separate plugin) shows the live position in the title bar: `X … Y … Z … facing …`, 4 times a second.

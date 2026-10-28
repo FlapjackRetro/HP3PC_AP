@@ -234,7 +234,6 @@ How received items reach the game and how saves are reconciled with the server: 
 
 ## Mod tooling to-do
 
-- **Noclip toggle** in the debug panel, to fly to spawns that can't be found on foot (first use: the two Paddock pasties).
 - **Companions ignore spell locks** (seen in the Paddock doxy fight, 2026-10-28). The lock is `WeaponWand.HasSpell`, which
   only the player's targeting calls. A companion in a fight (`HPCompanionCombatController`, state `stateShootAtTarget`)
   calls `HPCharacter.castSpell(target, , target.vulnerableToClass)` directly. Each `PoxieManager` sets how many
@@ -242,9 +241,10 @@ How received items reach the game and how saves are reconciled with the server: 
   finish each wave. But the class default is 999, and managers that don't override it let the companions clear the
   whole fight alone: the Carpe, Carpe B, Glacius and Glacius B doxy groups, the two Stroulger (Portrait Password 3)
   doxy fights, and Library `BookBattleB_CantDoThis`. The imp fights (`ImpCombatManager`) have no such setting at all.
-  Doxies and imps need Rictusempra (`RictusempraSpell_Combat`); flying books need Depulso. Fix (planned): companions
-  can't cast a locked spell either.
- (map + player X, Y, Z), so a catalogue position can be walked to directly.
+  Doxies and imps need Rictusempra (`RictusempraSpell_Combat`); flying books need Depulso. **To do:** companions
+  can't cast a locked spell either (proposed: cancel a companion's spell of a locked class when it's cast).
+- ~~Noclip toggle~~: built in poc8h (F6 / debug panel), not yet tested in play.
+- ~~Live coordinates in the window title bar~~: MapTracker v13 (X, Y, Z and facing), not yet tested in play.
 
 ## Settled
 

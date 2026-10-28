@@ -110,12 +110,12 @@ static void grid_animate(u32 actor, u32 mesh, int which, const wchar *label) {
 static volatile int gGridKey;
 static volatile int gPanelOpen, gPanelPause; static volatile long gPanelKeys;
 static u32 WINAPI key_thread(void *arg) {
-    static const int VK[] = { 0x2E /*Delete*/, 0xDC /*backslash (VK_OEM_5)*/, 0x26 /*Up*/, 0x28 /*Down*/, 0x25 /*Left*/, 0x27 /*Right*/, 0x0D /*Enter*/, 0x20 /*Space*/ };
-    static const long BIT[] = { 0, 0, 1, 2, 4, 8, 16, 16 };
-    int was[8] = { 0 }, k; u32 pid = 0; (void)arg;
+    static const int VK[] = { 0x2E /*Delete*/, 0xDC /*backslash (VK_OEM_5)*/, 0x26 /*Up*/, 0x28 /*Down*/, 0x25 /*Left*/, 0x27 /*Right*/, 0x0D /*Enter*/, 0x20 /*Space*/, 0x75 /*F6*/ };
+    static const long BIT[] = { 0, 0, 1, 2, 4, 8, 16, 16, 0 };
+    int was[9] = { 0 }, k; u32 pid = 0; (void)arg;
     for (;;) {
         Sleep(20);
-        for (k = 0; k < 8; k++) {
+        for (k = 0; k < 9; k++) {
             int down = (GetAsyncKeyState(VK[k]) & 0x8000) != 0;
             if (down && !was[k]) {
                 GetWindowThreadProcessId(GetForegroundWindow(), &pid);
@@ -125,6 +125,7 @@ static u32 WINAPI key_thread(void *arg) {
                         if (GetPrivateProfileIntW(L"Debug", L"PanelPause", 1, gIniPath)) gPanelPause = gPanelOpen ? 1 : 2;
                         log_line(gPanelOpen ? L"panel: open" : L"panel: closed");
                     } else if (k == 1) gGridKey = 1;
+                    else if (k == 8) { gNoclip = !gNoclip; log_line(gNoclip ? L"noclip: F6 on" : L"noclip: F6 off"); }
                     else if (gPanelOpen) __sync_fetch_and_or(&gPanelKeys, BIT[k]);
                 }
             }

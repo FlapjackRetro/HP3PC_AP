@@ -2,7 +2,9 @@
 
 A tiny Ultimate ASI Loader plugin for documenting the game. It's read-only and never changes game memory.
 
-- **Title bar:** `HP3 | <map> | <GState> | End = mark`, reapplied every second, because the game rewrites its own title (visible when windowed).
+- **Title bar:** `HP3 | <map> | <GState> | X <x>  Y <y>  Z <z>  facing <deg> | End = mark`. The position is refreshed
+  4 times a second (v13; facing is the pawn's yaw, 0 = +X, 90 = +Y). The whole title is reapplied every second, because
+  the game rewrites its own title (visible when windowed).
 - **Log:** every change is appended to `Documents\Harry Potter and the Prisoner of Azkaban\HP3_MapLog.txt`:
   ```
   2026-10-24 09:02:11  MAP HP3_InsideHub  state=GState010  (id=ihub package=Save100)
