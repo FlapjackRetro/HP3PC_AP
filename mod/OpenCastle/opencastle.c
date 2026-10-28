@@ -70,7 +70,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc8g"
+#define OC_VERSION L"poc8h"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -258,6 +258,7 @@ static volatile u32 gSilObj[NSILENCE]; static volatile int gSilFire;
 static int N_PlayerTick = -1, N_Tick = -1;
 static volatile int gPanelPause, gAddCurrency, gPanelOpen; static void panel_pause(void); static void panel_currency(void);
 static int N_PostRender; static u32 gClsHUD; static void panel_render(u32 cv);
+static volatile int gNoclip; static int gNoclipOn; static void noclip_tick(u32 pc, float dt);
 static void __thiscall pe_hook(void *self, void *func, void *parms, void *result) {
     int fname = func ? *(int *)((u8 *)func + 0x20) : -1, safe;
     /* Jobs that spawn, destroy or change actors run only from a tick event (PlayerTick / Tick, called while the
@@ -283,6 +284,12 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
     if (gPanelOpen && fname == N_PostRender && N_PostRender >= 0 && gClsHUD && !gInTravel && is_a_fast((u32)self, gClsHUD)) {
         gPEOrig(self, func, parms, result);   /* the HUD first, then the debug panel on top */
         gInTravel = 1; panel_render(parms ? *(u32 *)parms : 0); gInTravel = 0;
+        return;
+    }
+    if ((gNoclip || gNoclipOn) && fname == N_PlayerTick && !gInTravel && gPlayer && offPlayerActor >= 0
+        && (u32)self == *(u32 *)(gPlayer + offPlayerActor)) {   /* noclip: after the controller's own PlayerTick, once a frame */
+        gPEOrig(self, func, parms, result);
+        gInTravel = 1; noclip_tick((u32)self, parms ? *(float *)parms : 0); gInTravel = 0;
         return;
     }
     if (fname == N_MyOnClick && N_MyOnClick >= 0 && !gInTravel) {
@@ -585,6 +592,7 @@ static void gates_poll(u32 level, const wchar *map) {
 #include "comcfix.h"
 #include "blocker.h"
 #include "panel.h"
+#include "noclip.h"
 
 static u32 WINAPI worker(void *arg) {
     HANDLE core; static wchar buf[400], id[32], lastMap[64]; static struct players pl;
@@ -692,7 +700,7 @@ static u32 WINAPI worker(void *arg) {
         }
         settle++;
         if (settle >= 4) comc_poll(level, lastMap);
-        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); blockers_poll(level, lastMap); shop_poll(level, offGame > 0 ? rd32(level + offGame) : 0); spells_init(); unlocks_poll(); panel_lookups(); }   /* once settled, every 2 s */
+        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); blockers_poll(level, lastMap); shop_poll(level, offGame > 0 ? rd32(level + offGame) : 0); spells_init(); unlocks_poll(); panel_lookups(); noclip_lookups(); }   /* once settled, every 2 s */
         if (!shortcutsDone && settle >= 12) {
             shortcutsDone = 1;
             if (!weq(lastMap, L"Entry") && !weq(lastMap, L"HP_Preamble")) { gPendingShortcuts = 1; gPendingRespawn = 1; }

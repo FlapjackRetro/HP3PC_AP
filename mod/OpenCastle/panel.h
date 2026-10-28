@@ -12,7 +12,7 @@
  */
 struct prow { char t; const wchar *label; int idx; const wchar *key; };
 /* t: 'h' heading, '|' next column, 's' spell (SPELLS index), 'd' door (DOORS key), 'm' map, 'p' shortcut passwords,
-   'w' portrait password (1-8), 'x' not wired yet, 'a' action */
+   'w' portrait password (1-8), 'n' noclip, 'x' not wired yet, 'a' action */
 static const struct prow PROWS[] = {
     { 'h', L"SPELLS", 0, 0 },
     { 's', L"Alohomora", 0, 0 }, { 's', L"Carpe Retractum", 1, 0 }, { 's', L"Depulso", 2, 0 }, { 's', L"Draconifors", 3, 0 },
@@ -23,6 +23,7 @@ static const struct prow PROWS[] = {
     { 'h', L"ACTIONS", 0, 0 },
     { 'a', L"+10 Pumpkin Pasties", 0, 0 }, { 'a', L"+10 Cauldron Cakes", 1, 0 }, { 'a', L"+100 Jellybeans", 2, 0 },
     { 'a', L"Untick everything found (save flags off)", 3, 0 },
+    { 'n', L"Noclip: fly through walls (F6; E/Q up/down, Shift fast)", 0, 0 },
     { '|', 0, 0, 0 },
     { 'h', L"LEVEL UNLOCKS", 0, 0 },
     { 'd', L"Paddock", 0, L"Paddock" }, { 'd', L"Hogwarts Express", 0, L"Express" }, { 'd', L"Patronus Lesson (DADA)", 0, L"DADA" },
@@ -100,6 +101,7 @@ static int prow_state(const struct prow *r, int *forced) {
     case 'm': *forced = gIniMap; return gHaveMap > 0;
     case 'p': *forced = gIniShortcuts; return gHaveShortcuts > 0;
     case 'w': *forced = gIniPortrait[r->idx]; return gHavePortrait[r->idx] > 0;
+    case 'n': return gNoclip != 0;
     default: return -1;
     }
 }
@@ -120,6 +122,7 @@ static void panel_activate(int i) {
         log_line(L"panel: every found flag cleared");
         return;
     }
+    if (r->t == 'n') { gNoclip = !gNoclip; log_line(gNoclip ? L"panel: noclip on" : L"panel: noclip off"); return; }
     if (on < 0) { wsprintfW(b, L"panel: %s isn't wired up yet", r->label); log_line(b); return; }
     if (forced) { wsprintfW(b, L"panel: %s is on from the ini start state; set it to 0 there to turn it off", r->label); log_line(b); return; }
     switch (r->t) {

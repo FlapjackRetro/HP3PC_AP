@@ -1,7 +1,8 @@
 /*
  * HP3 MapTracker - Ultimate ASI Loader plugin (plugins\HP3MapTracker.asi)
  *
- * Shows the current map and story game state in the game window's title bar and
+ * Shows the current map, story game state and the player's live position (X, Y, Z and facing, 4 times a second)
+ * in the game window's title bar, and
  * appends every change to Documents\Harry Potter and the Prisoner of Azkaban\HP3_MapLog.txt.
  * Press F11 (with the game focused) to write a MARK line with the player's position.
  *
@@ -60,13 +61,14 @@ IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 #define WM_GETTEXT 0x000D
 #define SMTO_ABORTIFHUNG 0x0002
 #define VK_F11 0x7A
-#define MT_VERSION L"v12"
+#define MT_VERSION L"v13"
 
 /* minimal CRT shims (no C runtime is linked) */
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile unsigned char *p = (volatile unsigned char *)d; while (n--) *p++ = (unsigned char)c; return d; }
 
 static HANDLE gProc;
+static wchar gPosShown[96];
 static volatile int gMarkRequests, gHookOk, gKeyEvents, gLastFKey, gMarkElsewhere;
 static int fg_is_ours(void);   /* set by the keyboard hook thread */
 static HANDLE gInst;
@@ -207,6 +209,11 @@ static BOOL WINAPI enum_cb(HWND h, long lp) {
     return 1;
 }
 static void set_title(const wchar *s) { wcpy(gTitle, s, 256); }
+/* live position: pushed straight to the window (short timeout) whenever the text changes */
+static void push_title(void) {
+    u32 res;
+    if (gWnd && gTitle[0]) SendMessageTimeoutW(gWnd, WM_SETTEXT, 0, (long)gTitle, SMTO_ABORTIFHUNG, 100, &res);
+}
 /* called about once a second: the game rewrites its title (pause menu, focus changes), so keep putting ours back */
 static int gRestores, gGetFails;
 static void keep_title(void) {
@@ -241,11 +248,12 @@ static int fg_is_ours(void) {
 }
 
 /* property offsets, looked up lazily (kwGame.u loads after the engine starts) */
-static int offPlayerActor = -1, offGS = -1, offPawn = -1, offLoc = -1, offLevel = -1, offXLevel = -1, offID = -1, offGame = -1;
+static int offRot = -1, offPlayerActor = -1, offGS = -1, offPawn = -1, offLoc = -1, offLevel = -1, offXLevel = -1, offID = -1, offGame = -1;
 static void lookup_offsets(void) {
     if (offPawn < 0)   offPawn   = prop_offset(L"Controller", L"Pawn");
     if (offPlayerActor < 0) offPlayerActor = prop_offset(L"Player", L"Actor");
     if (offLoc < 0)    offLoc    = prop_offset(L"Actor", L"Location");
+    if (offRot < 0)    offRot    = prop_offset(L"Actor", L"Rotation");
     if (offLevel < 0)  offLevel  = prop_offset(L"Actor", L"Level");
     if (offXLevel < 0) offXLevel = prop_offset(L"Actor", L"XLevel");
     if (offID < 0)     offID     = prop_offset(L"LevelInfo", L"ID");
@@ -293,6 +301,19 @@ static u32 WINAPI worker(void *arg) {
             log_line(buf);
         }
         f11prev = down; marksSeen = req;
+        if (tick % 5 == 0 && lastMap[0]) {   /* live position, 4 times a second */
+            float loc[3]; int rot[3] = { 0, 0, 0 }, deg; wchar pos[96];
+            if (pawn && offLoc >= 0 && rd(pawn + offLoc, loc, 12)) {
+                if (offRot >= 0) rd(pawn + offRot, rot, 12);
+                deg = (int)(((unsigned)rot[1] & 0xFFFF) * 360u / 65536u);   /* UE yaw: 0 = +X, 90 = +Y */
+                wsprintfW(pos, L"X %d  Y %d  Z %d  facing %d", (int)loc[0], (int)loc[1], (int)loc[2], deg);
+            } else wcpy(pos, L"(no player)", 96);
+            if (!weq(pos, gPosShown)) {
+                wcpy(gPosShown, pos, 96);
+                wsprintfW(buf, L"HP3  |  %s  |  %s  |  %s  |  End = mark", lastMap, lastGs[0] ? lastGs : L"-", pos);
+                set_title(buf); push_title();
+            }
+        }
         if (tick % 20 == 10) {
             keep_title();
             if (gKeyEvents && !keysReported) { keysReported = 1; log_line(L"F11: keyboard hook is receiving keys"); }
@@ -338,8 +359,7 @@ static u32 WINAPI worker(void *arg) {
                           id[0] ? id : L"-", pkg[0] ? pkg : L"-");
                 log_line(buf);
                 wcpy(lastMap, map, 64); wcpy(lastGs, gs, 32);
-                wsprintfW(buf, L"HP3  |  %s  |  %s  |  End = mark", map[0] ? map : L"...", gs[0] ? gs : L"-");
-                set_title(buf);
+                gPosShown[0] = 0;   /* rebuild the title (with the position) on the next pass */
             }
         }
         Sleep(50);
