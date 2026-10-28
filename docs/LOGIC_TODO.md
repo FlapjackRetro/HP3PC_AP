@@ -6,7 +6,7 @@ cake / card drop, and secret areas. Left out: random-amount containers (not loca
 challenge stars (not randomized), shops and vendors (logic = shop access + currency), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 29 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 27 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 381.
 
 ## Partly known
@@ -40,8 +40,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Dungeons | `HPSpawnThingy5` | pasty (event spawn) | (-158, 2113, -293) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
 | Dungeons | `HPSpawnThingy7` | pasty (event spawn) | (109, 2113, -597) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
 | Portrait E | `ArmoireSpwn0` | ArmoireSpwn: pastyx10 | (-1473, -2902, 1860) | book-fight spell TBD |
-| Paddock | `PumpkinPasty18` | pasty (placed) | (-683, -337, 53) | **not found in play** (2026-10-28); area rule would be Paddock Unlock + Depulso, Spongify, Draconifors. Low down: z ≈ 50, about 400 below the chests (z ≈ 440), maybe under the floor. Recheck with noclip + live coordinates |
-| Paddock | `PumpkinPasty5` | pasty (placed) | (-583, -341, 44) | **not found in play** (2026-10-28); area rule would be Paddock Unlock + Depulso, Spongify, Draconifors. Low down: z ≈ 50, about 400 below the chests (z ≈ 440), maybe under the floor. Recheck with noclip + live coordinates |
 
 ## Nothing recorded
 

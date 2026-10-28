@@ -129,7 +129,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Portrait C | **Portrait Password 6 + Depulso and Spongify** for everything there (2026-10-27) |
 | Patronum (Adv2ExpPatronum) | **Patronus Lesson Unlock + Expecto Patronum** to start (2026-10-28); all three skull shelves need **Depulso** (2026-10-28): `SkullShelfSpwn2` (3 cakes, (2112, 1545)), `SkullShelfSpwn0` (3 pasties, (3058, 1671)), `SkullShelfSpwn1` (3 pasties, (3040, 2352)); the Honoria Nutcombe card (`HPSpawnThingy3`, second boggart wave) needs nothing beyond the area rule (2026-10-28). Area complete. |
 | Bonus Room (BeanBonus) | **Bonus Room Unlock**. The ground floor needs no spell for the knights and the Hufflepuff / Ravenclaw cards; its four corner floor chests need **Depulso** on a switch. Everything from the Slytherin card up (the upper levels: Gryffindor and Dumbledore cards, the six `gargspawner1` chests, knights 3 and 5, the nine placed pasties) needs **Spongify** and nothing else (all collected in play 2026-10-28). Area complete. |
-| Paddock (Adv6Paddock) | **Paddock Unlock + Depulso, Spongify and Draconifors** for every check there (2026-10-28). Still outstanding: placed pasties `PumpkinPasty5` (−583, −341, 44) and `PumpkinPasty18` (−683, −337, 53), not found in play |
+| Paddock (Adv6Paddock) | **Paddock Unlock + Depulso, Spongify and Draconifors** for every check there (2026-10-28). Area complete (2026-10-28). |
 | Hippogriff (COMC) | **Hippogriff Challenge Unlock** only (2026-10-28): the 5 course cards |
 | Express (Adv1Express) | **Hogwarts Express Unlock + Alohomora, Depulso, Rictusempra and Lumos** (2026-10-28). Its one check: the Fulbert the Fearful card (`HPSpawnThingy0`, tag `SpawnWC1`, (5350, 11, −55)) |
 | Portrait D | **Portrait Password 7** (confirmed in play 2026-10-27); everything past the freestanding cake also needs **Rictusempra, Spongify and Depulso** (2026-10-27): the two companion chests `ChestCompanionSpawner3` (Imp card, 10 pasties, 5 cakes) and `ChestCompanionSpawner0` (10 pasties, 15 cakes) |
@@ -167,6 +167,8 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Paddock: Professor Armando Dippet card (cauldron `CauldronSpwn0`) | Depulso, plus Alohomora to reach the area, within the Paddock rule. At (-1290, 459, 452) | marked in play 2026-10-28 |
 | Paddock: chest `ChestSpawner0` (4 pasties) | Alohomora to open it, plus Rictusempra and Lapifors to reach the area, within the Paddock rule. At (-325, -214, 441) | marked in play 2026-10-28 |
 | Paddock: cauldron `CauldronSpwn4` (5 pasties) | Depulso, plus Rictusempra and Lapifors to reach the area, within the Paddock rule. At (-147, -318, 1249) | marked in play 2026-10-28 |
+| Paddock: placed pasty `PumpkinPasty5` (low pair, found with noclip) | Alohomora, Rictusempra and Lapifors to reach it, within the Paddock rule. At (-583, -341, 44) | marked in play 2026-10-28 |
+| Paddock: placed pasty `PumpkinPasty18` (low pair, found with noclip) | Alohomora, Rictusempra and Lapifors to reach it, within the Paddock rule. At (-683, -337, 53) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
@@ -230,7 +232,7 @@ How received items reach the game and how saves are reconciled with the server: 
 
 ## Open questions
 
-- Paddock pasties `PumpkinPasty5` / `PumpkinPasty18` (z ≈ 50, far below the rest of the map): not found in play. Reachable, or under the floor (then not a location)?
+- None right now.
 
 ## Mod tooling to-do
 
@@ -243,8 +245,8 @@ How received items reach the game and how saves are reconciled with the server: 
   doxy fights, and Library `BookBattleB_CantDoThis`. The imp fights (`ImpCombatManager`) have no such setting at all.
   Doxies and imps need Rictusempra (`RictusempraSpell_Combat`); flying books need Depulso. **To do:** companions
   can't cast a locked spell either (proposed: cancel a companion's spell of a locked class when it's cast).
-- ~~Noclip toggle~~: built in poc8h (F6 / debug panel), not yet tested in play.
-- ~~Live coordinates in the window title bar~~: MapTracker v13 (X, Y, Z and facing), not yet tested in play.
+- ~~Noclip toggle~~: built in poc8h (F6 / debug panel), 10x faster in poc8i; works in play (found the Paddock pasties).
+- ~~Live coordinates in the window title bar~~: MapTracker v13 (X, Y, Z and facing).
 
 ## Settled
 
