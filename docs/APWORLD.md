@@ -178,6 +178,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Hogwarts: chest `ChestSpawner4` (3 pasties; also 10 beans) | **Alohomora** to open, **Lumos and Spongify** to reach it. At (-1369, -1581, 1120) | marked in play 2026-10-28 |
 | Hogwarts: chest `ChestSpawner14` (3 pasties; also 10 beans; tag `2ndFlr_BookBtlBkCs_Chest_02`) | **Alohomora + Depulso**. At (-51, -1682, 632), tag `2ndFlr_BookBtlBkCs_Chest_02` | marked in play 2026-10-28 |
 | Hogwarts: secret area `SecretAreaMarker1` (tied to chest `ChestSpawner14`) | **Alohomora + Depulso**, same as the chest it goes with. At (-288, -1088, 760) | marked in play 2026-10-28 |
+| Hogwarts: chest `ChestSpawner17` (2 pasties; also 6 beans; tag `5thFlrScrt_Chest`) | **Alohomora**. At (-3653, -35, 1541), tag `5thFlrScrt_Chest` | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
