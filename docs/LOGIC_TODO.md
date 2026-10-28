@@ -5,11 +5,12 @@ Candidate locations: placed pasties / cakes / cards, event-spawned pasties / cak
 cake / card drop, and secret areas. Left out: random-amount containers (not locations), bean-only containers,
 challenge stars (not randomized), shops and vendors (logic = shop access + currency; this includes the five
 `WC_BeatrixBloxam` cards, which are display props in Fred & George's shop), and spawns whose trigger never fires in
-Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5`), and the dropped maps
+Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5`), and the five cards in the
+Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upper Barnton, Morholt), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 328.
+- **Nothing recorded:** 323.
 
 ## Partly known
 
@@ -41,7 +42,6 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 | Drac/Lap (B) (`HP3_Ch2DraconiforsB`) | 58 |
 | Glacius (`HP3_Ch3Glacius`) | 57 |
 | Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
-| Grounds (`HP3_GroundsHub`) | 5 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
@@ -349,16 +349,6 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 | `SecretAreaMarker3` | secret area | (3862, -476, -163) |  |
 | `SecretAreaMarker4` | secret area | (2752, -1778, 95) |  |
 
-
-### Grounds (`HP3_GroundsHub`): 5
-
-| Actor | What | Where | Tag |
-| --- | --- | --- | --- |
-| `WC_BrantheBloodthirsty0` | card BrantheBloodthirsty | (-2872, -10152, 808) |  |
-| `WC_Cyclops0` | card Cyclops | (-2920, -10128, 808) |  |
-| `WC_Goliath0` | card Goliath | (-2952, -10112, 808) |  |
-| `WC_HengistofUpperBarnton0` | card HengistofUpperBarnton | (-3000, -10088, 808) |  |
-| `WC_Morholt0` | card Morholt | (-2976, -10104, 808) |  |
 
 ### Tunnel (`HP3_Adv5Shack`): 21
 
