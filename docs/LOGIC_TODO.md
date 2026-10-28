@@ -6,7 +6,7 @@ cake / card drop, and secret areas. Left out: random-amount containers (not loca
 challenge stars (not randomized), shops and vendors (logic = shop access + currency), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 46 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 45 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 396.
 
 ## Partly known
@@ -47,7 +47,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Bonus Room | `ChestSpawner8` | ChestSpawner: pastyx4, cakex4 | (473, -959, 451) | area rule only (Bonus Room Unlock + Spongify for the upper levels); spawn event `gargspawner1`; extra needs not reported |
 | Bonus Room | `ChestSpawner9` | ChestSpawner: pastyx4, cakex4 | (811, -959, 451) | area rule only (Bonus Room Unlock + Spongify for the upper levels); spawn event `gargspawner1`; extra needs not reported |
 | Bonus Room | `KnightSpawner3` | KnightSpawner: pastyx2, cakex2 | (-286, -1731, 120) | area rule only (Bonus Room Unlock + Spongify for the upper levels); spawn event `khall6`; extra needs not reported |
-| Bonus Room | `KnightSpawner5` | KnightSpawner: pastyx2, cakex2 | (1088, -1986, 119) | area rule only (Bonus Room Unlock + Spongify for the upper levels); spawn event `k2`; extra needs not reported |
 | Bonus Room | `PumpkinPasty1` | pasty (placed) | (-127, -2367, 166) | area rule only (Bonus Room Unlock + Spongify for the upper levels); extra needs not reported |
 | Bonus Room | `PumpkinPasty10` | pasty (placed) | (1683, -191, 149) | area rule only (Bonus Room Unlock + Spongify for the upper levels); extra needs not reported |
 | Bonus Room | `PumpkinPasty11` | pasty (placed) | (-450, -1484, 149) | area rule only (Bonus Room Unlock + Spongify for the upper levels); extra needs not reported |
