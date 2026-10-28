@@ -6,7 +6,7 @@ cake / card drop, and secret areas. Left out: random-amount containers (not loca
 challenge stars (not randomized), shops and vendors (logic = shop access + currency), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 38 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 35 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 381.
 
 ## Partly known
@@ -40,9 +40,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Dungeons | `HPSpawnThingy5` | pasty (event spawn) | (-158, 2113, -293) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
 | Dungeons | `HPSpawnThingy7` | pasty (event spawn) | (109, 2113, -597) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
 | Portrait E | `ArmoireSpwn0` | ArmoireSpwn: pastyx10 | (-1473, -2902, 1860) | book-fight spell TBD |
-| Paddock | `CauldronCake0` | cake (placed) | (1265, 815, 936) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
-| Paddock | `CauldronCake2` | cake (placed) | (1344, 814, 937) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
-| Paddock | `CauldronCake7` | cake (placed) | (1417, 815, 936) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
 | Paddock | `CauldronSpwn0` | CauldronSpwn: card ProfessorAmandoDippetx1 | (-1290, 459, 452) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
 | Paddock | `CauldronSpwn1` | CauldronSpwn: pastyx4, cakex2 | (1385, 1265, 45) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
 | Paddock | `CauldronSpwn4` | CauldronSpwn: pastyx5 | (-147, -318, 1249) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
