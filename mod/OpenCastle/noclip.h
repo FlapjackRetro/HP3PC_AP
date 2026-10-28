@@ -3,7 +3,7 @@
  * it. While on, the player flies through walls, floors and actors:
  *   move      the game's own movement keys (camera-relative, read from the controller's aForward / aStrafe; WASD or
  *             the arrow keys are read directly as a fallback)
- *   up/down   Space, E or Page Up / Left Ctrl, Q or Page Down
+ *   up/down   X, Space, E or Page Up / C, Left Ctrl, Q or Page Down
  *   faster    hold Shift (x4)
  * Turning it off drops the player from where they are (falling physics, collision back on), so turn it off above a
  * floor. Nothing is picked up and no trigger fires while it's on (collision is off): land next to the item.
@@ -91,7 +91,7 @@ static void noclip_tick(u32 pc, float dt) {
         *(u32 *)(pawn + offNcCW) &= ~maskNcCW;
         gSetPhysics((void *)pawn, 0 /*PHYS_None*/, 0, 0, 0, 0);
         gNoclipOn = 1; gNcPawn = pawn;
-        log_line(L"noclip: on (move keys, Space / E / PgUp up, LCtrl / Q / PgDn down, Shift faster; F6 off)");
+        log_line(L"noclip: on (move keys, X / Space / E / PgUp up, C / LCtrl / Q / PgDn down, Shift faster; F6 off)");
     }
     if (*(u8 *)(pawn + offNcPhys) != 0) gSetPhysics((void *)pawn, 0, 0, 0, 0, 0);   /* the game switched it back */
     ((float *)(pawn + offNcVel))[0] = ((float *)(pawn + offNcVel))[1] = ((float *)(pawn + offNcVel))[2] = 0;
@@ -106,7 +106,7 @@ static void noclip_tick(u32 pc, float dt) {
         f = (float)((nc_key('W') || nc_key(0x26)) - (nc_key('S') || nc_key(0x28)));
         s = (float)((nc_key('D') || nc_key(0x27)) - (nc_key('A') || nc_key(0x25)));
     }
-    up = (float)((nc_key(0x20) || nc_key('E') || nc_key(0x21)) - (nc_key(0xA2 /*LCtrl*/) || nc_key('Q') || nc_key(0x22)));
+    up = (float)((nc_key('X') || nc_key(0x20) || nc_key('E') || nc_key(0x21)) - (nc_key('C') || nc_key(0xA2 /*LCtrl*/) || nc_key('Q') || nc_key(0x22)));
     /* camera-relative: the third-person camera's yaw, else the pawn's */
     cam = offNcCam > 0 ? P(pc + offNcCam) : 0;
     rot[1] = *(int *)((cam ? cam : pawn) + offNcRot + 4);

@@ -394,3 +394,8 @@ New mechanisms (`unlocks.h`):
 ### poc8k: noclip up / down on Space and Left Ctrl
 
 - Space goes up and Left Ctrl goes down (E / Page Up and Q / Page Down still work too).
+
+### poc8l: noclip up / down on X and C
+
+- X goes up and C goes down (Space / Left Ctrl, E / Page Up and Q / Page Down still work). poc8k's Space / Left Ctrl
+  were reported not working, but the log shows poc8j was the build running then.

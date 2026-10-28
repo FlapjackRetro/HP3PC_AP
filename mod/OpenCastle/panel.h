@@ -23,7 +23,7 @@ static const struct prow PROWS[] = {
     { 'h', L"ACTIONS", 0, 0 },
     { 'a', L"+10 Pumpkin Pasties", 0, 0 }, { 'a', L"+10 Cauldron Cakes", 1, 0 }, { 'a', L"+100 Jellybeans", 2, 0 },
     { 'a', L"Untick everything found (save flags off)", 3, 0 },
-    { 'n', L"Noclip: fly through walls (F6; Space/LCtrl up/down, Shift fast)", 0, 0 },
+    { 'n', L"Noclip: fly through walls (F6; X up, C down, Shift fast)", 0, 0 },
     { '|', 0, 0, 0 },
     { 'h', L"LEVEL UNLOCKS", 0, 0 },
     { 'd', L"Paddock", 0, L"Paddock" }, { 'd', L"Hogwarts Express", 0, L"Express" }, { 'd', L"Patronus Lesson (DADA)", 0, L"DADA" },
