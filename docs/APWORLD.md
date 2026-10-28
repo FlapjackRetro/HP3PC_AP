@@ -154,6 +154,10 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Bonus Room: Salazar Slytherin card (`WC_SalazarSlytherin0`) | **Spongify**, within the Bonus Room Unlock. Everything above it (the upper levels) also needs Spongify. At (638, -958, -64) | marked in play 2026-10-28 |
 | Bonus Room: knight `KnightSpawner1` (2 pasties, 2 cakes; also 10 beans) | None beyond the Bonus Room Unlock (armor, no spell; ground floor, not behind Spongify). At (-447, -1569, -424), tag `kside1` | marked in play 2026-10-28 |
 | Bonus Room: knight `KnightSpawner5` (2 pasties, 2 cakes; also 10 beans) | Spongify to reach it (upper level), within the Bonus Room Unlock; armor needs no spell. At (1088, -1986, 119) | marked in play 2026-10-28 |
+| Paddock: placed pasty `PumpkinPasty0` (group of four) | Draconifors, within the Paddock rule (Paddock Unlock + Depulso, Spongify, Draconifors). At (129, 928, 643) | marked in play 2026-10-28 |
+| Paddock: placed pasty `PumpkinPasty4` (group of four) | Draconifors, within the Paddock rule (Paddock Unlock + Depulso, Spongify, Draconifors). At (190, 865, 643) | marked in play 2026-10-28 |
+| Paddock: placed pasty `PumpkinPasty6` (group of four) | Draconifors, within the Paddock rule (Paddock Unlock + Depulso, Spongify, Draconifors). At (128, 800, 643) | marked in play 2026-10-28 |
+| Paddock: placed pasty `PumpkinPasty7` (group of four) | Draconifors, within the Paddock rule (Paddock Unlock + Depulso, Spongify, Draconifors). At (66, 864, 643) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
