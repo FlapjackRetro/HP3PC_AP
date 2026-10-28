@@ -9,7 +9,7 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 350.
+- **Nothing recorded:** 339.
 
 ## Partly known
 
@@ -41,7 +41,7 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 | Drac/Lap (B) (`HP3_Ch2DraconiforsB`) | 58 |
 | Glacius (`HP3_Ch3Glacius`) | 57 |
 | Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
-| Grounds (`HP3_GroundsHub`) | 27 |
+| Grounds (`HP3_GroundsHub`) | 16 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
@@ -350,32 +350,21 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 | `SecretAreaMarker4` | secret area | (2752, -1778, 95) |  |
 
 
-### Grounds (`HP3_GroundsHub`): 27
+### Grounds (`HP3_GroundsHub`): 16
 
 | Actor | What | Where | Tag |
 | --- | --- | --- | --- |
 | `CauldronCake0` | cake (placed) | (-2426, -2738, 884) |  |
-| `CauldronCake1` | cake (placed) | (426, -5327, 1316) |  |
-| `CauldronCake2` | cake (placed) | (481, -5558, 1316) |  |
-| `CauldronCake3` | cake (placed) | (414, -5397, 1316) |  |
-| `CauldronCake4` | cake (placed) | (458, -5467, 1316) |  |
 | `CauldronCake5` | cake (placed) | (801, -2758, 911) |  |
 | `ChestSpawner0` | ChestSpawner: card Phoenixx1 | (-3711, -7424, 1069) | `WheelPuzzlePrize` |
 | `Pumpkin3` | Pumpkin: pastyx2 | (902, -609, 590) |  |
 | `Scarecrow0` | Scarecrow: cakex2 | (1126, -491, 647) | `CompScareCrow` |
-| `PumpkinPasty18` | pasty (placed) | (434, -5707, 1316) |  |
-| `PumpkinPasty19` | pasty (placed) | (441, -5832, 1316) |  |
-| `PumpkinPasty20` | pasty (placed) | (474, -5639, 1316) |  |
-| `PumpkinPasty21` | pasty (placed) | (466, -5873, 1316) |  |
-| `PumpkinPasty22` | pasty (placed) | (429, -5776, 1316) |  |
 | `SecretAreaMarker0` | secret area | (959, -1598, 696) |  |
-| `SecretAreaMarker2` | secret area | (447, -6955, 1335) |  |
 | `SecretAreaMarker3` | secret area | (-228, -7437, 1256) |  |
 | `SecretAreaMarker5` | secret area | (-832, -3076, 1279) | `BridgeSecrets` |
 | `SecretAreaMarker6` | secret area | (-1925, -6023, 1619) | `BeanPathOne` |
 | `WC_BrantheBloodthirsty0` | card BrantheBloodthirsty | (-2872, -10152, 808) |  |
 | `WC_Cyclops0` | card Cyclops | (-2920, -10128, 808) |  |
-| `WC_DoubleEndedNewt0` | card DoubleEndedNewt | (456, -5285, 1325) |  |
 | `WC_GiantPurpleToad0` | card GiantPurpleToad | (-204, -7440, 1236) |  |
 | `WC_Goliath0` | card Goliath | (-2952, -10112, 808) |  |
 | `WC_Gytrash0` | card Gytrash | (960, -1596, 676) |  |
