@@ -245,7 +245,7 @@ How received items reach the game and how saves are reconciled with the server: 
   doxy fights, and Library `BookBattleB_CantDoThis`. The imp fights (`ImpCombatManager`) have no such setting at all.
   Doxies and imps need Rictusempra (`RictusempraSpell_Combat`); flying books need Depulso. **To do:** companions
   can't cast a locked spell either (proposed: cancel a companion's spell of a locked class when it's cast).
-- ~~Noclip toggle~~: built in poc8h (F6 / debug panel), 10x faster in poc8i; works in play (found the Paddock pasties).
+- ~~Noclip toggle~~: built in poc8h (F6 / debug panel), 100x faster since poc8j; works in play (found the Paddock pasties).
 - ~~Live coordinates in the window title bar~~: MapTracker v13 (X, Y, Z and facing).
 
 ## Settled

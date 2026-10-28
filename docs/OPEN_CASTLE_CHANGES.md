@@ -386,3 +386,7 @@ New mechanisms (`unlocks.h`):
   and the game's own forward axis drives it (`aForward` 24000 at full stick).
 - `install_opencastle.bat` also copies `HP3MapTracker.asi` when it's next to it (the title-bar coordinates didn't show
   because MapTracker v12 was still installed).
+
+### poc8j: noclip x10 again
+
+- 70000 units a second, 280000 with Shift.
