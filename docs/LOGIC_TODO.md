@@ -7,10 +7,10 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 `WC_BeatrixBloxam` cards, which are display props in Fred & George's shop), and spawns whose trigger never fires in
 Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5`), and the five cards in the
 Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upper Barnton, Morholt), and
-Library `SecretAreaMarker6` (in an out-of-bounds copy of the grounds, not the library), and the dropped maps
+the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5, 6 and a Double-Ended Newt card), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 20 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 316.
 
 ## Partly known
@@ -33,10 +33,6 @@ Library `SecretAreaMarker6` (in an out-of-bounds copy of the grounds, not the li
 | Carpe (B) | `KnightSpawner21` | KnightSpawner: card BlodwynBluddx1, pastyx5 | (1713, 5812, 1797) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker3` | secret area | (-1769, 5968, 2288) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule only; not checked spot by spot |
-| Library | `SecretAreaMarker2` | secret area | (-8225, -8939, 1367) | area rule only (Library Unlock + Depulso; past chest `ChestSpawner2` also Lumos + Carpe Retractum); extra needs not reported |
-| Library | `SecretAreaMarker4` | secret area | (-12316, -9596, 1762) | area rule only (Library Unlock + Depulso; past chest `ChestSpawner2` also Lumos + Carpe Retractum); spawn event `WheelPuzzlePrize`; extra needs not reported |
-| Library | `SecretAreaMarker5` | secret area | (-9504, -5620, 1311) | area rule only (Library Unlock + Depulso; past chest `ChestSpawner2` also Lumos + Carpe Retractum); spawn event `BridgeSecrets`; extra needs not reported |
-| Library | `WC_DoubleEndedNewt0` | card DoubleEndedNewt | (-8216, -7269, 1357) | area rule only (Library Unlock + Depulso; past chest `ChestSpawner2` also Lumos + Carpe Retractum); extra needs not reported |
 
 ## Nothing recorded
 
