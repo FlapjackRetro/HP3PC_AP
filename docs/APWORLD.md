@@ -133,7 +133,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Monster Book challenge (InsideHub, MBOM) | **Monster Book Challenge Unlock + Depulso + Rictusempra** (2026-10-28): its 5 reward cards (Baba Yaga, Cordelia Misericordia, Leticia Somnolens, Malodora Grymm, Old Mother Hubbard), at (−2650, −3770, 304) |
 | Hippogriff (COMC) | **Hippogriff Challenge Unlock** only (2026-10-28): the 5 course cards |
 | Express (Adv1Express) | **Hogwarts Express Unlock + Alohomora, Depulso, Rictusempra and Lumos** (2026-10-28). Its one check: the Fulbert the Fearful card (`HPSpawnThingy0`, tag `SpawnWC1`, (5350, 11, −55)) |
-| Portrait D | **Portrait Password 7** (confirmed in play 2026-10-27); everything past the freestanding cake also needs **Rictusempra, Spongify and Depulso** (2026-10-27): the two companion chests `ChestCompanionSpawner3` (Imp card, 10 pasties, 5 cakes) and `ChestCompanionSpawner0` (10 pasties, 15 cakes) |
+| Portrait D | **Portrait Password 7** (confirmed in play 2026-10-27) **+ Alohomora** for everything there: the portrait itself, on an upper floor of the castle at (111, 540, 2026), sits behind padlock `AlohomoraPadLock16` (101, 105, 2022) (2026-10-28); everything past the freestanding cake also needs **Rictusempra, Spongify and Depulso** (2026-10-27): the two companion chests `ChestCompanionSpawner3` (Imp card, 10 pasties, 5 cakes) and `ChestCompanionSpawner0` (10 pasties, 15 cakes) |
 
 | Check | Extra needs | Source |
 | --- | --- | --- |
