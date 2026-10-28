@@ -151,6 +151,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Bonus Room: floor chest `ChestSpawner0` (2 cakes; also 10 beans) | Depulso on a nearby switch (event `floorplate` opens the chest), within the Bonus Room Unlock. At (38, -705, -456), tag `floorplate` | marked in play 2026-10-28 |
 | Bonus Room: floor chest `ChestSpawner1` (2 cakes; also 10 beans) | Depulso on a nearby switch (event `floorplate` opens the chest), within the Bonus Room Unlock. At (35, -1217, -456), tag `floorplate` | marked in play 2026-10-28 |
 | Bonus Room: Salazar Slytherin card (`WC_SalazarSlytherin0`) | **Spongify**, within the Bonus Room Unlock. Everything above it (the upper levels) also needs Spongify. At (638, -958, -64) | marked in play 2026-10-28 |
+| Bonus Room: knight `KnightSpawner1` (2 pasties, 2 cakes; also 10 beans) | None beyond the Bonus Room Unlock (armor, no spell; ground floor, not behind Spongify). At (-447, -1569, -424), tag `kside1` | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
