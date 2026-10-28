@@ -7,7 +7,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 27 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 439.
+- **Nothing recorded:** 438.
 
 ## Partly known
 
@@ -60,7 +60,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Library (`HP3_Adv3Library`) | 7 |
 | Hippogriff (`HP3_COMC`) | 5 |
 | Patronum (`HP3_Adv2ExpPatronum`) | 4 |
-| Express (`HP3_Adv1Express`) | 1 |
 
 ### Glacius (B) (`HP3_Ch3GlaciusB`): 63
 
@@ -574,9 +573,3 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `SkullShelfSpwn1` | SkullShelfSpwn: pastyx3 | (3040, 2352, -320) |  |
 | `SkullShelfSpwn2` | SkullShelfSpwn: cakex3 | (2112, 1545, -362) |  |
 | `HPSpawnThingy3` | card HonoriaNutcombe | (2592, 2816, -462) | `SecondWaveDestroyedWC` |
-
-### Express (`HP3_Adv1Express`): 1
-
-| Actor | What | Where | Tag |
-| --- | --- | --- | --- |
-| `HPSpawnThingy0` | card FulberttheFearful | (5350, 11, -55) | `SpawnWC1` |
