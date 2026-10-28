@@ -9,7 +9,7 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upper Barnton, Morholt), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 22 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 21 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 316.
 
 ## Partly known
@@ -32,12 +32,11 @@ Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upp
 | Carpe (B) | `KnightSpawner21` | KnightSpawner: card BlodwynBluddx1, pastyx5 | (1713, 5812, 1797) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker3` | secret area | (-1769, 5968, 2288) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule only; not checked spot by spot |
-| Library | `ChestSpawner2` | ChestSpawner: cakex4 | (-4278, -3137, 281) | area rule only (Library Unlock + Depulso); extra needs not reported |
-| Library | `SecretAreaMarker2` | secret area | (-8225, -8939, 1367) | area rule only (Library Unlock + Depulso); extra needs not reported |
-| Library | `SecretAreaMarker4` | secret area | (-12316, -9596, 1762) | area rule only (Library Unlock + Depulso); spawn event `WheelPuzzlePrize`; extra needs not reported |
-| Library | `SecretAreaMarker5` | secret area | (-9504, -5620, 1311) | area rule only (Library Unlock + Depulso); spawn event `BridgeSecrets`; extra needs not reported |
-| Library | `SecretAreaMarker6` | secret area | (-10597, -8007, 1651) | area rule only (Library Unlock + Depulso); spawn event `BeanPathOne`; extra needs not reported |
-| Library | `WC_DoubleEndedNewt0` | card DoubleEndedNewt | (-8216, -7269, 1357) | area rule only (Library Unlock + Depulso); extra needs not reported |
+| Library | `SecretAreaMarker2` | secret area | (-8225, -8939, 1367) | area rule only (Library Unlock + Depulso; past chest `ChestSpawner2` also Lumos + Carpe Retractum); extra needs not reported |
+| Library | `SecretAreaMarker4` | secret area | (-12316, -9596, 1762) | area rule only (Library Unlock + Depulso; past chest `ChestSpawner2` also Lumos + Carpe Retractum); spawn event `WheelPuzzlePrize`; extra needs not reported |
+| Library | `SecretAreaMarker5` | secret area | (-9504, -5620, 1311) | area rule only (Library Unlock + Depulso; past chest `ChestSpawner2` also Lumos + Carpe Retractum); spawn event `BridgeSecrets`; extra needs not reported |
+| Library | `SecretAreaMarker6` | secret area | (-10597, -8007, 1651) | area rule only (Library Unlock + Depulso; past chest `ChestSpawner2` also Lumos + Carpe Retractum); spawn event `BeanPathOne`; extra needs not reported |
+| Library | `WC_DoubleEndedNewt0` | card DoubleEndedNewt | (-8216, -7269, 1357) | area rule only (Library Unlock + Depulso; past chest `ChestSpawner2` also Lumos + Carpe Retractum); extra needs not reported |
 
 ## Nothing recorded
 
