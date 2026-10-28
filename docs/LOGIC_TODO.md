@@ -7,7 +7,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 375.
+- **Nothing recorded:** 373.
 
 ## Partly known
 
@@ -40,7 +40,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Glacius (`HP3_Ch3Glacius`) | 57 |
 | Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
 | Grounds (`HP3_GroundsHub`) | 31 |
-| Hogwarts (`HP3_InsideHub`) | 21 |
+| Hogwarts (`HP3_InsideHub`) | 19 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
@@ -385,7 +385,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `WC_Kelpie0` | card Kelpie | (-832, -4344, 1808) |  |
 | `WC_Morholt0` | card Morholt | (-2976, -10104, 808) |  |
 
-### Hogwarts (`HP3_InsideHub`): 21
+### Hogwarts (`HP3_InsideHub`): 19
 
 | Actor | What | Where | Tag |
 | --- | --- | --- | --- |
@@ -393,7 +393,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `HPSpawnThingy22` | cake (event spawn) | (447, 1050, 72) | `Peeves3_Spwn_Cake_03` |
 | `HPSpawnThingy23` | cake (event spawn) | (448, 951, 72) | `Peeves3_Spwn_Cake_01` |
 | `HPSpawnThingy25` | cake (event spawn) | (409, 998, 72) | `Peeves3_Spwn_Cake_02` |
-| `ChestSpawner14` | ChestSpawner: pastyx3 | (-51, -1682, 632) | `2ndFlr_BookBtlBkCs_Chest_02` |
 | `ChestSpawner17` | ChestSpawner: pastyx2 | (-3653, -35, 1541) | `5thFlrScrt_Chest` |
 | `SkullFloatSpwn7` | SkullFloatSpwn: pastyx2 | (-1773, -927, 894) |  |
 | `HPSpawnThingy13` | pasty (event spawn) | (-3554, 851, 488) | `peeves2_Spwn_Pastie_04` |
@@ -401,7 +400,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `HPSpawnThingy16` | pasty (event spawn) | (-3592, 749, 488) | `peeves2_Spwn_Pastie_02` |
 | `HPSpawnThingy18` | pasty (event spawn) | (-3587, 807, 488) | `peeves2_Spwn_Pastie_03` |
 | `PumpkinPasty5` | pasty (placed) | (no position in catalogue) |  |
-| `SecretAreaMarker1` | secret area | (-288, -1088, 760) |  |
 | `SecretAreaMarker2` | secret area | (-672, 1004, 859) | `IH03` |
 | `SecretAreaMarker3` | secret area | (-3317, -35, 1591) | `IH02` |
 | `SecretAreaMarker4` | secret area | (482, -797, 2378) |  |
