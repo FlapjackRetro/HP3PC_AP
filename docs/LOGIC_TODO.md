@@ -4,11 +4,12 @@ Generated 2026-10-28 from `data/hp3_location_catalog.csv` against the logic note
 Candidate locations: placed pasties / cakes / cards, event-spawned pasties / cakes, containers with a fixed pasty /
 cake / card drop, and secret areas. Left out: random-amount containers (not locations), bean-only containers,
 challenge stars (not randomized), shops and vendors (logic = shop access + currency; this includes the five
-`WC_BeatrixBloxam` cards, which are display props in Fred & George's shop), and the dropped maps
+`WC_BeatrixBloxam` cards, which are display props in Fred & George's shop), and spawns whose trigger never fires in
+Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5`), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 363.
+- **Nothing recorded:** 354.
 
 ## Partly known
 
@@ -41,7 +42,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Glacius (`HP3_Ch3Glacius`) | 57 |
 | Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
 | Grounds (`HP3_GroundsHub`) | 31 |
-| Hogwarts (`HP3_InsideHub`) | 9 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
@@ -385,20 +385,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `WC_HengistofUpperBarnton0` | card HengistofUpperBarnton | (-3000, -10088, 808) |  |
 | `WC_Kelpie0` | card Kelpie | (-832, -4344, 1808) |  |
 | `WC_Morholt0` | card Morholt | (-2976, -10104, 808) |  |
-
-### Hogwarts (`HP3_InsideHub`): 9
-
-| Actor | What | Where | Tag |
-| --- | --- | --- | --- |
-| `CauldronCake4` | cake (placed) | (no position in catalogue) |  |
-| `HPSpawnThingy22` | cake (event spawn) | (447, 1050, 72) | `Peeves3_Spwn_Cake_03` |
-| `HPSpawnThingy23` | cake (event spawn) | (448, 951, 72) | `Peeves3_Spwn_Cake_01` |
-| `HPSpawnThingy25` | cake (event spawn) | (409, 998, 72) | `Peeves3_Spwn_Cake_02` |
-| `HPSpawnThingy13` | pasty (event spawn) | (-3554, 851, 488) | `peeves2_Spwn_Pastie_04` |
-| `HPSpawnThingy14` | pasty (event spawn) | (-3557, 701, 488) | `peeves2_Spwn_Pastie_01` |
-| `HPSpawnThingy16` | pasty (event spawn) | (-3592, 749, 488) | `peeves2_Spwn_Pastie_02` |
-| `HPSpawnThingy18` | pasty (event spawn) | (-3587, 807, 488) | `peeves2_Spwn_Pastie_03` |
-| `PumpkinPasty5` | pasty (placed) | (no position in catalogue) |  |
 
 ### Tunnel (`HP3_Adv5Shack`): 21
 
