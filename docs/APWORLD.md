@@ -230,7 +230,12 @@ How received items reach the game and how saves are reconciled with the server: 
 
 ## Open questions
 
-- Which portrait each of Portrait Password 1–8 opens (PortraitPassword_B–F plus in-hub rooms): next session.
+- Paddock pasties `PumpkinPasty5` / `PumpkinPasty18` (z ≈ 50, far below the rest of the map): not found in play. Reachable, or under the floor (then not a location)?
+
+## Mod tooling to-do
+
+- **Noclip toggle** in the debug panel, to fly to spawns that can't be found on foot (first use: the two Paddock pasties).
+- **Live coordinates in the window title bar** (map + player X, Y, Z), so a catalogue position can be walked to directly.
 
 ## Settled
 
