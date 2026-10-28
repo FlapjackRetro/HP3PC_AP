@@ -379,3 +379,10 @@ New mechanisms (`unlocks.h`):
   Acceleration are zeroed. Off: the saved collision flags, `bCollideWorld` and `PHYS_Falling`. A level load turns it
   off for the old pawn and on again for the new one.
 - MapTracker v13 (separate plugin) shows the live position in the title bar: `X … Y … Z … facing …`, 4 times a second.
+
+### poc8i: faster noclip
+
+- Noclip speed x10: 7000 units a second, 28000 with Shift (poc8h's 700 was a walk). Tested in play: noclip turns on
+  and the game's own forward axis drives it (`aForward` 24000 at full stick).
+- `install_opencastle.bat` also copies `HP3MapTracker.asi` when it's next to it (the title-bar coordinates didn't show
+  because MapTracker v12 was still installed).
