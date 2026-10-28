@@ -399,3 +399,7 @@ New mechanisms (`unlocks.h`):
 
 - X goes up and C goes down (Space / Left Ctrl, E / Page Up and Q / Page Down still work). poc8k's Space / Left Ctrl
   were reported not working, but the log shows poc8j was the build running then.
+
+### poc8m: slower vertical noclip
+
+- Up / down now moves at 10% of the horizontal speed (7000 units a second, 28000 with Shift).
