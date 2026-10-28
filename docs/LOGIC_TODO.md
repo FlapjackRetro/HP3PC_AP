@@ -7,7 +7,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 381.
+- **Nothing recorded:** 376.
 
 ## Partly known
 
@@ -40,7 +40,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Glacius (`HP3_Ch3Glacius`) | 57 |
 | Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
 | Grounds (`HP3_GroundsHub`) | 31 |
-| Hogwarts (`HP3_InsideHub`) | 27 |
+| Hogwarts (`HP3_InsideHub`) | 22 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
@@ -385,7 +385,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `WC_Kelpie0` | card Kelpie | (-832, -4344, 1808) |  |
 | `WC_Morholt0` | card Morholt | (-2976, -10104, 808) |  |
 
-### Hogwarts (`HP3_InsideHub`): 27
+### Hogwarts (`HP3_InsideHub`): 22
 
 | Actor | What | Where | Tag |
 | --- | --- | --- | --- |
@@ -406,16 +406,11 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `SecretAreaMarker2` | secret area | (-672, 1004, 859) | `IH03` |
 | `SecretAreaMarker3` | secret area | (-3317, -35, 1591) | `IH02` |
 | `SecretAreaMarker4` | secret area | (482, -797, 2378) |  |
-| `WC_Babayaga0` | card Babayaga | (-2656, -3812, 304) | `MBOM_Babayaga` |
 | `WC_BeatrixBloxam1` | card BeatrixBloxam | (-240, -2495, 2187) |  |
 | `WC_BeatrixBloxam2` | card BeatrixBloxam | (no position in catalogue) |  |
 | `WC_BeatrixBloxam3` | card BeatrixBloxam | (-17, -2486, 2185) |  |
 | `WC_BeatrixBloxam4` | card BeatrixBloxam | (-261, -2263, 2185) |  |
 | `WC_BeatrixBloxam5` | card BeatrixBloxam | (-25, -2250, 2185) |  |
-| `WC_CordeliaMisericordia0` | card CordeliaMisericordia | (-2637, -3734, 304) | `MBOM_CordeliaMisericordia` |
-| `WC_LeticiaSomnolens0` | card LeticiaSomnolens | (-2647, -3774, 304) | `MBOM_LeticiaSomnolens` |
-| `WC_MalodoraGrymm0` | card MalodoraGrymm | (-2652, -3793, 304) | `MBOM_MalodoraGrymm` |
-| `WC_OldMotherHubbard0` | card OldMotherHubbard | (-2642, -3753, 304) | `MBOM_OldMotherHubbard` |
 
 ### Tunnel (`HP3_Adv5Shack`): 21
 
