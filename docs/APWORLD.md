@@ -138,6 +138,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Portrait D: chest `ChestCompanionSpawner0` (10 pasties, 15 cakes; also 45 beans) | Alohomora: three padlocks on it (`AlohomoraPadLock1` / `12` / `13`), on top of the Portrait D rule. At (998, −709, 2169) | marked in play 2026-10-27 |
 | Portrait D: chest `ChestCompanionSpawner3` (Imp card, 10 pasties, 5 cakes; also 45 beans) | Alohomora: three padlocks (`AlohomoraPadLock3` / `4` / `5`), on top of the Portrait D rule. At (1621, 125, 2168) | marked in play 2026-10-27 |
 | Bonus Room: knight `KnightSpawner6` (2 pasties, 2 cakes; also 10 beans) | None beyond the Bonus Room Unlock (armor, no spell). At (1089, 65, −424), tag `k1`, save key `bbKnightSpawner6_lives` | marked in play 2026-10-28 |
+| Bonus Room: Rowena Ravenclaw card (`WC_RowenaRavenclaw0`) | None beyond the Bonus Room Unlock (no spell). At (1747, −1731, −492), save key `bbWC_RowenaRavenclaw0_PU` | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
