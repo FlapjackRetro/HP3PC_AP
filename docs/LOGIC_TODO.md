@@ -40,21 +40,21 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Dungeons | `HPSpawnThingy5` | pasty (event spawn) | (-158, 2113, -293) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
 | Dungeons | `HPSpawnThingy7` | pasty (event spawn) | (109, 2113, -597) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
 | Portrait E | `ArmoireSpwn0` | ArmoireSpwn: pastyx10 | (-1473, -2902, 1860) | book-fight spell TBD |
-| Paddock | `CauldronCake0` | cake (placed) | (1265, 815, 936) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
-| Paddock | `CauldronCake2` | cake (placed) | (1344, 814, 937) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
-| Paddock | `CauldronCake7` | cake (placed) | (1417, 815, 936) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
-| Paddock | `CauldronSpwn0` | CauldronSpwn: card ProfessorAmandoDippetx1 | (-1290, 459, 452) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
-| Paddock | `CauldronSpwn1` | CauldronSpwn: pastyx4, cakex2 | (1385, 1265, 45) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
-| Paddock | `CauldronSpwn4` | CauldronSpwn: pastyx5 | (-147, -318, 1249) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
-| Paddock | `ChestSpawner0` | ChestSpawner: pastyx4 | (-325, -214, 441) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
-| Paddock | `ChestSpawner1` | ChestSpawner: pastyx4 | (1565, 1058, 440) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
-| Paddock | `CrateSpwn1` | CrateSpwn: pastyx4, cakex1 | (-1245, -157, 554) | area rule only (Paddock Unlock + Depulso + Spongify); spawn event `poxiedis`; extra needs not reported |
-| Paddock | `PumpkinPasty0` | pasty (placed) | (129, 928, 643) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
-| Paddock | `PumpkinPasty18` | pasty (placed) | (-683, -337, 53) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
-| Paddock | `PumpkinPasty4` | pasty (placed) | (190, 865, 643) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
-| Paddock | `PumpkinPasty5` | pasty (placed) | (-583, -341, 44) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
-| Paddock | `PumpkinPasty6` | pasty (placed) | (128, 800, 643) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
-| Paddock | `PumpkinPasty7` | pasty (placed) | (66, 864, 643) | area rule only (Paddock Unlock + Depulso + Spongify); extra needs not reported |
+| Paddock | `CauldronCake0` | cake (placed) | (1265, 815, 936) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
+| Paddock | `CauldronCake2` | cake (placed) | (1344, 814, 937) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
+| Paddock | `CauldronCake7` | cake (placed) | (1417, 815, 936) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
+| Paddock | `CauldronSpwn0` | CauldronSpwn: card ProfessorAmandoDippetx1 | (-1290, 459, 452) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
+| Paddock | `CauldronSpwn1` | CauldronSpwn: pastyx4, cakex2 | (1385, 1265, 45) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
+| Paddock | `CauldronSpwn4` | CauldronSpwn: pastyx5 | (-147, -318, 1249) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
+| Paddock | `ChestSpawner0` | ChestSpawner: pastyx4 | (-325, -214, 441) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
+| Paddock | `ChestSpawner1` | ChestSpawner: pastyx4 | (1565, 1058, 440) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
+| Paddock | `CrateSpwn1` | CrateSpwn: pastyx4, cakex1 | (-1245, -157, 554) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); spawn event `poxiedis`; extra needs not reported |
+| Paddock | `PumpkinPasty0` | pasty (placed) | (129, 928, 643) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
+| Paddock | `PumpkinPasty18` | pasty (placed) | (-683, -337, 53) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
+| Paddock | `PumpkinPasty4` | pasty (placed) | (190, 865, 643) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
+| Paddock | `PumpkinPasty5` | pasty (placed) | (-583, -341, 44) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
+| Paddock | `PumpkinPasty6` | pasty (placed) | (128, 800, 643) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
+| Paddock | `PumpkinPasty7` | pasty (placed) | (66, 864, 643) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
 
 ## Nothing recorded
 
