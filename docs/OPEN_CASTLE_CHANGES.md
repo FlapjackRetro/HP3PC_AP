@@ -403,3 +403,8 @@ New mechanisms (`unlocks.h`):
 ### poc8m: slower vertical noclip
 
 - Up / down now moves at 10% of the horizontal speed (7000 units a second, 28000 with Shift).
+
+### poc8n: vertical noclip at 1%
+
+- Up / down now moves at 1% of the horizontal speed: 700 units a second, 2800 with Shift. (The "too fast" report was
+  made on poc8l, at the full 70000; poc8m's 10% was never run.)
