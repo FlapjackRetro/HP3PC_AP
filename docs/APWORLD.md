@@ -213,6 +213,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Grounds: scarecrow `Scarecrow0` (2 cakes; spawn event `CompScareCrow`) | **Depulso**. At (1126, -491, 647), tag `CompScareCrow` | marked in play 2026-10-28 |
 | Grounds: pumpkin `Pumpkin3` (2 pasties; the only pasty pumpkin in the patch, the rest drop beans) | **Depulso** (Pumpkin.vulnerableToClass = DepulsoSpell). At (902, -609, 590) | marked in play 2026-10-28 |
 | Grounds: secret area `SecretAreaMarker6` (tag `BeanPathOne`) | **Depulso + Spongify** (probable: counted on the HUD, 6 of 6 Grounds secrets, but the spot was not pinned down; recheck if logic fails here). At (-1925, -6023, 1619), tag `BeanPathOne` | marked in play 2026-10-28 |
+| Library: chest `ChestSpawner1` (Falco Aesalon card, 5 pasties) | **Alohomora + Carpe Retractum**, within the Library rule. At (-3863, -671, 281) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
