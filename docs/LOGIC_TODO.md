@@ -6,7 +6,7 @@ cake / card drop, and secret areas. Left out: random-amount containers (not loca
 challenge stars (not randomized), shops and vendors (logic = shop access + currency), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 31 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 30 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 381.
 
 ## Partly known
@@ -41,7 +41,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Dungeons | `HPSpawnThingy7` | pasty (event spawn) | (109, 2113, -597) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
 | Portrait E | `ArmoireSpwn0` | ArmoireSpwn: pastyx10 | (-1473, -2902, 1860) | book-fight spell TBD |
 | Paddock | `CauldronSpwn4` | CauldronSpwn: pastyx5 | (-147, -318, 1249) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
-| Paddock | `ChestSpawner0` | ChestSpawner: pastyx4 | (-325, -214, 441) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
 | Paddock | `PumpkinPasty18` | pasty (placed) | (-683, -337, 53) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
 | Paddock | `PumpkinPasty5` | pasty (placed) | (-583, -341, 44) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
 
