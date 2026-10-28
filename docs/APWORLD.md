@@ -161,6 +161,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Paddock: placed cake `CauldronCake0` (row of three) | Draconifors, within the Paddock rule. At (1265, 815, 936) | marked in play 2026-10-28 |
 | Paddock: placed cake `CauldronCake2` (row of three) | Draconifors, within the Paddock rule. At (1344, 814, 937) | marked in play 2026-10-28 |
 | Paddock: placed cake `CauldronCake7` (row of three) | Draconifors, within the Paddock rule. At (1417, 815, 936) | marked in play 2026-10-28 |
+| Paddock: cauldron `CauldronSpwn1` (4 pasties, 2 cakes; also 10 beans) | Depulso, within the Paddock rule. At (1385, 1265, 45) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
