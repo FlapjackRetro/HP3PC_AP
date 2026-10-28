@@ -126,6 +126,6 @@ static void noclip_tick(u32 pc, float dt) {
     if (!xlevel) return;
     loc[0] = ((float *)(pawn + offLoc))[0] + mx * speed;
     loc[1] = ((float *)(pawn + offLoc))[1] + my * speed;
-    loc[2] = ((float *)(pawn + offLoc))[2] + mz * speed;
+    loc[2] = ((float *)(pawn + offLoc))[2] + mz * speed * 0.1f;   /* vertical: 10% of the horizontal speed */
     gFarMove((void *)xlevel, (void *)pawn, loc[0], loc[1], loc[2], 0, 1, 0);
 }
