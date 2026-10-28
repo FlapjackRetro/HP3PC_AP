@@ -9,7 +9,7 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 353.
+- **Nothing recorded:** 352.
 
 ## Partly known
 
@@ -41,7 +41,7 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 | Drac/Lap (B) (`HP3_Ch2DraconiforsB`) | 58 |
 | Glacius (`HP3_Ch3Glacius`) | 57 |
 | Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
-| Grounds (`HP3_GroundsHub`) | 30 |
+| Grounds (`HP3_GroundsHub`) | 29 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
@@ -350,7 +350,7 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 | `SecretAreaMarker4` | secret area | (2752, -1778, 95) |  |
 
 
-### Grounds (`HP3_GroundsHub`): 30
+### Grounds (`HP3_GroundsHub`): 29
 
 | Actor | What | Where | Tag |
 | --- | --- | --- | --- |
@@ -382,7 +382,6 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 | `WC_Goliath0` | card Goliath | (-2952, -10112, 808) |  |
 | `WC_Gytrash0` | card Gytrash | (960, -1596, 676) |  |
 | `WC_HengistofUpperBarnton0` | card HengistofUpperBarnton | (-3000, -10088, 808) |  |
-| `WC_Kelpie0` | card Kelpie | (-832, -4344, 1808) |  |
 | `WC_Morholt0` | card Morholt | (-2976, -10104, 808) |  |
 
 ### Tunnel (`HP3_Adv5Shack`): 21
