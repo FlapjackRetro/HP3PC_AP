@@ -6,7 +6,7 @@ cake / card drop, and secret areas. Left out: random-amount containers (not loca
 challenge stars (not randomized), shops and vendors (logic = shop access + currency), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 26 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 381.
 
 ## Partly known
@@ -29,16 +29,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Carpe (B) | `KnightSpawner21` | KnightSpawner: card BlodwynBluddx1, pastyx5 | (1713, 5812, 1797) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker3` | secret area | (-1769, 5968, 2288) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule only; not checked spot by spot |
-| Dungeons | `HPSpawnThingy11` | pasty (event spawn) | (288, 1884, -619) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
-| Dungeons | `HPSpawnThingy12` | pasty (event spawn) | (289, 1630, -473) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
-| Dungeons | `HPSpawnThingy14` | pasty (event spawn) | (291, 1375, -412) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
-| Dungeons | `HPSpawnThingy20` | pasty (event spawn) | (34, 962, -394) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
-| Dungeons | `HPSpawnThingy21` | pasty (event spawn) | (-226, 962, -383) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
-| Dungeons | `HPSpawnThingy23` | pasty (event spawn) | (-479, 962, -486) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
-| Dungeons | `HPSpawnThingy27` | cake (event spawn) | (-864, 1140, -517) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
-| Dungeons | `HPSpawnThingy3` | pasty (event spawn) | (-416, 2113, -207) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
-| Dungeons | `HPSpawnThingy5` | pasty (event spawn) | (-158, 2113, -293) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
-| Dungeons | `HPSpawnThingy7` | pasty (event spawn) | (109, 2113, -597) | Stroulger doxy-fight reward (tag Aspawnbeans): same event as the reported ones, so Password 3 rule + Alohomora + Rictusempra; not reported found |
 
 ## Nothing recorded
 

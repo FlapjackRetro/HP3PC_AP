@@ -123,7 +123,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | --- | --- |
 | Carpe (Ch1 + Ch1B) | Carpe Retractum Challenge Unlock (door), **Carpe Retractum, Spongify, Depulso** (2026-10-27) |
 | Portrait E | **Portrait Password 8**, and to enter any part of it **Alohomora, Depulso and Spongify** (2026-10-27). Its checks: 7 knights (Depulso) and one armoire with two spawners (below) |
-| Portrait Password 3 area (Dungeons, around (290, 900, −690); the "Stroulger" portrait room: chests tagged `Stroulger_Poxie_Chest`) | **Portrait Password 3 + Spongify** for every check there (2026-10-27); everything past the doxy fight also needs **Alohomora + Rictusempra** |
+| Portrait Password 3 area (Dungeons, around (290, 900, −690); the "Stroulger" portrait room: chests tagged `Stroulger_Poxie_Chest`) | **Portrait Password 3 + Spongify** for every check there (2026-10-27); everything past the doxy fight also needs **Alohomora + Rictusempra**. That includes the 10 snacks the fight spawns (`HPSpawnThingy3/5/7/11/12/14/20/21/23/27`, tag `Aspawnbeans`), collected in play 2026-10-28: Password 3 + Spongify + Alohomora + Rictusempra |
 | Portrait Password 5 area (Dungeons) | **Portrait Password 5 + Lumos** for every check there (2026-10-27). Possible bypass to verify: `AlohomoraTrigger8` (−496, 2669, −280), near dungeon door 1, also opens `PortPass_Glover_Mvr` |
 | Portrait B | **Portrait Password 4 + Lumos, Alohomora and Depulso** for everything there (2026-10-27) |
 | Portrait C | **Portrait Password 6 + Depulso and Spongify** for everything there (2026-10-27) |
