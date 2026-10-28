@@ -6,7 +6,7 @@ cake / card drop, and secret areas. Left out: random-amount containers (not loca
 challenge stars (not randomized), shops and vendors (logic = shop access + currency), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 34 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 33 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 381.
 
 ## Partly known
@@ -43,7 +43,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Paddock | `CauldronSpwn0` | CauldronSpwn: card ProfessorAmandoDippetx1 | (-1290, 459, 452) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
 | Paddock | `CauldronSpwn4` | CauldronSpwn: pastyx5 | (-147, -318, 1249) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
 | Paddock | `ChestSpawner0` | ChestSpawner: pastyx4 | (-325, -214, 441) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
-| Paddock | `ChestSpawner1` | ChestSpawner: pastyx4 | (1565, 1058, 440) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
 | Paddock | `CrateSpwn1` | CrateSpwn: pastyx4, cakex1 | (-1245, -157, 554) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); spawn event `poxiedis`; extra needs not reported |
 | Paddock | `PumpkinPasty18` | pasty (placed) | (-683, -337, 53) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
 | Paddock | `PumpkinPasty5` | pasty (placed) | (-583, -341, 44) | area rule only (Paddock Unlock + Depulso + Spongify + Draconifors); extra needs not reported |
