@@ -7,7 +7,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 27 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 424.
+- **Nothing recorded:** 423.
 
 ## Partly known
 
@@ -50,7 +50,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Drac/Lap (B) (`HP3_Ch2DraconiforsB`) | 58 |
 | Glacius (`HP3_Ch3Glacius`) | 57 |
 | Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
-| Bonus Room (`HP3_BeanBonus`) | 28 |
+| Bonus Room (`HP3_BeanBonus`) | 27 |
 | Grounds (`HP3_GroundsHub`) | 31 |
 | Hogwarts (`HP3_InsideHub`) | 27 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
@@ -361,7 +361,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `SecretAreaMarker3` | secret area | (3862, -476, -163) |  |
 | `SecretAreaMarker4` | secret area | (2752, -1778, 95) |  |
 
-### Bonus Room (`HP3_BeanBonus`): 28
+### Bonus Room (`HP3_BeanBonus`): 27
 
 | Actor | What | Where | Tag |
 | --- | --- | --- | --- |
@@ -391,7 +391,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `PumpkinPasty9` | pasty (placed) | (192, -296, 145) |  |
 | `WC_Dumbledore0` | card Dumbledore | (640, -958, 486) |  |
 | `WC_GodricGryffindor0` | card GodricGryffindor | (639, -962, 226) |  |
-| `WC_HelgaHufflepuff0` | card HelgaHufflepuff | (-448, -190, -492) |  |
 | `WC_SalazarSlytherin0` | card SalazarSlytherin | (638, -958, -64) |  |
 
 ### Grounds (`HP3_GroundsHub`): 31
