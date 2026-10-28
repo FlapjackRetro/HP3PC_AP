@@ -7,7 +7,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 27 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 426.
+- **Nothing recorded:** 425.
 
 ## Partly known
 
@@ -50,7 +50,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | Drac/Lap (B) (`HP3_Ch2DraconiforsB`) | 58 |
 | Glacius (`HP3_Ch3Glacius`) | 57 |
 | Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
-| Bonus Room (`HP3_BeanBonus`) | 30 |
+| Bonus Room (`HP3_BeanBonus`) | 29 |
 | Grounds (`HP3_GroundsHub`) | 31 |
 | Hogwarts (`HP3_InsideHub`) | 27 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
@@ -361,7 +361,7 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `SecretAreaMarker3` | secret area | (3862, -476, -163) |  |
 | `SecretAreaMarker4` | secret area | (2752, -1778, 95) |  |
 
-### Bonus Room (`HP3_BeanBonus`): 30
+### Bonus Room (`HP3_BeanBonus`): 29
 
 | Actor | What | Where | Tag |
 | --- | --- | --- | --- |
@@ -381,7 +381,6 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 | `KnightSpawner3` | KnightSpawner: pastyx2, cakex2 | (-286, -1731, 120) | `khall6` |
 | `KnightSpawner4` | KnightSpawner: pastyx2, cakex2 | (-254, -575, -424) | `khall4` |
 | `KnightSpawner5` | KnightSpawner: pastyx2, cakex2 | (1088, -1986, 119) | `k2` |
-| `KnightSpawner7` | KnightSpawner: pastyx2, cakex2 | (1550, -957, -424) | `khall2` |
 | `PumpkinPasty1` | pasty (placed) | (-127, -2367, 166) |  |
 | `PumpkinPasty10` | pasty (placed) | (1683, -191, 149) |  |
 | `PumpkinPasty11` | pasty (placed) | (-450, -1484, 149) |  |
