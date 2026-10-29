@@ -9,7 +9,7 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upper Barnton, Morholt), and
 the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5, 6 and a Double-Ended Newt card), and the half of each Glacius map
 that the player is never in (Ch3 and Ch3B share the middle of the level; see APWORLD.md), Glacius
-`PumpkinPasty36` (exempt), Glacius B's and Draconifors B's bean bonus rooms (exempt; 21 and 30 spawns), Carpe event cake `HPSpawnThingy3` (exempt: only the first-visit doxy cutscene spawns it), repeatable event rewards (exempt, vanilla: Portrait C's 4 firecrab cakes so far; see APWORLD.md), four Glacius B slide pasties (`PumpkinPasty22`, `23`, `24`, `6`: exempt for now, believed reachable but
+`PumpkinPasty36` (exempt), Glacius B's and Draconifors B's bean bonus rooms (exempt; 21 and 30 spawns), Carpe event cake `HPSpawnThingy3` (exempt: only the first-visit doxy cutscene spawns it), repeatable event rewards (exempt, vanilla: Portrait C's firecrab cakes, the Stroulger doxy reward, the Glover firecrab line, Portrait B's knight pasties, the 4th-floor Spongify column, the Carpe imp pasties; see APWORLD.md), four Glacius B slide pasties (`PumpkinPasty22`, `23`, `24`, `6`: exempt for now, believed reachable but
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
