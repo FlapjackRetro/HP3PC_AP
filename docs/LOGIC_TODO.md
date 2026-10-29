@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 68 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 67 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 101.
 
 ## Partly known
@@ -50,7 +50,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Drac/Lap (B) | `CauldronCake21` | cake (placed) | (-7687, -257, -388) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); extra needs not reported |
 | Drac/Lap (B) | `CauldronCake25` | cake (placed) | (-8162, -512, -57) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); extra needs not reported |
 | Drac/Lap (B) | `CauldronCake4` | cake (placed) | (-9248, -1039, -392) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); extra needs not reported |
-| Drac/Lap (B) | `CauldronCake5` | cake (placed) | (4277, 1986, 420) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 | Drac/Lap (B) | `CauldronCake7` | cake (placed) | (3709, 912, 297) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 | Drac/Lap (B) | `CauldronCake9` | cake (placed) | (3820, 4983, 327) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 | Drac/Lap (B) | `ChestSpawner0` | ChestSpawner: pastyx2 | (-8762, -257, -992) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); spawn event `floorplate`; extra needs not reported |
