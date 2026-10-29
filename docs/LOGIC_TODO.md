@@ -13,8 +13,8 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 196.
+- **Partly known:** 111 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Nothing recorded:** 101.
 
 ## Partly known
 
@@ -36,14 +36,107 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Carpe (B) | `KnightSpawner21` | KnightSpawner: card BlodwynBluddx1, pastyx5 | (1713, 5812, 1797) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker3` | secret area | (-1769, 5968, 2288) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule only; not checked spot by spot |
+| Drac/Lap | `CauldronCake12` | cake (placed) | (4496, -1250, -213) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `CauldronCake3` | cake (placed) | (4550, -511, -213) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `CauldronCake6` | cake (placed) | (-3288, -801, -215) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `CauldronCake8` | cake (placed) | (1342, -386, -316) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `ChestSpawner20` | ChestSpawner: cakex2 | (-1439, -386, 128) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `Dsecretspawner`; extra needs not reported |
+| Drac/Lap | `ChestSpawner21` | ChestSpawner: cakex2 | (522, -383, -456) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `KnightSpawner0` | KnightSpawner: pastyx1 | (2672, -1704, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `Gsecretgrass2`; extra needs not reported |
+| Drac/Lap | `KnightSpawner19` | KnightSpawner: pastyx1 | (2684, -1572, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `Gsecretgrass4`; extra needs not reported |
+| Drac/Lap | `KnightSpawner2` | KnightSpawner: card CommonWelshGreenDragonxNone | (-3462, 624, -139) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `KnightSpawner21` | KnightSpawner: cakex1 | (2818, -1562, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `Gsecretgrass6`; extra needs not reported |
+| Drac/Lap | `KnightSpawner22` | KnightSpawner: pastyx1 | (2838, -1635, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `Gsecretgrass7`; extra needs not reported |
+| Drac/Lap | `Pumpkin0` | Pumpkin: pastyx2 | (3022, -596, 77) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `Pumpkin12` | Pumpkin: pastyx2 | (3018, -913, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `Pumpkin2` | Pumpkin: card HebrideanBlackDragonx1 | (1343, -388, -716) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `Pumpkin7` | Pumpkin: pastyx1 | (1783, -381, -729) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `Pumpkin8` | Pumpkin: pastyx1 | (1343, -795, -730) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `Pumpkin9` | Pumpkin: pastyx1 | (944, -383, -725) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty0` | pasty (placed) | (4606, -1264, 416) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty1` | pasty (placed) | (-2912, -672, -219) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty10` | pasty (placed) | (-1269, -1030, -58) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty11` | pasty (placed) | (433, -382, 239) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty12` | pasty (placed) | (1428, -400, 252) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty13` | pasty (placed) | (-1855, -1519, -203) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty15` | pasty (placed) | (4608, -880, 657) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty17` | pasty (placed) | (4607, -463, 904) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty18` | pasty (placed) | (3364, -1503, 53) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty2` | pasty (placed) | (-2830, 1431, -217) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty20` | pasty (placed) | (1349, 96, -72) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty21` | pasty (placed) | (3559, -1098, 343) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty22` | pasty (placed) | (-2159, -652, -203) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty3` | pasty (placed) | (-1533, -1464, -49) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty4` | pasty (placed) | (-1535, -654, -203) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `PumpkinPasty9` | pasty (placed) | (1277, -392, 252) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `SecretAreaMarker0` | secret area | (1348, -390, -685) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `SecretAreaMarker2` | secret area | (454, -387, -417) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `SecretAreaMarker3` | secret area | (3862, -476, -163) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap | `SecretAreaMarker4` | secret area | (2752, -1778, 95) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `CauldronCake0` | cake (placed) | (-7116, 256, -390) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `CauldronCake1` | cake (placed) | (-8163, -513, -617) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `CauldronCake15` | cake (placed) | (-8608, 154, -390) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `CauldronCake16` | cake (placed) | (-8162, -511, -317) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `CauldronCake18` | cake (placed) | (-8628, -255, -390) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `CauldronCake19` | cake (placed) | (-8628, -769, -390) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `CauldronCake2` | cake (placed) | (-7683, -766, -392) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `CauldronCake20` | cake (placed) | (-9249, -1691, -392) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `CauldronCake21` | cake (placed) | (-7687, -257, -388) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `CauldronCake25` | cake (placed) | (-8162, -512, -57) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `CauldronCake4` | cake (placed) | (-9248, -1039, -392) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `CauldronCake5` | cake (placed) | (4277, 1986, 420) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `CauldronCake7` | cake (placed) | (3709, 912, 297) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `CauldronCake9` | cake (placed) | (3820, 4983, 327) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner0` | ChestSpawner: pastyx2 | (-8762, -257, -992) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `floorplate`; extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner1` | ChestSpawner: pastyx1, cakex1 | (-8765, -769, -992) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `floorplate`; extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner12` | ChestSpawner: card NorwegianRidgebackDragonx1 | (4875, 4646, 312) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner13` | ChestSpawner: card HungarianHorntailDragonx1 | (2657, 857, 346) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner14` | ChestSpawner: cakex2 | (4497, 4562, 312) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner19` | ChestSpawner: card RomanianLonghornDragonx1 | (3296, 5513, 645) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `pwizspawner`; extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner2` | ChestSpawner: pastyx1, cakex1 | (-7555, -769, -992) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `floorplate`; extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner26` | ChestSpawner: pastyx4 | (3550, 5514, 638) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `ppastyspawner`; extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner28` | ChestSpawner: cakex2 | (3426, 5033, 784) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `Ksecretspawner`; extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner3` | ChestSpawner: pastyx2 | (-7560, -253, -992) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `floorplate`; extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner4` | ChestSpawner: pastyx1, cakex1 | (-7991, -1019, -85) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `gargspawner1`; extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner5` | ChestSpawner: pastyx1, cakex1 | (-8330, -1019, -85) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `gargspawner1`; extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner6` | ChestSpawner: pastyx1, cakex1 | (-8329, 0, -85) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `gargspawner1`; extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner7` | ChestSpawner: pastyx1, cakex1 | (-7990, 0, -85) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `gargspawner1`; extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner8` | ChestSpawner: pastyx1, cakex1 | (-8327, -511, -85) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `gargspawner1`; extra needs not reported |
+| Drac/Lap (B) | `ChestSpawner9` | ChestSpawner: pastyx1, cakex2 | (-7989, -511, -85) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `gargspawner1`; extra needs not reported |
+| Drac/Lap (B) | `KnightSpawner1` | KnightSpawner: pastyx2 | (-9247, -1121, -960) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `kside1`; extra needs not reported |
+| Drac/Lap (B) | `KnightSpawner12` | KnightSpawner: pastyx2 | (-9054, -127, -960) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `khall4`; extra needs not reported |
+| Drac/Lap (B) | `KnightSpawner13` | KnightSpawner: pastyx2 | (-7706, -1538, -417) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `k2`; extra needs not reported |
+| Drac/Lap (B) | `KnightSpawner14` | KnightSpawner: pastyx2 | (-7242, -126, -960) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `khall3`; extra needs not reported |
+| Drac/Lap (B) | `KnightSpawner2` | KnightSpawner: pastyx2 | (-9054, -515, -960) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `khall5`; extra needs not reported |
+| Drac/Lap (B) | `KnightSpawner27` | KnightSpawner: pastyx1 | (4412, 4391, 343) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `Lsecretgrass3`; extra needs not reported |
+| Drac/Lap (B) | `KnightSpawner29` | KnightSpawner: cakex1 | (4513, 4433, 343) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `Lsecretgrass5`; extra needs not reported |
+| Drac/Lap (B) | `KnightSpawner3` | KnightSpawner: pastyx2 | (-9080, -1283, -416) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `khall6`; extra needs not reported |
+| Drac/Lap (B) | `KnightSpawner31` | KnightSpawner: pastyx1 | (4625, 4307, 343) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `Lsecretgrass7`; extra needs not reported |
+| Drac/Lap (B) | `KnightSpawner6` | KnightSpawner: pastyx2 | (-7705, 513, -960) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `k1`; extra needs not reported |
+| Drac/Lap (B) | `KnightSpawner7` | KnightSpawner: pastyx2 | (-7244, -509, -960) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `khall2`; extra needs not reported |
+| Drac/Lap (B) | `KnightSpawner8` | KnightSpawner: pastyx2 | (-7244, -897, -960) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `khall1`; extra needs not reported |
+| Drac/Lap (B) | `PumpkinPasty19` | pasty (placed) | (4416, 1977, 294) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `PumpkinPasty23` | pasty (placed) | (3138, 3902, 294) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `PumpkinPasty24` | pasty (placed) | (4081, 1601, 294) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `PumpkinPasty25` | pasty (placed) | (3048, 2649, 294) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `PumpkinPasty26` | pasty (placed) | (2764, 2372, 294) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `PumpkinPasty28` | pasty (placed) | (3046, 1321, 294) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `PumpkinPasty29` | pasty (placed) | (3801, 1320, 294) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `PumpkinPasty30` | pasty (placed) | (4977, 4087, 848) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `PumpkinPasty31` | pasty (placed) | (3711, 3903, 294) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `PumpkinPasty32` | pasty (placed) | (4945, 5241, 519) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `PumpkinPasty33` | pasty (placed) | (4672, 4121, 519) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `PumpkinPasty5` | pasty (placed) | (3808, 2643, 294) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `SecretAreaMarker1` | secret area | (4945, 4649, 351) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `SecretAreaMarker5` | secret area | (4369, 1979, 351) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `SecretAreaMarker6` | secret area | (3424, 5046, 605) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
+| Drac/Lap (B) | `SecretAreaMarker7` | secret area | (4496, 4308, 351) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
 
 ## Nothing recorded
 
 | Area | Count |
 | --- | ---: |
 | Hermione FE (`HP3_FA2Hermione`) | 62 |
-| Drac/Lap (B) (`HP3_Ch2DraconiforsB`) | 58 |
-| Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
@@ -114,112 +207,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | `PumpkinPasty7` | pasty (placed) | (3668, 511, 2013) |  |
 | `PumpkinPasty8` | pasty (placed) | (4015, 510, 1827) |  |
 | `PumpkinPasty9` | pasty (placed) | (4547, 731, 1757) |  |
-
-### Drac/Lap (B) (`HP3_Ch2DraconiforsB`): 58
-
-| Actor | What | Where | Tag |
-| --- | --- | --- | --- |
-| `CauldronCake0` | cake (placed) | (-7116, 256, -390) |  |
-| `CauldronCake1` | cake (placed) | (-8163, -513, -617) |  |
-| `CauldronCake15` | cake (placed) | (-8608, 154, -390) |  |
-| `CauldronCake16` | cake (placed) | (-8162, -511, -317) |  |
-| `CauldronCake18` | cake (placed) | (-8628, -255, -390) |  |
-| `CauldronCake19` | cake (placed) | (-8628, -769, -390) |  |
-| `CauldronCake2` | cake (placed) | (-7683, -766, -392) |  |
-| `CauldronCake20` | cake (placed) | (-9249, -1691, -392) |  |
-| `CauldronCake21` | cake (placed) | (-7687, -257, -388) |  |
-| `CauldronCake25` | cake (placed) | (-8162, -512, -57) |  |
-| `CauldronCake4` | cake (placed) | (-9248, -1039, -392) |  |
-| `CauldronCake5` | cake (placed) | (4277, 1986, 420) |  |
-| `CauldronCake7` | cake (placed) | (3709, 912, 297) |  |
-| `CauldronCake9` | cake (placed) | (3820, 4983, 327) |  |
-| `ChestSpawner0` | ChestSpawner: pastyx2 | (-8762, -257, -992) | `floorplate` |
-| `ChestSpawner1` | ChestSpawner: pastyx1, cakex1 | (-8765, -769, -992) | `floorplate` |
-| `ChestSpawner12` | ChestSpawner: card NorwegianRidgebackDragonx1 | (4875, 4646, 312) |  |
-| `ChestSpawner13` | ChestSpawner: card HungarianHorntailDragonx1 | (2657, 857, 346) |  |
-| `ChestSpawner14` | ChestSpawner: cakex2 | (4497, 4562, 312) |  |
-| `ChestSpawner19` | ChestSpawner: card RomanianLonghornDragonx1 | (3296, 5513, 645) | `pwizspawner` |
-| `ChestSpawner2` | ChestSpawner: pastyx1, cakex1 | (-7555, -769, -992) | `floorplate` |
-| `ChestSpawner26` | ChestSpawner: pastyx4 | (3550, 5514, 638) | `ppastyspawner` |
-| `ChestSpawner28` | ChestSpawner: cakex2 | (3426, 5033, 784) | `Ksecretspawner` |
-| `ChestSpawner3` | ChestSpawner: pastyx2 | (-7560, -253, -992) | `floorplate` |
-| `ChestSpawner4` | ChestSpawner: pastyx1, cakex1 | (-7991, -1019, -85) | `gargspawner1` |
-| `ChestSpawner5` | ChestSpawner: pastyx1, cakex1 | (-8330, -1019, -85) | `gargspawner1` |
-| `ChestSpawner6` | ChestSpawner: pastyx1, cakex1 | (-8329, 0, -85) | `gargspawner1` |
-| `ChestSpawner7` | ChestSpawner: pastyx1, cakex1 | (-7990, 0, -85) | `gargspawner1` |
-| `ChestSpawner8` | ChestSpawner: pastyx1, cakex1 | (-8327, -511, -85) | `gargspawner1` |
-| `ChestSpawner9` | ChestSpawner: pastyx1, cakex2 | (-7989, -511, -85) | `gargspawner1` |
-| `KnightSpawner1` | KnightSpawner: pastyx2 | (-9247, -1121, -960) | `kside1` |
-| `KnightSpawner12` | KnightSpawner: pastyx2 | (-9054, -127, -960) | `khall4` |
-| `KnightSpawner13` | KnightSpawner: pastyx2 | (-7706, -1538, -417) | `k2` |
-| `KnightSpawner14` | KnightSpawner: pastyx2 | (-7242, -126, -960) | `khall3` |
-| `KnightSpawner2` | KnightSpawner: pastyx2 | (-9054, -515, -960) | `khall5` |
-| `KnightSpawner27` | KnightSpawner: pastyx1 | (4412, 4391, 343) | `Lsecretgrass3` |
-| `KnightSpawner29` | KnightSpawner: cakex1 | (4513, 4433, 343) | `Lsecretgrass5` |
-| `KnightSpawner3` | KnightSpawner: pastyx2 | (-9080, -1283, -416) | `khall6` |
-| `KnightSpawner31` | KnightSpawner: pastyx1 | (4625, 4307, 343) | `Lsecretgrass7` |
-| `KnightSpawner6` | KnightSpawner: pastyx2 | (-7705, 513, -960) | `k1` |
-| `KnightSpawner7` | KnightSpawner: pastyx2 | (-7244, -509, -960) | `khall2` |
-| `KnightSpawner8` | KnightSpawner: pastyx2 | (-7244, -897, -960) | `khall1` |
-| `PumpkinPasty19` | pasty (placed) | (4416, 1977, 294) |  |
-| `PumpkinPasty23` | pasty (placed) | (3138, 3902, 294) |  |
-| `PumpkinPasty24` | pasty (placed) | (4081, 1601, 294) |  |
-| `PumpkinPasty25` | pasty (placed) | (3048, 2649, 294) |  |
-| `PumpkinPasty26` | pasty (placed) | (2764, 2372, 294) |  |
-| `PumpkinPasty28` | pasty (placed) | (3046, 1321, 294) |  |
-| `PumpkinPasty29` | pasty (placed) | (3801, 1320, 294) |  |
-| `PumpkinPasty30` | pasty (placed) | (4977, 4087, 848) |  |
-| `PumpkinPasty31` | pasty (placed) | (3711, 3903, 294) |  |
-| `PumpkinPasty32` | pasty (placed) | (4945, 5241, 519) |  |
-| `PumpkinPasty33` | pasty (placed) | (4672, 4121, 519) |  |
-| `PumpkinPasty5` | pasty (placed) | (3808, 2643, 294) |  |
-| `SecretAreaMarker1` | secret area | (4945, 4649, 351) |  |
-| `SecretAreaMarker5` | secret area | (4369, 1979, 351) |  |
-| `SecretAreaMarker6` | secret area | (3424, 5046, 605) |  |
-| `SecretAreaMarker7` | secret area | (4496, 4308, 351) |  |
-
-### Drac/Lap (`HP3_Ch2Draconifors`): 37
-
-| Actor | What | Where | Tag |
-| --- | --- | --- | --- |
-| `CauldronCake12` | cake (placed) | (4496, -1250, -213) |  |
-| `CauldronCake3` | cake (placed) | (4550, -511, -213) |  |
-| `CauldronCake6` | cake (placed) | (-3288, -801, -215) |  |
-| `CauldronCake8` | cake (placed) | (1342, -386, -316) |  |
-| `ChestSpawner20` | ChestSpawner: cakex2 | (-1439, -386, 128) | `Dsecretspawner` |
-| `ChestSpawner21` | ChestSpawner: cakex2 | (522, -383, -456) |  |
-| `KnightSpawner0` | KnightSpawner: pastyx1 | (2672, -1704, 78) | `Gsecretgrass2` |
-| `KnightSpawner19` | KnightSpawner: pastyx1 | (2684, -1572, 78) | `Gsecretgrass4` |
-| `KnightSpawner2` | KnightSpawner: card CommonWelshGreenDragonxNone | (-3462, 624, -139) |  |
-| `KnightSpawner21` | KnightSpawner: cakex1 | (2818, -1562, 78) | `Gsecretgrass6` |
-| `KnightSpawner22` | KnightSpawner: pastyx1 | (2838, -1635, 78) | `Gsecretgrass7` |
-| `Pumpkin0` | Pumpkin: pastyx2 | (3022, -596, 77) |  |
-| `Pumpkin12` | Pumpkin: pastyx2 | (3018, -913, 78) |  |
-| `Pumpkin2` | Pumpkin: card HebrideanBlackDragonx1 | (1343, -388, -716) |  |
-| `Pumpkin7` | Pumpkin: pastyx1 | (1783, -381, -729) |  |
-| `Pumpkin8` | Pumpkin: pastyx1 | (1343, -795, -730) |  |
-| `Pumpkin9` | Pumpkin: pastyx1 | (944, -383, -725) |  |
-| `PumpkinPasty0` | pasty (placed) | (4606, -1264, 416) |  |
-| `PumpkinPasty1` | pasty (placed) | (-2912, -672, -219) |  |
-| `PumpkinPasty10` | pasty (placed) | (-1269, -1030, -58) |  |
-| `PumpkinPasty11` | pasty (placed) | (433, -382, 239) |  |
-| `PumpkinPasty12` | pasty (placed) | (1428, -400, 252) |  |
-| `PumpkinPasty13` | pasty (placed) | (-1855, -1519, -203) |  |
-| `PumpkinPasty15` | pasty (placed) | (4608, -880, 657) |  |
-| `PumpkinPasty17` | pasty (placed) | (4607, -463, 904) |  |
-| `PumpkinPasty18` | pasty (placed) | (3364, -1503, 53) |  |
-| `PumpkinPasty2` | pasty (placed) | (-2830, 1431, -217) |  |
-| `PumpkinPasty20` | pasty (placed) | (1349, 96, -72) |  |
-| `PumpkinPasty21` | pasty (placed) | (3559, -1098, 343) |  |
-| `PumpkinPasty22` | pasty (placed) | (-2159, -652, -203) |  |
-| `PumpkinPasty3` | pasty (placed) | (-1533, -1464, -49) |  |
-| `PumpkinPasty4` | pasty (placed) | (-1535, -654, -203) |  |
-| `PumpkinPasty9` | pasty (placed) | (1277, -392, 252) |  |
-| `SecretAreaMarker0` | secret area | (1348, -390, -685) |  |
-| `SecretAreaMarker2` | secret area | (454, -387, -417) |  |
-| `SecretAreaMarker3` | secret area | (3862, -476, -163) |  |
-| `SecretAreaMarker4` | secret area | (2752, -1778, 95) |  |
-
 
 ### Tunnel (`HP3_Adv5Shack`): 21
 
