@@ -70,7 +70,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc8t"
+#define OC_VERSION L"poc8u"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -245,6 +245,7 @@ static volatile int gGridPending; static void grid_spawn(void); static void item
 static volatile u32 gGridTake; static void grid_take(void);
 static volatile u32 gBlockSpawn, gBlockKill; static void blockers_apply(void); static void trig_apply(void);
 static volatile u32 gTrigFire; static volatile int gSilFire;
+static volatile u32 gChShow, gChFire, gChTrigSet; static void chamber_apply(void);   /* chamber.h */
 /* voice lines switched off for good (touch PopupTriggers, collision off on each map): the exam doors' "that's the
    door to the ... spell challenge" comments */
 struct silence { const wchar *map, *actor, *why; };
@@ -278,6 +279,7 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
         if (gBlockSpawn || gBlockKill) blockers_apply();
         if (gAddCurrency) panel_currency();
         if (gTrigFire || gSilFire) trig_apply();
+        if (gChShow || gChFire || gChTrigSet) chamber_apply();
         gInTravel = 0;
     }
     if (!func || !self) { gPEOrig(self, func, parms, result); return; }
@@ -529,6 +531,7 @@ static void dedupe_cutscenes(u32 level) {
     if (n) { wsprintfW(b, L"cutscenes: %d replay trigger(s) switched off on this map (first visit)", n); log_line(b); }
 }
 
+static void chamber_poll(u32 level, const wchar *map);   /* chamber.h */
 /* every 2 s: read which doors are unlocked; raise/lower each gate on this map to match */
 static void gates_poll(u32 level, const wchar *map) {
     static wchar b[200]; int i, changed = 0;
@@ -613,6 +616,7 @@ static void gates_poll(u32 level, const wchar *map) {
         gGateLast[i] = GetTickCount(); gGateFire |= 1u << i;
         wsprintfW(b, L"gate %s: %s", DOORS[i].key, gDoorOn[i] ? L"raising" : L"lowering"); log_line(b);
     }
+    chamber_poll(level, map);   /* the B maps' challenge-chamber copies */
 }
 
 #include "shop.h"
@@ -622,6 +626,7 @@ static void gates_poll(u32 level, const wchar *map) {
 #include "blocker.h"
 #include "panel.h"
 #include "noclip.h"
+#include "chamber.h"
 
 static u32 WINAPI worker(void *arg) {
     HANDLE core; static wchar buf[400], id[32], lastMap[64]; static struct players pl;

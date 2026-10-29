@@ -502,27 +502,26 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Portrait B: 3 event pasties (`SpawnThingy0` / `2` / `3`, tag `BsecJelly`, around (−880, −3460, 224)) | the Portrait B rule (smashing the six shield knights is Depulso). Map: the knights (`3KnA`–`F`) count up `Counter0` (`CompanionKnightsSmash`, 6) → `SecretStairsBB` raises the secret stairs; stair mover `Mover3` → `ExitSecretB` … → `Dispatcher0` (`ExitSecretC`) → `MtriggerA`–`F` and `BsecJelly` (the pasties). Event-spawned, no save key: detect from the counter / dispatcher | marked in play 2026-10-27 |
 | Portrait C: chest `ChestSpawner0` (4 pasties; also 30 beans) | the Portrait C rule + Alohomora. At (−3296, −1182, 1208), save key `ppcChestSpawner0_lives` | marked in play 2026-10-27 |
 | Portrait C: chest `ChestSpawner1` (10 pasties; also 15 beans) | the Portrait C rule + Alohomora. At (−3296, −2015, 1208), save key `ppcChestSpawner1_lives` | marked in play 2026-10-27 |
-| Portrait C: Gnome Card (placed `WC_Gnome0`, (−4000, −1597, 1850)) and the 4 cakes beside it (`HPSpawnThingy1` / `4` / `6` / `8`, tag `Cspongyplate3`, z 1611–1926) | the Portrait C rule + **Rictusempra** (the firecrabs). Map: firecrabs `Cfirecrab2` / `3` → `Counter0` (`Cfirecrabcounter`) → `Dispatcher0` (`Cspongy3dis`) → opens `Cfirecrabgate` / `Cfirecrabgate1` and spawns the cakes (`Cspongyplate3`). The card is placed (save key `ppcWC_Gnome0_PU`); the cakes are event-spawned (detect from the counter) | marked in play 2026-10-27 |
+| Portrait C: Gnome Card (placed `WC_Gnome0`, (−4000, −1597, 1850)) and the 4 cakes beside it (`HPSpawnThingy1` / `4` / `6` / `8`, tag `Cspongyplate3`, z 1611–1926) | the Portrait C rule + **Rictusempra** (the firecrabs). Map: firecrabs `Cfirecrab2` / `3` → `Counter0` (`Cfirecrabcounter`) → `Dispatcher0` (`Cspongy3dis`) → opens `Cfirecrabgate` / `Cfirecrabgate1` and spawns the cakes (`Cspongyplate3`). The card is placed (save key `ppcWC_Gnome0_PU`) and is the check; the cakes respawn on every completion, so they are **exempt** (repeatable event reward, vanilla) | marked in play 2026-10-27 |
 | Portrait D: Cauldron Cake | only Portrait Password 7 (opens Portrait D). Freestanding `CauldronCake4` at (897, 139, 2178), save key `ppdCauldronCake4_PU` | marked in play 2026-10-27 |
 
 For logic tracing the challenge doors and the spells are separate unlocks in the mod and the debug panel; the
 apworld couples them by default (`split_challenge_spells: false`).
 
-## To do: repeatable event rewards (decision deferred, 2026-10-27)
+## Repeatable event rewards: exempt, vanilla (decided 2026-10-29)
 
-Event-spawned rewards (an `HPSpawnThingy` fired by a counter or dispatcher) have no save record, so the fight and
-its reward reset on every visit. Confirmed in play: re-entering Portrait C, the chests and armour stayed empty but
-beating the firecrabs again spawned the 4 cakes again (the placed Gnome card stayed gone).
+Event-spawned rewards (an `HPSpawnThingy` fired by a counter or dispatcher) have no save record, so on a map where
+the fight itself resets, the fight and its reward come back on every visit. Confirmed in play: re-entering
+Portrait C, the chests and armour stayed empty, but beating the firecrabs again spawned the 4 cakes again (the
+placed Gnome card stayed gone).
 
-- Plan: the check fires once, on the first completion in a save (an `OC_Loc_<id>` flag, see
-  [CLIENT_SYNC.md](CLIENT_SYNC.md)); the first reward is the check, not the vanilla spawn.
-- **Open decision:** what repeat completions give. (a) nothing: the mod turns the spawns off once the check is
-  taken; (b) the vanilla currency again: a farm for pasties / cakes, which softens normal shop prices (logic never
-  counts on it).
-- Verify per reward which ones repeat: Stroulger doxies (counter: probably), Glover firecrab line (counters:
-  probably), Portrait C cakes (**confirmed**), Portrait B pasties (knights may stay smashed), 4th-floor Spongify
-  column (Giant Squid chest's Alohomora trigger: may fire once), Carpe imp pasties (first-visit cutscene: once per
-  save).
+- **Decision:** a reward that repeats is **not a location**. It keeps its vanilla behaviour (it spawns its pasties /
+  cakes on every completion) and nothing is randomized there. Logic never counts on it as currency.
+- **Exempt (confirmed repeating):** Portrait C's 4 cakes (`HPSpawnThingy1` / `4` / `6` / `8`, tag `Cspongyplate3`).
+  The Gnome card beside them (`WC_Gnome0`) is placed and saved, so it stays a check.
+- **To verify in play** (exempt if it repeats, a check if it fires once per save): Stroulger doxies (counter),
+  the Glover firecrab line (counters), Portrait B pasties (the knights may stay smashed), the 4th-floor Spongify
+  column (the Giant Squid chest's Alohomora trigger), Carpe imp pasties (first-visit cutscene: probably once).
 
 ## Client sync
 
@@ -552,8 +551,10 @@ How received items reach the game and how saves are reconciled with the server: 
   whole fight alone: the Carpe, Carpe B, Glacius and Glacius B doxy groups, the two Stroulger (Portrait Password 3)
   doxy fights, and Library `BookBattleB_CantDoThis`. The imp fights (`ImpCombatManager`) have no such setting at all.
   Doxies and imps need Rictusempra (`RictusempraSpell_Combat`); flying books need Depulso. **To do:** companions
-  can't cast a locked spell either (proposed: cancel a companion's spell of a locked class when it's cast).
-- **Challenge-chamber copies at the end of each challenge (B maps) ignore the unlocks** (noted in play 2026-10-29).
+  can't cast a locked spell either, so companions match the player (proposed: cancel a companion's spell of a
+  locked class when it's cast). **Not essential for now** (decided 2026-10-29): left for later.
+- ~~Challenge-chamber copies at the end of each challenge (B maps) ignore the unlocks~~: done in poc8u
+  (`chamber.h`), they now match InsideHub; see OPEN_CASTLE_CHANGES.md. Original note (2026-10-29):
   Each of `HP3_Ch1CarpeRetractumB`, `HP3_Ch2DraconiforsB`, `HP3_Ch3GlaciusB` has its own copy of the InsideHub
   challenge chamber: three portcullises (`ChalChamb_CR_Port` / `_CR_PortCullis`, `ChalChamb_Drac_Port`,
   `ChalChamb_Gla_Port`) and ChangeLevelTriggers straight into `HP3_Ch1CarpeRetractum`, `HP3_Ch2Draconifors`,

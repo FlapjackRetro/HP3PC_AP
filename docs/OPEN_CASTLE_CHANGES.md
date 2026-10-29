@@ -472,6 +472,28 @@ New mechanisms (`unlocks.h`):
   there) as not found, so the caller looks it up again on the next poll. `travel_post_accept` also refuses an offset
   below 0x28. MapTracker rebuilt with the same header (v13, unchanged otherwise).
 
+### poc8u: challenge-chamber portcullises in the B maps follow the unlocks
+
+Each of `HP3_Ch1CarpeRetractumB`, `HP3_Ch2DraconiforsB` and `HP3_Ch3GlaciusB` ends in its own copy of InsideHub's
+challenge chamber, with three portcullises in front of loading triggers straight into the three challenges. In
+`GState090` vanilla hides most of them (`ExcludeFromGameStates`: hidden, collision off), so the passages stood open
+whatever was unlocked, and Glacius B's own Glacius portcullis stood shut. The travel hook already refused a locked
+challenge (the trip went to InsideHub), but the doors didn't show it.
+
+New `chamber.h`. On those maps, every 2 s:
+- each chamber portcullis is shown with collision on, and kept raised while its challenge is unlocked and lowered
+  while it's locked (the same `TriggerToggle.Trigger` as the InsideHub gates; 3 s debounce);
+- the door's `ChangeLevelTrigger` has collision off while locked, and back on once unlocked.
+
+| Map | Carpe | Draconifors | Glacius | Up key |
+| --- | --- | --- | --- | --- |
+| Carpe B | `KWMover31` / `ChangeLevelTrigger9` | `KWMover33` / `ChangeLevelTrigger10` | `KWMover32` / `ChangeLevelTrigger11` | key 1 (all three) |
+| Draconifors B | `KWMover31` / `ChangeLevelTrigger0` | `KWMover32` / `ChangeLevelTrigger2` | `KWMover33` / `ChangeLevelTrigger3` | key 1 (all three) |
+| Glacius B | `KWMover31` / `ChangeLevelTrigger3` | `KWMover32` / `ChangeLevelTrigger4` | `KWMover33` / `ChangeLevelTrigger0` | key 0 (Carpe, Draconifors), key 1 (Glacius) |
+
+`FilterForCurrentGameState` runs only at level start (`KWGame.SetGameState` doesn't re-filter), so the mid-level
+`GState075` / `GState065` cutscenes don't hide them again. Log lines: `chamber <key>: ...`.
+
 ### poc8t: Carpe doxy-fight softlock (cutscene pairing checks the game state)
 
 - Reported: in `HP3_Ch1CarpeRetractum`, after the two doxy waves the fight's end never came. Tag `cutpoxdoor` has the
