@@ -1,9 +1,9 @@
 # Logic to-do: item spawns without a definitive logic requirement
 
 Generated 2026-10-28 from `data/hp3_location_catalog.csv` against the logic notes in [APWORLD.md](APWORLD.md).
-Candidate locations: placed pasties / cakes / cards, bundimuns with a fixed pasty drop (added 2026-10-29), event-spawned pasties / cakes, containers with a fixed pasty /
+Candidate locations: placed pasties / cakes / cards, event-spawned pasties / cakes, containers with a fixed pasty /
 cake / card drop, and secret areas. Left out: random-amount containers (not locations), bean-only containers,
-challenge stars (not randomized), shops and vendors (logic = shop access + currency; this includes the five
+challenge stars (not randomized), bundimuns (exempt: their behaviour isn't changed), shops and vendors (logic = shop access + currency; this includes the five
 `WC_BeatrixBloxam` cards, which are display props in Fred & George's shop), and spawns whose trigger never fires in
 Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5`), and the five cards in the
 Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upper Barnton, Morholt), and
@@ -13,8 +13,8 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 81 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 104.
+- **Partly known:** 76 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Nothing recorded:** 101.
 
 ## Partly known
 
@@ -96,28 +96,20 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Drac/Lap (B) | `SecretAreaMarker5` | secret area | (4369, 1979, 351) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 | Drac/Lap (B) | `SecretAreaMarker6` | secret area | (3424, 5046, 605) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 | Drac/Lap (B) | `SecretAreaMarker7` | secret area | (4496, 4308, 351) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
-| Drac/Lap (B) | `Bundimun2` | Bundimun: pastyx1 | (5487, 5178, 308) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); bundimun (no save key, comes back on every visit); extra needs not reported |
-| Drac/Lap (B) | `Bundimun0` | Bundimun: pastyx1 | (5316, 4359, 308) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); bundimun (no save key, comes back on every visit); extra needs not reported |
-| Drac/Lap (B) | `Bundimun14` | Bundimun: pastyx2 | (4633, 5288, 308) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); bundimun (no save key, comes back on every visit); extra needs not reported |
-| Drac/Lap (B) | `Bundimun3` | Bundimun: pastyx1 | (4475, 4952, 296) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); bundimun (no save key, comes back on every visit); extra needs not reported |
-| Drac/Lap (B) | `Bundimun5` | Bundimun: pastyx1 | (4689, 4687, 301) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); bundimun (no save key, comes back on every visit); extra needs not reported |
 
 ## Nothing recorded
 
 | Area | Count |
 | --- | ---: |
-| Hermione FE (`HP3_FA2Hermione`) | 65 |
+| Hermione FE (`HP3_FA2Hermione`) | 62 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
 
-### Hermione FE (`HP3_FA2Hermione`): 65
+### Hermione FE (`HP3_FA2Hermione`): 62
 
 | Actor | What | Where | Tag |
 | --- | --- | --- | --- |
-| `Bundimun8` | Bundimun: pastyx3 (no save key) | (-141, -1772, 1102) | `Pbundi1` |
-| `Bundimun6` | Bundimun: pastyx3 (no save key) | (713, -1267, 1102) | `Pbundi3` |
-| `Bundimun4` | Bundimun: pastyx3 (no save key) | (439, -1807, 1102) | `Pbundi2` |
 | `CauldronCake1` | cake (placed) | (982, -2363, 1112) |  |
 | `CauldronCake13` | cake (placed) | (1854, -1644, 1899) |  |
 | `CauldronCake15` | cake (placed) | (2511, -1222, 1725) |  |
