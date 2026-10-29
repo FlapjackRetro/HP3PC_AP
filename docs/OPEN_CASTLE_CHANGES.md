@@ -409,7 +409,7 @@ New mechanisms (`unlocks.h`):
 - Up / down now moves at 1% of the horizontal speed: 700 units a second, 2800 with Shift. (The "too fast" report was
   made on poc8l, at the full 70000; poc8m's 10% was never run.)
 
-### poc8o: Glacius double cutscene (tutorial spike gates)
+### poc8o: Glacius double cutscene (tutorial spike gates) (confirmed in play 2026-10-29)
 
 - Same problem as Ch1's (poc8e/f), in `HP3_Ch3Glacius`: Tag `7550SP3GlaciusDirecCS` fires two CutSceneTriggers,
   `CutSceneTrigger19` → `7550SP3GlaciusDirec` (Flitwick's directions, first visit: `bPersistent`, once) and
@@ -425,7 +425,7 @@ New mechanisms (`unlocks.h`):
   inactive); the bean-bonus intros in Ch2B / Ch3B (`StartCutSceneBean` fires both the Ron and the Hermione / Harry
   intro, and both `Trigger BeanBonusGameTimer`; no state gating, so vanilla does the same).
 
-### poc8p: Glacius entrance door stays shut
+### poc8p: Glacius entrance door stays shut (confirmed in play 2026-10-29)
 
 - Reported in play: the entrance door (`KWMover2`, `Glacius_RmA_Enter_Door`, TriggerToggle) shut and then opened again.
   In GState090 the replay intro `7301SP3GlacIntroAlt` triggers it twice (open, move Harry inside, shut). The
