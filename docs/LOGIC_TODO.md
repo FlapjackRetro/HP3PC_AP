@@ -8,10 +8,11 @@ challenge stars (not randomized), shops and vendors (logic = shop access + curre
 Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5`), and the five cards in the
 Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upper Barnton, Morholt), and
 the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5, 6 and a Double-Ended Newt card), and the half of each Glacius map
-that the player is never in (Ch3 and Ch3B share the middle of the level; see APWORLD.md), and the dropped maps
+that the player is never in (Ch3 and Ch3B share the middle of the level; see APWORLD.md), Glacius
+`PumpkinPasty36` (exempt), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 42 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 41 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 196.
 
 ## Partly known
@@ -34,7 +35,6 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 | Carpe (B) | `KnightSpawner21` | KnightSpawner: card BlodwynBluddx1, pastyx5 | (1713, 5812, 1797) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker3` | secret area | (-1769, 5968, 2288) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule only; not checked spot by spot |
-| Glacius | `PumpkinPasty36` | pasty (placed) | (-3024, 856, 8327) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius (B) | `CauldronCake0` | cake (placed) | (-5031, 4991, -388) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius (B) | `CauldronCake16` | cake (placed) | (-5972, 4479, -390) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius (B) | `CauldronCake17` | cake (placed) | (-5503, 4737, -618) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
