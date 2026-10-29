@@ -299,6 +299,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Draconifors: placed pasty `PumpkinPasty3` | Alohomora + the area rule (Lapifors). At (-1533, -1464, -49) | marked in play 2026-10-28 |
 | Draconifors: placed pasty `PumpkinPasty10` | Alohomora + the area rule (Lapifors). At (-1269, -1030, -58) | marked in play 2026-10-28 |
 | Draconifors: chest `ChestSpawner21` (2 cakes) | **Alohomora** to open, **Depulso** to reach it, + the area rule (Lapifors). At (522, -383, -456) | marked in play 2026-10-28 |
+| Draconifors: placed pasty `PumpkinPasty11` | **Draconifors** + Alohomora + the area rule (Lapifors). At (433, -382, 239) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
