@@ -253,6 +253,8 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Glacius: placed cake `CauldronCake5` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-12979, -817, 3330) | marked in play 2026-10-28 |
 | Glacius: placed cake `CauldronCake6` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-12912, -509, 3320) | marked in play 2026-10-28 |
 | Glacius: placed cake `CauldronCake15` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-12976, -671, 3342) | marked in play 2026-10-28 |
+| Glacius (B): chest `ChestSpawner32` (8 pasties, 3 cakes; also 15 beans), inside secret `SecretAreaMarker0` | **Alohomora**, plus Alohomora for the secret, within the Glacius rule (Glacius, Rictusempra, Spongify). At (-8464, 2120, 1724) | marked in play 2026-10-28 |
+| Glacius (B): secret area `SecretAreaMarker0` (holds chest `ChestSpawner32`) | **Alohomora**, within the Glacius rule. At (-9060, 2105, 1711) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
