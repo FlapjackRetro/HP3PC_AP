@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 101 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 100 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 101.
 
 ## Partly known
@@ -51,7 +51,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Drac/Lap | `Pumpkin8` | Pumpkin: pastyx1 | (1343, -795, -730) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `Pumpkin9` | Pumpkin: pastyx1 | (944, -383, -725) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty0` | pasty (placed) | (4606, -1264, 416) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
-| Drac/Lap | `PumpkinPasty11` | pasty (placed) | (433, -382, 239) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty12` | pasty (placed) | (1428, -400, 252) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty15` | pasty (placed) | (4608, -880, 657) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty17` | pasty (placed) | (4607, -463, 904) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
