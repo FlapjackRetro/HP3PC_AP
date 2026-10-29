@@ -378,6 +378,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Tunnel: Sacharissa Tugwood card (`SpawnThingy10`, event spawn) | the Tunnel rule as it stands there (Rictusempra, Alohomora, Depulso, Glacius, Spongify). At (5426, -3913, -705) | marked in play 2026-10-28 |
 | Tunnel: skull shelf `SkullShelfSpwn6` (1 cake; west end, near the start) | **Rictusempra + Depulso** only (it comes before the Alohomora / Glacius / Spongify parts), + the Shrieking Shack Unlock. At (-5520, 293, -538) | marked in play 2026-10-28 |
 | Tunnel: secret area `SecretAreaMarker0` (west end, near the start; spawn event `RmA_SmlSecret_Scrt`) | **Rictusempra + Depulso** only, + the Shrieking Shack Unlock. At (-5444, 258, -928) | marked in play 2026-10-28 |
+| Carpe: secret area `SecretAreaMarker0` (near the Sir Herbert Varney chest) | nothing beyond the Carpe rule (Carpe Retractum, Depulso, Spongify). At (2992, 1048, 627) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
