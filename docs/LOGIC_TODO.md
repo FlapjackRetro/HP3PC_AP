@@ -10,7 +10,7 @@ Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upp
 the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5, 6 and a Double-Ended Newt card), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 132 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 118 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 196.
 
 ## Partly known
@@ -33,16 +33,11 @@ the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5
 | Carpe (B) | `KnightSpawner21` | KnightSpawner: card BlodwynBluddx1, pastyx5 | (1713, 5812, 1797) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker3` | secret area | (-1769, 5968, 2288) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule only; not checked spot by spot |
-| Glacius | `CauldronCake10` | cake (placed) | (-2138, -2600, 5871) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius | `CauldronCake11` | cake (placed) | (-1920, -414, 7777) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius | `CauldronCake12` | cake (placed) | (-1712, -2599, 6015) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `CauldronCake13` | cake (placed) | (-11809, -1653, 3711) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `CauldronCake14` | cake (placed) | (-11995, -1596, 3655) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `CauldronCake15` | cake (placed) | (-12976, -671, 3342) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius | `CauldronCake3` | cake (placed) | (-2157, -312, 7854) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `CauldronCake5` | cake (placed) | (-12979, -817, 3330) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `CauldronCake6` | cake (placed) | (-12912, -509, 3320) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius | `CauldronCake8` | cake (placed) | (-1918, -2601, 5939) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `ChestSpawner35` | ChestSpawner: card UgtheUnreliablex1, cakex2 | (-4594, -2707, 4691) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `RmG_Secret_Chest_ActualSpawner`; extra needs not reported |
 | Glacius | `KnightSpawner38` | KnightSpawner: pastyx3 | (-8621, -3036, 4580) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `RmH_KnightsSecret_Knight_03`; extra needs not reported |
 | Glacius | `KnightSpawner39` | KnightSpawner: pastyx3 | (-8631, -2496, 4580) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `RmH_KnightsSecret_Knight_02`; extra needs not reported |
@@ -60,19 +55,10 @@ the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5
 | Glacius | `PumpkinPasty22` | pasty (placed) | (-10706, 4094, 437) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `PumpkinPasty23` | pasty (placed) | (-11858, 4420, -240) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `PumpkinPasty24` | pasty (placed) | (-12027, 4574, -147) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius | `PumpkinPasty25` | pasty (placed) | (-1868, -244, 8922) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius | `PumpkinPasty26` | pasty (placed) | (-2138, -2785, 5867) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius | `PumpkinPasty27` | pasty (placed) | (-1711, -2784, 6011) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius | `PumpkinPasty28` | pasty (placed) | (-1918, -2786, 5935) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius | `PumpkinPasty29` | pasty (placed) | (-1912, -233, 7853) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius | `PumpkinPasty30` | pasty (placed) | (-1657, -612, 7762) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius | `PumpkinPasty31` | pasty (placed) | (-1733, -420, 7795) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius | `PumpkinPasty32` | pasty (placed) | (-1863, -500, 9013) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `PumpkinPasty33` | pasty (placed) | (-11533, 7087, -328) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `PumpkinPasty34` | pasty (placed) | (-9323, 6782, -834) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `PumpkinPasty35` | pasty (placed) | (-11914, 3038, 1218) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `PumpkinPasty36` | pasty (placed) | (-3024, 856, 8327) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius | `PumpkinPasty37` | pasty (placed) | (1247, -4512, 11157) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `PumpkinPasty38` | pasty (placed) | (-11070, -1547, 3609) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `PumpkinPasty41` | pasty (placed) | (-10606, -1500, 3511) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `PumpkinPasty42` | pasty (placed) | (-10471, -1461, 3511) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
