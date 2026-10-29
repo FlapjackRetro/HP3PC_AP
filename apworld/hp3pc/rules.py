@@ -7,8 +7,9 @@ Currency is counted on the state (World.collect / remove add each bundle's pasti
 CAKE_KEY). Shop and vendor purchases are logic-gated on the running total of the purchases before them in their
 sequence, since what's spent is gone:
   - Fred & George's portrait passwords sell in order: password k needs the cakes for passwords 1..k.
-  - The student vendors sell in a fixed order: purchase k needs the pasties of the pasty-priced purchases 1..k.
   - Fred & George's two pasty-priced cards: the cheaper first (25, then 50 in total).
+  - The student vendors sell in a fixed order: purchase k needs the pasties of the pasty-priced purchases 1..k, on
+    top of the twins' 50 (both shops spend the same pasties; 410 for everything at normal prices).
 Jellybean prices are assumed affordable (jellybeans aren't randomized and are everywhere). Buying pasties and cakes
 with jellybeans, the repeatable event rewards and the random-amount containers are a safety net, never logic.
 """
@@ -56,11 +57,8 @@ def currency_thresholds(world: HP3PCWorld, locations: tuple[LocationData, ...]) 
     for loc in sorted((l for l in locations if l.kind == "shop" and l.actor.startswith("pp_")), key=lambda l: l.actor):
         cakes += price(world, loc.price[1])
         need[loc.name] = (0, cakes)
-    pasties = 0
-    for loc in sorted((l for l in locations if l.kind == "vendor"), key=lambda l: int(l.actor.split("_")[1])):
-        if loc.price[0] == "pasty":
-            pasties += price(world, loc.price[1])
-        need[loc.name] = (pasties, 0)
+    # Fred & George's pasty cards and the vendors spend the same pasties: the twins' cards (cheaper first) are
+    # counted first, and every vendor purchase also keeps their total in reserve
     pasties = 0
     for loc in sorted((l for l in locations if l.kind == "shop" and not l.actor.startswith("pp_")),
                       key=lambda l: (l.price[0] != "pasty", l.price[1], l.name)):
@@ -69,6 +67,12 @@ def currency_thresholds(world: HP3PCWorld, locations: tuple[LocationData, ...]) 
             need[loc.name] = (pasties, 0)
         else:
             need[loc.name] = (0, 0)
+    reserve, vendor = pasties, 0
+    for loc in sorted((l for l in locations if l.kind == "vendor"), key=lambda l: int(l.actor.split("_")[1])):
+        if loc.price[0] == "pasty":
+            vendor += price(world, loc.price[1])
+        # bean-priced purchases before the first pasty-priced one spend no pasties, so they need none
+        need[loc.name] = (vendor + reserve if vendor else 0, 0)
     return need
 
 

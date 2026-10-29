@@ -26,7 +26,7 @@ locations). Playing one needs the client, which doesn't exist yet ([CLIENT_SYNC.
 - **Items.** Each location's vanilla item: its card, or its pasty / cake bundle (mixed containers get one mixed
   bundle, e.g. "4 Pumpkin Pasties and 4 Cauldron Cakes"); secrets and the password stands hold Chocolate Frogs.
   The core items (spells, unlocks, passwords, Shortcut Passwords, Marauder's Map) displace frogs first, then the
-  smallest bundles. Pool supply is 450 pasties and 214 cakes; the shops need at most 410 and 139.
+  smallest bundles. Pool supply is 450 pasties and 214 cakes; the shops need at most 410 and 139. Only the bundles needed to cover that are progression (biggest first); the rest are the same items as filler.
 - **Shops.** Passwords sell in order (password k needs the cakes of 1..k); student-vendor purchase k sells the k-th
   vendor card in table order and needs the pasties of the pasty-priced purchases 1..k; Fred & George's two
   pasty cards need 25 and 50. Jellybean prices are assumed affordable.
@@ -34,8 +34,17 @@ locations). Playing one needs the client, which doesn't exist yet ([CLIENT_SYNC.
   Barnton) are locations `Doxy: Round n`. These are the five cards in the closed Grounds room: each round's win
   teleports its card out (OPEN_CASTLE_CHANGES poc6l), so they aren't dev-room leftovers after all. Logic: Doxy
   Challenge Unlock + Rictusempra.
-- **Hard spell mode** places Alohomora and Depulso early in the player's own world (`local_early_items`): with no
-  spells only about ten checks are open at the start, and fill failed often without it.
+- **Hard spell mode** places the five vanilla starting spells early in the player's own world
+  (`local_early_items`): with no spells only about ten checks are open at the start, and fill failed now and then
+  with fewer (900 random-option seeds after the change: 0 failures; a solo hard + split seed still fails about 1
+  time in 300).
+- **Logic audit (2026-10-29)**, an independent pass of the table against these notes. Fixed: Portrait D's two
+  companion chests (+ Rictusempra, Spongify, Depulso), Tunnel Skull Shelf 6 (Rictusempra + Depulso only), the
+  shared pasty budget (the vendors keep Fred & George's 50 in reserve: 410 in all), and the dungeon Doxy Card
+  (counted as past the doxy fight: + Alohomora, Rictusempra, **to verify in play**). Left as recorded, to verify:
+  the Drac/Lap pumpkin-ring stretch (`PumpkinPasty9`/`12`/`20`, `CauldronCake8`, secret 0: no Depulso) and
+  Hermione's exam start (the snacks around (900–1275, −2200) and `CauldronSpwn0`: no Draconifors; the region rule's
+  parenthesis lists the start, not what comes after it).
 - **Goal**: event "Final Day Door" (Grounds), reached with `cards_required` wizard cards.
 
 What the client and mod will need from it: the `LocationData` fields (map, actor, save key, kind) say how each
@@ -184,7 +193,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Tunnel (Adv5Shack) | **Shrieking Shack Unlock + Rictusempra** to start, for everything there (2026-10-29). Every check after the cake chest `ChestSpawner11` (−6349, 63) also needs **Alohomora** (2026-10-29). Every check after chest `ChestSpawner7` (−4582, −2857) also needs **Depulso** (2026-10-29). All the remaining checks (after `ChestSpawner7`) also need **Glacius** (2026-10-29). All checks left unconfirmed after `ChestSpawner2` (964, −2395, −3975) was recorded also need **Spongify** (2026-10-29), except the two at the west end near the start (skull shelf `SkullShelfSpwn6`, secret `SecretAreaMarker0`): Rictusempra + Depulso only. Tunnel complete |
 | Harry's final exam (FA3Harry) | **Harry's Final Exam Unlock + Glacius** for everything there (2026-10-29). The placed snacks (3 pasties, 2 cakes around (−3600, −355)) need nothing more; the five `Hpgenericspawner`s around (0, −400) also need **Rictusempra** and **Spongify** (2026-10-29) |
 | Ron's final exam (FA1Ron) | **Ron's Final Exam Unlock + Carpe Retractum** for everything there (2026-10-29) |
-| Hermione's final exam (FA2Hermione) | **Hermione's Final Exam Unlock + Lapifors** for everything there (2026-10-29). Everything after the start (the snacks around (900–1275, −2200) and the Depulso cauldron `CauldronSpwn0`) also needs **Draconifors** (2026-10-29) |
+| Hermione's final exam (FA2Hermione) | **Hermione's Final Exam Unlock + Lapifors** for everything there (2026-10-29). Everything after the start also needs **Draconifors** (2026-10-29); the start, which doesn't, is the snacks around (900–1275, −2200), `PumpkinPasty2` / `4` and the Depulso cauldron `CauldronSpwn0` |
 | Hippogriff (COMC) | **Hippogriff Challenge Unlock** only (2026-10-28): the 5 course cards |
 | Express (Adv1Express) | **Hogwarts Express Unlock + Alohomora, Depulso, Rictusempra and Lumos** (2026-10-28). Its one check: the Fulbert the Fearful card (`HPSpawnThingy0`, tag `SpawnWC1`, (5350, 11, −55)) |
 | Portrait D | **Portrait Password 7** (confirmed in play 2026-10-27) **+ Alohomora** for everything there: the portrait itself, on an upper floor of the castle at (111, 540, 2026), sits behind padlock `AlohomoraPadLock16` (101, 105, 2022) (2026-10-28); everything past the freestanding cake also needs **Rictusempra, Spongify and Depulso** (2026-10-27): the two companion chests `ChestCompanionSpawner3` (Imp card, 10 pasties, 5 cakes) and `ChestCompanionSpawner0` (10 pasties, 15 cakes) |

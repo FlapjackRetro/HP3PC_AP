@@ -50,9 +50,10 @@ class HP3PCWorld(World):
         for name in items.starting_items(self):
             self.multiworld.push_precollected(self.create_item(name))
         if self.options.spell_mode == self.options.spell_mode.option_hard:
-            # with no spells only a handful of checks are open at the start (four on the grounds, the bean-priced
-            # shop cards); two of them hold a first Alohomora and Depulso, which open most of the castle and grounds
-            for name in ("Alohomora", "Depulso"):
+            # with no spells only about ten checks are open at the start (four on the grounds, the jellybean-priced
+            # shop and vendor cards). The five vanilla starting spells go there, in the player's own world: with
+            # fewer, fill failed now and then (a solo seed's few early spots ran out before the spells were placed)
+            for name in items.VANILLA_STARTING_SPELLS:
                 self.multiworld.local_early_items[self.player][name] = 1
 
     def create_regions(self) -> None:
