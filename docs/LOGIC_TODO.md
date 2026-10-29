@@ -10,7 +10,7 @@ Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upp
 the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5, 6 and a Double-Ended Newt card), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 118 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 117 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 196.
 
 ## Partly known
@@ -38,7 +38,6 @@ the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5
 | Glacius | `CauldronCake15` | cake (placed) | (-12976, -671, 3342) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `CauldronCake5` | cake (placed) | (-12979, -817, 3330) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius | `CauldronCake6` | cake (placed) | (-12912, -509, 3320) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius | `ChestSpawner35` | ChestSpawner: card UgtheUnreliablex1, cakex2 | (-4594, -2707, 4691) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `RmG_Secret_Chest_ActualSpawner`; extra needs not reported |
 | Glacius | `KnightSpawner38` | KnightSpawner: pastyx3 | (-8621, -3036, 4580) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `RmH_KnightsSecret_Knight_03`; extra needs not reported |
 | Glacius | `KnightSpawner39` | KnightSpawner: pastyx3 | (-8631, -2496, 4580) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `RmH_KnightsSecret_Knight_02`; extra needs not reported |
 | Glacius | `PumpkinPasty1` | pasty (placed) | (-11367, -4770, -4829) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
