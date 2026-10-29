@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 18 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 17 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 80.
 
 ## Partly known
@@ -36,7 +36,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Carpe (B) | `KnightSpawner21` | KnightSpawner: card BlodwynBluddx1, pastyx5 | (1713, 5812, 1797) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker3` | secret area | (-1769, 5968, 2288) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule only; not checked spot by spot |
-| Tunnel | `SkullShelfSpwn6` | SkullShelfSpwn: cakex1 | (-5520, 293, -538) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius; remaining also Spongify); spawn event `RmA_SmlSecret_Spawn`; extra needs not reported |
 | Tunnel | `SecretAreaMarker0` | secret area | (-5444, 258, -928) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius; remaining also Spongify); spawn event `RmA_SmlSecret_Scrt`; extra needs not reported |
 
 ## Nothing recorded
