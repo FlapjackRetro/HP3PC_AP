@@ -471,3 +471,17 @@ New mechanisms (`unlocks.h`):
 - Fix (`common/ue2read.h`): `prop_offset` treats anything below 0x28 (the UObject header; no class property can sit
   there) as not found, so the caller looks it up again on the next poll. `travel_post_accept` also refuses an offset
   below 0x28. MapTracker rebuilt with the same header (v13, unchanged otherwise).
+
+### poc8t: Carpe doxy-fight softlock (cutscene pairing checks the game state)
+
+- Reported: in `HP3_Ch1CarpeRetractum`, after the two doxy waves the fight's end never came. Tag `cutpoxdoor` has the
+  first-visit `CutSceneTrigger41` → `6045Ch1BeatPixiesQC` (Group `…,GState000`) and the replay `CutSceneTrigger7` →
+  `6045Ch1BeatPixiesQC_02` (excluded from GState000). In GState090 the first-visit one is filtered out by the game
+  (`Actor.FilterForCurrentGameState`: hidden, collision off, `bInCurrentGameState` false, and `CutSceneTrigger` won't
+  fire), but it still reads as active, so `dedupe_cutscenes` switched off the replay, the only one that could fire. This
+  has been so since poc8e/f; the other three Ch1 pairs and the Glacius pair have their first-visit trigger in every
+  state, so they were right.
+- Fix: a pair is only touched when the first-visit trigger has `bInCurrentGameState`; otherwise the replay is left
+  alone and the log says `… isn't in this game state; … plays`.
+- To get out of the softlock: install poc8t and reload the save (the Event change is made in memory on each load, so
+  the save holds nothing of it), or fly past with noclip.
