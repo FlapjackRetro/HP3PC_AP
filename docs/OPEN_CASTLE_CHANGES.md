@@ -458,3 +458,16 @@ New mechanisms (`unlocks.h`):
   the cheat `Walk()` does) and logs it when the saved flags were different.
 - That session ran poc8p, so it also still had poc8o's cutscene rule (five InsideHub replay triggers off); poc8q
   removes it.
+
+### poc8s: crash on RETURN TO HUB (bad property offset)
+
+- Reported: GPF in `KWHeroController.TravelPostAccept` (InsideHub load) after RETURN TO HUB from Glacius B. That
+  session's start-up lookup gave `KWPawn.PreviousLevelName` offset **0** (`ready: ... prevlevel=0`; every earlier
+  session had 4024), and every "arrive ... from" line printed garbage. RETURN TO HUB lends a SmartStart name by writing
+  an FString at that offset, so it overwrote the start of the pawn (its vtable): crash. (Being on a slide had nothing to
+  do with it.)
+- Cause: the worker reads the object list while the game is loading; a failed read returns 0, which was accepted as an
+  offset (the poc8o `Canvas.CurY` miss was the same race, there giving "not found").
+- Fix (`common/ue2read.h`): `prop_offset` treats anything below 0x28 (the UObject header; no class property can sit
+  there) as not found, so the caller looks it up again on the next poll. `travel_post_accept` also refuses an offset
+  below 0x28. MapTracker rebuilt with the same header (v13, unchanged otherwise).
