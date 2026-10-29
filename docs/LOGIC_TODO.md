@@ -10,8 +10,8 @@ Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upp
 the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5, 6 and a Double-Ended Newt card), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 316.
+- **Partly known:** 136 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Nothing recorded:** 196.
 
 ## Partly known
 
@@ -33,87 +33,137 @@ the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5
 | Carpe (B) | `KnightSpawner21` | KnightSpawner: card BlodwynBluddx1, pastyx5 | (1713, 5812, 1797) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker3` | secret area | (-1769, 5968, 2288) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule only; not checked spot by spot |
+| Glacius | `CauldronCake10` | cake (placed) | (-2138, -2600, 5871) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `CauldronCake11` | cake (placed) | (-1920, -414, 7777) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `CauldronCake12` | cake (placed) | (-1712, -2599, 6015) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `CauldronCake13` | cake (placed) | (-11809, -1653, 3711) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `CauldronCake14` | cake (placed) | (-11995, -1596, 3655) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `CauldronCake15` | cake (placed) | (-12976, -671, 3342) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `CauldronCake3` | cake (placed) | (-2157, -312, 7854) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `CauldronCake5` | cake (placed) | (-12979, -817, 3330) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `CauldronCake6` | cake (placed) | (-12912, -509, 3320) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `CauldronCake8` | cake (placed) | (-1918, -2601, 5939) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `ChestSpawner12` | ChestSpawner: card EargittheUglyx1 | (9464, -4524, 14248) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `ChestSpawner31` | ChestSpawner: card AlgufftheAwfulx1, ChocolateFrogx2 | (3524, -3817, 10968) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `ChestSpawner35` | ChestSpawner: card UgtheUnreliablex1, cakex2 | (-4594, -2707, 4691) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `RmG_Secret_Chest_ActualSpawner`; extra needs not reported |
+| Glacius | `KnightSpawner38` | KnightSpawner: pastyx3 | (-8621, -3036, 4580) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `RmH_KnightsSecret_Knight_03`; extra needs not reported |
+| Glacius | `KnightSpawner39` | KnightSpawner: pastyx3 | (-8631, -2496, 4580) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `RmH_KnightsSecret_Knight_02`; extra needs not reported |
+| Glacius | `PumpkinPasty1` | pasty (placed) | (-11367, -4770, -4829) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty10` | pasty (placed) | (-11148, 4374, 552) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty11` | pasty (placed) | (-11368, -1688, 3700) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty12` | pasty (placed) | (-11240, -1617, 3666) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty13` | pasty (placed) | (-10266, -1097, 3412) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty14` | pasty (placed) | (-11485, -1797, 3743) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty15` | pasty (placed) | (-11568, -1888, 3778) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty17` | pasty (placed) | (-11824, -4966, -4973) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty18` | pasty (placed) | (-11629, -4966, -4922) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty19` | pasty (placed) | (-11368, -4962, -4829) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty20` | pasty (placed) | (-11627, -4773, -4922) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty22` | pasty (placed) | (-10706, 4094, 437) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty23` | pasty (placed) | (-11858, 4420, -240) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty24` | pasty (placed) | (-12027, 4574, -147) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty25` | pasty (placed) | (-1868, -244, 8922) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty26` | pasty (placed) | (-2138, -2785, 5867) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty27` | pasty (placed) | (-1711, -2784, 6011) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty28` | pasty (placed) | (-1918, -2786, 5935) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty29` | pasty (placed) | (-1912, -233, 7853) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty30` | pasty (placed) | (-1657, -612, 7762) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty31` | pasty (placed) | (-1733, -420, 7795) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty32` | pasty (placed) | (-1863, -500, 9013) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty33` | pasty (placed) | (-11533, 7087, -328) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty34` | pasty (placed) | (-9323, 6782, -834) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty35` | pasty (placed) | (-11914, 3038, 1218) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty36` | pasty (placed) | (-3024, 856, 8327) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty37` | pasty (placed) | (1247, -4512, 11157) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty38` | pasty (placed) | (-11070, -1547, 3609) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty41` | pasty (placed) | (-10606, -1500, 3511) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty42` | pasty (placed) | (-10471, -1461, 3511) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty43` | pasty (placed) | (-10351, -1358, 3511) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty44` | pasty (placed) | (-10295, -1239, 3478) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty45` | pasty (placed) | (-11913, 3104, 1218) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty49` | pasty (placed) | (-11908, -1057, -3227) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty5` | pasty (placed) | (-11822, -4773, -4973) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty50` | pasty (placed) | (-11909, -1059, -3184) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty6` | pasty (placed) | (-11940, 4810, -635) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty7` | pasty (placed) | (-9370, 6019, -1022) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `PumpkinPasty9` | pasty (placed) | (-11657, 4253, 642) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `SecretAreaMarker1` | secret area | (3522, -3993, 11026) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `SecretAreaMarker2` | secret area | (-4895, -2715, 4745) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius | `SecretAreaMarker3` | secret area | (9189, -4540, 14317) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `CauldronCake0` | cake (placed) | (-5031, 4991, -388) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `CauldronCake16` | cake (placed) | (-5972, 4479, -390) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `CauldronCake17` | cake (placed) | (-5503, 4737, -618) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `CauldronCake18` | cake (placed) | (-5504, 4737, -314) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `CauldronCake19` | cake (placed) | (-5972, 4993, -390) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `CauldronCake2` | cake (placed) | (-5027, 4482, -392) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `CauldronCake4` | cake (placed) | (-5505, 4737, -57) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `BannerSpwn0` | BannerSpwn: pastyx5, cakex2 | (-9173, -407, 1817) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `BannerSpwn2` | BannerSpwn: pastyx4, cakex1 | (-11762, 1253, 1819) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `ChestSpawner0` | ChestSpawner: pastyx1 | (-6106, 4991, -992) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `floorplate`; extra needs not reported |
+| Glacius (B) | `ChestSpawner1` | ChestSpawner: pastyx1 | (-6109, 4479, -992) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `floorplate`; extra needs not reported |
+| Glacius (B) | `ChestSpawner10` | ChestSpawner: pastyx10, cakex2 | (-11503, 1889, 1463) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `ChestSpawner11` | ChestSpawner: pastyx5 | (-11540, 920, 1604) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `ChestSpawner2` | ChestSpawner: pastyx1 | (-4899, 4479, -992) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `floorplate`; extra needs not reported |
+| Glacius (B) | `ChestSpawner3` | ChestSpawner: pastyx1 | (-4904, 4995, -992) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `floorplate`; extra needs not reported |
+| Glacius (B) | `ChestSpawner30` | ChestSpawner: pastyx3 | (-9260, 3106, 1596) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `RmJ_SpongTrig_Chest_01`; extra needs not reported |
+| Glacius (B) | `ChestSpawner32` | ChestSpawner: pastyx8, cakex3 | (-8464, 2120, 1724) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `ChestSpawner33` | ChestSpawner: card UrgtheUncleanx1 | (-9258, -1012, 1596) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `RmJ_Rm2_PushDown_Chest`; extra needs not reported |
+| Glacius (B) | `ChestSpawner7` | ChestSpawner: pastyx1, cakex2 | (-5334, 5248, -85) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `gargspawner1`; extra needs not reported |
+| Glacius (B) | `KnightSpawner1` | KnightSpawner: pastyx2 | (-6591, 4127, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `kside1`; extra needs not reported |
+| Glacius (B) | `KnightSpawner12` | KnightSpawner: pastyx2 | (-6398, 5121, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `khall4`; extra needs not reported |
+| Glacius (B) | `KnightSpawner13` | KnightSpawner: pastyx2 | (-5056, 3710, -417) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `k2`; extra needs not reported |
+| Glacius (B) | `KnightSpawner14` | KnightSpawner: pastyx2 | (-4592, 5122, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `khall3`; extra needs not reported |
+| Glacius (B) | `KnightSpawner2` | KnightSpawner: pastyx2 | (-6398, 4733, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `khall5`; extra needs not reported |
+| Glacius (B) | `KnightSpawner3` | KnightSpawner: pastyx2 | (-6430, 3965, -416) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `khall6`; extra needs not reported |
+| Glacius (B) | `KnightSpawner6` | KnightSpawner: pastyx2 | (-5055, 5761, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `k1`; extra needs not reported |
+| Glacius (B) | `KnightSpawner7` | KnightSpawner: pastyx2 | (-4594, 4739, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `khall2`; extra needs not reported |
+| Glacius (B) | `KnightSpawner8` | KnightSpawner: pastyx2 | (-4594, 4351, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `khall1`; extra needs not reported |
+| Glacius (B) | `PumpkinPasty1` | pasty (placed) | (-11367, -4770, -4829) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty10` | pasty (placed) | (-11148, 4374, 552) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty11` | pasty (placed) | (-11368, -1688, 3700) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty12` | pasty (placed) | (-11240, -1617, 3666) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty14` | pasty (placed) | (-11485, -1797, 3743) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty15` | pasty (placed) | (-11568, -1888, 3778) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty16` | pasty (placed) | (-11905, -1115, -3219) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty17` | pasty (placed) | (-11824, -4966, -4973) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty18` | pasty (placed) | (-11629, -4966, -4922) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty19` | pasty (placed) | (-11368, -4962, -4829) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty20` | pasty (placed) | (-11627, -4773, -4922) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty21` | pasty (placed) | (-11900, -1117, -3165) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty22` | pasty (placed) | (-10706, 4094, 437) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty23` | pasty (placed) | (-11858, 4420, -240) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty24` | pasty (placed) | (-12027, 4574, -147) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty33` | pasty (placed) | (-11533, 7087, -328) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty34` | pasty (placed) | (-9323, 6782, -834) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty35` | pasty (placed) | (-11914, 3038, 1218) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty36` | pasty (placed) | (-3024, 856, 8327) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty38` | pasty (placed) | (-11070, -1547, 3609) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty45` | pasty (placed) | (-11913, 3104, 1218) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty46` | pasty (placed) | (-11909, 3176, 1178) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty47` | pasty (placed) | (-11910, 3230, 1138) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty48` | pasty (placed) | (-11904, -1113, -3262) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty49` | pasty (placed) | (-11908, -1057, -3227) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty5` | pasty (placed) | (-11822, -4773, -4973) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty50` | pasty (placed) | (-11909, -1059, -3184) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty51` | pasty (placed) | (-11904, -1061, -3131) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty6` | pasty (placed) | (-11940, 4810, -635) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty7` | pasty (placed) | (-9370, 6019, -1022) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty8` | pasty (placed) | (-11908, 3287, 1081) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `PumpkinPasty9` | pasty (placed) | (-11657, 4253, 642) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `SecretAreaMarker0` | secret area | (-9060, 2105, 1711) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `SecretAreaMarker4` | secret area | (-11459, 1606, 1648) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
+| Glacius (B) | `WC_Gringott0` | card Gringott | (-10632, -2334, -3977) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
 
 ## Nothing recorded
 
 | Area | Count |
 | --- | ---: |
-| Glacius (B) (`HP3_Ch3GlaciusB`) | 63 |
 | Hermione FE (`HP3_FA2Hermione`) | 62 |
 | Drac/Lap (B) (`HP3_Ch2DraconiforsB`) | 58 |
-| Glacius (`HP3_Ch3Glacius`) | 57 |
 | Drac/Lap (`HP3_Ch2Draconifors`) | 37 |
 | Tunnel (`HP3_Adv5Shack`) | 21 |
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
-
-### Glacius (B) (`HP3_Ch3GlaciusB`): 63
-
-| Actor | What | Where | Tag |
-| --- | --- | --- | --- |
-| `CauldronCake0` | cake (placed) | (-5031, 4991, -388) |  |
-| `CauldronCake16` | cake (placed) | (-5972, 4479, -390) |  |
-| `CauldronCake17` | cake (placed) | (-5503, 4737, -618) |  |
-| `CauldronCake18` | cake (placed) | (-5504, 4737, -314) |  |
-| `CauldronCake19` | cake (placed) | (-5972, 4993, -390) |  |
-| `CauldronCake2` | cake (placed) | (-5027, 4482, -392) |  |
-| `CauldronCake4` | cake (placed) | (-5505, 4737, -57) |  |
-| `BannerSpwn0` | BannerSpwn: pastyx5, cakex2 | (-9173, -407, 1817) |  |
-| `BannerSpwn2` | BannerSpwn: pastyx4, cakex1 | (-11762, 1253, 1819) |  |
-| `ChestSpawner0` | ChestSpawner: pastyx1 | (-6106, 4991, -992) | `floorplate` |
-| `ChestSpawner1` | ChestSpawner: pastyx1 | (-6109, 4479, -992) | `floorplate` |
-| `ChestSpawner10` | ChestSpawner: pastyx10, cakex2 | (-11503, 1889, 1463) |  |
-| `ChestSpawner11` | ChestSpawner: pastyx5 | (-11540, 920, 1604) |  |
-| `ChestSpawner2` | ChestSpawner: pastyx1 | (-4899, 4479, -992) | `floorplate` |
-| `ChestSpawner3` | ChestSpawner: pastyx1 | (-4904, 4995, -992) | `floorplate` |
-| `ChestSpawner30` | ChestSpawner: pastyx3 | (-9260, 3106, 1596) | `RmJ_SpongTrig_Chest_01` |
-| `ChestSpawner32` | ChestSpawner: pastyx8, cakex3 | (-8464, 2120, 1724) |  |
-| `ChestSpawner33` | ChestSpawner: card UrgtheUncleanx1 | (-9258, -1012, 1596) | `RmJ_Rm2_PushDown_Chest` |
-| `ChestSpawner7` | ChestSpawner: pastyx1, cakex2 | (-5334, 5248, -85) | `gargspawner1` |
-| `KnightSpawner1` | KnightSpawner: pastyx2 | (-6591, 4127, -960) | `kside1` |
-| `KnightSpawner12` | KnightSpawner: pastyx2 | (-6398, 5121, -960) | `khall4` |
-| `KnightSpawner13` | KnightSpawner: pastyx2 | (-5056, 3710, -417) | `k2` |
-| `KnightSpawner14` | KnightSpawner: pastyx2 | (-4592, 5122, -960) | `khall3` |
-| `KnightSpawner2` | KnightSpawner: pastyx2 | (-6398, 4733, -960) | `khall5` |
-| `KnightSpawner3` | KnightSpawner: pastyx2 | (-6430, 3965, -416) | `khall6` |
-| `KnightSpawner6` | KnightSpawner: pastyx2 | (-5055, 5761, -960) | `k1` |
-| `KnightSpawner7` | KnightSpawner: pastyx2 | (-4594, 4739, -960) | `khall2` |
-| `KnightSpawner8` | KnightSpawner: pastyx2 | (-4594, 4351, -960) | `khall1` |
-| `PumpkinPasty1` | pasty (placed) | (-11367, -4770, -4829) |  |
-| `PumpkinPasty10` | pasty (placed) | (-11148, 4374, 552) |  |
-| `PumpkinPasty11` | pasty (placed) | (-11368, -1688, 3700) |  |
-| `PumpkinPasty12` | pasty (placed) | (-11240, -1617, 3666) |  |
-| `PumpkinPasty14` | pasty (placed) | (-11485, -1797, 3743) |  |
-| `PumpkinPasty15` | pasty (placed) | (-11568, -1888, 3778) |  |
-| `PumpkinPasty16` | pasty (placed) | (-11905, -1115, -3219) |  |
-| `PumpkinPasty17` | pasty (placed) | (-11824, -4966, -4973) |  |
-| `PumpkinPasty18` | pasty (placed) | (-11629, -4966, -4922) |  |
-| `PumpkinPasty19` | pasty (placed) | (-11368, -4962, -4829) |  |
-| `PumpkinPasty20` | pasty (placed) | (-11627, -4773, -4922) |  |
-| `PumpkinPasty21` | pasty (placed) | (-11900, -1117, -3165) |  |
-| `PumpkinPasty22` | pasty (placed) | (-10706, 4094, 437) |  |
-| `PumpkinPasty23` | pasty (placed) | (-11858, 4420, -240) |  |
-| `PumpkinPasty24` | pasty (placed) | (-12027, 4574, -147) |  |
-| `PumpkinPasty33` | pasty (placed) | (-11533, 7087, -328) |  |
-| `PumpkinPasty34` | pasty (placed) | (-9323, 6782, -834) |  |
-| `PumpkinPasty35` | pasty (placed) | (-11914, 3038, 1218) |  |
-| `PumpkinPasty36` | pasty (placed) | (-3024, 856, 8327) |  |
-| `PumpkinPasty38` | pasty (placed) | (-11070, -1547, 3609) |  |
-| `PumpkinPasty45` | pasty (placed) | (-11913, 3104, 1218) |  |
-| `PumpkinPasty46` | pasty (placed) | (-11909, 3176, 1178) |  |
-| `PumpkinPasty47` | pasty (placed) | (-11910, 3230, 1138) |  |
-| `PumpkinPasty48` | pasty (placed) | (-11904, -1113, -3262) |  |
-| `PumpkinPasty49` | pasty (placed) | (-11908, -1057, -3227) |  |
-| `PumpkinPasty5` | pasty (placed) | (-11822, -4773, -4973) |  |
-| `PumpkinPasty50` | pasty (placed) | (-11909, -1059, -3184) |  |
-| `PumpkinPasty51` | pasty (placed) | (-11904, -1061, -3131) |  |
-| `PumpkinPasty6` | pasty (placed) | (-11940, 4810, -635) |  |
-| `PumpkinPasty7` | pasty (placed) | (-9370, 6019, -1022) |  |
-| `PumpkinPasty8` | pasty (placed) | (-11908, 3287, 1081) |  |
-| `PumpkinPasty9` | pasty (placed) | (-11657, 4253, 642) |  |
-| `SecretAreaMarker0` | secret area | (-9060, 2105, 1711) |  |
-| `SecretAreaMarker4` | secret area | (-11459, 1606, 1648) |  |
-| `WC_Gringott0` | card Gringott | (-10632, -2334, -3977) |  |
 
 ### Hermione FE (`HP3_FA2Hermione`): 62
 
@@ -244,68 +294,6 @@ the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5
 | `SecretAreaMarker5` | secret area | (4369, 1979, 351) |  |
 | `SecretAreaMarker6` | secret area | (3424, 5046, 605) |  |
 | `SecretAreaMarker7` | secret area | (4496, 4308, 351) |  |
-
-### Glacius (`HP3_Ch3Glacius`): 57
-
-| Actor | What | Where | Tag |
-| --- | --- | --- | --- |
-| `CauldronCake10` | cake (placed) | (-2138, -2600, 5871) |  |
-| `CauldronCake11` | cake (placed) | (-1920, -414, 7777) |  |
-| `CauldronCake12` | cake (placed) | (-1712, -2599, 6015) |  |
-| `CauldronCake13` | cake (placed) | (-11809, -1653, 3711) |  |
-| `CauldronCake14` | cake (placed) | (-11995, -1596, 3655) |  |
-| `CauldronCake15` | cake (placed) | (-12976, -671, 3342) |  |
-| `CauldronCake3` | cake (placed) | (-2157, -312, 7854) |  |
-| `CauldronCake5` | cake (placed) | (-12979, -817, 3330) |  |
-| `CauldronCake6` | cake (placed) | (-12912, -509, 3320) |  |
-| `CauldronCake8` | cake (placed) | (-1918, -2601, 5939) |  |
-| `ChestSpawner12` | ChestSpawner: card EargittheUglyx1 | (9464, -4524, 14248) |  |
-| `ChestSpawner31` | ChestSpawner: card AlgufftheAwfulx1, ChocolateFrogx2 | (3524, -3817, 10968) |  |
-| `ChestSpawner35` | ChestSpawner: card UgtheUnreliablex1, cakex2 | (-4594, -2707, 4691) | `RmG_Secret_Chest_ActualSpawner` |
-| `KnightSpawner38` | KnightSpawner: pastyx3 | (-8621, -3036, 4580) | `RmH_KnightsSecret_Knight_03` |
-| `KnightSpawner39` | KnightSpawner: pastyx3 | (-8631, -2496, 4580) | `RmH_KnightsSecret_Knight_02` |
-| `PumpkinPasty1` | pasty (placed) | (-11367, -4770, -4829) |  |
-| `PumpkinPasty10` | pasty (placed) | (-11148, 4374, 552) |  |
-| `PumpkinPasty11` | pasty (placed) | (-11368, -1688, 3700) |  |
-| `PumpkinPasty12` | pasty (placed) | (-11240, -1617, 3666) |  |
-| `PumpkinPasty13` | pasty (placed) | (-10266, -1097, 3412) |  |
-| `PumpkinPasty14` | pasty (placed) | (-11485, -1797, 3743) |  |
-| `PumpkinPasty15` | pasty (placed) | (-11568, -1888, 3778) |  |
-| `PumpkinPasty17` | pasty (placed) | (-11824, -4966, -4973) |  |
-| `PumpkinPasty18` | pasty (placed) | (-11629, -4966, -4922) |  |
-| `PumpkinPasty19` | pasty (placed) | (-11368, -4962, -4829) |  |
-| `PumpkinPasty20` | pasty (placed) | (-11627, -4773, -4922) |  |
-| `PumpkinPasty22` | pasty (placed) | (-10706, 4094, 437) |  |
-| `PumpkinPasty23` | pasty (placed) | (-11858, 4420, -240) |  |
-| `PumpkinPasty24` | pasty (placed) | (-12027, 4574, -147) |  |
-| `PumpkinPasty25` | pasty (placed) | (-1868, -244, 8922) |  |
-| `PumpkinPasty26` | pasty (placed) | (-2138, -2785, 5867) |  |
-| `PumpkinPasty27` | pasty (placed) | (-1711, -2784, 6011) |  |
-| `PumpkinPasty28` | pasty (placed) | (-1918, -2786, 5935) |  |
-| `PumpkinPasty29` | pasty (placed) | (-1912, -233, 7853) |  |
-| `PumpkinPasty30` | pasty (placed) | (-1657, -612, 7762) |  |
-| `PumpkinPasty31` | pasty (placed) | (-1733, -420, 7795) |  |
-| `PumpkinPasty32` | pasty (placed) | (-1863, -500, 9013) |  |
-| `PumpkinPasty33` | pasty (placed) | (-11533, 7087, -328) |  |
-| `PumpkinPasty34` | pasty (placed) | (-9323, 6782, -834) |  |
-| `PumpkinPasty35` | pasty (placed) | (-11914, 3038, 1218) |  |
-| `PumpkinPasty36` | pasty (placed) | (-3024, 856, 8327) |  |
-| `PumpkinPasty37` | pasty (placed) | (1247, -4512, 11157) |  |
-| `PumpkinPasty38` | pasty (placed) | (-11070, -1547, 3609) |  |
-| `PumpkinPasty41` | pasty (placed) | (-10606, -1500, 3511) |  |
-| `PumpkinPasty42` | pasty (placed) | (-10471, -1461, 3511) |  |
-| `PumpkinPasty43` | pasty (placed) | (-10351, -1358, 3511) |  |
-| `PumpkinPasty44` | pasty (placed) | (-10295, -1239, 3478) |  |
-| `PumpkinPasty45` | pasty (placed) | (-11913, 3104, 1218) |  |
-| `PumpkinPasty49` | pasty (placed) | (-11908, -1057, -3227) |  |
-| `PumpkinPasty5` | pasty (placed) | (-11822, -4773, -4973) |  |
-| `PumpkinPasty50` | pasty (placed) | (-11909, -1059, -3184) |  |
-| `PumpkinPasty6` | pasty (placed) | (-11940, 4810, -635) |  |
-| `PumpkinPasty7` | pasty (placed) | (-9370, 6019, -1022) |  |
-| `PumpkinPasty9` | pasty (placed) | (-11657, 4253, 642) |  |
-| `SecretAreaMarker1` | secret area | (3522, -3993, 11026) |  |
-| `SecretAreaMarker2` | secret area | (-4895, -2715, 4745) |  |
-| `SecretAreaMarker3` | secret area | (9189, -4540, 14317) |  |
 
 ### Drac/Lap (`HP3_Ch2Draconifors`): 37
 
