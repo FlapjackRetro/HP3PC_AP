@@ -70,7 +70,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc8o"
+#define OC_VERSION L"poc8p"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -420,6 +420,11 @@ static const struct suppress SUPPRESS[] = {
        -> Dispatcher10 -> after 3 s WCBonusRoom_Trig = this ChangeLevelTrigger14. Open Castle reaches the room by the
        entrance hall south door instead, so the trigger loses its Tag and nothing can fire it. */
     { L"HP3_InsideHub",  L"ChangeLevelTrigger14",    L"WCBonusRoom_Trig",         L"Harry Potter card -> bonus room teleport", 0, 1 },
+    /* Glacius entrance door (KWMover2, TriggerToggle). The first-visit intro 7400GlaciusSal (GState070 only) opened it
+       once and this touch trigger, on the hallway side, shut it once you were in. In GState090 the replay intro
+       7301SP3GlacIntroAlt opens it, puts Harry inside and shuts it itself, so this trigger only re-opened it (the
+       companions walk into it): seen in play as "shut, then opened again" (poc8p). */
+    { L"HP3_Ch3Glacius", L"Trigger24",               L"Glacius_RmA_Enter_Door",   L"Glacius entrance door re-open (touch)",   0, 0 },
 };
 #define NSUPPRESS (int)(sizeof SUPPRESS / sizeof SUPPRESS[0])
 static int offEvent = -1;
