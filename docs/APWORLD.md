@@ -350,6 +350,8 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Draconifors (B): grass spawner `KnightSpawner31` (in secret `SecretAreaMarker7`) | Lapifors (in the Ch2B rule) only. At (4625, 4307, 343) | marked in play 2026-10-28 |
 | Draconifors (B): chest `ChestSpawner12` (Norwegian Ridgeback Dragon card; also 12 beans), inside secret `SecretAreaMarker1` | **Alohomora** + the Ch2B rule. At (4875, 4646, 312) | marked in play 2026-10-28 |
 | Draconifors (B): secret area `SecretAreaMarker1` (holds chest `ChestSpawner12`) | the Ch2B rule only. At (4945, 4649, 351) | marked in play 2026-10-28 |
+| Draconifors (B): placed pasty `PumpkinPasty23` | the Ch2B rule only. At (3138, 3902, 294) | marked in play 2026-10-28 |
+| Draconifors (B): placed pasty `PumpkinPasty31` | the Ch2B rule only. At (3711, 3903, 294) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
