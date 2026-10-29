@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 64 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 63 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 101.
 
 ## Partly known
@@ -57,7 +57,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Drac/Lap (B) | `ChestSpawner12` | ChestSpawner: card NorwegianRidgebackDragonx1 | (4875, 4646, 312) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 | Drac/Lap (B) | `ChestSpawner14` | ChestSpawner: cakex2 | (4497, 4562, 312) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 | Drac/Lap (B) | `ChestSpawner2` | ChestSpawner: pastyx1, cakex1 | (-7555, -769, -992) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); spawn event `floorplate`; extra needs not reported |
-| Drac/Lap (B) | `ChestSpawner28` | ChestSpawner: cakex2 | (3426, 5033, 784) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); spawn event `Ksecretspawner`; extra needs not reported |
 | Drac/Lap (B) | `ChestSpawner3` | ChestSpawner: pastyx2 | (-7560, -253, -992) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); spawn event `floorplate`; extra needs not reported |
 | Drac/Lap (B) | `ChestSpawner4` | ChestSpawner: pastyx1, cakex1 | (-7991, -1019, -85) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); spawn event `gargspawner1`; extra needs not reported |
 | Drac/Lap (B) | `ChestSpawner5` | ChestSpawner: pastyx1, cakex1 | (-8330, -1019, -85) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); spawn event `gargspawner1`; extra needs not reported |
