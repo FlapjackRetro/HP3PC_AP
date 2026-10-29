@@ -77,7 +77,13 @@ static void noclip_tick(u32 pc, float dt) {
     pawn = P(pc + offPawn);
     if (gNoclipOn && (!gNoclip || pawn != gNcPawn)) {   /* off (or the pawn changed: level load) */
         if (pawn && pawn == gNcPawn) {
-            gSetCollision((void *)pawn, gNcCol[0], gNcCol[1], gNcCol[2]);
+            /* always back to full collision (what the cheat Walk() does): the flags read when noclip went on can be
+               the pawn's mid-travel ones (all off), and restoring those left the player unable to touch any trigger
+               (poc8p: noclip carried over a RETURN TO HUB, then the Glacius loading trigger didn't fire) */
+            gSetCollision((void *)pawn, 1, 1, 1);
+            if (!gNcCol[0] || !gNcCol[1] || !gNcCol[2]) {
+                static wchar b[120]; wsprintfW(b, L"noclip: pawn had collision %d/%d/%d when noclip went on; restored to 1/1/1", gNcCol[0], gNcCol[1], gNcCol[2]); log_line(b);
+            }
             *(u32 *)(pawn + offNcCW) |= maskNcCW;
             gSetPhysics((void *)pawn, 2 /*PHYS_Falling*/, 0, 0, 0, 0);
             log_line(L"noclip: off");
