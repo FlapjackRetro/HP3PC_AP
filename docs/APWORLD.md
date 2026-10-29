@@ -257,6 +257,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Glacius (B): secret area `SecretAreaMarker0` (holds chest `ChestSpawner32`) | **Alohomora**, within the Glacius rule. At (-9060, 2105, 1711) | marked in play 2026-10-28 |
 | Glacius (B): chest `ChestSpawner30` (3 pasties; also 15 beans; spawn event `RmJ_SpongTrig_Chest_01`) | **Alohomora**, within the Glacius rule (Glacius, Rictusempra, Spongify). At (-9260, 3106, 1596) | marked in play 2026-10-28 |
 | Glacius (B): banner `BannerSpwn0` (5 pasties, 2 cakes) | **Depulso** (2 hits), within the Glacius rule (Glacius, Rictusempra, Spongify). At (-9173, -407, 1817) | marked in play 2026-10-28 |
+| Glacius (B): chest `ChestSpawner33` (Urg the Unclean card; also 15 beans) | **Alohomora**, within the Glacius rule (Glacius, Rictusempra, Spongify). At (-9258, -1012, 1596) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |

@@ -10,7 +10,7 @@ Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upp
 the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5, 6 and a Double-Ended Newt card), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 95 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 94 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 196.
 
 ## Partly known
@@ -67,7 +67,6 @@ the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5
 | Glacius (B) | `ChestSpawner11` | ChestSpawner: pastyx5 | (-11540, 920, 1604) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius (B) | `ChestSpawner2` | ChestSpawner: pastyx1 | (-4899, 4479, -992) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `floorplate`; extra needs not reported |
 | Glacius (B) | `ChestSpawner3` | ChestSpawner: pastyx1 | (-4904, 4995, -992) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `floorplate`; extra needs not reported |
-| Glacius (B) | `ChestSpawner33` | ChestSpawner: card UrgtheUncleanx1 | (-9258, -1012, 1596) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `RmJ_Rm2_PushDown_Chest`; extra needs not reported |
 | Glacius (B) | `ChestSpawner7` | ChestSpawner: pastyx1, cakex2 | (-5334, 5248, -85) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `gargspawner1`; extra needs not reported |
 | Glacius (B) | `KnightSpawner1` | KnightSpawner: pastyx2 | (-6591, 4127, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `kside1`; extra needs not reported |
 | Glacius (B) | `KnightSpawner12` | KnightSpawner: pastyx2 | (-6398, 5121, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `khall4`; extra needs not reported |
