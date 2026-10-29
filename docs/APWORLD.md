@@ -234,6 +234,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Glacius: placed pasty `PumpkinPasty28` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-1918, -2786, 5935) | marked in play 2026-10-28 |
 | Glacius: placed pasty `PumpkinPasty26` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-2138, -2785, 5867) | marked in play 2026-10-28 |
 | Glacius: placed cake `CauldronCake8` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-1918, -2601, 5939) | marked in play 2026-10-28 |
+| Glacius: chest `ChestSpawner35` (Ug the Unreliable card, 2 cakes) | **Alohomora**, within the Glacius rule (Glacius, Rictusempra, Spongify). At (-4594, -2707, 4691) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
