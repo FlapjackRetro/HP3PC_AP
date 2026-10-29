@@ -10,7 +10,7 @@ Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upp
 the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5, 6 and a Double-Ended Newt card), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 94 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 92 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 196.
 
 ## Partly known
@@ -63,7 +63,6 @@ the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5
 | Glacius (B) | `BannerSpwn2` | BannerSpwn: pastyx4, cakex1 | (-11762, 1253, 1819) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius (B) | `ChestSpawner0` | ChestSpawner: pastyx1 | (-6106, 4991, -992) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `floorplate`; extra needs not reported |
 | Glacius (B) | `ChestSpawner1` | ChestSpawner: pastyx1 | (-6109, 4479, -992) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `floorplate`; extra needs not reported |
-| Glacius (B) | `ChestSpawner10` | ChestSpawner: pastyx10, cakex2 | (-11503, 1889, 1463) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius (B) | `ChestSpawner11` | ChestSpawner: pastyx5 | (-11540, 920, 1604) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius (B) | `ChestSpawner2` | ChestSpawner: pastyx1 | (-4899, 4479, -992) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `floorplate`; extra needs not reported |
 | Glacius (B) | `ChestSpawner3` | ChestSpawner: pastyx1 | (-4904, 4995, -992) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `floorplate`; extra needs not reported |
@@ -109,7 +108,6 @@ the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5
 | Glacius (B) | `PumpkinPasty7` | pasty (placed) | (-9370, 6019, -1022) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius (B) | `PumpkinPasty8` | pasty (placed) | (-11908, 3287, 1081) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius (B) | `PumpkinPasty9` | pasty (placed) | (-11657, 4253, 642) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius (B) | `SecretAreaMarker4` | secret area | (-11459, 1606, 1648) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius (B) | `WC_Gringott0` | card Gringott | (-10632, -2334, -3977) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 
 ## Nothing recorded
