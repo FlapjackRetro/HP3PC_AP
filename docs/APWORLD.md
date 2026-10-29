@@ -394,6 +394,11 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Carpe: secret area `SecretAreaMarker1` (by the Amarillo Lestoat chest) | nothing special: the Carpe rule (Carpe Retractum, Depulso, Spongify) + Rictusempra + Alohomora. At (1310, 4223, 1192) | marked in play 2026-10-28 |
 | Carpe: chest `ChestSpawner22` (Count Vlad Drakul card, 3 cakes) | Alohomora, within the Carpe rule (Carpe Retractum, Depulso, Spongify) + Rictusempra + Alohomora. At (-3479, 3391, 1336) | marked in play 2026-10-28 |
 | Carpe: secret area `SecretAreaMarker2` (by the Count Vlad Drakul chest) | nothing special: the Carpe rule (Carpe Retractum, Depulso, Spongify) + Rictusempra + Alohomora. At (-3334, 3389, 1336) | marked in play 2026-10-28 |
+| Harry's exam: placed pasty `PumpkinPasty0` | the exam rule only (Harry's Final Exam Unlock + Glacius). At (-3784, -350, 346) | marked in play 2026-10-28 |
+| Harry's exam: placed pasty `PumpkinPasty1` | the exam rule only (Harry's Final Exam Unlock + Glacius). At (-3528, -358, 264) | marked in play 2026-10-28 |
+| Harry's exam: placed pasty `PumpkinPasty2` | the exam rule only (Harry's Final Exam Unlock + Glacius). At (-3248, -360, 175) | marked in play 2026-10-28 |
+| Harry's exam: placed cake `CauldronCake0` | the exam rule only (Harry's Final Exam Unlock + Glacius). At (-3679, -347, 301) | marked in play 2026-10-28 |
+| Harry's exam: placed cake `CauldronCake2` | the exam rule only (Harry's Final Exam Unlock + Glacius). At (-3955, -354, 400) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |

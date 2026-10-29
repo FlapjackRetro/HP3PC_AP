@@ -13,23 +13,18 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 10 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 5 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 70.
 
 ## Partly known
 
 | Area | Actor | What | Where | Status |
 | --- | --- | --- | --- | --- |
-| Harry FE | `CauldronCake0` | cake (placed) | (-3679, -347, 301) | area rule only (Harry's Final Exam Unlock + Glacius); extra needs not reported |
-| Harry FE | `CauldronCake2` | cake (placed) | (-3955, -354, 400) | area rule only (Harry's Final Exam Unlock + Glacius); extra needs not reported |
 | Harry FE | `Hpgenericspawner0` | Hpgenericspawner: pastyx6 | (-97, -231, 283) | area rule only (Harry's Final Exam Unlock + Glacius); spawn event `Beanbonanza`; extra needs not reported |
 | Harry FE | `Hpgenericspawner1` | Hpgenericspawner: pastyx6, cakex2 | (68, -542, 206) | area rule only (Harry's Final Exam Unlock + Glacius); spawn event `Beanbonanza`; extra needs not reported |
 | Harry FE | `Hpgenericspawner2` | Hpgenericspawner: pastyx3 | (-59, -509, 291) | area rule only (Harry's Final Exam Unlock + Glacius); spawn event `Beanbonanza`; extra needs not reported |
 | Harry FE | `Hpgenericspawner3` | Hpgenericspawner: pastyx3 | (91, -383, 317) | area rule only (Harry's Final Exam Unlock + Glacius); spawn event `Beanbonanza`; extra needs not reported |
 | Harry FE | `Hpgenericspawner4` | Hpgenericspawner: pastyx3 | (96, -298, 222) | area rule only (Harry's Final Exam Unlock + Glacius); spawn event `Beanbonanza`; extra needs not reported |
-| Harry FE | `PumpkinPasty0` | pasty (placed) | (-3784, -350, 346) | area rule only (Harry's Final Exam Unlock + Glacius); extra needs not reported |
-| Harry FE | `PumpkinPasty1` | pasty (placed) | (-3528, -358, 264) | area rule only (Harry's Final Exam Unlock + Glacius); extra needs not reported |
-| Harry FE | `PumpkinPasty2` | pasty (placed) | (-3248, -360, 175) | area rule only (Harry's Final Exam Unlock + Glacius); extra needs not reported |
 
 ## Nothing recorded
 
