@@ -316,6 +316,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Draconifors: grass spawner `KnightSpawner19` (in the grass secret; spawn event `Gsecretgrass`) | Depulso + Alohomora + the area rule (Lapifors). At (2684, -1572, 78) | marked in play 2026-10-28 |
 | Draconifors: grass spawner `KnightSpawner21` (in the grass secret; spawn event `Gsecretgrass`) | Depulso + Alohomora + the area rule (Lapifors). At (2818, -1562, 78) | marked in play 2026-10-28 |
 | Draconifors: grass spawner `KnightSpawner22` (in the grass secret; spawn event `Gsecretgrass`) | Depulso + Alohomora + the area rule (Lapifors). At (2838, -1635, 78) | marked in play 2026-10-28 |
+| Draconifors: placed pasty `PumpkinPasty18` | Lapifors, Depulso + Alohomora + the area rule. At (3364, -1503, 53) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
