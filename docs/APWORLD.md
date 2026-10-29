@@ -341,6 +341,9 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Draconifors (B): placed cake `CauldronCake7` | the Ch2B rule only. At (3709, 912, 297) | marked in play 2026-10-28 |
 | Draconifors (B): chest `ChestSpawner14` (2 cakes) | **Alohomora** + the Ch2B rule. At (4497, 4562, 312) | marked in play 2026-10-28 |
 | Draconifors (B): placed cake `CauldronCake9` | Draconifors (in the Ch2B rule) only. At (3820, 4983, 327) | marked in play 2026-10-28 |
+| Draconifors (B): placed pasty `PumpkinPasty33` | Draconifors (in the Ch2B rule) only. At (4672, 4121, 519) | marked in play 2026-10-28 |
+| Draconifors (B): placed pasty `PumpkinPasty32` | Draconifors (in the Ch2B rule) only. At (4945, 5241, 519) | marked in play 2026-10-28 |
+| Draconifors (B): placed pasty `PumpkinPasty30` | Draconifors (in the Ch2B rule) only. At (4977, 4087, 848) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
