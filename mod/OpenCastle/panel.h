@@ -62,8 +62,9 @@ static int gPanelReady;   /* 1 ok, -1 lookups failed */
 
 /* worker, once */
 static void panel_lookups(void) {
-    HANDLE eng; static wchar b[300];
-    if (gPanelReady) return;
+    HANDLE eng; static wchar b[300]; static int tries;
+    if (gPanelReady > 0 || tries >= 10) return;   /* a lookup can miss while a level loads (poc8o: Canvas.CurY): retry */
+    tries++;
     N_PostRender = name_index(L"PostRender"); gClsHUD = find_class(L"HUD");
     offCvFont = prop_offset(L"Canvas", L"Font"); offCvMed = prop_offset(L"Canvas", L"MedFont"); offCvSmall = prop_offset(L"Canvas", L"SmallFont");
     offCvCurX = prop_offset(L"Canvas", L"CurX"); offCvCurY = prop_offset(L"Canvas", L"CurY");
@@ -88,7 +89,8 @@ static void panel_lookups(void) {
               L"DrawTile %s WrappedPrintf %s StrLen %s -> %s", N_PostRender, gClsHUD ? L"ok" : L"-", offCvFont, offCvCurX, offCvCurY,
               offCvOrgX, offCvOrgY, offCvClipX, offCvColor, offColR, offColG, offColB, offColA, offCvStyle, offWhiteTex,
               gDrawTile ? L"ok" : L"-", gWPrintf ? L"ok" : L"-", gWStrLen ? L"ok" : L"-", gPanelReady > 0 ? L"ok" : L"PANEL DISABLED");
-    log_line(b);
+    if (gPanelReady > 0 || tries == 1 || tries >= 10) log_line(b);
+    if (gPanelReady < 0 && tries < 10) gPanelReady = 0;   /* not ready yet: try again on the next poll */
 }
 static int door_index(const wchar *key) { int i; for (i = 0; i < NDOORS; i++) if (weq(DOORS[i].key, key)) return i; return -1; }
 /* effective state and whether the ini forces it; -1 = not a toggle */
