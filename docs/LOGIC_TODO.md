@@ -9,11 +9,11 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upper Barnton, Morholt), and
 the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5, 6 and a Double-Ended Newt card), and the half of each Glacius map
 that the player is never in (Ch3 and Ch3B share the middle of the level; see APWORLD.md), Glacius
-`PumpkinPasty36` (exempt), Glacius B's and Draconifors B's bean bonus rooms (exempt; 21 and 30 spawns), four Glacius B slide pasties (`PumpkinPasty22`, `23`, `24`, `6`: exempt for now, believed reachable but
+`PumpkinPasty36` (exempt), Glacius B's and Draconifors B's bean bonus rooms (exempt; 21 and 30 spawns), Carpe event cake `HPSpawnThingy3` (exempt: only the first-visit doxy cutscene spawns it), four Glacius B slide pasties (`PumpkinPasty22`, `23`, `24`, `6`: exempt for now, believed reachable but
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 5 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 4 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 80.
 
 ## Partly known
@@ -22,7 +22,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | --- | --- | --- | --- | --- |
 | Carpe | `ChestSpawner11` | ChestSpawner: pastyx3, card AmarilloLestoatx1 | (1314, 4086, 1177) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
 | Carpe | `ChestSpawner22` | ChestSpawner: card CountVladDrakulx1, cakex3 | (-3479, 3391, 1336) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
-| Carpe | `HPSpawnThingy3` | cake (event spawn) | (1315, 2522, 1209) | **never spawns in Open Castle**: only the first-visit `6045Ch1BeatPixiesQC` (GState000 only) has `Trigger SpawnCauldronCake`; the replay `_02` that plays in GState090 doesn't. Exempt, or have the mod fire `SpawnCauldronCake` with the replay (decision pending) |
 | Carpe | `SecretAreaMarker1` | secret area | (1310, 4223, 1192) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
 | Carpe | `SecretAreaMarker2` | secret area | (-3334, 3389, 1336) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
 
