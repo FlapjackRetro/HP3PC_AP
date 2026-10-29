@@ -389,6 +389,8 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Carpe (B): secret area `SecretAreaMarker4` | **Lumos** + the Carpe rule (Carpe Retractum, Depulso, Spongify) + Rictusempra + Alohomora. At (2264, 7105, 1480) | marked in play 2026-10-28 |
 | Carpe (B): chest `ChestSpawner19` (4 pasties) | **Lumos** (+ Alohomora) + the Carpe rule (Carpe Retractum, Depulso, Spongify) + Rictusempra + Alohomora. At (2260, 7300, 1465) | marked in play 2026-10-28 |
 | Carpe (B): knight `KnightSpawner15` on the carousel (2 pasties) | Depulso, within the Carpe rule (Carpe Retractum, Depulso, Spongify) + Rictusempra + Alohomora. At (1585, 5813, 1798) | marked in play 2026-10-28 |
+| Carpe: chest `ChestSpawner11` (Amarillo Lestoat card, 3 pasties) | Alohomora, within the Carpe rule (Carpe Retractum, Depulso, Spongify) + Rictusempra + Alohomora. At (1314, 4086, 1177) | marked in play 2026-10-28 |
+| Carpe: secret area `SecretAreaMarker1` (by the Amarillo Lestoat chest) | nothing special: the Carpe rule (Carpe Retractum, Depulso, Spongify) + Rictusempra + Alohomora. At (1310, 4223, 1192) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
