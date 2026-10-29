@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 110 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 109 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 101.
 
 ## Partly known
@@ -44,7 +44,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Drac/Lap | `ChestSpawner21` | ChestSpawner: cakex2 | (522, -383, -456) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
 | Drac/Lap | `KnightSpawner0` | KnightSpawner: pastyx1 | (2672, -1704, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `Gsecretgrass2`; extra needs not reported |
 | Drac/Lap | `KnightSpawner19` | KnightSpawner: pastyx1 | (2684, -1572, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `Gsecretgrass4`; extra needs not reported |
-| Drac/Lap | `KnightSpawner2` | KnightSpawner: card CommonWelshGreenDragonxNone | (-3462, 624, -139) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
 | Drac/Lap | `KnightSpawner21` | KnightSpawner: cakex1 | (2818, -1562, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `Gsecretgrass6`; extra needs not reported |
 | Drac/Lap | `KnightSpawner22` | KnightSpawner: pastyx1 | (2838, -1635, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); spawn event `Gsecretgrass7`; extra needs not reported |
 | Drac/Lap | `Pumpkin0` | Pumpkin: pastyx2 | (3022, -596, 77) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
