@@ -434,6 +434,43 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Hermione's exam: placed pasty `PumpkinPasty45` (ring at z 2185) | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (2239, 865, 2185) | marked in play 2026-10-28 |
 | Hermione's exam: placed pasty `PumpkinPasty46` (ring at z 2185) | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (2501, 863, 2185) | marked in play 2026-10-28 |
 | Hermione's exam: placed pasty `PumpkinPasty47` (ring at z 2185) | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (2642, 509, 2219) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty5` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (2831, 509, 1755) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty6` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (3313, 522, 1907) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty7` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (3668, 511, 2013) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty8` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (4015, 510, 1827) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty48` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (4371, 511, 2002) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty9` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (4547, 731, 1757) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty10` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (4720, 1177, 1653) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty11` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (5073, 984, 1653) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty12` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (5598, 1089, 1832) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty13` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (5951, 1084, 1918) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty14` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (6458, 1089, 1757) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty49` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (6991, 1038, 2836) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty54` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (7073, 988, 2836) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty22` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (6987, 1132, 2836) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty25` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (7155, 1040, 2836) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty23` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (7071, 1181, 2836) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty24` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (7152, 1138, 2836) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty20` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (7072, 611, 2816) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty17` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (6986, 30, 1629) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty18` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (7069, 79, 1629) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty16` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (6989, -64, 1629) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty19` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (7151, 36, 1629) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty50` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (7071, -114, 1629) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty0` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (7153, -62, 1629) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty26` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (7070, -498, 1504) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty27` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (6660, -894, 1629) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty28` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (6303, -831, 1679) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty51` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (5947, -898, 1679) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty30` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (5263, -386, 1679) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty31` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (4913, -322, 1679) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty32` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (4542, -961, 1679) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty29` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (3168, -1216, 1510) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty35` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (2683, -1216, 1692) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty34` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (2752, -1217, 1667) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty15` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (2623, -1218, 1715) | marked in play 2026-10-28 |
+| Hermione's exam: placed pasty `PumpkinPasty33` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (2811, -1218, 1633) | marked in play 2026-10-28 |
+| Hermione's exam: placed cake `CauldronCake15` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (2511, -1222, 1725) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
