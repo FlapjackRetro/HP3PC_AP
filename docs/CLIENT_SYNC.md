@@ -25,8 +25,11 @@ the save), from build **poc9a**. The ID tables the mod uses are generated from t
   received. Every check made in the save is resent on each connection.
 - **Item looks (poc9b)**: pickups show the item placed there (ITEM_MODELS.md). Containers now throw out one goodie
   that stands for the location (checked when picked up) instead of being checked on opening.
-- **Not yet**: Fred & George's shop and the student vendors as checks, the Final Day door as the goal (the client
-  reports the goal once `cards_required` cards are received), HUD messages for received items, the cutscene check
+- **Goal (poc9c)**: once `cards_required` cards are received, the client says "The Final Day Door is open" and the
+  mod opens GroundsHub's Final Day door (`Mover11`, as vanilla's `Trigger FinalDayDoor`). Walking in past it (the
+  spot where vanilla's Final Day cutscene triggers stand) saves `OC_AP_Goal`, sends `GOAL` (resent on every
+  connection) and travels to HP3_Final. The wait lets the player warn the others before finishing.
+- **Not yet**: Fred & George's shop and the student vendors as checks, HUD messages for received items, the cutscene check
   before giving currency, the pickup sound / message of the vanilla item.
 
 ## Principles

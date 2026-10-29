@@ -472,6 +472,13 @@ New mechanisms (`unlocks.h`):
   there) as not found, so the caller looks it up again on the next poll. `travel_post_accept` also refuses an offset
   below 0x28. MapTracker rebuilt with the same header (v13, unchanged otherwise).
 
+### poc9c: the goal is walking through the Final Day door
+
+With enough wizard cards received (`cards_required`), the client says "The Final Day Door is open" and the mod opens
+GroundsHub's `FinalDayDoor` (`Mover11`, triggered as vanilla's GState100 level start does; re-opened on every visit).
+Walking in past it, where vanilla's Final Day cutscene triggers stand (x 860–1250, y −6330 to −5990), is the goal:
+`OC_AP_Goal` is saved, `GOAL` goes to the client (again on every connection) and the player travels to HP3_Final.
+
 ### poc9b: pickups look like the item in the multiworld
 
 `aplook.h`: the client scouts every location and sends a look code for each; placed pasties / cakes / cards, event
