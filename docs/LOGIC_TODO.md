@@ -9,10 +9,10 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upper Barnton, Morholt), and
 the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5, 6 and a Double-Ended Newt card), and the half of each Glacius map
 that the player is never in (Ch3 and Ch3B share the middle of the level; see APWORLD.md), Glacius
-`PumpkinPasty36` (exempt), and the dropped maps
+`PumpkinPasty36` (exempt), Glacius B's bean bonus room (exempt, 21 spawns), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 41 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 20 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 196.
 
 ## Partly known
@@ -35,27 +35,6 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 | Carpe (B) | `KnightSpawner21` | KnightSpawner: card BlodwynBluddx1, pastyx5 | (1713, 5812, 1797) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker3` | secret area | (-1769, 5968, 2288) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule only; not checked spot by spot |
-| Glacius (B) | `CauldronCake0` | cake (placed) | (-5031, 4991, -388) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius (B) | `CauldronCake16` | cake (placed) | (-5972, 4479, -390) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius (B) | `CauldronCake17` | cake (placed) | (-5503, 4737, -618) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius (B) | `CauldronCake18` | cake (placed) | (-5504, 4737, -314) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius (B) | `CauldronCake19` | cake (placed) | (-5972, 4993, -390) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius (B) | `CauldronCake2` | cake (placed) | (-5027, 4482, -392) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius (B) | `CauldronCake4` | cake (placed) | (-5505, 4737, -57) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius (B) | `ChestSpawner0` | ChestSpawner: pastyx1 | (-6106, 4991, -992) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `floorplate`; extra needs not reported |
-| Glacius (B) | `ChestSpawner1` | ChestSpawner: pastyx1 | (-6109, 4479, -992) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `floorplate`; extra needs not reported |
-| Glacius (B) | `ChestSpawner2` | ChestSpawner: pastyx1 | (-4899, 4479, -992) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `floorplate`; extra needs not reported |
-| Glacius (B) | `ChestSpawner3` | ChestSpawner: pastyx1 | (-4904, 4995, -992) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `floorplate`; extra needs not reported |
-| Glacius (B) | `ChestSpawner7` | ChestSpawner: pastyx1, cakex2 | (-5334, 5248, -85) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `gargspawner1`; extra needs not reported |
-| Glacius (B) | `KnightSpawner1` | KnightSpawner: pastyx2 | (-6591, 4127, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `kside1`; extra needs not reported |
-| Glacius (B) | `KnightSpawner12` | KnightSpawner: pastyx2 | (-6398, 5121, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `khall4`; extra needs not reported |
-| Glacius (B) | `KnightSpawner13` | KnightSpawner: pastyx2 | (-5056, 3710, -417) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `k2`; extra needs not reported |
-| Glacius (B) | `KnightSpawner14` | KnightSpawner: pastyx2 | (-4592, 5122, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `khall3`; extra needs not reported |
-| Glacius (B) | `KnightSpawner2` | KnightSpawner: pastyx2 | (-6398, 4733, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `khall5`; extra needs not reported |
-| Glacius (B) | `KnightSpawner3` | KnightSpawner: pastyx2 | (-6430, 3965, -416) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `khall6`; extra needs not reported |
-| Glacius (B) | `KnightSpawner6` | KnightSpawner: pastyx2 | (-5055, 5761, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `k1`; extra needs not reported |
-| Glacius (B) | `KnightSpawner7` | KnightSpawner: pastyx2 | (-4594, 4739, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `khall2`; extra needs not reported |
-| Glacius (B) | `KnightSpawner8` | KnightSpawner: pastyx2 | (-4594, 4351, -960) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); spawn event `khall1`; extra needs not reported |
 | Glacius (B) | `PumpkinPasty22` | pasty (placed) | (-10706, 4094, 437) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius (B) | `PumpkinPasty23` | pasty (placed) | (-11858, 4420, -240) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 | Glacius (B) | `PumpkinPasty24` | pasty (placed) | (-12027, 4574, -147) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
