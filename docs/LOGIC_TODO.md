@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 29 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 28 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 80.
 
 ## Partly known
@@ -36,7 +36,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Carpe (B) | `KnightSpawner21` | KnightSpawner: card BlodwynBluddx1, pastyx5 | (1713, 5812, 1797) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker3` | secret area | (-1769, 5968, 2288) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule only; not checked spot by spot |
-| Tunnel | `CauldronCake4` | cake (placed) | (-707, -5223, -48) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); extra needs not reported |
 | Tunnel | `CauldronSpwn1` | CauldronSpwn: pastyx2 | (1954, -4330, -856) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); spawn event `RmA_Cauldron_Caul_02`; extra needs not reported |
 | Tunnel | `ChestCompanionSpawner0` | ChestCompanionSpawner: pastyx4, ChocolateFrogx2 | (3240, -3773, -999) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); spawn event `RmF_CompLock_Chest`; extra needs not reported |
 | Tunnel | `ChestCompanionSpawner4` | ChestCompanionSpawner: pastyx5 | (4097, -2827, -999) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); spawn event `RmG_CompLock_Chest`; extra needs not reported |
