@@ -70,7 +70,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc8r"
+#define OC_VERSION L"poc8s"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -190,7 +190,7 @@ static void travel_post_accept(void *self, void *func, void *parms, void *result
     const struct ret *r = 0; int i;
     pawn = offPawn >= 0 ? rd32(pc + offPawn) : 0;
     hub = level_map(offLevel >= 0 ? rd32(pc + offLevel) : 0);
-    if (!pawn || !hub || offPrevLevel < 0 || !rd(pawn + offPrevLevel, sv, 12)) { gPEOrig(self, func, parms, result); return; }
+    if (!pawn || !hub || offPrevLevel < 0x28 || !rd(pawn + offPrevLevel, sv, 12)) { gPEOrig(self, func, parms, result); return; }
     if (!read_fstring(pawn + offPrevLevel, prev, 64)) prev[0] = 0;
     for (i = 0; i < NRETS; i++) if (wieq(RETS[i].hub, hub) && wieq(RETS[i].from, prev)) { r = &RETS[i]; break; }
     if (gHubReturn) {   /* RETURN TO HUB: the entrance hall, whatever map it came from */
