@@ -9,10 +9,10 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upper Barnton, Morholt), and
 the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5, 6 and a Double-Ended Newt card), and the half of each Glacius map
 that the player is never in (Ch3 and Ch3B share the middle of the level; see APWORLD.md), Glacius
-`PumpkinPasty36` (exempt), Glacius B's bean bonus room (exempt, 21 spawns), and the dropped maps
+`PumpkinPasty36` (exempt), Glacius B's bean bonus room (exempt, 21 spawns), four Glacius B slide pasties (exempt), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 20 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 196.
 
 ## Partly known
@@ -35,10 +35,6 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 | Carpe (B) | `KnightSpawner21` | KnightSpawner: card BlodwynBluddx1, pastyx5 | (1713, 5812, 1797) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker3` | secret area | (-1769, 5968, 2288) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule only; not checked spot by spot |
-| Glacius (B) | `PumpkinPasty22` | pasty (placed) | (-10706, 4094, 437) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius (B) | `PumpkinPasty23` | pasty (placed) | (-11858, 4420, -240) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius (B) | `PumpkinPasty24` | pasty (placed) | (-12027, 4574, -147) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
-| Glacius (B) | `PumpkinPasty6` | pasty (placed) | (-11940, 4810, -635) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra; past (3524, −3991, 11274) also Spongify); extra needs not reported |
 
 ## Nothing recorded
 
