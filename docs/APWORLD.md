@@ -362,6 +362,23 @@ How received items reach the game and how saves are reconciled with the server: 
   doxy fights, and Library `BookBattleB_CantDoThis`. The imp fights (`ImpCombatManager`) have no such setting at all.
   Doxies and imps need Rictusempra (`RictusempraSpell_Combat`); flying books need Depulso. **To do:** companions
   can't cast a locked spell either (proposed: cancel a companion's spell of a locked class when it's cast).
+- **Challenge-chamber copies at the end of each challenge (B maps) ignore the unlocks** (noted in play 2026-10-29).
+  Each of `HP3_Ch1CarpeRetractumB`, `HP3_Ch2DraconiforsB`, `HP3_Ch3GlaciusB` has its own copy of the InsideHub
+  challenge chamber: three portcullises (`ChalChamb_CR_Port` / `_CR_PortCullis`, `ChalChamb_Drac_Port`,
+  `ChalChamb_Gla_Port`) and ChangeLevelTriggers straight into `HP3_Ch1CarpeRetractum`, `HP3_Ch2Draconifors`,
+  `HP3_Ch3Glacius`. Open Castle only gates the InsideHub ones. In GState090 the game hides most of the copies:
+  `Actor.FilterForCurrentGameState` sets bHidden + collision off for an actor whose `ExcludeFromGameStates` holds the
+  current state (or whose Group names a different state). So the passages stand open, and only Glacius B's own
+  `ChalChamb_Gla_Port` (excluded from GState070 only) is there, shut. The travel hook still refuses a locked
+  challenge (the trip goes to InsideHub instead), so it isn't a logic leak, but the doors don't show it.
+  Plan: on each B map, for every chamber portcullis whose challenge is locked, unhide it, collision on, put it at its
+  shut key (Carpe B / Drac B: key 0 is down; Glacius B's Drac / CR ports: key 1 is down, KeyPos(1) z −136; Glacius B's
+  own port: key 0 down), and switch that door's ChangeLevelTrigger collision off; unlocked: leave vanilla's state.
+- **The B-map chamber cutscenes set a story state mid-level**: `7600ChChamber3` (Glacius B) `SetGameState GState075`,
+  `6610ChChamber2` (Drac B) `GState065` (seen in the title bar: `GState075` in Glacius B). The travel hook puts
+  GState090 back on the next level change; to check: whether a save made in between keeps 075.
+- Cutscene pairing could use `Actor.bInCurrentGameState` (set by `FilterForCurrentGameState`; `CutSceneTrigger`
+  won't fire without it) to skip triggers from other states, which is why poc8o's general rule went wrong.
 - ~~Noclip toggle~~: built in poc8h (F6 / debug panel), 100x faster since poc8j; works in play (found the Paddock pasties).
 - ~~Live coordinates in the window title bar~~: MapTracker v13 (X, Y, Z and facing).
 
