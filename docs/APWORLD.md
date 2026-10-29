@@ -1,7 +1,47 @@
-# Apworld: items and options (foundation)
+# Apworld
 
-Code: `apworld/hp3pc/` (`items.py`, `options.py`, `world.py`). Locations, regions and rules aren't written yet, so
-seeds can't be generated; the item table and options are in place. Decisions from 2026-10-26.
+Code: `apworld/hp3pc/`. **Version 0.1.0 (2026-10-29), built for Archipelago 0.6.8**: generates seeds (423
+locations). Playing one needs the client, which doesn't exist yet ([CLIENT_SYNC.md](CLIENT_SYNC.md)).
+
+| File | |
+| --- | --- |
+| `items.py` | item table, tiers, IDs, starting items, the core pool |
+| `options.py` | the six options |
+| `location_table.py` | **generated** by `tools/build_apworld_locations.py` from the catalogue and the logic notes below; IDs kept in `data/location_ids.json` |
+| `regions.py` | Hogwarts plus one region per level / challenge / portrait / shop, entered with its unlock item |
+| `rules.py` | spells (challenge spells through their unlock when not split), shop currency |
+| `world.py` | the World class, pool, currency counting, goal, slot data |
+| `archipelago.json` | manifest: `minimum_ap_version` 0.6.8, `world_version` 0.1.0 |
+| `test/` | WorldTestBase tests (default, hard + split + cheap, all 79 cards, rules) |
+
+## Apworld 0.1.0: what's in it
+
+- **Locations (423).** Every map check in the logic notes, minus the exemptions (bean bonus rooms, repeatable event
+  rewards, out-of-bounds and never-spawned actors, the Glacius overlap copies, the unconfirmed Glacius B slide
+  pasties), plus Fred & George's 6 cards and 8 passwords, 20 student-vendor purchases, and the 5 doxy rounds.
+  Names are `<Area>: <Thing> <actor number>` (`Glacius B: Pumpkin Pasty 21`, `Tunnel: Chest 7`); a check that held a
+  card is named for it (`Carpe: Chest 11 (Amarillo Lestoat Card)`, `Grounds: Kelpie Card`).
+- **Requirements** = the area's base rule + every spell / password in the check's row + the area's progressive rules
+  (`PROGRESSIVE` in the build script) + hand fixes (`FIX`). The build script prints any candidate without a row.
+- **Items.** Each location's vanilla item: its card, or its pasty / cake bundle (mixed containers get one mixed
+  bundle, e.g. "4 Pumpkin Pasties and 4 Cauldron Cakes"); secrets and the password stands hold Chocolate Frogs.
+  The core items (spells, unlocks, passwords, Shortcut Passwords, Marauder's Map) displace frogs first, then the
+  smallest bundles. Pool supply is 450 pasties and 214 cakes; the shops need at most 410 and 139.
+- **Shops.** Passwords sell in order (password k needs the cakes of 1..k); student-vendor purchase k sells the k-th
+  vendor card in table order and needs the pasties of the pasty-priced purchases 1..k; Fred & George's two
+  pasty cards need 25 and 50. Jellybean prices are assumed affordable.
+- **Doxy challenge**: the 5 round rewards (Bran the Bloodthirsty, Cyclops, Goliath, Morholt, Hengist of Upper
+  Barnton) are locations `Doxy: Round n`. These are the five cards in the closed Grounds room: each round's win
+  teleports its card out (OPEN_CASTLE_CHANGES poc6l), so they aren't dev-room leftovers after all. Logic: Doxy
+  Challenge Unlock + Rictusempra.
+- **Hard spell mode** places Alohomora and Depulso early in the player's own world (`local_early_items`): with no
+  spells only about ten checks are open at the start, and fill failed often without it.
+- **Goal**: event "Final Day Door" (Grounds), reached with `cards_required` wizard cards.
+
+What the client and mod will need from it: the `LocationData` fields (map, actor, save key, kind) say how each
+check is detected: `placed` / `container` / `card` by their save key (`_PU`, `_lives`), `secret` by the
+`SecretAreaMarker` save key, `event` by the spawn, `shop` / `vendor` by the purchase (the mod has to turn a vendor
+sale into "purchase k" whichever card the table would sell), `minigame` by the doxy round win.
 
 ## Item tiers
 
@@ -133,7 +173,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Monster Book challenge (InsideHub, MBOM) | **Monster Book Challenge Unlock + Depulso + Rictusempra** (2026-10-28): its 5 reward cards (Baba Yaga, Cordelia Misericordia, Leticia Somnolens, Malodora Grymm, Old Mother Hubbard), at (−2650, −3770, 304) |
 | Fred & George's shop (InsideHub) | The five `WC_BeatrixBloxam1`–`5` cards (around (−130, −2370, 2185)) are the shop's display props, the stand-ins for the cards on sale, not pickups: **not locations** (checked in play 2026-10-28) |
 | Hogwarts (InsideHub), never spawned | **Not locations** (2026-10-28): their triggers never fire in Open Castle. The Peeves 2 rewards (`HPSpawnThingy13/14/16/18`, 4 pasties), the Peeves 3 rewards (`HPSpawnThingy22/23/25`, 3 cakes), and `CauldronCake4` / `PumpkinPasty5` (no position in the map data). Hogwarts complete |
-| Grounds developer room | **Not locations** (2026-10-28): a closed-off dev room around (−2950, −10110, 808), out of bounds (seen with noclip), holds `WC_BrantheBloodthirsty0`, `WC_Cyclops0`, `WC_Goliath0`, `WC_HengistofUpperBarnton0`, `WC_Morholt0`. The five cards themselves are still sold in the shop (100 each in the card list), so they stay items. Grounds complete |
+| Grounds developer room | **Correction (2026-10-29): these are the doxy challenge's round rewards**, teleported out of the room on each round's win (`WinCard1`–`5`), so they are locations as `Doxy: Round 1`–`5` (Doxy Challenge Unlock + Rictusempra). Original note: **Not locations** (2026-10-28): a closed-off dev room around (−2950, −10110, 808), out of bounds (seen with noclip), holds `WC_BrantheBloodthirsty0`, `WC_Cyclops0`, `WC_Goliath0`, `WC_HengistofUpperBarnton0`, `WC_Morholt0`. The five cards themselves are still sold in the shop (100 each in the card list), so they stay items. Grounds complete |
 | Library (Adv3Library) | **Library Unlock + Depulso** for everything there (the opening book fight; 2026-10-28). From the cake chest `ChestSpawner2` (−4278, −3137) on, also **Lumos + Carpe Retractum** (2026-10-28): its two chests. **Not locations** (2026-10-28): everything else in the map's data, secrets `SecretAreaMarker2/4/5/6` and a `WC_DoubleEndedNewt0` card (x −8200 to −12300), sits in an out-of-bounds copy of the grounds (a cutscene set, checked with noclip), not in the library. Library complete |
 | Glacius (Ch3 + Ch3B) | **Glacius Challenge Unlock (door) + Glacius + Rictusempra** for every check (2026-10-29). Everything past (3524, −3991, 11274) in Ch3 (the level runs downhill from z ≈ 14400; that point is the Alguff the Awful card chest and secret 1, which are included) and all of Ch3B also need **Spongify** (2026-10-29). Before it: chest `ChestSpawner12` + secret 3 (Alohomora) |
 | Glacius: the two maps overlap | `HP3_Ch3Glacius` and `HP3_Ch3GlaciusB` hold the same middle stretch of the level (34 actors with the same name and position). Ch3 ends at `ChangeLevelTrigger0` (−8696, 1037, 2216) → Ch3B, which starts at (−8171, 1018, 1803) and goes down the slides. So each copy is only reachable in one map: in Ch3 everything down to the z ≈ 3500 pasty trail (incl. `PumpkinPasty36` at (−3024, 856, 8327)); in Ch3B everything from the slides (z ≈ 1200) down. The other map's copies (19 pasties in Ch3, 6 in Ch3B) are **not locations** (2026-10-29). Also exempt: Ch3 `PumpkinPasty36` at (−3024, 856, 8327) (2026-10-29). The save keys differ (`gl…` / `glb…`), so a location must use the reachable map's key |

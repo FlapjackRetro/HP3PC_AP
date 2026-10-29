@@ -1,11 +1,26 @@
 from collections.abc import Mapping
 from typing import Any
 
-from BaseClasses import Region
-from worlds.AutoWorld import World
+from BaseClasses import CollectionState, Item, Location
+from worlds.AutoWorld import WebWorld, World
 
 from . import items
 from . import options as hp3_options
+from . import regions as hp3_regions
+from . import rules
+from .location_table import LOCATIONS, LocationData
+
+BASE_LOCATION_ID = 33_000_000
+GOAL_LOCATION = "Final Day Door"
+
+
+class HP3PCLocation(Location):
+    game = items.GAME_NAME
+
+
+class HP3PCWeb(WebWorld):
+    theme = "stone"
+    tutorials = []
 
 
 class HP3PCWorld(World):
@@ -15,38 +30,109 @@ class HP3PCWorld(World):
     """
 
     game = items.GAME_NAME
+    web = HP3PCWeb()
     options_dataclass = hp3_options.HP3PCOptions
     options: hp3_options.HP3PCOptions
+    topology_present = True
 
     item_name_to_id = items.ITEM_NAME_TO_ID
     item_name_groups = items.ITEM_NAME_GROUPS
-    location_name_to_id: dict[str, int] = {}   # TODO: locations.py (data/hp3_location_catalog.csv)
+    location_name_to_id = {loc.name: BASE_LOCATION_ID + loc.offset for loc in LOCATIONS}
+    location_name_groups: dict[str, set[str]] = {}
+    for _loc in LOCATIONS:
+        location_name_groups.setdefault(_loc.region, set()).add(_loc.name)
+    del _loc
 
-    origin_region_name = "InsideHub"
+    origin_region_name = hp3_regions.ORIGIN
 
+    # ---- generation ------------------------------------------------------------------------------------------------
     def generate_early(self) -> None:
         for name in items.starting_items(self):
             self.multiworld.push_precollected(self.create_item(name))
+        if self.options.spell_mode == self.options.spell_mode.option_hard:
+            # with no spells only a handful of checks are open at the start (four on the grounds, the bean-priced
+            # shop cards); two of them hold a first Alohomora and Depulso, which open most of the castle and grounds
+            for name in ("Alohomora", "Depulso"):
+                self.multiworld.local_early_items[self.player][name] = 1
 
     def create_regions(self) -> None:
-        # TODO: regions and locations. Until then only the hub exists, so seeds can't be generated yet.
-        self.multiworld.regions.append(Region(self.origin_region_name, self.player, self.multiworld))
+        regs = hp3_regions.create_regions(self)
+        for loc in LOCATIONS:
+            region = regs[loc.region]
+            region.locations.append(HP3PCLocation(self.player, loc.name, self.location_name_to_id[loc.name], region))
+        goal = HP3PCLocation(self.player, GOAL_LOCATION, None, regs["Grounds"])
+        goal.place_locked_item(self.create_item(items.VICTORY_EVENT))
+        regs["Grounds"].locations.append(goal)
 
     def create_items(self) -> None:
         pool = items.core_pool(self)
-        free = len(self.multiworld.get_unfilled_locations(self.player))
+        # every location's vanilla currency (cards are in the core pool already); frogs for the rest
+        currency = [items.bundle_name(loc.pasties, loc.cakes) for loc in LOCATIONS
+                    if not loc.card and (loc.pasties or loc.cakes)]
+        free = len(LOCATIONS)
         if len(pool) > free:
-            raise RuntimeError(f"{self.game}: {len(pool)} items but only {free} locations (locations aren't written yet)")
-        # TODO: each location's vanilla currency bundle, then frogs for the rest
-        pool += [items.FILLER_ITEM_NAME] * (free - len(pool))
-        self.multiworld.itempool += [self.create_item(n) for n in pool]
+            raise RuntimeError(f"{self.game}: {len(pool)} core items for {free} locations")
+        # if the core items push some currency out, drop the smallest bundles first (the shops need the big ones)
+        room = free - len(pool)
+        if len(currency) > room:
+            currency.sort(key=lambda n: sum(items.CURRENCY_VALUE[n]), reverse=True)
+            currency = currency[:room]
+        # Only as much currency as the shops can need is progression (biggest bundles first); the rest is the same
+        # item as filler. Logic counts progression bundles only, and fill has far fewer keys to place (with every
+        # bundle as progression, hard mode failed to fill now and then).
+        need = rules.currency_thresholds(self, LOCATIONS)
+        top = [max(v[k] for v in need.values()) for k in (0, 1)]
+        have, progression, filler = [0, 0], [], []
+        for name in sorted(currency, key=lambda n: (-sum(items.CURRENCY_VALUE[n]), n)):
+            value = items.CURRENCY_VALUE[name]
+            if any(value[k] and have[k] < top[k] for k in (0, 1)):
+                progression.append(name)
+                have = [have[k] + value[k] for k in (0, 1)]
+            else:
+                filler.append(name)
+        for k, what in enumerate(("pumpkin pasties", "cauldron cakes")):
+            if have[k] < top[k]:
+                raise RuntimeError(f"{self.game}: the pool holds {have[k]} {what}, the shops need {top[k]}")
+        frogs = free - len(pool) - len(currency)
+        self.multiworld.itempool += [self.create_item(n) for n in pool + progression]
+        self.multiworld.itempool += [self.create_item(n, items.IC.filler) for n in filler]
+        self.multiworld.itempool += [self.create_item(items.FILLER_ITEM_NAME) for _ in range(frogs)]
 
-    def create_item(self, name: str) -> items.HP3PCItem:
-        return items.create_item(self, name)
+    def set_rules(self) -> None:
+        need = rules.currency_thresholds(self, LOCATIONS)
+        for loc in LOCATIONS:
+            self.get_location(loc.name).access_rule = rules.location_rule(self, loc, need.get(loc.name, (0, 0)))
+        self.get_location(GOAL_LOCATION).access_rule = rules.goal_rule(self)
+        self.multiworld.completion_condition[self.player] = lambda state: state.has(items.VICTORY_EVENT, self.player)
+
+    # ---- items and currency on the state -----------------------------------------------------------------------------
+    def create_item(self, name: str, classification: "items.IC | None" = None) -> items.HP3PCItem:
+        item = items.create_item(self, name)
+        if classification is not None:
+            item.classification = classification
+        return item
 
     def get_filler_item_name(self) -> str:
         return items.FILLER_ITEM_NAME
 
+    def collect(self, state: CollectionState, item: Item) -> bool:
+        changed = super().collect(state, item)
+        if changed and item.name in items.CURRENCY_VALUE:
+            p, c = items.CURRENCY_VALUE[item.name]
+            state.prog_items[self.player][rules.PASTY_KEY] += p
+            state.prog_items[self.player][rules.CAKE_KEY] += c
+        return changed
+
+    def remove(self, state: CollectionState, item: Item) -> bool:
+        changed = super().remove(state, item)
+        if changed and item.name in items.CURRENCY_VALUE:
+            p, c = items.CURRENCY_VALUE[item.name]
+            state.prog_items[self.player][rules.PASTY_KEY] -= p
+            state.prog_items[self.player][rules.CAKE_KEY] -= c
+        return changed
+
     def fill_slot_data(self) -> Mapping[str, Any]:
-        return self.options.as_dict("goal", "cards_required", "spell_mode", "split_challenge_spells", "shop_prices",
-                                    "shortcut_passwords")
+        data = dict(self.options.as_dict("goal", "cards_required", "spell_mode", "split_challenge_spells",
+                                         "shop_prices", "shortcut_passwords"))
+        data["world_version"] = "0.1.0"
+        return data
