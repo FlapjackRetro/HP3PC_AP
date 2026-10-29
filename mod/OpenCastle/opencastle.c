@@ -70,7 +70,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc8s"
+#define OC_VERSION L"poc8t"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -492,14 +492,18 @@ static int cs_is_replay(const wchar *first, const wchar *e) {   /* e = first + "
     return !first[k] && e[k] == '_' && e[k + 1] == '0' && e[k + 2] == '2';   /* not "_010", a state variant */
 }
 static void dedupe_cutscenes(u32 level) {
-    static struct csfind f; static u32 clsCS, maskActive; static int offActive = -1; static wchar b[220]; int i, j, n = 0;
+    static struct csfind f; static u32 clsCS, maskActive, maskInState; static int offActive = -1, offInState = -1; static wchar b[220]; int i, j, n = 0;
     if (!clsCS) clsCS = find_class(L"CutSceneTrigger");
     if (offEvent < 0) offEvent = prop_offset(L"Actor", L"Event");
     if (offActive <= 0) {   /* Trigger.bInitiallyActive; UBoolProperty.BitMask at +0x70 */
         u32 bp = prop_object(L"Trigger", L"bInitiallyActive"), m = bp ? rd32(bp + 0x70) : 0;
         if (bp && m && !(m & (m - 1))) { offActive = (int)rd32(bp + 0x4C); maskActive = m; } else offActive = 0;
     }
-    if (!clsCS || offEvent <= 0 || offTag <= 0 || offActive <= 0) { log_line(L"cutscenes: lookups failed; pairs left alone"); return; }
+    if (offInState <= 0) {   /* Actor.bInCurrentGameState (Actor.FilterForCurrentGameState clears it for actors of other states) */
+        u32 bp = prop_object(L"Actor", L"bInCurrentGameState"), m = bp ? rd32(bp + 0x70) : 0;
+        if (bp && m && !(m & (m - 1)) && rd32(bp + 0x4C) >= 0x28) { offInState = (int)rd32(bp + 0x4C); maskInState = m; } else offInState = 0;
+    }
+    if (!clsCS || offEvent <= 0 || offTag <= 0 || offActive <= 0 || offInState <= 0) { log_line(L"cutscenes: lookups failed; pairs left alone"); return; }
     f.level = level; f.cls = clsCS; f.n = 0;
     for_each_object(v_cs, &f);
     for (i = 0; i < f.n; i++) {
@@ -508,6 +512,12 @@ static void dedupe_cutscenes(u32 level) {
         for (j = 0; j < f.n; j++) {
             wchar e[96];
             if (j == i || f.tag[j] != f.tag[i] || !f.ev[j] || !name_of(f.ev[j], e, 96) || !cs_is_replay(a, e)) continue;
+            /* the first-visit trigger must belong to this game state: one grouped to another state (Ch1's
+               6045Ch1BeatPixiesQC is in group GState000) is hidden and never fires, so its replay is the only one
+               (poc8s and earlier switched that replay off: softlock after the Carpe doxy fight) */
+            if (!(rd32(f.obj[i] + offInState) & maskInState)) {
+                wsprintfW(b, L"cutscenes: %s isn't in this game state; %s plays", a, e); log_line(b); break;
+            }
             first_pending = (rd32(f.obj[i] + offActive) & maskActive) != 0;
             if (first_pending && rd32(f.obj[j] + offEvent) == (u32)f.ev[j]) {
                 *(volatile int *)(f.obj[j] + offEvent) = 0;
