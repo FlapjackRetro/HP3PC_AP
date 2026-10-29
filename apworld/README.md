@@ -1,10 +1,18 @@
 # Harry Potter 3 PC apworld
 
 `hp3pc/` is the Archipelago world for Harry Potter and the Prisoner of Azkaban (PC, 2004) with the Open Castle mod.
-Version 0.1.0, for **Archipelago 0.6.8**. Design and logic: [docs/APWORLD.md](../docs/APWORLD.md).
+Version 0.2.0, for **Archipelago 0.6.8**. Design and logic: [docs/APWORLD.md](../docs/APWORLD.md).
 
-It generates seeds. Playing them needs the game-side client (receiving items, sending checks), which isn't written
-yet: see [docs/CLIENT_SYNC.md](../docs/CLIENT_SYNC.md).
+It generates seeds and carries the client ("Harry Potter 3 PC Client" in the Archipelago launcher). The client talks to
+the server and, on 127.0.0.1:42780, to the Open Castle mod (HP3OpenCastle.asi poc9a or later), which applies items and
+reports checks. Protocol and save handling: [docs/CLIENT_SYNC.md](../docs/CLIENT_SYNC.md).
+
+## Play
+
+1. Install the Open Castle mod (`install_opencastle.bat`).
+2. Put `hp3pc.apworld` in Archipelago's `custom_worlds`, generate, and host the game yourself (Archipelago's MultiServer; the website doesn't take custom worlds).
+3. Open the Archipelago launcher, start **Harry Potter 3 PC Client**, connect to the room with your slot name.
+4. Start the game, New Game (or a save bound to this room). The client log says "Game connected".
 
 ## Install (to generate)
 

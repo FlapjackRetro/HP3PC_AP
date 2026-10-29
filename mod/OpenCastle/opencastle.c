@@ -58,6 +58,7 @@ IMP BOOL   WINAPI VirtualProtect(void*, u32, u32, u32*);
 IMP void*  WINAPI VirtualAlloc(void*, u32, u32, u32);
 IMP BOOL   WINAPI FlushInstructionCache(HANDLE, const void*, u32);
 IMP int    __cdecl wsprintfW(wchar*, const wchar*, ...);
+IMP int    __cdecl wsprintfA(char*, const char*, ...);
 IMP long   WINAPI SHGetFolderPathW(HWND, int, HANDLE, u32, wchar*);
 IMP u32    WINAPI GetPrivateProfileIntW(const wchar*, const wchar*, int, const wchar*);
 IMP u32    WINAPI GetTickCount(void);
@@ -70,7 +71,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc8u"
+#define OC_VERSION L"poc9a"
 /* OC_DEBUG 1 (default, build/HP3OpenCastle.asi): the development build, with the debug panel (Delete), the item test
    grid (backslash) and noclip (F6). OC_DEBUG 0 (build/release/HP3OpenCastle.asi, build.sh): the release build, with
    no key thread at all, so none of those can be opened; everything else is the same code. */
@@ -257,6 +258,8 @@ static volatile u32 gGridTake; static void grid_take(void);
 static volatile u32 gBlockSpawn, gBlockKill; static void blockers_apply(void); static void trig_apply(void);
 static volatile u32 gTrigFire; static volatile int gSilFire;
 static volatile u32 gChShow, gChFire, gChTrigSet; static void chamber_apply(void);   /* chamber.h */
+static void ap_tick(void); static void ap_event(u32 self, int fname, int linkedBefore);   /* ap.h */
+static volatile int gApCheap = -1;   /* ap.h: the room's shop_prices (-1: no room, the ini decides) */
 /* voice lines switched off for good (touch PopupTriggers, collision off on each map): the exam doors' "that's the
    door to the ... spell challenge" comments */
 struct silence { const wchar *map, *actor, *why; };
@@ -290,6 +293,7 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
         if (gBlockSpawn || gBlockKill) blockers_apply();
         if (gAddCurrency) panel_currency();
         if (gTrigFire || gSilFire) trig_apply();
+        ap_tick();   /* Archipelago: items in, vanilla rewards taken back, the save side */
         if (gChShow || gChFire || gChTrigSet) chamber_apply();
         gInTravel = 0;
     }
@@ -309,8 +313,11 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
         int done; gInTravel = 1; done = hub_click((u32)self, (u32 *)parms); gInTravel = 0;
         if (done) return;
     }
-    if (fname == N_PostBeginPlay || fname == N_Destroyed || fname == N_PostPDR || fname == N_TravelExporting)
+    if (fname == N_PostBeginPlay || fname == N_Destroyed || fname == N_PostPDR || fname == N_TravelExporting) {
+        int linked = gNPu;
         lo_event((u32)self, fname);
+        if (fname == N_PostBeginPlay || fname == N_Destroyed) ap_event((u32)self, fname, linked);   /* also for our own spawns */
+    }
     if (fname == N_TravelPostAccept && N_TravelPostAccept >= 0 && gClsHero
         && is_a_cls(*(u32 *)((u8 *)self + 0x24), gClsHero)) { travel_post_accept(self, func, parms, result); return; }
     gPEOrig(self, func, parms, result);
@@ -638,6 +645,8 @@ static void gates_poll(u32 level, const wchar *map) {
 #include "panel.h"
 #include "noclip.h"
 #include "chamber.h"
+#include "net.h"
+#include "ap.h"
 
 static u32 WINAPI worker(void *arg) {
     HANDLE core; static wchar buf[400], id[32], lastMap[64]; static struct players pl;
@@ -744,6 +753,7 @@ static u32 WINAPI worker(void *arg) {
             if (gNewGame) { gNewGame = 0; unlocks_reset(); }
         }
         settle++;
+        ap_worker(level, lastMap, settle);
         if (settle >= 4) comc_poll(level, lastMap);
         if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); blockers_poll(level, lastMap); shop_poll(level, offGame > 0 ? rd32(level + offGame) : 0); spells_init(); unlocks_poll(); if (OC_DEBUG) { panel_lookups(); noclip_lookups(); } }   /* once settled, every 2 s */
         if (!shortcutsDone && settle >= 12) {
@@ -781,6 +791,7 @@ BOOL WINAPI DllMain(HANDLE inst, u32 reason, void *res) {
         DisableThreadLibraryCalls(inst);
         install_hooks();   /* on the loading thread, before the worker starts */
         CreateThread(0, 0, worker, 0, 0, 0);
+        CreateThread(0, 0, net_thread, 0, 0, 0);   /* the Archipelago client connection (net.h) */
         if (OC_DEBUG) CreateThread(0, 0, key_thread, 0, 0, 0);   /* debug panel, test grid, noclip */
     }
     return 1;

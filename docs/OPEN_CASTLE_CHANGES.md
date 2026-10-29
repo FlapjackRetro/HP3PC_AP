@@ -472,6 +472,13 @@ New mechanisms (`unlocks.h`):
   there) as not found, so the caller looks it up again on the next poll. `travel_post_accept` also refuses an offset
   below 0x28. MapTracker rebuilt with the same header (v13, unchanged otherwise).
 
+### poc9a: Archipelago client connection (items in, checks out)
+
+The mod talks to the apworld's client over a local connection (127.0.0.1:42780), as HP2PC_AP does: `net.h` (its own
+thread, Winsock) and `ap.h` (protocol, the save, item delivery, check detection, taking vanilla rewards back). The
+item and location IDs come from `aptables.h`, generated from the apworld. Details: [CLIENT_SYNC.md](CLIENT_SYNC.md).
+Log lines start with `ap:`. Without a client running, the mod logs one "no client yet" line and plays as before.
+
 ### poc8u builds: debug and release
 
 `build.sh` now makes two builds from the same source:
