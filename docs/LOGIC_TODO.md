@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 53 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 51 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 101.
 
 ## Partly known
@@ -52,7 +52,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Drac/Lap (B) | `CauldronCake4` | cake (placed) | (-9248, -1039, -392) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); extra needs not reported |
 | Drac/Lap (B) | `ChestSpawner0` | ChestSpawner: pastyx2 | (-8762, -257, -992) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); spawn event `floorplate`; extra needs not reported |
 | Drac/Lap (B) | `ChestSpawner1` | ChestSpawner: pastyx1, cakex1 | (-8765, -769, -992) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); spawn event `floorplate`; extra needs not reported |
-| Drac/Lap (B) | `ChestSpawner12` | ChestSpawner: card NorwegianRidgebackDragonx1 | (4875, 4646, 312) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 | Drac/Lap (B) | `ChestSpawner2` | ChestSpawner: pastyx1, cakex1 | (-7555, -769, -992) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); spawn event `floorplate`; extra needs not reported |
 | Drac/Lap (B) | `ChestSpawner3` | ChestSpawner: pastyx2 | (-7560, -253, -992) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); spawn event `floorplate`; extra needs not reported |
 | Drac/Lap (B) | `ChestSpawner4` | ChestSpawner: pastyx1, cakex1 | (-7991, -1019, -85) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); spawn event `gargspawner1`; extra needs not reported |
@@ -72,7 +71,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Drac/Lap (B) | `KnightSpawner8` | KnightSpawner: pastyx2 | (-7244, -897, -960) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors); spawn event `khall1`; extra needs not reported |
 | Drac/Lap (B) | `PumpkinPasty23` | pasty (placed) | (3138, 3902, 294) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 | Drac/Lap (B) | `PumpkinPasty31` | pasty (placed) | (3711, 3903, 294) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
-| Drac/Lap (B) | `SecretAreaMarker1` | secret area | (4945, 4649, 351) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 
 ## Nothing recorded
 
