@@ -20,18 +20,18 @@ unconfirmed; see APWORLD.md), and the dropped maps
 
 | Area | Actor | What | Where | Status |
 | --- | --- | --- | --- | --- |
-| Carpe | `ChestSpawner11` | ChestSpawner: pastyx3, card AmarilloLestoatx1 | (1314, 4086, 1177) | Carpe region rule only; not checked spot by spot |
-| Carpe | `ChestSpawner22` | ChestSpawner: card CountVladDrakulx1, cakex3 | (-3479, 3391, 1336) | Carpe region rule only; not checked spot by spot |
-| Carpe | `HPSpawnThingy3` | cake (event spawn) | (1315, 2522, 1209) | Carpe region rule only; not checked spot by spot |
-| Carpe | `SecretAreaMarker1` | secret area | (1310, 4223, 1192) | Carpe region rule only; not checked spot by spot |
-| Carpe | `SecretAreaMarker2` | secret area | (-3334, 3389, 1336) | Carpe region rule only; not checked spot by spot |
-| Carpe (B) | `ChestSpawner13` | ChestSpawner: card LadyCarmillaSanguinax1, pastyx6 | (-1762, 5868, 2258) | Carpe region rule only; not checked spot by spot |
-| Carpe (B) | `ChestSpawner19` | ChestSpawner: pastyx4 | (2260, 7300, 1465) | Carpe region rule only; not checked spot by spot |
-| Carpe (B) | `KnightSpawner11` | KnightSpawner: cakex1 | (1646, 6681, 1792) | Carpe region rule only; not checked spot by spot |
-| Carpe (B) | `KnightSpawner15` | KnightSpawner: pastyx2 | (1585, 5813, 1798) | Carpe region rule only; not checked spot by spot |
-| Carpe (B) | `KnightSpawner21` | KnightSpawner: card BlodwynBluddx1, pastyx5 | (1713, 5812, 1797) | Carpe region rule only; not checked spot by spot |
-| Carpe (B) | `SecretAreaMarker3` | secret area | (-1769, 5968, 2288) | Carpe region rule only; not checked spot by spot |
-| Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule only; not checked spot by spot |
+| Carpe | `ChestSpawner11` | ChestSpawner: pastyx3, card AmarilloLestoatx1 | (1314, 4086, 1177) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
+| Carpe | `ChestSpawner22` | ChestSpawner: card CountVladDrakulx1, cakex3 | (-3479, 3391, 1336) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
+| Carpe | `HPSpawnThingy3` | cake (event spawn) | (1315, 2522, 1209) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
+| Carpe | `SecretAreaMarker1` | secret area | (1310, 4223, 1192) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
+| Carpe | `SecretAreaMarker2` | secret area | (-3334, 3389, 1336) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
+| Carpe (B) | `ChestSpawner13` | ChestSpawner: card LadyCarmillaSanguinax1, pastyx6 | (-1762, 5868, 2258) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
+| Carpe (B) | `ChestSpawner19` | ChestSpawner: pastyx4 | (2260, 7300, 1465) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
+| Carpe (B) | `KnightSpawner11` | KnightSpawner: cakex1 | (1646, 6681, 1792) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
+| Carpe (B) | `KnightSpawner15` | KnightSpawner: pastyx2 | (1585, 5813, 1798) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
+| Carpe (B) | `KnightSpawner21` | KnightSpawner: card BlodwynBluddx1, pastyx5 | (1713, 5812, 1797) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
+| Carpe (B) | `SecretAreaMarker3` | secret area | (-1769, 5968, 2288) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
+| Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
 
 ## Nothing recorded
 
