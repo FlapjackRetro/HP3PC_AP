@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 111 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 110 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 101.
 
 ## Partly known
@@ -62,7 +62,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Drac/Lap | `PumpkinPasty15` | pasty (placed) | (4608, -880, 657) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
 | Drac/Lap | `PumpkinPasty17` | pasty (placed) | (4607, -463, 904) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
 | Drac/Lap | `PumpkinPasty18` | pasty (placed) | (3364, -1503, 53) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
-| Drac/Lap | `PumpkinPasty2` | pasty (placed) | (-2830, 1431, -217) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
 | Drac/Lap | `PumpkinPasty20` | pasty (placed) | (1349, 96, -72) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
 | Drac/Lap | `PumpkinPasty21` | pasty (placed) | (3559, -1098, 343) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
 | Drac/Lap | `PumpkinPasty22` | pasty (placed) | (-2159, -652, -203) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors); extra needs not reported |
