@@ -125,6 +125,9 @@ PROGRESSIVE = [
     # Dungeons: the portrait rooms' area rules
     ('HP3_DungeonHUB', lambda c: 'Portrait Password 3' in c['req'], ['Spongify']),
     ('HP3_DungeonHUB', lambda c: 'Portrait Password 5' in c['req'], ['Lumos']),
+    # Portrait D: everything past the freestanding cake (the two companion chests) also needs Rictusempra,
+    # Spongify and Depulso (region rule; the chests' own rows name only their padlocks)
+    ('HP3_PortraitPassword_D', lambda c: c['actor'].startswith('ChestCompanionSpawner'), ['Rictusempra', 'Spongify', 'Depulso']),
     # Bonus Room: the upper levels (z > 0) need Spongify
     ('HP3_BeanBonus', lambda c: c['zf'] > 0, ['Spongify']),
     # Patronum: the three skull shelves need Depulso
@@ -135,6 +138,11 @@ PROGRESSIVE = [
 FIX = {
     # "not behind Spongify": ground floor knight
     ('HP3_BeanBonus', 'KnightSpawner1'): (['Spongify'], []),
+    # "Rictusempra + Depulso only (it comes before the Alohomora / Glacius / Spongify parts)"
+    ('HP3_Adv5Shack', 'SkullShelfSpwn6'): (['Alohomora', 'Glacius', 'Spongify'], []),
+    # the Doxy Card sits between the two doxy-release chests: not confirmed whether it's past the doxy fight, so
+    # logic counts it as past it (Alohomora + Rictusempra); to verify in play
+    ('HP3_DungeonHUB', 'WC_Doxy0'): ([], ['Alohomora', 'Rictusempra']),
     # the Monster Book reward cards: the challenge's own rule (its region carries the unlock)
 }
 
