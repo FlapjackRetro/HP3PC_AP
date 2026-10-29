@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 30 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 29 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 80.
 
 ## Partly known
@@ -47,7 +47,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Tunnel | `PumpkinPasty0` | pasty (placed) | (467, -2404, -2895) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); extra needs not reported |
 | Tunnel | `PumpkinPasty5` | pasty (placed) | (824, -2044, -1048) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); extra needs not reported |
 | Tunnel | `SecretAreaMarker0` | secret area | (-5444, 258, -928) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); spawn event `RmA_SmlSecret_Scrt`; extra needs not reported |
-| Tunnel | `SecretAreaMarker2` | secret area | (-718, -4791, -760) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); extra needs not reported |
 | Tunnel | `SecretAreaMarker3` | secret area | (802, -2960, -1904) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); extra needs not reported |
 | Tunnel | `SpawnThingy10` | card SacharissaTugwood | (5426, -3913, -705) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); spawn event `RmG_Win_SpawnThing_Card`; extra needs not reported |
 
