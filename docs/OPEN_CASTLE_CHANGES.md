@@ -435,3 +435,16 @@ New mechanisms (`unlocks.h`):
 - `Trigger24` is now in the SUPPRESS table with no key: its Event is cleared on every load of `HP3_Ch3Glacius`.
 - Carpe's (`entrydoor`, `entrydoorlock`) and Draconifors' (`LapStartDoor`) entrance doors have no touch trigger, only
   their intro, so they're unaffected.
+
+### poc8q: poc8o's cutscene rule reverted; debug panel retries its lookups
+
+- **poc8o's general rule was wrong.** "Same Tag, one bPersistent, one not" was checked against the map files with
+  each actor's game-state Group applied, on the assumption that actors of other states are removed at load. They
+  aren't: they stay in the level. On InsideHub (new game, 08:03:38) it switched off five unrelated triggers:
+  `6180TransIntro`, `movingStairs03To05`, `9240RonExamIntroPt1`, `LevelLoadGrounds010`, `LevelLoadGrounds` (the
+  first-visit side being `1040IntroShop` / `1030MeetMcGandDumbl`). Back to the name rule ("_02") plus an explicit
+  list, `CS_PAIRS`, which holds the Glacius pair (`7550SP3GlaciusDirec` / `GlaciusDirecV2`). The Event changes are made
+  in memory on each load, so a save made under poc8o keeps nothing of it.
+- **Debug panel:** under poc8o the panel paused the game but didn't draw. Its one-time lookup missed `Canvas.CurY`
+  (`cur=72/-1`) and switched the panel off for the session; a lookup can miss while a level is loading. It now retries
+  on each poll (up to 10 times) and only gives up after that.
