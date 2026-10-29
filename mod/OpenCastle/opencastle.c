@@ -70,7 +70,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc8n"
+#define OC_VERSION L"poc8o"
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -456,12 +456,18 @@ static int v_findgate(u32 o, int name, u32 cls, void *c) {
    bInitiallyActive = false as <LevelID><Name>_bTOO). Open Castle enters in GState090, so on a first visit BOTH run
    and every Trigger in them happens twice: a toggle mover opens and shuts again (Ch1: the imp portrait springs back,
    the trapdoor over the Spongify pad closes, softlock).
-   On each new map, for every pair of CutSceneTriggers with the same Tag where one's Event is the other's plus "_02":
-   while the first-visit one is still active (hasn't fired in this save), the REPLAY one loses its Event, so the
-   first visit plays as vanilla's first visit did (dialogue and its rewards: 6035Ch1HoleQC also fires
-   SpawnPastiesImp, the pasties the replay version leaves out; poc8e had it the other way round and lost them). Once
-   the first-visit one has fired, nothing is changed and the replay plays, as in vanilla.
-   Retail maps: HP3_Ch1CarpeRetractum only: 6033Ch1GnomeGetsUp, 6035Ch1HoleQC, 6040Ch1PixiesQC, 6045Ch1BeatPixiesQC. */
+   On each new map, for every pair of CutSceneTriggers with the same Tag where one is the first-visit kind
+   (KWTrigger.bPersistent, fires once) and the other isn't persistent (the replay, which vanilla keeps out of the
+   first-visit state with ExcludeFromGameStates): while the first-visit one is still active (hasn't fired in this
+   save), the REPLAY one loses its Event, so the first visit plays as vanilla's first visit did (dialogue and its
+   rewards: 6035Ch1HoleQC also fires SpawnPastiesImp, the pasties the replay version leaves out; poc8e had it the other
+   way round and lost them). Once the first-visit one has fired, nothing is changed and the replay plays, as in vanilla.
+   Retail maps, both triggers present in GState090 (checked over every map, poc8o): HP3_Ch1CarpeRetractum
+   6033Ch1GnomeGetsUp / _02, 6035Ch1HoleQC / _02, 6040Ch1PixiesQC / _02; HP3_Ch3Glacius 7550SP3GlaciusDirec /
+   GlaciusDirecV2 (both trigger the tutorial spike gates Glacius_Tut_SpkGate_01/02, movers Glacius_Tut_Mvr_01/02 and
+   two lights, so together they open the gates and shut them again). Until poc8n the rule was "Event plus _02", which
+   missed the Glacius pair. Pairs where both or neither are persistent (the challenge-chamber replays, which start
+   inactive; the two bean-bonus intros; moving stairs) aren't touched. */
 #define CS_MAX 256
 struct csfind { u32 level, cls; int n; u32 obj[CS_MAX]; int tag[CS_MAX], ev[CS_MAX]; };
 static int v_cs(u32 o, int name, u32 cls, void *c) {
@@ -471,30 +477,36 @@ static int v_cs(u32 o, int name, u32 cls, void *c) {
     return 0;
 }
 static void dedupe_cutscenes(u32 level) {
-    static struct csfind f; static u32 clsCS, maskActive; static int offActive = -1; static wchar b[220]; int i, j, n = 0;
+    static struct csfind f; static u32 clsCS, maskActive, maskPers, maskOnce; static int offActive = -1, offPers = -1, offOnce = -1;
+    static wchar b[220]; int i, j, n = 0;
     if (!clsCS) clsCS = find_class(L"CutSceneTrigger");
     if (offEvent < 0) offEvent = prop_offset(L"Actor", L"Event");
-    if (offActive < 0) {   /* Trigger.bInitiallyActive; UBoolProperty.BitMask at +0x70 */
-        u32 bp = prop_object(L"Trigger", L"bInitiallyActive"), m = bp ? rd32(bp + 0x70) : 0;
+    if (offActive < 0) {   /* bool properties; UBoolProperty.BitMask at +0x70 */
+        u32 bp, m;
+        bp = prop_object(L"Trigger", L"bInitiallyActive"); m = bp ? rd32(bp + 0x70) : 0;
         if (bp && m && !(m & (m - 1))) { offActive = (int)rd32(bp + 0x4C); maskActive = m; } else offActive = 0;
+        bp = prop_object(L"KWTrigger", L"bPersistent"); m = bp ? rd32(bp + 0x70) : 0;
+        if (bp && m && !(m & (m - 1))) { offPers = (int)rd32(bp + 0x4C); maskPers = m; } else offPers = 0;
+        bp = prop_object(L"Trigger", L"bTriggerOnceOnly"); m = bp ? rd32(bp + 0x70) : 0;
+        if (bp && m && !(m & (m - 1))) { offOnce = (int)rd32(bp + 0x4C); maskOnce = m; } else offOnce = 0;
     }
-    if (!clsCS || offEvent <= 0 || offTag <= 0 || offActive <= 0) { if (offActive == 0) log_line(L"cutscenes: bInitiallyActive not found; pairs left alone"); return; }
+    if (!clsCS || offEvent <= 0 || offTag <= 0 || offActive <= 0 || offPers <= 0 || offOnce <= 0) {
+        log_line(L"cutscenes: bInitiallyActive / bPersistent / bTriggerOnceOnly not found; pairs left alone"); return;
+    }
     f.level = level; f.cls = clsCS; f.n = 0;
     for_each_object(v_cs, &f);
     for (i = 0; i < f.n; i++) {
-        wchar a[96];
-        if (!f.ev[i] || !name_of(f.ev[i], a, 96)) continue;
+        wchar a[96]; int first_pending;
+        if (!f.ev[i] || !(rd32(f.obj[i] + offPers) & maskPers) || !(rd32(f.obj[i] + offOnce) & maskOnce)) continue;   /* first-visit kind */
+        if (!name_of(f.ev[i], a, 96)) continue;
+        first_pending = (rd32(f.obj[i] + offActive) & maskActive) != 0;
         for (j = 0; j < f.n; j++) {
-            wchar e[96]; int k, first_pending;
-            if (j == i || f.tag[j] != f.tag[i] || !f.ev[j] || !name_of(f.ev[j], e, 96)) continue;
-            for (k = 0; a[k] && wlow(a[k]) == wlow(e[k]); k++) ;
-            if (a[k] || e[k] != '_' || e[k + 1] != '0' || e[k + 2] != '2') continue;   /* e = a + "_02..." (not "_010", a state variant) */
-            first_pending = (rd32(f.obj[i] + offActive) & maskActive) != 0;
+            wchar e[96];
+            if (j == i || f.tag[j] != f.tag[i] || !f.ev[j] || (rd32(f.obj[j] + offPers) & maskPers) || !name_of(f.ev[j], e, 96)) continue;
             if (first_pending && rd32(f.obj[j] + offEvent) == (u32)f.ev[j]) {
                 *(volatile int *)(f.obj[j] + offEvent) = 0;
                 wsprintfW(b, L"cutscenes: first visit, %s plays; replay %s off", a, e); log_line(b); n++;
             } else if (!first_pending) { wsprintfW(b, L"cutscenes: %s already played in this save; %s plays", a, e); log_line(b); }
-            break;
         }
     }
     if (n) { wsprintfW(b, L"cutscenes: %d replay trigger(s) switched off on this map (first visit)", n); log_line(b); }

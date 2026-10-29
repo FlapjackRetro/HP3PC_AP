@@ -408,3 +408,19 @@ New mechanisms (`unlocks.h`):
 
 - Up / down now moves at 1% of the horizontal speed: 700 units a second, 2800 with Shift. (The "too fast" report was
   made on poc8l, at the full 70000; poc8m's 10% was never run.)
+
+### poc8o: Glacius double cutscene (tutorial spike gates)
+
+- Same problem as Ch1's (poc8e/f), in `HP3_Ch3Glacius`: Tag `7550SP3GlaciusDirecCS` fires two CutSceneTriggers,
+  `CutSceneTrigger19` → `7550SP3GlaciusDirec` (Flitwick's directions, first visit: `bPersistent`, once) and
+  `CutSceneTrigger20` → `GlaciusDirecV2` (the replay, just the triggers; `ExcludeFromGameStates` GState070, the
+  state of the first visit). Both `Trigger Glacius_Tut_SpkGate_01/02`, `Glacius_Tut_Mvr_01/02`, `Glacius_Tut_06_lt`
+  and `Glacius_Tut_High_Lt`, so in GState090 the spike gates opened and shut again.
+- `dedupe_cutscenes` now pairs by the triggers' own flags instead of the name: same Tag, one first-visit kind
+  (`KWTrigger.bPersistent` + `bTriggerOnceOnly`), one not persistent. While the first-visit one is still active, the
+  other loses its Event. Checked over every retail map (both triggers present in GState090): the three Ch1 pairs it
+  already handled, plus this Glacius one, and nothing else.
+- Looked at and left alone: Glacius's `StartCutScene` pair (`7400GlaciusSal` is in group GState070 only, so in
+  GState090 just `7301SP3GlacIntroAlt` exists); the challenge-chamber replays in Ch2B / Ch3B (the replay starts
+  inactive); the bean-bonus intros in Ch2B / Ch3B (`StartCutSceneBean` fires both the Ron and the Hermione / Harry
+  intro, and both `Trigger BeanBonusGameTimer`; no state gating, so vanilla does the same).
