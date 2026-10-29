@@ -22,7 +22,7 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | --- | --- | --- | --- | --- |
 | Carpe | `ChestSpawner11` | ChestSpawner: pastyx3, card AmarilloLestoatx1 | (1314, 4086, 1177) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
 | Carpe | `ChestSpawner22` | ChestSpawner: card CountVladDrakulx1, cakex3 | (-3479, 3391, 1336) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
-| Carpe | `HPSpawnThingy3` | cake (event spawn) | (1315, 2522, 1209) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
+| Carpe | `HPSpawnThingy3` | cake (event spawn) | (1315, 2522, 1209) | **never spawns in Open Castle**: only the first-visit `6045Ch1BeatPixiesQC` (GState000 only) has `Trigger SpawnCauldronCake`; the replay `_02` that plays in GState090 doesn't. Exempt, or have the mod fire `SpawnCauldronCake` with the replay (decision pending) |
 | Carpe | `SecretAreaMarker1` | secret area | (1310, 4223, 1192) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
 | Carpe | `SecretAreaMarker2` | secret area | (-3334, 3389, 1336) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
 
