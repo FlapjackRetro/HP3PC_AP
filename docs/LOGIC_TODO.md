@@ -13,20 +13,27 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 0 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 70.
+- **Partly known:** 8 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Nothing recorded:** 62.
 
 ## Partly known
 
 | Area | Actor | What | Where | Status |
 | --- | --- | --- | --- | --- |
+| Ron FE | `CauldronCake0` | cake (placed) | (5103, -3108, 1328) | area rule only (Ron's Final Exam Unlock + Carpe Retractum); extra needs not reported |
+| Ron FE | `CauldronCake1` | cake (placed) | (5200, -3150, 1328) | area rule only (Ron's Final Exam Unlock + Carpe Retractum); extra needs not reported |
+| Ron FE | `CauldronCake2` | cake (placed) | (5103, -3205, 1328) | area rule only (Ron's Final Exam Unlock + Carpe Retractum); extra needs not reported |
+| Ron FE | `ChestSpawner3` | ChestSpawner: pastyx10 | (1941, -3238, 1349) | area rule only (Ron's Final Exam Unlock + Carpe Retractum); extra needs not reported |
+| Ron FE | `ChestSpawner5` | ChestSpawner: pastyx4, cakexNone | (1574, -5669, 792) | area rule only (Ron's Final Exam Unlock + Carpe Retractum); extra needs not reported |
+| Ron FE | `ChestSpawner9` | ChestSpawner: cakex8 | (2614, -3259, 1349) | area rule only (Ron's Final Exam Unlock + Carpe Retractum); extra needs not reported |
+| Ron FE | `KnightSpawner7` | KnightSpawner: ChocolateFrogx1, pastyx3 | (716, -4561, 1401) | area rule only (Ron's Final Exam Unlock + Carpe Retractum); extra needs not reported |
+| Ron FE | `TapestrySpwn1` | TapestrySpwn: pastyx4 | (440, -3816, 1563) | area rule only (Ron's Final Exam Unlock + Carpe Retractum); extra needs not reported |
 
 ## Nothing recorded
 
 | Area | Count |
 | --- | ---: |
 | Hermione FE (`HP3_FA2Hermione`) | 62 |
-| Ron FE (`HP3_FA1Ron`) | 8 |
 
 ### Hermione FE (`HP3_FA2Hermione`): 62
 
@@ -94,16 +101,3 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | `PumpkinPasty7` | pasty (placed) | (3668, 511, 2013) |  |
 | `PumpkinPasty8` | pasty (placed) | (4015, 510, 1827) |  |
 | `PumpkinPasty9` | pasty (placed) | (4547, 731, 1757) |  |
-
-### Ron FE (`HP3_FA1Ron`): 8
-
-| Actor | What | Where | Tag |
-| --- | --- | --- | --- |
-| `CauldronCake0` | cake (placed) | (5103, -3108, 1328) |  |
-| `CauldronCake1` | cake (placed) | (5200, -3150, 1328) |  |
-| `CauldronCake2` | cake (placed) | (5103, -3205, 1328) |  |
-| `ChestSpawner3` | ChestSpawner: pastyx10 | (1941, -3238, 1349) |  |
-| `ChestSpawner5` | ChestSpawner: pastyx4, cakexNone | (1574, -5669, 792) |  |
-| `ChestSpawner9` | ChestSpawner: cakex8 | (2614, -3259, 1349) |  |
-| `KnightSpawner7` | KnightSpawner: ChocolateFrogx1, pastyx3 | (716, -4561, 1401) |  |
-| `TapestrySpwn1` | TapestrySpwn: pastyx4 | (440, -3816, 1563) |  |
