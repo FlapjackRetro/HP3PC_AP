@@ -13,14 +13,13 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 54 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 53 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 0.
 
 ## Partly known
 
 | Area | Actor | What | Where | Status |
 | --- | --- | --- | --- | --- |
-| Hermione FE | `CauldronCake13` | cake (placed) | (1854, -1644, 1899) | area rule only (Hermione's Final Exam Unlock + Lapifors; past the cauldron also Draconifors); extra needs not reported |
 | Hermione FE | `CauldronCake15` | cake (placed) | (2511, -1222, 1725) | area rule only (Hermione's Final Exam Unlock + Lapifors; past the cauldron also Draconifors); extra needs not reported |
 | Hermione FE | `CauldronCake20` | cake (placed) | (6186, 1091, 1642) | area rule only (Hermione's Final Exam Unlock + Lapifors; past the cauldron also Draconifors); extra needs not reported |
 | Hermione FE | `CauldronCake21` | cake (placed) | (7070, 1091, 3348) | area rule only (Hermione's Final Exam Unlock + Lapifors; past the cauldron also Draconifors); extra needs not reported |
