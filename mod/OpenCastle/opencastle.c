@@ -71,6 +71,17 @@ IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
 #define OC_VERSION L"poc8u"
+/* OC_DEBUG 1 (default, build/HP3OpenCastle.asi): the development build, with the debug panel (Delete), the item test
+   grid (backslash) and noclip (F6). OC_DEBUG 0 (build/release/HP3OpenCastle.asi, build.sh): the release build, with
+   no key thread at all, so none of those can be opened; everything else is the same code. */
+#ifndef OC_DEBUG
+#define OC_DEBUG 1
+#endif
+#if OC_DEBUG
+#define OC_BUILD L"debug"
+#else
+#define OC_BUILD L"release"
+#endif
 
 int _fltused = 0;
 void *memset(void *d, int c, unsigned n) { volatile u8 *p = (volatile u8 *)d; while (n--) *p++ = (u8)c; return d; }
@@ -644,7 +655,7 @@ static u32 WINAPI worker(void *arg) {
             wsprintfW(gMapLogPath, L"%s\\Harry Potter and the Prisoner of Azkaban\\HP3_MapLog.txt", docs);
         for (i = 0; i < 16; i++) gDoorOn[i] = 0;   /* locked until the save says otherwise */
     }
-    wsprintfW(buf, L"---- HP3 Open Castle " OC_VERSION L" loaded: travel hook %s, ProcessEvent hook %s ----",
+    wsprintfW(buf, L"---- HP3 Open Castle " OC_VERSION L" (" OC_BUILD L") loaded: travel hook %s, ProcessEvent hook %s ----",
               gHookFurl ? L"ok" : L"NOT INSTALLED", gHookPE ? L"ok" : L"NOT INSTALLED");
     log_line(buf);
     while (!(core = GetModuleHandleW(L"Core.dll"))) Sleep(500);
@@ -734,7 +745,7 @@ static u32 WINAPI worker(void *arg) {
         }
         settle++;
         if (settle >= 4) comc_poll(level, lastMap);
-        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); blockers_poll(level, lastMap); shop_poll(level, offGame > 0 ? rd32(level + offGame) : 0); spells_init(); unlocks_poll(); panel_lookups(); noclip_lookups(); }   /* once settled, every 2 s */
+        if (settle >= 12 && (settle - 12) % 8 == 0) { gates_poll(level, lastMap); blockers_poll(level, lastMap); shop_poll(level, offGame > 0 ? rd32(level + offGame) : 0); spells_init(); unlocks_poll(); if (OC_DEBUG) { panel_lookups(); noclip_lookups(); } }   /* once settled, every 2 s */
         if (!shortcutsDone && settle >= 12) {
             shortcutsDone = 1;
             if (!weq(lastMap, L"Entry") && !weq(lastMap, L"HP_Preamble")) { gPendingShortcuts = 1; gPendingRespawn = 1; }
@@ -770,7 +781,7 @@ BOOL WINAPI DllMain(HANDLE inst, u32 reason, void *res) {
         DisableThreadLibraryCalls(inst);
         install_hooks();   /* on the loading thread, before the worker starts */
         CreateThread(0, 0, worker, 0, 0, 0);
-        CreateThread(0, 0, key_thread, 0, 0, 0);
+        if (OC_DEBUG) CreateThread(0, 0, key_thread, 0, 0, 0);   /* debug panel, test grid, noclip */
     }
     return 1;
 }
