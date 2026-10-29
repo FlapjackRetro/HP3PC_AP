@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 84 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 81 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 104.
 
 ## Partly known
@@ -97,13 +97,10 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Drac/Lap (B) | `SecretAreaMarker6` | secret area | (3424, 5046, 605) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 | Drac/Lap (B) | `SecretAreaMarker7` | secret area | (4496, 4308, 351) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 | Drac/Lap (B) | `Bundimun2` | Bundimun: pastyx1 | (5487, 5178, 308) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); bundimun (no save key, comes back on every visit); extra needs not reported |
-| Drac/Lap (B) | `Bundimun13` | Bundimun: pastyx1 | (3079, 1625, 303) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); bundimun (no save key, comes back on every visit); extra needs not reported |
 | Drac/Lap (B) | `Bundimun0` | Bundimun: pastyx1 | (5316, 4359, 308) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); bundimun (no save key, comes back on every visit); extra needs not reported |
 | Drac/Lap (B) | `Bundimun14` | Bundimun: pastyx2 | (4633, 5288, 308) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); bundimun (no save key, comes back on every visit); extra needs not reported |
 | Drac/Lap (B) | `Bundimun3` | Bundimun: pastyx1 | (4475, 4952, 296) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); bundimun (no save key, comes back on every visit); extra needs not reported |
-| Drac/Lap (B) | `Bundimun11` | Bundimun: pastyx1 | (3069, 2330, 303) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); bundimun (no save key, comes back on every visit); extra needs not reported |
 | Drac/Lap (B) | `Bundimun5` | Bundimun: pastyx1 | (4689, 4687, 301) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); bundimun (no save key, comes back on every visit); extra needs not reported |
-| Drac/Lap (B) | `Bundimun4` | Bundimun: pastyx1 | (3893, 1985, 303) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); bundimun (no save key, comes back on every visit); extra needs not reported |
 
 ## Nothing recorded
 
