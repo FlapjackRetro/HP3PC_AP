@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 97 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 96 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 101.
 
 ## Partly known
@@ -46,7 +46,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Drac/Lap | `KnightSpawner22` | KnightSpawner: pastyx1 | (2838, -1635, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); spawn event `Gsecretgrass7`; extra needs not reported |
 | Drac/Lap | `Pumpkin0` | Pumpkin: pastyx2 | (3022, -596, 77) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `Pumpkin12` | Pumpkin: pastyx2 | (3018, -913, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
-| Drac/Lap | `Pumpkin2` | Pumpkin: card HebrideanBlackDragonx1 | (1343, -388, -716) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty0` | pasty (placed) | (4606, -1264, 416) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty12` | pasty (placed) | (1428, -400, 252) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty15` | pasty (placed) | (4608, -880, 657) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
