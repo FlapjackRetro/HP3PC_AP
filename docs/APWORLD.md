@@ -358,6 +358,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Draconifors: secret area `SecretAreaMarker3` | nothing special: Draconifors, Lapifors, Alohomora and Depulso to reach the area (believed), within the area rule. At (3862, -476, -163) | marked in play 2026-10-28 |
 | Draconifors: chest `ChestSpawner20` (2 cakes; spawn event `Dsecretspawner`) | **Depulso** + Lapifors, within the area rule (past the Alohomora gate: Alohomora too). At (-1439, -386, 128) | marked in play 2026-10-28 |
 | Tunnel: cauldron `CauldronSpwn2` (2 pasties) | **Depulso** + the Tunnel rule (Rictusempra). At (-5522, -1420, -980) | marked in play 2026-10-28 |
+| Tunnel: secret area `SecretAreaMarker4` | **Depulso** + the Tunnel rule (Rictusempra). At (-6270, -544, -928) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
