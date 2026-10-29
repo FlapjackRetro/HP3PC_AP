@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 96 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 94 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 101.
 
 ## Partly known
@@ -47,13 +47,11 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Drac/Lap | `Pumpkin0` | Pumpkin: pastyx2 | (3022, -596, 77) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `Pumpkin12` | Pumpkin: pastyx2 | (3018, -913, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty0` | pasty (placed) | (4606, -1264, 416) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
-| Drac/Lap | `PumpkinPasty12` | pasty (placed) | (1428, -400, 252) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty15` | pasty (placed) | (4608, -880, 657) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty17` | pasty (placed) | (4607, -463, 904) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty18` | pasty (placed) | (3364, -1503, 53) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty20` | pasty (placed) | (1349, 96, -72) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty21` | pasty (placed) | (3559, -1098, 343) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
-| Drac/Lap | `PumpkinPasty9` | pasty (placed) | (1277, -392, 252) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `SecretAreaMarker0` | secret area | (1348, -390, -685) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `SecretAreaMarker2` | secret area | (454, -387, -417) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `SecretAreaMarker3` | secret area | (3862, -476, -163) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
