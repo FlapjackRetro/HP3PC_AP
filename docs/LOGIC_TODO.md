@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 55 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 54 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 0.
 
 ## Partly known
@@ -26,7 +26,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Hermione FE | `CauldronCake21` | cake (placed) | (7070, 1091, 3348) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `CauldronCake22` | cake (placed) | (7075, -21, 3631) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `CauldronCake23` | cake (placed) | (5704, -771, 1389) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
-| Hermione FE | `CauldronSpwn0` | CauldronSpwn: pastyx4 | (1269, -953, 1357) | area rule only (Hermione's Final Exam Unlock + Lapifors); spawn event `Bshieldplatb`; extra needs not reported |
 | Hermione FE | `PumpkinPasty0` | pasty (placed) | (7153, -62, 1629) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty10` | pasty (placed) | (4720, 1177, 1653) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty11` | pasty (placed) | (5073, 984, 1653) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
