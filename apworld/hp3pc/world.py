@@ -135,5 +135,5 @@ class HP3PCWorld(World):
     def fill_slot_data(self) -> Mapping[str, Any]:
         data = dict(self.options.as_dict("goal", "cards_required", "spell_mode", "split_challenge_spells",
                                          "shop_prices", "shortcut_passwords"))
-        data["world_version"] = "0.2.0"
+        data["world_version"] = "0.3.0"
         return data

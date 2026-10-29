@@ -1,5 +1,14 @@
 # Item models: how randomized items look in the world
 
+**Built in poc9b (2026-10-29), not yet tested in game:** `mod/OpenCastle/aplook.h`. The client scouts every location
+once connected (`LocationScouts`, no hints) and sends `LOOKS <loc>:<code>`; the mod redraws the vanilla pickup as the
+item (look codes: `aplook.h` LOOKDEFS / `client.py`). Placed pasties, cakes and cards change once the map has settled;
+event spawns and a container's first goodie as they appear (a container now throws out one goodie standing for its
+item, checked when picked up; the rest are removed). Only the drawing changes; the pickup is still the vanilla one
+(its pickup sound and message too, for now). Mixed pasty + cake bundles show as a pasty (a cake if more cakes);
+portrait and shortcut passwords as the scroll; level unlocks as the drawn key, the three creature challenges as their
+creature; traps from other games as the filler logo.
+
 Goal: every placed randomizer item shows a model of what it is. HP3 items use the game's own model. Spells and
 door unlocks use unused art from HP3's packages. Items from other games use an Archipelago logo in three tiers:
 - progression: logo with a yellow up arrow;
