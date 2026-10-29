@@ -448,3 +448,13 @@ New mechanisms (`unlocks.h`):
 - **Debug panel:** under poc8o the panel paused the game but didn't draw. Its one-time lookup missed `Canvas.CurY`
   (`cur=72/-1`) and switched the panel off for the session; a lookup can miss while a level is loading. It now retries
   on each poll (up to 10 times) and only gives up after that.
+
+### poc8r: noclip off always restores full collision
+
+- Reported: after RETURN TO HUB from Glacius with noclip on, the Glacius loading trigger didn't fire although the
+  portcullis was up (log: `loading trigger ChGlacius: on`). Noclip went on again for the new pawn the moment it
+  arrived (before the map settled) and saved that pawn's collision flags then; turning it off put those back. A pawn
+  without bCollideActors touches nothing, so no trigger could fire. Noclip off now always sets collision 1/1/1 (as
+  the cheat `Walk()` does) and logs it when the saved flags were different.
+- That session ran poc8p, so it also still had poc8o's cutscene rule (five InsideHub replay triggers off); poc8q
+  removes it.
