@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 33 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 31 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 80.
 
 ## Partly known
@@ -40,7 +40,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Tunnel | `CauldronSpwn1` | CauldronSpwn: pastyx2 | (1954, -4330, -856) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); spawn event `RmA_Cauldron_Caul_02`; extra needs not reported |
 | Tunnel | `ChestCompanionSpawner0` | ChestCompanionSpawner: pastyx4, ChocolateFrogx2 | (3240, -3773, -999) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); spawn event `RmF_CompLock_Chest`; extra needs not reported |
 | Tunnel | `ChestCompanionSpawner4` | ChestCompanionSpawner: pastyx5 | (4097, -2827, -999) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); spawn event `RmG_CompLock_Chest`; extra needs not reported |
-| Tunnel | `ChestSpawner12` | ChestSpawner: cakex2 | (-3235, -3979, -770) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); extra needs not reported |
 | Tunnel | `ChestSpawner2` | ChestSpawner: pastyx3 | (964, -2395, -3975) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); spawn event `RmE_ShaftChest_Chest`; extra needs not reported |
 | Tunnel | `ChestSpawner5` | ChestSpawner: cakex3 | (785, -3349, -2016) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); extra needs not reported |
 | Tunnel | `SkullShelfSpwn2` | SkullShelfSpwn: pastyx2 | (-2096, -2492, -1488) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); extra needs not reported |
@@ -49,7 +48,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Tunnel | `PumpkinPasty3` | pasty (placed) | (-1761, -3577, -880) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); extra needs not reported |
 | Tunnel | `PumpkinPasty5` | pasty (placed) | (824, -2044, -1048) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); extra needs not reported |
 | Tunnel | `SecretAreaMarker0` | secret area | (-5444, 258, -928) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); spawn event `RmA_SmlSecret_Scrt`; extra needs not reported |
-| Tunnel | `SecretAreaMarker1` | secret area | (-3310, -3971, -760) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); extra needs not reported |
 | Tunnel | `SecretAreaMarker2` | secret area | (-718, -4791, -760) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); extra needs not reported |
 | Tunnel | `SecretAreaMarker3` | secret area | (802, -2960, -1904) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); extra needs not reported |
 | Tunnel | `SpawnThingy10` | card SacharissaTugwood | (5426, -3913, -705) | area rule only (Shrieking Shack Unlock + Rictusempra; past chest `ChestSpawner11` also Alohomora; past chest `ChestSpawner7` also Depulso; and Glacius); spawn event `RmG_Win_SpawnThing_Card`; extra needs not reported |
