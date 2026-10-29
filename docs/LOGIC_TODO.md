@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 36 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 35 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 80.
 
 ## Partly known
@@ -54,7 +54,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Tunnel | `SecretAreaMarker1` | secret area | (-3310, -3971, -760) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
 | Tunnel | `SecretAreaMarker2` | secret area | (-718, -4791, -760) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
 | Tunnel | `SecretAreaMarker3` | secret area | (802, -2960, -1904) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
-| Tunnel | `SecretAreaMarker4` | secret area | (-6270, -544, -928) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
 | Tunnel | `SpawnThingy10` | card SacharissaTugwood | (5426, -3913, -705) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmG_Win_SpawnThing_Card`; extra needs not reported |
 
 ## Nothing recorded
