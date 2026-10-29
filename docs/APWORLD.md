@@ -238,6 +238,21 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Glacius: secret area `SecretAreaMarker2` (holds chest `ChestSpawner35`, Ug the Unreliable card) | **Alohomora**, within the Glacius rule (Glacius, Rictusempra, Spongify). At (-4895, -2715, 4745) | marked in play 2026-10-28 |
 | Glacius: knight `KnightSpawner38` (3 pasties) | **Depulso**, within the Glacius rule (Glacius, Rictusempra, Spongify). At (-8621, -3036, 4580) | marked in play 2026-10-28 |
 | Glacius: knight `KnightSpawner39` (3 pasties) | **Depulso**, within the Glacius rule (Glacius, Rictusempra, Spongify). At (-8631, -2496, 4580) | marked in play 2026-10-28 |
+| Glacius: placed pasty `PumpkinPasty11` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-11368, -1688, 3700) | marked in play 2026-10-28 |
+| Glacius: placed cake `CauldronCake13` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-11809, -1653, 3711) | marked in play 2026-10-28 |
+| Glacius: placed pasty `PumpkinPasty15` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-11568, -1888, 3778) | marked in play 2026-10-28 |
+| Glacius: placed pasty `PumpkinPasty14` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-11485, -1797, 3743) | marked in play 2026-10-28 |
+| Glacius: placed pasty `PumpkinPasty12` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-11240, -1617, 3666) | marked in play 2026-10-28 |
+| Glacius: placed pasty `PumpkinPasty13` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-10266, -1097, 3412) | marked in play 2026-10-28 |
+| Glacius: placed pasty `PumpkinPasty41` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-10606, -1500, 3511) | marked in play 2026-10-28 |
+| Glacius: placed pasty `PumpkinPasty42` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-10471, -1461, 3511) | marked in play 2026-10-28 |
+| Glacius: placed pasty `PumpkinPasty43` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-10351, -1358, 3511) | marked in play 2026-10-28 |
+| Glacius: placed pasty `PumpkinPasty44` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-10295, -1239, 3478) | marked in play 2026-10-28 |
+| Glacius: placed pasty `PumpkinPasty38` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-11070, -1547, 3609) | marked in play 2026-10-28 |
+| Glacius: placed cake `CauldronCake14` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-11995, -1596, 3655) | marked in play 2026-10-28 |
+| Glacius: placed cake `CauldronCake5` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-12979, -817, 3330) | marked in play 2026-10-28 |
+| Glacius: placed cake `CauldronCake6` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-12912, -509, 3320) | marked in play 2026-10-28 |
+| Glacius: placed cake `CauldronCake15` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-12976, -671, 3342) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
