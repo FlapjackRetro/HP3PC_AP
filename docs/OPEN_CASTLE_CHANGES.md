@@ -424,3 +424,14 @@ New mechanisms (`unlocks.h`):
   GState090 just `7301SP3GlacIntroAlt` exists); the challenge-chamber replays in Ch2B / Ch3B (the replay starts
   inactive); the bean-bonus intros in Ch2B / Ch3B (`StartCutSceneBean` fires both the Ron and the Hermione / Harry
   intro, and both `Trigger BeanBonusGameTimer`; no state gating, so vanilla does the same).
+
+### poc8p: Glacius entrance door stays shut
+
+- Reported in play: the entrance door (`KWMover2`, `Glacius_RmA_Enter_Door`, TriggerToggle) shut and then opened again.
+  In GState090 the replay intro `7301SP3GlacIntroAlt` triggers it twice (open, move Harry inside, shut). The
+  hallway-side touch trigger `Trigger24` (Event `Glacius_RmA_Enter_Door`, once per load) belongs to the first-visit
+  version, where `7400GlaciusSal` opened the door once and this trigger shut it behind you; here it only re-opens it
+  (the companions, still in the hallway, walk into it).
+- `Trigger24` is now in the SUPPRESS table with no key: its Event is cleared on every load of `HP3_Ch3Glacius`.
+- Carpe's (`entrydoor`, `entrydoorlock`) and Draconifors' (`LapStartDoor`) entrance doors have no touch trigger, only
+  their intro, so they're unaffected.
