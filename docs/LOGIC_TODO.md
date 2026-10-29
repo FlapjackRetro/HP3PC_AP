@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 102 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 101 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 101.
 
 ## Partly known
@@ -40,7 +40,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Drac/Lap | `CauldronCake3` | cake (placed) | (4550, -511, -213) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `CauldronCake8` | cake (placed) | (1342, -386, -316) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `ChestSpawner20` | ChestSpawner: cakex2 | (-1439, -386, 128) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); spawn event `Dsecretspawner`; extra needs not reported |
-| Drac/Lap | `ChestSpawner21` | ChestSpawner: cakex2 | (522, -383, -456) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `KnightSpawner0` | KnightSpawner: pastyx1 | (2672, -1704, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); spawn event `Gsecretgrass2`; extra needs not reported |
 | Drac/Lap | `KnightSpawner19` | KnightSpawner: pastyx1 | (2684, -1572, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); spawn event `Gsecretgrass4`; extra needs not reported |
 | Drac/Lap | `KnightSpawner21` | KnightSpawner: cakex1 | (2818, -1562, 78) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); spawn event `Gsecretgrass6`; extra needs not reported |
