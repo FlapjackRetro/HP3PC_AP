@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 109 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 107 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 101.
 
 ## Partly known
@@ -38,7 +38,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule only; not checked spot by spot |
 | Drac/Lap | `CauldronCake12` | cake (placed) | (4496, -1250, -213) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `CauldronCake3` | cake (placed) | (4550, -511, -213) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
-| Drac/Lap | `CauldronCake6` | cake (placed) | (-3288, -801, -215) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `CauldronCake8` | cake (placed) | (1342, -386, -316) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `ChestSpawner20` | ChestSpawner: cakex2 | (-1439, -386, 128) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); spawn event `Dsecretspawner`; extra needs not reported |
 | Drac/Lap | `ChestSpawner21` | ChestSpawner: cakex2 | (522, -383, -456) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
@@ -53,7 +52,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Drac/Lap | `Pumpkin8` | Pumpkin: pastyx1 | (1343, -795, -730) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `Pumpkin9` | Pumpkin: pastyx1 | (944, -383, -725) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty0` | pasty (placed) | (4606, -1264, 416) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
-| Drac/Lap | `PumpkinPasty1` | pasty (placed) | (-2912, -672, -219) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty10` | pasty (placed) | (-1269, -1030, -58) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty11` | pasty (placed) | (433, -382, 239) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
 | Drac/Lap | `PumpkinPasty12` | pasty (placed) | (1428, -400, 252) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora); extra needs not reported |
