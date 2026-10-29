@@ -17,6 +17,8 @@ message, ASCII; IDs on the wire are item / location ids minus the world's base i
                   ITEM <index> <item>     one more received item
                   CHECKED <loc>,<loc>...  locations the server already has
                   MSG <text>              shown in the mod's log
+                  LOOKS <loc>:<code>,...  what each location holds, so the pickup can show it (LOOK_CODES below;
+                                          the mod's table is mod/OpenCastle/aplook.h)
 
 The save keeps how far it has applied the received list (docs/CLIENT_SYNC.md), so the client always sends the whole
 list and the mod picks up from where the save is.
@@ -36,6 +38,44 @@ from NetUtils import ClientStatus
 from . import items
 
 GAME_PORT = 42780
+
+# Look codes, shared with mod/OpenCastle/aplook.h (LOOKDEFS). Spells 1-10 in the mod's spell order.
+SPELL_LOOK = {"Alohomora": 1, "Carpe Retractum": 2, "Depulso": 3, "Draconifors": 4, "Expecto Patronum": 5,
+              "Glacius": 6, "Lapifors": 7, "Lumos": 8, "Rictusempra": 9, "Spongify": 10}
+UNLOCK_LOOK = {"Hippogriff Challenge Unlock": 21, "Doxy Challenge Unlock": 22, "Monster Book Challenge Unlock": 23}
+LOOK_KEY, LOOK_SCROLL, LOOK_MAP, LOOK_PASTY, LOOK_CAKE, LOOK_FROG, LOOK_CARD = 20, 30, 32, 33, 34, 35, 36
+LOOK_AP_PROGRESSION, LOOK_AP_USEFUL, LOOK_AP_FILLER = 40, 41, 42
+ID_TO_NAME = {code: name for name, code in items.ITEM_NAME_TO_ID.items()}
+
+
+def hp3_look(item_id: int) -> int:
+    """The look of one of this game's items (by id)."""
+    name = ID_TO_NAME.get(item_id, "")
+    if name in SPELL_LOOK:
+        return SPELL_LOOK[name]
+    if name in UNLOCK_LOOK:
+        return UNLOCK_LOOK[name]
+    if name in items.LEVEL_UNLOCKS:
+        return LOOK_KEY
+    if name in items.PASSWORDS:
+        return LOOK_SCROLL
+    if name == "Marauder's Map":
+        return LOOK_MAP
+    if name in items.CURRENCY_VALUE:
+        pasties, cakes = items.CURRENCY_VALUE[name]
+        return LOOK_PASTY if pasties >= cakes else LOOK_CAKE
+    if name in items.CARDS:
+        return LOOK_CARD
+    return LOOK_FROG
+
+
+def other_look(flags: int) -> int:
+    """Another game's item: the Archipelago logo by tier (traps look like filler)."""
+    if flags & 0b001:
+        return LOOK_AP_PROGRESSION
+    if flags & 0b010:
+        return LOOK_AP_USEFUL
+    return LOOK_AP_FILLER
 BASE = items.BASE_ID
 CARD_IDS = {BASE + data.offset for data in items.CARDS.values()}
 CHUNK = 100
@@ -64,6 +104,7 @@ class HP3Context(CommonContext):
         self.save_bind = ""
         self.slot_data: dict = {}
         self.goal_sent = False
+        self.looks: dict[int, int] = {}   # location offset -> look code
 
     # ---- server side ---------------------------------------------------------------------------------------------
     async def server_auth(self, password_requested: bool = False) -> None:
@@ -76,7 +117,16 @@ class HP3Context(CommonContext):
         if cmd == "Connected":
             self.slot_data = args.get("slot_data", {}) or {}
             self.goal_sent = False
+            self.looks = {}
             asyncio.create_task(self.sync_game())
+            locs = sorted(set(args.get("missing_locations", [])) | set(args.get("checked_locations", [])))
+            if locs:   # what's where, for the looks (no hints are created)
+                asyncio.create_task(self.send_msgs([{"cmd": "LocationScouts", "locations": locs, "create_as_hint": 0}]))
+        elif cmd == "LocationInfo":
+            for item in args["locations"]:
+                game = self.slot_info[item.player].game if item.player in self.slot_info else ""
+                self.looks[item.location - BASE] = hp3_look(item.item) if game == self.game else other_look(item.flags)
+            self.send_looks()
         elif cmd == "ReceivedItems":
             start = args["index"]
             if start == 0:
@@ -110,6 +160,11 @@ class HP3Context(CommonContext):
         if self.game_writer:
             self.game_writer.write((line + "\n").encode("ascii", "replace"))
 
+    def send_looks(self) -> None:
+        pairs = sorted(self.looks.items())
+        for k in range(0, len(pairs), CHUNK):
+            self.to_game("LOOKS " + ",".join(f"{loc}:{code}" for loc, code in pairs[k:k + CHUNK]))
+
     def send_checked(self, locations) -> None:
         offs = sorted(loc - BASE for loc in locations)
         for k in range(0, len(offs), CHUNK):
@@ -127,6 +182,7 @@ class HP3Context(CommonContext):
             self.to_game(f"ITEMS {k} " + ",".join(map(str, ids[k:k + CHUNK])))
         self.to_game(f"SYNCED {len(ids)}")
         self.send_checked(self.checked_locations)
+        self.send_looks()
         if self.game_writer:
             await self.game_writer.drain()
 

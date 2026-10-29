@@ -23,9 +23,11 @@ the save), from build **poc9a**. The ID tables the mod uses are generated from t
   card. **Vanilla rewards are taken back**: a container's pasty / cake / card goodies are destroyed as they appear, a
   picked-up pasty or cake is subtracted again, and a picked-up card goes back to its earlier status unless it was
   received. Every check made in the save is resent on each connection.
+- **Item looks (poc9b)**: pickups show the item placed there (ITEM_MODELS.md). Containers now throw out one goodie
+  that stands for the location (checked when picked up) instead of being checked on opening.
 - **Not yet**: Fred & George's shop and the student vendors as checks, the Final Day door as the goal (the client
   reports the goal once `cards_required` cards are received), HUD messages for received items, the cutscene check
-  before giving currency, replacing the vanilla pickups with item looks.
+  before giving currency, the pickup sound / message of the vanilla item.
 
 ## Principles
 

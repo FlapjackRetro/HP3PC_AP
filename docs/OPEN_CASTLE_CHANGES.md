@@ -472,6 +472,13 @@ New mechanisms (`unlocks.h`):
   there) as not found, so the caller looks it up again on the next poll. `travel_post_accept` also refuses an offset
   below 0x28. MapTracker rebuilt with the same header (v13, unchanged otherwise).
 
+### poc9b: pickups look like the item in the multiworld
+
+`aplook.h`: the client scouts every location and sends a look code for each; placed pasties / cakes / cards, event
+spawns and a container's first goodie are redrawn as that item (HP3 items with their own art, other games' items
+with the Archipelago logo by tier). A location container now keeps one goodie for its item (checked when it's picked
+up) and removes the rest. See [ITEM_MODELS.md](ITEM_MODELS.md).
+
 ### poc9a: Archipelago client connection (items in, checks out)
 
 The mod talks to the apworld's client over a local connection (127.0.0.1:42780), as HP2PC_AP does: `net.h` (its own

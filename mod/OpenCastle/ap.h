@@ -42,6 +42,8 @@ static volatile int gApSplit, gApCards;   /* gApCheap: opencastle.c */
 static unsigned char gSrvChecked[AP_NLOCS];       /* the server has it (CHECKED) */
 static unsigned char gLocChecked[AP_NLOCS];       /* this save has it (OC_AP_Checked) */
 static volatile int gApJob;                       /* the worker asks the game thread to sync */
+static unsigned char gLook[AP_NLOCS];             /* what each location holds, as a look code (aplook.h) */
+static volatile int gApLookGen;                   /* +1 whenever LOOKS lines arrive */
 static int gApActive;                             /* save bound to the connected room */
 static u32 gApLevel;                              /* level the save state was read on */
 static wchar gSaveBindW[128]; static int gSaveRecv; static wchar gCheckedCsv[4096];
@@ -96,13 +98,24 @@ static void ap_poll(void) {
         } else if (a_starts(line, "CHECKED ")) {
             p = line + 8;
             while (*p) { int i = ap_loc_index(a_num(&p)); if (i >= 0) gSrvChecked[i] = 1; if (*p == ',') p++; else break; }
+        } else if (a_starts(line, "LOOKS ")) {   /* <loc>:<code>,... */
+            p = line + 6;
+            while (*p) { int i = ap_loc_index(a_num(&p)), c = 0; if (*p == ':') { p++; c = a_num(&p); } if (i >= 0) gLook[i] = (unsigned char)c; if (*p == ',') p++; else break; }
+            gApLookGen++;
         } else if (a_starts(line, "MSG ")) {
             wchar w[300]; a_wide(w, line + 4, 280); wsprintfW(b, L"ap: %s", w); log_line(b);
         }
     }
 }
 
-/* ---- worker: secrets on this map ------------------------------------------------------------------------------ */
+/* ---- worker: location actors on this map (secrets, event spawn points, placed pickups and cards) ---- */
+static const wchar *const DOXY_CARDS[5] = { L"WC_BrantheBloodthirsty0", L"WC_Cyclops0", L"WC_Goliath0", L"WC_Morholt0", L"WC_HengistofUpperBarnton0" };
+
+static int ap_loc_by_actor(const wchar *map, const wchar *actor, char kind) {   /* kind 0: any */
+    int i;
+    for (i = 0; i < AP_NLOCS; i++) if (weq(AP_LOCS[i].map, map) && AP_LOCS[i].actor && wieq(AP_LOCS[i].actor, actor) && (!kind || AP_LOCS[i].kind == kind)) return i;
+    return -1;
+}
 #define AP_MAPMAX 128
 static u32 gApMapLevel; static int gApMapN; static u32 gApMapObj[AP_MAPMAX]; static int gApMapLoc[AP_MAPMAX];
 static float gApMapAt[AP_MAPMAX][3];
@@ -114,12 +127,19 @@ static int v_apfind(u32 o, int name, u32 cls, void *c) {
     for (i = 0; i < AP_NLOCS; i++) {
         const struct aploc *l = &AP_LOCS[i];
         if (!weq(l->map, f->map) || !l->actor || !wieq(l->actor, nm)) continue;
-        if (l->kind != 'S' && l->kind != 'E' && !(l->kind == 'K' && !l->key[0])) continue;   /* the ones found by object */
+        if (l->kind != 'S' && l->kind != 'E' && l->kind != 'P' && l->kind != 'K') continue;
         gApMapObj[gApMapN] = o; gApMapLoc[gApMapN] = i;
         rd(o + offLoc, gApMapAt[gApMapN], 12);
         gApMapN++;
-        break;
+        return 0;
     }
+    if (weq(f->map, L"HP3_GroundsHub"))   /* the doxy rounds' reward cards */
+        for (i = 0; i < 5; i++) if (wieq(nm, DOXY_CARDS[i])) {
+            wchar w[16]; int li; wsprintfW(w, L"WinCard%d", i + 1);
+            if ((li = ap_loc_by_actor(L"HP3_GroundsHub", w, 'M')) < 0) break;
+            gApMapObj[gApMapN] = o; gApMapLoc[gApMapN] = li; rd(o + offLoc, gApMapAt[gApMapN], 12); gApMapN++;
+            break;
+        }
     return 0;
 }
 static void ap_map_scan(u32 level, const wchar *map) {   /* worker, once per settled map */
@@ -129,7 +149,7 @@ static void ap_map_scan(u32 level, const wchar *map) {   /* worker, once per set
     gApMapN = 0; f.level = level; f.map = map;
     for_each_object(v_apfind, &f);
     gApMapLevel = level;
-    wsprintfW(b, L"ap: %d secret / event location(s) on this map", gApMapN); log_line(b);
+    wsprintfW(b, L"ap: %d location actor(s) on this map", gApMapN); log_line(b);
 }
 static void ap_secrets_poll(void) {   /* worker, every 250 ms on a settled map */
     int i;
@@ -337,28 +357,27 @@ static void ap_game(void) {
 #define AP_PUMAX 64
 static u32 gApPu[AP_PUMAX]; static int gApPuLoc[AP_PUMAX]; static int gApNPu;   /* spawned pickups tied to a location */
 static volatile u32 gApKill[32]; static volatile int gApNKill;                   /* goodies to destroy on the next tick */
-static const wchar *const DOXY_CARDS[5] = { L"WC_BrantheBloodthirsty0", L"WC_Cyclops0", L"WC_Goliath0", L"WC_Morholt0", L"WC_HengistofUpperBarnton0" };
-
-static int ap_loc_by_actor(const wchar *map, const wchar *actor, char kind) {   /* kind 0: any */
-    int i;
-    for (i = 0; i < AP_NLOCS; i++) if (weq(AP_LOCS[i].map, map) && AP_LOCS[i].actor && wieq(AP_LOCS[i].actor, actor) && (!kind || AP_LOCS[i].kind == kind)) return i;
-    return -1;
-}
 static int ap_is_goodie(u32 obj) {
     if (!gClsPastyPU) gClsPastyPU = find_class(L"PumpkinPasty");
     if (!gClsCakePU) gClsCakePU = find_class(L"CauldronCake");
     if (!gClsCardPU) gClsCardPU = find_class(L"WizardCard");
     return (gClsPastyPU && is_a_fast(obj, gClsPastyPU)) ? 1 : (gClsCakePU && is_a_fast(obj, gClsCakePU)) ? 2 : (gClsCardPU && is_a_fast(obj, gClsCardPU)) ? 3 : 0;
 }
+static int ap_tied(int li) { int i; for (i = 0; i < gApNPu; i++) if (gApPu[i] && gApPuLoc[i] == li) return 1; return 0; }
+static void ap_look_queue(u32 obj, int li); static void ap_look_forget(u32 obj); static void ap_looks_tick(void);   /* aplook.h */
 /* PostBeginPlay of a KWPickup, after leftovers.h has (maybe) linked it to a spawner */
 static void ap_pickup_spawned(u32 obj, int linkedBefore) {
     wchar nm[64]; const wchar *map = (const wchar *)gCurMap; int li, i;
     if (!map || P(obj + offLevel) != cur_level()) return;
     if (gNPu > linkedBefore && gPu[gNPu - 1].obj == obj) {   /* a container's goodie */
         struct lo_sp *s = &gSp[gPu[gNPu - 1].sp];
-        if (!name_of(s->name, nm, 64) || (li = ap_loc_by_actor(map, nm, 'C')) < 0) return;
-        ap_check(li);
-        if (ap_is_goodie(obj) && gApNKill < 32) {   /* the item is the Archipelago one */
+        if (!name_of(s->name, nm, 64) || (li = ap_loc_by_actor(map, nm, 'C')) < 0 || !ap_is_goodie(obj)) return;
+        /* the container's first pasty / cake / card stands for the location's item (shown as it, checked when picked
+           up); every other one is destroyed, the item being the Archipelago one. Already checked: all destroyed. */
+        if (!gLocChecked[li] && !ap_tied(li) && gApNPu < AP_PUMAX) {
+            gApPu[gApNPu] = obj; gApPuLoc[gApNPu] = li; gApNPu++;
+            ap_look_queue(obj, li);
+        } else if (gApNKill < 32) {
             gApKill[gApNKill++] = obj;
             gPu[gNPu - 1].state = 1; gPu[gNPu - 1].obj = 0;   /* leftovers.h: collected, never thrown out again */
         }
@@ -367,18 +386,20 @@ static void ap_pickup_spawned(u32 obj, int linkedBefore) {
     /* an event spawn: the nearest event location on this map, within 150 units */
     {   float *at = (float *)(obj + offLoc), bd = 150.0f * 150.0f; int best = -1;
         for (i = 0; i < gApMapN; i++) {
-            float dx, dy, dz, d2; char k = AP_LOCS[gApMapLoc[i]].kind;
-            if (k == 'S') continue;
+            float dx, dy, dz, d2; const struct aploc *l = &AP_LOCS[gApMapLoc[i]];
+            if (l->kind != 'E' && !(l->kind == 'K' && !l->key[0])) continue;   /* spawn points only */
             dx = at[0] - gApMapAt[i][0]; dy = at[1] - gApMapAt[i][1]; dz = at[2] - gApMapAt[i][2]; d2 = dx * dx + dy * dy + dz * dz;
             if (d2 < bd) { bd = d2; best = gApMapLoc[i]; }
         }
-        if (best >= 0 && gApNPu < AP_PUMAX) { gApPu[gApNPu] = obj; gApPuLoc[gApNPu] = best; gApNPu++; }
+        if (best >= 0 && gApNPu < AP_PUMAX) { gApPu[gApNPu] = obj; gApPuLoc[gApNPu] = best; gApNPu++; ap_look_queue(obj, best); }
     }
 }
 /* Destroyed of a KWPickup: picked up? */
 static int gApUndoP, gApUndoC; static u32 gApUndoCard;
 static void ap_pickup_destroyed(u32 obj) {
     wchar nm[64]; const wchar *map = (const wchar *)gCurMap; int li = -1, i, what;
+    ap_look_forget(obj);
+    for (i = 0; i < gApMapN; i++) if (gApMapObj[i] == obj && AP_LOCS[gApMapLoc[i]].kind != 'S') gApMapObj[i] = 0;
     if (!map || offPicked <= 0 || P(obj + offPicked) != 1) {
         for (i = 0; i < gApNPu; i++) if (gApPu[i] == obj) gApPu[i] = 0;
         return;
@@ -403,6 +424,7 @@ static void ap_tick(void) {
     if (gApUndoP || gApUndoC) { ap_currency(gApUndoP, gApUndoC, 1); gApUndoP = gApUndoC = 0; }
     if (gApUndoCard) { ap_card_undo(gApUndoCard); gApUndoCard = 0; }
     ap_game();
+    ap_looks_tick();
 }
 /* from pe_hook, before the event runs (Destroyed) or after leftovers.h (PostBeginPlay) */
 static void ap_event(u32 self, int fname, int linkedBefore) {
