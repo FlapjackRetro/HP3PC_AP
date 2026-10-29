@@ -13,8 +13,8 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
-- **Nothing recorded:** 101.
+- **Partly known:** 37 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Nothing recorded:** 80.
 
 ## Partly known
 
@@ -36,13 +36,33 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Carpe (B) | `KnightSpawner21` | KnightSpawner: card BlodwynBluddx1, pastyx5 | (1713, 5812, 1797) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker3` | secret area | (-1769, 5968, 2288) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `SecretAreaMarker4` | secret area | (2264, 7105, 1480) | Carpe region rule only; not checked spot by spot |
+| Tunnel | `CauldronCake4` | cake (placed) | (-707, -5223, -48) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
+| Tunnel | `CauldronSpwn1` | CauldronSpwn: pastyx2 | (1954, -4330, -856) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmA_Cauldron_Caul_02`; extra needs not reported |
+| Tunnel | `CauldronSpwn2` | CauldronSpwn: pastyx2 | (-5522, -1420, -980) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmA_Cauldron_02_Caul`; extra needs not reported |
+| Tunnel | `ChestCompanionSpawner0` | ChestCompanionSpawner: pastyx4, ChocolateFrogx2 | (3240, -3773, -999) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmF_CompLock_Chest`; extra needs not reported |
+| Tunnel | `ChestCompanionSpawner4` | ChestCompanionSpawner: pastyx5 | (4097, -2827, -999) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmG_CompLock_Chest`; extra needs not reported |
+| Tunnel | `ChestSpawner11` | ChestSpawner: cakex1 | (-6349, 63, -992) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmA_Secret_01_Chest`; extra needs not reported |
+| Tunnel | `ChestSpawner12` | ChestSpawner: cakex2 | (-3235, -3979, -770) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
+| Tunnel | `ChestSpawner2` | ChestSpawner: pastyx3 | (964, -2395, -3975) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmE_ShaftChest_Chest`; extra needs not reported |
+| Tunnel | `ChestSpawner5` | ChestSpawner: cakex3 | (785, -3349, -2016) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
+| Tunnel | `ChestSpawner7` | ChestSpawner: ChocolateFrogx1, pastyx2 | (-4582, -2857, -899) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmA_skelWin_Chest`; extra needs not reported |
+| Tunnel | `SkullShelfSpwn2` | SkullShelfSpwn: pastyx2 | (-2096, -2492, -1488) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
+| Tunnel | `SkullShelfSpwn6` | SkullShelfSpwn: cakex1 | (-5520, 293, -538) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmA_SmlSecret_Spawn`; extra needs not reported |
+| Tunnel | `PumpkinPasty0` | pasty (placed) | (467, -2404, -2895) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
+| Tunnel | `PumpkinPasty3` | pasty (placed) | (-1761, -3577, -880) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
+| Tunnel | `PumpkinPasty5` | pasty (placed) | (824, -2044, -1048) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
+| Tunnel | `SecretAreaMarker0` | secret area | (-5444, 258, -928) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmA_SmlSecret_Scrt`; extra needs not reported |
+| Tunnel | `SecretAreaMarker1` | secret area | (-3310, -3971, -760) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
+| Tunnel | `SecretAreaMarker2` | secret area | (-718, -4791, -760) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
+| Tunnel | `SecretAreaMarker3` | secret area | (802, -2960, -1904) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
+| Tunnel | `SecretAreaMarker4` | secret area | (-6270, -544, -928) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
+| Tunnel | `SpawnThingy10` | card SacharissaTugwood | (5426, -3913, -705) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmG_Win_SpawnThing_Card`; extra needs not reported |
 
 ## Nothing recorded
 
 | Area | Count |
 | --- | ---: |
 | Hermione FE (`HP3_FA2Hermione`) | 62 |
-| Tunnel (`HP3_Adv5Shack`) | 21 |
 | Harry FE (`HP3_FA3Harry`) | 10 |
 | Ron FE (`HP3_FA1Ron`) | 8 |
 
@@ -112,32 +132,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | `PumpkinPasty7` | pasty (placed) | (3668, 511, 2013) |  |
 | `PumpkinPasty8` | pasty (placed) | (4015, 510, 1827) |  |
 | `PumpkinPasty9` | pasty (placed) | (4547, 731, 1757) |  |
-
-### Tunnel (`HP3_Adv5Shack`): 21
-
-| Actor | What | Where | Tag |
-| --- | --- | --- | --- |
-| `CauldronCake4` | cake (placed) | (-707, -5223, -48) |  |
-| `CauldronSpwn1` | CauldronSpwn: pastyx2 | (1954, -4330, -856) | `RmA_Cauldron_Caul_02` |
-| `CauldronSpwn2` | CauldronSpwn: pastyx2 | (-5522, -1420, -980) | `RmA_Cauldron_02_Caul` |
-| `ChestCompanionSpawner0` | ChestCompanionSpawner: pastyx4, ChocolateFrogx2 | (3240, -3773, -999) | `RmF_CompLock_Chest` |
-| `ChestCompanionSpawner4` | ChestCompanionSpawner: pastyx5 | (4097, -2827, -999) | `RmG_CompLock_Chest` |
-| `ChestSpawner11` | ChestSpawner: cakex1 | (-6349, 63, -992) | `RmA_Secret_01_Chest` |
-| `ChestSpawner12` | ChestSpawner: cakex2 | (-3235, -3979, -770) |  |
-| `ChestSpawner2` | ChestSpawner: pastyx3 | (964, -2395, -3975) | `RmE_ShaftChest_Chest` |
-| `ChestSpawner5` | ChestSpawner: cakex3 | (785, -3349, -2016) |  |
-| `ChestSpawner7` | ChestSpawner: ChocolateFrogx1, pastyx2 | (-4582, -2857, -899) | `RmA_skelWin_Chest` |
-| `SkullShelfSpwn2` | SkullShelfSpwn: pastyx2 | (-2096, -2492, -1488) |  |
-| `SkullShelfSpwn6` | SkullShelfSpwn: cakex1 | (-5520, 293, -538) | `RmA_SmlSecret_Spawn` |
-| `PumpkinPasty0` | pasty (placed) | (467, -2404, -2895) |  |
-| `PumpkinPasty3` | pasty (placed) | (-1761, -3577, -880) |  |
-| `PumpkinPasty5` | pasty (placed) | (824, -2044, -1048) |  |
-| `SecretAreaMarker0` | secret area | (-5444, 258, -928) | `RmA_SmlSecret_Scrt` |
-| `SecretAreaMarker1` | secret area | (-3310, -3971, -760) |  |
-| `SecretAreaMarker2` | secret area | (-718, -4791, -760) |  |
-| `SecretAreaMarker3` | secret area | (802, -2960, -1904) |  |
-| `SecretAreaMarker4` | secret area | (-6270, -544, -928) |  |
-| `SpawnThingy10` | card SacharissaTugwood | (5426, -3913, -705) | `RmG_Win_SpawnThing_Card` |
 
 ### Harry FE (`HP3_FA3Harry`): 10
 
