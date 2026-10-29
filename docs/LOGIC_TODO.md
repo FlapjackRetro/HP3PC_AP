@@ -20,11 +20,11 @@ unconfirmed; see APWORLD.md), and the dropped maps
 
 | Area | Actor | What | Where | Status |
 | --- | --- | --- | --- | --- |
-| Harry FE | `Hpgenericspawner0` | Hpgenericspawner: pastyx6 | (-97, -231, 283) | area rule only (Harry's Final Exam Unlock + Glacius; the remaining ones also Rictusempra); spawn event `Beanbonanza`; extra needs not reported |
-| Harry FE | `Hpgenericspawner1` | Hpgenericspawner: pastyx6, cakex2 | (68, -542, 206) | area rule only (Harry's Final Exam Unlock + Glacius; the remaining ones also Rictusempra); spawn event `Beanbonanza`; extra needs not reported |
-| Harry FE | `Hpgenericspawner2` | Hpgenericspawner: pastyx3 | (-59, -509, 291) | area rule only (Harry's Final Exam Unlock + Glacius; the remaining ones also Rictusempra); spawn event `Beanbonanza`; extra needs not reported |
-| Harry FE | `Hpgenericspawner3` | Hpgenericspawner: pastyx3 | (91, -383, 317) | area rule only (Harry's Final Exam Unlock + Glacius; the remaining ones also Rictusempra); spawn event `Beanbonanza`; extra needs not reported |
-| Harry FE | `Hpgenericspawner4` | Hpgenericspawner: pastyx3 | (96, -298, 222) | area rule only (Harry's Final Exam Unlock + Glacius; the remaining ones also Rictusempra); spawn event `Beanbonanza`; extra needs not reported |
+| Harry FE | `Hpgenericspawner0` | Hpgenericspawner: pastyx6 | (-97, -231, 283) | area rule only (Harry's Final Exam Unlock + Glacius; the remaining ones also Rictusempra and Spongify); spawn event `Beanbonanza`; extra needs not reported |
+| Harry FE | `Hpgenericspawner1` | Hpgenericspawner: pastyx6, cakex2 | (68, -542, 206) | area rule only (Harry's Final Exam Unlock + Glacius; the remaining ones also Rictusempra and Spongify); spawn event `Beanbonanza`; extra needs not reported |
+| Harry FE | `Hpgenericspawner2` | Hpgenericspawner: pastyx3 | (-59, -509, 291) | area rule only (Harry's Final Exam Unlock + Glacius; the remaining ones also Rictusempra and Spongify); spawn event `Beanbonanza`; extra needs not reported |
+| Harry FE | `Hpgenericspawner3` | Hpgenericspawner: pastyx3 | (91, -383, 317) | area rule only (Harry's Final Exam Unlock + Glacius; the remaining ones also Rictusempra and Spongify); spawn event `Beanbonanza`; extra needs not reported |
+| Harry FE | `Hpgenericspawner4` | Hpgenericspawner: pastyx3 | (96, -298, 222) | area rule only (Harry's Final Exam Unlock + Glacius; the remaining ones also Rictusempra and Spongify); spawn event `Beanbonanza`; extra needs not reported |
 
 ## Nothing recorded
 
