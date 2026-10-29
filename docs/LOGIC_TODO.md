@@ -13,16 +13,13 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 3 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 0 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 62.
 
 ## Partly known
 
 | Area | Actor | What | Where | Status |
 | --- | --- | --- | --- | --- |
-| Ron FE | `CauldronCake0` | cake (placed) | (5103, -3108, 1328) | area rule only (Ron's Final Exam Unlock + Carpe Retractum); extra needs not reported |
-| Ron FE | `CauldronCake1` | cake (placed) | (5200, -3150, 1328) | area rule only (Ron's Final Exam Unlock + Carpe Retractum); extra needs not reported |
-| Ron FE | `CauldronCake2` | cake (placed) | (5103, -3205, 1328) | area rule only (Ron's Final Exam Unlock + Carpe Retractum); extra needs not reported |
 
 ## Nothing recorded
 
