@@ -13,15 +13,13 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 2 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 0 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 80.
 
 ## Partly known
 
 | Area | Actor | What | Where | Status |
 | --- | --- | --- | --- | --- |
-| Carpe | `ChestSpawner22` | ChestSpawner: card CountVladDrakulx1, cakex3 | (-3479, 3391, 1336) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
-| Carpe | `SecretAreaMarker2` | secret area | (-3334, 3389, 1336) | Carpe region rule + Rictusempra + Alohomora (remaining Carpe checks, 2026-10-29); not checked spot by spot |
 
 ## Nothing recorded
 
