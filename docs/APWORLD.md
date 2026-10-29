@@ -409,6 +409,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Ron's exam: banner `TapestrySpwn1` (4 pasties; also 6 beans) | **Depulso** (2 hits) + the exam rule (Ron's Final Exam Unlock + Carpe Retractum). At (440, -3816, 1563) | marked in play 2026-10-28 |
 | Ron's exam: knight `KnightSpawner7` (3 pasties, 1 Chocolate Frog) | **Depulso** (3 hits) + the exam rule (Ron's Final Exam Unlock + Carpe Retractum). At (716, -4561, 1401) | marked in play 2026-10-28 |
 | Ron's exam: chest `ChestSpawner3` (10 pasties) | **Alohomora** + the exam rule (Ron's Final Exam Unlock + Carpe Retractum). At (1941, -3238, 1349) | marked in play 2026-10-28 |
+| Ron's exam: chest `ChestSpawner9` (8 cakes) | **Alohomora** + the exam rule (Ron's Final Exam Unlock + Carpe Retractum). At (2614, -3259, 1349) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
