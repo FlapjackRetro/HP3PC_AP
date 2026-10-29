@@ -472,6 +472,18 @@ New mechanisms (`unlocks.h`):
   there) as not found, so the caller looks it up again on the next poll. `travel_post_accept` also refuses an offset
   below 0x28. MapTracker rebuilt with the same header (v13, unchanged otherwise).
 
+### poc8u builds: debug and release
+
+`build.sh` now makes two builds from the same source:
+- `build/HP3OpenCastle.asi`, **debug** (`OC_DEBUG=1`): the debug panel (Delete), the item test grid (backslash) and
+  noclip (F6). For development.
+- `build/release/HP3OpenCastle.asi`, **release** (`OC_DEBUG=0`): no key thread at all, so none of those can be
+  opened (the panel and noclip lookups don't run either). Everything else is identical.
+The log's first line names the build: `HP3 Open Castle poc8u (release) loaded`.
+
+MapTracker (title-bar position, `HP3_MapLog.txt`, the mark key) is a separate, read-only plugin: leaving
+`HP3MapTracker.asi` out of `system\plugins` removes it completely; Open Castle doesn't depend on it.
+
 ### poc8u: challenge-chamber portcullises in the B maps follow the unlocks
 
 Each of `HP3_Ch1CarpeRetractumB`, `HP3_Ch2DraconiforsB` and `HP3_Ch3GlaciusB` ends in its own copy of InsideHub's
