@@ -325,6 +325,12 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Draconifors: placed pasty `PumpkinPasty17` (climbing column) | **Draconifors** + Depulso + Alohomora + the area rule (Lapifors). At (4607, -463, 904) | marked in play 2026-10-28 |
 | Draconifors (B): chest `ChestSpawner13` (Hungarian Horntail Dragon card) | **Alohomora** + the area rule (Lapifors, Depulso). At (2657, 857, 346) | marked in play 2026-10-28 |
 | (not a location) all bundimuns | **Exempt** (2026-10-29): bundimuns stay vanilla so their behaviour isn't changed (`Bundimun6` in Draconifors B opens the next portcullis when defeated, and they have no save key, so making them locations would mean changing them). 12 drop pasties: 9 in Ch2B, 3 in FA2Hermione. `Bundimun6`, `4`, `11`, `13` were marked in play (Rictusempra) before the decision | 2026-10-29 |
+| Draconifors (B): placed pasty `PumpkinPasty28` | Lapifors (in the Ch2B rule) only. At (3046, 1321, 294) | marked in play 2026-10-28 |
+| Draconifors (B): placed pasty `PumpkinPasty29` | Lapifors (in the Ch2B rule) only. At (3801, 1320, 294) | marked in play 2026-10-28 |
+| Draconifors (B): placed pasty `PumpkinPasty24` | Lapifors (in the Ch2B rule) only. At (4081, 1601, 294) | marked in play 2026-10-28 |
+| Draconifors (B): placed pasty `PumpkinPasty5` | Lapifors (in the Ch2B rule) only. At (3808, 2643, 294) | marked in play 2026-10-28 |
+| Draconifors (B): placed pasty `PumpkinPasty25` | Lapifors (in the Ch2B rule) only. At (3048, 2649, 294) | marked in play 2026-10-28 |
+| Draconifors (B): placed pasty `PumpkinPasty26` | Lapifors (in the Ch2B rule) only. At (2764, 2372, 294) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
