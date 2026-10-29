@@ -353,6 +353,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Draconifors (B): secret area `SecretAreaMarker1` (holds chest `ChestSpawner12`) | the Ch2B rule only. At (4945, 4649, 351) | marked in play 2026-10-28 |
 | Draconifors (B): placed pasty `PumpkinPasty23` | the Ch2B rule only. At (3138, 3902, 294) | marked in play 2026-10-28 |
 | Draconifors (B): placed pasty `PumpkinPasty31` | the Ch2B rule only. At (3711, 3903, 294) | marked in play 2026-10-28 |
+| Draconifors: secret area `SecretAreaMarker2` (with chest `ChestSpawner21`) | same as chest `ChestSpawner21`: **Alohomora** + **Depulso** to reach it + the area rule (Lapifors). At (454, -387, -417) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
