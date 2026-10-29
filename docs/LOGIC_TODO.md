@@ -9,7 +9,8 @@ Open Castle (Hogwarts: the Peeves 2 / 3 rewards, `CauldronCake4`, `PumpkinPasty5
 Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upper Barnton, Morholt), and
 the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5, 6 and a Double-Ended Newt card), and the half of each Glacius map
 that the player is never in (Ch3 and Ch3B share the middle of the level; see APWORLD.md), Glacius
-`PumpkinPasty36` (exempt), Glacius B's bean bonus room (exempt, 21 spawns), four Glacius B slide pasties (exempt), and the dropped maps
+`PumpkinPasty36` (exempt), Glacius B's bean bonus room (exempt, 21 spawns), four Glacius B slide pasties (`PumpkinPasty22`, `23`, `24`, `6`: exempt for now, believed reachable but
+unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
 - **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
