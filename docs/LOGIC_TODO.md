@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 35 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 34 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 80.
 
 ## Partly known
@@ -40,7 +40,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Tunnel | `CauldronSpwn1` | CauldronSpwn: pastyx2 | (1954, -4330, -856) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmA_Cauldron_Caul_02`; extra needs not reported |
 | Tunnel | `ChestCompanionSpawner0` | ChestCompanionSpawner: pastyx4, ChocolateFrogx2 | (3240, -3773, -999) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmF_CompLock_Chest`; extra needs not reported |
 | Tunnel | `ChestCompanionSpawner4` | ChestCompanionSpawner: pastyx5 | (4097, -2827, -999) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmG_CompLock_Chest`; extra needs not reported |
-| Tunnel | `ChestSpawner11` | ChestSpawner: cakex1 | (-6349, 63, -992) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmA_Secret_01_Chest`; extra needs not reported |
 | Tunnel | `ChestSpawner12` | ChestSpawner: cakex2 | (-3235, -3979, -770) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
 | Tunnel | `ChestSpawner2` | ChestSpawner: pastyx3 | (964, -2395, -3975) | area rule only (Shrieking Shack Unlock + Rictusempra); spawn event `RmE_ShaftChest_Chest`; extra needs not reported |
 | Tunnel | `ChestSpawner5` | ChestSpawner: cakex3 | (785, -3349, -2016) | area rule only (Shrieking Shack Unlock + Rictusempra); extra needs not reported |
