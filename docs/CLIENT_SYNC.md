@@ -1,11 +1,31 @@
 # Client sync: getting items into the game, and checks out of it
 
-Design for how received items reach the player's game and how the game's state is reconciled with the
-Archipelago server. Status: **design only** (2026-10-27). Implementation comes with the client and apworld.
+How received items reach the player's game and how the game's state is reconciled with the Archipelago server.
+**Status: built (2026-10-29), not yet tested in game.** Client: `apworld/hp3pc/client.py` (in the apworld, launcher
+component "Harry Potter 3 PC Client"). Mod side: `mod/OpenCastle/net.h` (the connection) and `ap.h` (items, checks,
+the save), from build **poc9a**. The ID tables the mod uses are generated from the apworld
+(`tools/build_mod_tables.py` -> `mod/OpenCastle/aptables.h`).
 
-Archipelago games are often played asynchronously: items can arrive while the game is closed, mid-cutscene, or on
-a save the player later abandons. The design has to stay correct in all of those cases without the mod needing to
-watch anything continuously.
+## As built (poc9a)
+
+- **Transport: a local connection, the HP2PC_AP way** (chosen 2026-10-29 over the files below). The client listens
+  on 127.0.0.1:42780; the mod connects from its own thread and reconnects every 3 s. One ASCII line per message;
+  IDs are offsets from the world's base id 33000000. Messages: see the header of `client.py` / `ap.h`.
+- **The save** holds `OC_AP_Bind` (seed|slot), `OC_AP_Recv` (how far the counted items are applied) and
+  `OC_AP_Checked` (every check made in this save). A save with no binding is bound on first contact with a room; a
+  save bound to another room gets nothing and sends nothing (`MISMATCH`).
+- **Items**: on every settled map and whenever items arrive, spells / doors / passwords / map / shortcuts are set
+  from the whole received list (the same `OC_*` flags the debug panel sets; a challenge unlock also sets its spells
+  unless `split_challenge_spells`), received cards are marked owned; pasties, cakes and frogs only from `OC_AP_Recv`
+  on. Shop prices follow the room's `shop_prices` (the ini switch is the fallback with no room).
+- **Checks**: placed pickups and cards by actor name when picked up; event spawns by the pickup that appears at the
+  spawn point; containers when they throw out their first goodie; secrets by `bFound`; doxy rounds by their reward
+  card. **Vanilla rewards are taken back**: a container's pasty / cake / card goodies are destroyed as they appear, a
+  picked-up pasty or cake is subtracted again, and a picked-up card goes back to its earlier status unless it was
+  received. Every check made in the save is resent on each connection.
+- **Not yet**: Fred & George's shop and the student vendors as checks, the Final Day door as the goal (the client
+  reports the goal once `cards_required` cards are received), HUD messages for received items, the cutscene check
+  before giving currency, replacing the vanilla pickups with item looks.
 
 ## Principles
 
