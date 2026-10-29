@@ -13,14 +13,13 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 62 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 55 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 0.
 
 ## Partly known
 
 | Area | Actor | What | Where | Status |
 | --- | --- | --- | --- | --- |
-| Hermione FE | `CauldronCake1` | cake (placed) | (982, -2363, 1112) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `CauldronCake13` | cake (placed) | (1854, -1644, 1899) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `CauldronCake15` | cake (placed) | (2511, -1222, 1725) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `CauldronCake20` | cake (placed) | (6186, 1091, 1642) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
@@ -39,7 +38,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Hermione FE | `PumpkinPasty17` | pasty (placed) | (6986, 30, 1629) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty18` | pasty (placed) | (7069, 79, 1629) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty19` | pasty (placed) | (7151, 36, 1629) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
-| Hermione FE | `PumpkinPasty2` | pasty (placed) | (1000, -1482, 1096) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty20` | pasty (placed) | (7072, 611, 2816) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty21` | pasty (placed) | (6103, -17, 3215) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty22` | pasty (placed) | (6987, 1132, 2836) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
@@ -50,18 +48,15 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Hermione FE | `PumpkinPasty27` | pasty (placed) | (6660, -894, 1629) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty28` | pasty (placed) | (6303, -831, 1679) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty29` | pasty (placed) | (3168, -1216, 1510) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
-| Hermione FE | `PumpkinPasty3` | pasty (placed) | (930, -2176, 1112) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty30` | pasty (placed) | (5263, -386, 1679) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty31` | pasty (placed) | (4913, -322, 1679) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty32` | pasty (placed) | (4542, -961, 1679) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty33` | pasty (placed) | (2811, -1218, 1633) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty34` | pasty (placed) | (2752, -1217, 1667) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty35` | pasty (placed) | (2683, -1216, 1692) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
-| Hermione FE | `PumpkinPasty36` | pasty (placed) | (1273, -2223, 1112) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty37` | pasty (placed) | (1852, -327, 1655) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty38` | pasty (placed) | (1856, -95, 1759) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty39` | pasty (placed) | (2241, 161, 2185) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
-| Hermione FE | `PumpkinPasty4` | pasty (placed) | (-418, -1301, 1093) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty40` | pasty (placed) | (2498, 160, 2185) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty41` | pasty (placed) | (1984, 159, 2185) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty42` | pasty (placed) | (1824, 322, 2185) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
@@ -75,8 +70,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Hermione FE | `PumpkinPasty5` | pasty (placed) | (2831, 509, 1755) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty50` | pasty (placed) | (7071, -114, 1629) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty51` | pasty (placed) | (5947, -898, 1679) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
-| Hermione FE | `PumpkinPasty52` | pasty (placed) | (1207, -2187, 1112) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
-| Hermione FE | `PumpkinPasty53` | pasty (placed) | (1209, -2259, 1112) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty54` | pasty (placed) | (7073, 988, 2836) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty6` | pasty (placed) | (3313, 522, 1907) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
 | Hermione FE | `PumpkinPasty7` | pasty (placed) | (3668, 511, 2013) | area rule only (Hermione's Final Exam Unlock + Lapifors); extra needs not reported |
