@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 16 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 15 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 80.
 
 ## Partly known
@@ -26,7 +26,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Carpe | `HPSpawnThingy4` | pasty (event spawn) | (1284, 2109, 864) | Carpe region rule only; not checked spot by spot |
 | Carpe | `HPSpawnThingy6` | pasty (event spawn) | (1357, 2132, 864) | Carpe region rule only; not checked spot by spot |
 | Carpe | `HPSpawnThingy8` | pasty (event spawn) | (1292, 2177, 864) | Carpe region rule only; not checked spot by spot |
-| Carpe | `SecretAreaMarker0` | secret area | (2992, 1048, 627) | Carpe region rule only; not checked spot by spot |
 | Carpe | `SecretAreaMarker1` | secret area | (1310, 4223, 1192) | Carpe region rule only; not checked spot by spot |
 | Carpe | `SecretAreaMarker2` | secret area | (-3334, 3389, 1336) | Carpe region rule only; not checked spot by spot |
 | Carpe (B) | `ChestSpawner13` | ChestSpawner: card LadyCarmillaSanguinax1, pastyx6 | (-1762, 5868, 2258) | Carpe region rule only; not checked spot by spot |
