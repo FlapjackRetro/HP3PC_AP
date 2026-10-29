@@ -11,6 +11,9 @@ message, ASCII; IDs on the wire are item / location ids minus the world's base i
                   CHECK <loc>             a location was just checked
                   CHECKS <loc>,<loc>...   every location checked in that save (after each BIND)
                   MISMATCH                the save belongs to another room
+                  DOOR                    the Final Day door has opened in game
+                  GOAL                    the player walked through the Final Day door (resent on every connection
+                                          while the save has reached it)
   client -> mod   ROOM <seed>|<slot>|<split 0/1>|<cheap 0/1>|<cards required>
                   ITEMS <first index> <item>,<item>...   the full received list, in chunks
                   SYNCED <count>          end of the full list
@@ -23,8 +26,9 @@ message, ASCII; IDs on the wire are item / location ids minus the world's base i
 The save keeps how far it has applied the received list (docs/CLIENT_SYNC.md), so the client always sends the whole
 list and the mod picks up from where the save is.
 
-Goal (for now): the client reports the goal once `cards_required` wizard cards have been received. Opening the Final
-Day door in game will replace this.
+Goal: once `cards_required` wizard cards have been received the client says "The Final Day Door is open" and the mod
+opens the door on the grounds; walking in through it (the mod sends GOAL) completes the goal. The gap gives the
+player time to tell the others they're about to finish.
 """
 from __future__ import annotations
 
@@ -104,6 +108,7 @@ class HP3Context(CommonContext):
         self.save_bind = ""
         self.slot_data: dict = {}
         self.goal_sent = False
+        self.door_announced = False
         self.looks: dict[int, int] = {}   # location offset -> look code
 
     # ---- server side ---------------------------------------------------------------------------------------------
@@ -117,6 +122,7 @@ class HP3Context(CommonContext):
         if cmd == "Connected":
             self.slot_data = args.get("slot_data", {}) or {}
             self.goal_sent = False
+            self.door_announced = False
             self.looks = {}
             asyncio.create_task(self.sync_game())
             locs = sorted(set(args.get("missing_locations", [])) | set(args.get("checked_locations", [])))
@@ -146,14 +152,15 @@ class HP3Context(CommonContext):
         return f"{self.server_seed_name or self.seed_name}|{self.slot}"
 
     def check_goal(self) -> None:
-        if self.goal_sent or not self.slot_data:
+        """Enough cards: announce the open door (the goal itself waits for the player to walk through it)."""
+        if self.door_announced or not self.slot_data:
             return
         need = int(self.slot_data.get("cards_required", 0) or 0)
         have = sum(1 for item in self.items_received if item.item in CARD_IDS)
         if need and have >= need:
-            self.goal_sent = True
-            logger.info(f"{have} wizard cards received ({need} needed): goal complete.")
-            asyncio.create_task(self.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}]))
+            self.door_announced = True
+            logger.info(f"The Final Day Door is open. ({have} wizard cards received, {need} needed: walk through "
+                        f"the door on the grounds to finish.)")
 
     # ---- game side -----------------------------------------------------------------------------------------------
     def to_game(self, line: str) -> None:
@@ -202,6 +209,13 @@ class HP3Context(CommonContext):
             new = [loc for loc in locs if loc in self.missing_locations]
             if new:
                 await self.check_locations(new)
+        elif word == "DOOR":
+            logger.info("The Final Day Door is open in game.")
+        elif word == "GOAL":
+            if not self.goal_sent and self.slot is not None:
+                self.goal_sent = True
+                logger.info("Through the Final Day Door: goal complete!")
+                await self.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
         elif word == "MISMATCH":
             logger.warning("The game's save is bound to a different room: load the right save, or start a New Game.")
 

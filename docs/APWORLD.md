@@ -101,7 +101,8 @@ IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–115, passwords 
 ## Goal (`goal`, `cards_required`)
 
 - `final_day_cards`: the Final Day door (GroundsHub `FinalDayDoor`) opens with `cards_required` cards (1–79,
-  default 40). Victory is the event "Final Day Door Opened".
+  default 40). Victory is the event "Final Day Door Opened"; in play the goal is sent when the player walks in
+  through the open door (the client announces "The Final Day Door is open" first, so the player can warn the others).
 - Ideas to workshop: N cards **and** pass the three final exams; card sets (the game has 10: WZ 15, WI 15, QU 5,
   VP 5, HG 5, GI 5, GB 5, DR 5, BE 15, BO 5).
 - The Harry Potter card check stays vanilla: Fred & George give it once 74 cards are found (all but Harry Potter

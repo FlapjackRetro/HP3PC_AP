@@ -8,6 +8,9 @@
  *                   CHECK <loc>             a location was just checked
  *                   CHECKS <loc>,<loc>...   every location checked in this save (after each BIND, in chunks)
  *                   MISMATCH                the save belongs to another room: nothing is sent or applied
+ *                   DOOR                    the Final Day door has opened (enough cards received)
+ *                   GOAL                    the player walked through the Final Day door (sent again on every
+ *                                           connection while the save has OC_AP_Goal)
  *   client -> mod   ROOM <seed>|<slot>|<split 0/1>|<cheap 0/1>|<cards required>
  *                   ITEMS <first index> <item>,<item>...   the full received list, in chunks
  *                   SYNCED <count>          end of the full list
@@ -21,6 +24,11 @@
  *   OC_AP_Checked  every location checked in this save, "12,40,..."
  * Idempotent items (spells, doors, passwords, the map, shortcuts, cards) are asserted from the whole received list on
  * every settled map load and whenever items arrive; counted items only from OC_AP_Recv on.
+ *
+ * Goal (final_day_cards): once the received wizard cards reach the room's cards_required, the Final Day door on the
+ * grounds (GroundsHub Mover11, Tag FinalDayDoor) is opened, the way vanilla's GState100 level start does
+ * (`Trigger FinalDayDoor`); walking in past it (where vanilla's Final Day cutscene triggers stand) is the goal:
+ * OC_AP_Goal is saved, GOAL goes to the client, and the player travels to HP3_Final as vanilla's "Yes" did.
  *
  * Checks (game thread, from the ProcessEvent hook):
  *   P / K with a save key   the pickup actor of that name is picked up (KWPickup.Destroyed with HasBeenPickedUp 1)
@@ -48,6 +56,7 @@ static int gApActive;                             /* save bound to the connected
 static u32 gApLevel;                              /* level the save state was read on */
 static wchar gSaveBindW[128]; static int gSaveRecv; static wchar gCheckedCsv[4096];
 static int gApSentGen = -1, gApItemsApplied = -1;
+static int gSaveGoal; static volatile int gApGoalNow, gApDoorOpen;   /* goal reached in this save; worker -> game: just walked in */
 /* worker -> game thread: secrets found */
 static volatile unsigned short gSecretQ[64]; static volatile int gSecretQN;
 
@@ -184,6 +193,7 @@ static void ap_read_save(void) {
     ap_save_read(L"OC_AP_Recv", v, 32);
     gSaveRecv = 0; for (p = v; *p >= '0' && *p <= '9'; p++) gSaveRecv = gSaveRecv * 10 + (*p - '0');
     ap_save_read(L"OC_AP_Checked", gCheckedCsv, 4096);
+    ap_save_read(L"OC_AP_Goal", v, 32); gSaveGoal = v[0] == '1';
     for (i = 0; i < AP_NLOCS; i++) gLocChecked[i] = 0;
     for (p = gCheckedCsv; *p; ) {
         int off = 0;
@@ -348,7 +358,7 @@ static void ap_game(void) {
         else if (!gApMismatchSent) { gApMismatchSent = 1; net_send("MISMATCH");
             wsprintfW(b, L"ap: this save belongs to %s, the client is on %s: nothing applied or sent", gSaveBindW, room); log_line(b); }
     }
-    if (gApActive && gNetUp && gApSentGen != gApNetGen) { gApSentGen = gApNetGen; ap_send_checks(); }
+    if (gApActive && gNetUp && gApSentGen != gApNetGen) { gApSentGen = gApNetGen; ap_send_checks(); if (gSaveGoal) net_send("GOAL"); }
     if (gApActive && gRecvSynced) ap_items_apply();
     else ap_cards_apply();   /* keeps the start-of-map statuses for the undo */
 }
@@ -416,6 +426,50 @@ static void ap_pickup_destroyed(u32 obj) {
     what = ap_is_goodie(obj);   /* take the vanilla reward back on the next tick */
     if (what == 1) gApUndoP++; else if (what == 2) gApUndoC++; else if (what == 3) gApUndoCard = P(obj + 0x24);
 }
+/* ---- the goal: the Final Day door --------------------------------------------------------------------------- */
+static u32 gFDDoor, gFDLevel, gFDLast;
+static int ap_cards_received(void) {
+    int i, n = 0;
+    for (i = 0; i < gRecvN; i++) { const struct apitem *it = ap_item(gRecv[i]); if (it && it->kind == 'k') n++; }
+    return n;
+}
+static int ap_goal_ready(void) { return gApActive && gRecvSynced && gApCards > 0 && ap_cards_received() >= gApCards; }
+struct fdfind { u32 level; int name; u32 found; };
+static int v_fdfind(u32 o, int name, u32 cls, void *c) {
+    struct fdfind *f = c;
+    if (name != f->name || !cls || rd32(o + offLevel) != f->level || !is_a_cls(cls, gClsMover)) return 0;
+    f->found = o; return 1;
+}
+/* game thread, every tick on the grounds: open the door once the cards are in (and keep it open) */
+static void ap_final_door(void) {
+    static wchar b[160]; u32 level = cur_level(); struct { u32 other, instigator; } parms; void *fn;
+    if (!weq((const wchar *)gCurMap, L"HP3_GroundsHub") || !ap_goal_ready()) { if (level != gFDLevel) gApDoorOpen = 0; return; }
+    if (level != gFDLevel) {
+        struct fdfind f; f.level = level; f.name = name_index(L"Mover11"); f.found = 0;
+        gFDLevel = level; gFDDoor = 0; gFDLast = 0;
+        if (f.name >= 0 && gClsMover) for_each_object(v_fdfind, &f);
+        gFDDoor = f.found;
+        wsprintfW(b, L"ap: Final Day door (Mover11) %s", gFDDoor ? L"found" : L"NOT FOUND"); log_line(b);
+    }
+    if (!gFDDoor || offKeyNum < 0) return;
+    if ((P(gFDDoor + offKeyNum) & 0xFF) != 0) {   /* open (or opening): InterpolateTo sets KeyNum to the target at once */
+        if (!gApDoorOpen) { gApDoorOpen = 1; net_send("DOOR"); log_line(L"ap: the Final Day door is open"); }
+        return;
+    }
+    if (gFDLast && GetTickCount() - gFDLast < 3000) return;
+    gFDLast = GetTickCount();
+    if (N_Trigger < 0 || !(fn = gFindFunction((void *)gFDDoor, N_Trigger, 0))) return;
+    parms.other = parms.instigator = 0;
+    gPEOrig((void *)gFDDoor, fn, &parms, 0);   /* as vanilla's "Trigger FinalDayDoor" */
+    log_line(L"ap: opening the Final Day door");
+}
+/* game thread: the player walked in */
+static void ap_goal(void) {
+    gSaveGoal = 1; ap_save_write(L"OC_AP_Goal", L"1");
+    net_send("GOAL");
+    log_line(L"ap: GOAL: through the Final Day door");
+}
+
 /* game thread, safe tick */
 static void ap_tick(void) {
     int i;
@@ -425,6 +479,8 @@ static void ap_tick(void) {
     if (gApUndoCard) { ap_card_undo(gApUndoCard); gApUndoCard = 0; }
     ap_game();
     ap_looks_tick();
+    ap_final_door();
+    if (gApGoalNow) { gApGoalNow = 0; ap_goal(); }
 }
 /* from pe_hook, before the event runs (Destroyed) or after leftovers.h (PostBeginPlay) */
 static void ap_event(u32 self, int fname, int linkedBefore) {
@@ -437,4 +493,17 @@ static void ap_worker(u32 level, const wchar *map, int settle) {
     ap_poll();
     if (settle == 12 || (settle > 12 && level != gApMapLevel)) { ap_map_scan(level, map); gApNPu = 0; gApJob = 1; }
     if (settle > 12) ap_secrets_poll();
+    /* past the open Final Day door, where vanilla's Final Day cutscene triggers stand: the goal, then HP3_Final */
+    if (settle > 12 && gApDoorOpen && weq(map, L"HP3_GroundsHub") && !gPending) {
+        static int armed; u32 pc = gPlayer ? rd32(gPlayer + offPlayerActor) : 0, pawn = pc ? rd32(pc + offPawn) : 0; float at[3];
+        if (pawn && rd(pawn + offLoc, at, 12)) {
+            int in = at[0] > 860.0f && at[0] < 1250.0f && at[1] > -6330.0f && at[1] < -5990.0f && at[2] > 820.0f && at[2] < 1120.0f;
+            if (!in) armed = 1;
+            else if (armed) {
+                armed = 0; gApGoalNow = 1;
+                wcpy(gPendingURL, L"HP3_Final", 128); gPending = 1;   /* travels on the next tick (do_travel) */
+                log_line(L"ap: walked through the Final Day door -> HP3_Final");
+            }
+        }
+    }
 }
