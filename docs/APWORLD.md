@@ -309,6 +309,8 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Draconifors: placed cake `CauldronCake8` | **Draconifors** + Alohomora + the area rule (Lapifors). At (1342, -386, -316) | marked in play 2026-10-28 |
 | Draconifors: secret area `SecretAreaMarker0` (in the pumpkin ring) | **Spongify** to reach the area, + Alohomora and the area rule (Lapifors). At (1348, -390, -685) | marked in play 2026-10-28 |
 | Draconifors: placed pasty `PumpkinPasty20` | **Draconifors** + Alohomora + the area rule (Lapifors). At (1349, 96, -72) | marked in play 2026-10-28 |
+| Draconifors: pumpkin `Pumpkin0` (2 pasties) | **Depulso** + Alohomora + the area rule (Lapifors). At (3022, -596, 77) | marked in play 2026-10-28 |
+| Draconifors: pumpkin `Pumpkin12` (2 pasties) | **Depulso** + Alohomora + the area rule (Lapifors). At (3018, -913, 78) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
