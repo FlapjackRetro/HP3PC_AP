@@ -474,6 +474,8 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Hermione's exam: placed pasty `PumpkinPasty21` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (6103, -17, 3215) | marked in play 2026-10-29 |
 | Hermione's exam: placed cake `CauldronCake21` (east tower top) | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (7070, 1091, 3348) | marked in play 2026-10-29 |
 | Hermione's exam: placed cake `CauldronCake20` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (6186, 1091, 1642) | marked in play 2026-10-29 |
+| Hermione's exam: placed cake `CauldronCake22` (east tower top) | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (7075, -21, 3631) | marked in play 2026-10-29 |
+| Hermione's exam: placed cake `CauldronCake23` | the exam rule (Hermione's Final Exam Unlock + Lapifors + Draconifors). At (5704, -771, 1389) | marked in play 2026-10-29 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
