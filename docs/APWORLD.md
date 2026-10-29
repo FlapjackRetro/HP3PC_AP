@@ -371,6 +371,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Tunnel: placed pasty `PumpkinPasty0` | the Tunnel rule as it stands there (Rictusempra, Alohomora, Depulso, Glacius, Spongify). At (467, -2404, -2895) | marked in play 2026-10-28 |
 | Tunnel: secret area `SecretAreaMarker3` | Depulso, within the Tunnel rule as it stands there (Rictusempra, Alohomora, Depulso, Glacius, Spongify). At (802, -2960, -1904) | marked in play 2026-10-28 |
 | Tunnel: chest `ChestSpawner5` (3 cakes) | Alohomora, within the Tunnel rule as it stands there (Rictusempra, Alohomora, Depulso, Glacius, Spongify). At (785, -3349, -2016) | marked in play 2026-10-28 |
+| Tunnel: placed pasty `PumpkinPasty5` | the Tunnel rule as it stands there (Rictusempra, Alohomora, Depulso, Glacius, Spongify). At (824, -2044, -1048) | marked in play 2026-10-28 |
 | Portrait E: knight `KnightSpawner1` (10 pasties) | Depulso, within the Portrait E rule. At (−1643, −1069, 2132), save key `ppeKnightSpawner1_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner2` (5 pasties; also 10 beans) | Depulso, within the Portrait E rule. At (−836, −1526, 2142), save key `ppeKnightSpawner2_lives` | marked in play 2026-10-27 |
 | Portrait E: knight `KnightSpawner4` (5 cakes) | Depulso, within the Portrait E rule. At (−2108, −1537, 2133), save key `ppeKnightSpawner4_lives` | marked in play 2026-10-27 |
