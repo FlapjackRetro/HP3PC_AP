@@ -10,7 +10,7 @@ reports checks. Protocol and save handling: [docs/CLIENT_SYNC.md](../docs/CLIENT
 ## Play
 
 1. Install the Open Castle mod (`install_opencastle.bat`).
-2. Put `hp3pc.apworld` in Archipelago's `custom_worlds`, generate, and host the game yourself (Archipelago's MultiServer; the website doesn't take custom worlds).
+2. Put `hp3pc.apworld` in Archipelago's `custom_worlds`, generate locally, and host the result (for example with Archipelago's MultiServer).
 3. Open the Archipelago launcher, start **Harry Potter 3 PC Client**, connect to the room with your slot name.
 4. Start the game, New Game (or a save bound to this room). The client log says "Game connected".
 
