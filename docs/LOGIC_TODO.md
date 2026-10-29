@@ -10,7 +10,7 @@ Grounds' developer room (Bran the Bloodthirsty, Cyclops, Goliath, Hengist of Upp
 the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5, 6 and a Double-Ended Newt card), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 136 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 134 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 196.
 
 ## Partly known
@@ -43,7 +43,6 @@ the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5
 | Glacius | `CauldronCake5` | cake (placed) | (-12979, -817, 3330) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
 | Glacius | `CauldronCake6` | cake (placed) | (-12912, -509, 3320) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
 | Glacius | `CauldronCake8` | cake (placed) | (-1918, -2601, 5939) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
-| Glacius | `ChestSpawner12` | ChestSpawner: card EargittheUglyx1 | (9464, -4524, 14248) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
 | Glacius | `ChestSpawner31` | ChestSpawner: card AlgufftheAwfulx1, ChocolateFrogx2 | (3524, -3817, 10968) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
 | Glacius | `ChestSpawner35` | ChestSpawner: card UgtheUnreliablex1, cakex2 | (-4594, -2707, 4691) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `RmG_Secret_Chest_ActualSpawner`; extra needs not reported |
 | Glacius | `KnightSpawner38` | KnightSpawner: pastyx3 | (-8621, -3036, 4580) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); spawn event `RmH_KnightsSecret_Knight_03`; extra needs not reported |
@@ -89,7 +88,6 @@ the Library's out-of-bounds copy of the grounds (a cutscene set: secrets 2, 4, 5
 | Glacius | `PumpkinPasty9` | pasty (placed) | (-11657, 4253, 642) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
 | Glacius | `SecretAreaMarker1` | secret area | (3522, -3993, 11026) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
 | Glacius | `SecretAreaMarker2` | secret area | (-4895, -2715, 4745) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
-| Glacius | `SecretAreaMarker3` | secret area | (9189, -4540, 14317) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
 | Glacius (B) | `CauldronCake0` | cake (placed) | (-5031, 4991, -388) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
 | Glacius (B) | `CauldronCake16` | cake (placed) | (-5972, 4479, -390) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
 | Glacius (B) | `CauldronCake17` | cake (placed) | (-5503, 4737, -618) | area rule only (Glacius Challenge Unlock + Glacius + Rictusempra); extra needs not reported |
