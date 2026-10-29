@@ -13,7 +13,7 @@ that the player is never in (Ch3 and Ch3B share the middle of the level; see APW
 unconfirmed; see APWORLD.md), and the dropped maps
 (Quidditch, WhompingWillow, BuckyExecuted, DementorBattle, Infirmary, DarkTower, GroundsDada, Final).
 
-- **Partly known:** 67 (a region rule or an event chain covers them, but they weren't reported spot by spot).
+- **Partly known:** 66 (a region rule or an event chain covers them, but they weren't reported spot by spot).
 - **Nothing recorded:** 101.
 
 ## Partly known
@@ -85,7 +85,6 @@ unconfirmed; see APWORLD.md), and the dropped maps
 | Drac/Lap (B) | `PumpkinPasty32` | pasty (placed) | (4945, 5241, 519) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 | Drac/Lap (B) | `PumpkinPasty33` | pasty (placed) | (4672, 4121, 519) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 | Drac/Lap (B) | `SecretAreaMarker1` | secret area | (4945, 4649, 351) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
-| Drac/Lap (B) | `SecretAreaMarker6` | secret area | (3424, 5046, 605) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 | Drac/Lap (B) | `SecretAreaMarker7` | secret area | (4496, 4308, 351) | area rule only (Draconifors / Lapifors Challenge Unlock + Lapifors; past the Welsh Green armor also Alohomora; past the pumpkin ring also Depulso; all of Ch2B also Draconifors; past the Horntail chest also Rictusempra); extra needs not reported |
 
 ## Nothing recorded
