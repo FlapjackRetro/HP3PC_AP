@@ -22,7 +22,8 @@ class CardsRequired(Range):
 class SpellMode(Choice):
     """vanilla: start with Rictusempra, Alohomora, Lumos, Depulso and Spongify; Expecto Patronum and the challenge
     spells are in the pool.
-    hard: start with no spells. Early progress comes from the few checks reachable without any."""
+    hard: start with no spells. Only a few checks are open at the start (four on the grounds and the shop cards
+    bought with jellybeans); two of them in your own world hold Alohomora and Depulso."""
     display_name = "Spell Mode"
     option_vanilla = 0
     option_hard = 1

@@ -88,14 +88,15 @@ CHALLENGE_GRANTS = {
 PASSWORDS: dict[str, ItemData] = {
     **{f"Portrait Password {n + 1}": ItemData(200 + n, IC.progression, "Portrait Passwords", f"pp_{n}") for n in range(8)},
     # entries 8-21 at once, as vanilla's HPAction_GivePortShortcuts. Useful only: logic never needs a shortcut.
-    "Shortcut Passwords": ItemData(220, IC.useful, "Shortcut Passwords", "pp_8..pp_21 (EnablePortraitShortcuts)"),
+    "Shortcut Passwords": ItemData(220, IC.useful, "Portrait Shortcuts", "pp_8..pp_21 (EnablePortraitShortcuts)"),
 }
 
 # ---- currency and filler ------------------------------------------------------------------------------------------
-# Bundles match the fixed amounts vanilla containers hand out (data/hp3_location_catalog.csv): pasties 1-5 and 10,
-# cakes 1-4. A location's item is the bundle of what it held in vanilla.
-PASTY_BUNDLES = (1, 2, 3, 4, 5, 10)
-CAKE_BUNDLES = (1, 2, 3, 4)
+# Bundles match the fixed amounts vanilla containers hand out (data/hp3_location_catalog.csv): a location's item is
+# what it held in vanilla. Containers that held both get one mixed bundle with both amounts.
+PASTY_BUNDLES = (1, 2, 3, 4, 5, 6, 10)
+CAKE_BUNDLES = (1, 2, 3, 4, 5, 8, 10)
+MIXED_BUNDLES = ((2, 2), (4, 1), (4, 2), (4, 4), (5, 2), (5, 10), (6, 2), (8, 3), (10, 2), (10, 5), (10, 15), (15, 8))
 
 
 def pasty_name(n: int) -> str:
@@ -106,16 +107,31 @@ def cake_name(n: int) -> str:
     return "Cauldron Cake" if n == 1 else f"{n} Cauldron Cakes"
 
 
+def mixed_name(p: int, c: int) -> str:
+    return f"{pasty_name(p)} and {cake_name(c)}"
+
+
+def bundle_name(pasties: int, cakes: int) -> str:
+    """The item name of a vanilla drop (a pasty count and a cake count, either may be 0)."""
+    if pasties and cakes:
+        return mixed_name(pasties, cakes)
+    return pasty_name(pasties) if pasties else cake_name(cakes)
+
+
 CURRENCY: dict[str, ItemData] = {
     **{pasty_name(n): ItemData(300 + n, IC.progression_skip_balancing, "Pumpkin Pasties", f"{n} x PumpkinPasty")
        for n in PASTY_BUNDLES},
     **{cake_name(n): ItemData(320 + n, IC.progression_skip_balancing, "Cauldron Cakes", f"{n} x CauldronCake")
        for n in CAKE_BUNDLES},
+    **{mixed_name(p, c): ItemData(400 + k, IC.progression_skip_balancing, "Snack Bundles",
+                                  f"{p} x PumpkinPasty, {c} x CauldronCake")
+       for k, (p, c) in enumerate(MIXED_BUNDLES)},
 }
-# currency value of each bundle, for logic: (kind, amount)
-CURRENCY_VALUE: dict[str, tuple[str, int]] = {
-    **{pasty_name(n): ("pasty", n) for n in PASTY_BUNDLES},
-    **{cake_name(n): ("cake", n) for n in CAKE_BUNDLES},
+# currency value of each bundle, for logic: (pasties, cakes)
+CURRENCY_VALUE: dict[str, tuple[int, int]] = {
+    **{pasty_name(n): (n, 0) for n in PASTY_BUNDLES},
+    **{cake_name(n): (0, n) for n in CAKE_BUNDLES},
+    **{mixed_name(p, c): (p, c) for p, c in MIXED_BUNDLES},
 }
 
 FILLER: dict[str, ItemData] = {
