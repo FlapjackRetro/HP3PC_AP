@@ -53,9 +53,9 @@ static u32 gLookObj[NLOOKDEFS]; static unsigned char gLookTried[NLOOKDEFS];
 struct lookact { u32 obj; short li; unsigned char code, done, pu; float base, mul; };   /* pu: a KWPickup (grows in) */
 static struct lookact gLA[LOOK_MAX]; static int gNLA; static u32 gLALevel; static int gLAGen = -1, gLAScanned;
 static int offPUVis = -1, offSkins = -1, offPrePivot = -1;
-#define LOOK_STAND_LIFT -26.0f  /* skeletal-mesh looks on a shop stand: Actor.PrePivot.Z, or the frog / creatures sink
-                                   into the crate the stand sits on (poc9j). PrePivot is subtracted when drawn: +18
-                                   (poc9k) sank the frog further, so negative raises it */
+#define LOOK_STAND_LIFT 40.0f   /* skeletal-mesh looks on a shop stand: drawn this much higher (Actor.PrePivot.Z), or
+                                   the frog / creatures sink into the crate the stand sits on. 18 (poc9k) raised the
+                                   frog but not enough; -26 (poc9l) was the wrong way */
 typedef int (__thiscall *addzeroed_fn)(void *array, int elemsize, int count);   /* Core.dll FArray::AddZeroed(ElementSize, Count) */
 static addzeroed_fn gAddZeroed; static u32 gClsMaterial, gCardTex[NWC_TEXTURES]; static unsigned char gCardTexTried[NWC_TEXTURES];
 
