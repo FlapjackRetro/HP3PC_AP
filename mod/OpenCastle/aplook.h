@@ -52,7 +52,9 @@ static u32 gLookObj[NLOOKDEFS]; static unsigned char gLookTried[NLOOKDEFS];
 #define LOOK_MAX 192
 struct lookact { u32 obj; short li; unsigned char code, done, pu; float base, mul; };   /* pu: a KWPickup (grows in) */
 static struct lookact gLA[LOOK_MAX]; static int gNLA; static u32 gLALevel; static int gLAGen = -1, gLAScanned;
-static int offPUVis = -1, offSkins = -1;
+static int offPUVis = -1, offSkins = -1, offPrePivot = -1;
+#define LOOK_STAND_LIFT 18.0f   /* skeletal-mesh looks on a shop stand: drawn this much higher (Actor.PrePivot.Z),
+                                   or the frog / creatures sink into the crate the stand sits on (poc9j) */
 typedef int (__thiscall *addzeroed_fn)(void *array, int elemsize, int count);   /* Core.dll FArray::AddZeroed(ElementSize, Count) */
 static addzeroed_fn gAddZeroed; static u32 gClsMaterial, gCardTex[NWC_TEXTURES]; static unsigned char gCardTexTried[NWC_TEXTURES];
 
@@ -106,6 +108,7 @@ static int look_ready(void) {   /* the lookups the grid also uses (aptest.h); re
     if (offUSize <= 0) offUSize = prop_offset(L"BitmapMaterial", L"USize");
     if (offPUVis <= 0) offPUVis = prop_offset(L"KWPickup", L"PickupVisibility");
     if (offSkins <= 0) offSkins = prop_offset(L"Actor", L"Skins");
+    if (offPrePivot <= 0) offPrePivot = prop_offset(L"Actor", L"PrePivot");
     if (!gClsMaterial) gClsMaterial = find_class(L"Material");
     if (!gAddZeroed) { HANDLE core = GetModuleHandleW(L"Core.dll"); gAddZeroed = core ? (addzeroed_fn)GetProcAddress(core, "?AddZeroed@FArray@@QAEHHH@Z") : 0; }
     state = (gLoadObject && gClsTexture && gClsStaticMesh && gClsMesh && offStaticMesh > 0 && offMesh > 0 && offDrawScale > 0
@@ -187,7 +190,11 @@ static void ap_looks_tick(void) {
         code = gLook[e->li];
         if (!e->done || code != e->code) {
             e->done = 1; e->code = (unsigned char)code;
-            if (code && (e->base = look_apply(e->obj, code)) > 0) {
+            if (code && (e->base = look_apply(e->obj, code)) > 0 && !e->pu && offPrePivot > 0) {
+                int d = code >= LOOK_CARD0 ? -1 : look_def(code);
+                ((float *)(e->obj + offPrePivot))[2] = d >= 0 && (LOOKDEFS[d].kind == 'A' || LOOKDEFS[d].kind == 'K') ? LOOK_STAND_LIFT : 0.0f;
+            }
+            if (code && e->base > 0) {
                 static wchar b[200]; wsprintfW(b, L"looks: %s shows look %d", AP_LOCS[e->li].name, code); log_line(b);
             }
         }

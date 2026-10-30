@@ -82,8 +82,9 @@ static void apshop_init(void) {
     N_StDoing = name_index(L"DoingVendorTransaction"); N_StPost = name_index(L"PostTransaction");
     {   HANDLE core = GetModuleHandleW(L"Core.dll");
         gShFStr = core ? (fstr_assign_fn)GetProcAddress(core, "??4FString@@QAEAAV0@PBG@Z") : 0; }
-    gShReady = gClsVIStudent && gClsStudent && offVM > 0 && offVMItem > 0 && offPgVM > 0 && offPgImg > 0 && offPgL0 > 0
-        && offPgL1 > 0 && offImgImage > 0 && offLblCaption > 0 && offVICur > 0 && offCardCur >= 0 && offCardStatus >= 0
+    /* not the dialog's fields: HGame.HPPageVendor is only loaded when a sale dialog first opens (poc9j waited for
+       them, so a session's first sale was a vanilla one); sh_page_lookups gets those */
+    gShReady = gClsVIStudent && gClsStudent && offVM > 0 && offVMItem > 0 && offImgImage > 0 && offLblCaption > 0 && offVICur > 0 && offCardCur >= 0 && offCardStatus >= 0
         && offShHidden > 0 && maskShHidden && N_BeginState >= 0 && N_Timer >= 0 && N_StDoing >= 0 && N_StPost >= 0 && gShFStr
         && gSetCollision;
     wsprintfW(b, L"shopsanity: lookups vm=%d item=%d page vm=%d img=%d l0=%d l1=%d image=%d caption=%d cur=%d card.cur=%d "
@@ -107,12 +108,29 @@ static int v_shstand(u32 o, int name, u32 cls, void *c) {
         sh_ins(f->fg, f->fgn, &f->nfg, o, name);
     return 0;
 }
+/* worker: the sale dialog's fields, once its class is loaded (the game thread loads it: gShLoadPage) */
+static u32 gShClsClass; static volatile int gShLoadPage;
+static void sh_page_lookups(void) {
+    static u32 last; static int asked; static wchar b[120];
+    if (offPgVM > 0 && offPgImg > 0 && offPgL0 > 0 && offPgL1 > 0) return;
+    if (last && GetTickCount() - last < 3000) return;
+    last = GetTickCount();
+    offPgVM = prop_offset(L"HPPageVendor", L"VendorMgr"); offPgImg = prop_offset(L"HPPageVendor", L"imgItem");
+    offPgL0 = prop_offset(L"HPPageVendor", L"lblInfo0"); offPgL1 = prop_offset(L"HPPageVendor", L"lblInfo1");
+    if (offPgVM > 0 && offPgImg > 0 && offPgL0 > 0 && offPgL1 > 0) {
+        wsprintfW(b, L"shopsanity: sale dialog lookups vm=%d img=%d l0=%d l1=%d", offPgVM, offPgImg, offPgL0, offPgL1); log_line(b);
+    } else if (!asked) {
+        if (!gShClsClass) gShClsClass = find_class(L"Class");
+        if (gShClsClass) { asked = 1; gShLoadPage = 1; }
+    }
+}
 /* worker, every 250 ms (from ap_worker) */
 static void apshop_worker(u32 level, int settle) {
     static u32 scanT; static wchar b[120]; struct shfind f; int i;
     if (settle <= 12) return;
     apshop_init();
     if (!gShReady) return;
+    sh_page_lookups();
     if (level == gShLevel && GetTickCount() - scanT < 5000) return;
     scanT = GetTickCount();
     f.level = level; f.nfg = f.npw = 0;
@@ -249,6 +267,11 @@ static int sh_active(void) { return gShReady && gApActive && gRecvSynced; }
 /* game thread, from ap_tick */
 static void apshop_tick(void) {
     static u32 last;
+    if (gShLoadPage && gLoadObject && gShClsClass) {   /* so the worker can find the sale dialog's fields */
+        gShLoadPage = 0;
+        log_line(gLoadObject((void *)gShClsClass, 0, L"HGame.HPPageVendor", 0, 0x2002, 0) ? L"shopsanity: sale dialog class loaded"
+                                                                                       : L"shopsanity: sale dialog class not found");
+    }
     if (!sh_active()) return;
     if (gPwSwap && GetTickCount() - gPwSwapT > 120000) { pw_restore(); log_line(L"shopsanity: password sale timed out; flags put back"); }
     if (gVendTie && GetTickCount() - gVendTieT > 60000) gVendTie = 0;
@@ -375,7 +398,7 @@ static u32 dlg_tex(int code) {
 /* pe_hook: HPPageVendor.Vendor_OnDraw (the page's OnDraw delegate), before it runs */
 static void apshop_dialog(u32 page) {
     u32 vm, item, tex, img, l0, l1; int li = -1, i, j; static wchar b[200];
-    if (page == gPgDone || !sh_active()) return;
+    if (page == gPgDone || !sh_active() || offPgVM <= 0 || offPgImg <= 0 || offPgL0 <= 0 || offPgL1 <= 0) return;
     gPgDone = page;
     vm = P(page + offPgVM); item = vm ? P(vm + offVMItem) : 0;
     if (!item) return;
