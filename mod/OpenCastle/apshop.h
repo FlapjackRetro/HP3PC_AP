@@ -401,12 +401,12 @@ static u32 dlg_tex(int code) {
     if (!gLoadObject || !gClsMaterial) return 0;
     if (code >= LOOK_CARD0 && code - LOOK_CARD0 < NWC_TEXTURES) {
         int c = code - LOOK_CARD0;
-        if (!gCardTex[c] && !gCardTexTried[c]) { gCardTexTried[c] = 1; gCardTex[c] = (u32)gLoadObject((void *)gClsMaterial, 0, WC_TEXTURES[c], 0, 0x2002, 0); }
+        if (!gCardTex[c] && !gCardTexTried[c]) { gCardTexTried[c] = 1; gCardTex[c] = load_kept((void *)gClsMaterial, WC_TEXTURES[c]); }
         return gCardTex[c];
     }
     for (i = 0; i < NDLGTEX; i++) if (DLGTEX[i].code == code) {
         if (!gDlgTex[i] && !gDlgTried[i]) {
-            gDlgTried[i] = 1; gDlgTex[i] = (u32)gLoadObject((void *)gClsMaterial, 0, DLGTEX[i].tex, 0, 0x2002, 0);
+            gDlgTried[i] = 1; gDlgTex[i] = load_kept((void *)gClsMaterial, DLGTEX[i].tex);
             if (!gDlgTex[i]) { static wchar b[160]; wsprintfW(b, L"shopsanity: dialog picture %s not found", DLGTEX[i].tex); log_line(b); }
         }
         return gDlgTex[i];

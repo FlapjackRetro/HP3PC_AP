@@ -65,7 +65,7 @@ static void blockers_apply(void) {
     for (i = 0; i < NBLOCKERS; i++) if (((spawn >> i) & 1) && !gBlockObj[i]) {
         const struct blocker *bl = &BLOCKERS[i];
         void *sz, *sc;
-        mesh = (u32)gLoadObject((void *)gClsStaticMesh, 0, bl->mesh, 0, 0x2002, 0);
+        mesh = load_kept((void *)gClsStaticMesh, bl->mesh);
         if (!mesh) { wsprintfW(b, L"blocker %s: mesh %s not found", bl->why, bl->mesh); log_line(b); continue; }
         memset(&parms, 0, sizeof parms);
         parms.type = gClsEffects; parms.x = bl->x; parms.y = bl->y; parms.z = bl->z; parms.yw = bl->yaw;

@@ -129,7 +129,7 @@ static u32 look_asset(int d) {
     if (gLookObj[d] || gLookTried[d]) return gLookObj[d];
     gLookTried[d] = 1;
     cls = l->kind == 'S' ? gClsTexture : l->kind == 'M' ? gClsStaticMesh : gClsMesh;
-    gLookObj[d] = (u32)gLoadObject((void *)cls, 0, l->obj, 0, 0x2002, 0);
+    gLookObj[d] = load_kept((void *)cls, l->obj);
     if (!gLookObj[d]) { static wchar b[160]; wsprintfW(b, L"looks: %s not found", l->obj); log_line(b); }
     return gLookObj[d];
 }
@@ -141,7 +141,7 @@ static float look_apply(u32 a, int code) {
         if (card >= NWC_TEXTURES) card = -1;
         else {
             if (!gCardTex[card] && !gCardTexTried[card] && gClsMaterial) { gCardTexTried[card] = 1;
-                gCardTex[card] = (u32)gLoadObject((void *)gClsMaterial, 0, WC_TEXTURES[card], 0, 0x2002, 0);
+                gCardTex[card] = load_kept((void *)gClsMaterial, WC_TEXTURES[card]);
                 if (!gCardTex[card]) { static wchar b[160]; wsprintfW(b, L"looks: %s not found", WC_TEXTURES[card]); log_line(b); } }
             tex = gCardTex[card];
             if (tex && offSkins > 0 && (*(int *)(a + offSkins + 4) > 0 || (gAddZeroed && gAddZeroed((void *)(a + offSkins), 4, 1) >= 0 && *(int *)(a + offSkins + 4) == 1)))
