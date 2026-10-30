@@ -109,8 +109,10 @@ static void ap_poll(void) {
             while (*p) { int i = ap_loc_index(a_num(&p)); if (i >= 0) gSrvChecked[i] = 1; if (*p == ',') p++; else break; }
         } else if (a_starts(line, "LOOKS ")) {   /* <loc>:<code>,... */
             p = line + 6;
-            while (*p) { int i = ap_loc_index(a_num(&p)), c = 0; if (*p == ':') { p++; c = a_num(&p); } if (i >= 0) gLook[i] = (unsigned char)c; if (*p == ',') p++; else break; }
+            int got = 0;
+            while (*p) { int i = ap_loc_index(a_num(&p)), c = 0; if (*p == ':') { p++; c = a_num(&p); } if (i >= 0) { gLook[i] = (unsigned char)c; got++; } if (*p == ',') p++; else break; }
             gApLookGen++;
+            wsprintfW(b, L"ap: looks for %d location(s) received", got); log_line(b);
         } else if (a_starts(line, "MSG ")) {
             wchar w[300]; a_wide(w, line + 4, 280); wsprintfW(b, L"ap: %s", w); log_line(b);
         }
