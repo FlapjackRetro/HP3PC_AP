@@ -56,6 +56,15 @@ class ShortcutPasswords(Choice):
     default = option_item
 
 
+class MaraudersMap(Choice):
+    """randomized: the Marauder's Map is an item in the pool.
+    start_with: you start with it."""
+    display_name = "Marauder's Map"
+    option_randomized = 0
+    option_start_with = 1
+    default = option_randomized
+
+
 class Secretsanity(DefaultOnToggle):
     """On: every catalogued secret area is a location (found when you step into it).
     Off: the secret areas aren't locations, and finding one does nothing for the multiworld."""
@@ -85,6 +94,7 @@ class HP3PCOptions(PerGameCommonOptions):
     split_challenge_spells: SplitChallengeSpells
     shop_prices: ShopPrices
     shortcut_passwords: ShortcutPasswords
+    marauders_map: MaraudersMap
     secretsanity: Secretsanity
     candysanity: Candysanity
     shopsanity: Shopsanity

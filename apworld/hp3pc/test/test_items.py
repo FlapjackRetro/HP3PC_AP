@@ -53,6 +53,7 @@ class _World:
         self.options.spell_mode = _Opt(spell_mode, option_vanilla=0, option_hard=1)
         self.options.split_challenge_spells = _Opt(split)
         self.options.shortcut_passwords = _Opt(shortcuts, option_item=0, option_start_unlocked=1)
+        self.options.marauders_map = _Opt(0, option_randomized=0, option_start_with=1)
 
 
 class TestPool(unittest.TestCase):

@@ -117,3 +117,12 @@ class TestNoShops(WorldTestBase):
 class TestNoShopsHard(WorldTestBase):
     game = items.GAME_NAME
     options = {"shopsanity": False, "spell_mode": "hard", "split_challenge_spells": True}
+
+
+class TestStartWithMap(WorldTestBase):
+    game = items.GAME_NAME
+    options = {"marauders_map": "start_with"}
+
+    def test_map_precollected(self):
+        self.assertIn("Marauder's Map", [i.name for i in self.multiworld.precollected_items[self.player]])
+        self.assertNotIn("Marauder's Map", [i.name for i in self.multiworld.itempool if i.player == self.player])
