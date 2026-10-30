@@ -28,7 +28,7 @@ static const struct lookdef LOOKDEFS[] = {
     { 32, 'K', L"HProps.MarauderMap", 1.0f, 0 },
     { 33, 'M', L"HP3_GamePlay_sm.Spells_Objects.PumpkinPasty_SM", 2.0f, 0 },
     { 34, 'M', L"HP3_GamePlay_sm.Spells_Objects.CauldronCake_SM", 2.5f, 0 },
-    { 35, 'K', L"HPCharacters.ChocolateFrog", 1.25f, 0 },
+    { 35, 'A', L"HPCharacters.ChocolateFrog", 1.25f, 3 },   /* needs an animation: in its reference pose it lies splayed */
     { 36, 'M', L"HP3_GamePlay_sm.WizardCards.WizardCard_SM", 1.0f, 0 },
     { 40, 'S', L"HP3AP.APLogoProgression", 38, 0 },               /* other games: progression */
     { 41, 'S', L"HP3AP.APLogoUseful", 38, 0 },                    /* useful */

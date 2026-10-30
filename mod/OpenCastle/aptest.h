@@ -68,6 +68,7 @@ static const wchar *const ANIM_TRY[][4] = {
     { L"Idle", 0, 0, 0 },                 /* Buckbeak: Fidget_Preen Flap Idle run RunToTakeoff Nip */
     { L"Hover_idle", L"Stand_idle", 0, 0 },   /* Pixie (Poxie.IdleAnimName) */
     { L"Idle", 0, 0, 0 },                 /* MBOM (MonsterBook.StateIdle loops 'Idle') */
+    { L"Idle", L"idle", L"Breathe", L"hop" },   /* ChocolateFrog (aplook.h; ChocolateFrog.FrogWalkAnim = hop) */
 };
 static float gGridAt[3];
 static wchar gMapLogPath[600];
@@ -100,7 +101,7 @@ static void grid_animate(u32 actor, u32 mesh, int which, const wchar *label) {
         }
         log_line(b);
     }
-    for (k = 0; k < 4 && which < 3 && ANIM_TRY[which][k]; k++)
+    for (k = 0; k < 4 && which < 4 && ANIM_TRY[which][k]; k++)
         if ((nm = name_index(ANIM_TRY[which][k])) >= 0 && gAnimNamed(inst, nm)) { gPlayAnim((void *)actor, 0, nm, 1.0f, 0.0f, 1); return; }
     wsprintfW(b, L"grid: %s: none of the idle names found; reference pose", label); log_line(b);
 }
