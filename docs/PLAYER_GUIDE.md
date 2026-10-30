@@ -29,10 +29,10 @@
   - split_challenge_spells off: the unlock also gives you Glacius.
   - split_challenge_spells on: the unlock opens the door, and Glacius is a separate item, needed for the checks inside.
 ### Patronus Lesson
-- Entrance: Hogwarts, 2nd floor, the Defense Against the Dark Arts classroom right-hand portcullis.
+- Entrance: Hogwarts, 3rd floor, the Defense Against the Dark Arts classroom right-hand portcullis.
 - Unlock: Patronus Lesson Unlock, in every setting.
 ### Library
-- Entrance: Hogwarts, 3rd floor, at the end of the hall opposite some bookshelves.
+- Entrance: Hogwarts, 2nd floor, at the end of the hall opposite some bookshelves.
 - Unlock: Library Unlock, in every setting.
 ### Shrieking Shack tunnel
 - Entrance: Hogwarts dungeons, first door on the right.
@@ -47,7 +47,7 @@
 - Entrance: Hogwarts entrance hall, south door.
 - Unlock: Bonus Room Unlock, in every setting.
 ### Ron’s Final Exam
-- Entrance: Hogwarts, 2nd floor, the Defense Against the Dark Arts classroom left-hand portcullis.
+- Entrance: Hogwarts, 3rd floor, the Defense Against the Dark Arts classroom left-hand portcullis.
 - Unlock: Ron’s Final Exam Unlock, in every setting. Its checks also need Carpe Retractum, which with split_challenge_spells off comes from the Carpe Retractum Challenge Unlock.
 ### Hermione’s Final Exam
 - Entrance: Hogwarts, 1st floor, the Transfiguration classroom portcullis.
