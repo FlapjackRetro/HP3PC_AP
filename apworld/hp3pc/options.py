@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from Options import Choice, PerGameCommonOptions, Range, Toggle
+from Options import Choice, DefaultOnToggle, PerGameCommonOptions, Range, Toggle
 
 
 class Goal(Choice):
@@ -55,6 +55,20 @@ class ShortcutPasswords(Choice):
     default = option_item
 
 
+class Secretsanity(DefaultOnToggle):
+    """On: every catalogued secret area is a location (found when you step into it).
+    Off: the secret areas aren't locations, and finding one does nothing for the multiworld."""
+    display_name = "Secretsanity"
+
+
+class Candysanity(DefaultOnToggle):
+    """On: every catalogued pumpkin pasty and cauldron cake placed in a level is a location, and its pasty or cake is
+    an item in the pool.
+    Off: they stay vanilla: picking one up gives you the pasty or cake, and logic counts them for the shops.
+    Pasties and cakes in chests and knights are checks either way."""
+    display_name = "Candysanity"
+
+
 @dataclass
 class HP3PCOptions(PerGameCommonOptions):
     goal: Goal
@@ -63,3 +77,5 @@ class HP3PCOptions(PerGameCommonOptions):
     split_challenge_spells: SplitChallengeSpells
     shop_prices: ShopPrices
     shortcut_passwords: ShortcutPasswords
+    secretsanity: Secretsanity
+    candysanity: Candysanity

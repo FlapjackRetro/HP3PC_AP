@@ -14,7 +14,7 @@ message, ASCII; IDs on the wire are item / location ids minus the world's base i
                   DOOR                    the Final Day door has opened in game
                   GOAL                    the player walked through the Final Day door (resent on every connection
                                           while the save has reached it)
-  client -> mod   ROOM <seed>|<slot>|<split 0/1>|<cheap 0/1>|<cards required>
+  client -> mod   ROOM <seed>|<slot>|<split 0/1>|<cheap 0/1>|<cards required>|<secretsanity 0/1>|<candysanity 0/1>
                   ITEMS <first index> <item>,<item>...   the full received list, in chunks
                   SYNCED <count>          end of the full list
                   ITEM <index> <item>     one more received item
@@ -184,7 +184,8 @@ class HP3Context(CommonContext):
             return
         sd = self.slot_data
         self.to_game(f"ROOM {self.room_key()}|{int(bool(sd.get('split_challenge_spells')))}|"
-                     f"{int(sd.get('shop_prices', 0) == 1)}|{int(sd.get('cards_required', 0) or 0)}")
+                     f"{int(sd.get('shop_prices', 0) == 1)}|{int(sd.get('cards_required', 0) or 0)}|"
+                     f"{int(bool(sd.get('secretsanity', 1)))}|{int(bool(sd.get('candysanity', 1)))}")
         ids = [item.item - BASE for item in self.items_received]
         for k in range(0, len(ids), CHUNK):
             self.to_game(f"ITEMS {k} " + ",".join(map(str, ids[k:k + CHUNK])))

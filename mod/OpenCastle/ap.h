@@ -11,7 +11,8 @@
  *                   DOOR                    the Final Day door has opened (enough cards received)
  *                   GOAL                    the player walked through the Final Day door (sent again on every
  *                                           connection while the save has OC_AP_Goal)
- *   client -> mod   ROOM <seed>|<slot>|<split 0/1>|<cheap 0/1>|<cards required>
+ *   client -> mod   ROOM <seed>|<slot>|<split 0/1>|<cheap 0/1>|<cards required>|<secretsanity 0/1>|<candysanity 0/1>
+ *                   (the last two are 1 when missing: older clients)
  *                   ITEMS <first index> <item>,<item>...   the full received list, in chunks
  *                   SYNCED <count>          end of the full list
  *                   ITEM <index> <item>     one more received item
@@ -47,6 +48,9 @@
 static unsigned short gRecv[AP_RECVMAX]; static volatile int gRecvN, gRecvSynced;   /* written by the worker */
 static char gApRoom[128]; static volatile int gApRoomGen;                            /* "<seed>|<slot>" */
 static volatile int gApSplit, gApCards;   /* gApCheap: opencastle.c */
+static volatile int gApSecrets = 1, gApCandy = 1;   /* secretsanity / candysanity: 0 = those locations stay vanilla */
+/* a location left out of the room's pool by its options: no look, no check, the vanilla reward stays */
+static int ap_loc_off(int li) { char k = AP_LOCS[li].kind; return (k == 'S' && !gApSecrets) || (k == 'P' && !gApCandy); }
 static unsigned char gSrvChecked[AP_NLOCS];       /* the server has it (CHECKED) */
 static unsigned char gLocChecked[AP_NLOCS];       /* this save has it (OC_AP_Checked) */
 static volatile int gApJob;                       /* the worker asks the game thread to sync */
@@ -80,7 +84,7 @@ static void ap_poll(void) {
         const char *p = line;
         if (a_starts(line, "ROOM ")) {
             char *q = line + 5; int f = 0; const char *r;
-            /* seed|slot|split|cheap|cards */
+            /* seed|slot|split|cheap|cards|secrets|candy */
             for (r = q; *r; r++) if (*r == '|' && ++f == 2) break;
             if (f == 2) {
                 int k = (int)(r - q); if (k > 127) k = 127;
@@ -88,9 +92,13 @@ static void ap_poll(void) {
                 r++; gApSplit = a_num(&r); if (*r == '|') r++;
                 gApCheap = a_num(&r); if (*r == '|') r++;
                 gApCards = a_num(&r);
+                gApSecrets = gApCandy = 1;
+                if (*r == '|') { r++; gApSecrets = a_num(&r); }
+                if (*r == '|') { r++; gApCandy = a_num(&r); }
                 gApRoomGen++; gApJob = 1;
                 { wchar w[128]; a_wide(w, gApRoom, 128);
-                  wsprintfW(b, L"ap: room %s (split challenge spells %d, cheap shops %d, cards required %d)", w, gApSplit, gApCheap, gApCards); }
+                  wsprintfW(b, L"ap: room %s (split challenge spells %d, cheap shops %d, cards required %d, secretsanity %d, candysanity %d)",
+                            w, gApSplit, gApCheap, gApCards, gApSecrets, gApCandy); }
                 log_line(b);
             }
         } else if (a_starts(line, "ITEMS ")) {
@@ -139,6 +147,7 @@ static int v_apfind(u32 o, int name, u32 cls, void *c) {
         const struct aploc *l = &AP_LOCS[i];
         if (!weq(l->map, f->map) || !l->actor || !wieq(l->actor, nm)) continue;
         if (l->kind != 'S' && l->kind != 'E' && l->kind != 'P' && l->kind != 'K') continue;
+        if (ap_loc_off(i)) return 0;   /* not in this room's pool: left alone */
         gApMapObj[gApMapN] = o; gApMapLoc[gApMapN] = i;
         rd(o + offLoc, gApMapAt[gApMapN], 12);
         gApMapN++;
@@ -217,7 +226,7 @@ static void ap_send_checks(void) {   /* every location checked in this save, in 
 /* record a check (game thread) and tell the client */
 static void ap_check(int li) {
     static wchar b[200]; char line[48];
-    if (li < 0 || li >= AP_NLOCS) return;
+    if (li < 0 || li >= AP_NLOCS || ap_loc_off(li)) return;
     if (gSaveBindW[0] && !gApActive && gApRoom[0]) return;   /* this save belongs to another room */
     if (!gLocChecked[li]) {
         int len = wlen(gCheckedCsv);
@@ -423,7 +432,7 @@ static void ap_pickup_destroyed(u32 obj) {
         if (li < 0 && weq(map, L"HP3_GroundsHub"))
             for (i = 0; i < 5; i++) if (wieq(nm, DOXY_CARDS[i])) { wchar w[16]; wsprintfW(w, L"WinCard%d", i + 1); li = ap_loc_by_actor(L"HP3_GroundsHub", w, 'M'); }
     }
-    if (li < 0) return;
+    if (li < 0 || ap_loc_off(li)) return;   /* not a location, or one this room leaves vanilla: keep the reward */
     ap_check(li);
     what = ap_is_goodie(obj);   /* take the vanilla reward back on the next tick */
     if (what == 1) gApUndoP++; else if (what == 2) gApUndoC++; else if (what == 3) gApUndoCard = P(obj + 0x24);

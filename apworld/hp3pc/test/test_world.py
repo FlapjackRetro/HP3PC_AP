@@ -81,3 +81,23 @@ class TestRules(WorldTestBase):
         self.assertTrue(10 <= total < 22, total)
         self.assertTrue(self.can_reach_location("F&G Shop: Portrait Password 1"))    # 10
         self.assertFalse(self.can_reach_location("F&G Shop: Portrait Password 2"))   # 22
+
+
+class TestNoSecretsNoCandy(WorldTestBase):
+    game = items.GAME_NAME
+    options = {"secretsanity": False, "candysanity": False}
+
+    def test_locations_left_out(self):
+        names = {loc.name for loc in self.multiworld.get_locations(self.player) if loc.address is not None}
+        self.assertFalse(any(loc.name in names for loc in LOCATIONS if loc.kind in ("secret", "placed")))
+        self.assertTrue(any(loc.name in names for loc in LOCATIONS if loc.kind == "container"))
+
+
+class TestNoCandyHardCheap(WorldTestBase):
+    game = items.GAME_NAME
+    options = {"candysanity": False, "spell_mode": "hard", "split_challenge_spells": True, "shop_prices": "cheap"}
+
+
+class TestNoSecretsHard(WorldTestBase):
+    game = items.GAME_NAME
+    options = {"secretsanity": False, "spell_mode": "hard"}
