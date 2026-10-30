@@ -11,6 +11,9 @@
  *   event spawns, a container's first goodie            as they appear
  * Shops, vendors and secrets have no pickup to change.
  */
+#include "wc_textures.h"
+/* codes 100 + n: wizard card n (WizardCardManager.Cards index), the card mesh with that card's face (wc_textures.h) */
+#define LOOK_CARD0 100
 struct lookdef { unsigned char code; char kind; const wchar *obj; float scale; int anim; };
 /* kind: S sprite texture (scale = size in units), M static mesh, K skeletal mesh, A skeletal mesh with a looping idle
    (anim = aptest.h ANIM_TRY row) */
@@ -41,6 +44,8 @@ static u32 gLookObj[NLOOKDEFS]; static unsigned char gLookTried[NLOOKDEFS];
 struct lookact { u32 obj; short li; unsigned char code, done; float base; };
 static struct lookact gLA[LOOK_MAX]; static int gNLA; static u32 gLALevel; static int gLAGen = -1, gLAScanned;
 static int offPUVis = -1, offSkins = -1;
+typedef int (__thiscall *addzeroed_fn)(void *array, int count, int elemsize);   /* Core.dll FArray::AddZeroed */
+static addzeroed_fn gAddZeroed; static u32 gClsMaterial, gCardTex[NWC_TEXTURES]; static unsigned char gCardTexTried[NWC_TEXTURES];
 
 static void ap_look_queue(u32 obj, int li) {   /* game thread */
     int i;
@@ -79,6 +84,8 @@ static int look_ready(void) {   /* the lookups the grid also uses (aptest.h); re
     if (offUSize <= 0) offUSize = prop_offset(L"BitmapMaterial", L"USize");
     if (offPUVis <= 0) offPUVis = prop_offset(L"KWPickup", L"PickupVisibility");
     if (offSkins <= 0) offSkins = prop_offset(L"Actor", L"Skins");
+    if (!gClsMaterial) gClsMaterial = find_class(L"Material");
+    if (!gAddZeroed) { HANDLE core = GetModuleHandleW(L"Core.dll"); gAddZeroed = core ? (addzeroed_fn)GetProcAddress(core, "?AddZeroed@FArray@@QAEHHH@Z") : 0; }
     state = (gLoadObject && gClsTexture && gClsStaticMesh && gClsMesh && offStaticMesh > 0 && offMesh > 0 && offDrawScale > 0
              && offTexture > 0 && offStyle2 > 0 && offDrawType > 0) ? 1 : 0;
     if (state > 0) log_line(L"looks: ready");
@@ -102,9 +109,26 @@ static u32 look_asset(int d) {
 }
 /* game thread: draw `a` as look `code`; returns the base DrawScale (0 = not changed) */
 static float look_apply(u32 a, int code) {
-    int d = look_def(code); u32 obj; const struct lookdef *l; float scale;
+    int d, card = code >= LOOK_CARD0 ? code - LOOK_CARD0 : -1; u32 obj; const struct lookdef *l; float scale;
+    if (card >= 0) {   /* a particular wizard card: the card mesh, with that card's face as Skins[0] */
+        u32 tex;
+        if (card >= NWC_TEXTURES) card = -1;
+        else {
+            if (!gCardTex[card] && !gCardTexTried[card] && gClsMaterial) { gCardTexTried[card] = 1;
+                gCardTex[card] = (u32)gLoadObject((void *)gClsMaterial, 0, WC_TEXTURES[card], 0, 0x2002, 0);
+                if (!gCardTex[card]) { static wchar b[160]; wsprintfW(b, L"looks: %s not found", WC_TEXTURES[card]); log_line(b); } }
+            tex = gCardTex[card];
+            if (tex && offSkins > 0 && (*(int *)(a + offSkins + 4) > 0 || (gAddZeroed && gAddZeroed((void *)(a + offSkins), 1, 4) >= 0)))
+                *(u32 *)P(a + offSkins) = tex;   /* element 0 (a card pickup already has one; others get one from the engine) */
+        }
+        code = 36;   /* the card mesh */
+    }
+    d = look_def(code);
     if (d < 0 || !(obj = look_asset(d))) return 0;
     l = &LOOKDEFS[d];
+    /* the pickup's own texture overrides (Actor.Skins: data, count, max) would paint the new mesh (the frog came out
+       in the pasty's colours, poc9e): count 0 so the mesh's own materials show */
+    if (card < 0 && l->kind != 'S' && offSkins > 0) *(int *)(a + offSkins + 4) = 0;
     if (l->kind == 'S') {
         float px = offUSize > 0 ? (float)(int)P(obj + offUSize) : 64.0f; if (px <= 0) px = 64.0f;
         *(u32 *)(a + offTexture) = obj; *(u8 *)(a + offStyle2) = 2; *(u8 *)(a + offDrawType) = 1;   /* DT_Sprite, STY_Masked */
@@ -112,9 +136,6 @@ static float look_apply(u32 a, int code) {
     } else if (l->kind == 'M') {
         *(u32 *)(a + offStaticMesh) = obj; *(u8 *)(a + offDrawType) = 8; scale = l->scale;
     } else {
-        /* the pickup's own texture overrides (Actor.Skins, a TArray: data, count, max) would paint the new mesh; empty
-           the array (count 0) so the mesh's own materials show (the frog came out in the pasty's colours, poc9e) */
-        if (offSkins > 0) *(int *)(a + offSkins + 4) = 0;
         *(u32 *)(a + offMesh) = obj; *(u8 *)(a + offDrawType) = 2; scale = l->scale;
         if (l->kind == 'A') grid_animate(a, obj, l->anim, l->obj);
     }
