@@ -41,7 +41,9 @@ static u32 gClsVendorItem, gClsVIStudent, gClsStudent;
 static int offVM = -1, offVMItem = -1, offPgVM = -1, offPgImg = -1, offPgL0 = -1, offPgL1 = -1, offImgImage = -1,
            offLblCaption = -1, offVICur = -1, offCardCur = -1, offShHidden = -1;
 static u32 maskShHidden;
-static int N_BeginState = -1, N_Timer = -1, N_VendorOnDraw = -1, N_StDoing = -1, N_StPost = -1;
+static int N_BeginState = -1, N_Timer = -1, N_VendorOnDraw = -1, N_StDoing = -1, N_StPost = -1, N_StSale = -1;
+static int N_Touch = -1, N_ValidTouch = -1, N_Announce = -1, N_SetRespawn = -1, N_StPickup = -1, offShowHUD = -1;
+static u32 maskShowHUD;
 static volatile int gShReady;
 static fstr_assign_fn gShFStr;
 
@@ -80,6 +82,15 @@ static void apshop_init(void) {
     ch_bool(L"bHidden", &offShHidden, &maskShHidden);
     N_BeginState = name_index(L"BeginState"); N_Timer = name_index(L"Timer"); N_VendorOnDraw = name_index(L"Vendor_OnDraw");
     N_StDoing = name_index(L"DoingVendorTransaction"); N_StPost = name_index(L"PostTransaction");
+    N_StSale = name_index(L"SaleAccepted");
+    N_ValidTouch = name_index(L"ValidTouch"); N_Announce = name_index(L"AnnouncePickup"); N_SetRespawn = name_index(L"SetRespawn");
+    N_StPickup = name_index(L"Pickup");
+    {   u32 bp = prop_object(L"KWPickup", L"bShowHUD"), m = bp ? rd32(bp + 0x70) : 0;
+        if (bp && m && !(m & (m - 1))) { offShowHUD = (int)rd32(bp + 0x4C); maskShowHUD = m; } }
+    if (N_ValidTouch >= 0 && N_Announce >= 0 && N_SetRespawn >= 0 && N_StPickup >= 0 && offShowHUD > 0) N_Touch = name_index(L"Touch");
+    {   static wchar t[160]; wsprintfW(t, L"shopsanity: pickup takeover names %d %d %d %d, bShowHUD %d/%x -> %s", N_ValidTouch, N_Announce,
+                                      N_SetRespawn, N_StPickup, offShowHUD, maskShowHUD, N_Touch >= 0 ? L"on" : L"OFF (vanilla reward taken back instead)");
+        log_line(t); }
     {   HANDLE core = GetModuleHandleW(L"Core.dll");
         gShFStr = core ? (fstr_assign_fn)GetProcAddress(core, "??4FString@@QAEAAV0@PBG@Z") : 0; }
     /* not the dialog's fields: HGame.HPPageVendor is only loaded when a sale dialog first opens (poc9j waited for
@@ -289,6 +300,13 @@ static int apshop_begin_state(void *self, void *func, void *parms, void *result)
     st = P((u32)func + 0x18);   /* the state the BeginState belongs to */
     if (!st) return 0;
     stn = (int)P(st + 0x20);
+    if (stn == N_StSale && N_StSale >= 0) {
+        /* the twins' card stand is about to run Purchased: no card class, so the WizardCardInvItem it gives owns
+           nothing (MarkWizardCardAsOwned(None) changes no card) and the card count doesn't move */
+        u32 item = offVMItem > 0 ? P(o + offVMItem) : 0;
+        for (i = 0; item && i < gNFG; i++) if (gFG[i] == item && gFGLi[i] >= 0) *(u32 *)(item + offVICardCls) = 0;
+        return 0;
+    }
     if (stn != N_StDoing && stn != N_StPost) return 0;
     sh_init_rows();
     if (stn == N_StDoing && is_a_fast(o, gClsStudent)) {
@@ -330,7 +348,7 @@ static int apshop_begin_state(void *self, void *func, void *parms, void *result)
                 gFGHold[i] = GetTickCount() + 4000;
                 wsprintfW(b, L"shopsanity: bought %s", AP_LOCS[gFGLi[i]].name); log_line(b);
                 ap_check(gFGLi[i]);
-                gApUndoCard = P(o + offVICardCls);   /* Purchased gave the card: put it back (next tick) */
+                if (P(o + offVICardCls)) gApUndoCard = P(o + offVICardCls);   /* if Purchased did give a card: put it back */
                 gFGLi[i] = -1;
             }
         }
@@ -413,4 +431,36 @@ static void apshop_dialog(u32 page) {
         if (l1) gShFStr((void *)(l1 + offLblCaption), gShDesc[j]);
     }
     wsprintfW(b, L"shopsanity: dialog shows %s (look %d)", AP_LOCS[li].name, gLook[li]); log_line(b);
+}
+
+/* ---- pickups: a location's pickup gives nothing ---------------------------------------------------------------------
+   The vanilla Touch (Engine.Pickup, state Pickup) gives the item (SpawnCopy: inventory / card ownership) and
+   AnnouncePickup flashes its HUD counter (HandlePickup, when bShowHUD). ap.h used to take the reward back a tick later,
+   so the counter went up and down again. For a pickup that stands for a location the mod runs the Touch itself:
+   ValidTouch (same rules), AnnouncePickup with bShowHUD off (HasBeenPickedUp, its save key, the sound and sparkle),
+   SetRespawn (Destroy). Destroyed then checks the location as before (ap.h), with nothing to take back. */
+static int ap_pickup_loc(u32 obj) {
+    int i;
+    for (i = 0; i < gApNPu; i++) if (gApPu[i] == obj) return gApPuLoc[i];
+    for (i = 0; i < gApMapN; i++) if (gApMapObj[i] == obj && AP_LOCS[gApMapLoc[i]].kind != 'S') return gApMapLoc[i];
+    return -1;
+}
+/* pe_hook: Touch. Returns 1 if it took the event over. */
+static int ap_touch(void *self, void *func, void *parms) {
+    u32 o = (u32)self, st; int li; void *fn; struct { u32 other, ret; } vt; struct { u32 receiver; } an; u32 *w;
+    if (!gApActive || !func || !parms || !gClsPickup || !is_a_fast(o, gClsPickup)) return 0;
+    st = P((u32)func + 0x18);
+    if (!st || (int)P(st + 0x20) != N_StPickup) return 0;   /* only the giving Touch (state Pickup and its children) */
+    if ((li = ap_pickup_loc(o)) < 0 || ap_loc_off(li)) return 0;
+    if (!(fn = gFindFunction(self, N_ValidTouch, 0))) return 0;
+    vt.other = *(u32 *)parms; vt.ret = 0;
+    gPEOrig(self, fn, &vt, 0);
+    if (!vt.ret) return 1;   /* not a valid touch: nothing happens, as vanilla */
+    if (!(fn = gFindFunction(self, N_Announce, 0))) return 0;
+    w = (u32 *)(o + offShowHUD); *w &= ~maskShowHUD;
+    an.receiver = *(u32 *)parms;
+    gPEOrig(self, fn, &an, 0);
+    gApTaken[gApTakenN] = o; gApTakenN = (gApTakenN + 1) & 15;
+    if ((fn = gFindFunction(self, N_SetRespawn, 0))) gPEOrig(self, fn, 0, 0);   /* Destroy -> Destroyed -> the check */
+    return 1;
 }
