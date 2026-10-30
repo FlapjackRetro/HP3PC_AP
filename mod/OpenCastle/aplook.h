@@ -40,7 +40,7 @@ static u32 gLookObj[NLOOKDEFS]; static unsigned char gLookTried[NLOOKDEFS];
 #define LOOK_MAX 192
 struct lookact { u32 obj; short li; unsigned char code, done; float base; };
 static struct lookact gLA[LOOK_MAX]; static int gNLA; static u32 gLALevel; static int gLAGen = -1, gLAScanned;
-static int offPUVis = -1;
+static int offPUVis = -1, offSkins = -1;
 
 static void ap_look_queue(u32 obj, int li) {   /* game thread */
     int i;
@@ -78,6 +78,7 @@ static int look_ready(void) {   /* the lookups the grid also uses (aptest.h); re
     if (offDrawType <= 0) offDrawType = prop_offset(L"Actor", L"DrawType");
     if (offUSize <= 0) offUSize = prop_offset(L"BitmapMaterial", L"USize");
     if (offPUVis <= 0) offPUVis = prop_offset(L"KWPickup", L"PickupVisibility");
+    if (offSkins <= 0) offSkins = prop_offset(L"Actor", L"Skins");
     state = (gLoadObject && gClsTexture && gClsStaticMesh && gClsMesh && offStaticMesh > 0 && offMesh > 0 && offDrawScale > 0
              && offTexture > 0 && offStyle2 > 0 && offDrawType > 0) ? 1 : 0;
     if (state > 0) log_line(L"looks: ready");
@@ -111,6 +112,9 @@ static float look_apply(u32 a, int code) {
     } else if (l->kind == 'M') {
         *(u32 *)(a + offStaticMesh) = obj; *(u8 *)(a + offDrawType) = 8; scale = l->scale;
     } else {
+        /* the pickup's own texture overrides (Actor.Skins, a TArray: data, count, max) would paint the new mesh; empty
+           the array (count 0) so the mesh's own materials show (the frog came out in the pasty's colours, poc9e) */
+        if (offSkins > 0) *(int *)(a + offSkins + 4) = 0;
         *(u32 *)(a + offMesh) = obj; *(u8 *)(a + offDrawType) = 2; scale = l->scale;
         if (l->kind == 'A') grid_animate(a, obj, l->anim, l->obj);
     }
