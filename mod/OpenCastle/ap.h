@@ -419,7 +419,8 @@ static void ap_pickup_spawned(u32 obj, int linkedBefore) {
             dx = at[0] - gApMapAt[i][0]; dy = at[1] - gApMapAt[i][1]; dz = at[2] - gApMapAt[i][2]; d2 = dx * dx + dy * dy + dz * dz;
             if (d2 < bd) { bd = d2; best = gApMapLoc[i]; }
         }
-        if (best >= 0 && gApNPu < AP_PUMAX) { gApPu[gApNPu] = obj; gApPuLoc[gApNPu] = best; gApNPu++; ap_look_queue(obj, best); }
+        if (best >= 0 && gLocChecked[best] && gApActive && !ap_loc_off(best) && gApNKill < 32) gApKill[gApNKill++] = obj;   /* checked already */
+        else if (best >= 0 && gApNPu < AP_PUMAX) { gApPu[gApNPu] = obj; gApPuLoc[gApNPu] = best; gApNPu++; ap_look_queue(obj, best); }
     }
 }
 /* Destroyed of a KWPickup: picked up? */

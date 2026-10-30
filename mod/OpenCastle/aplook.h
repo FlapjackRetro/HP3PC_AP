@@ -185,7 +185,15 @@ static void ap_looks_tick(void) {
         gLAScanned = 1;
         for (i = 0; i < gApMapN; i++) {
             char k = AP_LOCS[gApMapLoc[i]].kind;
-            if (gApMapObj[i] && (k == 'P' || k == 'K' || k == 'M') && !gLocChecked[gApMapLoc[i]]) ap_look_queue(gApMapObj[i], gApMapLoc[i]);
+            if (!gApMapObj[i] || (k != 'P' && k != 'K' && k != 'M')) continue;
+            if (!gLocChecked[gApMapLoc[i]]) ap_look_queue(gApMapObj[i], gApMapLoc[i]);
+            else if (gApActive && !ap_loc_off(gApMapLoc[i]) && gClsPickup && is_a_fast(gApMapObj[i], gClsPickup) && gApNKill < 32) {
+                /* already checked, but back again: a placed wizard card returns unless its card is owned
+                   (WizardCard.PostPersistentDataRestored ignores the picked-up flag), so it reappeared with its
+                   vanilla look after the location's item had been taken. Remove it. */
+                static wchar b[160]; wsprintfW(b, L"looks: %s already checked: pickup removed", AP_LOCS[gApMapLoc[i]].name); log_line(b);
+                gApKill[gApNKill++] = gApMapObj[i]; gApMapObj[i] = 0;
+            }
         }
     }
     if (gLAGen != gApLookGen) { gLAGen = gApLookGen; for (i = 0; i < gNLA; i++) gLA[i].done = 0; }   /* new looks: redo */
