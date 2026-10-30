@@ -104,7 +104,7 @@ static int v_shopvi(u32 o, int name, u32 cls, void *c) {
 static void shop_poll(u32 level, u32 game) {
     static wchar b[200]; static u32 scanTick; int cheap, i, n = 0;
     u32 wcm, ppm, cards, pws; int ncards, npws;
-    cheap = GetPrivateProfileIntW(L"Shop", L"Cheap", 0, gIniPath) != 0;
+    cheap = gApCheap >= 0 ? gApCheap != 0 : GetPrivateProfileIntW(L"Shop", L"Cheap", 0, gIniPath) != 0;   /* the room's option, else the ini */
     if (cheap != gShopCheap) { gShopCheap = cheap; wsprintfW(b, L"shop prices: %s", cheap ? L"cheap (50%, rounded up)" : L"normal (vanilla)"); log_line(b); }
     if (!game || !shop_init()) return;
     wcm = rd32(game + offWCM); ppm = rd32(game + offPPM);

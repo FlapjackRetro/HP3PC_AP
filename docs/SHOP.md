@@ -91,3 +91,32 @@ class ShopPrices(Choice):
 ```
 
 Slot data `shop_prices` (0/1) replaces the ini switch.
+
+## Shopsanity (mod poc9j)
+
+The twins' 6 cards and 8 passwords and the 20 student-vendor purchases are checks (`mod/OpenCastle/apshop.h`). One
+VendorManager and one dialog (`HGame.HPPageVendor`) serve both the twins and the students.
+
+- **Twins' card stands** (`VI_WizardCard`, 6): the mod gives each stand one unchecked `F&G Shop: <card>` location
+  (WizardCardClass, price and currency from that card's row), shows that location's item on it, and hides stands once
+  fewer locations than stands are left. The stands' Timer (Reload, which would pick the next vanilla shop card) is
+  skipped. A purchase (state `PostTransaction` with the stand hidden by `Purchased`) checks the location, and the card
+  `Purchased` gave is put back like any vanilla card reward.
+- **Password stands** (`VI_PortraitPassword`, 3): they sell "the next unowned password", and the table's `Owned` flags
+  are the received passwords (portraits open with those). From a stand's `DoingVendorTransaction` to its
+  `PostTransaction` the flags are swapped for the checked password locations, so the next password is the first
+  unchecked location (its price, its number for `AddPassword`), then the received flags are put back. All three
+  stands show that location's item.
+- **Student vendors**: they sell the first card with Status 1 (`AvailableToVendors`). The mod keeps exactly one card at
+  Status 1 while a purchase is unchecked (purchase k's own card, or another of the 20 if that one was received) and
+  sets every other Status-1 card to 5 (received) or 6 (`OwnedByVendor`). While a student's `DoingVendorTransaction`
+  starts, that card's table price is purchase k's vanilla price (halved when cheap), so logic's order and prices hold
+  whatever was received. The card the student throws shows purchase k's item; picking it up checks k.
+- **Dialog**: on the page's first `Vendor_OnDraw` the picture (`imgItem.Image`) becomes the item's art (card face,
+  portrait for passwords 1-8, spell shape, pasty / cake / frog, key, creature, map, or the Archipelago logo by tier for
+  other games) and the two lines (`lblInfo0`, `lblInfo1`) the name and description from the client's `SHOPTEXT`.
+- **shopsanity off**: the apworld locks each location's vanilla card / password there; everything above still runs and
+  shows those vanilla items.
+
+Portrait passwords and their dialog portraits: 1 Bertie Bott, 2 Derwent Shimpling, 3 Mopsus, 4 Tilly Toke, 5 Glover
+Hipworth, 6 Hesper Starkey, 7 Leopoldina Smethwyck, 8 Bridget Wenlock (`PortraitPasswords[i].DescDlgTag`).

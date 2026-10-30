@@ -223,3 +223,320 @@ Yes. The vanilla save system already handles it; nothing new is needed for the p
   - the castle portcullis mesh (`Portcullis_SM`, ×2.0, so 256 × 408 units) on an inert `Effects` actor;
   - a blocking cylinder (radius 135, half-height 210), set through `SetCollisionSize` + `SetCollision`.
   - It's removed when the key unlocks, and spawned again on each visit while locked.
+
+### poc7: item pickups (test grid)
+
+The Delete grid is now a set of working pickups (`aptest.h`): each item falls to the floor (PHYS_Falling,
+bCollideWorld, a collision cylinder) and is collected by walking into it. What each one does is the same switch
+the randomizer client will drive, in `HP3_OpenCastle.ini`:
+
+| Pickup | Effect |
+| --- | --- |
+| 10 spell glyphs | `[Spells] <spell>=1` |
+| drawn key | `[Doors] Paddock=1` (test) |
+| hippogriff / doxy / Monster Book | `[Doors] Hippogriff` / `Doxy` / `MonsterBook` `=1` |
+| Marauder's Map | `[Items] MaraudersMap=1` → `HPHeroController.GiveMap()` (on every map load while set) |
+| password scroll (`BlueBandScroll_SM`) | `[Items] ShortcutPasswords=1` → `EnablePortraitShortcuts()` |
+| Archipelago logos | nothing |
+| pasty, cake, Harry Potter card | the game's own pickup classes |
+
+New mechanisms (`unlocks.h`):
+- **Spell gating.** `WeaponWand.HasSpell` is turned into a native function at runtime (iNative + Func on its
+  UFunction; Core.dll's CallFunction calls Func whenever iNative ≠ 0). It returns the vanilla answer unless the
+  spell is locked in `[Spells]` (default 1 = has it). The spell cursor won't target, and ChooseSpell won't pick, a
+  locked spell. Covers LumosSpell (gargoyles). Not covered yet: companion-cast spells (`CompanionSpellTrigger`).
+- **Shortcut passwords are locked by default** (`[Items] ShortcutPasswords`, default 0): on every map load,
+  entries 8–21 (but 18, vanilla's free one) are cleared until the item is set. Earlier builds unlocked them all.
+- **Marauder's Map** (`[Items] MaraudersMap`, default 0).
+
+### poc7c: unlock state lives in the save
+
+- `HP3_OpenCastle.ini` is now only the **starting** state (stand-in for slot data / starting inventory). Pickups no
+  longer write to it.
+- What's found is kept in the game's PersistentStore as `OC_<Section>_<Key>` = `1` (e.g. `OC_Spells_Alohomora`,
+  `OC_Doors_Paddock`, `OC_Items_ShortcutPasswords`). The store travels between levels and is written into save
+  games, so a New Game starts with nothing found and loading a save brings back that save's unlocks.
+- Effective state = ini OR save. Read on every settled map load (log: `save flags (found): ...`).
+- The randomizer client will write received items to the same keys.
+
+### poc7d: crash fix (GPF in RenderLevel on a pickup)
+
+- poc7c tested: found unlocks survive save / quit / load, and a New Game starts with none (`save flags (found): none`).
+- Crash: picking up the Rictusempra glyph gave a GPF in `RenderLevel`. The mod's queued game-thread jobs ran on
+  whatever ProcessEvent came next, including events fired while the frame is drawn (HUD / canvas). Destroying the
+  picked-up actor (or spawning the sparkle) mid-render can leave the renderer with a dead actor.
+- Fix: jobs that spawn, destroy or change actors (pickups, grid, leftovers, gates, blockers, Map / shortcut grants)
+  run only from `PlayerTick` / `Tick` events, i.e. while the level ticks. Travel and the menu patch are unchanged.
+
+### poc8: debug panel (test only, not for release)
+
+- **Delete** opens an in-game panel with a checkbox for every unlock; **backslash** (`\`) spawns the old pickup grid (poc8a; Insert in poc8).
+  Arrows move, Enter / Space toggles, Delete closes. The game pauses while it's open (`[Debug] PanelPause=0` to
+  leave it running).
+- Rows: the 10 spells; Marauder's Map; Shortcut Passwords; the 8 level / challenge unlocks wired so far (Paddock,
+  Express, DADA, Library, Shack, Monster Book, Hippogriff, Doxy); Portrait Password 1–8 (entries `pp_0`–`pp_7`,
+  in sale order, which portrait each opens is still to map); placeholders for the Carpe Retractum / Draconifors /
+  Glacius challenge doors (not wired). Actions: +10 pasties, +10 cakes, +100 beans, untick everything found.
+- Toggling writes the save flag (`OC_*`, now `1` or `0`). Items forced on by the ini start state show `(start)` and
+  can't be unticked from the panel.
+- New: unticking the Marauder's Map takes it out of the inventory; portrait passwords 1–8 follow their flags
+  (`[Items] Portrait1`–`8` in the ini, `OC_Items_Portrait<n>` in the save).
+- Drawn from the HUD's `PostRender` with Engine.dll's `UCanvas::DrawTile` / `WrappedPrintf`. Fallback if this
+  doesn't work out: a separate Win32 window with checkboxes.
+
+### poc8b: Wizard Card bonus room on the entrance hall south door
+
+- HP3_BeanBonus (5 cards: Dumbledore and the four founders) is decoupled from the 74-card Harry Potter card: the
+  entrance hall's south door (733, 392, 74; lock bar `StaticMeshActor50`) leads there, `[Doors] BonusRoom`, item
+  Bonus Room Unlock (drawn key; a second key on the test grid, a row in the debug panel).
+- Vanilla teleport off: InsideHub `ChangeLevelTrigger14` (Tag `WCBonusRoom_Trig`, fired by `VI_FinalWizardCard0`'s
+  `GotCardEvent` → `Dispatcher10`) gets Tag None. The SUPPRESS table can now switch a Tag as well as an Event.
+- Return: the room's exit (`ChangeLevelTrigger1` → HP3_InsideHub) lands at the south door (entrance-hall
+  SmartStart + RelocatePawn).
+- MAXGATES 8 → 16 (nine doors now).
+
+### poc8c: everything starts locked
+
+- The ini no longer sets unlocks: `[Doors]`, `[Spells]` and `[Items]` are ignored. Every spell, door and item starts
+  locked; only the save (`OC_*` flags: pickups, the debug panel, later received items) turns things on. The ini
+  keeps `[Shop] Cheap` and `[Debug] PanelPause`.
+- New Game: the moment the New Game travel is seen, the cached found flags are dropped (so the previous game's
+  spells don't work for the ~3 s before the new, empty save is read).
+- The debug panel's "(start)" marker can't appear any more.
+
+### poc8d: challenge doors in the side room
+
+- The side room's three portcullises are gated like the other doors: `ChalChamb_CR_Port` (KWMover31),
+  `ChalChamb_Drac_Port` (KWMover32), `ChalChamb_Gla_Port` (KWMover33). They're the reverse of DADA / Library:
+  key 0 = up (z 392), key 1 = down (136 lower). In `GState090` Carpe's starts up, the other two down. Door keys
+  `ChCarpe`, `ChDracLap`, `ChGlacius`; all locked by default; rows in the debug panel.
+- Their loading triggers are switched off (no collision) while locked: `ChangeLevelTrigger9` (Ch1),
+  `ChangeLevelTrigger10` and the chamber's second Draconifors trigger `ChangeLevelTrigger7` (Ch2),
+  `ChangeLevelTrigger11` (Ch3). `DOORS` gained `inv` and `trig` fields for this.
+- The B maps (Ch1B, Ch2B, Ch3B) each have a copy of the chamber with triggers into all three challenges. Rather than
+  gate each copy, the travel hook refuses any travel into a locked challenge's map (`HP3_Ch1CarpeRetractum` /
+  `HP3_Ch2Draconifors` / `HP3_Ch3Glacius`) and sends the player to InsideHub instead.
+- Spells and challenge access stay separate unlocks for now (logic tracing).
+- Doors now start locked from the first frame (the worker used to assume unlocked until the first poll).
+
+### poc8e: first-visit and replay cutscenes both played (Ch1 softlock)
+
+- Reported: in HP3_Ch1CarpeRetractum the imp portrait fell and sprang back; after the imps, the trapdoor over the
+  Spongify pad (`Mover23`, `CRTrapdoorZ1`) opened and shut at once, and the pad couldn't be reached (softlock).
+- Cause: Ch1 pairs each scripted moment with a first-visit cutscene trigger (`bPersistent`, fires once, e.g.
+  `6033Ch1GnomeGetsUp`, `6035Ch1HoleQC`) and a replay one on the same Tag (`…_02`, `ExcludeFromGameStates` GState000).
+  Vanilla plays Ch1 first in `GState000` (only the first-visit one) and later visits have it already fired. Open
+  Castle enters in `GState090` with nothing fired, so both play, and every `Trigger` in them runs twice: the portrait
+  (a toggle mover) falls and returns, the trapdoor opens and closes.
+- Fix (`dedupe_cutscenes`): on each new map, for two CutSceneTriggers with the same Tag where one's Event is the
+  other's plus `_02`, the first-visit one loses its Event. In the retail maps that's four pairs, all in Ch1:
+  `6033Ch1GnomeGetsUp`, `6035Ch1HoleQC`, `6040Ch1PixiesQC`, `6045Ch1BeatPixiesQC`. The cost: the first-visit
+  dialogue lines in those scenes.
+
+### poc8f: keep the first-visit cutscene, drop the replay (pasties back)
+
+- poc8e switched off the first-visit trigger, but the replay cutscenes aren't just shorter: `6035Ch1HoleQC_02`
+  leaves out `Trigger SpawnPastiesImp` (→ `Dispatcher14` → the `SpawnPasties3` spawners), so the three pasties
+  by the Spongify pad never appeared (marked in play at (1275, 2247, 866)).
+- Now the other way round: while the first-visit trigger is still active (it hasn't fired in this save;
+  `KWTrigger` saves `bInitiallyActive` as `<LevelID><Name>_bTOO`), the **replay** trigger loses its Event, so the
+  first visit plays like vanilla's, rewards and dialogue included. Once it has fired, nothing is touched and later
+  visits play the replay, as in vanilla.
+
+### poc8g: final exam doors
+
+- Three new level unlocks (door keys `ExamRon`, `ExamHermione`, `ExamHarry`; debug-panel rows; apworld items
+  Ron's / Hermione's / Harry's Final Exam Unlock, offsets 113–115). Each raises its classroom portcullis and switches
+  its loading trigger on; all start locked.
+
+| Exam | Portcullis (key 1 = up) | Loading trigger (vanilla, retargeted) | Voice line switched off |
+| --- | --- | --- | --- |
+| Ron (FA1) | `DADA_PortToCarpe_Mvr` (KWMover64; starts up in `GState090`) | touch `Trigger58` → `ChangeLevelTrigger3` (`HP3_Ch1CarpeRetractum` → FA1) | `PopupTrigger10` (`PC_HRY_CHALCH1COMMENTS_6`) |
+| Hermione (FA2) | `ToDrac_Prt_Mvr` (KWMover50; starts down) | `ChangeLevelTrigger7` (`HP3_Ch2Draconifors.unr` → FA2, by player position) | `PopupTrigger17` (`PC_HRY_DOORCOMMENTS_34`) |
+| Harry (FA3) | `Glacius_Port_Mvr` (KWMover56; starts down) | `ChangeLevelTrigger6` (`HP3_Ch3Glacius` → FA3) | `PopupTrigger13` (`PC_RON_DOORCOMMENTS_40`) |
+
+- Correction to poc8d: `ChangeLevelTrigger7` isn't a second side-room Draconifors door, it's the Transfiguration exam
+  door (the "ToDrac" door below the classroom; the in-classroom triggers `Trigger47`/`59` exist only in `GState060`).
+  Its URL is the same as the side room's (`HP3_Ch2Draconifors.unr`), so the worker flags when the player stands at it
+  (`gAtTransfigDoor`, within 250 of (−3171, 2204)) and rules.h sends that travel to FA2. Before this it went to the
+  Draconifors challenge.
+- The travel gate now looks at the destination after Open Castle's own rewrite, so a classroom door is checked
+  against its exam (not the challenge whose map name the vanilla trigger carries).
+- Return points: each exam drops the player in front of its classroom door (entrance-hall SmartStart, then
+  RelocatePawn to where the voice-line trigger stood), not in the side room.
+- Voice lines: a `SILENCE` table switches those touch PopupTriggers off (collision off) on every map load.
+
+### poc8h: noclip (test tool)
+
+- **F6** (or the debug panel's new "Noclip" row under ACTIONS) toggles noclip, to reach spawns that can't be found on
+  foot while finishing the logic. Test-only, like the panel: remove from release builds.
+- While on: move with the game's own movement keys (camera-relative; WASD / arrows as a fallback), **E / Page Up**
+  up, **Q / Page Down** down, **Shift** x4 speed. Collision is off, so nothing is picked up and no trigger fires:
+  turn it off above a floor next to the item, and the player falls onto it.
+- How (`noclip.h`): right after the player controller's `PlayerTick`, the pawn gets collision off
+  (`AActor::SetCollision`, the previous flags kept for turning it back on), `bCollideWorld` cleared and `PHYS_None`
+  (`AActor::setPhysics`); each frame it is moved with `ULevel::FarMoveActor` (no encroachment check), and Velocity /
+  Acceleration are zeroed. Off: the saved collision flags, `bCollideWorld` and `PHYS_Falling`. A level load turns it
+  off for the old pawn and on again for the new one.
+- MapTracker v13 (separate plugin) shows the live position in the title bar: `X … Y … Z … facing …`, 4 times a second.
+
+### poc8i: faster noclip
+
+- Noclip speed x10: 7000 units a second, 28000 with Shift (poc8h's 700 was a walk). Tested in play: noclip turns on
+  and the game's own forward axis drives it (`aForward` 24000 at full stick).
+- `install_opencastle.bat` also copies `HP3MapTracker.asi` when it's next to it (the title-bar coordinates didn't show
+  because MapTracker v12 was still installed).
+
+### poc8j: noclip x10 again
+
+- 70000 units a second, 280000 with Shift.
+
+### poc8k: noclip up / down on Space and Left Ctrl
+
+- Space goes up and Left Ctrl goes down (E / Page Up and Q / Page Down still work too).
+
+### poc8l: noclip up / down on X and C
+
+- X goes up and C goes down (Space / Left Ctrl, E / Page Up and Q / Page Down still work). poc8k's Space / Left Ctrl
+  were reported not working, but the log shows poc8j was the build running then.
+
+### poc8m: slower vertical noclip
+
+- Up / down now moves at 10% of the horizontal speed (7000 units a second, 28000 with Shift).
+
+### poc8n: vertical noclip at 1%
+
+- Up / down now moves at 1% of the horizontal speed: 700 units a second, 2800 with Shift. (The "too fast" report was
+  made on poc8l, at the full 70000; poc8m's 10% was never run.)
+
+### poc8o: Glacius double cutscene (tutorial spike gates) (confirmed in play 2026-10-29)
+
+- Same problem as Ch1's (poc8e/f), in `HP3_Ch3Glacius`: Tag `7550SP3GlaciusDirecCS` fires two CutSceneTriggers,
+  `CutSceneTrigger19` → `7550SP3GlaciusDirec` (Flitwick's directions, first visit: `bPersistent`, once) and
+  `CutSceneTrigger20` → `GlaciusDirecV2` (the replay, just the triggers; `ExcludeFromGameStates` GState070, the
+  state of the first visit). Both `Trigger Glacius_Tut_SpkGate_01/02`, `Glacius_Tut_Mvr_01/02`, `Glacius_Tut_06_lt`
+  and `Glacius_Tut_High_Lt`, so in GState090 the spike gates opened and shut again.
+- `dedupe_cutscenes` now pairs by the triggers' own flags instead of the name: same Tag, one first-visit kind
+  (`KWTrigger.bPersistent` + `bTriggerOnceOnly`), one not persistent. While the first-visit one is still active, the
+  other loses its Event. Checked over every retail map (both triggers present in GState090): the three Ch1 pairs it
+  already handled, plus this Glacius one, and nothing else.
+- Looked at and left alone: Glacius's `StartCutScene` pair (`7400GlaciusSal` is in group GState070 only, so in
+  GState090 just `7301SP3GlacIntroAlt` exists); the challenge-chamber replays in Ch2B / Ch3B (the replay starts
+  inactive); the bean-bonus intros in Ch2B / Ch3B (`StartCutSceneBean` fires both the Ron and the Hermione / Harry
+  intro, and both `Trigger BeanBonusGameTimer`; no state gating, so vanilla does the same).
+
+### poc8p: Glacius entrance door stays shut (confirmed in play 2026-10-29)
+
+- Reported in play: the entrance door (`KWMover2`, `Glacius_RmA_Enter_Door`, TriggerToggle) shut and then opened again.
+  In GState090 the replay intro `7301SP3GlacIntroAlt` triggers it twice (open, move Harry inside, shut). The
+  hallway-side touch trigger `Trigger24` (Event `Glacius_RmA_Enter_Door`, once per load) belongs to the first-visit
+  version, where `7400GlaciusSal` opened the door once and this trigger shut it behind you; here it only re-opens it
+  (the companions, still in the hallway, walk into it).
+- `Trigger24` is now in the SUPPRESS table with no key: its Event is cleared on every load of `HP3_Ch3Glacius`.
+- Carpe's (`entrydoor`, `entrydoorlock`) and Draconifors' (`LapStartDoor`) entrance doors have no touch trigger, only
+  their intro, so they're unaffected.
+
+### poc8q: poc8o's cutscene rule reverted; debug panel retries its lookups
+
+- **poc8o's general rule was wrong.** "Same Tag, one bPersistent, one not" was checked against the map files with
+  each actor's game-state Group applied, on the assumption that actors of other states are removed at load. They
+  aren't: they stay in the level. On InsideHub (new game, 08:03:38) it switched off five unrelated triggers:
+  `6180TransIntro`, `movingStairs03To05`, `9240RonExamIntroPt1`, `LevelLoadGrounds010`, `LevelLoadGrounds` (the
+  first-visit side being `1040IntroShop` / `1030MeetMcGandDumbl`). Back to the name rule ("_02") plus an explicit
+  list, `CS_PAIRS`, which holds the Glacius pair (`7550SP3GlaciusDirec` / `GlaciusDirecV2`). The Event changes are made
+  in memory on each load, so a save made under poc8o keeps nothing of it.
+- **Debug panel:** under poc8o the panel paused the game but didn't draw. Its one-time lookup missed `Canvas.CurY`
+  (`cur=72/-1`) and switched the panel off for the session; a lookup can miss while a level is loading. It now retries
+  on each poll (up to 10 times) and only gives up after that.
+
+### poc8r: noclip off always restores full collision
+
+- Reported: after RETURN TO HUB from Glacius with noclip on, the Glacius loading trigger didn't fire although the
+  portcullis was up (log: `loading trigger ChGlacius: on`). Noclip went on again for the new pawn the moment it
+  arrived (before the map settled) and saved that pawn's collision flags then; turning it off put those back. A pawn
+  without bCollideActors touches nothing, so no trigger could fire. Noclip off now always sets collision 1/1/1 (as
+  the cheat `Walk()` does) and logs it when the saved flags were different.
+- That session ran poc8p, so it also still had poc8o's cutscene rule (five InsideHub replay triggers off); poc8q
+  removes it.
+
+### poc8s: crash on RETURN TO HUB (bad property offset)
+
+- Reported: GPF in `KWHeroController.TravelPostAccept` (InsideHub load) after RETURN TO HUB from Glacius B. That
+  session's start-up lookup gave `KWPawn.PreviousLevelName` offset **0** (`ready: ... prevlevel=0`; every earlier
+  session had 4024), and every "arrive ... from" line printed garbage. RETURN TO HUB lends a SmartStart name by writing
+  an FString at that offset, so it overwrote the start of the pawn (its vtable): crash. (Being on a slide had nothing to
+  do with it.)
+- Cause: the worker reads the object list while the game is loading; a failed read returns 0, which was accepted as an
+  offset (the poc8o `Canvas.CurY` miss was the same race, there giving "not found").
+- Fix (`common/ue2read.h`): `prop_offset` treats anything below 0x28 (the UObject header; no class property can sit
+  there) as not found, so the caller looks it up again on the next poll. `travel_post_accept` also refuses an offset
+  below 0x28. MapTracker rebuilt with the same header (v13, unchanged otherwise).
+
+### poc9c: the goal is walking through the Final Day door
+
+With enough wizard cards received (`cards_required`), the client says "The Final Day Door is open" and the mod opens
+GroundsHub's `FinalDayDoor` (`Mover11`, triggered as vanilla's GState100 level start does; re-opened on every visit).
+Walking in past it, where vanilla's Final Day cutscene triggers stand (x 860–1250, y −6330 to −5990), is the goal:
+`OC_AP_Goal` is saved, `GOAL` goes to the client (again on every connection) and the player travels to HP3_Final.
+
+### poc9b: pickups look like the item in the multiworld
+
+`aplook.h`: the client scouts every location and sends a look code for each; placed pasties / cakes / cards, event
+spawns and a container's first goodie are redrawn as that item (HP3 items with their own art, other games' items
+with the Archipelago logo by tier). A location container now keeps one goodie for its item (checked when it's picked
+up) and removes the rest. See [ITEM_MODELS.md](ITEM_MODELS.md).
+
+### poc9a: Archipelago client connection (items in, checks out)
+
+The mod talks to the apworld's client over a local connection (127.0.0.1:42780), as HP2PC_AP does: `net.h` (its own
+thread, Winsock) and `ap.h` (protocol, the save, item delivery, check detection, taking vanilla rewards back). The
+item and location IDs come from `aptables.h`, generated from the apworld. Details: [CLIENT_SYNC.md](CLIENT_SYNC.md).
+Log lines start with `ap:`. Without a client running, the mod logs one "no client yet" line and plays as before.
+
+### poc8u builds: debug and release
+
+`build.sh` now makes two builds from the same source:
+- `build/HP3OpenCastle.asi`, **debug** (`OC_DEBUG=1`): the debug panel (Delete), the item test grid (backslash) and
+  noclip (F6). For development.
+- `build/release/HP3OpenCastle.asi`, **release** (`OC_DEBUG=0`): no key thread at all, so none of those can be
+  opened (the panel and noclip lookups don't run either). Everything else is identical.
+The log's first line names the build: `HP3 Open Castle poc8u (release) loaded`.
+
+MapTracker (title-bar position, `HP3_MapLog.txt`, the mark key) is a separate, read-only plugin: leaving
+`HP3MapTracker.asi` out of `system\plugins` removes it completely; Open Castle doesn't depend on it.
+
+### poc8u: challenge-chamber portcullises in the B maps follow the unlocks
+
+Each of `HP3_Ch1CarpeRetractumB`, `HP3_Ch2DraconiforsB` and `HP3_Ch3GlaciusB` ends in its own copy of InsideHub's
+challenge chamber, with three portcullises in front of loading triggers straight into the three challenges. In
+`GState090` vanilla hides most of them (`ExcludeFromGameStates`: hidden, collision off), so the passages stood open
+whatever was unlocked, and Glacius B's own Glacius portcullis stood shut. The travel hook already refused a locked
+challenge (the trip went to InsideHub), but the doors didn't show it.
+
+New `chamber.h`. On those maps, every 2 s:
+- each chamber portcullis is shown with collision on, and kept raised while its challenge is unlocked and lowered
+  while it's locked (the same `TriggerToggle.Trigger` as the InsideHub gates; 3 s debounce);
+- the door's `ChangeLevelTrigger` has collision off while locked, and back on once unlocked.
+
+| Map | Carpe | Draconifors | Glacius | Up key |
+| --- | --- | --- | --- | --- |
+| Carpe B | `KWMover31` / `ChangeLevelTrigger9` | `KWMover33` / `ChangeLevelTrigger10` | `KWMover32` / `ChangeLevelTrigger11` | key 1 (all three) |
+| Draconifors B | `KWMover31` / `ChangeLevelTrigger0` | `KWMover32` / `ChangeLevelTrigger2` | `KWMover33` / `ChangeLevelTrigger3` | key 1 (all three) |
+| Glacius B | `KWMover31` / `ChangeLevelTrigger3` | `KWMover32` / `ChangeLevelTrigger4` | `KWMover33` / `ChangeLevelTrigger0` | key 0 (Carpe, Draconifors), key 1 (Glacius) |
+
+`FilterForCurrentGameState` runs only at level start (`KWGame.SetGameState` doesn't re-filter), so the mid-level
+`GState075` / `GState065` cutscenes don't hide them again. Log lines: `chamber <key>: ...`.
+
+### poc8t: Carpe doxy-fight softlock (cutscene pairing checks the game state)
+
+- Reported: in `HP3_Ch1CarpeRetractum`, after the two doxy waves the fight's end never came. Tag `cutpoxdoor` has the
+  first-visit `CutSceneTrigger41` → `6045Ch1BeatPixiesQC` (Group `…,GState000`) and the replay `CutSceneTrigger7` →
+  `6045Ch1BeatPixiesQC_02` (excluded from GState000). In GState090 the first-visit one is filtered out by the game
+  (`Actor.FilterForCurrentGameState`: hidden, collision off, `bInCurrentGameState` false, and `CutSceneTrigger` won't
+  fire), but it still reads as active, so `dedupe_cutscenes` switched off the replay, the only one that could fire. This
+  has been so since poc8e/f; the other three Ch1 pairs and the Glacius pair have their first-visit trigger in every
+  state, so they were right.
+- Fix: a pair is only touched when the first-visit trigger has `bInCurrentGameState`; otherwise the replay is left
+  alone and the log says `… isn't in this game state; … plays`.
+- To get out of the softlock: install poc8t and reload the save (the Event change is made in memory on each load, so
+  the save holds nothing of it), or fly past with noclip.

@@ -83,7 +83,11 @@ static u32 prop_object(const wchar *cls, const wchar *prop) {
 static int prop_offset(const wchar *cls, const wchar *prop) {
     struct findprop f; f.prop = name_index(prop); f.cls = name_index(cls); f.off = -1; f.obj = 0;
     if (f.prop >= 0 && f.cls >= 0) for_each_object(v_findprop, &f);
-    return f.off;
+    /* every class property lies past the UObject header (0x28 bytes), so a smaller value is a failed read (the
+       objects array can change under us while a level loads; rd32 returns 0 on failure). Report "not found" so the
+       caller tries again: poc8q took KWPawn.PreviousLevelName = 0 once, and RETURN TO HUB then wrote an FString over
+       the pawn's vtable (GPF in TravelPostAccept). */
+    return f.off >= 0x28 ? f.off : -1;
 }
 /* member of a struct (the outer is a Struct, not a Class); struct names here are unique, so no class check */
 static int v_findmember(u32 o, int name, u32 cls, void *c) {
