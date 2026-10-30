@@ -5,6 +5,10 @@ It boots to the main menu, starts a new game and plays normally, windowed or ful
 
 ## Quick setup
 
+First get the whole repository, not just the script: `setup.bat` runs the repository's own tools and builds the
+mod from its source. Either clone it (`git clone https://github.com/FlapjackRetro/HP3PC_AP.git`) or download it
+from GitHub (**Code** > **Download ZIP**) and unzip it. Run `setup.bat` from that folder.
+
 After step 1, `setup.bat` (in the repository root) does steps 2 to 4 for you: it downloads the HP3-UHDE core
 files and applies their ini patches, patches the framerate, builds `HP3OpenCastle.asi` and `HP3AP.utx`, and
 installs them. It asks for administrator rights (the game is under `Program Files`). Running it again is safe;
