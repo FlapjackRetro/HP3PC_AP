@@ -22,6 +22,8 @@ message, ASCII; IDs on the wire are item / location ids minus the world's base i
                   MSG <text>              shown in the mod's log
                   LOOKS <loc>:<code>,...  what each location holds, so the pickup can show it (LOOK_CODES below;
                                           the mod's table is mod/OpenCastle/aplook.h)
+                  SHOPTEXT <loc>|<name>|<description>   the item a shop / vendor location sells, for the sale
+                                          dialog (non-ASCII, '%' and '|' as %XXXX, UTF-16 hex)
 
 The save keeps how far it has applied the received list (docs/CLIENT_SYNC.md), so the client always sends the whole
 list and the mod picks up from where the save is.
@@ -40,6 +42,7 @@ from CommonClient import ClientCommandProcessor, CommonContext, get_base_parser,
 from NetUtils import ClientStatus
 
 from . import items
+from .location_table import LOCATIONS
 
 GAME_PORT = 42780
 
@@ -48,6 +51,7 @@ SPELL_LOOK = {"Alohomora": 1, "Carpe Retractum": 2, "Depulso": 3, "Draconifors":
               "Glacius": 6, "Lapifors": 7, "Lumos": 8, "Rictusempra": 9, "Spongify": 10}
 UNLOCK_LOOK = {"Hippogriff Challenge Unlock": 21, "Doxy Challenge Unlock": 22, "Monster Book Challenge Unlock": 23}
 LOOK_KEY, LOOK_SCROLL, LOOK_MAP, LOOK_PASTY, LOOK_CAKE, LOOK_FROG, LOOK_CARD = 20, 30, 32, 33, 34, 35, 36
+LOOK_PASSWORD0 = 50   # + password number (1-8)
 LOOK_CARD0 = 100   # + card index: that wizard card (mod/OpenCastle/wc_textures.h)
 LOOK_AP_PROGRESSION, LOOK_AP_USEFUL, LOOK_AP_FILLER = 40, 41, 42
 ID_TO_NAME = {code: name for name, code in items.ITEM_NAME_TO_ID.items()}
@@ -62,6 +66,8 @@ def hp3_look(item_id: int) -> int:
         return UNLOCK_LOOK[name]
     if name in items.LEVEL_UNLOCKS:
         return LOOK_KEY
+    if name.startswith("Portrait Password "):   # 51-58: the scroll, and that password's portrait in the shop dialog
+        return LOOK_PASSWORD0 + int(name.rsplit(" ", 1)[1])
     if name in items.PASSWORDS:
         return LOOK_SCROLL
     if name == "Marauder's Map":
@@ -82,6 +88,7 @@ def other_look(flags: int) -> int:
         return LOOK_AP_USEFUL
     return LOOK_AP_FILLER
 BASE = items.BASE_ID
+SHOP_LOCATIONS = {loc.offset for loc in LOCATIONS if loc.kind in ("shop", "vendor")}   # Fred & George, student vendors
 CARD_IDS = {BASE + data.offset for data in items.CARDS.values()}
 CHUNK = 100
 
@@ -111,6 +118,7 @@ class HP3Context(CommonContext):
         self.goal_sent = False
         self.door_announced = False
         self.looks: dict[int, int] = {}   # location offset -> look code
+        self.shop_text: dict[int, tuple[str, str]] = {}   # shop location offset -> (item name, description)
 
     # ---- server side ---------------------------------------------------------------------------------------------
     async def server_auth(self, password_requested: bool = False) -> None:
@@ -125,6 +133,7 @@ class HP3Context(CommonContext):
             self.goal_sent = False
             self.door_announced = False
             self.looks = {}
+            self.shop_text = {}
             asyncio.create_task(self.sync_game())
             locs = sorted(set(args.get("missing_locations", [])) | set(args.get("checked_locations", [])))
             if locs:   # what's where, for the looks (no hints are created)
@@ -134,6 +143,10 @@ class HP3Context(CommonContext):
                 game = self.slot_info[item.player].game if item.player in self.slot_info else ""
                 self.looks[item.location - BASE] = hp3_look(item.item) if game == self.game else other_look(item.flags)
             self.send_looks()
+            for item in args["locations"]:
+                if item.location - BASE in SHOP_LOCATIONS:
+                    self.shop_text[item.location - BASE] = self.describe(item)
+            self.send_shop_text()
         elif cmd == "ReceivedItems":
             start = args["index"]
             if start == 0:
@@ -168,6 +181,23 @@ class HP3Context(CommonContext):
         if self.game_writer:
             self.game_writer.write((line + "\n").encode("ascii", "replace"))
 
+    def describe(self, item) -> tuple[str, str]:
+        """Name and one-line description of a scouted item, for the shop dialog."""
+        name = self.item_names.lookup_in_slot(item.item, item.player)
+        if item.player == self.slot:
+            return name, "One of your own items."
+        player = self.player_names.get(item.player, f"Player {item.player}")
+        game = self.slot_info[item.player].game if item.player in self.slot_info else "another game"
+        kind = "A progression item" if item.flags & 0b001 else "A useful item" if item.flags & 0b010 else "An item"
+        return name, f"{kind} for {player} ({game})."
+
+    def send_shop_text(self) -> None:
+        def esc(s: str) -> str:
+            return "".join(c if 32 <= ord(c) < 127 and c not in "%|" else
+                           "".join(f"%{u:04X}" for u in memoryview(c.encode("utf-16-le")).cast("H")) for c in s)
+        for loc, (name, desc) in sorted(self.shop_text.items()):
+            self.to_game(f"SHOPTEXT {loc}|{esc(name)}|{esc(desc)}")
+
     def send_looks(self) -> None:
         pairs = sorted(self.looks.items())
         for k in range(0, len(pairs), CHUNK):
@@ -192,6 +222,7 @@ class HP3Context(CommonContext):
         self.to_game(f"SYNCED {len(ids)}")
         self.send_checked(self.checked_locations)
         self.send_looks()
+        self.send_shop_text()
         if self.game_writer:
             await self.game_writer.drain()
 

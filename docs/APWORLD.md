@@ -117,7 +117,14 @@ IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–115, passwords 
 | `secretsanity` | on / off | default on. Off: the 34 secret areas aren't locations (the mod ignores them) |
 | `candysanity` | on / off | default on. Off: the 201 placed pumpkin pasties and cauldron cakes aren't locations; they stay vanilla in the game, and each is an event location ("<name> (vanilla)") holding its pasty or cake so shop logic counts it. Chest and knight currency stays randomized |
 
-Slot data: all eight options. The client passes the last two to the mod in `ROOM`.
+| `shopsanity` | on / off | default on. Off: each Fred & George / student-vendor location sells its vanilla card or password (locked there); the mod drives the shops the same way either way |
+
+Hard mode's opening: with spells hidden, the checks open at the start can be few (one, with secretsanity, candysanity
+and shopsanity all off). The player then starts with as few of the five vanilla starting spells as it takes to open
+enough checks (the one that opens the most first; Depulso, then Alohomora), and the rest go to those checks
+(`hard_mode_opening` in world.py).
+
+Slot data: all nine options. The client passes the last two to the mod in `ROOM`.
 
 ## Location naming (draft, 2026-10-27)
 

@@ -101,3 +101,19 @@ class TestNoCandyHardCheap(WorldTestBase):
 class TestNoSecretsHard(WorldTestBase):
     game = items.GAME_NAME
     options = {"secretsanity": False, "spell_mode": "hard"}
+
+
+class TestNoShops(WorldTestBase):
+    game = items.GAME_NAME
+    options = {"shopsanity": False}
+
+    def test_vanilla_shop_items(self):
+        self.assertEqual(self.multiworld.get_location("F&G Shop: Streeler Card", self.player).item.name, "Streeler Card")
+        self.assertEqual(self.multiworld.get_location("F&G Shop: Portrait Password 3", self.player).item.name,
+                         "Portrait Password 3")
+        self.assertEqual(self.multiworld.get_location("Vendor: Card Purchase 20", self.player).item.name, "Zou Yen Card")
+
+
+class TestNoShopsHard(WorldTestBase):
+    game = items.GAME_NAME
+    options = {"shopsanity": False, "spell_mode": "hard", "split_challenge_spells": True}

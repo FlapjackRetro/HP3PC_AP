@@ -71,7 +71,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc9i"
+#define OC_VERSION L"poc9j"
 /* OC_DEBUG 1 (default, build/HP3OpenCastle.asi): the development build, with the debug panel (Delete), the item test
    grid (backslash) and noclip (F6). OC_DEBUG 0 (build/release/HP3OpenCastle.asi, build.sh): the release build, with
    no key thread at all, so none of those can be opened; everything else is the same code. */
@@ -259,6 +259,8 @@ static volatile u32 gBlockSpawn, gBlockKill; static void blockers_apply(void); s
 static volatile u32 gTrigFire; static volatile int gSilFire;
 static volatile u32 gChShow, gChFire, gChTrigSet; static void chamber_apply(void);   /* chamber.h */
 static void ap_tick(void); static void ap_event(u32 self, int fname, int linkedBefore);   /* ap.h */
+static int N_BeginState, N_Timer, N_VendorOnDraw; static int apshop_begin_state(void *self, void *func, void *parms, void *result);
+static int apshop_timer(u32 o); static void apshop_dialog(u32 page);   /* apshop.h */
 static volatile int gApCheap = -1;   /* ap.h: the room's shop_prices (-1: no room, the ini decides) */
 /* voice lines switched off for good (touch PopupTriggers, collision off on each map): the exam doors' "that's the
    door to the ... spell challenge" comments */
@@ -320,6 +322,10 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
     }
     if (fname == N_TravelPostAccept && N_TravelPostAccept >= 0 && gClsHero
         && is_a_cls(*(u32 *)((u8 *)self + 0x24), gClsHero)) { travel_post_accept(self, func, parms, result); return; }
+    /* shopsanity (apshop.h): sales start / end, stands that refill themselves, the sale dialog */
+    if (fname == N_BeginState && N_BeginState >= 0 && !gInTravel && apshop_begin_state(self, func, parms, result)) return;
+    if (fname == N_Timer && N_Timer >= 0 && !gInTravel && apshop_timer((u32)self)) return;
+    if (fname == N_VendorOnDraw && N_VendorOnDraw >= 0 && !gInTravel) apshop_dialog((u32)self);
     gPEOrig(self, func, parms, result);
 }
 
@@ -648,6 +654,7 @@ static void gates_poll(u32 level, const wchar *map) {
 #include "net.h"
 #include "ap.h"
 #include "aplook.h"
+#include "apshop.h"
 
 static u32 WINAPI worker(void *arg) {
     HANDLE core; static wchar buf[400], id[32], lastMap[64]; static struct players pl;

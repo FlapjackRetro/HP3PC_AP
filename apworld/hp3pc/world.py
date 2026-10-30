@@ -48,6 +48,7 @@ class HP3PCWorld(World):
 
     # ---- generation ------------------------------------------------------------------------------------------------
     def generate_early(self) -> None:
+        self.starting_spells: list[str] = []   # hard mode: spells given to open the start (hard_mode_opening)
         # the locations in play: secretsanity / candysanity off leave out the secret areas / the placed pasties and
         # cakes (those stay vanilla in the game, and with candysanity off logic counts them as events)
         self.vanilla_candy: list[LocationData] = []
@@ -61,12 +62,6 @@ class HP3PCWorld(World):
             self.active_locations.append(loc)
         for name in items.starting_items(self):
             self.multiworld.push_precollected(self.create_item(name))
-        if self.options.spell_mode == self.options.spell_mode.option_hard:
-            # with no spells only about ten checks are open at the start (four on the grounds, the jellybean-priced
-            # shop and vendor cards). The five vanilla starting spells go there, in the player's own world: with
-            # fewer, fill failed now and then (a solo seed's few early spots ran out before the spells were placed)
-            for name in items.VANILLA_STARTING_SPELLS:
-                self.multiworld.local_early_items[self.player][name] = 1
 
     def create_regions(self) -> None:
         regs = hp3_regions.create_regions(self)
@@ -83,12 +78,23 @@ class HP3PCWorld(World):
         goal.place_locked_item(self.create_item(items.VICTORY_EVENT))
         regs["Grounds"].locations.append(goal)
 
+    def vanilla_shop_items(self) -> dict[str, str]:
+        """shopsanity off: location name -> the vanilla item locked there (its card, or Portrait Password n)."""
+        if self.options.shopsanity:
+            return {}
+        return {loc.name: loc.card or f"Portrait Password {int(loc.actor.split('_')[1]) + 1}"
+                for loc in self.active_locations if loc.kind in ("shop", "vendor")}
+
     def create_items(self) -> None:
         pool = items.core_pool(self)
+        locked = self.vanilla_shop_items()
+        for loc_name, item_name in locked.items():
+            self.get_location(loc_name).place_locked_item(self.create_item(item_name))
+            pool.remove(item_name)
         # every location's vanilla currency (cards are in the core pool already); frogs for the rest
         currency = [items.bundle_name(loc.pasties, loc.cakes) for loc in self.active_locations
                     if not loc.card and (loc.pasties or loc.cakes)]
-        free = len(self.active_locations)
+        free = len(self.active_locations) - len(locked)
         if len(pool) > free:
             raise RuntimeError(f"{self.game}: {len(pool)} core items for {free} locations")
         # if the core items push some currency out, drop the smallest bundles first (the shops need the big ones)
@@ -127,6 +133,38 @@ class HP3PCWorld(World):
             self.get_location(loc.name + VANILLA_CANDY_SUFFIX).access_rule = rules.location_rule(self, loc)
         self.get_location(GOAL_LOCATION).access_rule = rules.goal_rule(self)
         self.multiworld.completion_condition[self.player] = lambda state: state.has(items.VICTORY_EVENT, self.player)
+        if self.options.spell_mode == self.options.spell_mode.option_hard:
+            self.hard_mode_opening()
+
+    def hard_mode_opening(self) -> None:
+        """Hard mode: the vanilla starting spells go to the checks open at the start, in the player's own world (with
+        fewer, fill failed now and then: a solo seed's few early spots ran out before the spells were placed). With
+        the shops (bean-priced ones) or the secret areas off, the opening can be a single check, so the player starts
+        with as few of those spells as it takes to open enough checks (the one that opens the most first)."""
+        def open_spots() -> int:
+            state = CollectionState(self.multiworld)
+            return sum(1 for loc in self.get_locations() if loc.address is not None and not loc.item and loc.can_reach(state))
+
+        spells = list(items.VANILLA_STARTING_SPELLS)
+        free = open_spots()
+        while spells and free < len(spells) + 3:
+            best, best_free = None, -1
+            for name in spells:
+                item = self.create_item(name)
+                self.multiworld.precollected_items[self.player].append(item)   # CollectionState() collects these
+                n = open_spots()
+                self.multiworld.precollected_items[self.player].remove(item)
+                if n > best_free:
+                    best, best_free = name, n
+            spells.remove(best)
+            self.multiworld.push_precollected(self.create_item(best))
+            pooled = next(i for i in self.multiworld.itempool if i.player == self.player and i.name == best)
+            self.multiworld.itempool.remove(pooled)
+            self.multiworld.itempool.append(self.create_item(items.FILLER_ITEM_NAME))
+            self.starting_spells.append(best)
+            free = best_free
+        for name in spells[:free]:
+            self.multiworld.local_early_items[self.player][name] = 1
 
     # ---- items and currency on the state -----------------------------------------------------------------------------
     def create_item(self, name: str, classification: "items.IC | None" = None) -> items.HP3PCItem:
@@ -156,6 +194,7 @@ class HP3PCWorld(World):
 
     def fill_slot_data(self) -> Mapping[str, Any]:
         data = dict(self.options.as_dict("goal", "cards_required", "spell_mode", "split_challenge_spells",
-                                         "shop_prices", "shortcut_passwords", "secretsanity", "candysanity"))
-        data["world_version"] = "0.3.3"
+                                         "shop_prices", "shortcut_passwords", "secretsanity", "candysanity",
+                                         "shopsanity"))
+        data["world_version"] = "0.3.4"
         return data

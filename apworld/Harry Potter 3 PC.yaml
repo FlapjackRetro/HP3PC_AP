@@ -34,7 +34,7 @@ game: Harry Potter 3 PC
 requires:
   version: 0.6.8 # Version of Archipelago required for this yaml to work as expected.
   game:
-    Harry Potter 3 PC: 0.3.3 # Version of the world required for this yaml to work as expected.
+    Harry Potter 3 PC: 0.3.4 # Version of the world required for this yaml to work as expected.
 
 Harry Potter 3 PC:
   ################
@@ -85,8 +85,9 @@ Harry Potter 3 PC:
   spell_mode:
     # vanilla: start with Rictusempra, Alohomora, Lumos, Depulso and Spongify; Expecto Patronum and the challenge
     # spells are in the pool.
-    # hard: start with no spells. Only about ten checks are open at the start (four on the grounds and the cards
-    # bought with jellybeans); in your own world they hold the five vanilla starting spells.
+    # hard: start with no spells. Only a few checks are open at the start (on the grounds, and the cards bought with
+    # jellybeans); in your own world they hold the five vanilla starting spells. If too few are open (shopsanity or
+    # secretsanity off), you start with one or two of those spells instead.
     vanilla: 50
     hard: 0
 
@@ -120,6 +121,13 @@ Harry Potter 3 PC:
     # an item in the pool.
     # Off: they stay vanilla: picking one up gives you the pasty or cake, and logic counts them for the shops.
     # Pasties and cakes in chests and knights are checks either way.
+    'false': 0
+    'true': 50
+
+  shopsanity:
+    # On: Fred & George's 6 wizard cards and 8 portrait passwords, and the 20 student-vendor card purchases, sell
+    # items from the multiworld (the stand, the thrown card and the sale dialog show the item).
+    # Off: each of them sells its vanilla card or password (still a location, with that item locked in).
     'false': 0
     'true': 50
 

@@ -12,6 +12,7 @@
  *                   GOAL                    the player walked through the Final Day door (sent again on every
  *                                           connection while the save has OC_AP_Goal)
  *   client -> mod   ROOM <seed>|<slot>|<split 0/1>|<cheap 0/1>|<cards required>|<secretsanity 0/1>|<candysanity 0/1>
+ *                   SHOPTEXT <loc>|<item name>|<description>   for the shop dialog (apshop.h)
  *                   (the last two are 1 when missing: older clients)
  *                   ITEMS <first index> <item>,<item>...   the full received list, in chunks
  *                   SYNCED <count>          end of the full list
@@ -40,7 +41,7 @@
  *   M                       the doxy round's reward card is picked up (WinCard1-5 -> the five cards' actors)
  * The vanilla reward is taken back: a container's pasty / cake / card goodies are destroyed as they appear; a picked
  * pasty or cake is subtracted again (KWPawn.SubtractFromInventoryCollection) and a picked card goes back to its
- * status before (unless it was received). Shops, vendors and the goal: not yet (the client reports the goal).
+ * status before (unless it was received). Shops and vendors: apshop.h.
  */
 #include "aptables.h"
 
@@ -64,6 +65,8 @@ static int gSaveGoal; static volatile int gApGoalNow, gApDoorOpen;   /* goal rea
 /* worker -> game thread: secrets found */
 static volatile unsigned short gSecretQ[64]; static volatile int gSecretQN;
 
+static void apshop_text(const char *p); static int apshop_vendor_spawn(u32 obj); static void apshop_tick(void);
+static void apshop_worker(u32 level, int settle);   /* apshop.h */
 static int ap_loc_index(int off) { int i; for (i = 0; i < AP_NLOCS; i++) if (AP_LOCS[i].off == off) return i; return -1; }
 static const struct apitem *ap_item(int off) { int i; for (i = 0; i < AP_NITEMS; i++) if (AP_ITEMS[i].off == off) return &AP_ITEMS[i]; return 0; }
 static int a_num(const char **p) { int v = 0, neg = 0; if (**p == '-') { neg = 1; (*p)++; } while (**p >= '0' && **p <= '9') v = v * 10 + (*(*p)++ - '0'); return neg ? -v : v; }
@@ -115,6 +118,8 @@ static void ap_poll(void) {
         } else if (a_starts(line, "CHECKED ")) {
             p = line + 8;
             while (*p) { int i = ap_loc_index(a_num(&p)); if (i >= 0) gSrvChecked[i] = 1; if (*p == ',') p++; else break; }
+        } else if (a_starts(line, "SHOPTEXT ")) {
+            apshop_text(line + 9);
         } else if (a_starts(line, "LOOKS ")) {   /* <loc>:<code>,... */
             p = line + 6;
             int got = 0;
@@ -390,6 +395,7 @@ static void ap_look_queue(u32 obj, int li); static void ap_look_forget(u32 obj);
 static void ap_pickup_spawned(u32 obj, int linkedBefore) {
     wchar nm[64]; const wchar *map = (const wchar *)gCurMap; int li, i;
     if (!map || P(obj + offLevel) != cur_level()) return;
+    if (apshop_vendor_spawn(obj)) return;   /* the card a student vendor throws after a sale */
     if (gNPu > linkedBefore && gPu[gNPu - 1].obj == obj) {   /* a container's goodie */
         struct lo_sp *s = &gSp[gPu[gNPu - 1].sp];
         if (!name_of(s->name, nm, 64) || (li = ap_loc_by_actor(map, nm, 'C')) < 0 || !ap_is_goodie(obj)) return;
@@ -489,6 +495,7 @@ static void ap_tick(void) {
     if (gApUndoP || gApUndoC) { ap_currency(gApUndoP, gApUndoC, 1); gApUndoP = gApUndoC = 0; }
     if (gApUndoCard) { ap_card_undo(gApUndoCard); gApUndoCard = 0; }
     ap_game();
+    apshop_tick();
     ap_looks_tick();
     ap_final_door();
     if (gApGoalNow) { gApGoalNow = 0; ap_goal(); }
@@ -504,6 +511,7 @@ static void ap_worker(u32 level, const wchar *map, int settle) {
     ap_poll();
     if (settle == 12 || (settle > 12 && level != gApMapLevel)) { ap_map_scan(level, map); gApNPu = 0; gApJob = 1; }
     if (settle > 12) ap_secrets_poll();
+    apshop_worker(level, settle);
     /* past the open Final Day door, where vanilla's Final Day cutscene triggers stand: the goal, then HP3_Final */
     if (settle > 12 && gApDoorOpen && weq(map, L"HP3_GroundsHub") && !gPending) {
         static int armed; u32 pc = gPlayer ? rd32(gPlayer + offPlayerActor) : 0, pawn = pc ? rd32(pc + offPawn) : 0; float at[3];

@@ -9,7 +9,8 @@
  * same fraction.
  *   placed pasties / cakes / cards, doxy reward cards   once the map has settled (ap.h's map scan)
  *   event spawns, a container's first goodie            as they appear
- * Shops, vendors and secrets have no pickup to change.
+ *   Fred & George's stands, the card a student vendor throws   apshop.h (ap_look_set)
+ * Secrets have no pickup to change.
  */
 #include "wc_textures.h"
 /* codes 100 + n: wizard card n (WizardCardManager.Cards index), the card mesh with that card's face (wc_textures.h) */
@@ -27,7 +28,15 @@ static const struct lookdef LOOKDEFS[] = {
     { 21, 'A', L"HPCharacters.Buckbeak", 0.30f, 0 },               /* Hippogriff Challenge Unlock */
     { 22, 'A', L"HPCharacters.Pixie", 0.65f, 1 },                  /* Doxy Challenge Unlock */
     { 23, 'A', L"HPCharacters.MBOM", 0.8f, 2 },                    /* Monster Book Challenge Unlock */
-    { 30, 'M', L"HP3_InteriorAccents_SM.books.BlueBandScroll_SM", 1.0f, 0 },   /* portrait / shortcut passwords */
+    { 30, 'M', L"HP3_InteriorAccents_SM.books.BlueBandScroll_SM", 1.0f, 0 },   /* shortcut passwords */
+    { 51, 'M', L"HP3_InteriorAccents_SM.books.BlueBandScroll_SM", 1.0f, 0 },   /* portrait passwords 1-8 (51-58: the */
+    { 52, 'M', L"HP3_InteriorAccents_SM.books.BlueBandScroll_SM", 1.0f, 0 },   /* same scroll; the shop dialog shows */
+    { 53, 'M', L"HP3_InteriorAccents_SM.books.BlueBandScroll_SM", 1.0f, 0 },   /* each one's portrait, apshop.h) */
+    { 54, 'M', L"HP3_InteriorAccents_SM.books.BlueBandScroll_SM", 1.0f, 0 },
+    { 55, 'M', L"HP3_InteriorAccents_SM.books.BlueBandScroll_SM", 1.0f, 0 },
+    { 56, 'M', L"HP3_InteriorAccents_SM.books.BlueBandScroll_SM", 1.0f, 0 },
+    { 57, 'M', L"HP3_InteriorAccents_SM.books.BlueBandScroll_SM", 1.0f, 0 },
+    { 58, 'M', L"HP3_InteriorAccents_SM.books.BlueBandScroll_SM", 1.0f, 0 },
     { 32, 'K', L"HProps.MarauderMap", 1.0f, 0 },
     { 33, 'M', L"HP3_GamePlay_sm.Spells_Objects.PumpkinPasty_SM", 2.0f, 0 },
     { 34, 'M', L"HP3_GamePlay_sm.Spells_Objects.CauldronCake_SM", 2.5f, 0 },
@@ -41,7 +50,7 @@ static const struct lookdef LOOKDEFS[] = {
 static u32 gLookObj[NLOOKDEFS]; static unsigned char gLookTried[NLOOKDEFS];
 
 #define LOOK_MAX 192
-struct lookact { u32 obj; short li; unsigned char code, done; float base; };
+struct lookact { u32 obj; short li; unsigned char code, done, pu; float base, mul; };   /* pu: a KWPickup (grows in) */
 static struct lookact gLA[LOOK_MAX]; static int gNLA; static u32 gLALevel; static int gLAGen = -1, gLAScanned;
 static int offPUVis = -1, offSkins = -1;
 typedef int (__thiscall *addzeroed_fn)(void *array, int elemsize, int count);   /* Core.dll FArray::AddZeroed(ElementSize, Count) */
@@ -52,7 +61,20 @@ static void ap_look_queue(u32 obj, int li) {   /* game thread */
     if (cur_level() != gLALevel) { gNLA = 0; gLALevel = cur_level(); gLAScanned = 0; }
     for (i = 0; i < gNLA; i++) if (gLA[i].obj == obj) return;
     if (gNLA >= LOOK_MAX) return;
-    gLA[gNLA].obj = obj; gLA[gNLA].li = (short)li; gLA[gNLA].code = 0; gLA[gNLA].done = 0; gLA[gNLA].base = 0; gNLA++;
+    gLA[gNLA].obj = obj; gLA[gNLA].li = (short)li; gLA[gNLA].code = 0; gLA[gNLA].done = 0; gLA[gNLA].base = 0;
+    gLA[gNLA].pu = 1; gLA[gNLA].mul = 1.0f; gNLA++;
+}
+/* show `obj` as location li's item, or switch it to another location (apshop.h: stands, a vendor's thrown card) */
+static void ap_look_set(u32 obj, int li, float mul, int pickup) {   /* game thread */
+    int i;
+    if (cur_level() != gLALevel) { gNLA = 0; gLALevel = cur_level(); gLAScanned = 0; }
+    for (i = 0; i < gNLA; i++) if (gLA[i].obj == obj) {
+        if (gLA[i].li != li) { gLA[i].li = (short)li; gLA[i].done = 0; }
+        gLA[i].mul = mul; gLA[i].pu = (unsigned char)pickup;
+        return;
+    }
+    ap_look_queue(obj, li);
+    for (i = 0; i < gNLA; i++) if (gLA[i].obj == obj) { gLA[i].mul = mul; gLA[i].pu = (unsigned char)pickup; }
 }
 static void ap_look_forget(u32 obj) { int i; for (i = 0; i < gNLA; i++) if (gLA[i].obj == obj) gLA[i].obj = 0; }
 
@@ -170,9 +192,9 @@ static void ap_looks_tick(void) {
             }
         }
         if (e->base > 0) {   /* keep the grow-in, at our scale */
-            int vis = offPUVis > 0 ? (int)P(e->obj + offPUVis) : 5;
+            int vis = e->pu && offPUVis > 0 ? (int)P(e->obj + offPUVis) : 5;
             if (vis < 1) vis = 1; if (vis > 5) vis = 5;
-            *(float *)(e->obj + offDrawScale) = e->base * (float)vis / 5.0f;
+            *(float *)(e->obj + offDrawScale) = e->base * e->mul * (float)vis / 5.0f;
         }
     }
 }
