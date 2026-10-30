@@ -51,9 +51,11 @@ static void ap_look_queue(u32 obj, int li) {   /* game thread */
 }
 static void ap_look_forget(u32 obj) { int i; for (i = 0; i < gNLA; i++) if (gLA[i].obj == obj) gLA[i].obj = 0; }
 
-static int look_ready(void) {   /* the lookups the grid also uses (aptest.h), done once */
-    static int state;
-    if (state) return state > 0;
+static int look_ready(void) {   /* the lookups the grid also uses (aptest.h); retried every 2 s until they're all in */
+    static int state, tries; static u32 last; static wchar b[300];
+    if (state > 0) return 1;
+    if (last && GetTickCount() - last < 2000) return 0;
+    last = GetTickCount();
     if (!gLoadObject) { HANDLE core = GetModuleHandleW(L"Core.dll");
         gLoadObject = core ? (loadobj_fn)GetProcAddress(core, "?StaticLoadObject@UObject@@SAPAV1@PAVUClass@@PAV1@PBG2KPAVUPackageMap@@@Z") : 0; }
     if (!gPlayAnim) { HANDLE eng = GetModuleHandleW(L"Engine.dll");
@@ -68,14 +70,23 @@ static int look_ready(void) {   /* the lookups the grid also uses (aptest.h), do
     if (!gClsTexture) gClsTexture = find_class(L"Texture");
     if (!gClsStaticMesh) gClsStaticMesh = find_class(L"StaticMesh");
     if (!gClsMesh) gClsMesh = find_class(L"Mesh");
-    if (offStaticMesh < 0) offStaticMesh = prop_offset(L"Actor", L"StaticMesh");
-    if (offMesh < 0) offMesh = prop_offset(L"Actor", L"Mesh");
-    if (offDrawScale <= 0) { offDrawScale = prop_offset(L"Actor", L"DrawScale"); offTexture = prop_offset(L"Actor", L"Texture"); offStyle2 = prop_offset(L"Actor", L"Style"); }
-    if (offUSize < 0) offUSize = prop_offset(L"BitmapMaterial", L"USize");
-    if (offPUVis < 0) offPUVis = prop_offset(L"KWPickup", L"PickupVisibility");
+    if (offStaticMesh <= 0) offStaticMesh = prop_offset(L"Actor", L"StaticMesh");
+    if (offMesh <= 0) offMesh = prop_offset(L"Actor", L"Mesh");
+    if (offDrawScale <= 0) offDrawScale = prop_offset(L"Actor", L"DrawScale");
+    if (offTexture <= 0) offTexture = prop_offset(L"Actor", L"Texture");
+    if (offStyle2 <= 0) offStyle2 = prop_offset(L"Actor", L"Style");
+    if (offDrawType <= 0) offDrawType = prop_offset(L"Actor", L"DrawType");
+    if (offUSize <= 0) offUSize = prop_offset(L"BitmapMaterial", L"USize");
+    if (offPUVis <= 0) offPUVis = prop_offset(L"KWPickup", L"PickupVisibility");
     state = (gLoadObject && gClsTexture && gClsStaticMesh && gClsMesh && offStaticMesh > 0 && offMesh > 0 && offDrawScale > 0
-             && offTexture > 0 && offStyle2 > 0 && offDrawType > 0) ? 1 : -1;
-    log_line(state > 0 ? L"looks: ready" : L"looks: lookups failed; pickups keep their vanilla look");
+             && offTexture > 0 && offStyle2 > 0 && offDrawType > 0) ? 1 : 0;
+    if (state > 0) log_line(L"looks: ready");
+    else if (++tries == 15) {   /* 30 s on a settled map and still missing: say which */
+        wsprintfW(b, L"looks: still waiting (LoadObject %d, classes %d/%d/%d, staticmesh %d mesh %d drawscale %d texture %d style %d drawtype %d)",
+                  gLoadObject != 0, gClsTexture != 0, gClsStaticMesh != 0, gClsMesh != 0, offStaticMesh, offMesh, offDrawScale,
+                  offTexture, offStyle2, offDrawType);
+        log_line(b);
+    }
     return state > 0;
 }
 static int look_def(int code) { int i; for (i = 0; i < NLOOKDEFS; i++) if (LOOKDEFS[i].code == code) return i; return -1; }
