@@ -39,7 +39,8 @@
  *   C                       the container throws out its first goodie (leftovers.h links goodies to spawners)
  *   S                       SecretAreaMarker.bFound (worker poll)
  *   M                       the doxy round's reward card is picked up (WinCard1-5 -> the five cards' actors)
- * The vanilla reward is taken back: a container's pasty / cake / card goodies are destroyed as they appear; a picked
+ * A location's pickup gives nothing when touched (apshop.h, ap_touch: the vanilla Touch is replaced, so no inventory
+ * and no HUD counter); for a pickup taken some other way, the vanilla reward is taken back: a container's pasty / cake / card goodies are destroyed as they appear; a picked
  * pasty or cake is subtracted again (KWPawn.SubtractFromInventoryCollection) and a picked card goes back to its
  * status before (unless it was received). Shops and vendors: apshop.h.
  */
@@ -423,6 +424,9 @@ static void ap_pickup_spawned(u32 obj, int linkedBefore) {
 }
 /* Destroyed of a KWPickup: picked up? */
 static int gApUndoP, gApUndoC; static u32 gApUndoCard;
+/* pickups apshop.h's Touch took over: the vanilla reward was never given, so there is nothing to take back */
+static u32 gApTaken[16]; static int gApTakenN;
+static int ap_taken(u32 obj) { int i; for (i = 0; i < 16; i++) if (gApTaken[i] == obj) { gApTaken[i] = 0; return 1; } return 0; }
 static void ap_pickup_destroyed(u32 obj) {
     wchar nm[64]; const wchar *map = (const wchar *)gCurMap; int li = -1, i, what;
     ap_look_forget(obj);
@@ -440,6 +444,7 @@ static void ap_pickup_destroyed(u32 obj) {
     }
     if (li < 0 || ap_loc_off(li)) return;   /* not a location, or one this room leaves vanilla: keep the reward */
     ap_check(li);
+    if (ap_taken(obj)) return;              /* picked up through apshop.h's Touch: nothing was given */
     what = ap_is_goodie(obj);   /* take the vanilla reward back on the next tick */
     if (what == 1) gApUndoP++; else if (what == 2) gApUndoC++; else if (what == 3) gApUndoCard = P(obj + 0x24);
 }
