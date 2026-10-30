@@ -579,3 +579,44 @@ static const struct aploc AP_LOCS[] = {
     { 423, 'K', L"HP3_BeanBonus", L"WC_SalazarSlytherin0", L"bbWC_SalazarSlytherin0_PU", L"Bonus Room: Salazar Slytherin Card" },
 };
 #define AP_NLOCS (int)(sizeof AP_LOCS / sizeof AP_LOCS[0])
+
+/* shop locations: kind C Fred & George card, W portrait password (n = PortraitPasswords index), V student
+   vendor purchase n; cur = VendorItem.ECurrency (0 beans, 1 cakes, 2 pasties); vanilla price; vanilla card */
+struct apshop { unsigned short off; char kind; unsigned char n, cur; unsigned short cost; const wchar *card; };
+static const struct apshop AP_SHOP[] = {
+    { 89, 'C', 0, 2, 25, L"WC_GroganStump" },
+    { 90, 'C', 0, 0, 100, L"WC_GunhildaOfGorsemoor" },
+    { 91, 'C', 0, 0, 125, L"WC_HesperStarkey" },
+    { 92, 'C', 0, 2, 25, L"WC_MirabellaPlunkett" },
+    { 93, 'C', 0, 0, 150, L"WC_MountainTroll" },
+    { 94, 'W', 0, 1, 10, 0 },
+    { 95, 'W', 1, 1, 12, 0 },
+    { 96, 'W', 2, 1, 12, 0 },
+    { 97, 'W', 3, 1, 15, 0 },
+    { 98, 'W', 4, 1, 15, 0 },
+    { 99, 'W', 5, 1, 20, 0 },
+    { 100, 'W', 6, 1, 25, 0 },
+    { 101, 'W', 7, 1, 30, 0 },
+    { 102, 'C', 0, 0, 200, L"WC_Streeler" },
+    { 371, 'V', 1, 0, 25, L"WC_BeatrixBloxam" },
+    { 372, 'V', 10, 2, 60, L"WC_GlanmorePeakes" },
+    { 373, 'V', 11, 2, 10, L"WC_IgnatiaWildsmith" },
+    { 374, 'V', 12, 0, 200, L"WC_JocundaSykes" },
+    { 375, 'V', 13, 2, 50, L"WC_MorganLeFay" },
+    { 376, 'V', 14, 0, 50, L"WC_MungoBonham" },
+    { 377, 'V', 15, 0, 125, L"WC_NorvelTwonk" },
+    { 378, 'V', 16, 0, 225, L"WC_OswaldBeamish" },
+    { 379, 'V', 17, 2, 70, L"wc_ThaddeusThurkell" },
+    { 380, 'V', 18, 0, 75, L"WC_WendelintheWeird" },
+    { 381, 'V', 19, 2, 40, L"WC_WilfredElphick" },
+    { 382, 'V', 2, 0, 100, L"WC_CarlottaPinkstone" },
+    { 383, 'V', 20, 2, 20, L"WC_ZouYen" },
+    { 384, 'V', 3, 2, 30, L"WC_Cliodne" },
+    { 385, 'V', 4, 0, 100, L"WC_CrispinCronk" },
+    { 386, 'V', 5, 0, 175, L"WC_DorcasWellbeloved" },
+    { 387, 'V', 6, 0, 50, L"WC_DymphnaFurmage" },
+    { 388, 'V', 7, 0, 150, L"WC_EdgarStroulger" },
+    { 389, 'V', 8, 0, 125, L"WC_ElfridaClagg" },
+    { 390, 'V', 9, 2, 80, L"WC_EthelredTheEverReady" },
+};
+#define AP_NSHOP (int)(sizeof AP_SHOP / sizeof AP_SHOP[0])

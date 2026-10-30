@@ -94,4 +94,19 @@ with open(OUT, 'w', encoding='utf-8') as f:
     f.write('struct aploc { unsigned short off; char kind; const wchar *map, *actor, *key, *name; };\n')
     f.write('static const struct aploc AP_LOCS[] = {\n' + '\n'.join(lrows) + '\n};\n')
     f.write('#define AP_NLOCS (int)(sizeof AP_LOCS / sizeof AP_LOCS[0])\n')
+    # shops (apshop.h): each Fred & George / student vendor location's vanilla card (empty for passwords) and price
+    CUR = {'bean': 0, 'cake': 1, 'pasty': 2}   # VendorItem.ECurrency
+    srows = []
+    for loc in lt.LOCATIONS:
+        if loc.kind not in ('shop', 'vendor'):
+            continue
+        n = int(loc.actor.split('_')[1]) if loc.actor else 0   # password index (pp_<n>) / vendor purchase number
+        card = items.CARD_CLASS[loc.card] if loc.card else ''
+        srows.append(f'    {{ {loc.offset}, \'{"V" if loc.kind == "vendor" else ("W" if loc.actor else "C")}\', {n}, '
+                     f'{CUR[loc.price[0]]}, {loc.price[1]}, {w(card)} }},')
+    f.write('\n/* shop locations: kind C Fred & George card, W portrait password (n = PortraitPasswords index), V student\n'
+            '   vendor purchase n; cur = VendorItem.ECurrency (0 beans, 1 cakes, 2 pasties); vanilla price; vanilla card */\n')
+    f.write('struct apshop { unsigned short off; char kind; unsigned char n, cur; unsigned short cost; const wchar *card; };\n')
+    f.write('static const struct apshop AP_SHOP[] = {\n' + '\n'.join(srows) + '\n};\n')
+    f.write('#define AP_NSHOP (int)(sizeof AP_SHOP / sizeof AP_SHOP[0])\n')
 print(f'{len(rows)} items, {len(lrows)} locations -> {os.path.relpath(OUT, ROOT)}')

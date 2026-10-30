@@ -22,8 +22,9 @@ class CardsRequired(Range):
 class SpellMode(Choice):
     """vanilla: start with Rictusempra, Alohomora, Lumos, Depulso and Spongify; Expecto Patronum and the challenge
     spells are in the pool.
-    hard: start with no spells. Only about ten checks are open at the start (four on the grounds and the cards
-    bought with jellybeans); in your own world they hold the five vanilla starting spells."""
+    hard: start with no spells. Only a few checks are open at the start (on the grounds, and the cards bought with
+    jellybeans); in your own world they hold the five vanilla starting spells. If too few are open (shopsanity or
+    secretsanity off), you start with one or two of those spells instead."""
     display_name = "Spell Mode"
     option_vanilla = 0
     option_hard = 1
@@ -69,6 +70,13 @@ class Candysanity(DefaultOnToggle):
     display_name = "Candysanity"
 
 
+class Shopsanity(DefaultOnToggle):
+    """On: Fred & George's 6 wizard cards and 8 portrait passwords, and the 20 student-vendor card purchases, sell
+    items from the multiworld (the stand, the thrown card and the sale dialog show the item).
+    Off: each of them sells its vanilla card or password (still a location, with that item locked in)."""
+    display_name = "Shopsanity"
+
+
 @dataclass
 class HP3PCOptions(PerGameCommonOptions):
     goal: Goal
@@ -79,3 +87,4 @@ class HP3PCOptions(PerGameCommonOptions):
     shortcut_passwords: ShortcutPasswords
     secretsanity: Secretsanity
     candysanity: Candysanity
+    shopsanity: Shopsanity
