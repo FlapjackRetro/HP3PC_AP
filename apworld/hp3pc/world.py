@@ -12,6 +12,7 @@ from .location_table import LOCATIONS, LocationData
 
 BASE_LOCATION_ID = 33_000_000
 GOAL_LOCATION = "Final Day Door"
+VANILLA_CANDY_SUFFIX = " (vanilla)"   # candysanity off: the pickup's event location
 
 
 class HP3PCLocation(Location):
@@ -47,6 +48,17 @@ class HP3PCWorld(World):
 
     # ---- generation ------------------------------------------------------------------------------------------------
     def generate_early(self) -> None:
+        # the locations in play: secretsanity / candysanity off leave out the secret areas / the placed pasties and
+        # cakes (those stay vanilla in the game, and with candysanity off logic counts them as events)
+        self.vanilla_candy: list[LocationData] = []
+        self.active_locations: list[LocationData] = []
+        for loc in LOCATIONS:
+            if loc.kind == "secret" and not self.options.secretsanity:
+                continue
+            if loc.kind == "placed" and not self.options.candysanity:
+                self.vanilla_candy.append(loc)
+                continue
+            self.active_locations.append(loc)
         for name in items.starting_items(self):
             self.multiworld.push_precollected(self.create_item(name))
         if self.options.spell_mode == self.options.spell_mode.option_hard:
@@ -58,9 +70,15 @@ class HP3PCWorld(World):
 
     def create_regions(self) -> None:
         regs = hp3_regions.create_regions(self)
-        for loc in LOCATIONS:
+        for loc in self.active_locations:
             region = regs[loc.region]
             region.locations.append(HP3PCLocation(self.player, loc.name, self.location_name_to_id[loc.name], region))
+        for loc in self.vanilla_candy:   # the vanilla pasty / cake, as an event logic can count
+            region = regs[loc.region]
+            event = HP3PCLocation(self.player, loc.name + VANILLA_CANDY_SUFFIX, None, region)
+            event.place_locked_item(items.HP3PCItem(items.bundle_name(loc.pasties, loc.cakes),
+                                                    items.IC.progression_skip_balancing, None, self.player))
+            region.locations.append(event)
         goal = HP3PCLocation(self.player, GOAL_LOCATION, None, regs["Grounds"])
         goal.place_locked_item(self.create_item(items.VICTORY_EVENT))
         regs["Grounds"].locations.append(goal)
@@ -68,9 +86,9 @@ class HP3PCWorld(World):
     def create_items(self) -> None:
         pool = items.core_pool(self)
         # every location's vanilla currency (cards are in the core pool already); frogs for the rest
-        currency = [items.bundle_name(loc.pasties, loc.cakes) for loc in LOCATIONS
+        currency = [items.bundle_name(loc.pasties, loc.cakes) for loc in self.active_locations
                     if not loc.card and (loc.pasties or loc.cakes)]
-        free = len(LOCATIONS)
+        free = len(self.active_locations)
         if len(pool) > free:
             raise RuntimeError(f"{self.game}: {len(pool)} core items for {free} locations")
         # if the core items push some currency out, drop the smallest bundles first (the shops need the big ones)
@@ -81,9 +99,11 @@ class HP3PCWorld(World):
         # Only as much currency as the shops can need is progression (biggest bundles first); the rest is the same
         # item as filler. Logic counts progression bundles only, and fill has far fewer keys to place (with every
         # bundle as progression, hard mode failed to fill now and then).
-        need = rules.currency_thresholds(self, LOCATIONS)
+        need = rules.currency_thresholds(self, self.active_locations)
         top = [max(v[k] for v in need.values()) for k in (0, 1)]
-        have, progression, filler = [0, 0], [], []
+        # the vanilla pasties and cakes (candysanity off) count first
+        have = [sum(loc.pasties for loc in self.vanilla_candy), sum(loc.cakes for loc in self.vanilla_candy)]
+        progression, filler = [], []
         for name in sorted(currency, key=lambda n: (-sum(items.CURRENCY_VALUE[n]), n)):
             value = items.CURRENCY_VALUE[name]
             if any(value[k] and have[k] < top[k] for k in (0, 1)):
@@ -100,9 +120,11 @@ class HP3PCWorld(World):
         self.multiworld.itempool += [self.create_item(items.FILLER_ITEM_NAME) for _ in range(frogs)]
 
     def set_rules(self) -> None:
-        need = rules.currency_thresholds(self, LOCATIONS)
-        for loc in LOCATIONS:
+        need = rules.currency_thresholds(self, self.active_locations)
+        for loc in self.active_locations:
             self.get_location(loc.name).access_rule = rules.location_rule(self, loc, need.get(loc.name, (0, 0)))
+        for loc in self.vanilla_candy:
+            self.get_location(loc.name + VANILLA_CANDY_SUFFIX).access_rule = rules.location_rule(self, loc)
         self.get_location(GOAL_LOCATION).access_rule = rules.goal_rule(self)
         self.multiworld.completion_condition[self.player] = lambda state: state.has(items.VICTORY_EVENT, self.player)
 
@@ -134,6 +156,6 @@ class HP3PCWorld(World):
 
     def fill_slot_data(self) -> Mapping[str, Any]:
         data = dict(self.options.as_dict("goal", "cards_required", "spell_mode", "split_challenge_spells",
-                                         "shop_prices", "shortcut_passwords"))
-        data["world_version"] = "0.3.2"
+                                         "shop_prices", "shortcut_passwords", "secretsanity", "candysanity"))
+        data["world_version"] = "0.3.3"
         return data
