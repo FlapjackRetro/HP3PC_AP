@@ -264,6 +264,8 @@ def starting_items(world: HP3PCWorld) -> list[str]:
     start = list(VANILLA_STARTING_SPELLS) if world.options.spell_mode == world.options.spell_mode.option_vanilla else []
     if world.options.shortcut_passwords == world.options.shortcut_passwords.option_start_unlocked:
         start.append("Shortcut Passwords")
+    if world.options.marauders_map == world.options.marauders_map.option_start_with:
+        start.append("Marauder's Map")
     return start
 
 
@@ -276,5 +278,6 @@ def core_pool(world: HP3PCWorld) -> list[str]:
     names += list(LEVEL_UNLOCKS)
     names += [n for n in PASSWORDS if n not in start]
     names += list(CARDS)
-    names.append("Marauder's Map")
+    if "Marauder's Map" not in start:
+        names.append("Marauder's Map")
     return names
