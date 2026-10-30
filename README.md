@@ -66,7 +66,7 @@ Research stage. Done so far:
 | Path | Contents |
 | --- | --- |
 | `docs/FINDINGS.md` | What's known so far about the engine, save keys, items, locations and hooks |
-| `docs/SETUP.md` | Installing the base game, HP3-UHDE and the framerate fix |
+| `docs/SETUP.md` | Installing the base game, HP3-UHDE, the framerate fix and the mod (`setup.bat` automates it) |
 | `docs/SCENES.md` | Maps vs. game states, how levels load, story chains, challenge/exam entrances |
 | `docs/OPEN_CASTLE.md` | Open Castle design: checks, items, area unlocks, entrance plan, draft options |
 | `docs/PLAYTHROUGH.md` | Vanilla playthrough log: confirmed maps, states and checks |
@@ -77,5 +77,11 @@ Research stage. Done so far:
 
 Nothing derived from the game's own code or binaries is committed. Run the tools against your own install to
 regenerate the decompiled scripts locally ([docs/FINDINGS.md](docs/FINDINGS.md#tools)).
+
+## Third-party assets
+
+The Archipelago logo (downloaded at build time) and the item textures generated from it in `HP3AP.utx` are
+© the Archipelago project: the original logo is MIT, the newer logos are derivative works under CC BY-NC 4.0
+(version assumed), so they may not be used commercially. See [`COPYING.md`](COPYING.md).
 
 *Not affiliated with or endorsed by Warner Bros., Electronic Arts, KnowWonder or J.K. Rowling.*
