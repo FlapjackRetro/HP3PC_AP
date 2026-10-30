@@ -71,6 +71,10 @@ LEVEL_UNLOCKS: dict[str, ItemData] = {
     "Monster Book Challenge Unlock":    ItemData(109, IC.progression, "Level Unlocks", "door MonsterBook (MBOMDoor)"),
     "Hippogriff Challenge Unlock":      ItemData(110, IC.progression, "Level Unlocks", "door Hippogriff (COMC)"),
     "Doxy Challenge Unlock":            ItemData(111, IC.progression, "Level Unlocks", "door Doxy (well)"),
+    "Bonus Room Unlock":                ItemData(112, IC.progression, "Level Unlocks", "door BonusRoom: HP3_BeanBonus (entrance hall south door)"),
+    "Ron's Final Exam Unlock":          ItemData(113, IC.progression, "Level Unlocks", "door ExamRon: FA1Ron (DADA classroom portcullis)"),
+    "Hermione's Final Exam Unlock":     ItemData(114, IC.progression, "Level Unlocks", "door ExamHermione: FA2Hermione (Transfiguration, ToDrac portcullis)"),
+    "Harry's Final Exam Unlock":        ItemData(115, IC.progression, "Level Unlocks", "door ExamHarry: FA3Harry (Charms classroom portcullis)"),
 }
 CHALLENGE_GRANTS = {
     "Carpe Retractum Challenge Unlock": ("Carpe Retractum",),
@@ -84,14 +88,15 @@ CHALLENGE_GRANTS = {
 PASSWORDS: dict[str, ItemData] = {
     **{f"Portrait Password {n + 1}": ItemData(200 + n, IC.progression, "Portrait Passwords", f"pp_{n}") for n in range(8)},
     # entries 8-21 at once, as vanilla's HPAction_GivePortShortcuts. Useful only: logic never needs a shortcut.
-    "Shortcut Passwords": ItemData(220, IC.useful, "Shortcut Passwords", "pp_8..pp_21 (EnablePortraitShortcuts)"),
+    "Shortcut Passwords": ItemData(220, IC.useful, "Portrait Shortcuts", "pp_8..pp_21 (EnablePortraitShortcuts)"),
 }
 
 # ---- currency and filler ------------------------------------------------------------------------------------------
-# Bundles match the fixed amounts vanilla containers hand out (data/hp3_location_catalog.csv): pasties 1-5 and 10,
-# cakes 1-4. A location's item is the bundle of what it held in vanilla.
-PASTY_BUNDLES = (1, 2, 3, 4, 5, 10)
-CAKE_BUNDLES = (1, 2, 3, 4)
+# Bundles match the fixed amounts vanilla containers hand out (data/hp3_location_catalog.csv): a location's item is
+# what it held in vanilla. Containers that held both get one mixed bundle with both amounts.
+PASTY_BUNDLES = (1, 2, 3, 4, 5, 6, 10)
+CAKE_BUNDLES = (1, 2, 3, 4, 5, 8, 10)
+MIXED_BUNDLES = ((2, 2), (4, 1), (4, 2), (4, 4), (5, 2), (5, 10), (6, 2), (8, 3), (10, 2), (10, 5), (10, 15), (15, 8))
 
 
 def pasty_name(n: int) -> str:
@@ -102,16 +107,31 @@ def cake_name(n: int) -> str:
     return "Cauldron Cake" if n == 1 else f"{n} Cauldron Cakes"
 
 
+def mixed_name(p: int, c: int) -> str:
+    return f"{pasty_name(p)} and {cake_name(c)}"
+
+
+def bundle_name(pasties: int, cakes: int) -> str:
+    """The item name of a vanilla drop (a pasty count and a cake count, either may be 0)."""
+    if pasties and cakes:
+        return mixed_name(pasties, cakes)
+    return pasty_name(pasties) if pasties else cake_name(cakes)
+
+
 CURRENCY: dict[str, ItemData] = {
     **{pasty_name(n): ItemData(300 + n, IC.progression_skip_balancing, "Pumpkin Pasties", f"{n} x PumpkinPasty")
        for n in PASTY_BUNDLES},
     **{cake_name(n): ItemData(320 + n, IC.progression_skip_balancing, "Cauldron Cakes", f"{n} x CauldronCake")
        for n in CAKE_BUNDLES},
+    **{mixed_name(p, c): ItemData(400 + k, IC.progression_skip_balancing, "Snack Bundles",
+                                  f"{p} x PumpkinPasty, {c} x CauldronCake")
+       for k, (p, c) in enumerate(MIXED_BUNDLES)},
 }
-# currency value of each bundle, for logic: (kind, amount)
-CURRENCY_VALUE: dict[str, tuple[str, int]] = {
-    **{pasty_name(n): ("pasty", n) for n in PASTY_BUNDLES},
-    **{cake_name(n): ("cake", n) for n in CAKE_BUNDLES},
+# currency value of each bundle, for logic: (pasties, cakes)
+CURRENCY_VALUE: dict[str, tuple[int, int]] = {
+    **{pasty_name(n): (n, 0) for n in PASTY_BUNDLES},
+    **{cake_name(n): (0, n) for n in CAKE_BUNDLES},
+    **{mixed_name(p, c): (p, c) for p, c in MIXED_BUNDLES},
 }
 
 FILLER: dict[str, ItemData] = {
@@ -125,7 +145,8 @@ FILLER_ITEM_NAME = "Chocolate Frog"
 
 # ---- wizard cards -------------------------------------------------------------------------------------------------
 # (index in WizardCardManager.Cards, class, display name). Item name: "<display name> Card".
-# Index 39, Harry Potter, is not an item: Fred & George give it for the other 79, as in vanilla.
+# Index 39, Harry Potter, is not an item: Fred & George give it once 74 cards are found (all but it and the five in
+# the Wizard Card bonus room, HP3_BeanBonus, which it opens), as in vanilla.
 _CARDS = [
     ( 0, "WC_AlgufftheAwful", "Alguff the Awful"),
     ( 1, "WC_AmarilloLestoat", "Amarillo Lestoat"),
@@ -243,6 +264,8 @@ def starting_items(world: HP3PCWorld) -> list[str]:
     start = list(VANILLA_STARTING_SPELLS) if world.options.spell_mode == world.options.spell_mode.option_vanilla else []
     if world.options.shortcut_passwords == world.options.shortcut_passwords.option_start_unlocked:
         start.append("Shortcut Passwords")
+    if world.options.marauders_map == world.options.marauders_map.option_start_with:
+        start.append("Marauder's Map")
     return start
 
 
@@ -255,5 +278,6 @@ def core_pool(world: HP3PCWorld) -> list[str]:
     names += list(LEVEL_UNLOCKS)
     names += [n for n in PASSWORDS if n not in start]
     names += list(CARDS)
-    names.append("Marauder's Map")
+    if "Marauder's Map" not in start:
+        names.append("Marauder's Map")
     return names

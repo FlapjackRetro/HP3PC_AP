@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from Options import Choice, PerGameCommonOptions, Range, Toggle
+from Options import Choice, DefaultOnToggle, PerGameCommonOptions, Range, Toggle
 
 
 class Goal(Choice):
@@ -22,7 +22,9 @@ class CardsRequired(Range):
 class SpellMode(Choice):
     """vanilla: start with Rictusempra, Alohomora, Lumos, Depulso and Spongify; Expecto Patronum and the challenge
     spells are in the pool.
-    hard: start with no spells. Early progress comes from the few checks reachable without any."""
+    hard: start with no spells. Only a few checks are open at the start (on the grounds, and the cards bought with
+    jellybeans); in your own world they hold the five vanilla starting spells. If too few are open (shopsanity or
+    secretsanity off), you start with one or two of those spells instead."""
     display_name = "Spell Mode"
     option_vanilla = 0
     option_hard = 1
@@ -54,6 +56,36 @@ class ShortcutPasswords(Choice):
     default = option_item
 
 
+class MaraudersMap(Choice):
+    """randomized: the Marauder's Map is an item in the pool.
+    start_with: you start with it."""
+    display_name = "Marauder's Map"
+    option_randomized = 0
+    option_start_with = 1
+    default = option_randomized
+
+
+class Secretsanity(DefaultOnToggle):
+    """On: every catalogued secret area is a location (found when you step into it).
+    Off: the secret areas aren't locations, and finding one does nothing for the multiworld."""
+    display_name = "Secretsanity"
+
+
+class Candysanity(DefaultOnToggle):
+    """On: every catalogued pumpkin pasty and cauldron cake placed in a level is a location, and its pasty or cake is
+    an item in the pool.
+    Off: they stay vanilla: picking one up gives you the pasty or cake, and logic counts them for the shops.
+    Pasties and cakes in chests and knights are checks either way."""
+    display_name = "Candysanity"
+
+
+class Shopsanity(DefaultOnToggle):
+    """On: Fred & George's 6 wizard cards and 8 portrait passwords, and the 20 student-vendor card purchases, sell
+    items from the multiworld (the stand, the thrown card and the sale dialog show the item).
+    Off: each of them sells its vanilla card or password (still a location, with that item locked in)."""
+    display_name = "Shopsanity"
+
+
 @dataclass
 class HP3PCOptions(PerGameCommonOptions):
     goal: Goal
@@ -62,3 +94,7 @@ class HP3PCOptions(PerGameCommonOptions):
     split_challenge_spells: SplitChallengeSpells
     shop_prices: ShopPrices
     shortcut_passwords: ShortcutPasswords
+    marauders_map: MaraudersMap
+    secretsanity: Secretsanity
+    candysanity: Candysanity
+    shopsanity: Shopsanity

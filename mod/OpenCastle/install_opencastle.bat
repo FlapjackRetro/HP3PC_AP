@@ -1,5 +1,6 @@
 @echo off
 rem Run as administrator. Copies HP3OpenCastle.asi into the game's plugins folder and HP3AP.utx into textures.
+rem MapTracker is separate now: install_maptracker.bat adds it, uninstall_maptracker.bat removes it.
 cd /d "%~dp0"
 set "R=C:\Program Files (x86)\EA GAMES\Harry Potter and the Prisoner of Azkaban(TM)"
 set "G=%R%\system\plugins"

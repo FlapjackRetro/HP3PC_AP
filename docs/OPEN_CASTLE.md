@@ -233,7 +233,7 @@ The concrete per-map change list is in [OPEN_CASTLE_CHANGES.md](OPEN_CASTLE_CHAN
 | GroundsHub | InsideHub main doors (cutscene trigger `LevelLoadGrounds`; back via GroundsHub `ChangeLevelTrigger2` (−830, −7617, 1153)) | 10 cards, 6 secrets, well quest |
 | DungeonHUB | InsideHub `ChangeLevelTrigger8` (225, 2968, −176), entrance-hall stairs | 2 cards, 26 event snacks |
 | COMC | GroundsHub `ChangeLevelTrigger1` (−1816, 1191, 769), course selection | 5 hippogriff cards |
-| BeanBonus | InsideHub `ChangeLevelTrigger14` (−1083, −2365, 2246) | 5 cards |
+| BeanBonus | vanilla: InsideHub `ChangeLevelTrigger14`, fired by the Harry Potter card (74 cards). **Open Castle (poc8b):** the entrance hall south door (733, 392, 74), item Bonus Room Unlock; the vanilla teleport is off | 5 cards |
 | PortraitPassword_B–F | InsideHub `ChangeLevelTrigger1`/`4`/`13`/`12`/`0` (portraits) | 1 card each |
 
 ### Challenges: side room (existing doors)
