@@ -44,7 +44,7 @@ static u32 gLookObj[NLOOKDEFS]; static unsigned char gLookTried[NLOOKDEFS];
 struct lookact { u32 obj; short li; unsigned char code, done; float base; };
 static struct lookact gLA[LOOK_MAX]; static int gNLA; static u32 gLALevel; static int gLAGen = -1, gLAScanned;
 static int offPUVis = -1, offSkins = -1;
-typedef int (__thiscall *addzeroed_fn)(void *array, int count, int elemsize);   /* Core.dll FArray::AddZeroed */
+typedef int (__thiscall *addzeroed_fn)(void *array, int elemsize, int count);   /* Core.dll FArray::AddZeroed(ElementSize, Count) */
 static addzeroed_fn gAddZeroed; static u32 gClsMaterial, gCardTex[NWC_TEXTURES]; static unsigned char gCardTexTried[NWC_TEXTURES];
 
 static void ap_look_queue(u32 obj, int li) {   /* game thread */
@@ -118,8 +118,10 @@ static float look_apply(u32 a, int code) {
                 gCardTex[card] = (u32)gLoadObject((void *)gClsMaterial, 0, WC_TEXTURES[card], 0, 0x2002, 0);
                 if (!gCardTex[card]) { static wchar b[160]; wsprintfW(b, L"looks: %s not found", WC_TEXTURES[card]); log_line(b); } }
             tex = gCardTex[card];
-            if (tex && offSkins > 0 && (*(int *)(a + offSkins + 4) > 0 || (gAddZeroed && gAddZeroed((void *)(a + offSkins), 1, 4) >= 0)))
-                *(u32 *)P(a + offSkins) = tex;   /* element 0 (a card pickup already has one; others get one from the engine) */
+            if (tex && offSkins > 0 && (*(int *)(a + offSkins + 4) > 0 || (gAddZeroed && gAddZeroed((void *)(a + offSkins), 4, 1) >= 0 && *(int *)(a + offSkins + 4) == 1)))
+                *(u32 *)P(a + offSkins) = tex;   /* element 0 (a card pickup already has one; others get one from the engine:
+                                                    AddZeroed(ElementSize 4, Count 1); poc9g had the two swapped, so a
+                                                    cake got 4 entries, 3 of them garbage, and level cleanup crashed) */
         }
         code = 36;   /* the card mesh */
     }
