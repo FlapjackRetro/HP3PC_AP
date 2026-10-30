@@ -50,9 +50,11 @@ static const struct lookdef LOOKDEFS[] = {
 static u32 gLookObj[NLOOKDEFS]; static unsigned char gLookTried[NLOOKDEFS];
 
 #define LOOK_MAX 192
-struct lookact { u32 obj; short li; unsigned char code, done, pu; float base, mul; };   /* pu: a KWPickup (grows in) */
+struct lookact { u32 obj; short li; unsigned char code, done, pu, stand; float base, mul; };   /* pu: a KWPickup (grows in);
+                                                                                    stand: ap_look_set's kind */
 static struct lookact gLA[LOOK_MAX]; static int gNLA; static u32 gLALevel; static int gLAGen = -1, gLAScanned;
 static int offPUVis = -1, offSkins = -1, offPrePivot = -1;
+#define LOOK_PW_SPRITE_LIFT 16.0f   /* sprite looks on a password stand (scroll height): half sank into the crate */
 #define LOOK_STAND_LIFT 40.0f   /* skeletal-mesh looks on a shop stand: drawn this much higher (Actor.PrePivot.Z), or
                                    the frog / creatures sink into the crate the stand sits on. 18 (poc9k) raised the
                                    frog but not enough; -26 (poc9l) was the wrong way */
@@ -65,19 +67,21 @@ static void ap_look_queue(u32 obj, int li) {   /* game thread */
     for (i = 0; i < gNLA; i++) if (gLA[i].obj == obj) return;
     if (gNLA >= LOOK_MAX) return;
     gLA[gNLA].obj = obj; gLA[gNLA].li = (short)li; gLA[gNLA].code = 0; gLA[gNLA].done = 0; gLA[gNLA].base = 0;
-    gLA[gNLA].pu = 1; gLA[gNLA].mul = 1.0f; gNLA++;
+    gLA[gNLA].pu = 1; gLA[gNLA].stand = 1; gLA[gNLA].mul = 1.0f; gNLA++;
 }
-/* show `obj` as location li's item, or switch it to another location (apshop.h: stands, a vendor's thrown card) */
-static void ap_look_set(u32 obj, int li, float mul, int pickup) {   /* game thread */
+/* show `obj` as location li's item, or switch it to another location (apshop.h: stands, a vendor's thrown card).
+   kind: 1 a pickup, 0 a card stand, 2 a password stand */
+static void ap_look_set(u32 obj, int li, float mul, int kind) {   /* game thread */
+    int pickup = kind == 1;
     int i;
     if (cur_level() != gLALevel) { gNLA = 0; gLALevel = cur_level(); gLAScanned = 0; }
     for (i = 0; i < gNLA; i++) if (gLA[i].obj == obj) {
         if (gLA[i].li != li) { gLA[i].li = (short)li; gLA[i].done = 0; }
-        gLA[i].mul = mul; gLA[i].pu = (unsigned char)pickup;
+        gLA[i].mul = mul; gLA[i].pu = (unsigned char)pickup; gLA[i].stand = (unsigned char)kind;
         return;
     }
     ap_look_queue(obj, li);
-    for (i = 0; i < gNLA; i++) if (gLA[i].obj == obj) { gLA[i].mul = mul; gLA[i].pu = (unsigned char)pickup; }
+    for (i = 0; i < gNLA; i++) if (gLA[i].obj == obj) { gLA[i].mul = mul; gLA[i].pu = (unsigned char)pickup; gLA[i].stand = (unsigned char)kind; }
 }
 static void ap_look_forget(u32 obj) { int i; for (i = 0; i < gNLA; i++) if (gLA[i].obj == obj) gLA[i].obj = 0; }
 
@@ -193,7 +197,9 @@ static void ap_looks_tick(void) {
             e->done = 1; e->code = (unsigned char)code;
             if (code && (e->base = look_apply(e->obj, code)) > 0 && !e->pu && offPrePivot > 0) {
                 int d = code >= LOOK_CARD0 ? -1 : look_def(code);
-                ((float *)(e->obj + offPrePivot))[2] = d >= 0 && (LOOKDEFS[d].kind == 'A' || LOOKDEFS[d].kind == 'K') ? LOOK_STAND_LIFT : 0.0f;
+                char k = d >= 0 ? LOOKDEFS[d].kind : 'M';
+                ((float *)(e->obj + offPrePivot))[2] = (k == 'A' || k == 'K') ? LOOK_STAND_LIFT
+                                                     : (k == 'S' && e->stand == 2) ? LOOK_PW_SPRITE_LIFT : 0.0f;
             }
             if (code && e->base > 0) {
                 static wchar b[200]; wsprintfW(b, L"looks: %s shows look %d", AP_LOCS[e->li].name, code); log_line(b);

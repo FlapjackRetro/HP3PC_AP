@@ -256,7 +256,7 @@ static void pw_stands(void) {
     for (i = 0; i < gNPW; i++) {
         u32 a = gPW[i];
         if (!a || a == gShTxnStand || (gPWHold[i] && (int)(now - gPWHold[i]) < 0)) continue;
-        if (k >= 0) { sh_show(a, 1); ap_look_set(a, gShLi[k], 1.0f, 0); }
+        if (k >= 0) { sh_show(a, 1); ap_look_set(a, gShLi[k], 1.0f, 2); }
         else { sh_show(a, 0); ap_look_forget(a); }
     }
 }
