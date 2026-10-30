@@ -48,6 +48,7 @@ SPELL_LOOK = {"Alohomora": 1, "Carpe Retractum": 2, "Depulso": 3, "Draconifors":
               "Glacius": 6, "Lapifors": 7, "Lumos": 8, "Rictusempra": 9, "Spongify": 10}
 UNLOCK_LOOK = {"Hippogriff Challenge Unlock": 21, "Doxy Challenge Unlock": 22, "Monster Book Challenge Unlock": 23}
 LOOK_KEY, LOOK_SCROLL, LOOK_MAP, LOOK_PASTY, LOOK_CAKE, LOOK_FROG, LOOK_CARD = 20, 30, 32, 33, 34, 35, 36
+LOOK_CARD0 = 100   # + card index: that wizard card (mod/OpenCastle/wc_textures.h)
 LOOK_AP_PROGRESSION, LOOK_AP_USEFUL, LOOK_AP_FILLER = 40, 41, 42
 ID_TO_NAME = {code: name for name, code in items.ITEM_NAME_TO_ID.items()}
 
@@ -68,8 +69,8 @@ def hp3_look(item_id: int) -> int:
     if name in items.CURRENCY_VALUE:
         pasties, cakes = items.CURRENCY_VALUE[name]
         return LOOK_PASTY if pasties >= cakes else LOOK_CAKE
-    if name in items.CARDS:
-        return LOOK_CARD
+    if name in items.CARDS:   # that card's own face: 100 + its index in WizardCardManager.Cards
+        return LOOK_CARD0 + items.CARDS[name].offset - items.CARD_OFFSET
     return LOOK_FROG
 
 
