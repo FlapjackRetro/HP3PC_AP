@@ -55,6 +55,7 @@ struct lookact { u32 obj; short li; unsigned char code, done, pu, stand; float b
 static struct lookact gLA[LOOK_MAX]; static int gNLA; static u32 gLALevel; static int gLAGen = -1, gLAScanned;
 static int offPUVis = -1, offSkins = -1, offPrePivot = -1;
 #define LOOK_PW_SPRITE_LIFT 30.0f   /* sprite looks on a password stand (scroll height): half sank into the crate at 0, a third at 16 (poc9p) */
+#define LOOK_PW_MESH_LIFT 20.0f     /* static-mesh looks (cards, pasty, cake) on a password stand: sank into the crate */
 #define LOOK_STAND_LIFT 40.0f   /* skeletal-mesh looks on a shop stand: drawn this much higher (Actor.PrePivot.Z), or
                                    the frog / creatures sink into the crate the stand sits on. 18 (poc9k) raised the
                                    frog but not enough; -26 (poc9l) was the wrong way */
@@ -210,8 +211,10 @@ static void ap_looks_tick(void) {
             if (code && (e->base = look_apply(e->obj, code)) > 0 && !e->pu && offPrePivot > 0) {
                 int d = code >= LOOK_CARD0 ? -1 : look_def(code);
                 char k = d >= 0 ? LOOKDEFS[d].kind : 'M';
+                int scroll = code == 30 || (code >= 51 && code <= 58);   /* the stand's own scroll sits right */
                 ((float *)(e->obj + offPrePivot))[2] = (k == 'A' || k == 'K') ? LOOK_STAND_LIFT
-                                                     : (k == 'S' && e->stand == 2) ? LOOK_PW_SPRITE_LIFT : 0.0f;
+                                                     : (k == 'S' && e->stand == 2) ? LOOK_PW_SPRITE_LIFT
+                                                     : (k == 'M' && e->stand == 2 && !scroll) ? LOOK_PW_MESH_LIFT : 0.0f;
             }
             if (code && e->base > 0) {
                 static wchar b[200]; wsprintfW(b, L"looks: %s shows look %d", AP_LOCS[e->li].name, code); log_line(b);
