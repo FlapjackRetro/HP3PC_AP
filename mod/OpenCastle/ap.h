@@ -422,6 +422,12 @@ static void ap_pickup_spawned(u32 obj, int linkedBefore) {
             dx = at[0] - gApMapAt[i][0]; dy = at[1] - gApMapAt[i][1]; dz = at[2] - gApMapAt[i][2]; d2 = dx * dx + dy * dy + dz * dz;
             if (d2 < bd) { bd = d2; best = gApMapLoc[i]; }
         }
+        /* COMC: both tracks' cards come out of track 2's spawner (WizCard2, HPSpawnThingy2; comcfix.h). Track 1's win
+           is the Joscelind Wadcock location (HPSpawnThingy1), not the spawner's own Gwenog Jones (poc9w checked Gwenog) */
+        if (best >= 0 && gComcTrack == 0 && weq(AP_LOCS[best].map, L"HP3_COMC") && AP_LOCS[best].actor && wieq(AP_LOCS[best].actor, L"HPSpawnThingy2")) {
+            int j = ap_loc_by_actor(L"HP3_COMC", L"HPSpawnThingy1", 'K');
+            if (j >= 0) best = j;
+        }
         if (best >= 0 && gLocChecked[best] && gApActive && !ap_loc_off(best) && gApNKill < 32) gApKill[gApNKill++] = obj;   /* checked already */
         else if (best >= 0 && gApNPu < AP_PUMAX) { gApPu[gApNPu] = obj; gApPuLoc[gApNPu] = best; gApNPu++; ap_look_queue(obj, best); }
     }
