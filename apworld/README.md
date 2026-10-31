@@ -1,7 +1,7 @@
 # Harry Potter 3 PC apworld
 
 `hp3pc/` is the Archipelago world for Harry Potter and the Prisoner of Azkaban (PC, 2004) with the Open Castle mod.
-Version 0.3.5, for **Archipelago 0.6.8**. Design and logic: [docs/APWORLD.md](../docs/APWORLD.md).
+Version 0.3.6, for **Archipelago 0.6.8**. Design and logic: [docs/APWORLD.md](../docs/APWORLD.md).
 
 It generates seeds and carries the client ("Harry Potter 3 PC Client" in the Archipelago launcher). The client talks to
 the server and, on 127.0.0.1:42780, to the Open Castle mod (HP3OpenCastle.asi poc9j or later), which applies items and

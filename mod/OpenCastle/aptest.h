@@ -16,6 +16,22 @@
  */
 typedef void *(__cdecl *loadobj_fn)(void *cls, void *outer, const wchar *name, const wchar *file, u32 flags, void *sandbox);
 static loadobj_fn gLoadObject;
+/* Load an asset and keep it loaded for good (UObject::AddToRoot). The mod caches what it loads and puts it on actors
+   later, often on another map; nothing of the game's references the Archipelago / spell textures, so the level-change
+   garbage collection freed them and an actor was handed the dead pointer (GPF in CleanupDestroyed, Actor.Texture of
+   a VI_WizardCard stand, poc9n). */
+typedef void (__thiscall *addroot_fn)(void *obj);
+static addroot_fn gAddToRoot; static u32 gRooted[128]; static int gNRooted;
+static u32 load_kept(void *cls, const wchar *name) {
+    u32 o, i;
+    if (!gLoadObject) return 0;
+    o = (u32)gLoadObject(cls, 0, name, 0, 0x2002, 0);
+    if (!o) return 0;
+    if (!gAddToRoot) { HANDLE core = GetModuleHandleW(L"Core.dll"); gAddToRoot = core ? (addroot_fn)GetProcAddress(core, "?AddToRoot@UObject@@QAEXXZ") : 0; }
+    for (i = 0; i < (u32)gNRooted; i++) if (gRooted[i] == o) return o;
+    if (gAddToRoot && gNRooted < 128) { gAddToRoot((void *)o); gRooted[gNRooted++] = o; }
+    return o;
+}
 static u32 gClsTexture;
 static int offDrawScale = -1, offTexture = -1, offStyle2 = -1;   /* Actor.DrawScale / Texture / Style (offDrawType: gates) */
 static u32 gClsStaticMesh, gClsMesh, gClsClass; static int offStaticMesh = -1, offMesh = -1, N_SetCollision = -1;
@@ -213,7 +229,7 @@ static void pickup_fx(u32 pawn, const float *at) {   /* game thread */
         gPEOrig((void *)pawn, fn, &parms, 0);
     }
     if (gFrameCtor && gExecPlaySound && gClsSound && gLoadObject) {
-        u32 snd = (u32)gLoadObject((void *)gClsSound, 0, L"SoundEffects.Magic.pickup_wizardcard", 0, 0x2002, 0);
+        u32 snd = load_kept((void *)gClsSound, L"SoundEffects.Magic.pickup_wizardcard");
         u32 frame[16]; u8 code[16]; int k;
         if (!snd) return;
         memset(frame, 0, sizeof frame);
@@ -263,7 +279,7 @@ static void grid_spawn(void) {
             if (xl && gDestroyActor) gDestroyActor((void *)xl, (void *)gGridObj[i], 0);
             gGridObj[i] = 0; }
         cls = g->kind == 'S' ? gClsTexture : g->kind == 'M' ? gClsStaticMesh : (g->kind == 'K' || g->kind == 'A') ? gClsMesh : gClsClass;
-        obj = cls ? (u32)gLoadObject((void *)cls, 0, g->obj, 0, 0x2002, 0) : 0;
+        obj = cls ? load_kept((void *)cls, g->obj) : 0;
         if (!obj) { wsprintfW(b, L"grid: %s (%s) not found", g->label, g->obj); log_line(b); continue; }
         memset(&parms, 0, sizeof parms);
         parms.type = g->kind == 'C' ? obj : gClsEffects;
