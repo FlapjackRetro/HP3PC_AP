@@ -196,5 +196,5 @@ class HP3PCWorld(World):
         data = dict(self.options.as_dict("goal", "cards_required", "spell_mode", "split_challenge_spells",
                                          "shop_prices", "shortcut_passwords", "marauders_map", "secretsanity",
                                          "candysanity", "shopsanity"))
-        data["world_version"] = "0.3.5"
+        data["world_version"] = "0.3.6"
         return data

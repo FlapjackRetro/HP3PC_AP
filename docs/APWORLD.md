@@ -317,7 +317,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Glacius: placed pasty `PumpkinPasty42` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-10471, -1461, 3511) | marked in play 2026-10-28 |
 | Glacius: placed pasty `PumpkinPasty43` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-10351, -1358, 3511) | marked in play 2026-10-28 |
 | Glacius: placed pasty `PumpkinPasty44` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-10295, -1239, 3478) | marked in play 2026-10-28 |
-| Glacius: placed pasty `PumpkinPasty38` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-11070, -1547, 3609) | marked in play 2026-10-28 |
+| Glacius: placed pasty `PumpkinPasty38` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-11070, -1547, 3609) | marked in play 2026-10-28; **exempt** (taken out of the pool, stays vanilla; 2026-10-30) |
 | Glacius: placed cake `CauldronCake14` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-11995, -1596, 3655) | marked in play 2026-10-28 |
 | Glacius: placed cake `CauldronCake5` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-12979, -817, 3330) | marked in play 2026-10-28 |
 | Glacius: placed cake `CauldronCake6` | Nothing beyond the Glacius rule (Glacius, Rictusempra, Spongify). At (-12912, -509, 3320) | marked in play 2026-10-28 |
