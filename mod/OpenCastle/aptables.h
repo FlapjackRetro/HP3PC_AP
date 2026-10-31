@@ -317,7 +317,6 @@ static const struct aploc AP_LOCS[] = {
     { 161, 'P', L"HP3_Ch3Glacius", L"PumpkinPasty31", L"glPumpkinPasty31_PU", L"Glacius: Pumpkin Pasty 31" },
     { 162, 'P', L"HP3_Ch3Glacius", L"PumpkinPasty32", L"glPumpkinPasty32_PU", L"Glacius: Pumpkin Pasty 32" },
     { 163, 'P', L"HP3_Ch3Glacius", L"PumpkinPasty37", L"glPumpkinPasty37_PU", L"Glacius: Pumpkin Pasty 37" },
-    { 164, 'P', L"HP3_Ch3Glacius", L"PumpkinPasty38", L"glPumpkinPasty38_PU", L"Glacius: Pumpkin Pasty 38" },
     { 165, 'P', L"HP3_Ch3Glacius", L"PumpkinPasty41", L"glPumpkinPasty41_PU", L"Glacius: Pumpkin Pasty 41" },
     { 166, 'P', L"HP3_Ch3Glacius", L"PumpkinPasty42", L"glPumpkinPasty42_PU", L"Glacius: Pumpkin Pasty 42" },
     { 167, 'P', L"HP3_Ch3Glacius", L"PumpkinPasty43", L"glPumpkinPasty43_PU", L"Glacius: Pumpkin Pasty 43" },

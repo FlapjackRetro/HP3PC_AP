@@ -101,6 +101,7 @@ EXCLUDE = [
     ('HP3_Ch3Glacius', lambda c: c['overlap'] and c['zf'] < 2000, 'overlap: reachable in Glacius B'),
     ('HP3_Ch3GlaciusB', lambda c: c['overlap'] and c['zf'] >= 2000, 'overlap: reachable in Glacius'),
     ('HP3_Ch3Glacius', 'PumpkinPasty36', 'exempt'),
+    ('HP3_Ch3Glacius', 'PumpkinPasty38', 'exempt: taken out of the pool at the player\'s request (2026-10-30)'),
     *[('HP3_Ch3GlaciusB', f'PumpkinPasty{n}', 'exempt: believed reachable, unconfirmed') for n in (22, 23, 24, 6)],
     # Hogwarts: never spawned in Open Castle, shop display props, no position
     *[('HP3_InsideHub', f'HPSpawnThingy{n}', 'Peeves reward (never fires)') for n in (13, 14, 16, 18, 22, 23, 25)],
