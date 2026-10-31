@@ -13,6 +13,7 @@
  */
 static int offCurGame = -1, offTrack = -1, offSpawnClass = -1;
 static u32 gClsHippo, gClsSpawnThingy, gClsWCJoscelind, gClsWCGwenog;
+static volatile int gComcTrack = -1;   /* track being played (0 = track 1), -1 off HP3_COMC; ap.h: which location */
 struct comcfind { u32 level; int tagGame, tagCard; u32 game, card; };
 static int v_comc(u32 o, int name, u32 cls, void *c) {
     struct comcfind *f = c; int tag; (void)name;
@@ -24,7 +25,7 @@ static int v_comc(u32 o, int name, u32 cls, void *c) {
 }
 static void comc_poll(u32 level, const wchar *map) {
     static u32 lvl, game, card; static int lastTrack = -2; static wchar b[160]; int track; u32 want;
-    if (!weq(map, L"HP3_COMC")) { lvl = 0; return; }
+    if (!weq(map, L"HP3_COMC")) { lvl = 0; gComcTrack = -1; return; }
     if (offCurGame < 0) {
         offCurGame = prop_offset(L"HippoFlyGame", L"CurGame"); offTrack = struct_member_offset(L"CurGameStruct", L"Track");
         offSpawnClass = prop_offset(L"SpawnThingy", L"SpawnClass");
@@ -43,6 +44,7 @@ static void comc_poll(u32 level, const wchar *map) {
     }
     if (!game || !card) return;
     track = (int)rd32(game + offCurGame + offTrack);
+    gComcTrack = track;
     want = track == 0 ? gClsWCJoscelind : gClsWCGwenog;
     if (rd32(card + offSpawnClass) != want) *(volatile u32 *)(card + offSpawnClass) = want;
     if (track != lastTrack) {
