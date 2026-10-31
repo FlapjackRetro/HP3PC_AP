@@ -186,6 +186,10 @@ static void ap_looks_tick(void) {
         for (i = 0; i < gApMapN; i++) {
             char k = AP_LOCS[gApMapLoc[i]].kind;
             if (!gApMapObj[i] || (k != 'P' && k != 'K' && k != 'M')) continue;
+            /* pickups only: a card location spawned by an event is listed by its spawn point (HPSpawnThingy), and
+               giving that a look turned the spawner itself into a sprite; the cutscene's spawn from it then crashed
+               (GPF in ULevel::SpawnActor, HP3_COMC, poc9r). Its card gets the look when it spawns (ap.h). */
+            if (!gClsPickup || !is_a_fast(gApMapObj[i], gClsPickup)) continue;
             if (!gLocChecked[gApMapLoc[i]]) ap_look_queue(gApMapObj[i], gApMapLoc[i]);
             else if (gApActive && !ap_loc_off(gApMapLoc[i]) && gClsPickup && is_a_fast(gApMapObj[i], gClsPickup) && gApNKill < 32) {
                 /* already checked, but back again: a placed wizard card returns unless its card is owned
