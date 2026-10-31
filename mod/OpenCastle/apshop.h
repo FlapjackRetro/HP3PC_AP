@@ -482,7 +482,20 @@ static int ap_pdr(void *self, void *func, void *parms, void *result) {
     info = P(o + offLevel);
     if (!(map = level_map(info)) || !name_of((int)P(o + 0x20), nm, 64)) return 0;
     li = ap_loc_by_actor(map, nm, 0);
-    if (li < 0 || (AP_LOCS[li].kind != 'K' && AP_LOCS[li].kind != 'C') || gLocChecked[li] || gSrvChecked[li] || ap_loc_off(li)) return 0;
+    if (li < 0 || (AP_LOCS[li].kind != 'K' && AP_LOCS[li].kind != 'C') || ap_loc_off(li)) return 0;
+    if (gLocChecked[li] || gSrvChecked[li]) {
+        /* checked: an opened spawner whose card isn't owned re-arms itself (Lives 0 -> 1, the card its only goodie),
+           so the chest threw the card out again on the next visit (Glacius chest 31, 2026-10-30). Keep it opened. */
+        int lives;
+        if (AP_LOCS[li].kind != 'C' || offLives <= 0 || !is_a_fast(o, gClsHPSpawner)) return 0;
+        lives = (int)P(o + offLives);
+        gPEOrig(self, func, parms, result);
+        if (lives <= 0 && (int)P(o + offLives) > 0) {
+            *(int *)(o + offLives) = lives;
+            wsprintfW(b, L"ap: %s already checked: kept opened", AP_LOCS[li].name); log_line(b);
+        }
+        return 1;
+    }
     game = P(info + offGame); wcm = game ? P(game + offWCM) : 0;
     cards = wcm ? P(wcm + offCards) : 0; n = wcm ? (int)P(wcm + offCards + 4) : 0;
     if (!cards || n <= 0 || n > 96) return 0;
