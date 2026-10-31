@@ -454,6 +454,7 @@ static int ap_touch(void *self, void *func, void *parms) {
     if (!gApActive || !func || !parms || !gClsPickup || !is_a_fast(o, gClsPickup)) return 0;
     st = P((u32)func + 0x18);
     if (!st || (int)P(st + 0x20) != N_StPickup) return 0;   /* only the giving Touch (state Pickup and its children) */
+    {   int t; for (t = 0; t < 16; t++) if (gApTaken[t] == o) return 1; }   /* taken already, going next tick */
     if ((li = ap_pickup_loc(o)) < 0 || ap_loc_off(li)) return 0;
     if (!(fn = gFindFunction(self, N_ValidTouch, 0))) return 0;
     vt.other = *(u32 *)parms; vt.ret = 0;
@@ -464,7 +465,12 @@ static int ap_touch(void *self, void *func, void *parms) {
     an.receiver = *(u32 *)parms;
     gPEOrig(self, fn, &an, 0);
     gApTaken[gApTakenN] = o; gApTakenN = (gApTakenN + 1) & 15;
-    if ((fn = gFindFunction(self, N_SetRespawn, 0))) gPEOrig(self, fn, 0, 0);   /* Destroy -> Destroyed -> the check */
+    /* Not SetRespawn (Destroy) here: Touch can come from inside ULevel::SpawnActor (a card a cutscene spawns where
+       Harry stands, HP3_COMC), and destroying the actor while it's being spawned crashed (poc9r / poc9u). Hidden
+       now, destroyed on the next safe tick (Destroyed -> the check). */
+    if (offShHidden > 0 && maskShHidden) *(u32 *)(o + offShHidden) |= maskShHidden;
+    if (gApNKill < 32) gApKill[gApNKill++] = o;
+    else if ((fn = gFindFunction(self, N_SetRespawn, 0))) gPEOrig(self, fn, 0, 0);
     return 1;
 }
 
