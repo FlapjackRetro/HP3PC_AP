@@ -76,6 +76,7 @@ static void apshop_init(void) {
     if (!gClsVendorItem) return;   /* HGame not loaded yet */
     if (!gClsWCard) gClsWCard = find_class(L"WizardCard");
     if (!gClsHPSpawner) gClsHPSpawner = find_class(L"Hpgenericspawner");
+    { extern_diag_set(gClsWCard); }
     offVM = prop_offset(L"HGame", L"VendorManager"); offVMItem = prop_offset(L"VendorManager", L"item");
     offPgVM = prop_offset(L"HPPageVendor", L"VendorMgr"); offPgImg = prop_offset(L"HPPageVendor", L"imgItem");
     offPgL0 = prop_offset(L"HPPageVendor", L"lblInfo0"); offPgL1 = prop_offset(L"HPPageVendor", L"lblInfo1");

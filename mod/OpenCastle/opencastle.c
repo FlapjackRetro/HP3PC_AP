@@ -71,7 +71,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc9v"
+#define OC_VERSION L"poc9w-diag"
 /* OC_DEBUG 1 (default, build/HP3OpenCastle.asi): the development build, with the debug panel (Delete), the item test
    grid (backslash) and noclip (F6). OC_DEBUG 0 (build/release/HP3OpenCastle.asi, build.sh): the release build, with
    no key thread at all, so none of those can be opened; everything else is the same code. */
@@ -278,7 +278,26 @@ static int N_PlayerTick = -1, N_Tick = -1;
 static volatile int gPanelPause, gAddCurrency, gPanelOpen; static void panel_pause(void); static void panel_currency(void);
 static int N_PostRender; static u32 gClsHUD; static void panel_render(u32 cv);
 static volatile int gNoclip; static int gNoclipOn; static void noclip_tick(u32 pc, float dt);
+static void __thiscall pe_hook_inner(void *self, void *func, void *parms, void *result);
+/* DIAGNOSTIC (poc9w-diag): every event of a wizard card pickup on HP3_COMC is logged before and after, to find the
+   hippogriff card crash (GPF in ULevel::SpawnActor). */
+static u32 gDiagWC; static int gDiagN;
+static void extern_diag_set(u32 c) { if (!gDiagWC) gDiagWC = c; }
 static void __thiscall pe_hook(void *self, void *func, void *parms, void *result) {
+    u32 o = (u32)self;
+    if (gDiagWC && o && func && gDiagN < 400 && weq((const wchar *)gCurMap, L"HP3_COMC") && is_a_fast(o, gDiagWC)) {
+        static wchar b[200], fn[64], on[64]; int f = *(int *)((u8 *)func + 0x20);
+        if (!name_of(f, fn, 64)) wcpy(fn, L"?", 64);
+        if (!name_of((int)P(o + 0x20), on, 64)) wcpy(on, L"?", 64);
+        gDiagN++;
+        wsprintfW(b, L"diag: > %s.%s (%08x) parm0 %08x", on, fn, o, parms ? *(u32 *)parms : 0); log_line(b);
+        pe_hook_inner(self, func, parms, result);
+        wsprintfW(b, L"diag: < %s.%s", on, fn); log_line(b);
+        return;
+    }
+    pe_hook_inner(self, func, parms, result);
+}
+static void __thiscall pe_hook_inner(void *self, void *func, void *parms, void *result) {
     int fname = func ? *(int *)((u8 *)func + 0x20) : -1, safe;
     /* Jobs that spawn, destroy or change actors run only from a tick event (PlayerTick / Tick, called while the
        level ticks). ProcessEvent is also called while the frame is drawn (HUD and canvas events from

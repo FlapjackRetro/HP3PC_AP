@@ -396,6 +396,7 @@ static void ap_look_queue(u32 obj, int li); static void ap_look_forget(u32 obj);
 static void ap_pickup_spawned(u32 obj, int linkedBefore) {
     wchar nm[64]; const wchar *map = (const wchar *)gCurMap; int li, i;
     if (!map || P(obj + offLevel) != cur_level()) return;
+    if (gDiagN < 400 && gDiagWC && is_a_fast(obj, gDiagWC)) { gDiagN++; log_line(L"diag: ap_pickup_spawned: card pickup"); }
     if (apshop_vendor_spawn(obj)) return;   /* the card a student vendor throws after a sale */
     if (gNPu > linkedBefore && gPu[gNPu - 1].obj == obj) {   /* a container's goodie */
         struct lo_sp *s = &gSp[gPu[gNPu - 1].sp];
