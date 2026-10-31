@@ -71,7 +71,7 @@ IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc9q"
+#define OC_VERSION L"poc9r"
 /* OC_DEBUG 1 (default, build/HP3OpenCastle.asi): the development build, with the debug panel (Delete), the item test
    grid (backslash) and noclip (F6). OC_DEBUG 0 (build/release/HP3OpenCastle.asi, build.sh): the release build, with
    no key thread at all, so none of those can be opened; everything else is the same code. */
@@ -262,6 +262,7 @@ static void ap_tick(void); static void ap_event(u32 self, int fname, int linkedB
 static int N_BeginState, N_Timer, N_VendorOnDraw; static int apshop_begin_state(void *self, void *func, void *parms, void *result);
 static int apshop_timer(u32 o); static void apshop_dialog(u32 page);   /* apshop.h */
 static int N_Touch; static int ap_touch(void *self, void *func, void *parms);   /* apshop.h */
+static int ap_pdr(void *self, void *func, void *parms, void *result);   /* apshop.h */
 static volatile int gApCheap = -1;   /* ap.h: the room's shop_prices (-1: no room, the ini decides) */
 /* voice lines switched off for good (touch PopupTriggers, collision off on each map): the exam doors' "that's the
    door to the ... spell challenge" comments */
@@ -328,6 +329,7 @@ static void __thiscall pe_hook(void *self, void *func, void *parms, void *result
     if (fname == N_Timer && N_Timer >= 0 && !gInTravel && apshop_timer((u32)self)) return;
     if (fname == N_Touch && N_Touch >= 0 && !gInTravel && ap_touch(self, func, parms)) return;   /* a location's pickup */
     if (fname == N_VendorOnDraw && N_VendorOnDraw >= 0 && !gInTravel) apshop_dialog((u32)self);
+    if (fname == N_PostPDR && N_PostPDR >= 0 && !gInTravel && ap_pdr(self, func, parms, result)) return;   /* card locations */
     gPEOrig(self, func, parms, result);
 }
 

@@ -45,6 +45,7 @@ static int N_BeginState = -1, N_Timer = -1, N_VendorOnDraw = -1, N_StDoing = -1,
 static int N_Touch = -1, N_ValidTouch = -1, N_Announce = -1, N_SetRespawn = -1, N_StPickup = -1, offShowHUD = -1;
 static u32 maskShowHUD;
 static volatile int gShReady;
+static u32 gClsWCard, gClsHPSpawner;   /* ap_pdr */
 static fstr_assign_fn gShFStr;
 
 /* stands on the current map (worker scan, sorted by name so the assignment is stable) */
@@ -73,6 +74,8 @@ static void apshop_init(void) {
     if (!gClsVIStudent) gClsVIStudent = find_class(L"VI_StudentWizardCard");
     if (!gClsStudent) gClsStudent = find_class(L"HPGenericStudent");
     if (!gClsVendorItem) return;   /* HGame not loaded yet */
+    if (!gClsWCard) gClsWCard = find_class(L"WizardCard");
+    if (!gClsHPSpawner) gClsHPSpawner = find_class(L"Hpgenericspawner");
     offVM = prop_offset(L"HGame", L"VendorManager"); offVMItem = prop_offset(L"VendorManager", L"item");
     offPgVM = prop_offset(L"HPPageVendor", L"VendorMgr"); offPgImg = prop_offset(L"HPPageVendor", L"imgItem");
     offPgL0 = prop_offset(L"HPPageVendor", L"lblInfo0"); offPgL1 = prop_offset(L"HPPageVendor", L"lblInfo1");
@@ -462,5 +465,30 @@ static int ap_touch(void *self, void *func, void *parms) {
     gPEOrig(self, fn, &an, 0);
     gApTaken[gApTakenN] = o; gApTakenN = (gApTakenN + 1) & 15;
     if ((fn = gFindFunction(self, N_SetRespawn, 0))) gPEOrig(self, fn, 0, 0);   /* Destroy -> Destroyed -> the check */
+    return 1;
+}
+
+/* ---- card locations whose card was received ---------------------------------------------------------------------
+   On map load a placed WizardCard hides itself for good (MakeGhost: bHidden, no collision) if its card is owned
+   (Status 5), and a spawner (chest / knight) with a card among its goodies drops that card (and spawns a ghost one).
+   Received cards are owned, so a card location whose card had come from the multiworld vanished: Grounds' Giant
+   Purple Toad card, 2026-10-30. For an unchecked location the mod runs that PostPersistentDataRestored with the owned
+   cards' Status cleared, then puts it back. (Checked ones are removed on map load: aplook.h.) */
+static int ap_pdr(void *self, void *func, void *parms, void *result) {
+    u32 o = (u32)self, info, game, wcm, cards; const wchar *map; wchar nm[64]; int li, n, i, cleared = 0;
+    static u8 was[96]; static wchar b[160];
+    if (!gApRoom[0] || !gClsWCard || !gClsHPSpawner || offCardStatus < 0 || offWCM <= 0 || offCards <= 0 || offGame <= 0) return 0;
+    if (!is_a_fast(o, gClsWCard) && !is_a_fast(o, gClsHPSpawner)) return 0;
+    info = P(o + offLevel);
+    if (!(map = level_map(info)) || !name_of((int)P(o + 0x20), nm, 64)) return 0;
+    li = ap_loc_by_actor(map, nm, 0);
+    if (li < 0 || (AP_LOCS[li].kind != 'K' && AP_LOCS[li].kind != 'C') || gLocChecked[li] || gSrvChecked[li] || ap_loc_off(li)) return 0;
+    game = P(info + offGame); wcm = game ? P(game + offWCM) : 0;
+    cards = wcm ? P(wcm + offCards) : 0; n = wcm ? (int)P(wcm + offCards + 4) : 0;
+    if (!cards || n <= 0 || n > 96) return 0;
+    for (i = 0; i < n; i++) { u8 *st = (u8 *)(cards + i * CARD_STRIDE + offCardStatus); was[i] = *st; if (*st == 5) { *st = 0; cleared++; } }
+    gPEOrig(self, func, parms, result);
+    for (i = 0; i < n; i++) { u8 *st = (u8 *)(cards + i * CARD_STRIDE + offCardStatus); if (was[i] == 5 && *st == 0) *st = 5; }
+    if (cleared) { wsprintfW(b, L"ap: %s set up as unowned (its card may have been received)", AP_LOCS[li].name); log_line(b); }
     return 1;
 }
