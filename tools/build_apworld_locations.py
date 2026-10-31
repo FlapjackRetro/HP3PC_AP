@@ -114,6 +114,9 @@ EXCLUDE = [
       ('WC_BrantheBloodthirsty0', 'WC_Cyclops0', 'WC_Goliath0', 'WC_HengistofUpperBarnton0', 'WC_Morholt0')],
 ]
 
+TUNNEL_AFTER_DRACONIFORS = {'CauldronSpwn1', 'ChestSpawner2', 'ChestSpawner5', 'ChestCompanionSpawner0', 'ChestCompanionSpawner4',
+                            'PumpkinPasty0', 'PumpkinPasty5', 'SpawnThingy10', 'SecretAreaMarker3', 'SkullShelfSpwn2'}
+
 # extra requirements by position in the area (progressive rules from the region table)
 def _drac_b_after_horntail(c):   # everything recorded after ChestSpawner13 (doc order), i.e. all but it
     return c['actor'] != 'ChestSpawner13'
@@ -133,6 +136,8 @@ PROGRESSIVE = [
     ('HP3_BeanBonus', lambda c: c['zf'] > 0, ['Spongify']),
     # Patronum: the three skull shelves need Depulso
     ('HP3_Adv2ExpPatronum', lambda c: c['actor'].startswith('SkullShelfSpwn'), ['Depulso']),
+    # Tunnel: everything catalogued after its Draconifors section needs Draconifors (2026-10-31, from play)
+    ('HP3_Adv5Shack', lambda c: c['actor'] in TUNNEL_AFTER_DRACONIFORS, ['Draconifors']),
 ]
 
 # hand fixes: (map, actor) -> (remove, add)
