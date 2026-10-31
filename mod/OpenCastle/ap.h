@@ -415,9 +415,18 @@ static void ap_pickup_spawned(u32 obj, int linkedBefore) {
     {   float *at = (float *)(obj + offLoc), bd = 150.0f * 150.0f; int best = -1;
         for (i = 0; i < gApMapN; i++) {
             float dx, dy, dz, d2; const struct aploc *l = &AP_LOCS[gApMapLoc[i]];
-            if (l->kind != 'E' && !(l->kind == 'K' && !l->key[0])) continue;   /* spawn points only */
+            /* spawn points only: event spawns, and card locations with no save key. key is a null pointer then, not
+               an empty string (aptables.h writes 0): reading key[0] crashed the game as soon as a pickup appeared
+               on a map with such a location (GPF in SpawnActor, HP3_COMC's hippogriff card, poc9r-poc9v) */
+            if (l->kind != 'E' && !(l->kind == 'K' && (!l->key || !l->key[0]))) continue;
             dx = at[0] - gApMapAt[i][0]; dy = at[1] - gApMapAt[i][1]; dz = at[2] - gApMapAt[i][2]; d2 = dx * dx + dy * dy + dz * dz;
             if (d2 < bd) { bd = d2; best = gApMapLoc[i]; }
+        }
+        /* COMC: both tracks' cards come out of track 2's spawner (WizCard2, HPSpawnThingy2; comcfix.h). Track 1's win
+           is the Joscelind Wadcock location (HPSpawnThingy1), not the spawner's own Gwenog Jones (poc9w checked Gwenog) */
+        if (best >= 0 && gComcTrack == 0 && weq(AP_LOCS[best].map, L"HP3_COMC") && AP_LOCS[best].actor && wieq(AP_LOCS[best].actor, L"HPSpawnThingy2")) {
+            int j = ap_loc_by_actor(L"HP3_COMC", L"HPSpawnThingy1", 'K');
+            if (j >= 0) best = j;
         }
         if (best >= 0 && gLocChecked[best] && gApActive && !ap_loc_off(best) && gApNKill < 32) gApKill[gApNKill++] = obj;   /* checked already */
         else if (best >= 0 && gApNPu < AP_PUMAX) { gApPu[gApNPu] = obj; gApPuLoc[gApNPu] = best; gApNPu++; ap_look_queue(obj, best); }
