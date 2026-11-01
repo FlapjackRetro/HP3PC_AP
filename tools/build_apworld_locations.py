@@ -150,6 +150,8 @@ FIX = {
     # logic counts it as past it (Alohomora + Rictusempra); to verify in play
     ('HP3_DungeonHUB', 'WC_Doxy0'): ([], ['Alohomora', 'Rictusempra']),
     # the Monster Book reward cards: the challenge's own rule (its region carries the unlock)
+    # the bridge secret's Lumos gargoyle is behind an Alohomora lock (2026-10-31, from play)
+    ('HP3_GroundsHub', 'SecretAreaMarker5'): ([], ['Alohomora']),
 }
 
 CONTAINER_NAMES = {
