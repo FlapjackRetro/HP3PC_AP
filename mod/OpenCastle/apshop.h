@@ -502,6 +502,12 @@ static int ap_pdr(void *self, void *func, void *parms, void *result) {
         }
         return 1;
     }
+    /* unchecked but already opened (Lives 0): its reward was missed (never linked, or it fell out of reach;
+       Hogwarts' Floating Skull 7, 2026-10-31). Re-arm it so it can be opened again and throw the location's item. */
+    if (AP_LOCS[li].kind == 'C' && offLives > 0 && is_a_fast(o, gClsHPSpawner) && (int)P(o + offLives) <= 0) {
+        *(int *)(o + offLives) = 1;
+        wsprintfW(b, L"ap: %s not checked yet but already opened: re-armed", AP_LOCS[li].name); log_line(b);
+    }
     game = P(info + offGame); wcm = game ? P(game + offWCM) : 0;
     cards = wcm ? P(wcm + offCards) : 0; n = wcm ? (int)P(wcm + offCards + 4) : 0;
     if (!cards || n <= 0 || n > 96) return 0;
