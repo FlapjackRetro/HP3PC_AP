@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  HP3 PC Archipelago setup: steps 2 and 3 of docs/SETUP.md (HP3-UHDE core files, 60 fps cap), then builds and
+  HP3 PC Archipelago setup: steps 2 and 3 of docs/SETUP.md (HP3-UHDE core files, not its executable; 60 fps cap), then builds and
   installs the Open Castle plugin (HP3OpenCastle.asi) and its texture package (HP3AP.utx).
 
 .DESCRIPTION
@@ -49,6 +49,9 @@ if (-not ($SkipUHDE -and $SkipFramerate -and $SkipInstall)) {   # these write un
     if (-not $admin) { Fail 'the game folder is under Program Files: run setup.bat (it asks for administrator), or an elevated PowerShell' }
 }
 if (-not (Test-Path (Join-Path $Sys 'Engine.dll'))) { Fail "no game at $GameDir (pass -GameDir)" }
+if (-not (Test-Path (Join-Path $Sys 'hppoa.exe'))) { Fail "no hppoa.exe in ${Sys}: install the game first (step 1 of docs/SETUP.md)" }
+Write-Host 'note: the game runs with your own hppoa.exe; this setup neither provides nor changes it. The retail disc''s'
+Write-Host '      SafeDisc protection may not start on Windows 10/11: see "The game''s executable" in docs/SETUP.md.'
 
 # Python: the py launcher (py -3) or python on PATH. Run with $ErrorActionPreference relaxed so a non-zero exit or
 # stderr output doesn't stop the script (Windows PowerShell turns a native command's stderr into errors).
@@ -81,6 +84,7 @@ Write-Host "python: $PyExe $($PyArgs -join ' ')"
 if (-not $SkipUHDE) {
     Step 'HP3-UHDE core files (SETUP.md step 2)'
     $u = Join-Path $Tmp 'uhde'
+    # this project doesn't ship or replace the game's executable (docs/SETUP.md, step 1)
     foreach ($f in 'd3d8.dll', 'd3d9.dll', 'plugins/dxgi.asi', 'Default.ini.IniPatch', 'defuser.ini.IniPatch') {
         Get-File "$UHDE/Mod/Game/system/$f" (Join-Path $u $f)
     }
