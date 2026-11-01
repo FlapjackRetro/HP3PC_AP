@@ -275,7 +275,7 @@ Rules collected so far (to go into `rules.py` with the locations):
 | Grounds: Giant Purple Toad card (`WC_GiantPurpleToad0`) | **Alohomora + Lumos + Spongify**. At (-204, -7440, 1236) | marked in play 2026-10-28 |
 | Grounds: secret area `SecretAreaMarker3` (with the Giant Purple Toad card) | **Alohomora + Lumos + Spongify**. At (-228, -7437, 1256) | marked in play 2026-10-28 |
 | Grounds: Phoenix card (chest `ChestSpawner0`, spawned by `WheelPuzzlePrize`) | **Depulso**. At (-3711, -7424, 1069), tag `WheelPuzzlePrize` | marked in play 2026-10-28 |
-| Grounds: secret area `SecretAreaMarker5` (tag `BridgeSecrets`) | **Lumos**. At (-832, -3076, 1279), tag `BridgeSecrets` | marked in play 2026-10-28 |
+| Grounds: secret area `SecretAreaMarker5` (tag `BridgeSecrets`) | **Lumos + Alohomora** (the Lumos gargoyle is behind an Alohomora lock; 2026-10-31). At (-832, -3076, 1279), tag `BridgeSecrets` | marked in play 2026-10-28 |
 | Grounds: placed cake `CauldronCake5` | Nothing (no spell). At (801, -2758, 911) | marked in play 2026-10-28 |
 | Grounds: Gytrash card (`WC_Gytrash0`) | Nothing (no spell). At (960, -1596, 676) | marked in play 2026-10-28 |
 | Grounds: secret area `SecretAreaMarker0` (with the Gytrash card) | Nothing (no spell). At (959, -1598, 696) | marked in play 2026-10-28 |
