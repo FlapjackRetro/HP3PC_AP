@@ -63,6 +63,10 @@ static int offPUVis = -1, offSkins = -1, offPrePivot = -1;
 typedef int (__thiscall *addzeroed_fn)(void *array, int elemsize, int count);   /* Core.dll FArray::AddZeroed(ElementSize, Count) */
 static addzeroed_fn gAddZeroed; static u32 gClsMaterial, gCardTex[NWC_TEXTURES]; static unsigned char gCardTexTried[NWC_TEXTURES];
 
+static const struct { const wchar *name; float radius, height; } BIGPICK[] = {
+    { L"Glacius B: Pumpkin Pasty 33", 100.0f, 80.0f },   /* on the slide (vanilla 32 x 5) */
+};
+#define NBIGPICK (int)(sizeof BIGPICK / sizeof BIGPICK[0])
 static void ap_look_queue(u32 obj, int li) {   /* game thread */
     int i;
     if (cur_level() != gLALevel) { gNLA = 0; gLALevel = cur_level(); gLAScanned = 0; }
@@ -192,6 +196,13 @@ static void ap_looks_tick(void) {
                giving that a look turned the spawner itself into a sprite; the cutscene's spawn from it then crashed
                (GPF in ULevel::SpawnActor, HP3_COMC, poc9r). Its card gets the look when it spawns (ap.h). */
             if (!gClsPickup || !is_a_fast(gApMapObj[i], gClsPickup)) continue;
+            /* bigger pickup area for checks that are hard to touch (the Glacius B slide: you slide past too fast) */
+            {   int g;
+                for (g = 0; g < NBIGPICK; g++) if (wieq(AP_LOCS[gApMapLoc[i]].name, BIGPICK[g].name) && gSetCollisionSize && !gLocChecked[gApMapLoc[i]]) {
+                    static wchar b[160];
+                    gSetCollisionSize((void *)gApMapObj[i], BIGPICK[g].radius, BIGPICK[g].height);
+                    wsprintfW(b, L"looks: %s pickup area enlarged", BIGPICK[g].name); log_line(b);
+                } }
             if (!gLocChecked[gApMapLoc[i]]) ap_look_queue(gApMapObj[i], gApMapLoc[i]);
             else if (gApActive && !ap_loc_off(gApMapLoc[i]) && gClsPickup && is_a_fast(gApMapObj[i], gClsPickup) && gApNKill < 32) {
                 /* already checked, but back again: a placed wizard card returns unless its card is owned
