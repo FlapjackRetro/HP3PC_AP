@@ -32,7 +32,7 @@ $Docs = Join-Path $MyDocs 'Harry Potter and the Prisoner of Azkaban'
 $Build = Join-Path $Repo 'build'
 $Tmp = Join-Path ([IO.Path]::GetTempPath()) 'hp3pc_ap_setup'
 # pinned sources (the versions this was tested with)
-$UHDE = 'https://raw.githubusercontent.com/Vawlpe/HP3-UHDE/05906d8a0e71d76d676b2b15dd09620a70e83be1'
+$UHDE = 'https://raw.githubusercontent.com/FlapjackRetro/HP3-UHDE-noexe/05906d8a0e71d76d676b2b15dd09620a70e83be1'   # the no-exe fork of Vawlpe/HP3-UHDE
 $APIcon = 'https://raw.githubusercontent.com/ArchipelagoMW/Archipelago/0.6.8/data/icon.png'
 
 function Step($t) { Write-Host ''; Write-Host "== $t" -ForegroundColor Cyan }

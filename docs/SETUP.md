@@ -48,9 +48,8 @@ Writing to `Program Files` needs admin rights, so the copy steps below need an e
 
 HP3-UHDE hasn't published a release, and its README tells you to use TFCInstaller (Nexus Mods) to install it.
 TFCInstaller is only needed for the HD texture pack, which this project doesn't need. The core files can be
-copied by hand from a checkout of [Vawlpe/HP3-UHDE](https://github.com/Vawlpe/HP3-UHDE), or of the fork without the
-replacement executable, [FlapjackRetro/HP3-UHDE-noexe](https://github.com/FlapjackRetro/HP3-UHDE-noexe). Don't use
-HP3-UHDE's `hppoa.exe`: keep the game's own executable (see step 1).
+copied by hand from a checkout of [FlapjackRetro/HP3-UHDE-noexe](https://github.com/FlapjackRetro/HP3-UHDE-noexe), our
+fork of Vawlpe's HP3-UHDE without the replacement executable. Keep the game's own executable (see step 1).
 
 | From `Mod/Game/system/` | What it is |
 | --- | --- |
