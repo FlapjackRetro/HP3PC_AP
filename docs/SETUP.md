@@ -10,7 +10,7 @@ mod from its source. Either clone it (`git clone https://github.com/FlapjackRetr
 from GitHub (**Code** > **Download ZIP**) and unzip it. Run `setup.bat` from that folder.
 
 After step 1, `setup.bat` (in the repository root) does steps 2 to 4 for you: it downloads the HP3-UHDE core
-files and applies their ini patches, patches the framerate, builds `HP3OpenCastle.asi` and `HP3AP.utx`, and
+files (not its executable) and applies their ini patches, patches the framerate, builds `HP3OpenCastle.asi` and `HP3AP.utx`, and
 installs them. It asks for administrator rights (the game is under `Program Files`). Running it again is safe;
 after a `git pull` it rebuilds and reinstalls the mod.
 
@@ -35,17 +35,25 @@ Then do step 5. The sections below are the manual steps that `setup.bat` automat
    Skip the bundled DirectX 8.1/9.0 installer.
 3. Settings and saves live in `Documents\Harry Potter and the Prisoner of Azkaban\` (`hppoa.ini`, `User.ini`, `Save\SaveN.usa`).
 
+**The game's executable.** This project doesn't provide or modify `hppoa.exe`: it uses your own installed copy.
+The retail disc's copy protection (SafeDisc) needs a driver, `secdrv.sys`, that Windows 10 and 11 disable for
+security reasons, so the retail executable may not start on a modern system as is. A Windows XP virtual machine runs
+the retail disc safely. Re-enabling `secdrv.sys` on Windows 10 is possible but reopens the security hole it was
+disabled for, and usually fails on Windows 11 with memory integrity on: only at your own risk. How you get a working
+executable is up to you.
+
 Writing to `Program Files` needs admin rights, so the copy steps below need an elevated prompt.
 
 ## 2. HP3-UHDE (core files)
 
 HP3-UHDE hasn't published a release, and its README tells you to use TFCInstaller (Nexus Mods) to install it.
 TFCInstaller is only needed for the HD texture pack, which this project doesn't need. The core files can be
-copied by hand from a checkout of [Vawlpe/HP3-UHDE](https://github.com/Vawlpe/HP3-UHDE):
+copied by hand from a checkout of [Vawlpe/HP3-UHDE](https://github.com/Vawlpe/HP3-UHDE), or of the fork without the
+replacement executable, [FlapjackRetro/HP3-UHDE-noexe](https://github.com/FlapjackRetro/HP3-UHDE-noexe). Don't use
+HP3-UHDE's `hppoa.exe`: keep the game's own executable (see step 1).
 
 | From `Mod/Game/system/` | What it is |
 | --- | --- |
-| `hppoa.exe` | No-CD launcher (Deviance), needed because Windows 10/11 won't run SafeDisc. Back up the retail `hppoa.exe` first. |
 | `d3d8.dll` | crosire's d3d8to9 |
 | `d3d9.dll` | ThirteenAG's Ultimate ASI Loader (with DirectX Windower embedded). Loads `plugins\*.asi`. |
 | `plugins/dxgi.asi` | ReShade 6.3.3 (32-bit) |

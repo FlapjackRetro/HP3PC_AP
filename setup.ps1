@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  HP3 PC Archipelago setup: steps 2 and 3 of docs/SETUP.md (HP3-UHDE core files, 60 fps cap), then builds and
+  HP3 PC Archipelago setup: steps 2 and 3 of docs/SETUP.md (HP3-UHDE core files, not its executable; 60 fps cap), then builds and
   installs the Open Castle plugin (HP3OpenCastle.asi) and its texture package (HP3AP.utx).
 
 .DESCRIPTION
@@ -49,6 +49,9 @@ if (-not ($SkipUHDE -and $SkipFramerate -and $SkipInstall)) {   # these write un
     if (-not $admin) { Fail 'the game folder is under Program Files: run setup.bat (it asks for administrator), or an elevated PowerShell' }
 }
 if (-not (Test-Path (Join-Path $Sys 'Engine.dll'))) { Fail "no game at $GameDir (pass -GameDir)" }
+if (-not (Test-Path (Join-Path $Sys 'hppoa.exe'))) { Fail "no hppoa.exe in ${Sys}: install the game first (step 1 of docs/SETUP.md)" }
+Write-Host 'note: the game runs with your own hppoa.exe; this setup neither provides nor changes it. The retail disc''s'
+Write-Host '      SafeDisc protection may not start on Windows 10/11: see "The game''s executable" in docs/SETUP.md.'
 
 # Python: the py launcher (py -3) or python on PATH. Run with $ErrorActionPreference relaxed so a non-zero exit or
 # stderr output doesn't stop the script (Windows PowerShell turns a native command's stderr into errors).
@@ -81,7 +84,8 @@ Write-Host "python: $PyExe $($PyArgs -join ' ')"
 if (-not $SkipUHDE) {
     Step 'HP3-UHDE core files (SETUP.md step 2)'
     $u = Join-Path $Tmp 'uhde'
-    foreach ($f in 'hppoa.exe', 'd3d8.dll', 'd3d9.dll', 'plugins/dxgi.asi', 'Default.ini.IniPatch', 'defuser.ini.IniPatch') {
+    # not HP3-UHDE's hppoa.exe: this project doesn't ship or replace the game's executable (docs/SETUP.md, step 1)
+    foreach ($f in 'd3d8.dll', 'd3d9.dll', 'plugins/dxgi.asi', 'Default.ini.IniPatch', 'defuser.ini.IniPatch') {
         Get-File "$UHDE/Mod/Game/system/$f" (Join-Path $u $f)
     }
     $md = 'Mod/System/MyDocuments/Harry%20Potter%20and%20the%20Prisoner%20of%20Azkaban'
@@ -89,10 +93,8 @@ if (-not $SkipUHDE) {
     Get-File "$UHDE/$md/User.ini.IniPatch" (Join-Path $u 'User.ini.IniPatch')
     if ($TestSave) { Get-File "$UHDE/$md/Save/Save500.usa" (Join-Path $u 'Save500.usa') }
 
-    $exe = Join-Path $Sys 'hppoa.exe'
-    if (-not (Test-Path "$exe.retail.bak")) { Copy-Item $exe "$exe.retail.bak"; Write-Host 'backed up the retail hppoa.exe (hppoa.exe.retail.bak)' }
     New-Item -ItemType Directory -Force -Path (Join-Path $Sys 'plugins') | Out-Null
-    foreach ($f in 'hppoa.exe', 'd3d8.dll', 'd3d9.dll', 'plugins\dxgi.asi') { Copy-Item (Join-Path $u $f) (Join-Path $Sys $f) -Force; Write-Host "copied $f" }
+    foreach ($f in 'd3d8.dll', 'd3d9.dll', 'plugins\dxgi.asi') { Copy-Item (Join-Path $u $f) (Join-Path $Sys $f) -Force; Write-Host "copied $f" }
 
     # ini patches: the game's own files, backed up once
     $patches = @(@((Join-Path $Sys 'Default.ini'), 'Default.ini.IniPatch'), @((Join-Path $Sys 'defuser.ini'), 'defuser.ini.IniPatch'),
