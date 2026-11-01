@@ -30,7 +30,7 @@ The randomizer is planned for this setup:
 | Component | Role |
 | --- | --- |
 | **Harry Potter and the Prisoner of Azkaban (PC)**, retail disc | The base game. Not included; bring your own copy. |
-| **[HP3-UHDE](https://github.com/Vawlpe/HP3-UHDE)** by Vawlpe | Makes the game run on modern Windows: d3d8to9, Ultimate ASI Loader, ReShade, config tweaks, and the no-CD launcher that's needed because Windows 10/11 can't run SafeDisc. The HD texture pack is optional and isn't needed here. The ASI loader also gives us a way to load our own code. |
+| **[HP3-UHDE](https://github.com/FlapjackRetro/HP3-UHDE-noexe)** by Vawlpe (our no-exe edition, with no game executable) | Makes the game run on modern Windows: d3d8to9, Ultimate ASI Loader, ReShade, config tweaks. No game executable is used from it: this project neither ships nor modifies `hppoa.exe` (see [docs/SETUP.md](docs/SETUP.md) on SafeDisc and modern Windows). The HD texture pack is optional and isn't needed here. The ASI loader also gives us a way to load our own code. |
 | **Framerate fix** | Caps the game at 60 fps. Retail HP3 runs uncapped in single player, and high frame rates are associated with softlocks (HP3-UHDE lists its FPS lock as a "Softlock Fix", still unfinished). HP3-UHDE itself only turns on VSync, so this is applied separately with [`tools/framerate_patch.py`](tools/framerate_patch.py). See [docs/SETUP.md](docs/SETUP.md). |
 
 ## Status
