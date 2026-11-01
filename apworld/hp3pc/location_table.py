@@ -217,7 +217,7 @@ LOCATIONS: tuple = (
     LocationData('Grounds: Secret Area 1', 193, 'Grounds', 'HP3_GroundsHub', 'SecretAreaMarker1', 'secret', '', '', 0, 0, ('Depulso', 'Spongify'), None),
     LocationData('Grounds: Secret Area 2', 194, 'Grounds', 'HP3_GroundsHub', 'SecretAreaMarker2', 'secret', '', '', 0, 0, ('Depulso', 'Spongify'), None),
     LocationData('Grounds: Secret Area 3', 195, 'Grounds', 'HP3_GroundsHub', 'SecretAreaMarker3', 'secret', '', '', 0, 0, ('Alohomora', 'Lumos', 'Spongify'), None),
-    LocationData('Grounds: Secret Area 5', 196, 'Grounds', 'HP3_GroundsHub', 'SecretAreaMarker5', 'secret', '', '', 0, 0, ('Lumos',), None),
+    LocationData('Grounds: Secret Area 5', 196, 'Grounds', 'HP3_GroundsHub', 'SecretAreaMarker5', 'secret', '', '', 0, 0, ('Alohomora', 'Lumos'), None),
     LocationData('Grounds: Secret Area 6', 197, 'Grounds', 'HP3_GroundsHub', 'SecretAreaMarker6', 'secret', '', '', 0, 0, ('Depulso', 'Spongify'), None),
     LocationData('Harry FE: Cauldron Cake 0', 198, "Harry's Final Exam", 'HP3_FA3Harry', 'CauldronCake0', 'placed', 'hfeCauldronCake0_PU', '', 0, 1, ('Glacius', "Harry's Final Exam Unlock"), None),
     LocationData('Harry FE: Cauldron Cake 2', 199, "Harry's Final Exam", 'HP3_FA3Harry', 'CauldronCake2', 'placed', 'hfeCauldronCake2_PU', '', 0, 1, ('Glacius', "Harry's Final Exam Unlock"), None),
