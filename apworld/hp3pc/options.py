@@ -22,12 +22,16 @@ class CardsRequired(Range):
 class SpellMode(Choice):
     """vanilla: start with Rictusempra, Alohomora, Lumos, Depulso and Spongify; Expecto Patronum and the challenge
     spells are in the pool.
-    hard: start with no spells. Only a few checks are open at the start (on the grounds, and the cards bought with
-    jellybeans); in your own world they hold the five vanilla starting spells. If too few are open (shopsanity or
+    hard: start with no spells. The five vanilla starting spells are early items: they go to checks open at the start
+    in any world of the multiworld (not only yours). If too few checks are open at the start across the multiworld,
+    you start with one or two of those spells instead.
+    hard_solo: start with no spells. Only a few checks are open at the start (on the grounds, and the cards bought
+    with jellybeans); in your own world they hold the five vanilla starting spells. If too few are open (shopsanity or
     secretsanity off), you start with one or two of those spells instead."""
     display_name = "Spell Mode"
     option_vanilla = 0
     option_hard = 1
+    option_hard_solo = 2
     default = option_vanilla
 
 
