@@ -103,6 +103,33 @@ class TestNoSecretsHard(WorldTestBase):
     options = {"secretsanity": False, "spell_mode": "hard"}
 
 
+class TestNoSecretsHardSolo(WorldTestBase):
+    game = items.GAME_NAME
+    options = {"secretsanity": False, "spell_mode": "hard_solo"}
+
+
+class TestHardSoloEarlyLocal(WorldTestBase):
+    game = items.GAME_NAME
+    options = {"spell_mode": "hard_solo"}
+
+    def test_local_early(self):
+        local = self.multiworld.local_early_items[self.player]
+        self.assertTrue(local)
+        self.assertFalse(self.multiworld.early_items[self.player])
+        self.assertTrue(set(local) <= set(items.VANILLA_STARTING_SPELLS))
+
+
+class TestHardEarlyPlain(WorldTestBase):
+    game = items.GAME_NAME
+    options = {"spell_mode": "hard"}
+
+    def test_plain_early(self):
+        early = self.multiworld.early_items[self.player]
+        self.assertTrue(early)
+        self.assertFalse(self.multiworld.local_early_items[self.player])
+        self.assertTrue(set(early) <= set(items.VANILLA_STARTING_SPELLS))
+
+
 class TestNoShops(WorldTestBase):
     game = items.GAME_NAME
     options = {"shopsanity": False}
@@ -117,6 +144,11 @@ class TestNoShops(WorldTestBase):
 class TestNoShopsHard(WorldTestBase):
     game = items.GAME_NAME
     options = {"shopsanity": False, "spell_mode": "hard", "split_challenge_spells": True}
+
+
+class TestNoShopsHardSolo(WorldTestBase):
+    game = items.GAME_NAME
+    options = {"shopsanity": False, "spell_mode": "hard_solo", "split_challenge_spells": True}
 
 
 class TestStartWithMap(WorldTestBase):
