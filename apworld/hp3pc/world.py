@@ -1,7 +1,7 @@
 from collections.abc import Mapping
 from typing import Any
 
-from BaseClasses import CollectionState, Item, Location
+from BaseClasses import CollectionState, Item, Location, LocationProgressType
 from worlds.AutoWorld import WebWorld, World
 
 from . import items
@@ -133,17 +133,28 @@ class HP3PCWorld(World):
             self.get_location(loc.name + VANILLA_CANDY_SUFFIX).access_rule = rules.location_rule(self, loc)
         self.get_location(GOAL_LOCATION).access_rule = rules.goal_rule(self)
         self.multiworld.completion_condition[self.player] = lambda state: state.has(items.VICTORY_EVENT, self.player)
-        if self.options.spell_mode == self.options.spell_mode.option_hard:
-            self.hard_mode_opening()
+        if self.options.spell_mode == self.options.spell_mode.option_hard_solo:
+            self.hard_mode_opening(local=True)
 
-    def hard_mode_opening(self) -> None:
-        """Hard mode: the vanilla starting spells go to the checks open at the start, in the player's own world (with
-        fewer, fill failed now and then: a solo seed's few early spots ran out before the spells were placed). With
-        the shops (bean-priced ones) or the secret areas off, the opening can be a single check, so the player starts
-        with as few of those spells as it takes to open enough checks (the one that opens the most first)."""
+    def generate_basic(self) -> None:
+        # hard (multiworld): every world has its rules by now, so the open spots can be counted across all of them
+        if self.options.spell_mode == self.options.spell_mode.option_hard:
+            self.hard_mode_opening(local=False)
+
+    def hard_mode_opening(self, local: bool) -> None:
+        """Hard modes: the vanilla starting spells go to the checks open at the start.
+        hard_solo (local=True): in the player's own world (local_early_items). With fewer, fill failed now and then: a
+        solo seed's few early spots ran out before the spells were placed.
+        hard (local=False): in any world (plain early_items), so a multiworld doesn't fill this world's few opening
+        checks with its own spells; the open spots are counted across the whole multiworld.
+        Either way, when too few spots are open (one, with the shops (bean-priced ones), the secret areas and the
+        candy all off) the player starts with as few of those spells as it takes to open enough checks (the one that
+        opens the most first)."""
         def open_spots() -> int:
             state = CollectionState(self.multiworld)
-            return sum(1 for loc in self.get_locations() if loc.address is not None and not loc.item and loc.can_reach(state))
+            locs = self.get_locations() if local else self.multiworld.get_locations()
+            return sum(1 for loc in locs if loc.address is not None and not loc.item
+                       and loc.progress_type != LocationProgressType.EXCLUDED and loc.can_reach(state))
 
         spells = list(items.VANILLA_STARTING_SPELLS)
         free = open_spots()
@@ -163,8 +174,9 @@ class HP3PCWorld(World):
             self.multiworld.itempool.append(self.create_item(items.FILLER_ITEM_NAME))
             self.starting_spells.append(best)
             free = best_free
+        early = self.multiworld.local_early_items if local else self.multiworld.early_items
         for name in spells[:free]:
-            self.multiworld.local_early_items[self.player][name] = 1
+            early[self.player][name] = 1
 
     # ---- items and currency on the state -----------------------------------------------------------------------------
     def create_item(self, name: str, classification: "items.IC | None" = None) -> items.HP3PCItem:
@@ -196,5 +208,5 @@ class HP3PCWorld(World):
         data = dict(self.options.as_dict("goal", "cards_required", "spell_mode", "split_challenge_spells",
                                          "shop_prices", "shortcut_passwords", "marauders_map", "secretsanity",
                                          "candysanity", "shopsanity"))
-        data["world_version"] = "0.3.8"
+        data["world_version"] = "0.3.9"
         return data
