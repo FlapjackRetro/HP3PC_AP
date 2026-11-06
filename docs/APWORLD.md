@@ -34,8 +34,8 @@ locations). Playing one needs the client, which doesn't exist yet ([CLIENT_SYNC.
   Barnton) are locations `Doxy: Round n`. These are the five cards in the closed Grounds room: each round's win
   teleports its card out (OPEN_CASTLE_CHANGES poc6l), so they aren't dev-room leftovers after all. Logic: Doxy
   Challenge Unlock + Rictusempra.
-- **Hard spell mode** places the five vanilla starting spells early in the player's own world
-  (`local_early_items`): with no spells only about ten checks are open at the start, and fill failed now and then
+- **Hard spell mode** (now `hard_solo`; `hard` uses plain `early_items` since 0.3.9) places the five vanilla
+  starting spells early in the player's own world (`local_early_items`): with no spells only about ten checks are open at the start, and fill failed now and then
   with fewer (900 random-option seeds after the change: 0 failures; a solo hard + split seed still fails about 1
   time in 300).
 - **Logic audit (2026-10-29)**, an independent pass of the table against these notes. Fixed: Portrait D's two
@@ -85,7 +85,12 @@ IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–115, passwords 
 
 - **vanilla** (default): start with Rictusempra, Alohomora, Lumos, Depulso, Spongify. Expecto Patronum and the
   challenge spells are in the pool.
-- **hard**: start with nothing. The early game rests on the few checks reachable with no spells (e.g. the cauldron
+- **hard**: start with nothing; the five vanilla starting spells are plain early items (`early_items`), so in a
+  multiworld they can sit on any world's sphere-1 checks. Meant for multiworld seeds: with `hard_solo` a big
+  multiworld fills this world's few opening checks with its own spells.
+- **hard_solo**: start with nothing; the five spells are local early items (`local_early_items`), on this world's own
+  opening checks. The pre-0.3.9 `hard`.
+- Both hard modes: the early game rests on the few checks reachable with no spells (e.g. the cauldron
   cake near Hagrid's hut); a first Alohomora or Depulso opens up a lot. Needs a sphere-1 count from the location data
   before release, and the softlock list (OPEN_CASTLE.md §7a) matters more here.
 - Expecto Patronum: progression. In Open Castle only Adv2ExpPatronum uses it (the Dementor maps are dropped).
@@ -123,7 +128,9 @@ IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–115, passwords 
 Hard mode's opening: with spells hidden, the checks open at the start can be few (one, with secretsanity, candysanity
 and shopsanity all off). The player then starts with as few of the five vanilla starting spells as it takes to open
 enough checks (the one that opens the most first; Depulso, then Alohomora), and the rest go to those checks
-(`hard_mode_opening` in world.py).
+(`hard_mode_opening` in world.py). `hard_solo` counts this world's open checks (in `set_rules`, as before) and makes
+the rest local early items; `hard` counts the open checks of every world (in `generate_basic`, once all rules are
+set) and makes the rest plain early items, so in a multiworld it rarely needs a starting spell.
 
 Slot data: all ten options. The client passes the last two to the mod in `ROOM`.
 

@@ -50,7 +50,7 @@ class _World:
         class O:
             pass
         self.options = O()
-        self.options.spell_mode = _Opt(spell_mode, option_vanilla=0, option_hard=1)
+        self.options.spell_mode = _Opt(spell_mode, option_vanilla=0, option_hard=1, option_hard_solo=2)
         self.options.split_challenge_spells = _Opt(split)
         self.options.shortcut_passwords = _Opt(shortcuts, option_item=0, option_start_unlocked=1)
         self.options.marauders_map = _Opt(0, option_randomized=0, option_start_with=1)
@@ -75,3 +75,8 @@ class TestPool(unittest.TestCase):
         pool = items.core_pool(w)
         self.assertEqual(len([n for n in pool if n in items.SPELLS]), 10)
         self.assertNotIn("Shortcut Passwords", pool)
+
+    def test_hard_solo(self):
+        w = _World(spell_mode=2)
+        self.assertEqual(items.starting_items(w), [])
+        self.assertTrue(set(items.VANILLA_STARTING_SPELLS) <= set(items.core_pool(w)))
