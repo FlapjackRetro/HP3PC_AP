@@ -34,7 +34,7 @@ locations). Playing one needs the client, which doesn't exist yet ([CLIENT_SYNC.
   Barnton) are locations `Doxy: Round n`. These are the five cards in the closed Grounds room: each round's win
   teleports its card out (OPEN_CASTLE_CHANGES poc6l), so they aren't dev-room leftovers after all. Logic: Doxy
   Challenge Unlock + Rictusempra.
-- **Hard spell mode** (now `hard_solo`; `hard` uses plain `early_items` since 0.3.9) places the five vanilla
+- **Hard spell mode** (now `hard_solo`; `hard` has no early placement since 0.3.10) places the five vanilla
   starting spells early in the player's own world (`local_early_items`): with no spells only about ten checks are open at the start, and fill failed now and then
   with fewer (900 random-option seeds after the change: 0 failures; a solo hard + split seed still fails about 1
   time in 300).
@@ -85,9 +85,10 @@ IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–115, passwords 
 
 - **vanilla** (default): start with Rictusempra, Alohomora, Lumos, Depulso, Spongify. Expecto Patronum and the
   challenge spells are in the pool.
-- **hard**: start with nothing; the five vanilla starting spells are plain early items (`early_items`), so in a
-  multiworld they can sit on any world's sphere-1 checks. Meant for multiworld seeds: with `hard_solo` a big
-  multiworld fills this world's few opening checks with its own spells.
+- **hard**: start with nothing; the five vanilla starting spells are ordinary pool items with no early placement
+  and no starting-spell fallback, and fill places them in any world (since 0.3.10; 0.3.9 made them `early_items`).
+  **Generation can fail**, most likely solo or with shopsanity / secretsanity / candysanity off; generation logs a
+  warning for every hard slot. Meant for multiworld seeds.
 - **hard_solo**: start with nothing; the five spells are local early items (`local_early_items`), on this world's own
   opening checks. The pre-0.3.9 `hard`.
 - Both hard modes: the early game rests on the few checks reachable with no spells (e.g. the cauldron
@@ -125,12 +126,11 @@ IDs: `33_000_000` + a fixed offset (spells 1–10, unlocks 101–115, passwords 
 
 | `shopsanity` | on / off | default on. Off: each Fred & George / student-vendor location sells its vanilla card or password (locked there); the mod drives the shops the same way either way |
 
-Hard mode's opening: with spells hidden, the checks open at the start can be few (one, with secretsanity, candysanity
+`hard_solo`'s opening: with spells hidden, the checks open at the start can be few (one, with secretsanity, candysanity
 and shopsanity all off). The player then starts with as few of the five vanilla starting spells as it takes to open
 enough checks (the one that opens the most first; Depulso, then Alohomora), and the rest go to those checks
-(`hard_mode_opening` in world.py). `hard_solo` counts this world's open checks (in `set_rules`, as before) and makes
-the rest local early items; `hard` counts the open checks of every world (in `generate_basic`, once all rules are
-set) and makes the rest plain early items, so in a multiworld it rarely needs a starting spell.
+(`hard_mode_opening` in world.py). This is `hard_solo` only: `hard` does none of it and leaves the spells to fill,
+which can fail.
 
 Slot data: all ten options. The client passes the last two to the mod in `ROOM`.
 
