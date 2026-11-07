@@ -40,7 +40,7 @@ class TestDefault(WorldTestBase):
 
 class TestHardSplitCheap(WorldTestBase):
     game = items.GAME_NAME
-    options = {"spell_mode": "hard", "split_challenge_spells": True, "shop_prices": "cheap",
+    options = {"spell_mode": "hard_solo", "split_challenge_spells": True, "shop_prices": "cheap",
                "shortcut_passwords": "start_unlocked"}
 
 
@@ -57,7 +57,7 @@ class TestAllCards(WorldTestBase):
 
 class TestRules(WorldTestBase):
     game = items.GAME_NAME
-    options = {"spell_mode": "hard"}
+    options = {"spell_mode": "hard_solo"}
 
     def test_challenge_unlock_grants_spells(self):
         loc = "Glacius: Pumpkin Pasty 37"
@@ -95,12 +95,7 @@ class TestNoSecretsNoCandy(WorldTestBase):
 
 class TestNoCandyHardCheap(WorldTestBase):
     game = items.GAME_NAME
-    options = {"candysanity": False, "spell_mode": "hard", "split_challenge_spells": True, "shop_prices": "cheap"}
-
-
-class TestNoSecretsHard(WorldTestBase):
-    game = items.GAME_NAME
-    options = {"secretsanity": False, "spell_mode": "hard"}
+    options = {"candysanity": False, "spell_mode": "hard_solo", "split_challenge_spells": True, "shop_prices": "cheap"}
 
 
 class TestNoSecretsHardSolo(WorldTestBase):
@@ -119,15 +114,18 @@ class TestHardSoloEarlyLocal(WorldTestBase):
         self.assertTrue(set(local) <= set(items.VANILLA_STARTING_SPELLS))
 
 
-class TestHardEarlyPlain(WorldTestBase):
+class TestHardNoEarly(WorldTestBase):
+    """hard: no early placement or starting spells. Solo fill can fail (documented), so no default fill tests here;
+    the stress runs cover hard in a multiworld."""
     game = items.GAME_NAME
     options = {"spell_mode": "hard"}
+    run_default_tests = False
 
-    def test_plain_early(self):
-        early = self.multiworld.early_items[self.player]
-        self.assertTrue(early)
+    def test_no_early(self):
+        self.assertFalse(self.multiworld.early_items[self.player])
         self.assertFalse(self.multiworld.local_early_items[self.player])
-        self.assertTrue(set(early) <= set(items.VANILLA_STARTING_SPELLS))
+        starting = {i.name for i in self.multiworld.precollected_items[self.player]}
+        self.assertFalse(starting & set(items.VANILLA_STARTING_SPELLS))
 
 
 class TestNoShops(WorldTestBase):
@@ -139,11 +137,6 @@ class TestNoShops(WorldTestBase):
         self.assertEqual(self.multiworld.get_location("F&G Shop: Portrait Password 3", self.player).item.name,
                          "Portrait Password 3")
         self.assertEqual(self.multiworld.get_location("Vendor: Card Purchase 20", self.player).item.name, "Zou Yen Card")
-
-
-class TestNoShopsHard(WorldTestBase):
-    game = items.GAME_NAME
-    options = {"shopsanity": False, "spell_mode": "hard", "split_challenge_spells": True}
 
 
 class TestNoShopsHardSolo(WorldTestBase):
