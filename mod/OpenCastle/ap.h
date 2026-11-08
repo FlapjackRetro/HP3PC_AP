@@ -177,12 +177,21 @@ static void ap_map_scan(u32 level, const wchar *map) {   /* worker, once per set
     gApMapLevel = level;
     wsprintfW(b, L"ap: %d location actor(s) on this map", gApMapN); log_line(b);
 }
+/* worker -> game thread: checked secrets whose marker came back unfound (#27) */
+static volatile u32 gSecretFix[16]; static volatile int gSecretFixN;
 static void ap_secrets_poll(void) {   /* worker, every 250 ms on a settled map */
     int i;
     if (offFound <= 0) return;
     for (i = 0; i < gApMapN; i++) {
         int li = gApMapLoc[i];
-        if (AP_LOCS[li].kind != 'S' || gLocChecked[li] || !gApMapObj[i]) continue;
+        if (AP_LOCS[li].kind != 'S' || !gApMapObj[i]) continue;
+        /* checked already, by this save or by the server: the marker's bFound only lives in the game's save, so after
+           quitting without saving the area was found again (and counted again) though the check was long sent */
+        if (gLocChecked[li] || (gApActive && gSrvChecked[li])) {
+            if (!(rd32(gApMapObj[i] + offFound) & maskFound) && gSecretFixN < 16) gSecretFix[gSecretFixN++] = gApMapObj[i];
+            gApMapObj[i] = 0;
+            continue;
+        }
         if (rd32(gApMapObj[i] + offFound) & maskFound) {
             if (gSecretQN < 64) gSecretQ[gSecretQN++] = (unsigned short)li;
             gApMapObj[i] = 0;   /* once */
@@ -350,12 +359,30 @@ static void ap_items_apply(void) {
     }
 }
 
+/* game thread: a checked secret area whose marker isn't found: mark it found, and count it in the game's secret
+   tally (SecretManager.SecretFound, which also flashes the secrets HUD) as the vanilla find would have */
+static int N_SecretFound = -1, offSecretMgr = -1;
+static void ap_secret_restore(u32 m) {
+    static wchar b[120]; wchar nm[64]; u32 level = cur_level(), game, mgr; void *fn;
+    if (!m || offFound <= 0 || !level || P(m + offLevel) != level || (P(m + offFound) & maskFound)) return;
+    *(u32 *)(m + offFound) |= maskFound;
+    if (N_SecretFound < 0) N_SecretFound = name_index(L"SecretFound");
+    if (offSecretMgr < 0) offSecretMgr = prop_offset(L"HGame", L"SecretManager");
+    game = offGame > 0 ? P(level + offGame) : 0;
+    mgr = game && offSecretMgr > 0 ? P(game + offSecretMgr) : 0;
+    if (mgr && N_SecretFound >= 0 && (fn = gFindFunction((void *)mgr, N_SecretFound, 0))) gPEOrig((void *)mgr, fn, 0, 0);
+    wsprintfW(b, L"ap: secret %s was checked already: marked found%s", name_of((int)P(m + 0x20), nm, 64) ? nm : L"?",
+              mgr ? L" and counted" : L" (not counted: no SecretManager)");
+    log_line(b);
+}
+
 /* game thread, safe tick: the sync job */
 static int gApMismatchSent;
 static void ap_game(void) {
     static wchar b[300]; static char line[200]; u32 level = cur_level(); wchar room[128];
     if (!level || !cur_store()) return;
     while (gSecretQN > 0) ap_check(gSecretQ[--gSecretQN]);
+    while (gSecretFixN > 0) ap_secret_restore(gSecretFix[--gSecretFixN]);
     if (!gApJob) return;
     gApJob = 0;
     if (level != gApLevel) { gApLevel = level; ap_read_save(); gApMismatchSent = 0; gApSentGen = -1; }
