@@ -229,9 +229,27 @@ static void vendor_control(void) {
         log_line(b);
     }
 }
+/* an actor hidden when the map loaded has no render data, so clearing bHidden alone left it invisible though still
+   buyable (#27: VI_PortraitPassword.PostPersistentDataRestored hides the password stands at load once 8 - received
+   passwords < stands; a stand hidden mid-session and shown again was fine). The engine rebuilds it after
+   ClearRenderData and a move: both, moving to where it already is (SetLocation, through ProcessEvent). */
+typedef void (__thiscall *clearrd_fn)(void *actor);
+static clearrd_fn gClearRenderData; static int gClearRDTried, N_SetLocation = -1;
+static void sh_refresh_render(u32 a) {
+    struct { float loc[3]; u32 ret; } parms; void *fn;
+    if (!gClearRDTried) { HANDLE eng = GetModuleHandleW(L"Engine.dll"); gClearRDTried = 1;
+        gClearRenderData = eng ? (clearrd_fn)GetProcAddress(eng, "?ClearRenderData@AActor@@QAEXXZ") : 0;
+        N_SetLocation = name_index(L"SetLocation");
+        {   static wchar b[100]; wsprintfW(b, L"shopsanity: stand redraw ClearRenderData %d SetLocation %d", gClearRenderData != 0, N_SetLocation); log_line(b); } }
+    if (gClearRenderData) gClearRenderData((void *)a);
+    if (N_SetLocation >= 0 && (fn = gFindFunction((void *)a, N_SetLocation, 0))) {
+        rd(a + offLoc, parms.loc, 12); parms.ret = 0;
+        gPEOrig((void *)a, fn, &parms, 0);
+    }
+}
 static void sh_show(u32 a, int on) {
     u32 *w = (u32 *)(a + offShHidden); int hid = (*w & maskShHidden) != 0;
-    if (on && hid) { *w &= ~maskShHidden; gSetCollision((void *)a, 1, 1, 1); }
+    if (on && hid) { *w &= ~maskShHidden; gSetCollision((void *)a, 1, 1, 1); sh_refresh_render(a); }
     else if (!on && !hid) { *w |= maskShHidden; gSetCollision((void *)a, 0, 0, 0); }
 }
 static void fg_stands(void) {
