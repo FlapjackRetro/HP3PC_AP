@@ -21,7 +21,7 @@ Archipelago is a multi-game randomizer: items from one game can turn up in anoth
 player works through their own world while unlocking each other's progress. Supporting HP3 means describing
 its items, locations and logic as an Archipelago "world", plus a client that connects the running game to the
 Archipelago server. The sister project for the previous game is
-[HP2PC_AP](https://github.com/Kryen112/HP2PC_AP) (Chamber of Secrets).
+HP2PC_AP by Kryen112 (Chamber of Secrets).
 
 ## Components
 
@@ -30,7 +30,7 @@ The randomizer is planned for this setup:
 | Component | Role |
 | --- | --- |
 | **Harry Potter and the Prisoner of Azkaban (PC)**, retail disc | The base game. Not included; bring your own copy. |
-| **HP3-UHDE** (Harry Potter 3: Ultimate HD Edition) by Vawlpe; its core files are included in [`thirdparty/hp3-uhde/`](thirdparty/hp3-uhde/) | Makes the game run on modern Windows: d3d8to9, Ultimate ASI Loader, ReShade, config tweaks. No game executable comes with it: this project neither ships nor modifies `hppoa.exe` (the retail exe needs its original disc, and on Windows 10/11 may need [SafeDiscShim](https://github.com/RibShark/SafeDiscShim); see [docs/SETUP.md](docs/SETUP.md)). Its HD texture pack isn't used here. The ASI loader also gives us a way to load our own code. |
+| **HP3-UHDE** (Harry Potter 3: Ultimate HD Edition) by Vawlpe; its core files are included in [`thirdparty/hp3-uhde/`](thirdparty/hp3-uhde/) | Makes the game run on modern Windows: d3d8to9, Ultimate ASI Loader, ReShade, config tweaks. No game executable comes with it: this project neither ships nor modifies `hppoa.exe`, and supports only the verified retail one, run from its original disc ([docs/RETAIL.md](docs/RETAIL.md), [docs/SETUP.md](docs/SETUP.md)). Its HD texture pack isn't used here. The ASI loader also gives us a way to load our own code. |
 | **Framerate fix** | Caps the game at 60 fps. Retail HP3 runs uncapped in single player, and high frame rates are associated with softlocks (HP3-UHDE lists its FPS lock as a "Softlock Fix", still unfinished). HP3-UHDE itself only turns on VSync, so this is applied separately with [`tools/framerate_patch.py`](tools/framerate_patch.py). See [docs/SETUP.md](docs/SETUP.md). |
 
 ## Status

@@ -45,7 +45,7 @@ path (HP2 leftovers?).
 
 ## Items from other games: the Archipelago logo
 
-- HP2PC_AP ([Kryen112/HP2PC_AP](https://github.com/Kryen112/HP2PC_AP)) has a logo mesh and textures
+- HP2PC_AP (by Kryen112) has a logo mesh and textures
   (`mod/HPArchipelago/Models/APLogoMesh.psk`, `Textures/APLogoTex0.png` / `APLogoArrowTex0.png`).
   - The repo has **no licence**, so by default it's all rights reserved: ask the author before copying anything.
   - Their generators (`tools/gen_logo_mesh.py`, `gen_logo_textures.py`) aren't published.

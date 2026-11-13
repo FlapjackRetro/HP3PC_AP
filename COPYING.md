@@ -1,8 +1,9 @@
 # Third-party assets
 
-## Archipelago logo (`data/icon.png` of Archipelago, used by `tools/gen_ap_logos.py`)
-- Source: the Archipelago icon, `data/icon.png` in https://github.com/ArchipelagoMW/Archipelago (tag 0.6.8),
-  by the Archipelago project. It isn't committed here: `setup.ps1` downloads it, or you pass your own copy.
+## Archipelago logo (`thirdparty/archipelago/icon.png`, used by `tools/gen_ap_logos.py`)
+- Source: the Archipelago icon (`data/icon.png` of Archipelago 0.6.8), by the Archipelago project, included here
+  unchanged (512×512, SHA-256 `55b8e964106cde2f52839e9bb5cdcceb95e427dce00a71892b116c91118e9273`). Archipelago's MIT
+  license text is in `thirdparty/archipelago/LICENSE-MIT.txt`.
 - License: the original Archipelago logo is available under the **MIT** license. The newer logos are derivative
   works of it and are available under **CC BY-NC 4.0** (Creative Commons Attribution-NonCommercial 4.0
   International). The version was not stated by the source; 4.0, the latest, is assumed. MIT is compatible with

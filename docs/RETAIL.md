@@ -1,6 +1,6 @@
 # Retail copy reference
 
-The copy this project is developed and tested against. If your files match these hashes, the mod, the setup script
+The copy this project is developed and tested against, and the only `hppoa.exe` it supports. If your files match these hashes, the mod, the setup script
 and the framerate patch will work as documented. A file that doesn't match may still work, but it is untested: please
 say which files differ when you report a problem.
 
@@ -23,7 +23,7 @@ mismatch.
 | Edition | Retail PC CD-ROM, US, v1.0 (EA, 2004) |
 | Volume label | `HPPoA` (CDFS, 521 MB) |
 | Disc root | `00000000.016`, `00000000.256`, `00000001.TMP`, `00000002.TMP`, `AutoRun\`, `AutoRun.exe`, `autorun.inf`, `AutoRunGUI.dll`, `common_filelist.txt`, `compressed.zip` (478,592,828 bytes), `DirectX\`, `eauninstall.exe`, `hppoa.ico`, `setup.exe`, `Support\`, `System\` |
-| Copy protection | SafeDisc 3.20 or later: `hppoa.exe` has the `stxt774` / `stxt371` sections and the `BoG_` signature, and it extracts the `~e5.0001` start-up helper. **Runs without SafeDiscShim** on Windows 11 build 26200 (no `secdrv.sys` installed): main menu with the disc in, "Cannot locate the CD-ROM" with it ejected. See [SETUP.md](SETUP.md) step 1. |
+| Copy protection | SafeDisc 3.20 or later: `hppoa.exe` has the `stxt774` / `stxt371` sections and the `BoG_` signature, and it extracts the `~e5.0001` start-up helper. **Runs from the disc on Windows 11** build 26200 with nothing else installed (no `secdrv.sys`): main menu with the disc in, "Cannot locate the CD-ROM" with it ejected. See [SETUP.md](SETUP.md) step 1. |
 | Installed to | `C:\Program Files (x86)\EA GAMES\Harry Potter and the Prisoner of Azkaban(TM)\` (803 files) |
 | Tested on | Windows 11 Pro 25H2 (build 26200) |
 
