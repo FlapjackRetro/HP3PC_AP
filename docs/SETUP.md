@@ -1,6 +1,7 @@
 # Setup
 
 This is the setup that's been tested on Windows: retail US disc (v1.0), HP3-UHDE core files and the 60 fps patch.
+To check that your copy matches the tested one, run `tools\verify_retail.ps1` (file list and hashes: [RETAIL.md](RETAIL.md)).
 It boots to the main menu, starts a new game and plays normally, windowed or fullscreen (Alt+Enter toggles).
 
 ## Quick setup
