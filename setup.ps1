@@ -40,6 +40,20 @@ $TestedExe = '1ac9c1e37b1cd8d9c581558be8c8ebb607ef0853b66c698fa3b881dcb9b54b0d' 
 $SDShimGuid = '{001827e2-fa73-4907-81de-5596bc8e3d37}'   # its compatibility database (SafeDiscShim.sdb)
 $APIcon = 'https://raw.githubusercontent.com/ArchipelagoMW/Archipelago/0.6.8/data/icon.png'
 
+function Find-LLVM {   # LLVM's bin folder: PATH, the installer's registry key (any install folder), the usual folders
+    $c = Get-Command clang.exe -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
+    $dirs = @()
+    if ($c) { $dirs += Split-Path $c.Source }
+    foreach ($k in 'HKLM:\SOFTWARE\LLVM\LLVM', 'HKLM:\SOFTWARE\WOW6432Node\LLVM\LLVM', 'HKCU:\SOFTWARE\LLVM\LLVM') {
+        $d = (Get-ItemProperty $k -ErrorAction SilentlyContinue).'(default)'
+        if ($d) { $dirs += Join-Path $d 'bin' }
+    }
+    $dirs += "$env:ProgramFiles\LLVM\bin", "${env:ProgramFiles(x86)}\LLVM\bin", "$env:LOCALAPPDATA\Programs\LLVM\bin"
+    foreach ($d in $dirs) {
+        if ($d -and (Test-Path (Join-Path $d 'clang.exe')) -and (Test-Path (Join-Path $d 'lld-link.exe')) -and (Test-Path (Join-Path $d 'llvm-dlltool.exe'))) { return $d }
+    }
+    return $null
+}
 function Step($t) { Write-Host ''; Write-Host "== $t" -ForegroundColor Cyan }
 function Fail($t) { Write-Host "FAILED: $t" -ForegroundColor Red; exit 1 }
 function Get-File($url, $dest) {
@@ -167,12 +181,15 @@ if (-not $SkipFramerate) {
 if (-not $SkipBuild) {
     Step 'Build the plugins and HP3AP.utx'
     if ((Test-Py 'import PIL') -ne 0) { Write-Host 'installing Pillow (for the textures)'; Invoke-Py -m pip install --user --quiet pillow }
-    $clang = Get-Command clang -ErrorAction SilentlyContinue
-    if (-not $clang -and -not (Test-Path "$env:ProgramFiles\LLVM\bin\clang.exe")) {
+    $llvm = Find-LLVM
+    if (-not $llvm) {
         $a = Read-Host 'LLVM (clang, lld-link) is needed to build the plugins. Install it now with winget? [Y/n]'
         if ($a -notmatch '^[nN]') { winget install --id LLVM.LLVM -e --accept-package-agreements --accept-source-agreements }
-        if (-not (Test-Path "$env:ProgramFiles\LLVM\bin\clang.exe")) { Fail 'LLVM not installed (winget install LLVM.LLVM)' }
+        $llvm = Find-LLVM
+        if (-not $llvm) { Fail 'LLVM not found (winget install LLVM.LLVM, or put its bin folder on PATH)' }
     }
+    Write-Host "llvm:   $llvm"
+    if (($env:Path -split ';') -notcontains $llvm) { $env:Path = "$llvm;$env:Path" }   # for tools\build_mods.py
     Invoke-Py (Join-Path $Repo 'tools\build_mods.py') $Build
     $icon = Join-Path $Tmp 'icon.png'
     Get-File $APIcon $icon
