@@ -10,8 +10,8 @@ First get the whole repository, not just the script: `setup.bat` runs the reposi
 mod from its source. Either clone it (`git clone https://github.com/FlapjackRetro/HP3PC_AP.git`) or download it
 from GitHub (**Code** > **Download ZIP**) and unzip it. Run `setup.bat` from that folder.
 
-After step 1 (including its start-up test), `setup.bat` (in the repository root) installs SafeDiscShim if your copy needs it (see step 1) and does steps 2 to 4 for you: it downloads the HP3-UHDE core
-files (not its executable) and applies their ini patches, patches the framerate, builds `HP3OpenCastle.asi` and `HP3AP.utx`, and
+After step 1 (including its start-up test), `setup.bat` (in the repository root) installs SafeDiscShim if your copy needs it (see step 1) and does steps 2 to 4 for you: it copies the HP3-UHDE core
+files included in this repository (no executable among them) and applies their ini patches, patches the framerate, builds `HP3OpenCastle.asi` and `HP3AP.utx`, and
 installs them. It asks for administrator rights (the game is under `Program Files`). Running it again is safe;
 after a `git pull` it rebuilds and reinstalls the mod.
 
@@ -117,19 +117,19 @@ Writing to `Program Files` needs admin rights, so the copy steps below need an e
 
 ## 2. HP3-UHDE (core files)
 
-HP3-UHDE hasn't published a release, and its README tells you to use TFCInstaller (Nexus Mods) to install it.
-TFCInstaller is only needed for the HD texture pack, which this project doesn't need. The core files can be
-copied by hand from a checkout of [FlapjackRetro/HP3-UHDE-noexe](https://github.com/FlapjackRetro/HP3-UHDE-noexe), the
-no-exe edition of Vawlpe's HP3-UHDE (no game executable in any commit). Keep the game's own executable (see step 1).
+HP3-UHDE (Harry Potter 3: Ultimate HD Edition) by Vawlpe makes the game run well on modern Windows. Its core files
+are included in this repository, unchanged, in [`thirdparty/hp3-uhde/`](../thirdparty/hp3-uhde/) (credits, licenses
+and checksums are in its README). There is no game executable among them: keep the game's own (see step 1). This
+project doesn't use HP3-UHDE's HD texture pack.
 
-| From `Mod/Game/system/` | What it is |
+| From `thirdparty/hp3-uhde/system/` | What it is |
 | --- | --- |
 | `d3d8.dll` | crosire's d3d8to9 |
 | `d3d9.dll` | ThirteenAG's Ultimate ASI Loader (with DirectX Windower embedded). Loads `plugins\*.asi`. |
 | `plugins/dxgi.asi` | ReShade 6.3.3 (32-bit) |
 | `Default.ini.IniPatch`, `defuser.ini.IniPatch` | Apply to `system\Default.ini` / `defuser.ini` |
 
-Also apply `Mod/System/MyDocuments/Harry Potter and the Prisoner of Azkaban/hppoa.ini.IniPatch` and `User.ini.IniPatch`
+Also apply `thirdparty/hp3-uhde/MyDocuments/hppoa.ini.IniPatch` and `User.ini.IniPatch`
 to the files in Documents (they exist after the game has been started once).
 They set 1920x1080, maximum texture detail, VSync with a 60 Hz refresh rate, and FOV 100.39.
 [`tools/inipatch.py`](../tools/inipatch.py) applies `.IniPatch` files and keeps the line endings intact. Its arguments
@@ -139,7 +139,7 @@ are the input ini, the output ini (the same file to patch in place) and one or m
 python tools/inipatch.py hppoa.ini hppoa.ini path/to/hppoa.ini.IniPatch
 ```
 
-`Save/Save500.usa` in the same folder is UHDE's 100% save. It's handy for testing and doesn't overwrite your own slots.
+`MyDocuments/Save/Save500.usa` is HP3-UHDE's 100% save (`setup.bat -TestSave` copies it). It's handy for testing and doesn't overwrite your own slots.
 
 ## 3. Framerate fix (60 fps cap)
 

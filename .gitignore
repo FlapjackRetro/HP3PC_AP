@@ -13,6 +13,12 @@
 *.int
 decompiled/
 _embedded_source/
+# except HP3-UHDE's core files (thirdparty/hp3-uhde/README.md): third-party DLLs and a save, no game code.
+# Executables stay ignored everywhere.
+!thirdparty/hp3-uhde/system/d3d8.dll
+!thirdparty/hp3-uhde/system/d3d9.dll
+!thirdparty/hp3-uhde/system/plugins/dxgi.asi
+!thirdparty/hp3-uhde/MyDocuments/Save/Save500.usa
 
 # Python
 __pycache__/
