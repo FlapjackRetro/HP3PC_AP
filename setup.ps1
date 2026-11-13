@@ -48,10 +48,15 @@ function Find-LLVM {   # LLVM's bin folder: PATH, the installer's registry key (
         $d = (Get-ItemProperty $k -ErrorAction SilentlyContinue).'(default)'
         if ($d) { $dirs += Join-Path $d 'bin' }
     }
-    $dirs += "$env:ProgramFiles\LLVM\bin", "${env:ProgramFiles(x86)}\LLVM\bin", "$env:LOCALAPPDATA\Programs\LLVM\bin"
+    # $env:ProgramW6432 is the 64-bit Program Files even in a 32-bit PowerShell (where $env:ProgramFiles is the x86 one)
+    $dirs += "$env:ProgramW6432\LLVM\bin", "$env:ProgramFiles\LLVM\bin", "${env:ProgramFiles(x86)}\LLVM\bin", "$env:LOCALAPPDATA\Programs\LLVM\bin"
     foreach ($d in $dirs) {
-        if ($d -and (Test-Path (Join-Path $d 'clang.exe')) -and (Test-Path (Join-Path $d 'lld-link.exe')) -and (Test-Path (Join-Path $d 'llvm-dlltool.exe'))) { return $d }
+        if (-not $d -or -not (Test-Path (Join-Path $d 'clang.exe'))) { continue }
+        $miss = @('lld-link.exe', 'llvm-dlltool.exe' | Where-Object { -not (Test-Path (Join-Path $d $_)) })
+        if ($miss.Count) { Write-Host "LLVM at $d is missing $($miss -join ', ')" -ForegroundColor Yellow; continue }
+        return $d
     }
+    Write-Host ("no LLVM in: " + (($dirs | Where-Object { $_ } | Select-Object -Unique) -join '; ')) -ForegroundColor Yellow
     return $null
 }
 function Step($t) { Write-Host ''; Write-Host "== $t" -ForegroundColor Cyan }
