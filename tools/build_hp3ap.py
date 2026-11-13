@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build HP3AP.utx, the randomizer's texture package, from its sources.
 
-Usage: python build_hp3ap.py <Archipelago>/data/icon.png <HP3 game folder> OUT/HP3AP.utx
+Usage: python build_hp3ap.py thirdparty/archipelago/icon.png <HP3 game folder> OUT/HP3AP.utx
 
 Contents (object path HP3AP.<Name>):
   APLogoProgression / APLogoUseful / APLogoFiller   Archipelago logo tiers (gen_ap_logos.py, MIT logo)

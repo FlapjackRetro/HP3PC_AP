@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Draw the three Archipelago item tiers from the Archipelago logo (data/icon.png of Archipelago,
-MIT licence) and write them as PNGs:
+"""Draw the three Archipelago item tiers from the Archipelago logo (thirdparty/archipelago/icon.png, from
+Archipelago 0.6.8; see COPYING.md) and write them as PNGs:
 
   APLogoProgression.png   logo + yellow up arrow   (progression items)
   APLogoUseful.png        plain logo               (useful / normal items)
   APLogoFiller.png        grayscale logo           (filler)
 
-Usage: python gen_ap_logos.py <Archipelago>/data/icon.png OUT_DIR [size=128]
+Usage: python gen_ap_logos.py thirdparty/archipelago/icon.png OUT_DIR [size=128]
 Then: python utxwriter.py HP3AP.utx APLogoProgression=OUT_DIR/APLogoProgression.png ...
 """
 import os, sys
