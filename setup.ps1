@@ -33,7 +33,7 @@ $Docs = Join-Path $MyDocs 'Harry Potter and the Prisoner of Azkaban'
 $Build = Join-Path $Repo 'build'
 $Tmp = Join-Path ([IO.Path]::GetTempPath()) 'hp3pc_ap_setup'
 # pinned sources (the versions this was tested with)
-$UHDE = 'https://raw.githubusercontent.com/FlapjackRetro/HP3-UHDE-noexe/e472eaba96700401204da81539cd5666381b0d97'   # the no-exe edition of Vawlpe's HP3-UHDE
+$UHDE = Join-Path $Repo 'thirdparty\hp3-uhde'   # HP3-UHDE's core files (Vawlpe), included in this repository
 $SDShim = 'https://github.com/RibShark/SafeDiscShim/releases/download/v0.9.0/SafeDiscShim_Setup_0.9.0.exe'   # lets the retail (SafeDisc) hppoa.exe start without secdrv.sys
 $SDShimSha = 'B4C355EC63047A09C20C286C083FCAD1031D47A2C17EAC0DE12B96D377EC369F'
 $TestedExe = '1ac9c1e37b1cd8d9c581558be8c8ebb607ef0853b66c698fa3b881dcb9b54b0d'   # docs/RETAIL.md: runs without SafeDiscShim on Windows 11
@@ -144,22 +144,17 @@ if (-not $SkipSafeDiscShim) {
 # ---- step 2: HP3-UHDE core files ---------------------------------------------------------------------------------
 if (-not $SkipUHDE) {
     Step 'HP3-UHDE core files (SETUP.md step 2)'
-    $u = Join-Path $Tmp 'uhde'
-    # not HP3-UHDE's hppoa.exe: this project doesn't ship or replace the game's executable (docs/SETUP.md, step 1)
-    foreach ($f in 'd3d8.dll', 'd3d9.dll', 'plugins/dxgi.asi', 'Default.ini.IniPatch', 'defuser.ini.IniPatch') {
-        Get-File "$UHDE/Mod/Game/system/$f" (Join-Path $u $f)
+    $u = $UHDE   # the files in this repository (thirdparty\hp3-uhde\README.md): no game executable among them
+    foreach ($f in 'system\d3d8.dll', 'system\d3d9.dll', 'system\plugins\dxgi.asi', 'system\Default.ini.IniPatch', 'system\defuser.ini.IniPatch',
+                   'MyDocuments\hppoa.ini.IniPatch', 'MyDocuments\User.ini.IniPatch') {
+        if (-not (Test-Path (Join-Path $u $f))) { Fail "$f missing from $u (get the whole repository: docs/SETUP.md)" }
     }
-    $md = 'Mod/System/MyDocuments/Harry%20Potter%20and%20the%20Prisoner%20of%20Azkaban'
-    Get-File "$UHDE/$md/hppoa.ini.IniPatch" (Join-Path $u 'hppoa.ini.IniPatch')
-    Get-File "$UHDE/$md/User.ini.IniPatch" (Join-Path $u 'User.ini.IniPatch')
-    if ($TestSave) { Get-File "$UHDE/$md/Save/Save500.usa" (Join-Path $u 'Save500.usa') }
-
     New-Item -ItemType Directory -Force -Path (Join-Path $Sys 'plugins') | Out-Null
-    foreach ($f in 'd3d8.dll', 'd3d9.dll', 'plugins\dxgi.asi') { Copy-Item (Join-Path $u $f) (Join-Path $Sys $f) -Force; Write-Host "copied $f" }
+    foreach ($f in 'd3d8.dll', 'd3d9.dll', 'plugins\dxgi.asi') { Copy-Item (Join-Path $u "system\$f") (Join-Path $Sys $f) -Force; Write-Host "copied $f" }
 
     # ini patches: the game's own files, backed up once
-    $patches = @(@((Join-Path $Sys 'Default.ini'), 'Default.ini.IniPatch'), @((Join-Path $Sys 'defuser.ini'), 'defuser.ini.IniPatch'),
-                 @((Join-Path $Docs 'hppoa.ini'), 'hppoa.ini.IniPatch'), @((Join-Path $Docs 'User.ini'), 'User.ini.IniPatch'))
+    $patches = @(@((Join-Path $Sys 'Default.ini'), 'system\Default.ini.IniPatch'), @((Join-Path $Sys 'defuser.ini'), 'system\defuser.ini.IniPatch'),
+                 @((Join-Path $Docs 'hppoa.ini'), 'MyDocuments\hppoa.ini.IniPatch'), @((Join-Path $Docs 'User.ini'), 'MyDocuments\User.ini.IniPatch'))
     foreach ($p in $patches) {
         $ini = $p[0]
         if (-not (Test-Path $ini)) { Write-Host "skipped $ini (not there yet: start the game once, then run this again)" -ForegroundColor Yellow; continue }
@@ -170,7 +165,7 @@ if (-not $SkipUHDE) {
     if ($TestSave) {
         $saves = Join-Path $Docs 'Save'
         New-Item -ItemType Directory -Force -Path $saves | Out-Null
-        Copy-Item (Join-Path $u 'Save500.usa') (Join-Path $saves 'Save500.usa') -Force; Write-Host 'copied Save500.usa (UHDE 100% save)'
+        Copy-Item (Join-Path $u 'MyDocuments\Save\Save500.usa') (Join-Path $saves 'Save500.usa') -Force; Write-Host 'copied Save500.usa (UHDE 100% save)'
     }
 }
 
