@@ -9,7 +9,7 @@ First get the whole repository, not just the script: `setup.bat` runs the reposi
 mod from its source. Either clone it (`git clone https://github.com/FlapjackRetro/HP3PC_AP.git`) or download it
 from GitHub (**Code** > **Download ZIP**) and unzip it. Run `setup.bat` from that folder.
 
-After step 1, `setup.bat` (in the repository root) does steps 2 to 4 for you: it downloads the HP3-UHDE core
+After step 1, `setup.bat` (in the repository root) offers SafeDiscShim (see step 1) and does steps 2 to 4 for you: it downloads the HP3-UHDE core
 files (not its executable) and applies their ini patches, patches the framerate, builds `HP3OpenCastle.asi` and `HP3AP.utx`, and
 installs them. It asks for administrator rights (the game is under `Program Files`). Running it again is safe;
 after a `git pull` it rebuilds and reinstalls the mod.
@@ -23,7 +23,7 @@ You need:
 
 Options (`setup.bat -DebugBuild -MapTracker`, or `setup.ps1 -?` for the full list): `-GameDir` for another
 install folder, `-DebugBuild` for the debug build of the mod, `-MapTracker` / `-WindowFix` for the extra plugins,
-`-TestSave` for UHDE's 100% save, and `-SkipUHDE`, `-SkipFramerate`, `-SkipBuild`, `-SkipInstall` to leave a step out.
+`-TestSave` for UHDE's 100% save, and `-SkipSafeDiscShim`, `-SkipUHDE`, `-SkipFramerate`, `-SkipBuild`, `-SkipInstall` to leave a step out.
 For a `-GameDir` with spaces, run `setup.ps1` from an elevated PowerShell instead of `setup.bat`.
 
 Then do step 5. The sections below are the manual steps that `setup.bat` automates.
@@ -36,11 +36,26 @@ Then do step 5. The sections below are the manual steps that `setup.bat` automat
 3. Settings and saves live in `Documents\Harry Potter and the Prisoner of Azkaban\` (`hppoa.ini`, `User.ini`, `Save\SaveN.usa`).
 
 **The game's executable.** This project doesn't provide or modify `hppoa.exe`: it uses your own installed copy.
-The retail disc's copy protection (SafeDisc) needs a driver, `secdrv.sys`, that Windows 10 and 11 disable for
-security reasons, so the retail executable may not start on a modern system as is. A Windows XP virtual machine runs
-the retail disc safely. Re-enabling `secdrv.sys` on Windows 10 is possible but reopens the security hole it was
-disabled for, and usually fails on Windows 11 with memory integrity on: only at your own risk. How you get a working
-executable is up to you.
+The retail disc's copy protection (SafeDisc) talks to a driver, `secdrv.sys`, that Windows 10 and 11 block for
+security reasons, so the retail executable won't start on a modern system as is.
+
+**[SafeDiscShim](https://github.com/RibShark/SafeDiscShim)** (RibShark, GPLv3) fixes that without the driver: it loads
+alongside SafeDisc games and answers the driver's requests itself. Nothing is bypassed or changed on disk, and **the
+original disc must be in the drive** when you start the game. `setup.bat` offers to install it (the pinned v0.9.0
+installer, hash-checked; `-SkipSafeDiscShim` leaves it out), or install it yourself from its Releases page.
+- It installs `drvmgt.dll` into `Windows\SysWOW64` and a Windows compatibility database (`sdbinst`) that puts it into
+  SafeDisc's start-up helper, which then restarts the game with the shim loaded (same executable, folder and command
+  line).
+- It doesn't get in the way of HP3-UHDE or this mod: it only hooks process creation and the `secdrv` requests, and
+  passes every other device request through. Ultimate ASI Loader (`d3d9.dll`) is loaded later, when the game starts
+  its renderer, and loads `plugins\*.asi` as usual. Our plugins only patch `Core.dll` and `Engine.dll`, which
+  SafeDisc doesn't protect, never `hppoa.exe`.
+- It writes `hppoa.exe_SafeDiscShim.log` next to the game (beta builds). Set the environment variable
+  `SAFEDISCSHIM_LOGLEVEL=none` to turn that off.
+- Uninstall it from Windows' installed apps.
+
+A Windows XP virtual machine also runs the retail disc. Re-enabling `secdrv.sys` itself is possible on Windows 10 but
+reopens the security hole it was blocked for: not recommended.
 
 Writing to `Program Files` needs admin rights, so the copy steps below need an elevated prompt.
 

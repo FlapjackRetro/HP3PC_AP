@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  HP3 PC Archipelago setup: steps 2 and 3 of docs/SETUP.md (HP3-UHDE core files, not its executable; 60 fps cap), then builds and
+  HP3 PC Archipelago setup: SafeDiscShim (offered), steps 2 and 3 of docs/SETUP.md (HP3-UHDE core files, not its executable; 60 fps cap), then builds and
   installs the Open Castle plugin (HP3OpenCastle.asi) and its texture package (HP3AP.utx).
 
 .DESCRIPTION
@@ -16,12 +16,12 @@
 .PARAMETER MapTracker   Also install HP3MapTracker.asi (title-bar position, HP3_MapLog.txt, mark key).
 .PARAMETER WindowFix    Also install HP3WindowFix.asi.
 .PARAMETER TestSave     Also copy UHDE's 100% save (Save500.usa) into the Saves folder.
-.PARAMETER SkipUHDE / SkipFramerate / SkipBuild / SkipInstall   Leave that step out.
+.PARAMETER SkipSafeDiscShim / SkipUHDE / SkipFramerate / SkipBuild / SkipInstall   Leave that step out.
 #>
 param(
     [string]$GameDir = "${env:ProgramFiles(x86)}\EA GAMES\Harry Potter and the Prisoner of Azkaban(TM)",
     [switch]$DebugBuild, [switch]$MapTracker, [switch]$WindowFix, [switch]$TestSave,
-    [switch]$SkipUHDE, [switch]$SkipFramerate, [switch]$SkipBuild, [switch]$SkipInstall
+    [switch]$SkipSafeDiscShim, [switch]$SkipUHDE, [switch]$SkipFramerate, [switch]$SkipBuild, [switch]$SkipInstall
 )
 $ErrorActionPreference = 'Stop'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -33,6 +33,9 @@ $Build = Join-Path $Repo 'build'
 $Tmp = Join-Path ([IO.Path]::GetTempPath()) 'hp3pc_ap_setup'
 # pinned sources (the versions this was tested with)
 $UHDE = 'https://raw.githubusercontent.com/FlapjackRetro/HP3-UHDE-noexe/e472eaba96700401204da81539cd5666381b0d97'   # the no-exe edition of Vawlpe's HP3-UHDE
+$SDShim = 'https://github.com/RibShark/SafeDiscShim/releases/download/v0.9.0/SafeDiscShim_Setup_0.9.0.exe'   # lets the retail (SafeDisc) hppoa.exe start without secdrv.sys
+$SDShimSha = 'B4C355EC63047A09C20C286C083FCAD1031D47A2C17EAC0DE12B96D377EC369F'
+$SDShimGuid = '{001827e2-fa73-4907-81de-5596bc8e3d37}'   # its compatibility database (SafeDiscShim.sdb)
 $APIcon = 'https://raw.githubusercontent.com/ArchipelagoMW/Archipelago/0.6.8/data/icon.png'
 
 function Step($t) { Write-Host ''; Write-Host "== $t" -ForegroundColor Cyan }
@@ -43,7 +46,7 @@ function Get-File($url, $dest) {
 }
 
 # ---- checks ------------------------------------------------------------------------------------------------------
-if (-not ($SkipUHDE -and $SkipFramerate -and $SkipInstall)) {   # these write under Program Files
+if (-not ($SkipSafeDiscShim -and $SkipUHDE -and $SkipFramerate -and $SkipInstall)) {   # these write under Program Files / Windows
     $admin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(
         [Security.Principal.WindowsBuiltInRole]::Administrator)
     if (-not $admin) { Fail 'the game folder is under Program Files: run setup.bat (it asks for administrator), or an elevated PowerShell' }
@@ -51,7 +54,7 @@ if (-not ($SkipUHDE -and $SkipFramerate -and $SkipInstall)) {   # these write un
 if (-not (Test-Path (Join-Path $Sys 'Engine.dll'))) { Fail "no game at $GameDir (pass -GameDir)" }
 if (-not (Test-Path (Join-Path $Sys 'hppoa.exe'))) { Fail "no hppoa.exe in ${Sys}: install the game first (step 1 of docs/SETUP.md)" }
 Write-Host 'note: the game runs with your own hppoa.exe; this setup neither provides nor changes it. The retail disc''s'
-Write-Host '      SafeDisc protection may not start on Windows 10/11: see "The game''s executable" in docs/SETUP.md.'
+Write-Host '      SafeDisc protection needs SafeDiscShim on Windows 10/11 (offered below) and the disc in the drive.'
 
 # Python: the py launcher (py -3) or python on PATH. Run with $ErrorActionPreference relaxed so a non-zero exit or
 # stderr output doesn't stop the script (Windows PowerShell turns a native command's stderr into errors).
@@ -79,6 +82,34 @@ function Invoke-Py {   # python with these arguments; stops the setup if it fail
 }
 Write-Host "game:   $GameDir"
 Write-Host "python: $PyExe $($PyArgs -join ' ')"
+
+# ---- step 1b: SafeDiscShim -----------------------------------------------------------------------------------------
+# The retail hppoa.exe is SafeDisc-protected and talks to secdrv.sys, which Windows 10/11 block. SafeDiscShim (RibShark,
+# GPLv3) answers those requests itself: no driver, no change to the executable, and the original disc is still needed.
+# It installs drvmgt.dll into SysWOW64 and a compatibility database (sdbinst) that loads it into SafeDisc games.
+# It only hooks process creation and the secdrv requests, so Ultimate ASI Loader and our plugins load as before.
+if (-not $SkipSafeDiscShim) {
+    Step 'SafeDiscShim (SETUP.md step 1)'
+    $dll = Join-Path $env:SystemRoot $(if ([Environment]::Is64BitOperatingSystem) { 'SysWOW64\drvmgt.dll' } else { 'System32\drvmgt.dll' })
+    $sdb = Test-Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\InstalledSDB\$SDShimGuid"
+    if ((Test-Path $dll) -and $sdb) { Write-Host 'already installed' }
+    else {
+        Write-Host 'SafeDiscShim lets the retail hppoa.exe start on Windows 10/11 (original disc still required).'
+        Write-Host 'https://github.com/RibShark/SafeDiscShim (v0.9.0, GPLv3)'
+        $a = Read-Host 'Download and install it now? [Y/n]'
+        if ($a -match '^(n|no)$') { Write-Host 'skipped: without it (or another way to run SafeDisc) the retail game may not start' -ForegroundColor Yellow }
+        else {
+            $exe = Join-Path $Tmp 'SafeDiscShim_Setup_0.9.0.exe'
+            Get-File $SDShim $exe
+            if ((Get-FileHash -Algorithm SHA256 $exe).Hash -ne $SDShimSha) { Fail "$exe doesn't match the pinned SafeDiscShim 0.9.0 installer" }
+            Write-Host 'running SafeDiscShim_Setup_0.9.0.exe'
+            $p = Start-Process -FilePath $exe -ArgumentList '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART' -Wait -PassThru
+            if ($p.ExitCode -ne 0) { Fail "SafeDiscShim installer exited with $($p.ExitCode)" }
+            if (-not (Test-Path $dll)) { Fail "SafeDiscShim installed, but $dll isn't there" }
+            Write-Host 'installed SafeDiscShim'
+        }
+    }
+}
 
 # ---- step 2: HP3-UHDE core files ---------------------------------------------------------------------------------
 if (-not $SkipUHDE) {
