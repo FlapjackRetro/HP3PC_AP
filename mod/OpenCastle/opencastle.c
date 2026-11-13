@@ -73,7 +73,7 @@ IMP u32    WINAPI GetCurrentThreadId(void);
 static volatile u32 gWorkerTid;   /* shop_init scans objects only on the worker thread */
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc10e"
+#define OC_VERSION L"poc10f"
 /* OC_DEBUG 1 (default, build/HP3OpenCastle.asi): the development build, with the debug panel (Delete), the item test
    grid (backslash) and noclip (F6). OC_DEBUG 0 (build/release/HP3OpenCastle.asi, build.sh): the release build, with
    no key thread at all, so none of those can be opened; everything else is the same code. */
