@@ -30,7 +30,7 @@ The randomizer is planned for this setup:
 | Component | Role |
 | --- | --- |
 | **Harry Potter and the Prisoner of Azkaban (PC)**, retail disc | The base game. Not included; bring your own copy. |
-| **[HP3-UHDE](https://github.com/FlapjackRetro/HP3-UHDE-noexe)** by Vawlpe (our no-exe edition, with no game executable) | Makes the game run on modern Windows: d3d8to9, Ultimate ASI Loader, ReShade, config tweaks. No game executable is used from it: this project neither ships nor modifies `hppoa.exe` (the retail exe runs on Windows 10/11 with [SafeDiscShim](https://github.com/RibShark/SafeDiscShim) and the original disc; see [docs/SETUP.md](docs/SETUP.md)). The HD texture pack is optional and isn't needed here. The ASI loader also gives us a way to load our own code. |
+| **[HP3-UHDE](https://github.com/FlapjackRetro/HP3-UHDE-noexe)** by Vawlpe (our no-exe edition, with no game executable) | Makes the game run on modern Windows: d3d8to9, Ultimate ASI Loader, ReShade, config tweaks. No game executable is used from it: this project neither ships nor modifies `hppoa.exe` (the retail exe needs its original disc, and on Windows 10/11 may need [SafeDiscShim](https://github.com/RibShark/SafeDiscShim); see [docs/SETUP.md](docs/SETUP.md)). The HD texture pack is optional and isn't needed here. The ASI loader also gives us a way to load our own code. |
 | **Framerate fix** | Caps the game at 60 fps. Retail HP3 runs uncapped in single player, and high frame rates are associated with softlocks (HP3-UHDE lists its FPS lock as a "Softlock Fix", still unfinished). HP3-UHDE itself only turns on VSync, so this is applied separately with [`tools/framerate_patch.py`](tools/framerate_patch.py). See [docs/SETUP.md](docs/SETUP.md). |
 
 ## Status
@@ -67,6 +67,7 @@ Research stage. Done so far:
 | --- | --- |
 | `docs/FINDINGS.md` | What's known so far about the engine, save keys, items, locations and hooks |
 | `docs/SETUP.md` | Installing the base game, HP3-UHDE, the framerate fix and the mod (`setup.bat` automates it) |
+| `docs/RETAIL.md` | The tested retail copy: disc, file hashes, what the mod uses each file for (`tools/verify_retail.ps1` checks yours) |
 | `docs/SCENES.md` | Maps vs. game states, how levels load, story chains, challenge/exam entrances |
 | `docs/OPEN_CASTLE.md` | Open Castle design: checks, items, area unlocks, entrance plan, draft options |
 | `docs/PLAYTHROUGH.md` | Vanilla playthrough log: confirmed maps, states and checks |
