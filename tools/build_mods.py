@@ -44,7 +44,7 @@ def tool(name):
                     pass
         except ImportError:
             pass
-        for base in (os.environ.get('ProgramFiles', r'C:\Program Files'), os.environ.get('ProgramFiles(x86)', ''),
+        for base in (os.environ.get('ProgramW6432', ''), os.environ.get('ProgramFiles', r'C:\Program Files'), os.environ.get('ProgramFiles(x86)', ''),
                      os.path.join(os.environ.get('LOCALAPPDATA', ''), 'Programs')):
             if base:
                 dirs.append(os.path.join(base, 'LLVM', 'bin'))

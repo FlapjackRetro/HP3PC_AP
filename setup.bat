@@ -8,5 +8,8 @@ if %errorlevel% neq 0 (
     powershell -NoProfile -Command "$a = '%*'; if ($a) { Start-Process -Verb RunAs -FilePath '%~f0' -ArgumentList $a } else { Start-Process -Verb RunAs -FilePath '%~f0' }"
     exit /b
 )
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0setup.ps1" %*
+rem always the 64-bit PowerShell: a 32-bit one sees "Program Files (x86)" as %ProgramFiles% and the 32-bit registry
+set "PS=%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe"
+if exist "%SystemRoot%\Sysnative\WindowsPowerShell\v1.0\powershell.exe" set "PS=%SystemRoot%\Sysnative\WindowsPowerShell\v1.0\powershell.exe"
+"%PS%" -NoProfile -ExecutionPolicy Bypass -File "%~dp0setup.ps1" %*
 pause
