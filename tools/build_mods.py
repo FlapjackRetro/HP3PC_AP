@@ -3,8 +3,8 @@
 
 Usage: python tools/build_mods.py [OUT_DIR] [--only OpenCastle,MapTracker,WindowFix]     (default OUT_DIR: build)
 
-Needs LLVM: clang, lld-link and llvm-dlltool (Windows: `winget install LLVM.LLVM`; found on PATH or in
-C:\\Program Files\\LLVM\\bin). No MSVC or MinGW: the plugins have no C runtime and link against import libraries made
+Needs LLVM: clang, lld-link and llvm-dlltool (Windows: `winget install LLVM.LLVM`; found on PATH, through the LLVM
+installer's registry key, or in C:\\Program Files\\LLVM\\bin). No MSVC or MinGW: the plugins have no C runtime and link against import libraries made
 from each mod's own list of Windows functions.
 
 That list is read from the mod's build.sh (its `mk <dll> <symbol>...` lines), so build.sh stays the one place a new
@@ -32,9 +32,25 @@ def tool(name):
     exe = name + ('.exe' if os.name == 'nt' else '')
     found = shutil.which(exe)
     if not found and os.name == 'nt':
-        for base in (os.environ.get('ProgramFiles', r'C:\Program Files'), os.environ.get('ProgramFiles(x86)', '')):
-            cand = os.path.join(base, 'LLVM', 'bin', exe)
-            if base and os.path.exists(cand):
+        dirs = []
+        try:   # the LLVM installer records its folder here, wherever it was installed
+            import winreg
+            for root, key in ((winreg.HKEY_LOCAL_MACHINE, r'SOFTWARE\LLVM\LLVM'), (winreg.HKEY_LOCAL_MACHINE, r'SOFTWARE\WOW6432Node\LLVM\LLVM'),
+                              (winreg.HKEY_CURRENT_USER, r'SOFTWARE\LLVM\LLVM')):
+                try:
+                    with winreg.OpenKey(root, key) as k:
+                        dirs.append(os.path.join(winreg.QueryValue(k, None), 'bin'))
+                except OSError:
+                    pass
+        except ImportError:
+            pass
+        for base in (os.environ.get('ProgramW6432', ''), os.environ.get('ProgramFiles', r'C:\Program Files'), os.environ.get('ProgramFiles(x86)', ''),
+                     os.path.join(os.environ.get('LOCALAPPDATA', ''), 'Programs')):
+            if base:
+                dirs.append(os.path.join(base, 'LLVM', 'bin'))
+        for d in dirs:
+            cand = os.path.join(d, exe)
+            if os.path.exists(cand):
                 found = cand
                 break
     if not found:

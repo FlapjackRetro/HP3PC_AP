@@ -70,8 +70,12 @@ static int gShopCardsOk, gShopPwOk;
 #define CARD_STRIDE 20
 #define PW_STRIDE   36
 static int shop_init(void) {
-    static int state; static wchar b[300];
+    static int state, waitLogged; static u32 lastTry; static wchar b[300];
     if (state) return state > 0;
+    /* the object scan (for_each_object) is the worker's: game-thread callers wait for it to succeed there */
+    if (!gWorkerTid || GetCurrentThreadId() != gWorkerTid) return 0;
+    if (lastTry && GetTickCount() - lastTry < 3000) return 0;   /* scan at most every 3 s */
+    lastTry = GetTickCount();
     offWCM = prop_offset(L"HGame", L"WizardCardManager");
     offCards = prop_offset(L"WizardCardManager", L"Cards"); offPWs = prop_offset(L"PortraitPasswordManager", L"PortraitPasswords");
     offCardCost = struct_member_offset(L"CardDesc", L"cost"); offCardCls = struct_member_offset(L"CardDesc", L"CardClass");
@@ -80,6 +84,21 @@ static int shop_init(void) {
     gCardStride = CARD_STRIDE; gPwStride = PW_STRIDE;
     gClsVICard = find_class(L"VI_WizardCard"); gClsVIPw = find_class(L"VI_PortraitPassword"); gClsVIFinal = find_class(L"VI_FinalWizardCard");
     if (offWCM < 0 && offCards < 0) return 0;   /* HGame not loaded yet: try again later */
+    /* HGame's classes can be there while a struct member isn't loaded yet: seen on the first start of a fresh install
+       (no saves) as card.cost=-1, which latched "failed" and left shop prices and shopsanity off for the session.
+       Treat a missing or impossible member as "not loaded yet" and try again later. Real layouts (memory order is
+       the reverse of the decompiled declarations): CardDesc CardClass 0, Status 4, GameStateAvailable 8, cost 12,
+       Currency 16 (stride 20); PortraitPasswordDesc Owned 0, the two strings 4 and 16, cost 28, Currency 32 (36). */
+    if (offCardCost < 0 || offCardCls < 0 || offCardCost == offCardCls || offCardCost >= CARD_STRIDE || offCardCls >= CARD_STRIDE
+        || offPwCost < 0 || offPwOwned < 0 || offPwCost == offPwOwned || offPwCost >= PW_STRIDE || offPwOwned >= PW_STRIDE) {
+        if (!waitLogged) {
+            waitLogged = 1;
+            wsprintfW(b, L"shop: card/password tables not loaded yet (card.cost=%d card.class=%d pw.cost=%d pw.owned=%d); retrying",
+                      offCardCost, offCardCls, offPwCost, offPwOwned);
+            log_line(b);
+        }
+        return 0;
+    }
     state = (offWCM > 0 && offPPM > 0 && offCards > 0 && offPWs > 0 && offCardCost >= 0 && offCardCls >= 0 && offPwCost >= 0
              && offPwOwned >= 0 && offVICost > 0 && offVICardCls > 0 && gClsVICard && gClsVIPw) ? 1 : -1;
     wsprintfW(b, L"shop: lookups wcm=%d ppm=%d cards=%d pws=%d card.cost=%d card.class=%d pw.cost=%d pw.owned=%d vi.cost=%d vi.class=%d "

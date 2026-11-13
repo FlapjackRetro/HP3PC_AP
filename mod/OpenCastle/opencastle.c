@@ -69,9 +69,11 @@ IMP short  WINAPI GetAsyncKeyState(int);
 IMP HWND   WINAPI GetForegroundWindow(void);
 IMP u32    WINAPI GetWindowThreadProcessId(HWND, u32*);
 IMP u32    WINAPI GetCurrentProcessId(void);
+IMP u32    WINAPI GetCurrentThreadId(void);
+static volatile u32 gWorkerTid;   /* shop_init scans objects only on the worker thread */
 IMP BOOL   WINAPI WritePrivateProfileStringW(const wchar*, const wchar*, const wchar*, const wchar*);
 
-#define OC_VERSION L"poc10d"
+#define OC_VERSION L"poc10f"
 /* OC_DEBUG 1 (default, build/HP3OpenCastle.asi): the development build, with the debug panel (Delete), the item test
    grid (backslash) and noclip (F6). OC_DEBUG 0 (build/release/HP3OpenCastle.asi, build.sh): the release build, with
    no key thread at all, so none of those can be opened; everything else is the same code. */
@@ -802,7 +804,7 @@ BOOL WINAPI DllMain(HANDLE inst, u32 reason, void *res) {
     if (reason == 1) {
         DisableThreadLibraryCalls(inst);
         install_hooks();   /* on the loading thread, before the worker starts */
-        CreateThread(0, 0, worker, 0, 0, 0);
+        CreateThread(0, 0, worker, 0, 0, (u32 *)&gWorkerTid);
         CreateThread(0, 0, net_thread, 0, 0, 0);   /* the Archipelago client connection (net.h) */
         if (OC_DEBUG) CreateThread(0, 0, key_thread, 0, 0, 0);   /* debug panel, test grid, noclip */
     }
