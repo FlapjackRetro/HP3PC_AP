@@ -5,8 +5,8 @@ Usage: python framerate_patch.py "<game>/system/Engine.dll" [--with-fps-counter]
 
 Retail UGameEngine::GetMaxTickRate() returns 0.0 (uncapped) for single-player.
 This repoints that load to an existing 60.0f constant, i.e. caps the game at 60 fps.
---with-fps-counter additionally applies the FStats::Render tweaks from the community
-patch, which force the 'stat fps' overlay on.
+--with-fps-counter additionally patches FStats::Render so the 'stat fps' overlay is always on.
+The resulting hashes are listed in docs/RETAIL.md.
 Only the retail Engine.dll (sha256 73bbe178...) is accepted. A backup is written next to it.
 """
 import hashlib, shutil, sys

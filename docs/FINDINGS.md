@@ -14,8 +14,8 @@ has been tested in-game unless it says so.
   errors. `Engine.u` and `Core.u` still contain their original `.uc` source, which was used to check the
   decompiler's output.
 - No `ucc.exe` or `UnrealEd.exe` ships with the game, so there's no stock way to compile new script.
-  `Editor.u`/`Editor.dll` are present. Jack's Harry Potter 3 Level Editor
-  on ModDB might provide one (not yet checked).
+  `Editor.u`/`Editor.dll` are present. Jack's Harry Potter 3 Level Editor (a community tool)
+  might provide one (not yet checked).
 - `IpDrv.dll` ships but **`IpDrv.u` doesn't**, so script can't use `TcpLink` as-is. (HP2PC_AP depends on M212's
   engine, which restores UE1-style networking. HP3 has no equivalent.)
 
