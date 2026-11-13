@@ -54,7 +54,7 @@ if (-not ($SkipSafeDiscShim -and $SkipUHDE -and $SkipFramerate -and $SkipInstall
 if (-not (Test-Path (Join-Path $Sys 'Engine.dll'))) { Fail "no game at $GameDir (pass -GameDir)" }
 if (-not (Test-Path (Join-Path $Sys 'hppoa.exe'))) { Fail "no hppoa.exe in ${Sys}: install the game first (step 1 of docs/SETUP.md)" }
 Write-Host 'note: the game runs with your own hppoa.exe; this setup neither provides nor changes it. The retail disc''s'
-Write-Host '      SafeDisc protection needs SafeDiscShim on Windows 10/11 (offered below) and the disc in the drive.'
+Write-Host '      SafeDisc protection may need SafeDiscShim on Windows 10/11 (offered below); keep the disc in the drive.'
 
 # Python: the py launcher (py -3) or python on PATH. Run with $ErrorActionPreference relaxed so a non-zero exit or
 # stderr output doesn't stop the script (Windows PowerShell turns a native command's stderr into errors).
@@ -84,7 +84,7 @@ Write-Host "game:   $GameDir"
 Write-Host "python: $PyExe $($PyArgs -join ' ')"
 
 # ---- step 1b: SafeDiscShim -----------------------------------------------------------------------------------------
-# The retail hppoa.exe is SafeDisc-protected and talks to secdrv.sys, which Windows 10/11 block. SafeDiscShim (RibShark,
+# The retail hppoa.exe is SafeDisc-protected; some SafeDisc versions need secdrv.sys, which Windows 10/11 block. SafeDiscShim (RibShark,
 # GPLv3) answers those requests itself: no driver, no change to the executable, and the original disc is still needed.
 # It installs drvmgt.dll into SysWOW64 and a compatibility database (sdbinst) that loads it into SafeDisc games.
 # It only hooks process creation and the secdrv requests, so Ultimate ASI Loader and our plugins load as before.
@@ -92,12 +92,17 @@ if (-not $SkipSafeDiscShim) {
     Step 'SafeDiscShim (SETUP.md step 1)'
     $dll = Join-Path $env:SystemRoot $(if ([Environment]::Is64BitOperatingSystem) { 'SysWOW64\drvmgt.dll' } else { 'System32\drvmgt.dll' })
     $sdb = Test-Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\InstalledSDB\$SDShimGuid"
+    $exeText = [Text.Encoding]::ASCII.GetString([IO.File]::ReadAllBytes((Join-Path $Sys 'hppoa.exe')))
     if ((Test-Path $dll) -and $sdb) { Write-Host 'already installed' }
+    elseif (-not $exeText.Contains('BoG_')) { Write-Host 'not needed: this hppoa.exe has no SafeDisc' }
     else {
-        Write-Host 'SafeDiscShim lets the retail hppoa.exe start on Windows 10/11 (original disc still required).'
+        Write-Host 'Your hppoa.exe is SafeDisc-protected. Windows 10/11 block the driver SafeDisc may ask for (secdrv.sys).'
+        Write-Host 'SafeDiscShim answers for it, with no driver; the original disc is still required.'
+        Write-Host '  - The game reached the main menu with the disc in (SETUP.md step 1.4)? You don''t need it: answer n.'
+        Write-Host '  - It said "Cannot locate the CD-ROM" with the disc in, or you haven''t tried yet? Answer Y.'
         Write-Host 'SafeDiscShim by RibShark (v0.9.0, GPLv3)'
-        $a = Read-Host 'Download and install it now? [Y/n]'
-        if ($a -match '^(n|no)$') { Write-Host 'skipped: without it (or another way to run SafeDisc) the retail game may not start' -ForegroundColor Yellow }
+        $a = Read-Host 'Install SafeDiscShim now? [Y/n]'
+        if ($a -match '^(n|no)$') { Write-Host 'skipped. If the game later says "Cannot locate the CD-ROM" with the disc in, run setup again and answer Y.' -ForegroundColor Yellow }
         else {
             $exe = Join-Path $Tmp 'SafeDiscShim_Setup_0.9.0.exe'
             Get-File $SDShim $exe
