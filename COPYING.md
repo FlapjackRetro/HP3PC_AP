@@ -14,6 +14,15 @@
 - **Non-commercial:** because of the CC BY-NC terms, this asset and anything built from it (notably the generated
   `HP3AP.utx`) may not be used or distributed commercially.
 
+## HP3-UHDE core files (`thirdparty/hp3-uhde/`)
+- Source: the core files of HP3:UHDE (Harry Potter 3: Ultimate HD Edition) by Vawlpe, included unchanged. No game
+  executable is among them, and the HD texture pack isn't included.
+- License: HP3:UHDE is Copyright (C) 2025 Vawlpe, under the **GNU GPL v3** (or later). It bundles three binaries
+  under their own licenses: d3d8to9 (`d3d8.dll`, crosire / Patrick Mours, **BSD 2-Clause**), Ultimate ASI Loader
+  (`d3d9.dll`, ThirteenAG, **MIT**) and ReShade 6.3.3 (`plugins/dxgi.asi`, crosire / Patrick Mours, **BSD 3-Clause**).
+  The full license texts are in `thirdparty/hp3-uhde/licenses/`, and the credits and checksums in
+  `thirdparty/hp3-uhde/README.md`.
+
 The rest of this repository's own code and documentation is not covered by this file. The game itself
 (*Harry Potter and the Prisoner of Azkaban*, PC, 2004, Electronic Arts / KnowWonder) is not included and remains
 its owners' property; nothing derived from its code, binaries or assets is committed, and `HP3AP.utx`'s other
