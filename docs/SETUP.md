@@ -25,7 +25,7 @@ You need:
 
 Options (`setup.bat -DebugBuild -MapTracker`, or `setup.ps1 -?` for the full list): `-GameDir` for another
 install folder, `-DebugBuild` for the debug build of the mod, `-MapTracker` / `-WindowFix` for the extra plugins,
-`-TestSave` for UHDE's 100% save, and `-SkipSafeDiscShim`, `-SkipUHDE`, `-SkipFramerate`, `-SkipBuild`, `-SkipInstall` to leave a step out.
+`-TestSave` for UHDE's 100% save, and `-SkipSafeDiscShim` (or `-ForceSafeDiscShim`), `-SkipUHDE`, `-SkipFramerate`, `-SkipBuild`, `-SkipInstall` to leave a step out.
 For a `-GameDir` with spaces, run `setup.ps1` from an elevated PowerShell instead of `setup.bat`.
 
 Then do step 5. The sections below are the manual steps that `setup.bat` automates.
@@ -57,7 +57,7 @@ If you saw "Cannot locate the CD-ROM" with the disc **ejected**, that's the disc
 disc in and try again.
 
 You can also check whether your `hppoa.exe` has SafeDisc at all. `setup.bat` does this for you and skips the
-SafeDiscShim step when it doesn't. By hand, in PowerShell:
+SafeDiscShim step when it doesn't, or when it's the tested retail exe (pass `-ForceSafeDiscShim` to be offered it anyway). By hand, in PowerShell:
 
 ```powershell
 $b = [IO.File]::ReadAllBytes("C:\Program Files (x86)\EA GAMES\Harry Potter and the Prisoner of Azkaban(TM)\system\hppoa.exe")
@@ -77,7 +77,9 @@ The retail disc is protected by SafeDisc, which has two separate parts:
    disabled it and Windows 11 blocks it.
 
 Whether a game fails without the driver depends on the SafeDisc version and on how much that version relies on the
-driver's answers. A version that relies on them can't get them on Windows 10/11 and gives up with the same "Cannot
+driver's answers. **The tested copy ([RETAIL.md](RETAIL.md)) doesn't need it:** the retail US v1.0 disc reaches the
+main menu on Windows 11 (build 26200) with no `secdrv.sys` and no SafeDiscShim, and refuses to start with the disc
+ejected, as it should. `setup.bat` recognises that `hppoa.exe` and skips the SafeDiscShim step for it. A version that relies on them can't get them on Windows 10/11 and gives up with the same "Cannot
 locate the CD-ROM" message as a missing disc.
 
 ### SafeDiscShim
