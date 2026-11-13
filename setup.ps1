@@ -16,12 +16,13 @@
 .PARAMETER MapTracker   Also install HP3MapTracker.asi (title-bar position, HP3_MapLog.txt, mark key).
 .PARAMETER WindowFix    Also install HP3WindowFix.asi.
 .PARAMETER TestSave     Also copy UHDE's 100% save (Save500.usa) into the Saves folder.
+.PARAMETER ForceSafeDiscShim  Offer SafeDiscShim even for the tested retail hppoa.exe (which doesn't need it).
 .PARAMETER SkipSafeDiscShim / SkipUHDE / SkipFramerate / SkipBuild / SkipInstall   Leave that step out.
 #>
 param(
     [string]$GameDir = "${env:ProgramFiles(x86)}\EA GAMES\Harry Potter and the Prisoner of Azkaban(TM)",
     [switch]$DebugBuild, [switch]$MapTracker, [switch]$WindowFix, [switch]$TestSave,
-    [switch]$SkipSafeDiscShim, [switch]$SkipUHDE, [switch]$SkipFramerate, [switch]$SkipBuild, [switch]$SkipInstall
+    [switch]$SkipSafeDiscShim, [switch]$ForceSafeDiscShim, [switch]$SkipUHDE, [switch]$SkipFramerate, [switch]$SkipBuild, [switch]$SkipInstall
 )
 $ErrorActionPreference = 'Stop'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -35,6 +36,7 @@ $Tmp = Join-Path ([IO.Path]::GetTempPath()) 'hp3pc_ap_setup'
 $UHDE = 'https://raw.githubusercontent.com/FlapjackRetro/HP3-UHDE-noexe/e472eaba96700401204da81539cd5666381b0d97'   # the no-exe edition of Vawlpe's HP3-UHDE
 $SDShim = 'https://github.com/RibShark/SafeDiscShim/releases/download/v0.9.0/SafeDiscShim_Setup_0.9.0.exe'   # lets the retail (SafeDisc) hppoa.exe start without secdrv.sys
 $SDShimSha = 'B4C355EC63047A09C20C286C083FCAD1031D47A2C17EAC0DE12B96D377EC369F'
+$TestedExe = '1ac9c1e37b1cd8d9c581558be8c8ebb607ef0853b66c698fa3b881dcb9b54b0d'   # docs/RETAIL.md: runs without SafeDiscShim on Windows 11
 $SDShimGuid = '{001827e2-fa73-4907-81de-5596bc8e3d37}'   # its compatibility database (SafeDiscShim.sdb)
 $APIcon = 'https://raw.githubusercontent.com/ArchipelagoMW/Archipelago/0.6.8/data/icon.png'
 
@@ -95,6 +97,10 @@ if (-not $SkipSafeDiscShim) {
     $exeText = [Text.Encoding]::ASCII.GetString([IO.File]::ReadAllBytes((Join-Path $Sys 'hppoa.exe')))
     if ((Test-Path $dll) -and $sdb) { Write-Host 'already installed' }
     elseif (-not $exeText.Contains('BoG_')) { Write-Host 'not needed: this hppoa.exe has no SafeDisc' }
+    elseif (-not $ForceSafeDiscShim -and (Get-FileHash (Join-Path $Sys 'hppoa.exe') -Algorithm SHA256).Hash -eq $TestedExe) {
+        Write-Host 'not needed: this is the tested retail hppoa.exe (docs/RETAIL.md), which runs on Windows 11 without it.'
+        Write-Host '  Keep the disc in the drive. If the game says "Cannot locate the CD-ROM" with the disc in, run setup with -ForceSafeDiscShim.'
+    }
     else {
         Write-Host 'Your hppoa.exe is SafeDisc-protected. Windows 10/11 block the driver SafeDisc may ask for (secdrv.sys).'
         Write-Host 'SafeDiscShim answers for it, with no driver; the original disc is still required.'
