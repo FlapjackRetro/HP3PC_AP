@@ -1,0 +1,4 @@
+*.dll binary
+*.asi binary
+*.usa binary
+*.IniPatch -text
